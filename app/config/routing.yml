@@ -1,0 +1,4 @@
+lgp_core:
+    resource: "@LGPCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
