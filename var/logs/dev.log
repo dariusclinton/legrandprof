@@ -201,3 +201,6 @@
 [2016-08-11 15:46:55] request.INFO: Matched route "{route}". {"route":"lgp_core_homepage","route_parameters":{"_controller":"LGP\\CoreBundle\\Controller\\LgpController::indexAction","_route":"lgp_core_homepage"},"request_uri":"http://localhost/legrandprof/web/app_dev.php/","method":"GET"} []
 [2016-08-11 15:46:55] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
 [2016-08-11 15:47:04] request.INFO: Matched route "{route}". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"f7b974","_route":"_wdt"},"request_uri":"http://localhost/legrandprof/web/app_dev.php/_wdt/f7b974","method":"GET"} []
+[2016-08-11 16:12:13] request.INFO: Matched route "{route}". {"route":"lgp_core_homepage","route_parameters":{"_controller":"LGP\\CoreBundle\\Controller\\LgpController::indexAction","_route":"lgp_core_homepage"},"request_uri":"http://localhost/legrandprof/web/app_dev.php/","method":"GET"} []
+[2016-08-11 16:12:13] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2016-08-11 16:12:19] request.INFO: Matched route "{route}". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"f6e527","_route":"_wdt"},"request_uri":"http://localhost/legrandprof/web/app_dev.php/_wdt/f6e527","method":"GET"} []

@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_aaf261733ef71da5aab112e135434e46e464bb8982df98a0c96b9f8911fc089b = $this->env->getExtension("native_profiler");
-        $__internal_aaf261733ef71da5aab112e135434e46e464bb8982df98a0c96b9f8911fc089b->enter($__internal_aaf261733ef71da5aab112e135434e46e464bb8982df98a0c96b9f8911fc089b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_93ab8624ab18ea1f4dad71e4f78b2d1005309b560191e7d0a7b40f88187c105d = $this->env->getExtension("native_profiler");
+        $__internal_93ab8624ab18ea1f4dad71e4f78b2d1005309b560191e7d0a7b40f88187c105d->enter($__internal_93ab8624ab18ea1f4dad71e4f78b2d1005309b560191e7d0a7b40f88187c105d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<header id=\"header\">
@@ -122,7 +122,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
 \t\t</header>";
         
-        $__internal_aaf261733ef71da5aab112e135434e46e464bb8982df98a0c96b9f8911fc089b->leave($__internal_aaf261733ef71da5aab112e135434e46e464bb8982df98a0c96b9f8911fc089b_prof);
+        $__internal_93ab8624ab18ea1f4dad71e4f78b2d1005309b560191e7d0a7b40f88187c105d->leave($__internal_93ab8624ab18ea1f4dad71e4f78b2d1005309b560191e7d0a7b40f88187c105d_prof);
 
     }
 
