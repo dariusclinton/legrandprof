@@ -1,0 +1,39 @@
+<?php
+
+namespace LGP\CourseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProgrammeDeCours
+ *
+ * @ORM\Table(name="programme_de_cours")
+ * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\ProgrammeDeCoursRepository")
+ */
+class ProgrammeDeCours {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \LGP\CourseBundle\Entity\Cours
+     * 
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="programme")
+     * @ORM\JoinColumn(name="cours_id", referencedColumnName="id")
+     */
+    private $cours;
+    
+    /**
+     * @var \LGP\CourseBundle\Entity\Chapitre
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Chapitre", mappedBy="programme")
+     */
+    private $chapitres;
+    
+}
