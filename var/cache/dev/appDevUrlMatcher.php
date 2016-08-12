@@ -100,6 +100,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // lgp_reservation_homepage
+        if (rtrim($pathinfo, '/') === '/reservation') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'lgp_reservation_homepage');
+            }
+
+            return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lgp_reservation_homepage',);
+        }
+
         // lgp_course_homepage
         if (rtrim($pathinfo, '/') === '/course') {
             if (substr($pathinfo, -1) !== '/') {
