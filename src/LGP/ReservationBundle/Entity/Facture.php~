@@ -1,0 +1,45 @@
+<?php
+
+namespace LGP\ReservationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Facture
+ *
+ * @ORM\Table(name="facture")
+ * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\FactureRepository")
+ */
+class Facture {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer", nullable=false)
+     */
+    private $montant;
+
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="factures")
+     */
+    private $reservations;
+
+    /**
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="facture")
+     */
+    private $paiement;
+
+}

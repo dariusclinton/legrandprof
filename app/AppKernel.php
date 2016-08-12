@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new LGP\CoreBundle\LGPCoreBundle(),
             new LGP\CourseBundle\LGPCourseBundle(),
+            new LGP\ReservationBundle\LGPReservationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

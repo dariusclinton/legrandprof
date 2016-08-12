@@ -1,3 +1,7 @@
+lgp_reservation:
+    resource: "@LGPReservationBundle/Resources/config/routing.yml"
+    prefix:   /reservation
+
 lgp_course:
     resource: "@LGPCourseBundle/Resources/config/routing.yml" 
     prefix:   /course

@@ -1,0 +1,52 @@
+<?php
+
+namespace LGP\ReservationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JourDeCours
+ *
+ * @ORM\Table(name="jour_de_cours")
+ * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\JourDeCoursRepository")
+ */
+class JourDeCours {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="heure", type="time", nullable=false)
+     */
+    private $heure;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="heure_fin", type="time", nullable=false)
+     */
+    private $heureFin;
+
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="joursDeCours")
+     */
+    private $reservations;
+
+}

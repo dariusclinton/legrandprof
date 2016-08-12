@@ -1,0 +1,88 @@
+<?php
+
+namespace LGP\ReservationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation")
+ * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\ReservationRepository")
+ */
+class Reservation {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu_de_cours", type="string", length=255, nullable=false)
+     */
+    private $lieuDeCours;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="date", nullable=false)
+     */
+    private $dateDebut;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_apprenants", type="integer", nullable=false)
+     */
+    private $nbApprenants;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_validee", type="boolean", nullable=false)
+     */
+    private $isValidee;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="frequence_paiement", type="string", length=255, nullable=true)
+     */
+    private $frequencePaiement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
+     */
+    private $quartier;
+
+    /**
+     * @var \LGPReservationBundle\Entity\JourDeCours
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservations")
+     * @ORM\JoinTable(name="reservation_jours_de_cours")
+     */
+    private $joursDeCours;
+
+    /**
+     * @var \LGPReservationBundle\Entity\Facture
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Facture", inversedBy="reservations")
+     */
+    private $factures;
+
+}
