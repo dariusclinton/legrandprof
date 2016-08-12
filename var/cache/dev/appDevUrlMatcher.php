@@ -100,13 +100,13 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // lgp_course_course_index
+        // lgp_course_homepage
         if (rtrim($pathinfo, '/') === '/course') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'lgp_course_course_index');
+                return $this->redirect($pathinfo.'/', 'lgp_course_homepage');
             }
 
-            return array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::indexAction',  '_route' => 'lgp_course_course_index',);
+            return array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::indexAction',  '_route' => 'lgp_course_homepage',);
         }
 
         // lgp_core_homepage

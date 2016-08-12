@@ -1,0 +1,3 @@
+lgp_course_homepage:
+    path:     /
+    defaults: { _controller: LGPCourseBundle:Course:index }

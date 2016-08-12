@@ -1,6 +1,5 @@
 lgp_course:
-    resource: "@LGPCourseBundle/Controller/"
-    type:     annotation
+    resource: "@LGPCourseBundle/Resources/config/routing.yml" 
     prefix:   /course
 
 lgp_core:
