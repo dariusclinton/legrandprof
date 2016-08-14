@@ -35,7 +35,7 @@ class ParentController extends Controller
     }
 
     // Sinon on affiche le formulaire d'inscription
-    return $this->render('LGPUserBundle:Parents:register.html.twig', array(
+    return $this->render('LGPUserBundle:Parent:register.html.twig', array(
       'form' => $form->createView(),
     ));
   }
@@ -69,7 +69,7 @@ class ParentController extends Controller
       }
 
       // On retourne le page de profil avec le prof.
-      return $this->render('LGPUserBundle:Parents:profile.html.twig', array(
+      return $this->render('LGPUserBundle:Parent:profile.html.twig', array(
         'parent' => $parent
       ));
     }
