@@ -1,0 +1,19 @@
+lgp_user_homepage:
+    path:     /
+    defaults: { _controller: LGPUserBundle:Main:index }
+
+lgp_user_register_prof:
+    path:     /prof/register
+    defaults: { _controller: LGPUserBundle:Prof:register }
+
+lgp_user_profile_prof:
+    path:     /prof/profile
+    defaults: { _controller: LGPUserBundle:Prof:profile }
+
+lgp_user_register_parent:
+    path:     /parent/register
+    defaults: { _controller: LGPUserBundle:Parent:register }
+
+lgp_user_profile_parent:
+    path:     /parent/profile
+    defaults: { _controller: LGPUserBundle:Parent:profile }
