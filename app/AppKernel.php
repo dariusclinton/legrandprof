@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new LGP\CoreBundle\LGPCoreBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new LGP\UserBundle\LGPUserBundle(),
+            new LGP\CourseBundle\LGPCourseBundle(),
+            new LGP\ReservationBundle\LGPReservationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
