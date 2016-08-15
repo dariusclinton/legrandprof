@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use LGP\UserBundle\Uploader\ImageUploader;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use LGP\UserBundle\Entity\User;
 
 class ImageUploadListener
 {
@@ -18,7 +19,7 @@ class ImageUploadListener
 
   public function prePersist(LifecycleEventArgs $args)
   {
-    $entity = $args->getEntity();
+    $entity = $args->getObject();
     $this->uploadImage($entity);
   }
 
@@ -30,7 +31,8 @@ class ImageUploadListener
 
   private function uploadImage($entity)
   {
-    // Uploader uniquement l'image de l'entite User
+
+    // Si l'entite n'est pas de type User
     if (!$entity instanceof User)
     {
       return;

@@ -39,7 +39,7 @@ class RegistrationType extends AbstractType
             ))
             ->add('numTelephone', TextType::class)
             ->add('pays', CountryType::class)
-            // ->add('photo', FileType::class)
+            ->add('photo', FileType::class)
         ;
     }
 

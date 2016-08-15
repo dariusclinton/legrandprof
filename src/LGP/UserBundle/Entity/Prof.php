@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Prof
 {
   /**
+   * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist"})
+   * @ORM\JoinTable(name="lgp_prof_diplome")
+   */
+   private $diplomes;
+
+  /**
    * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
    * @ORM\JoinColumn(nullable=false)
    */
@@ -369,5 +375,46 @@ class Prof
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add diplome
+     *
+     * @param \LGP\UserBundle\Entity\Diplome $diplome
+     *
+     * @return Prof
+     */
+    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+        $this->diplomes[] = $diplome;
+
+        return $this;
+    }
+
+    /**
+     * Remove diplome
+     *
+     * @param \LGP\UserBundle\Entity\Diplome $diplome
+     */
+    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+        $this->diplomes->removeElement($diplome);
+    }
+
+    /**
+     * Get diplomes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiplomes()
+    {
+        return $this->diplomes;
     }
 }

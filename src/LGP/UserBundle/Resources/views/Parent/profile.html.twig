@@ -7,7 +7,7 @@
 {% block body %}
   <div class="row">
     <ul class="list-group">
-      <li class="list-group-item">Photo: <img src="{{ asset(parent.user.photo) }}" alt="" /> </li>
+      <li class="list-group-item">Photo: <img src="{{ asset('uploads/images/' ~ parent.user.photo) }}" alt="" /> </li>
       <li class="list-group-item">Nom: {{ parent.user.nom }}</li>
       <li class="list-group-item">Prénoms: {{ parent.user.prenoms }}</li>
       <li class="list-group-item">Date  de naissance: {{ parent.user.dateNaissance|date('d/m/y') }}</li>
