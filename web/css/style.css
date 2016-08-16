@@ -45,7 +45,7 @@
     border-bottom: 0;
     min-height: 0;
     margin: 0;
-    height: 60px;
+    height: 55px;
 }
 
 .navbar-primary {
@@ -53,7 +53,7 @@
     background: #e58664;
 }
 .navbar-black{
-    background: black;
+    background: #e58664;
 }
 
 .navbar-bottom {
@@ -1738,7 +1738,7 @@ ul.featured-list-sm li h6 {
 }
 
 .top-destination-image-bg span {
-		color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.9);
 }
 
 .top-destination-image-bg::before {
@@ -3835,7 +3835,7 @@ ul.static-page-menu li.active a {
 }
 .why i{
     font-size: 50px;
-    color:;
+
 }
 .why h5{
     font-size: 20px;
@@ -3869,4 +3869,56 @@ ul.static-page-menu li.active a {
     overflow-y: hidden;
     color: rgba(0,0,0,0.65);
     font-weight: 300;
+}
+a#btn-connect{
+    border-radius: 10px;
+    margin-top: 4px;
+    color: #e58664;
+    border:2px solid #e58664;
+    background-color:white;
+    padding:12px 16px 12px 16px;
+    line-height: 10px;
+}
+a#btn-connect:hover{
+    background-color: #e58664;
+    color: white;
+}
+.bg-grey{
+    background-color: #f5f5f5;  
+}
+.panier-title{
+    margin-top: -30px;
+    color: rgba(0,0,0,0.75);
+}
+.bg-grey .table{
+    background-color: white;
+}
+.bg-grey .table img{
+    height: 130px;
+    width: 100%;
+}
+.bg-grey .table .price{
+    font-size: 18px;
+    line-height: 70px;
+    text-align: center;
+}
+.bg-grey .table .btn-cancel{
+    color: rgb(100,100,100);
+    padding: 3px;
+    line-height: 120px;
+    text-align: center;
+}
+.table .recap{
+    padding: 20px;
+}
+.table .total{
+    color:#e58664;
+    font-size: 16px;
+
+}
+.table .btn{
+    border-radius: 0px;
+}
+.payment-content .row{
+    margin-top: 10px;
 }
