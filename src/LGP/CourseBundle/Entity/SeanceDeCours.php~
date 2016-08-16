@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_seance_de_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\SeanceDeCoursRepository")
  */
-class SeanceDeCours
-{
+class SeanceDeCours {
+
     /**
      * @var int
      *
@@ -20,7 +20,6 @@ class SeanceDeCours
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
 
     /**
      * @var string
@@ -35,96 +34,27 @@ class SeanceDeCours
      * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
-    
+
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="seances")
      */
     private $cours;
-    
-    
-
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @var \LGPReservationBundle\Entity\JourDeCours
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $jourDeCours;
 
     /**
-     * Set resume
-     *
-     * @param string $resume
-     *
-     * @return SeanceDeCours
+     * @var \LGPUserBundle\Entity\Prof
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seanceDeCours")
      */
-    public function setResume($resume)
-    {
-        $this->resume = $resume;
-    
-        return $this;
-    }
+    private $prof;
 
-    /**
-     * Get resume
-     *
-     * @return string
-     */
-    public function getResume()
-    {
-        return $this->resume;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return SeanceDeCours
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set cours
-     *
-     * @param \LGP\CourseBundle\Entity\Cours $cours
-     *
-     * @return SeanceDeCours
-     */
-    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null)
-    {
-        $this->cours = $cours;
-    
-        return $this;
-    }
-
-    /**
-     * Get cours
-     *
-     * @return \LGP\CourseBundle\Entity\Cours
-     */
-    public function getCours()
-    {
-        return $this->cours;
-    }
+   
 }

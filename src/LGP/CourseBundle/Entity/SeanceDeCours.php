@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_seance_de_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\SeanceDeCoursRepository")
  */
-class SeanceDeCours
-{
+class SeanceDeCours {
+
     /**
      * @var int
      *
@@ -20,7 +20,6 @@ class SeanceDeCours
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
 
     /**
      * @var string
@@ -35,38 +34,34 @@ class SeanceDeCours
      * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
-    
+
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="seances")
      */
     private $cours;
-    
+
     /**
      * @var \LGPReservationBundle\Entity\JourDeCours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
      */
-    private $joursDeCours;
-    
+    private $jourDeCours;
+
     /**
      * @var \LGPUserBundle\Entity\Prof
      * 
      * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seanceDeCours")
      */
-    private $profs;
-    
-    
-
+    private $prof;
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -77,10 +72,9 @@ class SeanceDeCours
      *
      * @return SeanceDeCours
      */
-    public function setResume($resume)
-    {
+    public function setResume($resume) {
         $this->resume = $resume;
-    
+
         return $this;
     }
 
@@ -89,8 +83,7 @@ class SeanceDeCours
      *
      * @return string
      */
-    public function getResume()
-    {
+    public function getResume() {
         return $this->resume;
     }
 
@@ -101,10 +94,9 @@ class SeanceDeCours
      *
      * @return SeanceDeCours
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -113,8 +105,7 @@ class SeanceDeCours
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -125,10 +116,9 @@ class SeanceDeCours
      *
      * @return SeanceDeCours
      */
-    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null)
-    {
+    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null) {
         $this->cours = $cours;
-    
+
         return $this;
     }
 
@@ -137,8 +127,52 @@ class SeanceDeCours
      *
      * @return \LGP\CourseBundle\Entity\Cours
      */
-    public function getCours()
-    {
+    public function getCours() {
         return $this->cours;
     }
+
+    /**
+     * Set jourDeCours
+     *
+     * @param \LGP\ReservationBundle\Entity\JourDeCours $jourDeCours
+     *
+     * @return SeanceDeCours
+     */
+    public function setJourDeCours(\LGP\ReservationBundle\Entity\JourDeCours $jourDeCours = null) {
+        $this->jourDeCours = $jourDeCours;
+
+        return $this;
+    }
+
+    /**
+     * Get jourDeCours
+     *
+     * @return \LGP\ReservationBundle\Entity\JourDeCours
+     */
+    public function getJourDeCours() {
+        return $this->jourDeCours;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return SeanceDeCours
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null) {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \LGP\UserBundle\Entity\Prof
+     */
+    public function getProf() {
+        return $this->prof;
+    }
+
 }
