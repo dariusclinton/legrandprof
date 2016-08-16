@@ -43,6 +43,20 @@ class SeanceDeCours
      */
     private $cours;
     
+    /**
+     * @var \LGPReservationBundle\Entity\JourDeCours
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
+     */
+    private $joursDeCours;
+    
+    /**
+     * @var \LGPUserBundle\Entity\Prof
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seanceDeCours")
+     */
+    private $profs;
+    
     
 
 

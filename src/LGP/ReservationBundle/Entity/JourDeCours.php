@@ -48,7 +48,14 @@ class JourDeCours {
      * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="joursDeCours")
      */
     private $reservations;
-
+    
+    /**
+     * @avr \LGPCourseBundle\Entity\SeanceDeCours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="joursDeCours")
+     */
+    private $seanceDeCours;
+    
     /**
      * Constructor
      */

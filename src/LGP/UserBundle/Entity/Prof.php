@@ -96,6 +96,13 @@ class Prof
      * @ORM\Column(name="profession", type="string", length=255)
      */
     private $profession;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="profs")
+     */
+    private $seanceDeCours;
 
     /**
      * Get id
