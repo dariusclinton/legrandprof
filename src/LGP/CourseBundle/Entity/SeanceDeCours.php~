@@ -56,5 +56,123 @@ class SeanceDeCours {
      */
     private $prof;
 
-   
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set resume
+     *
+     * @param string $resume
+     *
+     * @return SeanceDeCours
+     */
+    public function setResume($resume) {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * Get resume
+     *
+     * @return string
+     */
+    public function getResume() {
+        return $this->resume;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return SeanceDeCours
+     */
+    public function setDate($date) {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate() {
+        return $this->date;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \LGP\CourseBundle\Entity\Cours $cours
+     *
+     * @return SeanceDeCours
+     */
+    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null) {
+        $this->cours = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \LGP\CourseBundle\Entity\Cours
+     */
+    public function getCours() {
+        return $this->cours;
+    }
+
+    /**
+     * Set jourDeCours
+     *
+     * @param \LGP\ReservationBundle\Entity\JourDeCours $jourDeCours
+     *
+     * @return SeanceDeCours
+     */
+    public function setJourDeCours(\LGP\ReservationBundle\Entity\JourDeCours $jourDeCours = null) {
+        $this->jourDeCours = $jourDeCours;
+
+        return $this;
+    }
+
+    /**
+     * Get jourDeCours
+     *
+     * @return \LGP\ReservationBundle\Entity\JourDeCours
+     */
+    public function getJourDeCours() {
+        return $this->jourDeCours;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return SeanceDeCours
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null) {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \LGP\UserBundle\Entity\Prof
+     */
+    public function getProf() {
+        return $this->prof;
+    }
+
 }

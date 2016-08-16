@@ -10,13 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_parents")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ParentsRepository")
  */
-class Parents
-{
-  /**
-   * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
-   * @ORM\JoinColumn(nullable=false)
-   */
-   private $user;
+class Parents {
 
     /**
      * @var int
@@ -27,38 +21,26 @@ class Parents
      */
     private $id;
 
-
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
+    private $user;
+    
     /**
-     * Set user
-     *
-     * @param \LGP\UserBundle\Entity\User $user
-     *
-     * @return Parents
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="parent", cascade={"persist","remove"})
      */
-    public function setUser(\LGP\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
+    private $reservations;
+    
     /**
-     * Get user
-     *
-     * @return \LGP\UserBundle\Entity\User
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", inversedBy="parents")
+     * @ORM\JoinTable(name="lgp_parents_paiement")
      */
-    public function getUser()
-    {
-        return $this->user;
-    }
+    private $paiements;
+
+   
 }

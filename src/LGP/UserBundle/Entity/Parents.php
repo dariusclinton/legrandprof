@@ -10,13 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_parents")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ParentsRepository")
  */
-class Parents
-{
-  /**
-   * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
-   * @ORM\JoinColumn(nullable=false)
-   */
-   private $user;
+class Parents {
 
     /**
      * @var int
@@ -27,11 +21,41 @@ class Parents
      */
     private $id;
 
+    /**
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="parent", cascade={"persist","remove"})
+     */
+    private $reservations;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", inversedBy="parents")
+     * @ORM\JoinTable(name="lgp_parents_paiement")
+     */
+    private $paiements;
+
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->paiements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -48,7 +72,7 @@ class Parents
     public function setUser(\LGP\UserBundle\Entity\User $user)
     {
         $this->user = $user;
-
+    
         return $this;
     }
 
@@ -60,5 +84,73 @@ class Parents
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return Parents
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     *
+     * @return Parents
+     */
+    public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements[] = $paiement;
+    
+        return $this;
+    }
+
+    /**
+     * Remove paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements->removeElement($paiement);
+    }
+
+    /**
+     * Get paiements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaiements()
+    {
+        return $this->paiements;
     }
 }

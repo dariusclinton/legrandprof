@@ -85,7 +85,20 @@ class Reservation {
      * @ORM\JoinTable(name="lgp_reservations_factures")
      */
     private $factures;
-
+    
+    /**
+     * @var \LGPUserBundle\Entity\Parents
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Parents", inversedBy="reservations")
+     */
+    private $parent;
+    
+    /**
+     * @var \LGPUserBundle\Entity\Prof
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\Prof", mappedBy="reservations")
+     */
+    private $profs;
     /**
      * Constructor
      */
@@ -93,6 +106,7 @@ class Reservation {
     {
         $this->joursDeCours = new \Doctrine\Common\Collections\ArrayCollection();
         $this->factures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->profs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -339,5 +353,63 @@ class Reservation {
     public function getFactures()
     {
         return $this->factures;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \LGP\UserBundle\Entity\Parents $parent
+     *
+     * @return Reservation
+     */
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \LGP\UserBundle\Entity\Parents
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return Reservation
+     */
+    public function addProf(\LGP\UserBundle\Entity\Prof $prof)
+    {
+        $this->profs[] = $prof;
+    
+        return $this;
+    }
+
+    /**
+     * Remove prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     */
+    public function removeProf(\LGP\UserBundle\Entity\Prof $prof)
+    {
+        $this->profs->removeElement($prof);
+    }
+
+    /**
+     * Get profs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfs()
+    {
+        return $this->profs;
     }
 }

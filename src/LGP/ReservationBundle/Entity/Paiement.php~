@@ -43,7 +43,20 @@ class Paiement {
      */
     private $facture;
 
+    /**
+     * @var \LGPUserBundle\Entity\Parents
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\Parents", mappedBy="paiements")
+     */
+    private $parents;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->parents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -125,5 +138,39 @@ class Paiement {
     public function getFacture()
     {
         return $this->facture;
+    }
+
+    /**
+     * Add parent
+     *
+     * @param \LGP\UserBundle\Entity\Parents $parent
+     *
+     * @return Paiement
+     */
+    public function addParent(\LGP\UserBundle\Entity\Parents $parent)
+    {
+        $this->parents[] = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Remove parent
+     *
+     * @param \LGP\UserBundle\Entity\Parents $parent
+     */
+    public function removeParent(\LGP\UserBundle\Entity\Parents $parent)
+    {
+        $this->parents->removeElement($parent);
+    }
+
+    /**
+     * Get parents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParents()
+    {
+        return $this->parents;
     }
 }

@@ -13,12 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Prof {
 
     /**
-     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -98,17 +92,48 @@ class Prof {
     private $profession;
 
     /**
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
      */
     private $seanceDeCours;
-
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="profs")
+     * @ORM\JoinTable(name="lgp_prof_reservation")
+     */
+    private $reservations;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Enseigne
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="profs")
+     */
+    private $enseigne;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Evaluation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
+     */
+    private $evaluations;
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->seanceDeCours = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -116,7 +141,8 @@ class Prof {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -127,9 +153,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setVille($ville) {
+    public function setVille($ville)
+    {
         $this->ville = $ville;
-
+    
         return $this;
     }
 
@@ -138,7 +165,8 @@ class Prof {
      *
      * @return string
      */
-    public function getVille() {
+    public function getVille()
+    {
         return $this->ville;
     }
 
@@ -149,9 +177,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setQuartier($quartier) {
+    public function setQuartier($quartier)
+    {
         $this->quartier = $quartier;
-
+    
         return $this;
     }
 
@@ -160,7 +189,8 @@ class Prof {
      *
      * @return string
      */
-    public function getQuartier() {
+    public function getQuartier()
+    {
         return $this->quartier;
     }
 
@@ -171,9 +201,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setBoitePostale($boitePostale) {
+    public function setBoitePostale($boitePostale)
+    {
         $this->boitePostale = $boitePostale;
-
+    
         return $this;
     }
 
@@ -182,7 +213,8 @@ class Prof {
      *
      * @return string
      */
-    public function getBoitePostale() {
+    public function getBoitePostale()
+    {
         return $this->boitePostale;
     }
 
@@ -193,9 +225,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setSituationMatrimoniale($situationMatrimoniale) {
+    public function setSituationMatrimoniale($situationMatrimoniale)
+    {
         $this->situationMatrimoniale = $situationMatrimoniale;
-
+    
         return $this;
     }
 
@@ -204,7 +237,8 @@ class Prof {
      *
      * @return string
      */
-    public function getSituationMatrimoniale() {
+    public function getSituationMatrimoniale()
+    {
         return $this->situationMatrimoniale;
     }
 
@@ -215,9 +249,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setNiveauScolaire($niveauScolaire) {
+    public function setNiveauScolaire($niveauScolaire)
+    {
         $this->niveauScolaire = $niveauScolaire;
-
+    
         return $this;
     }
 
@@ -226,7 +261,8 @@ class Prof {
      *
      * @return string
      */
-    public function getNiveauScolaire() {
+    public function getNiveauScolaire()
+    {
         return $this->niveauScolaire;
     }
 
@@ -237,9 +273,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setNombreEnfants($nombreEnfants) {
+    public function setNombreEnfants($nombreEnfants)
+    {
         $this->nombreEnfants = $nombreEnfants;
-
+    
         return $this;
     }
 
@@ -248,7 +285,8 @@ class Prof {
      *
      * @return integer
      */
-    public function getNombreEnfants() {
+    public function getNombreEnfants()
+    {
         return $this->nombreEnfants;
     }
 
@@ -259,9 +297,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setIsRecommande($isRecommande) {
+    public function setIsRecommande($isRecommande)
+    {
         $this->isRecommande = $isRecommande;
-
+    
         return $this;
     }
 
@@ -270,7 +309,8 @@ class Prof {
      *
      * @return boolean
      */
-    public function getIsRecommande() {
+    public function getIsRecommande()
+    {
         return $this->isRecommande;
     }
 
@@ -281,9 +321,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setIsActif($isActif) {
+    public function setIsActif($isActif)
+    {
         $this->isActif = $isActif;
-
+    
         return $this;
     }
 
@@ -292,7 +333,8 @@ class Prof {
      *
      * @return boolean
      */
-    public function getIsActif() {
+    public function getIsActif()
+    {
         return $this->isActif;
     }
 
@@ -303,9 +345,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setPresentation($presentation) {
+    public function setPresentation($presentation)
+    {
         $this->presentation = $presentation;
-
+    
         return $this;
     }
 
@@ -314,7 +357,8 @@ class Prof {
      *
      * @return string
      */
-    public function getPresentation() {
+    public function getPresentation()
+    {
         return $this->presentation;
     }
 
@@ -325,9 +369,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setProfession($profession) {
+    public function setProfession($profession)
+    {
         $this->profession = $profession;
-
+    
         return $this;
     }
 
@@ -336,7 +381,8 @@ class Prof {
      *
      * @return string
      */
-    public function getProfession() {
+    public function getProfession()
+    {
         return $this->profession;
     }
 
@@ -347,9 +393,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function setUser(\LGP\UserBundle\Entity\User $user) {
+    public function setUser(\LGP\UserBundle\Entity\User $user)
+    {
         $this->user = $user;
-
+    
         return $this;
     }
 
@@ -358,7 +405,8 @@ class Prof {
      *
      * @return \LGP\UserBundle\Entity\User
      */
-    public function getUser() {
+    public function getUser()
+    {
         return $this->user;
     }
 
@@ -369,9 +417,10 @@ class Prof {
      *
      * @return Prof
      */
-    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
         $this->seanceDeCours[] = $seanceDeCour;
-
+    
         return $this;
     }
 
@@ -380,7 +429,8 @@ class Prof {
      *
      * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
      */
-    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
         $this->seanceDeCours->removeElement($seanceDeCour);
     }
 
@@ -389,8 +439,110 @@ class Prof {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSeanceDeCours() {
+    public function getSeanceDeCours()
+    {
         return $this->seanceDeCours;
     }
 
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return Prof
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     *
+     * @return Prof
+     */
+    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseigne[] = $enseigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     */
+    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseigne->removeElement($enseigne);
+    }
+
+    /**
+     * Get enseigne
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnseigne()
+    {
+        return $this->enseigne;
+    }
+
+    /**
+     * Add evaluation
+     *
+     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+     *
+     * @return Prof
+     */
+    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+    {
+        $this->evaluations[] = $evaluation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove evaluation
+     *
+     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+     */
+    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+    {
+        $this->evaluations->removeElement($evaluation);
+    }
+
+    /**
+     * Get evaluations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvaluations()
+    {
+        return $this->evaluations;
+    }
 }

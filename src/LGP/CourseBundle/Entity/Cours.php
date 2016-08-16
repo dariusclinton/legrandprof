@@ -76,7 +76,13 @@ class Cours {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="cours")
      */
     private $evaluations;
-
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Enseigne
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="cours")
+     */
+    private $enseigne;
     /**
      * Constructor
      */
@@ -84,6 +90,7 @@ class Cours {
     {
         $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -306,5 +313,39 @@ class Cours {
     public function getEvaluations()
     {
         return $this->evaluations;
+    }
+
+    /**
+     * Add enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     *
+     * @return Cours
+     */
+    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseigne[] = $enseigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     */
+    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseigne->removeElement($enseigne);
+    }
+
+    /**
+     * Get enseigne
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnseigne()
+    {
+        return $this->enseigne;
     }
 }

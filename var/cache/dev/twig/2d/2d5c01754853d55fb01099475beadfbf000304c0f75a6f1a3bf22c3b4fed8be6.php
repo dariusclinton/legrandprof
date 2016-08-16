@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2dfe62aa7dcdaa2132218d44cfb3f35a10d42c2d93a2f076e1f2f0394094286b = $this->env->getExtension("native_profiler");
-        $__internal_2dfe62aa7dcdaa2132218d44cfb3f35a10d42c2d93a2f076e1f2f0394094286b->enter($__internal_2dfe62aa7dcdaa2132218d44cfb3f35a10d42c2d93a2f076e1f2f0394094286b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_e8c5b2b3f28b4bc69edc01a6af494d7ae82c31e4c161d354c7f5645de657a7f3 = $this->env->getExtension("native_profiler");
+        $__internal_e8c5b2b3f28b4bc69edc01a6af494d7ae82c31e4c161d354c7f5645de657a7f3->enter($__internal_e8c5b2b3f28b4bc69edc01a6af494d7ae82c31e4c161d354c7f5645de657a7f3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<header id=\"header\">
@@ -141,7 +141,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 </header>
 ";
         
-        $__internal_2dfe62aa7dcdaa2132218d44cfb3f35a10d42c2d93a2f076e1f2f0394094286b->leave($__internal_2dfe62aa7dcdaa2132218d44cfb3f35a10d42c2d93a2f076e1f2f0394094286b_prof);
+        $__internal_e8c5b2b3f28b4bc69edc01a6af494d7ae82c31e4c161d354c7f5645de657a7f3->leave($__internal_e8c5b2b3f28b4bc69edc01a6af494d7ae82c31e4c161d354c7f5645de657a7f3_prof);
 
     }
 
