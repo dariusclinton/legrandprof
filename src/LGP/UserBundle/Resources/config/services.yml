@@ -1,0 +1,16 @@
+services:
+#    lgp_user.example:
+#        class: LGP\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    lgp.image_uploader:
+        class: LGP\UserBundle\Uploader\ImageUploader
+        arguments: ['%images_directory%']
+
+
+    lgp.doctrine_image_uploader:
+        class: LGP\UserBundle\EventListener\ImageUploadListener
+        arguments: ['@lgp.image_uploader']
+        tags:
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: preUpdate }

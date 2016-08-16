@@ -1,0 +1,59 @@
+<?php
+
+namespace LGP\CourseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Categorie
+ *
+ * @ORM\Table(name="lgp_categorie")
+ * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
+ */
+class Categorie {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
+    /**
+     * @var \LGP\CourseBundle\Entity\Cours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie")
+     */
+    private $cours;
+
+}
