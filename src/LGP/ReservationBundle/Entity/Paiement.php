@@ -46,17 +46,10 @@ class Paiement {
     /**
      * @var \LGPUserBundle\Entity\Parents
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\Parents", mappedBy="paiements")
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Parents", inversedBy="paiements")
      */
-    private $parents;
+    private $parent;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->parents = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -141,36 +134,26 @@ class Paiement {
     }
 
     /**
-     * Add parent
+     * Set parent
      *
      * @param \LGP\UserBundle\Entity\Parents $parent
      *
      * @return Paiement
      */
-    public function addParent(\LGP\UserBundle\Entity\Parents $parent)
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent = null)
     {
-        $this->parents[] = $parent;
+        $this->parent = $parent;
     
         return $this;
     }
 
     /**
-     * Remove parent
+     * Get parent
      *
-     * @param \LGP\UserBundle\Entity\Parents $parent
+     * @return \LGP\UserBundle\Entity\Parents
      */
-    public function removeParent(\LGP\UserBundle\Entity\Parents $parent)
+    public function getParent()
     {
-        $this->parents->removeElement($parent);
-    }
-
-    /**
-     * Get parents
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getParents()
-    {
-        return $this->parents;
+        return $this->parent;
     }
 }

@@ -82,7 +82,7 @@ class Cours {
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="cours")
      */
-    private $enseigne;
+    private $enseignes;
     /**
      * Constructor
      */
@@ -92,6 +92,8 @@ class Cours {
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    
 
     /**
      * Get id
@@ -324,7 +326,7 @@ class Cours {
      */
     public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
     {
-        $this->enseigne[] = $enseigne;
+        $this->enseignes[] = $enseigne;
     
         return $this;
     }
@@ -336,16 +338,16 @@ class Cours {
      */
     public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
     {
-        $this->enseigne->removeElement($enseigne);
+        $this->enseignes->removeElement($enseigne);
     }
 
     /**
-     * Get enseigne
+     * Get enseignes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseigne()
+    public function getEnseignes()
     {
-        return $this->enseigne;
+        return $this->enseignes;
     }
 }

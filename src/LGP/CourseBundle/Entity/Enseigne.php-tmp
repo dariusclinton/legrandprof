@@ -1,0 +1,50 @@
+<?php
+
+namespace LGP\CourseBundle\Entity;
+
+/**
+ * Enseigne
+ *
+ * @ORM\Table(name="lgp_enseigne")
+ * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\EnseigneRepository")
+ */
+
+class Enseigne {
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
+
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="classe", type="string", length=255)
+	 */
+	private $classe;
+
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="prix", type="integer")
+	 */
+	private $prix;
+
+	/**
+	 * @var \LGPCourseBundle\Entity\Cours
+	 *
+	 * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="enseignes")
+	 */
+	private $cours;
+
+	/**
+	 * @var \LGPUserBundle\Entity\Prof
+	 *
+	 * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="enseignes")
+	 */
+	private $prof;
+
+}

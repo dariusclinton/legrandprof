@@ -115,9 +115,9 @@ class Prof {
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="profs")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="prof")
      */
-    private $enseigne;
+    private $enseignes;
     
     /**
      * @var \LGPCourseBundle\Entity\Evaluation
@@ -125,6 +125,7 @@ class Prof {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
      */
     private $evaluations;
+   
     /**
      * Constructor
      */
@@ -132,7 +133,7 @@ class Prof {
     {
         $this->seanceDeCours = new \Doctrine\Common\Collections\ArrayCollection();
         $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseignes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -487,7 +488,7 @@ class Prof {
      */
     public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
     {
-        $this->enseigne[] = $enseigne;
+        $this->enseignes[] = $enseigne;
     
         return $this;
     }
@@ -499,17 +500,17 @@ class Prof {
      */
     public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
     {
-        $this->enseigne->removeElement($enseigne);
+        $this->enseignes->removeElement($enseigne);
     }
 
     /**
-     * Get enseigne
+     * Get enseignes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseigne()
+    public function getEnseignes()
     {
-        return $this->enseigne;
+        return $this->enseignes;
     }
 
     /**

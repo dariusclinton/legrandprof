@@ -37,12 +37,10 @@ class Parents {
     /**
      * @var \LGPReservationBundle\Entity\Paiement
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", inversedBy="parents")
-     * @ORM\JoinTable(name="lgp_parents_paiement")
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="parent")
      */
     private $paiements;
 
-   
     /**
      * Constructor
      */

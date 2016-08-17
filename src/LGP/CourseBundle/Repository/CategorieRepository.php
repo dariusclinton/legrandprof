@@ -10,4 +10,16 @@ namespace LGP\CourseBundle\Repository;
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCategorieByIntitule($intitule){
+        $query = $this->_em->createQuery("SELECT c FROM LGPCourseBundle:Categorie c WHERE c.intitule LIKE :intitule");
+        $query->setParameter("intitule", $intitule."%");
+        $query->getSingleResult();
+        
+//        $query = $this->createQueryBuilder('c')
+//                ->where('c.intitule = :intitule')
+//                ->setParameter('intitule', $intitule);
+//        
+//        $query->getQuery()->getResult();
+                
+    }
 }

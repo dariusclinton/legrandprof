@@ -38,18 +38,19 @@ class Enseigne
     /**
      * @var \LGPCourseBundle\Entity\Cours
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="enseigne")
+     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="enseignes")
      */
     private $cours;
     
     /**
      * @var \LGPUserBundle\Entity\Prof
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="enseigne")
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="enseignes")
      */
-    private $profs;
+    private $prof;
 
     
+
 
     /**
      * Get id
@@ -134,26 +135,26 @@ class Enseigne
     }
 
     /**
-     * Set profs
+     * Set prof
      *
-     * @param \LGP\UserBundle\Entity\Prof $profs
+     * @param \LGP\UserBundle\Entity\Prof $prof
      *
      * @return Enseigne
      */
-    public function setProfs(\LGP\UserBundle\Entity\Prof $profs = null)
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
     {
-        $this->profs = $profs;
+        $this->prof = $prof;
     
         return $this;
     }
 
     /**
-     * Get profs
+     * Get prof
      *
      * @return \LGP\UserBundle\Entity\Prof
      */
-    public function getProfs()
+    public function getProf()
     {
-        return $this->profs;
+        return $this->prof;
     }
 }

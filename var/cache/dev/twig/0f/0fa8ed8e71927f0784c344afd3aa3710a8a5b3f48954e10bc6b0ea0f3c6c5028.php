@@ -22,38 +22,38 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6324ec4f78793b58e0f63835b228cfd706ceba102fc86924017516a45d1fe96b = $this->env->getExtension("native_profiler");
-        $__internal_6324ec4f78793b58e0f63835b228cfd706ceba102fc86924017516a45d1fe96b->enter($__internal_6324ec4f78793b58e0f63835b228cfd706ceba102fc86924017516a45d1fe96b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
+        $__internal_9e7916ccc0490d36005d80c2309c66d49d4f97f94769447513cfab039e43b865 = $this->env->getExtension("native_profiler");
+        $__internal_9e7916ccc0490d36005d80c2309c66d49d4f97f94769447513cfab039e43b865->enter($__internal_9e7916ccc0490d36005d80c2309c66d49d4f97f94769447513cfab039e43b865_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6324ec4f78793b58e0f63835b228cfd706ceba102fc86924017516a45d1fe96b->leave($__internal_6324ec4f78793b58e0f63835b228cfd706ceba102fc86924017516a45d1fe96b_prof);
+        $__internal_9e7916ccc0490d36005d80c2309c66d49d4f97f94769447513cfab039e43b865->leave($__internal_9e7916ccc0490d36005d80c2309c66d49d4f97f94769447513cfab039e43b865_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_e223494af4b838d87f6fce7ac4b82583a60a7edcafc6931570cac6b38773f256 = $this->env->getExtension("native_profiler");
-        $__internal_e223494af4b838d87f6fce7ac4b82583a60a7edcafc6931570cac6b38773f256->enter($__internal_e223494af4b838d87f6fce7ac4b82583a60a7edcafc6931570cac6b38773f256_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_acd072c060fcb6748e6ace908a0fd2d81aaf16e410ffd48fe4e7d89e18fd452d = $this->env->getExtension("native_profiler");
+        $__internal_acd072c060fcb6748e6ace908a0fd2d81aaf16e410ffd48fe4e7d89e18fd452d->enter($__internal_acd072c060fcb6748e6ace908a0fd2d81aaf16e410ffd48fe4e7d89e18fd452d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Profs de ";
-        echo twig_escape_filter($this->env, (isset($context["matiere"]) ? $context["matiere"] : $this->getContext($context, "matiere")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["cours"]) ? $context["cours"] : $this->getContext($context, "cours")), "html", null, true);
         echo " - ";
         $this->displayParentBlock("title", $context, $blocks);
         echo "
 ";
         
-        $__internal_e223494af4b838d87f6fce7ac4b82583a60a7edcafc6931570cac6b38773f256->leave($__internal_e223494af4b838d87f6fce7ac4b82583a60a7edcafc6931570cac6b38773f256_prof);
+        $__internal_acd072c060fcb6748e6ace908a0fd2d81aaf16e410ffd48fe4e7d89e18fd452d->leave($__internal_acd072c060fcb6748e6ace908a0fd2d81aaf16e410ffd48fe4e7d89e18fd452d_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ae34fd3b7a6f7daa61c111a7da1a48b7268b5fba69203cf1401ea836a30c63a0 = $this->env->getExtension("native_profiler");
-        $__internal_ae34fd3b7a6f7daa61c111a7da1a48b7268b5fba69203cf1401ea836a30c63a0->enter($__internal_ae34fd3b7a6f7daa61c111a7da1a48b7268b5fba69203cf1401ea836a30c63a0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_9fb24ce00507d83b29ef86fa5f9f8c13b2c6a3ab63303009b6900c5c3341c223 = $this->env->getExtension("native_profiler");
+        $__internal_9fb24ce00507d83b29ef86fa5f9f8c13b2c6a3ab63303009b6900c5c3341c223->enter($__internal_9fb24ce00507d83b29ef86fa5f9f8c13b2c6a3ab63303009b6900c5c3341c223_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -71,8 +71,8 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
                     <h1 class=\"hero-title\">Grands Profs en ";
         // line 19
-        echo twig_escape_filter($this->env, (isset($context["matiere"]) ? $context["matiere"] : $this->getContext($context, "matiere")), "html", null, true);
-        echo "</h1>
+        echo twig_escape_filter($this->env, (isset($context["cours"]) ? $context["cours"] : $this->getContext($context, "cours")), "html", null, true);
+        echo " </h1>
 
                     <ol class=\"breadcrumb-list\">
                         <li><a href=\"index.html\">Accueil</a></li>
@@ -80,7 +80,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                         <li><a href=\"#\">Douala</a></li>
                         <li><span>";
         // line 25
-        echo twig_escape_filter($this->env, (isset($context["matiere"]) ? $context["matiere"] : $this->getContext($context, "matiere")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["cours"]) ? $context["cours"] : $this->getContext($context, "cours")), "html", null, true);
         echo "</span></li>
                     </ol>
 
@@ -117,7 +117,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                                         <option value=\"\">Que voulez-vous apprendre ?</option>
                                         <option selected>";
         // line 59
-        echo twig_escape_filter($this->env, (isset($context["matiere"]) ? $context["matiere"] : $this->getContext($context, "matiere")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["cours"]) ? $context["cours"] : $this->getContext($context, "cours")), "html", null, true);
         echo "</option>
                                         <option>Physiques</option>
                                         <option>Chimie</option>
@@ -264,147 +264,126 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                         <div class=\"sorting-header\">
                             <h3 class=\"sorting-title uppercase\">Des Grands profs en ";
         // line 203
-        echo twig_escape_filter($this->env, (isset($context["matiere"]) ? $context["matiere"] : $this->getContext($context, "matiere")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["cours"]) ? $context["cours"] : $this->getContext($context, "cours")), "html", null, true);
         echo "</h3>
-                            <p class=\"sorting-lead\">175 Grands profs trouvés</p>
+                            <p class=\"sorting-lead\">";
+        // line 204
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["matieres_profs"]) ? $context["matieres_profs"] : $this->getContext($context, "matieres_profs"))), "html", null, true);
+        echo " Grands profs trouvés</p>
                         </div>
 
-                        <div class=\"sorting-content\">
-
-                            <div class=\"row\">
-
-                                <div class=\"col-sm-12 col-md-8\">
-                                    <div class=\"sort-by-wrapper\">
-                                        <label class=\"sorting-label\">Sort by: </label> 
-                                        <div class=\"sorting-middle-holder\">
-                                            <ul class=\"sort-by\">
-                                                <li class=\"active up\"><a href=\"#\">Note <i class=\"fa fa-long-arrow-down\"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class=\"col-sm-12 col-md-4\">
-                                    <div class=\"sort-by-wrapper mt pull-right pull-left-sm mt-10-sm\">
-                                        <label class=\"sorting-label\">Voir : </label> 
-                                        <div class=\"sorting-middle-holder\">
-                                            <a href=\"#\" class=\"btn btn-sorting active\"><i class=\"fa fa-th-list\"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
+                        ";
+        // line 234
+        echo "
                     </div>
 
                     <div class=\"package-list-item-wrapper on-page-result-page\">
 
-                        <div class=\"package-list-item clearfix\">
-                            <div class=\"image\">
-                                <img src=\"";
-        // line 241
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/01.jpg"), "html", null, true);
-        echo "\" alt=\"Tour Package\" />
-                            </div>
+                        ";
+        // line 239
+        if ((twig_length_filter($this->env, (isset($context["matieres_profs"]) ? $context["matieres_profs"] : $this->getContext($context, "matieres_profs"))) != 0)) {
+            echo " 
 
-                            <div class=\"content\">
-                                <h5>Antony Robert <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button></h5>
-                                <div class=\"row gap-10\">
-                                    <div class=\"col-sm-12 col-md-9\">
+                            ";
+            // line 241
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["matieres_profs"]) ? $context["matieres_profs"] : $this->getContext($context, "matieres_profs")));
+            foreach ($context['_seq'] as $context["_key"] => $context["enseigne"]) {
+                // line 242
+                echo "                                <div class=\"package-list-item clearfix\">
+                                    <div class=\"image\">
+                                        ";
+                // line 244
+                if ( !$this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "photo", array())) {
+                    // line 245
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
+                    echo "\" alt=\"Tour Package\" />
 
-                                        <p class=\"line18\">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>
-                                        <br>
-                                        <ul class=\"list-info\">
-                                            <li><span class=\"icon\"><i class=\"fa fa-map-marker\"></i></span> <span class=\"font600\">Position: </span> Douala - Akwa</li>
+                                            ";
+                } else {
+                    // line 248
+                    echo "                                                <img src=\"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "photo", array())), "html", null, true);
+                    echo "\" alt=\" ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array()), "html", null, true);
+                    echo " \" />
+                                        ";
+                }
+                // line 250
+                echo "                                    </div>
 
-                                            <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> Mathématiques, Physiques,...</li>
-                                        </ul>
+                                    <div class=\"content\">
+                                        <h5>";
+                // line 253
+                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "prenoms", array()) . "  ") . $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array())), "html", null, true);
+                echo " <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button></h5>
+                                        <div class=\"row gap-10\">
+                                            <div class=\"col-sm-12 col-md-9\">
 
-                                    </div>
-                                    <div class=\"col-sm-12 col-md-3 text-right text-left-sm\">
+                                                <p class=\"line18\"> ";
+                // line 257
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "presentation", array()), "html", null, true);
+                echo " </p>
+                                                <br>
+                                                <ul class=\"list-info\">
+                                                    <li><span class=\"icon\"><i class=\"fa fa-map-marker\"></i></span> <span class=\"font600\">Position: </span> ";
+                // line 260
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "ville", array()), "html", null, true);
+                echo " - ";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "quartier", array()), "html", null, true);
+                echo "</li>
 
-                                        <div class=\"rating-wrapper\">
-                                            <div class=\"raty-wrapper\">
-                                                <div><img alt=\"1\" src=\"";
-        // line 262
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"2\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"3\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"4\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"5\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><input name=\"score\" type=\"hidden\" value=\"4\" readonly=\"\"></div>
-                                                <span> / 7 avis</span>
+                                                    <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> Mathématiques, Physiques,...</li>
+                                                </ul>
+
+                                            </div>
+                                            <div class=\"col-sm-12 col-md-3 text-right text-left-sm\">
+
+                                                <div class=\"rating-wrapper\">
+                                                    <div class=\"raty-wrapper\">
+                                                        <div><img alt=\"1\" src=\"";
+                // line 270
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
+                echo "\" title=\"good\"><img alt=\"2\" src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
+                echo "\" title=\"good\"><img alt=\"3\" src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
+                echo "\" title=\"good\"><img alt=\"4\" src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
+                echo "\" title=\"good\"><img alt=\"5\" src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
+                echo "\" title=\"good\"><input name=\"score\" type=\"hidden\" value=\"4\" readonly=\"\"></div>
+                                                        <span> / 7 avis</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class=\"price\">";
+                // line 275
+                echo twig_escape_filter($this->env, $this->getAttribute($context["enseigne"], "prix", array()), "html", null, true);
+                echo " Fcfa</div>
+
+                                                <a href=\"profil.html\" class=\"btn btn-primary btn-sm\">Voir Profil</a>
+
                                             </div>
                                         </div>
-
-                                        <div class=\"price\">80.000 Fcfa</div>
-
-                                        <a href=\"profil.html\" class=\"btn btn-primary btn-sm\">Voir Profil</a>
-
                                     </div>
+
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class=\"package-list-item clearfix\">
-                            <div class=\"image\">
-                                <img src=\"";
-        // line 278
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
-        echo "\" alt=\"Tour Package\" />
-                            </div>
-
-                            <div class=\"content\">
-                                <h5>Antony Robert <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button></h5>
-                                <div class=\"row gap-10\">
-                                    <div class=\"col-sm-12 col-md-9\">
-
-                                        <p class=\"line18\">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>
-                                        <br>
-                                        <ul class=\"list-info\">
-                                            <li><span class=\"icon\"><i class=\"fa fa-map-marker\"></i></span> <span class=\"font600\">Position: </span> Douala - Akwa</li>
-
-                                            <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> Mathématiques, Physiques,...</li>
-                                        </ul>
-
-                                    </div>
-                                    <div class=\"col-sm-12 col-md-3 text-right text-left-sm\">
-
-                                        <div class=\"rating-wrapper\">
-                                            <div class=\"raty-wrapper\">
-                                                <div><img alt=\"1\" src=\"";
-        // line 299
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"2\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"3\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"4\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><img alt=\"5\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
-        echo "\" title=\"good\"><input name=\"score\" type=\"hidden\" value=\"4\" readonly=\"\"></div>
-                                                <span> / 7 avis</span>
-                                            </div>
-                                        </div>
-
-                                        <div class=\"price\">80.000 Fcfa</div>
-
-                                        <a href=\"profil.html\" class=\"btn btn-primary btn-sm\">Voir Profil</a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
+                            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['enseigne'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 285
+            echo "
+                        ";
+        }
+        // line 287
+        echo "
+                      ";
+        // line 363
+        echo "                    </div>
 
                     <div class=\"pager-wrappper clearfix\">
 
@@ -455,7 +434,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
     </div>
 ";
         
-        $__internal_ae34fd3b7a6f7daa61c111a7da1a48b7268b5fba69203cf1401ea836a30c63a0->leave($__internal_ae34fd3b7a6f7daa61c111a7da1a48b7268b5fba69203cf1401ea836a30c63a0_prof);
+        $__internal_9fb24ce00507d83b29ef86fa5f9f8c13b2c6a3ab63303009b6900c5c3341c223->leave($__internal_9fb24ce00507d83b29ef86fa5f9f8c13b2c6a3ab63303009b6900c5c3341c223_prof);
 
     }
 
@@ -471,14 +450,14 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
     public function getDebugInfo()
     {
-        return array (  383 => 299,  359 => 278,  332 => 262,  308 => 241,  267 => 203,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  386 => 363,  383 => 287,  379 => 285,  363 => 275,  347 => 270,  332 => 260,  326 => 257,  319 => 253,  314 => 250,  306 => 248,  299 => 245,  297 => 244,  293 => 242,  289 => 241,  284 => 239,  277 => 234,  271 => 204,  267 => 203,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
 /* {% extends "LGPCoreBundle::layout.html.twig" %}*/
 /* */
 /* {% block title %}*/
-/*     Profs de {{ matiere }} - {{ parent() }}*/
+/*     Profs de {{ cours }} - {{ parent() }}*/
 /* {% endblock %}*/
 /* */
 /* {% block body %}*/
@@ -492,13 +471,13 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /* */
 /*                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">*/
 /* */
-/*                     <h1 class="hero-title">Grands Profs en {{ matiere }}</h1>*/
+/*                     <h1 class="hero-title">Grands Profs en {{ cours }} </h1>*/
 /* */
 /*                     <ol class="breadcrumb-list">*/
 /*                         <li><a href="index.html">Accueil</a></li>*/
 /*                         <li><a href="#">Profs</a></li>*/
 /*                         <li><a href="#">Douala</a></li>*/
-/*                         <li><span>{{ matiere }}</span></li>*/
+/*                         <li><span>{{ cours }}</span></li>*/
 /*                     </ol>*/
 /* */
 /*                 </div>*/
@@ -532,7 +511,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /* */
 /*                                     <select name="destination" class="select2-multi form-control" data-placeholder="Que voulez-vous apprendre ?" multiple>*/
 /*                                         <option value="">Que voulez-vous apprendre ?</option>*/
-/*                                         <option selected>{{ matiere }}</option>*/
+/*                                         <option selected>{{ cours }}</option>*/
 /*                                         <option>Physiques</option>*/
 /*                                         <option>Chimie</option>*/
 /*                                         <option>Informatique</option>*/
@@ -676,43 +655,92 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                     <div class="sorting-wrappper">*/
 /* */
 /*                         <div class="sorting-header">*/
-/*                             <h3 class="sorting-title uppercase">Des Grands profs en {{ matiere }}</h3>*/
-/*                             <p class="sorting-lead">175 Grands profs trouvés</p>*/
+/*                             <h3 class="sorting-title uppercase">Des Grands profs en {{ cours }}</h3>*/
+/*                             <p class="sorting-lead">{{matieres_profs | length}} Grands profs trouvés</p>*/
 /*                         </div>*/
 /* */
-/*                         <div class="sorting-content">*/
-/* */
-/*                             <div class="row">*/
-/* */
-/*                                 <div class="col-sm-12 col-md-8">*/
-/*                                     <div class="sort-by-wrapper">*/
-/*                                         <label class="sorting-label">Sort by: </label> */
-/*                                         <div class="sorting-middle-holder">*/
-/*                                             <ul class="sort-by">*/
-/*                                                 <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>*/
-/*                                             </ul>*/
-/*                                         </div>*/
-/*                                     </div>*/
-/*                                 </div>*/
-/* */
-/*                                 <div class="col-sm-12 col-md-4">*/
-/*                                     <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">*/
-/*                                         <label class="sorting-label">Voir : </label> */
-/*                                         <div class="sorting-middle-holder">*/
-/*                                             <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>*/
-/*                                         </div>*/
-/*                                     </div>*/
-/*                                 </div>*/
-/* */
-/*                             </div>*/
-/* */
-/*                         </div>*/
+/*                         {#   <div class="sorting-content">*/
+/*   */
+/*                               <div class="row">*/
+/*   */
+/*                                   <div class="col-sm-12 col-md-8">*/
+/*                                       <div class="sort-by-wrapper">*/
+/*                                           <label class="sorting-label">Sort by: </label> */
+/*                                           <div class="sorting-middle-holder">*/
+/*                                               <ul class="sort-by">*/
+/*                                                   <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>*/
+/*                                               </ul>*/
+/*                                           </div>*/
+/*                                       </div>*/
+/*                                   </div>*/
+/*   */
+/*                                   <div class="col-sm-12 col-md-4">*/
+/*                                       <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">*/
+/*                                           <label class="sorting-label">Voir : </label> */
+/*                                           <div class="sorting-middle-holder">*/
+/*                                               <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>*/
+/*                                           </div>*/
+/*                                       </div>*/
+/*                                   </div>*/
+/*   */
+/*                               </div>*/
+/*   */
+/*                           </div> #}*/
 /* */
 /*                     </div>*/
 /* */
 /*                     <div class="package-list-item-wrapper on-page-result-page">*/
 /* */
-/*                         <div class="package-list-item clearfix">*/
+/*                         {% if matieres_profs | length != 0 %} */
+/* */
+/*                             {% for enseigne in matieres_profs %}*/
+/*                                 <div class="package-list-item clearfix">*/
+/*                                     <div class="image">*/
+/*                                         {% if not enseigne.prof.user.photo %}*/
+/*                                             <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />*/
+/* */
+/*                                             {% else %}*/
+/*                                                 <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />*/
+/*                                         {% endif %}*/
+/*                                     </div>*/
+/* */
+/*                                     <div class="content">*/
+/*                                         <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
+/*                                         <div class="row gap-10">*/
+/*                                             <div class="col-sm-12 col-md-9">*/
+/* */
+/*                                                 <p class="line18"> {{enseigne.prof.presentation}} </p>*/
+/*                                                 <br>*/
+/*                                                 <ul class="list-info">*/
+/*                                                     <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville}} - {{enseigne.prof.quartier}}</li>*/
+/* */
+/*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
+/*                                                 </ul>*/
+/* */
+/*                                             </div>*/
+/*                                             <div class="col-sm-12 col-md-3 text-right text-left-sm">*/
+/* */
+/*                                                 <div class="rating-wrapper">*/
+/*                                                     <div class="raty-wrapper">*/
+/*                                                         <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>*/
+/*                                                         <span> / 7 avis</span>*/
+/*                                                     </div>*/
+/*                                                 </div>*/
+/* */
+/*                                                 <div class="price">{{enseigne.prix}} Fcfa</div>*/
+/* */
+/*                                                 <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>*/
+/* */
+/*                                             </div>*/
+/*                                         </div>*/
+/*                                     </div>*/
+/* */
+/*                                 </div>*/
+/*                             {% endfor %}*/
+/* */
+/*                         {% endif %}*/
+/* */
+/*                       {#   <div class="package-list-item clearfix">*/
 /*                             <div class="image">*/
 /*                                 <img src="{{ asset('images/man/01.jpg') }}" alt="Tour Package" />*/
 /*                             </div>*/
@@ -786,7 +814,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                             </div>*/
 /* */
 /*                         </div>*/
-/* */
+/*  #}*/
 /*                     </div>*/
 /* */
 /*                     <div class="pager-wrappper clearfix">*/
