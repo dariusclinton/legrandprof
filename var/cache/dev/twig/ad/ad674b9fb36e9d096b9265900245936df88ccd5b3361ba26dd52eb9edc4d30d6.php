@@ -22,20 +22,20 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3 = $this->env->getExtension("native_profiler");
-        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3->enter($__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65 = $this->env->getExtension("native_profiler");
+        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65->enter($__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3->leave($__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3_prof);
+        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65->leave($__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c = $this->env->getExtension("native_profiler");
-        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c->enter($__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70 = $this->env->getExtension("native_profiler");
+        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70->enter($__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Profs de ";
@@ -45,15 +45,15 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
         echo "
 ";
         
-        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c->leave($__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c_prof);
+        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70->leave($__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091 = $this->env->getExtension("native_profiler");
-        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091->enter($__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81 = $this->env->getExtension("native_profiler");
+        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81->enter($__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -300,10 +300,10 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
                     echo "\" alt=\"Tour Package\" />
 
-                                            ";
+                                        ";
                 } else {
                     // line 248
-                    echo "                                                <img src=\"";
+                    echo "                                            <img src=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "photo", array())), "html", null, true);
                     echo "\" alt=\" ";
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array()), "html", null, true);
@@ -334,7 +334,24 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "quartier", array()), "html", null, true);
                 echo "</li>
 
-                                                    <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> Mathématiques, Physiques,...</li>
+                                                    <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> 
+                                                            ";
+                // line 263
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["enseigneRep"]) ? $context["enseigneRep"] : $this->getContext($context, "enseigneRep")), "getCoursByProf", array(0 => $this->getAttribute($context["enseigne"], "prof", array())), "method"));
+                foreach ($context['_seq'] as $context["_key"] => $context["ens_cours"]) {
+                    // line 264
+                    echo "                                                                ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
+                    echo "
+                                                            ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ens_cours'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 265
+                echo " 
+                                                    </li>
                                                 </ul>
 
                                             </div>
@@ -343,7 +360,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                                 <div class=\"rating-wrapper\">
                                                     <div class=\"raty-wrapper\">
                                                         <div><img alt=\"1\" src=\"";
-                // line 270
+                // line 274
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
                 echo "\" title=\"good\"><img alt=\"2\" src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
@@ -359,7 +376,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                                 </div>
 
                                                 <div class=\"price\">";
-                // line 275
+                // line 279
                 echo twig_escape_filter($this->env, $this->getAttribute($context["enseigne"], "prix", array()), "html", null, true);
                 echo " Fcfa</div>
 
@@ -375,56 +392,57 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['enseigne'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 285
+            // line 289
             echo "
-                        ";
-        }
-        // line 287
-        echo "
-                      ";
-        // line 363
-        echo "                    </div>
 
-                    <div class=\"pager-wrappper clearfix\">
 
-                        <div class=\"pager-innner\">
+                            ";
+            // line 367
+            echo "                        </div>
 
-                            <div class=\"flex-row flex-align-middle\">
+                        <div class=\"pager-wrappper clearfix\">
 
-                                <div class=\"flex-column flex-sm-12\">
-                                    Resultats de 1 à 4 de 175 
-                                </div>
+                            <div class=\"pager-innner\">
 
-                                <div class=\"flex-column flex-sm-12\">
-                                    <nav class=\"pager-right\">
-                                        <ul class=\"pagination\">
-                                            <li>
-                                                <a href=\"#\" aria-label=\"Previous\">
-                                                    <span aria-hidden=\"true\">&laquo;</span>
-                                                </a>
-                                            </li>
-                                            <li class=\"active\"><a href=\"#\">1</a></li>
-                                            <li><a href=\"#\">2</a></li>
-                                            <li><a href=\"#\">3</a></li>
-                                            <li><span>...</span></li>
-                                            <li><a href=\"#\">11</a></li>
-                                            <li><a href=\"#\">12</a></li>
-                                            <li><a href=\"#\">13</a></li>
-                                            <li>
-                                                <a href=\"#\" aria-label=\"Next\">
-                                                    <span aria-hidden=\"true\">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                <div class=\"flex-row flex-align-middle\">
+
+                                    <div class=\"flex-column flex-sm-12\">
+                                        Resultats de 1 à 4 de 175 
+                                    </div>
+
+                                    <div class=\"flex-column flex-sm-12\">
+                                        <nav class=\"pager-right\">
+                                            <ul class=\"pagination\">
+                                                <li>
+                                                    <a href=\"#\" aria-label=\"Previous\">
+                                                        <span aria-hidden=\"true\">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class=\"active\"><a href=\"#\">1</a></li>
+                                                <li><a href=\"#\">2</a></li>
+                                                <li><a href=\"#\">3</a></li>
+                                                <li><span>...</span></li>
+                                                <li><a href=\"#\">11</a></li>
+                                                <li><a href=\"#\">12</a></li>
+                                                <li><a href=\"#\">13</a></li>
+                                                <li>
+                                                    <a href=\"#\" aria-label=\"Next\">
+                                                        <span aria-hidden=\"true\">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+
                                 </div>
 
                             </div>
 
                         </div>
-
-                    </div>
-
+                    ";
+        }
+        // line 409
+        echo "
                 </div>
 
             </div>
@@ -434,7 +452,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
     </div>
 ";
         
-        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091->leave($__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091_prof);
+        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81->leave($__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81_prof);
 
     }
 
@@ -450,7 +468,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
     public function getDebugInfo()
     {
-        return array (  386 => 363,  383 => 287,  379 => 285,  363 => 275,  347 => 270,  332 => 260,  326 => 257,  319 => 253,  314 => 250,  306 => 248,  299 => 245,  297 => 244,  293 => 242,  289 => 241,  284 => 239,  277 => 234,  271 => 204,  267 => 203,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  445 => 409,  401 => 367,  396 => 289,  380 => 279,  364 => 274,  353 => 265,  344 => 264,  340 => 263,  332 => 260,  326 => 257,  319 => 253,  314 => 250,  306 => 248,  299 => 245,  297 => 244,  293 => 242,  289 => 241,  284 => 239,  277 => 234,  271 => 204,  267 => 203,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -699,8 +717,8 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                                         {% if not enseigne.prof.user.photo %}*/
 /*                                             <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />*/
 /* */
-/*                                             {% else %}*/
-/*                                                 <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />*/
+/*                                         {% else %}*/
+/*                                             <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />*/
 /*                                         {% endif %}*/
 /*                                     </div>*/
 /* */
@@ -714,7 +732,11 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                                                 <ul class="list-info">*/
 /*                                                     <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville}} - {{enseigne.prof.quartier}}</li>*/
 /* */
-/*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
+/*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> */
+/*                                                             {% for ens_cours in enseigneRep.getCoursByProf(enseigne.prof) %}*/
+/*                                                                 {{ens_cours.cours.intitule}}*/
+/*                                                             {% endfor %} */
+/*                                                     </li>*/
 /*                                                 </ul>*/
 /* */
 /*                                             </div>*/
@@ -738,124 +760,125 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                                 </div>*/
 /*                             {% endfor %}*/
 /* */
-/*                         {% endif %}*/
 /* */
-/*                       {#   <div class="package-list-item clearfix">*/
-/*                             <div class="image">*/
-/*                                 <img src="{{ asset('images/man/01.jpg') }}" alt="Tour Package" />*/
-/*                             </div>*/
 /* */
-/*                             <div class="content">*/
-/*                                 <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
-/*                                 <div class="row gap-10">*/
-/*                                     <div class="col-sm-12 col-md-9">*/
+/*                             {#   <div class="package-list-item clearfix">*/
+/*                                   <div class="image">*/
+/*                                       <img src="{{ asset('images/man/01.jpg') }}" alt="Tour Package" />*/
+/*                                   </div>*/
+/*       */
+/*                                   <div class="content">*/
+/*                                       <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
+/*                                       <div class="row gap-10">*/
+/*                                           <div class="col-sm-12 col-md-9">*/
+/*       */
+/*                                               <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>*/
+/*                                               <br>*/
+/*                                               <ul class="list-info">*/
+/*                                                   <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>*/
+/*       */
+/*                                                   <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
+/*                                               </ul>*/
+/*       */
+/*                                           </div>*/
+/*                                           <div class="col-sm-12 col-md-3 text-right text-left-sm">*/
+/*       */
+/*                                               <div class="rating-wrapper">*/
+/*                                                   <div class="raty-wrapper">*/
+/*                                                       <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>*/
+/*                                                       <span> / 7 avis</span>*/
+/*                                                   </div>*/
+/*                                               </div>*/
+/*       */
+/*                                               <div class="price">80.000 Fcfa</div>*/
+/*       */
+/*                                               <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>*/
+/*       */
+/*                                           </div>*/
+/*                                       </div>*/
+/*                                   </div>*/
+/*       */
+/*                               </div>*/
+/*                               <div class="package-list-item clearfix">*/
+/*                                   <div class="image">*/
+/*                                       <img src="{{ asset('images/man/03.jpg') }}" alt="Tour Package" />*/
+/*                                   </div>*/
+/*       */
+/*                                   <div class="content">*/
+/*                                       <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
+/*                                       <div class="row gap-10">*/
+/*                                           <div class="col-sm-12 col-md-9">*/
+/*       */
+/*                                               <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>*/
+/*                                               <br>*/
+/*                                               <ul class="list-info">*/
+/*                                                   <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>*/
+/*       */
+/*                                                   <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
+/*                                               </ul>*/
+/*       */
+/*                                           </div>*/
+/*                                           <div class="col-sm-12 col-md-3 text-right text-left-sm">*/
+/*       */
+/*                                               <div class="rating-wrapper">*/
+/*                                                   <div class="raty-wrapper">*/
+/*                                                       <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>*/
+/*                                                       <span> / 7 avis</span>*/
+/*                                                   </div>*/
+/*                                               </div>*/
+/*       */
+/*                                               <div class="price">80.000 Fcfa</div>*/
+/*       */
+/*                                               <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>*/
+/*       */
+/*                                           </div>*/
+/*                                       </div>*/
+/*                                   </div>*/
+/*       */
+/*                               </div>*/
+/*        #}*/
+/*                         </div>*/
 /* */
-/*                                         <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>*/
-/*                                         <br>*/
-/*                                         <ul class="list-info">*/
-/*                                             <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>*/
+/*                         <div class="pager-wrappper clearfix">*/
 /* */
-/*                                             <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
-/*                                         </ul>*/
+/*                             <div class="pager-innner">*/
 /* */
+/*                                 <div class="flex-row flex-align-middle">*/
+/* */
+/*                                     <div class="flex-column flex-sm-12">*/
+/*                                         Resultats de 1 à 4 de 175 */
 /*                                     </div>*/
-/*                                     <div class="col-sm-12 col-md-3 text-right text-left-sm">*/
 /* */
-/*                                         <div class="rating-wrapper">*/
-/*                                             <div class="raty-wrapper">*/
-/*                                                 <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>*/
-/*                                                 <span> / 7 avis</span>*/
-/*                                             </div>*/
-/*                                         </div>*/
-/* */
-/*                                         <div class="price">80.000 Fcfa</div>*/
-/* */
-/*                                         <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>*/
-/* */
+/*                                     <div class="flex-column flex-sm-12">*/
+/*                                         <nav class="pager-right">*/
+/*                                             <ul class="pagination">*/
+/*                                                 <li>*/
+/*                                                     <a href="#" aria-label="Previous">*/
+/*                                                         <span aria-hidden="true">&laquo;</span>*/
+/*                                                     </a>*/
+/*                                                 </li>*/
+/*                                                 <li class="active"><a href="#">1</a></li>*/
+/*                                                 <li><a href="#">2</a></li>*/
+/*                                                 <li><a href="#">3</a></li>*/
+/*                                                 <li><span>...</span></li>*/
+/*                                                 <li><a href="#">11</a></li>*/
+/*                                                 <li><a href="#">12</a></li>*/
+/*                                                 <li><a href="#">13</a></li>*/
+/*                                                 <li>*/
+/*                                                     <a href="#" aria-label="Next">*/
+/*                                                         <span aria-hidden="true">&raquo;</span>*/
+/*                                                     </a>*/
+/*                                                 </li>*/
+/*                                             </ul>*/
+/*                                         </nav>*/
 /*                                     </div>*/
+/* */
 /*                                 </div>*/
+/* */
 /*                             </div>*/
 /* */
 /*                         </div>*/
-/*                         <div class="package-list-item clearfix">*/
-/*                             <div class="image">*/
-/*                                 <img src="{{ asset('images/man/03.jpg') }}" alt="Tour Package" />*/
-/*                             </div>*/
-/* */
-/*                             <div class="content">*/
-/*                                 <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
-/*                                 <div class="row gap-10">*/
-/*                                     <div class="col-sm-12 col-md-9">*/
-/* */
-/*                                         <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>*/
-/*                                         <br>*/
-/*                                         <ul class="list-info">*/
-/*                                             <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>*/
-/* */
-/*                                             <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>*/
-/*                                         </ul>*/
-/* */
-/*                                     </div>*/
-/*                                     <div class="col-sm-12 col-md-3 text-right text-left-sm">*/
-/* */
-/*                                         <div class="rating-wrapper">*/
-/*                                             <div class="raty-wrapper">*/
-/*                                                 <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>*/
-/*                                                 <span> / 7 avis</span>*/
-/*                                             </div>*/
-/*                                         </div>*/
-/* */
-/*                                         <div class="price">80.000 Fcfa</div>*/
-/* */
-/*                                         <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>*/
-/* */
-/*                                     </div>*/
-/*                                 </div>*/
-/*                             </div>*/
-/* */
-/*                         </div>*/
-/*  #}*/
-/*                     </div>*/
-/* */
-/*                     <div class="pager-wrappper clearfix">*/
-/* */
-/*                         <div class="pager-innner">*/
-/* */
-/*                             <div class="flex-row flex-align-middle">*/
-/* */
-/*                                 <div class="flex-column flex-sm-12">*/
-/*                                     Resultats de 1 à 4 de 175 */
-/*                                 </div>*/
-/* */
-/*                                 <div class="flex-column flex-sm-12">*/
-/*                                     <nav class="pager-right">*/
-/*                                         <ul class="pagination">*/
-/*                                             <li>*/
-/*                                                 <a href="#" aria-label="Previous">*/
-/*                                                     <span aria-hidden="true">&laquo;</span>*/
-/*                                                 </a>*/
-/*                                             </li>*/
-/*                                             <li class="active"><a href="#">1</a></li>*/
-/*                                             <li><a href="#">2</a></li>*/
-/*                                             <li><a href="#">3</a></li>*/
-/*                                             <li><span>...</span></li>*/
-/*                                             <li><a href="#">11</a></li>*/
-/*                                             <li><a href="#">12</a></li>*/
-/*                                             <li><a href="#">13</a></li>*/
-/*                                             <li>*/
-/*                                                 <a href="#" aria-label="Next">*/
-/*                                                     <span aria-hidden="true">&raquo;</span>*/
-/*                                                 </a>*/
-/*                                             </li>*/
-/*                                         </ul>*/
-/*                                     </nav>*/
-/*                                 </div>*/
-/* */
-/*                             </div>*/
-/* */
-/*                         </div>*/
-/* */
-/*                     </div>*/
+/*                     {% endif %}*/
 /* */
 /*                 </div>*/
 /* */

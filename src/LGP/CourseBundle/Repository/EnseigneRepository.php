@@ -10,11 +10,20 @@ namespace LGP\CourseBundle\Repository;
  */
 class EnseigneRepository extends \Doctrine\ORM\EntityRepository {
 
-    public function getProfsByCours($id) {
-        
+    public function getProfsByCours($cours) {
+
         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseigne e JOIN e.prof p WHERE e.cours = :cours GROUP BY p.id");
 
-        $query->setParameter('cours', $id);
+        $query->setParameter('cours', $cours);
+
+        return $query->getResult();
+    }
+
+    public function getCoursByProf($prof) {
+        $query = $this->_em->createQuery("SELECT DISTINCT e, c FROM LGPCourseBundle:Enseigne e JOIN e.cours c WHERE e.prof = :prof GROUP BY c.id");
+
+        $query->setParameter('prof', $prof);
+//        $query->setMaxResults(2);
 
         return $query->getResult();
     }

@@ -16,15 +16,15 @@ class CourseController extends Controller {
         if ($coursFound) {
 //            $coursId = $coursFound->getId();
             try {
-                $mat_profs = $enseigneRep->getProfsByCours($coursFound);
+                $profsByCours = $enseigneRep->getProfsByCours($coursFound);
             } catch (NoResultException $ex) {
-                throw $this->createNotFoundException("Pas de prof pour ce cours !".$ex->getMessage());
+                throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
             }
         } else {
             throw $this->createNotFoundException("Ce cours  n'existe pas !");
         }
 
-        return $this->render('LGPCourseBundle:Course:search.html.twig', array('cours' => $cours, 'matieres_profs' => $mat_profs));
+        return $this->render('LGPCourseBundle:Course:search.html.twig', array('cours' => $cours, 'matieres_profs' => $profsByCours, 'enseigneRep' => $enseigneRep));
     }
 
     public function categoryAction($category) {
