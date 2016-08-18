@@ -22,20 +22,20 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5274e88714fb6f809f3821908d59fbfe6d5451885a489abe729c3c13f0838177 = $this->env->getExtension("native_profiler");
-        $__internal_5274e88714fb6f809f3821908d59fbfe6d5451885a489abe729c3c13f0838177->enter($__internal_5274e88714fb6f809f3821908d59fbfe6d5451885a489abe729c3c13f0838177_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3 = $this->env->getExtension("native_profiler");
+        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3->enter($__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5274e88714fb6f809f3821908d59fbfe6d5451885a489abe729c3c13f0838177->leave($__internal_5274e88714fb6f809f3821908d59fbfe6d5451885a489abe729c3c13f0838177_prof);
+        $__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3->leave($__internal_6c037201070c14b66d3ce99c99cfcd3b1351c55acc4533159e0729292cd738d3_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_36382105a85627d472c888f8115a8bd0f5d724d6dd0323a048099df8b0727df9 = $this->env->getExtension("native_profiler");
-        $__internal_36382105a85627d472c888f8115a8bd0f5d724d6dd0323a048099df8b0727df9->enter($__internal_36382105a85627d472c888f8115a8bd0f5d724d6dd0323a048099df8b0727df9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c = $this->env->getExtension("native_profiler");
+        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c->enter($__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Profs de ";
@@ -45,15 +45,15 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
         echo "
 ";
         
-        $__internal_36382105a85627d472c888f8115a8bd0f5d724d6dd0323a048099df8b0727df9->leave($__internal_36382105a85627d472c888f8115a8bd0f5d724d6dd0323a048099df8b0727df9_prof);
+        $__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c->leave($__internal_1b1bd8c862f5b50f3b1d6c992bc0b5bf185503481df7e02ba44b242545e5a31c_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_3433d9f40871f5539765932e31d75dcb2260341234bd67faa7a3888460b7a4dd = $this->env->getExtension("native_profiler");
-        $__internal_3433d9f40871f5539765932e31d75dcb2260341234bd67faa7a3888460b7a4dd->enter($__internal_3433d9f40871f5539765932e31d75dcb2260341234bd67faa7a3888460b7a4dd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091 = $this->env->getExtension("native_profiler");
+        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091->enter($__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -316,7 +316,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                     <div class=\"content\">
                                         <h5>";
                 // line 253
-                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "prenoms", array()) . "  ") . $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array())), "html", null, true);
+                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "prenoms", array()) . "  ") . twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array()))), "html", null, true);
                 echo " <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button></h5>
                                         <div class=\"row gap-10\">
                                             <div class=\"col-sm-12 col-md-9\">
@@ -434,7 +434,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
     </div>
 ";
         
-        $__internal_3433d9f40871f5539765932e31d75dcb2260341234bd67faa7a3888460b7a4dd->leave($__internal_3433d9f40871f5539765932e31d75dcb2260341234bd67faa7a3888460b7a4dd_prof);
+        $__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091->leave($__internal_f9e7f60939acad8b96a519259463812a6e34f7ba0673474e055b61ebb6677091_prof);
 
     }
 
@@ -705,7 +705,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                                     </div>*/
 /* */
 /*                                     <div class="content">*/
-/*                                         <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
+/*                                         <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
 /*                                         <div class="row gap-10">*/
 /*                                             <div class="col-sm-12 col-md-9">*/
 /* */

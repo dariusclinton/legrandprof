@@ -18,7 +18,7 @@ class CourseController extends Controller {
             try {
                 $mat_profs = $enseigneRep->getProfsByCours($coursFound);
             } catch (NoResultException $ex) {
-                throw $this->createNotFoundException("Pas de prof pour ce cours !");
+                throw $this->createNotFoundException("Pas de prof pour ce cours !".$ex->getMessage());
             }
         } else {
             throw $this->createNotFoundException("Ce cours  n'existe pas !");

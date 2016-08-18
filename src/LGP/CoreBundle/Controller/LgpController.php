@@ -21,7 +21,8 @@ class LgpController extends Controller {
         $form_course = $this->get('form.factory')->create(CoursType::class, $courseForm);
 
         if ($request->isMethod('POST') && $form_course->handleRequest($request)->isValid()) {
-            return $this->redirectToRoute('lgp_course_category');
+//            $this->generateUrl('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
+            return $this->redirectToRoute('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
         }
 
         return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('courses' => $courses, 'categories' => $categoriesPopular, 'form' => $form_course->createView()));
