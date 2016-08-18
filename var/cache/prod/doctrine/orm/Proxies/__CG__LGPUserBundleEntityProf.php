@@ -64,10 +64,10 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'user', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'user', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'user', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'user', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession'];
     }
 
     /**
@@ -428,6 +428,72 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
 
         return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addDiplome', [$diplome]);
+
+        return parent::addDiplome($diplome);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeDiplome', [$diplome]);
+
+        return parent::removeDiplome($diplome);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDiplomes()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiplomes', []);
+
+        return parent::getDiplomes();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addExperiencePro', [$experiencePro]);
+
+        return parent::addExperiencePro($experiencePro);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeExperiencePro', [$experiencePro]);
+
+        return parent::removeExperiencePro($experiencePro);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getExperiencePros()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExperiencePros', []);
+
+        return parent::getExperiencePros();
     }
 
 }

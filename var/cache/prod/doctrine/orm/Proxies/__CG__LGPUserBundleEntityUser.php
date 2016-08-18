@@ -64,10 +64,10 @@ class User extends \LGP\UserBundle\Entity\User implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'prenoms', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateNaissance', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'sexe', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'numTelephone', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'pays', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateInscription', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'photo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'prenoms', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateNaissance', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'sexe', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'numTelephone', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'pays', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateInscription', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'file', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
         }
 
-        return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'prenoms', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateNaissance', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'sexe', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'numTelephone', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'pays', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateInscription', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'photo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'prenoms', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateNaissance', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'sexe', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'numTelephone', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'pays', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'dateInscription', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'LGP\\UserBundle\\Entity\\User' . "\0" . 'file', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
     }
 
     /**
@@ -373,6 +373,28 @@ class User extends \LGP\UserBundle\Entity\User implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoto', []);
 
         return parent::getPhoto();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFile()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFile', []);
+
+        return parent::getFile();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFile($file)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFile', [$file]);
+
+        return parent::setFile($file);
     }
 
     /**

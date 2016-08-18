@@ -39,27 +39,32 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             if (0 === strpos($pathinfo, '/user/p')) {
                 if (0 === strpos($pathinfo, '/user/prof')) {
-                    // lgp_user_register_prof
+                    // lgp_user_prof_register
                     if ($pathinfo === '/user/prof/register') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::registerAction',  '_route' => 'lgp_user_register_prof',);
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::registerAction',  '_route' => 'lgp_user_prof_register',);
                     }
 
-                    // lgp_user_profile_prof
+                    // lgp_user_prof_profile
                     if ($pathinfo === '/user/prof/profile') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::profileAction',  '_route' => 'lgp_user_profile_prof',);
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::profileAction',  '_route' => 'lgp_user_prof_profile',);
+                    }
+
+                    // lgp_user_prof_update
+                    if ($pathinfo === '/user/prof/update') {
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::updateAction',  '_route' => 'lgp_user_prof_update',);
                     }
 
                 }
 
                 if (0 === strpos($pathinfo, '/user/parent')) {
-                    // lgp_user_register_parent
+                    // lgp_user_parent_register
                     if ($pathinfo === '/user/parent/register') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ParentController::registerAction',  '_route' => 'lgp_user_register_parent',);
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ParentController::registerAction',  '_route' => 'lgp_user_parent_register',);
                     }
 
-                    // lgp_user_profile_parent
+                    // lgp_user_parent_profile
                     if ($pathinfo === '/user/parent/profile') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ParentController::profileAction',  '_route' => 'lgp_user_profile_parent',);
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ParentController::profileAction',  '_route' => 'lgp_user_parent_profile',);
                     }
 
                 }
