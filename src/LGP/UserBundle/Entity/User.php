@@ -82,6 +82,9 @@ class User extends BaseUser
      */
      private $photo;
 
+     // fichier image
+     private $file;
+
     /**
      * Constructeur
      */
@@ -301,5 +304,17 @@ class User extends BaseUser
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    // getter file
+    public function getFile()
+    {
+      return $this->file;
+    }
+
+    // setter file
+    public function setFile($file)
+    {
+      $this->file = $file;
     }
 }

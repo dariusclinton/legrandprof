@@ -20,32 +20,32 @@ class ProfType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ville', TextType::class)
-            ->add('quartier', TextType::class)
-            ->add('boitePostale', TextType::class)
-            ->add('situationMatrimoniale', ChoiceType::class, array(
-              'choices' => array(
-                'Célibataire' => 'c',
-                'Marié(e)'    => 'm',
-                'Divorcé(e)'  => 'd'
-              )
-            ))
-            ->add('niveauScolaire', ChoiceType::class, array(
-              'choices' => array(
-                'Bacc' => 'Bacc',
-                'Bacc + 1' => 'Bacc_1',
-                'Bacc + 2' => 'Bacc_2',
-                'Licence'  => 'Licence'
-              )
-            ))
-            ->add('nombreEnfants', TextType::class)
-            ->add('presentation', TextareaType::class)
-            ->add('profession', ChoiceType::class, array(
-              'choices' => array(
-                'Etudiant' => 'Etudiant',
-                'PLEG'     => 'PLEG'
-              )
-            ))
+//            ->add('ville', TextType::class)
+//            ->add('quartier', TextType::class)
+//            ->add('boitePostale', TextType::class)
+//            ->add('situationMatrimoniale', ChoiceType::class, array(
+//              'choices' => array(
+//                'Célibataire' => 'c',
+//                'Marié(e)'    => 'm',
+//                'Divorcé(e)'  => 'd'
+//              )
+//            ))
+//            ->add('niveauScolaire', ChoiceType::class, array(
+//              'choices' => array(
+//                'Bacc' => 'Bacc',
+//                'Bacc + 1' => 'Bacc_1',
+//                'Bacc + 2' => 'Bacc_2',
+//                'Licence'  => 'Licence'
+//              )
+//            ))
+//            ->add('nombreEnfants', TextType::class)
+//            ->add('presentation', TextareaType::class)
+//            ->add('profession', ChoiceType::class, array(
+//              'choices' => array(
+//                'Etudiant' => 'Etudiant',
+//                'PLEG'     => 'PLEG'
+//              )
+//            ))
             ->add('user', RegistrationType::class)
         ;
     }

@@ -25,28 +25,27 @@ class ImageUploadListener
 
   public function preUpdate(PreUpdateEventArgs $args)
   {
-    $entity = $args->getEntity();
+    $entity = $args->getObject();
     $this->uploadImage($entity);
   }
 
   private function uploadImage($entity)
   {
-
     // Si l'entite n'est pas de type User
     if (!$entity instanceof User)
     {
       return;
     }
 
-    $photo = $entity->getPhoto();
+    $file = $entity->getFile();
 
     // Uploader uniqment les nouveaux fichiers
-    if (!$photo instanceof UploadedFile)
+    if (!$file instanceof UploadedFile)
     {
       return;
     }
 
-    $fileName = $this->uploader->upload($photo);
+    $fileName = $this->uploader->upload($file);
     $entity->setPhoto($fileName);
   }
 }

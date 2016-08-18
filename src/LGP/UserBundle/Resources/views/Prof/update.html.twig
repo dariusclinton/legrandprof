@@ -1,0 +1,272 @@
+{% extends 'LGPCoreBundle::layout.html.twig' %}
+
+{% block title %}
+  {{ prof.user.prenoms }} {{ prof.user.nom }}  - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      {{ form_start(form) }}
+
+      {{ form_errors(form) }}
+
+      <!-- Entite User -->
+      <div class="form-group">
+        {{ form_label(form.user.nom, "Nom", {'label_attr': {}}) }}
+        {{ form_widget(form.user.nom, {'attr': {}}) }}
+        {{ form_errors(form.user.nom) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.prenoms, "Prénoms", {'label_attr': {}}) }}
+        {{ form_widget(form.user.prenoms, {'attr': {}}) }}
+        {{ form_errors(form.user.prenoms) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.dateNaissance, "Date de naissance", {'label_attr': {}}) }}
+        {{ form_widget(form.user.dateNaissance, {'attr': {}}) }}
+        {{ form_errors(form.user.dateNaissance) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.sexe, "Sexe", {'label_attr': {}}) }}
+        {{ form_widget(form.user.sexe, {'attr': {}}) }}
+        {{ form_errors(form.user.sexe) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.numTelephone, "Numéro de téléphone", {'label_attr': {}}) }}
+        {{ form_widget(form.user.numTelephone, {'attr': {}}) }}
+        {{ form_errors(form.user.numTelephone) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.pays, "Pays de résidence", {'label_attr': {}}) }}
+        {{ form_widget(form.user.pays, {'attr': {}}) }}
+        {{ form_errors(form.user.pays) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.username, "Pseudo", {'label_attr': {}}) }}
+        {{ form_widget(form.user.username, {'attr': {}}) }}
+        {{ form_errors(form.user.username) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.user.email, "Adresse email", {'label_attr': {}}) }}
+        {{ form_widget(form.user.email, {'attr': {}}) }}
+        {{ form_errors(form.user.email) }}
+      </div>
+
+      {#<div class="form-group">
+        {{ form_widget(form.user.plainPassword, {'attr': {}}) }}
+        {{ form_errors(form.user.plainPassword) }}
+      </div>#}
+
+      <div class="form-group">
+          {{ form_label(form.user.file, "Photo de profil") }}
+          {{ form_widget(form.user.file, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.user.file) }}
+      </div>
+      <!-- end Entite User -->
+
+      <div class="form-group">
+          {{ form_label(form.ville, "Ville de résidence") }}
+          {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.ville) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.quartier, "Quartier") }}
+          {{ form_widget(form.quartier, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.quartier) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.boitePostale, "Boîte postale") }}
+          {{ form_widget(form.boitePostale, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.boitePostale) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.situationMatrimoniale, "Situation matrimoniale") }}
+          {{ form_widget(form.situationMatrimoniale, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.situationMatrimoniale) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.niveauScolaire, "Niveau scolaire") }}
+          {{ form_widget(form.niveauScolaire, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.niveauScolaire) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.nombreEnfants, "Nombre d'enfants") }}
+          {{ form_widget(form.nombreEnfants, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.nombreEnfants) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.presentation, "Présentez vous en quelques lignes") }}
+          {{ form_widget(form.presentation, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.presentation) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.profession, "Quelle est votre profession ?") }}
+          {{ form_widget(form.profession, {'attr': {'class': 'form-control'}}) }}
+          {{ form_errors(form.profession) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.experiencePros, "Expérience professionnelle") }}
+          {{ form_widget(form.experiencePros) }}
+          <a href="#" id="add_experience" class="btn btn-primary">Ajouter une expérience</a>
+          {{ form_errors(form.experiencePros) }}
+      </div>
+
+      <div class="form-group">
+          {{ form_label(form.diplomes, "Diplômes obtenus") }}
+          {{ form_widget(form.diplomes) }}
+          <a href="#" id="add_diplome" class="btn btn-primary">Ajouter un diplome</a>
+          {{ form_errors(form.diplomes) }}
+      </div>
+
+      {{ form_rest(form) }}
+
+      <div class="form-group">
+        <input type="submit" name="name" value="Enregistrer" class="btn btn-primary">
+      </div>
+
+      {{ form_end(form) }}
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script type="text/javascript">
+
+    $(function() {
+
+      /**
+        Gestion de l'ajout des ExperiencePro
+      */
+
+
+      // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
+      var $container = $('div#prof_update_experiencePros');
+
+      // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
+      var index = $container.find(':input').length;
+
+      // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
+      $('#add_experience').click(function(e) {
+        addExperience($container);
+
+        e.preventDefault();
+        return false;
+      });
+
+      // On ajoute un premier champ automatiquement s'il en existe pas deja un
+      if (index === 0) {
+        // addExperience($container);
+      } else {
+        // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
+        $container.children('div').each(function() {
+          addDeleteLink($(this));
+        });
+      }
+
+      // Fonction qui ajoute un formulaire de ExperienceProType
+      function addExperience($container) {
+        // Dans le contenu de l'attribut « data-prototype », on remplace :
+        // - le texte "__name__label__" qu'il contient par le label du champ
+        // - le texte "__name__" qu'il contient par le numéro du champ
+        var template = $container.attr('data-prototype')
+          .replace(/__name__label__/g, 'Expérience ' + (index+1))
+          .replace(/__name__/g, index) ;
+
+         // On cree un objet jquery qui contient ce template
+         var $prototype = $(template);
+
+         // On ajoute au prototype un lien pour pourvoir supprimer l'experience
+         addDeleteLink($prototype);
+
+         // On ajoute le prototype a la fin de la balise <div>
+         $container.append($prototype);
+
+         // On incremente le compteur
+         index++;
+      }
+
+      // La fonction qui ajoute un lien de suppression d'une catégorie
+     function addDeleteLink($prototype) {
+       // Création du lien
+       var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+
+       // Ajout du lien
+       $prototype.append($deleteLink);
+
+       // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
+       $deleteLink.click(function(e) {
+         $prototype.remove();
+
+         e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+         return false;
+       });
+     }
+
+
+     /**
+       Gestion de l'ajout des Diplomes
+     */
+     var $container2 = $('div#prof_update_diplomes');
+     var index2 = $container2.find(':input').length;
+
+     $('#add_diplome').click(function(e) {
+       addDiplome($container2);
+
+       e.preventDefault();
+       return false;
+     });
+
+     if (index2 === 0) {
+       // addDiplome($container2);
+     } else {
+       $container2.children('div').each(function() {
+         addDeleteLink($(this));
+       });
+     }
+
+     function addDiplome($container2) {
+       // Dans le contenu de l'attribut « data-prototype », on remplace :
+       // - le texte "__name__label__" qu'il contient par le label du champ
+       // - le texte "__name__" qu'il contient par le numéro du champ
+       var template = $container2.attr('data-prototype')
+         .replace(/__name__label__/g, 'Diplôme ' + (index+1))
+         .replace(/__name__/g, index2) ;
+
+        // On cree un objet jquery qui contient ce template
+        var $prototype = $(template);
+
+        // On ajoute au prototype un lien pour pourvoir supprimer l'experience
+        addDeleteLink($prototype);
+
+        // On ajoute le prototype a la fin de la balise <div>
+        $container2.append($prototype);
+
+        // On incremente le compteur
+        index2++;
+     }
+    });
+  </script>
+{% endblock %}

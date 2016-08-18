@@ -10,4 +10,7 @@ namespace LGP\UserBundle\Repository;
  */
 class ExperienceProRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function getExperienceProf($id)
+  {
+  }
 }

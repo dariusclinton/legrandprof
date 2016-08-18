@@ -550,7 +550,7 @@
                   <tag name="cache.pool"/>
                   <argument>P2GU4gPcIb</argument>
                   <argument></argument>
-                  <argument>hulNPUL9k3Q31wyRuGW2BQ</argument>
+                  <argument>UucHUi8BHCh9zNEm23mbVw</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -563,7 +563,7 @@
                   <tag name="cache.pool"/>
                   <argument>EccDeXiE0b</argument>
                   <argument></argument>
-                  <argument>hulNPUL9k3Q31wyRuGW2BQ</argument>
+                  <argument>UucHUi8BHCh9zNEm23mbVw</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1212,7 +1212,7 @@
       <tag name="cache.pool"/>
       <argument>93bQzq1Xt0</argument>
       <argument></argument>
-      <argument>hulNPUL9k3Q31wyRuGW2BQ</argument>
+      <argument>UucHUi8BHCh9zNEm23mbVw</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1987,7 +1987,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-            <argument type="service" id="fos_user.user_provider.username"/>
+            <argument type="service" id="fos_user.user_provider.username_email"/>
             <argument type="service" id="security.user_checker.main"/>
             <argument>main</argument>
             <argument type="service" id="security.encoder_factory"/>
@@ -2003,7 +2003,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57b0e0065a9bd2.90140995</argument>
+            <argument>57b3b8e1c47205.75756127</argument>
           </service>
         </argument>
       </argument>
@@ -2138,7 +2138,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
             <argument type="service" id="security.token_storage"/>
             <argument type="collection">
-              <argument type="service" id="fos_user.user_provider.username"/>
+              <argument type="service" id="fos_user.user_provider.username_email"/>
             </argument>
             <argument>main</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -2180,7 +2180,7 @@
               <argument type="service">
                 <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                   <argument type="collection">
-                    <argument type="service" id="fos_user.user_provider.username"/>
+                    <argument type="service" id="fos_user.user_provider.username_email"/>
                   </argument>
                   <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
                   <argument>main</argument>
@@ -2274,7 +2274,7 @@
               <argument type="service">
                 <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                   <argument type="collection">
-                    <argument type="service" id="fos_user.user_provider.username"/>
+                    <argument type="service" id="fos_user.user_provider.username_email"/>
                   </argument>
                   <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
                   <argument>main</argument>
@@ -2300,7 +2300,7 @@
             <argument type="service">
               <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
                 <argument type="collection">
-                  <argument type="service" id="fos_user.user_provider.username"/>
+                  <argument type="service" id="fos_user.user_provider.username_email"/>
                 </argument>
                 <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
                 <argument>main</argument>
@@ -2327,7 +2327,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57b0e0065a9bd2.90140995</argument>
+            <argument>57b3b8e1c47205.75756127</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2919,7 +2919,7 @@
       <argument type="service" id="security.authentication.session_strategy"/>
       <argument type="service" id="service_container"/>
     </service>
-    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
+    <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
       <argument type="service" id="fos_user.user_manager"/>
     </service>
     <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">

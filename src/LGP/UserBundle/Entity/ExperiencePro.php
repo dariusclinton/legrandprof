@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class ExperiencePro
 {
   /**
-   * @ORM\ManyToOne(targetEntity="Prof")
+   * @ORM\ManyToOne(targetEntity="Prof", inversedBy="experiencePros")
    * @ORM\JoinColumn(nullable=false)
    */
    private $prof;
@@ -58,7 +58,7 @@ class ExperiencePro
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 

@@ -19,6 +19,11 @@ class Prof
    private $diplomes;
 
   /**
+   * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+   */
+   private $experiencePros;
+
+  /**
    * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
    * @ORM\JoinColumn(nullable=false)
    */
@@ -36,14 +41,14 @@ class Prof
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="quartier", type="string", length=255)
+     * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
      */
     private $quartier;
 
@@ -57,21 +62,21 @@ class Prof
     /**
      * @var string
      *
-     * @ORM\Column(name="situation_matrimoniale", type="string", length=255)
+     * @ORM\Column(name="situation_matrimoniale", type="string", length=255, nullable=true)
      */
     private $situationMatrimoniale;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="niveau_scolaire", type="string", length=255, nullable=true)
+     * @ORM\Column(name="niveau_scolaire", type="string", length=255, nullable=true, nullable=true)
      */
     private $niveauScolaire;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nombre_enfants", type="integer")
+     * @ORM\Column(name="nombre_enfants", type="integer", nullable=true)
      */
     private $nombreEnfants;
 
@@ -87,21 +92,29 @@ class Prof
      *
      * @ORM\Column(name="is_actif", type="boolean")
      */
-    private $isActif = true;
+    private $isActif = false;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="presentation", type="text")
+     * @ORM\Column(name="presentation", type="text", nullable=true)
      */
     private $presentation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="profession", type="string", length=255)
+     * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
+    
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -376,13 +389,7 @@ class Prof
     {
         return $this->user;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+   
 
     /**
      * Add diplome
@@ -416,5 +423,42 @@ class Prof
     public function getDiplomes()
     {
         return $this->diplomes;
+    }
+
+    /**
+     * Add experiencePro
+     *
+     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
+     *
+     * @return Prof
+     */
+    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+        $this->experiencePros[] = $experiencePro;
+
+        // On associe le prof a l'experiencePro
+        $experiencePro->setProf($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove experiencePro
+     *
+     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
+     */
+    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+        $this->experiencePros->removeElement($experiencePro);
+    }
+
+    /**
+     * Get experiencePros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExperiencePros()
+    {
+        return $this->experiencePros;
     }
 }

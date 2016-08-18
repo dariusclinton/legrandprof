@@ -17,5 +17,24 @@
       <li class="list-group-item">Ville: {{ prof.ville }}</li>
       <li class="list-group-item">Quartier: {{ prof.quartier }}</li>
     </ul>
+
+    <h3>Experience professionnelle</h3>
+    {% for experience in experiencePros %}
+      <p>
+        {{ experience.etablissement }} -
+        {{ experience.poste }} -
+        {{ experience.dateDebut|date('d/m/y') }} -
+        {{ experience.dateFin|date('d/m/y') }}
+      </p>
+    {% endfor %}
+
+    <h3>Vos diplomes</h3>
+    {% for diplome in diplomes %}
+      <p>
+        {{ diplome.intitule }} -
+        {{ diplome.specialite }} -
+        {{ diplome.annee }}
+      </p>
+    {% endfor %}
   </div>
 {% endblock %}
