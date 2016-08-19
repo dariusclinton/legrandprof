@@ -128,6 +128,7 @@
   'LGPCourseBundle:Course:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/index.html.twig',
   'LGPCourseBundle:Course:search.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/search.html.twig',
   'LGPCourseBundle:Form:form_search.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Form/form_search.html.twig',
+  'LGPCourseBundle:Pagination:pagination.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Pagination/pagination.html.twig',
   'LGPReservationBundle:Default:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Default/index.html.twig',
   'DebugBundle:Profiler:dump.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views/Profiler/dump.html.twig',
   'WebProfilerBundle:Collector:ajax.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views/Collector/ajax.html.twig',

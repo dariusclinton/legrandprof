@@ -22,20 +22,20 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65 = $this->env->getExtension("native_profiler");
-        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65->enter($__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_be2cc94692236073ff393bf7f5858f3962256d0dfec8a3227ba1c5a75767af25 = $this->env->getExtension("native_profiler");
+        $__internal_be2cc94692236073ff393bf7f5858f3962256d0dfec8a3227ba1c5a75767af25->enter($__internal_be2cc94692236073ff393bf7f5858f3962256d0dfec8a3227ba1c5a75767af25_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65->leave($__internal_c4a8c5e2d0ad9dddceb49d7920d8cbafc271f51987ba19bb72ccb2cdf407bd65_prof);
+        $__internal_be2cc94692236073ff393bf7f5858f3962256d0dfec8a3227ba1c5a75767af25->leave($__internal_be2cc94692236073ff393bf7f5858f3962256d0dfec8a3227ba1c5a75767af25_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70 = $this->env->getExtension("native_profiler");
-        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70->enter($__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5cbd321f36340f87181fc871b5b9daa84c20e405ce9443a27d499749d25ccd54 = $this->env->getExtension("native_profiler");
+        $__internal_5cbd321f36340f87181fc871b5b9daa84c20e405ce9443a27d499749d25ccd54->enter($__internal_5cbd321f36340f87181fc871b5b9daa84c20e405ce9443a27d499749d25ccd54_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Profs de ";
@@ -45,15 +45,15 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
         echo "
 ";
         
-        $__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70->leave($__internal_cb53ad9928fb6745b649d7737abc6ed42b7a9a88b84a35ee6a9d53808e393f70_prof);
+        $__internal_5cbd321f36340f87181fc871b5b9daa84c20e405ce9443a27d499749d25ccd54->leave($__internal_5cbd321f36340f87181fc871b5b9daa84c20e405ce9443a27d499749d25ccd54_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81 = $this->env->getExtension("native_profiler");
-        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81->enter($__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_18679286615bd55ed7c536caed6dcbd419e9420faf14c6e98c6b7898922510ad = $this->env->getExtension("native_profiler");
+        $__internal_18679286615bd55ed7c536caed6dcbd419e9420faf14c6e98c6b7898922510ad->enter($__internal_18679286615bd55ed7c536caed6dcbd419e9420faf14c6e98c6b7898922510ad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -105,8 +105,8 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
                         <div class=\"sidebar-search-wrapper bg-light-2\">
 
-                            <div class=\"sidebar-search-header\">
-                                <h4>Recherchez </h4>
+                            <div class=\"\">
+                                <h4>Affinez votre recherche </h4>
                             </div>
 
                             <div class=\"sidebar-search-content\">
@@ -144,114 +144,12 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
                         </div>
 
-                        <div class=\"sidebar-header clearfix\">
-                            <h4>Affinez</h4>
-                            <a href=\"#\" class=\"sidebar-reset-filter\"><i class=\"fa fa-times\"></i> Annuler</a>
-                        </div>
-
-                        <div class=\"sidebar-inner\">
-
-                            <div class=\"sidebar-module\">
-                                <h6 class=\"sidebar-title\">Entrez un nom</h6>
-                                <div class=\"sidebar-module-inner\">
-                                    <div class=\"sidebar-mini-search\">
-                                        <div class=\"input-group\">
-                                            <input type=\"text\" class=\"form-control\" placeholder=\"Qui ?...\">
-                                            <span class=\"input-group-btn\">
-                                                <button class=\"btn btn-primary\" type=\"button\"><i class=\"fa fa-search\"></i></button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class=\"clear\"></div>
-
-                            <div class=\"sidebar-module\">
-                                <h6 class=\"sidebar-title\">Affinez par note</h6>
-                                <div class=\"sidebar-module-inner\">
-                                    <input id=\"star_range\" />
-                                </div>
-                            </div>
-
-                            <div class=\"clear\"></div>
-
-                            <div class=\"sidebar-module\">
-
-                                <h6 class=\"sidebar-title\">Affinez par quartier</h6>
-                                <div class=\"sidebar-module-inner\">
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"ville-1\" name=\"ville\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"ville-1\">Akwa <span class=\"checkbox-count\">(90)</span></label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"ville-2\" name=\"ville\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"ville-2\">Bonapriso <span class=\"checkbox-count\">(25)</span></label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"ville-3\" name=\"ville\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"ville-3\">Logpom <span class=\"checkbox-count\">(15)</span></label>
-                                    </div>
-                                    <div class=\"ville-block\">
-                                        <input id=\"property_type-4\" name=\"ville\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"property_type-4\">Bonamoussadi<span class=\"checkbox-count\">(20)</span></label>
-                                    </div>
-                                    <div class=\"more-less-wrapper\">
-
-                                        <div id=\"property_type_more_less\" class=\"collapse\"> 
-                                            <div class=\"more-less-inner\">
-
-                                                <div class=\"checkbox-block\">
-                                                    <input id=\"ville-6\" name=\"ville\" type=\"checkbox\" class=\"checkbox\"/>
-                                                    <label class=\"\" for=\"ville-6\">Bonaberi <span class=\"checkbox-count\">(25)</span></label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <button class=\"btn btn-more-less collapsed\" data-toggle=\"collapse\" data-target=\"#property_type_more_less\">Montrer plus</button>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class=\"clear\"></div>
-
-                            <div class=\"sidebar-module\">
-                                <h6 class=\"sidebar-title\">Affinez par niveau</h6>
-                                <div class=\"sidebar-module-inner\">
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-1\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-1\">Primaire</label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-2\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-2\">Collège</label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-3\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-3\">Seconde</label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-4\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-4\">Première</label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-5\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-5\">Terminale</label>
-                                    </div>
-                                    <div class=\"checkbox-block\">
-                                        <input id=\"niveau-6\" name=\"niveau\" type=\"checkbox\" class=\"checkbox\"/>
-                                        <label class=\"\" for=\"niveau-6\">Supérieur</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
+                       ";
+        // line 89
+        echo "
+                       ";
+        // line 192
+        echo "
                     </aside>
 
 
@@ -329,27 +227,63 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                                 <ul class=\"list-info\">
                                                     <li><span class=\"icon\"><i class=\"fa fa-map-marker\"></i></span> <span class=\"font600\">Position: </span> ";
                 // line 260
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "ville", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "ville", array())), "html", null, true);
                 echo " - ";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "quartier", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "quartier", array())), "html", null, true);
                 echo "</li>
 
-                                                    <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Compétences :</span> 
+                                                    <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Cours :</span> 
                                                             ";
                 // line 263
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["enseigneRep"]) ? $context["enseigneRep"] : $this->getContext($context, "enseigneRep")), "getCoursByProf", array(0 => $this->getAttribute($context["enseigne"], "prof", array())), "method"));
+                $context['loop'] = array(
+                  'parent' => $context['_parent'],
+                  'index0' => 0,
+                  'index'  => 1,
+                  'first'  => true,
+                );
+                if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof Countable)) {
+                    $length = count($context['_seq']);
+                    $context['loop']['revindex0'] = $length - 1;
+                    $context['loop']['revindex'] = $length;
+                    $context['loop']['length'] = $length;
+                    $context['loop']['last'] = 1 === $length;
+                }
                 foreach ($context['_seq'] as $context["_key"] => $context["ens_cours"]) {
                     // line 264
                     echo "                                                                ";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
-                    echo "
-                                                            ";
+                    if (($this->getAttribute($context["loop"], "index", array()) != $this->getAttribute($context["loop"], "last", array()))) {
+                        // line 265
+                        echo "                                                                    <a href=\" ";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo " \" title=\"\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
+                        echo "</a> -
+                                                                    ";
+                    } else {
+                        // line 267
+                        echo "                                                                        <a href=\" ";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo " \" title=\"\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
+                        echo "</a>
+                                                                ";
+                    }
+                    // line 269
+                    echo "                                                            ";
+                    ++$context['loop']['index0'];
+                    ++$context['loop']['index'];
+                    $context['loop']['first'] = false;
+                    if (isset($context['loop']['length'])) {
+                        --$context['loop']['revindex0'];
+                        --$context['loop']['revindex'];
+                        $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                    }
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ens_cours'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 265
                 echo " 
                                                     </li>
                                                 </ul>
@@ -360,7 +294,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                                 <div class=\"rating-wrapper\">
                                                     <div class=\"raty-wrapper\">
                                                         <div><img alt=\"1\" src=\"";
-                // line 274
+                // line 278
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
                 echo "\" title=\"good\"><img alt=\"2\" src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
@@ -376,7 +310,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
                                                 </div>
 
                                                 <div class=\"price\">";
-                // line 279
+                // line 283
                 echo twig_escape_filter($this->env, $this->getAttribute($context["enseigne"], "prix", array()), "html", null, true);
                 echo " Fcfa</div>
 
@@ -392,56 +326,22 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['enseigne'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 289
+            // line 293
             echo "
 
 
                             ";
-            // line 367
+            // line 371
             echo "                        </div>
 
-                        <div class=\"pager-wrappper clearfix\">
-
-                            <div class=\"pager-innner\">
-
-                                <div class=\"flex-row flex-align-middle\">
-
-                                    <div class=\"flex-column flex-sm-12\">
-                                        Resultats de 1 à 4 de 175 
-                                    </div>
-
-                                    <div class=\"flex-column flex-sm-12\">
-                                        <nav class=\"pager-right\">
-                                            <ul class=\"pagination\">
-                                                <li>
-                                                    <a href=\"#\" aria-label=\"Previous\">
-                                                        <span aria-hidden=\"true\">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class=\"active\"><a href=\"#\">1</a></li>
-                                                <li><a href=\"#\">2</a></li>
-                                                <li><a href=\"#\">3</a></li>
-                                                <li><span>...</span></li>
-                                                <li><a href=\"#\">11</a></li>
-                                                <li><a href=\"#\">12</a></li>
-                                                <li><a href=\"#\">13</a></li>
-                                                <li>
-                                                    <a href=\"#\" aria-label=\"Next\">
-                                                        <span aria-hidden=\"true\">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        ";
+            // line 373
+            $this->loadTemplate("LGPCourseBundle:Pagination:pagination.html.twig", "LGPCourseBundle:Course:search.html.twig", 373)->display($context);
+            // line 374
+            echo "
                     ";
         }
-        // line 409
+        // line 376
         echo "
                 </div>
 
@@ -452,7 +352,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
     </div>
 ";
         
-        $__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81->leave($__internal_538b05617a30620cead22e53ef14b4a0766f49109ce976b4e9ec3f172990fb81_prof);
+        $__internal_18679286615bd55ed7c536caed6dcbd419e9420faf14c6e98c6b7898922510ad->leave($__internal_18679286615bd55ed7c536caed6dcbd419e9420faf14c6e98c6b7898922510ad_prof);
 
     }
 
@@ -468,7 +368,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 
     public function getDebugInfo()
     {
-        return array (  445 => 409,  401 => 367,  396 => 289,  380 => 279,  364 => 274,  353 => 265,  344 => 264,  340 => 263,  332 => 260,  326 => 257,  319 => 253,  314 => 250,  306 => 248,  299 => 245,  297 => 244,  293 => 242,  289 => 241,  284 => 239,  277 => 234,  271 => 204,  267 => 203,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  345 => 376,  341 => 374,  339 => 373,  335 => 371,  330 => 293,  314 => 283,  298 => 278,  274 => 269,  266 => 267,  258 => 265,  255 => 264,  238 => 263,  230 => 260,  224 => 257,  217 => 253,  212 => 250,  204 => 248,  197 => 245,  195 => 244,  191 => 242,  187 => 241,  182 => 239,  175 => 234,  169 => 204,  165 => 203,  152 => 192,  149 => 89,  120 => 59,  83 => 25,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -519,8 +419,8 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /* */
 /*                         <div class="sidebar-search-wrapper bg-light-2">*/
 /* */
-/*                             <div class="sidebar-search-header">*/
-/*                                 <h4>Recherchez </h4>*/
+/*                             <div class="">*/
+/*                                 <h4>Affinez votre recherche </h4>*/
 /*                             </div>*/
 /* */
 /*                             <div class="sidebar-search-content">*/
@@ -555,12 +455,12 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /* */
 /*                         </div>*/
 /* */
-/*                         <div class="sidebar-header clearfix">*/
+/*                        {#  <div class="sidebar-header clearfix">*/
 /*                             <h4>Affinez</h4>*/
 /*                             <a href="#" class="sidebar-reset-filter"><i class="fa fa-times"></i> Annuler</a>*/
-/*                         </div>*/
+/*                         </div> #}*/
 /* */
-/*                         <div class="sidebar-inner">*/
+/*                        {#  <div class="sidebar-inner">*/
 /* */
 /*                             <div class="sidebar-module">*/
 /*                                 <h6 class="sidebar-title">Entrez un nom</h6>*/
@@ -661,7 +561,7 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                             </div>*/
 /* */
 /* */
-/*                         </div>*/
+/*                         </div> #}*/
 /* */
 /*                     </aside>*/
 /* */
@@ -730,11 +630,15 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*                                                 <p class="line18"> {{enseigne.prof.presentation}} </p>*/
 /*                                                 <br>*/
 /*                                                 <ul class="list-info">*/
-/*                                                     <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville}} - {{enseigne.prof.quartier}}</li>*/
+/*                                                     <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}} - {{enseigne.prof.quartier | lower}}</li>*/
 /* */
-/*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> */
+/*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> */
 /*                                                             {% for ens_cours in enseigneRep.getCoursByProf(enseigne.prof) %}*/
-/*                                                                 {{ens_cours.cours.intitule}}*/
+/*                                                                 {% if loop.index != loop.last %}*/
+/*                                                                     <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -*/
+/*                                                                     {% else %}*/
+/*                                                                         <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>*/
+/*                                                                 {% endif %}*/
 /*                                                             {% endfor %} */
 /*                                                     </li>*/
 /*                                                 </ul>*/
@@ -839,45 +743,8 @@ class __TwigTemplate_117fc53bf5ef49541176fbdc83af3df030cd82109b2269c977cf6da20ba
 /*        #}*/
 /*                         </div>*/
 /* */
-/*                         <div class="pager-wrappper clearfix">*/
+/*                         {% include('LGPCourseBundle:Pagination:pagination.html.twig') %}*/
 /* */
-/*                             <div class="pager-innner">*/
-/* */
-/*                                 <div class="flex-row flex-align-middle">*/
-/* */
-/*                                     <div class="flex-column flex-sm-12">*/
-/*                                         Resultats de 1 à 4 de 175 */
-/*                                     </div>*/
-/* */
-/*                                     <div class="flex-column flex-sm-12">*/
-/*                                         <nav class="pager-right">*/
-/*                                             <ul class="pagination">*/
-/*                                                 <li>*/
-/*                                                     <a href="#" aria-label="Previous">*/
-/*                                                         <span aria-hidden="true">&laquo;</span>*/
-/*                                                     </a>*/
-/*                                                 </li>*/
-/*                                                 <li class="active"><a href="#">1</a></li>*/
-/*                                                 <li><a href="#">2</a></li>*/
-/*                                                 <li><a href="#">3</a></li>*/
-/*                                                 <li><span>...</span></li>*/
-/*                                                 <li><a href="#">11</a></li>*/
-/*                                                 <li><a href="#">12</a></li>*/
-/*                                                 <li><a href="#">13</a></li>*/
-/*                                                 <li>*/
-/*                                                     <a href="#" aria-label="Next">*/
-/*                                                         <span aria-hidden="true">&raquo;</span>*/
-/*                                                     </a>*/
-/*                                                 </li>*/
-/*                                             </ul>*/
-/*                                         </nav>*/
-/*                                     </div>*/
-/* */
-/*                                 </div>*/
-/* */
-/*                             </div>*/
-/* */
-/*                         </div>*/
 /*                     {% endif %}*/
 /* */
 /*                 </div>*/

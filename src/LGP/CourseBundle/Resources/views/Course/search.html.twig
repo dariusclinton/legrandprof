@@ -46,8 +46,8 @@
 
                         <div class="sidebar-search-wrapper bg-light-2">
 
-                            <div class="sidebar-search-header">
-                                <h4>Recherchez </h4>
+                            <div class="">
+                                <h4>Affinez votre recherche </h4>
                             </div>
 
                             <div class="sidebar-search-content">
@@ -82,12 +82,12 @@
 
                         </div>
 
-                        <div class="sidebar-header clearfix">
+                       {#  <div class="sidebar-header clearfix">
                             <h4>Affinez</h4>
                             <a href="#" class="sidebar-reset-filter"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
+                        </div> #}
 
-                        <div class="sidebar-inner">
+                       {#  <div class="sidebar-inner">
 
                             <div class="sidebar-module">
                                 <h6 class="sidebar-title">Entrez un nom</h6>
@@ -188,7 +188,7 @@
                             </div>
 
 
-                        </div>
+                        </div> #}
 
                     </aside>
 
@@ -257,11 +257,15 @@
                                                 <p class="line18"> {{enseigne.prof.presentation}} </p>
                                                 <br>
                                                 <ul class="list-info">
-                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville}} - {{enseigne.prof.quartier}}</li>
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}} - {{enseigne.prof.quartier | lower}}</li>
 
-                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> 
+                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
                                                             {% for ens_cours in enseigneRep.getCoursByProf(enseigne.prof) %}
-                                                                {{ens_cours.cours.intitule}}
+                                                                {% if loop.index != loop.last %}
+                                                                    <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                                    {% else %}
+                                                                        <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
+                                                                {% endif %}
                                                             {% endfor %} 
                                                     </li>
                                                 </ul>
@@ -366,45 +370,8 @@
        #}
                         </div>
 
-                        <div class="pager-wrappper clearfix">
+                        {% include('LGPCourseBundle:Pagination:pagination.html.twig') %}
 
-                            <div class="pager-innner">
-
-                                <div class="flex-row flex-align-middle">
-
-                                    <div class="flex-column flex-sm-12">
-                                        Resultats de 1 à 4 de 175 
-                                    </div>
-
-                                    <div class="flex-column flex-sm-12">
-                                        <nav class="pager-right">
-                                            <ul class="pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><span>...</span></li>
-                                                <li><a href="#">11</a></li>
-                                                <li><a href="#">12</a></li>
-                                                <li><a href="#">13</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
                     {% endif %}
 
                 </div>

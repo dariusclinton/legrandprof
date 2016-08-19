@@ -3,8 +3,10 @@ lgp_course_category:
     defaults: { _controller: LGPCourseBundle:Course:allCategories }
 
 lgp_course_find_prof:
-    path:     /search/prof/{cours}
-    defaults: { _controller: LGPCourseBundle:Course:search }
+    path:     /search/profs/{cours}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:search, page:1 }
+    requirements:
+        page:   \d+
     
 lgp_course_find_category:
     path:     /search/{category}

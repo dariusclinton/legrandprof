@@ -4,10 +4,11 @@ namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CourseController extends Controller {
 
-    public function searchAction($cours) {
+    public function searchAction($cours, $page) {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
@@ -16,7 +17,24 @@ class CourseController extends Controller {
         if ($coursFound) {
 //            $coursId = $coursFound->getId();
             try {
-                $profsByCours = $enseigneRep->getProfsByCours($coursFound);
+                $max_per_page = 10;
+                $profsByCours = $enseigneRep->getProfsByCours($coursFound, $page, $max_per_page);
+//                $coursCount = $enseigneRep->countProfsByCours($coursFound);
+                $profsCount = count($profsByCours);
+                $pageCount = ceil($profsCount / $max_per_page);
+
+                if ($pageCount < $page) {
+                    throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la première page
+                }
+
+                $pagination = array(
+                    'page' => $page,
+                    'route' => 'lgp_course_find_prof',
+                    'pages_count' => $pageCount,
+                    'profs_count' => $profsCount,
+                    'max_per_page' => $max_per_page,
+//                    'route_params' => array('cours'=>$coursFound)
+                );
             } catch (NoResultException $ex) {
                 throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
             }
@@ -24,7 +42,7 @@ class CourseController extends Controller {
             throw $this->createNotFoundException("Ce cours  n'existe pas !");
         }
 
-        return $this->render('LGPCourseBundle:Course:search.html.twig', array('cours' => $cours, 'matieres_profs' => $profsByCours, 'enseigneRep' => $enseigneRep));
+        return $this->render('LGPCourseBundle:Course:search.html.twig', array('cours' => $cours, 'matieres_profs' => $profsByCours, 'pagination' => $pagination, 'enseigneRep' => $enseigneRep));
     }
 
     public function categoryAction($category) {
