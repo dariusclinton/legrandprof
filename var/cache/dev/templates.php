@@ -127,6 +127,7 @@
   'LGPCourseBundle:Course:category.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/category.html.twig',
   'LGPCourseBundle:Course:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/index.html.twig',
   'LGPCourseBundle:Course:search.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/search.html.twig',
+  'LGPCourseBundle:Course:search_city.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/search_city.html.twig',
   'LGPCourseBundle:Form:course_form_search.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Form/course_form_search.html.twig',
   'LGPCourseBundle:Pagination:pagination.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Pagination/pagination.html.twig',
   'LGPReservationBundle:Default:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Default/index.html.twig',

@@ -1,4 +1,4 @@
-{% if pagination.pages_count > 1 %}
+{% if params.pagination.pages_count > 1 %}
     <div class="pager-wrappper clearfix">
 
         <div class="pager-innner">
@@ -6,31 +6,40 @@
             <div class="flex-row flex-align-middle">
 
                 <div class="flex-column flex-sm-12">
-                    Resultats de {{((pagination.page -1)*pagination.max_per_page)+1}} à {{pagination.page*pagination.max_per_page}} sur {{pagination.profs_count}} 
+                    Resultats de {{((params.pagination.page -1)*params.pagination.max_per_page)+1}} 
+                    à 
+                    {% if (params.pagination.page*params.pagination.max_per_page) > params.pagination.profs_count %}
+                        {{params.pagination.profs_count}}
+                    {% else %}
+                        {{params.pagination.page*params.pagination.max_per_page}}
+                    {% endif %} 
+                    sur  {{params.pagination.profs_count}} 
                 </div>
 
                 <div class="flex-column flex-sm-12">
                     <nav class="pager-right">
                         <ul class="pagination">
-                            {% if pagination.page > 1 %}
+                            {% if params.pagination.page > 1 %}
                                 <li>
-                                    <a href="{{ path(pagination.route,  {'cours':cours,'page':  pagination.page-1}) }}" title="precedent">
+                                    <a href="{{ path(params.pagination.route, params.pagination.route_params | merge( {
+                                    'page':  params.pagination.page-1})) }}" title="precedent">
                                         &laquo;
                                     </a>
                                 </li>
                             {% endif %}
 
-                            {% for p in range(max(pagination.page-2, 1), min(pagination.page+2, pagination.pages_count)) %}
+                            {% for p in range(max(params.pagination.page-2, 1), min(params.pagination.page+2, params.pagination.pages_count)) %}
 
-                                <li {% if p == pagination.page %}class="active"{% endif %}> 
-                                    <a href="{{path(pagination.route, {'cours':cours,'page':  p})}}">{{ p }}
+                                <li {% if p == params.pagination.page %}class="active"{% endif %}> 
+                                    <a href="{{path(params.pagination.route, params.pagination.route_params | merge({'page':p})) }}">{{ p }}
                                     </a>
                                 </li>
 
                             {% endfor %}
-                            {% if pagination.page < pagination.pages_count %}
+                            {% if params.pagination.page < params.pagination.pages_count %}
                                 <li>
-                                    <a href="{{ path(pagination.route,  {'cours':cours,'page':  pagination.page+1}) }}" title="suivant">&raquo;
+                                    <a href="{{ path(params.pagination.route, params.pagination.route_params | merge({
+                                    'page':  params.pagination.page+1})) }}" title="suivant">&raquo;
                                     </a>
                                 </li>
                             {% endif %}

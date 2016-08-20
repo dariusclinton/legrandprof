@@ -20,8 +20,9 @@ class LgpController extends Controller {
 //        $courseForm = new Cours();
 ////        $form_course = $this->get('form.factory')->create(CoursType::class, $courseForm);
         $form_course = $this->createForm(CoursSearchType::class);
-
-        if ($request->isMethod('POST') && $form_course->handleRequest($request)->isValid()) {
+        
+        $form_course->handleRequest($request);
+        if ($form_course->isSubmitted() && $form_course->isValid()) {
 //            $this->generateUrl('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
             $data = $form_course->getData();
             if (!isset($data['intitule'])) {

@@ -14,7 +14,8 @@ class CoursSearchType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('intitule', TextType::class, array('required' => false))
+                ->add('intitule', TextType::class, array('required' => false,
+                     'attr' => array('placeholder' => 'Que voulez-vous apprendre?')))
         ;
     }
 

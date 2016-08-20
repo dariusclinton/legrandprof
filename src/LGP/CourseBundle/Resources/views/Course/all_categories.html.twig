@@ -41,7 +41,7 @@
 
                     <div class="GridLex-grid-noGutter-equalHeight">
 
-                        {% for category in categories %}
+                        {% for category in params.categories %}
 
                             <div class="GridLex-col-3_sm-6_xs-12 mb-30">
                                 <div class="package-grid-item"> 
@@ -63,45 +63,7 @@
 
                     </div>
                 </div>
-                {% if categories | length == 0 %}
-                    <div class="pager-wrappper clearfix" style="margin-top:40px">
-
-                        <div class="pager-innner">
-
-                            <div class="flex-row flex-align-middle">
-
-                                <div class="flex-column flex-sm-12">
-                                    Resultats de 1 à 4 de 175 
-                                </div>  
-
-                                <div class="flex-column flex-sm-12">
-                                    <nav class="pager-right">
-                                        <ul class="pagination">
-                                            <li>
-                                                <a href="#" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </a>
-                                            </li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><span>...</span></li>
-                                            <li><a href="#">11</a></li>
-                                            <li><a href="#">12</a></li>
-                                            <li><a href="#">13</a></li>
-                                            <li>
-                                                <a href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-
-                        </div>
-                    {% endif %}
-                </div>
+               {% include 'LGPCourseBundle:Pagination:pagination.html.twig' %}
             </div>
         </div>
     </section>

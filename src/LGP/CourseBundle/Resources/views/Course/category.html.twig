@@ -2,7 +2,7 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    Categorie {{ category }} - {{ parent() }}
+    Categorie {{ params.category }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -16,12 +16,12 @@
 
                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                    <h1 class="hero-title">Catégorie {{ category | lower }}</h1>
+                    <h1 class="hero-title">Catégorie {{ params.category | lower }}</h1>
 
                     <ol class="breadcrumb-list">
-                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
                         <li><a href="{{path('lgp_course_category')}}">Categories</a></li>
-                        <li><span>{{ category | lower }}</span></li>
+                        <li><span>{{ params.category | lower }}</span></li>
                     </ol>
 
                 </div>
@@ -48,8 +48,8 @@
                             <div class="sidebar-module">
                                 <h6 class="sidebar-title" style="font-size:17px;margin-bottom:10px;">Plus de catégories</h6>
                                 <ul class="category">
-                                    {% for cat in categories %}
-                                        {% if category | lower != cat.intitule | lower %}
+                                    {% for cat in params.categories %}
+                                        {% if params.category | lower != cat.intitule | lower %}
                                             <li><a href=" {{path('lgp_course_find_category' , {'category':cat.intitule}) }} ">
                                                     {{cat.intitule}}
                                                 </a>
@@ -69,15 +69,14 @@
 
                 </div>
 
-                {% if categoryFound %}
                     <div class="col-sm-8 col-md-9">
 
                         <div class="sorting-wrappper">
 
                             <div class="sorting-header">
-                                <h3 class="sorting-title uppercase">Cours dans la catégorie {{ category }}</h3>
+                                <h3 class="sorting-title uppercase">Cours dans la catégorie {{ params.category }}</h3>
                                 <p class="sorting-lead">
-                                        {{categoryFound.cours | length}} Cours
+                                        {{params.courses | length}} Cours
                                 </p>
                             </div>
                         </div>
@@ -87,10 +86,10 @@
                             <div class="GridLex-grid-noGutter-equalHeight">
 
 
-                                {% for course in categoryFound.cours %}
+                                {% for course in params.courses %}
                                     <div class="GridLex-col-4_sm-6_xs-12 mb-20">
                                         <div class="package-grid-item"> 
-                                            <a href="#">
+                                            <a href=" {{path('lgp_course_find_prof',{'cours' : course.intitule})}} ">
                                                 <div class="image">
                                                     <img src="{{ asset(course.url) }}" alt="{{course.alt}}" />
                                                 </div>
@@ -108,59 +107,18 @@
 
                         </div>
 
-                        {% if not categoryFound.cours is empty %}
-                            <div class="pager-wrappper clearfix">
-
-                                <div class="pager-innner">
-
-                                    <div class="flex-row flex-align-middle">
-
-                                        <div class="flex-column flex-sm-12">
-                                            Resultats de 1 à 4 de 175 
-                                        </div>  
-
-                                        <div class="flex-column flex-sm-12">
-                                            <nav class="pager-right">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="active"><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><span>...</span></li>
-                                                    <li><a href="#">11</a></li>
-                                                    <li><a href="#">12</a></li>
-                                                    <li><a href="#">13</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">
-                                                            <span aria-hidden="true">&raquo;</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        {% endif %}
+                       {% include 'LGPCourseBundle:Pagination:pagination.html.twig' %}
 
 
                     </div>
-                {% endif %}
 
-                {% if not categoryFound %}
+               {#  {% if not categoryFound %}
                     <div class="sorting-wrappper">
                         <div class="sorting-header">
                             <h3 class="sorting-title uppercase">La catégorie <span style="color:#dd2c00">{{ category }}</span> n'existe pas!!!</h3>
                         </div>
                     </div>
-                {% endif %}
+                {% endif %} #}
 
             </div>
 
