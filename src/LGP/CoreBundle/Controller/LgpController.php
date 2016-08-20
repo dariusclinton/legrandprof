@@ -2,10 +2,10 @@
 
 namespace LGP\CoreBundle\Controller;
 
-use LGP\CourseBundle\Form\CoursType;
-use Proxies\__CG__\LGP\CourseBundle\Entity\Cours;
+use LGP\CourseBundle\Form\CoursSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 class LgpController extends Controller {
 
@@ -17,12 +17,17 @@ class LgpController extends Controller {
         $courses = $courseRepositoty->findAll();
         $categoriesPopular = $categoryRepository->findBy(array(), null, 8);
 
-        $courseForm = new Cours();
-        $form_course = $this->get('form.factory')->create(CoursType::class, $courseForm);
+//        $courseForm = new Cours();
+////        $form_course = $this->get('form.factory')->create(CoursType::class, $courseForm);
+        $form_course = $this->createForm(CoursSearchType::class);
 
         if ($request->isMethod('POST') && $form_course->handleRequest($request)->isValid()) {
 //            $this->generateUrl('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
-            return $this->redirectToRoute('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
+            $data = $form_course->getData();
+            if (!isset($data['intitule'])) {
+                throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour la recherche!");
+            }
+            return $this->redirectToRoute('lgp_course_find_prof', array("cours" => $data['intitule']));
         }
 
         return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('courses' => $courses, 'categories' => $categoriesPopular, 'form' => $form_course->createView()));

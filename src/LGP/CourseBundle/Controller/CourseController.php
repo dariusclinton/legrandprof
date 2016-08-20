@@ -44,7 +44,7 @@ class CourseController extends Controller {
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('cours' => $cours, 'matieres_profs' => $profsByCours, 'pagination' => $pagination, 'enseigneRep' => $enseigneRep));
     }
-
+    
     public function categoryAction($category) {
         $categoryRepository = $this->getDoctrine()->getManager()->getRepository('LGPCourseBundle:Categorie');
         $categories = $categoryRepository->findAll();

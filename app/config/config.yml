@@ -58,9 +58,12 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
+        #
+        # auto_generate_proxy_classes: "%kernel.debug%"
+
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_generate_proxy_classes: false
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
