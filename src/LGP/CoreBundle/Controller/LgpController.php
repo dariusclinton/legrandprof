@@ -28,7 +28,7 @@ class LgpController extends Controller {
             if (!isset($data['intitule'])) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour la recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof', array("cours" => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof', array("intitule_cours" => $data['intitule']));
         }
 
         return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('courses' => $courses, 'categories' => $categoriesPopular, 'form' => $form_course->createView()));

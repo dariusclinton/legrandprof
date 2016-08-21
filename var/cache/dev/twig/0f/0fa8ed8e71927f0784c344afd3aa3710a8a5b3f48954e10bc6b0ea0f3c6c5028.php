@@ -22,38 +22,38 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4c13104b8be6b2d5b5243088e18fe0d92b9033c7063d13760ce6c898896150a7 = $this->env->getExtension("native_profiler");
-        $__internal_4c13104b8be6b2d5b5243088e18fe0d92b9033c7063d13760ce6c898896150a7->enter($__internal_4c13104b8be6b2d5b5243088e18fe0d92b9033c7063d13760ce6c898896150a7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
+        $__internal_b0c46d21c28605ac3a96afebc2e888a572d9912166dddf6f524ed1603144477a = $this->env->getExtension("native_profiler");
+        $__internal_b0c46d21c28605ac3a96afebc2e888a572d9912166dddf6f524ed1603144477a->enter($__internal_b0c46d21c28605ac3a96afebc2e888a572d9912166dddf6f524ed1603144477a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_4c13104b8be6b2d5b5243088e18fe0d92b9033c7063d13760ce6c898896150a7->leave($__internal_4c13104b8be6b2d5b5243088e18fe0d92b9033c7063d13760ce6c898896150a7_prof);
+        $__internal_b0c46d21c28605ac3a96afebc2e888a572d9912166dddf6f524ed1603144477a->leave($__internal_b0c46d21c28605ac3a96afebc2e888a572d9912166dddf6f524ed1603144477a_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_ad3d222c3bdf6d6f69de0e812086f95c30a4afb6e166ddf63a79dae26c08a7f8 = $this->env->getExtension("native_profiler");
-        $__internal_ad3d222c3bdf6d6f69de0e812086f95c30a4afb6e166ddf63a79dae26c08a7f8->enter($__internal_ad3d222c3bdf6d6f69de0e812086f95c30a4afb6e166ddf63a79dae26c08a7f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_e3f97c6c7520086d08a66511155e457a12a41793d9fd1dfa542ece5d3a38ed03 = $this->env->getExtension("native_profiler");
+        $__internal_e3f97c6c7520086d08a66511155e457a12a41793d9fd1dfa542ece5d3a38ed03->enter($__internal_e3f97c6c7520086d08a66511155e457a12a41793d9fd1dfa542ece5d3a38ed03_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Profs de ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "cours", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "intitule_cours", array()), "html", null, true);
         echo " - ";
         $this->displayParentBlock("title", $context, $blocks);
         echo "
 ";
         
-        $__internal_ad3d222c3bdf6d6f69de0e812086f95c30a4afb6e166ddf63a79dae26c08a7f8->leave($__internal_ad3d222c3bdf6d6f69de0e812086f95c30a4afb6e166ddf63a79dae26c08a7f8_prof);
+        $__internal_e3f97c6c7520086d08a66511155e457a12a41793d9fd1dfa542ece5d3a38ed03->leave($__internal_e3f97c6c7520086d08a66511155e457a12a41793d9fd1dfa542ece5d3a38ed03_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_bcab9d3a01e2a9562d22c70a975d065ecd1dfd97bc4b780abf28abb8b9fae20b = $this->env->getExtension("native_profiler");
-        $__internal_bcab9d3a01e2a9562d22c70a975d065ecd1dfd97bc4b780abf28abb8b9fae20b->enter($__internal_bcab9d3a01e2a9562d22c70a975d065ecd1dfd97bc4b780abf28abb8b9fae20b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_7b54a6f2a87220c07ca44588b04b902d00e43ce365e324f6f489322fe83e178b = $this->env->getExtension("native_profiler");
+        $__internal_7b54a6f2a87220c07ca44588b04b902d00e43ce365e324f6f489322fe83e178b->enter($__internal_7b54a6f2a87220c07ca44588b04b902d00e43ce365e324f6f489322fe83e178b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -71,7 +71,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
                     <h1 class=\"hero-title\">Grands Profs en ";
         // line 19
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "cours", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
         echo " </h1>
 
                     <ol class=\"breadcrumb-list\">
@@ -93,7 +93,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
         }
         // line 27
         echo "                        <li><span>";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "cours", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
         echo "</span></li>
                     </ol>
 
@@ -177,7 +177,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                         <div class=\"sorting-header\">
                             <h3 class=\"sorting-title uppercase\">Des Grands profs en ";
         // line 192
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "cours", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "intitule_cours", array()), "html", null, true);
         echo "</h3>
                             <p class=\"sorting-lead\">";
         // line 193
@@ -271,7 +271,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                     if (($this->getAttribute($context["loop"], "index", array()) != $this->getAttribute($context["loop"], "last", array()))) {
                         // line 254
                         echo "                                                                <a href=\" ";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
                         echo " \" title=\"\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a> -
@@ -279,7 +279,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                     } else {
                         // line 256
                         echo "                                                                <a href=\" ";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
                         echo " \" title=\"\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a>
@@ -363,7 +363,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
     </div>
 ";
         
-        $__internal_bcab9d3a01e2a9562d22c70a975d065ecd1dfd97bc4b780abf28abb8b9fae20b->leave($__internal_bcab9d3a01e2a9562d22c70a975d065ecd1dfd97bc4b780abf28abb8b9fae20b_prof);
+        $__internal_7b54a6f2a87220c07ca44588b04b902d00e43ce365e324f6f489322fe83e178b->leave($__internal_7b54a6f2a87220c07ca44588b04b902d00e43ce365e324f6f489322fe83e178b_prof);
 
     }
 
@@ -386,7 +386,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /* {% extends "LGPCoreBundle::layout.html.twig" %}*/
 /* */
 /* {% block title %}*/
-/*     Profs de {{ params.cours }} - {{ parent() }}*/
+/*     Profs de {{ params.intitule_cours }} - {{ parent() }}*/
 /* {% endblock %}*/
 /* */
 /* {% block body %}*/
@@ -400,7 +400,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /* */
 /*                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">*/
 /* */
-/*                     <h1 class="hero-title">Grands Profs en {{ params.cours }} </h1>*/
+/*                     <h1 class="hero-title">Grands Profs en {{ params.courseFound.intitule }} </h1>*/
 /* */
 /*                     <ol class="breadcrumb-list">*/
 /*                         <li><a href="{{path('lgp_core_homepage')}} ">Accueil</a></li>*/
@@ -408,7 +408,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                             {% if params.ville is defined %}*/
 /*                             <li><a href=" {{path('lgp_course_find_prof_city', {'ville' : params.ville})}} "> {{params.ville}} </a></li>*/
 /*                             {% endif %}*/
-/*                         <li><span>{{ params.cours }}</span></li>*/
+/*                         <li><span>{{ params.courseFound.intitule }}</span></li>*/
 /*                     </ol>*/
 /* */
 /*                 </div>*/
@@ -573,7 +573,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                     <div class="sorting-wrappper">*/
 /* */
 /*                         <div class="sorting-header">*/
-/*                             <h3 class="sorting-title uppercase">Des Grands profs en {{ params.cours }}</h3>*/
+/*                             <h3 class="sorting-title uppercase">Des Grands profs en {{ params.intitule_cours }}</h3>*/
 /*                             <p class="sorting-lead">{{params.matieres_profs | length}} Grands profs trouvés</p>*/
 /*                         </div>*/
 /* */
@@ -635,9 +635,9 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> */
 /*                                                             {% for ens_cours in params.enseigneRep.getCoursByProf(enseigne.prof) %}*/
 /*                                                                 {% if loop.index != loop.last %}*/
-/*                                                                 <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -*/
+/*                                                                 <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -*/
 /*                                                             {% else %}*/
-/*                                                                 <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>*/
+/*                                                                 <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>*/
 /*                                                             {% endif %}*/
 /*                                                         {% endfor %} */
 /*                                                     </li>*/
@@ -677,4 +677,4 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*         </div>*/
 /* */
 /*     </div>*/
-/* {% endblock %}*/
+/* {% endblock %} */

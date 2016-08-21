@@ -158,12 +158,12 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             if (0 === strpos($pathinfo, '/course/search/profs')) {
                 // lgp_course_find_prof
-                if (preg_match('#^/course/search/profs/(?P<cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/course/search/profs/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchAction',  'page' => 1,));
                 }
 
                 // lgp_course_find_prof_refine
-                if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)/(?P<cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_refine')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchRefineAction',  'page' => 1,));
                 }
 

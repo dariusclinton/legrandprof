@@ -15,18 +15,18 @@ class CourseController extends Controller {
      * 
      * @param type $cours
      * @param type $page
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      * @return type
      * @throws type
      * @throws NotFoundHttpException
      * @throws InvalidArgumentException
      */
-    public function searchAction($cours, $page, Request $request) {
+    public function searchAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
-        $coursFound = $coursRep->findOneBy(array('intitule' => $cours));
+        $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
         if ($coursFound) {
@@ -36,13 +36,14 @@ class CourseController extends Controller {
                 $profsCount = count($profsByCours);
                 $pageCount = ceil($profsCount / $max_per_page);
 
-                if ($pageCount < $page  && $pageCount != 0) {
+                if ($pageCount < $page && $pageCount != 0) {
                     throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404
                 }
 
                 $params = array(
-                    'cours' => $cours,
+                    'intitule_cours' => $intitule_cours,
                     'courses' => $courses,
+                    'courseFound' => $coursFound,
                     'matieres_profs' => $profsByCours,
                     'enseigneRep' => $enseigneRep,
                     'pagination' => array(
@@ -51,7 +52,7 @@ class CourseController extends Controller {
                         'profs_count' => $profsCount,
                         'max_per_page' => $max_per_page,
                         'page' => $page,
-                        'route_params' => array('cours' => $cours)
+                        'route_params' => array('intitule_cours' => $coursFound->getIntitule())
                     ),
                 );
             } catch (NoResultException $ex) {
@@ -68,9 +69,10 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
         }
 
+//        $request->request->set("intitule_cours", $coursFound->getIntitule());
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
@@ -79,18 +81,18 @@ class CourseController extends Controller {
      * @param type $ville
      * @param type $cours
      * @param type $page
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      * @return type
      * @throws type
      * @throws NotFoundHttpException
      * @throws InvalidArgumentException
      */
-    public function searchRefineAction($ville, $cours, $page, Request $request) {
+    public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
-        $coursFound = $coursRep->findOneBy(array('intitule' => $cours));
+        $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
         if ($coursFound) {
@@ -101,13 +103,14 @@ class CourseController extends Controller {
                 $profsCount = count($profsByCoursAndCity);
                 $pageCount = ceil($profsCount / $max_per_page);
 
-                if ($pageCount < $page  && $pageCount != 0) {
+                if ($pageCount < $page && $pageCount != 0) {
                     throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
                 }
 
                 $params = array(
-                    'cours' => $cours,
+                    'intitule_cours' => $intitule_cours,
                     'ville' => $ville,
+                    'courseFound' => $coursFound,
                     'courses' => $courses,
                     'matieres_profs' => $profsByCoursAndCity,
                     'enseigneRep' => $enseigneRep,
@@ -117,7 +120,7 @@ class CourseController extends Controller {
                         'profs_count' => $profsCount,
                         'max_per_page' => $max_per_page,
                         'page' => $page,
-                        'route_params' => array('cours' => $cours, 'ville' => $ville)
+                        'route_params' => array('intitule_cours' => $coursFound->getIntitule(), 'ville' => $ville)
                     ),
                 );
             } catch (NoResultException $ex) {
@@ -134,7 +137,7 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
         }
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
@@ -144,7 +147,7 @@ class CourseController extends Controller {
      * 
      * @param type $ville
      * @param type $page
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      * @return type
      * @throws type
      * @throws NotFoundHttpException
@@ -162,7 +165,7 @@ class CourseController extends Controller {
                 $profsByCity = $enseigneRep->getProfsByCity($ville, $page, $max_per_page);
                 $profsCount = count($profsByCity);
                 $pageCount = ceil($profsCount / $max_per_page);
-                if ($pageCount < $page  && $pageCount != 0) {
+                if ($pageCount < $page && $pageCount != 0) {
                     throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
                 }
                 $params = array(
@@ -193,7 +196,7 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
         }
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
@@ -219,7 +222,7 @@ class CourseController extends Controller {
         if ($pageCount < $page && $pageCount != 0) {
             throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
         }
-        
+
         $params = array(
             'category' => $category,
             'categories' => $categories,
@@ -249,7 +252,7 @@ class CourseController extends Controller {
         $categories = $categoryRepository->getAllCategories($page, $max_per_page);
         $categoriesCount = count($categories);
         $pageCount = ceil($categoriesCount / $max_per_page);
-        if ($pageCount < $page  && $pageCount != 0) {
+        if ($pageCount < $page && $pageCount != 0) {
             throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
         }
         $params = array(

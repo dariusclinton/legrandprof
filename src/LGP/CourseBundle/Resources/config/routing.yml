@@ -5,12 +5,12 @@ lgp_course_category:
         page:   \d+
 
 lgp_course_find_prof:
-    path:     /search/profs/{cours}/{page}
+    path:     /search/profs/{intitule_cours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
     requirements:
         page:   \d+
 lgp_course_find_prof_refine:
-    path:     /search/profs/{ville}/{cours}/{page}
+    path:     /search/profs/{ville}/{intitule_cours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchRefine, page: 1 }
     requirements:
         page:   \d+
