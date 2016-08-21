@@ -1,0 +1,5 @@
+35a80e,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/,1471806077,,302
+61c86b,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/login,1471806080,,200
+466516,127.0.0.1,POST,http://localhost/legrandprof/web/app_dev.php/login_check,1471806101,,302
+71ee5a,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/,1471806102,,200
+b1db11,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/,1471806121,,200
