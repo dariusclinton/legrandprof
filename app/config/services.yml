@@ -8,3 +8,4 @@ services:
         class: LGPUserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: lgp_user_registration }
+

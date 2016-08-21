@@ -64,10 +64,10 @@ class Categorie extends \LGP\CourseBundle\Entity\Categorie implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'cours'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'cours'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'cours'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Categorie' . "\0" . 'cours'];
     }
 
     /**
@@ -230,6 +230,50 @@ class Categorie extends \LGP\CourseBundle\Entity\Categorie implements \Doctrine\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUrl($url)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', [$url]);
+
+        return parent::setUrl($url);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUrl()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', []);
+
+        return parent::getUrl();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAlt($alt)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlt', [$alt]);
+
+        return parent::setAlt($alt);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAlt()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlt', []);
+
+        return parent::getAlt();
     }
 
     /**

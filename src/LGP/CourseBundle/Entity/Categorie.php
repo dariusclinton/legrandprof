@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Categorie
  *
- * @ORM\Table(name="categorie")
+ * @ORM\Table(name="lgp_categorie")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
  */
-class Categorie
-{
+class Categorie {
+
     /**
      * @var int
      *
@@ -21,7 +21,7 @@ class Categorie
      */
     private $id;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
@@ -34,14 +34,27 @@ class Categorie
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
-    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie")
      */
     private $cours;
-
 
     /**
      * Constructor
@@ -107,6 +120,54 @@ class Categorie
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Categorie
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     *
+     * @return Categorie
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
     }
 
     /**

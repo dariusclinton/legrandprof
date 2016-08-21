@@ -103,8 +103,37 @@ class Prof extends User
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
+
+    /**
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
+     */
+    private $seanceDeCours;
     
-     /**
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="profs")
+     * @ORM\JoinTable(name="lgp_prof_reservation")
+     */
+    private $reservations;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Enseigne
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="prof")
+     */
+    private $enseignes;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Evaluation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
+     */
+    private $evaluations;
+   
+    /**
      * Constructor
      */
     public function __construct()
@@ -113,6 +142,10 @@ class Prof extends User
       
       $this->diplomes       = new ArrayCollection();
       $this->experiencePros = new ArrayCollection();
+      $this->seanceDeCours = new \Doctrine\Common\Collections\ArrayCollection();
+      $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+      $this->enseignes = new \Doctrine\Common\Collections\ArrayCollection();
+      $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -135,7 +168,7 @@ class Prof extends User
     public function setVille($ville)
     {
         $this->ville = $ville;
-
+        
         return $this;
     }
 
@@ -159,7 +192,7 @@ class Prof extends User
     public function setQuartier($quartier)
     {
         $this->quartier = $quartier;
-
+        
         return $this;
     }
 
@@ -183,7 +216,6 @@ class Prof extends User
     public function setBoitePostale($boitePostale)
     {
         $this->boitePostale = $boitePostale;
-
         return $this;
     }
 
@@ -207,7 +239,7 @@ class Prof extends User
     public function setSituationMatrimoniale($situationMatrimoniale)
     {
         $this->situationMatrimoniale = $situationMatrimoniale;
-
+        
         return $this;
     }
 
@@ -231,7 +263,7 @@ class Prof extends User
     public function setNiveauScolaire($niveauScolaire)
     {
         $this->niveauScolaire = $niveauScolaire;
-
+        
         return $this;
     }
 
@@ -255,7 +287,7 @@ class Prof extends User
     public function setNombreEnfants($nombreEnfants)
     {
         $this->nombreEnfants = $nombreEnfants;
-
+        
         return $this;
     }
 
@@ -279,7 +311,7 @@ class Prof extends User
     public function setIsRecommande($isRecommande)
     {
         $this->isRecommande = $isRecommande;
-
+        
         return $this;
     }
 
@@ -303,7 +335,7 @@ class Prof extends User
     public function setIsActif($isActif)
     {
         $this->isActif = $isActif;
-
+        
         return $this;
     }
 
@@ -327,7 +359,7 @@ class Prof extends User
     public function setPresentation($presentation)
     {
         $this->presentation = $presentation;
-
+        
         return $this;
     }
 
@@ -351,7 +383,7 @@ class Prof extends User
     public function setProfession($profession)
     {
         $this->profession = $profession;
-
+        
         return $this;
     }
 
@@ -375,7 +407,53 @@ class Prof extends User
     public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
     {
         $this->diplomes[] = $diplome;
+    }
 
+    /**
+     * Add seanceDeCour
+     *
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
+     *
+     * @return Prof
+     */
+    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
+        $this->seanceDeCours[] = $seanceDeCour;
+    
+        return $this;
+    }
+
+    /**
+     * Remove seanceDeCour
+     *
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
+     */
+    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
+        $this->seanceDeCours->removeElement($seanceDeCour);
+    }
+
+    /**
+     * Get seanceDeCours
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeanceDeCours()
+    {
+        return $this->seanceDeCours;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return Prof
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    
         return $this;
     }
 
@@ -412,7 +490,75 @@ class Prof extends User
 
         // On associe le prof a l'experiencePro
         $experiencePro->setProf($this);
+        
+        return $this;
+    }
 
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     *
+     * @return Prof
+     */
+    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseignes[] = $enseigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     */
+    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseignes->removeElement($enseigne);
+    }
+
+    /**
+     * Get enseignes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnseignes()
+    {
+        return $this->enseignes;
+    }
+
+    /**
+     * Add evaluation
+     *
+     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+     *
+     * @return Prof
+     */
+    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+    {
+        $this->evaluations[] = $evaluation;
+    
         return $this;
     }
 
@@ -434,5 +580,25 @@ class Prof extends User
     public function getExperiencePros()
     {
         return $this->experiencePros;
+    }
+
+    /**
+     * Remove evaluation
+     *
+     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+     */
+    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+    {
+        $this->evaluations->removeElement($evaluation);
+    }
+
+    /**
+     * Get evaluations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvaluations()
+    {
+        return $this->evaluations;
     }
 }

@@ -7,11 +7,19 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Categorie
  *
+<<<<<<< HEAD
  * @ORM\Table(name="categorie")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
  */
 class Categorie
 {
+=======
+ * @ORM\Table(name="lgp_categorie")
+ * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
+ */
+class Categorie {
+
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
     /**
      * @var int
      *
@@ -21,7 +29,11 @@ class Categorie
      */
     private $id;
 
+<<<<<<< HEAD
      /**
+=======
+    /**
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
@@ -34,7 +46,25 @@ class Categorie
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
+<<<<<<< HEAD
     
+=======
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
@@ -42,7 +72,10 @@ class Categorie
      */
     private $cours;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
     /**
      * Constructor
      */
@@ -110,6 +143,57 @@ class Categorie
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Categorie
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     *
+     * @return Categorie
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * Add cour
      *
      * @param \LGP\CourseBundle\Entity\Cours $cour

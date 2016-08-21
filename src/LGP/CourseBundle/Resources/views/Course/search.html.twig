@@ -2,7 +2,7 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    Profs de {{ matiere }} - {{ parent() }}
+    Profs de {{ params.intitule_cours }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -16,13 +16,15 @@
 
                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                    <h1 class="hero-title">Grands Profs en {{ matiere }}</h1>
+                    <h1 class="hero-title">Grands Profs en {{ params.courseFound.intitule }} </h1>
 
                     <ol class="breadcrumb-list">
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="#">Profs</a></li>
-                        <li><a href="#">Douala</a></li>
-                        <li><span>{{ matiere }}</span></li>
+                        <li><a href="{{path('lgp_core_homepage')}} ">Accueil</a></li>
+                            {#  <li><a href="#">Profs</a></li> #}
+                            {% if params.ville is defined %}
+                            <li><a href=" {{path('lgp_course_find_prof_city', {'ville' : params.ville})}} "> {{params.ville}} </a></li>
+                            {% endif %}
+                        <li><span>{{ params.courseFound.intitule }}</span></li>
                     </ol>
 
                 </div>
@@ -46,149 +48,137 @@
 
                         <div class="sidebar-search-wrapper bg-light-2">
 
-                            <div class="sidebar-search-header">
-                                <h4>Recherchez </h4>
+                            <div class="">
+                                <h4>Affinez votre recherche </h4>
                             </div>
 
                             <div class="sidebar-search-content">
 
                                 <div class="form-group">
 
-                                    <select name="destination" class="select2-multi form-control" data-placeholder="Que voulez-vous apprendre ?" multiple>
-                                        <option value="">Que voulez-vous apprendre ?</option>
-                                        <option selected>{{ matiere }}</option>
-                                        <option>Physiques</option>
-                                        <option>Chimie</option>
-                                        <option>Informatique</option>
-                                    </select>
-
+                                    {% if params.courses %}
+                                        <datalist id="cours">
+                                            {% for course in params.courses %}
+                                                <option> {{course.intitule}} </option>}
+                                            {% endfor %}
+                                        </datalist>
+                                    {% endif %}
                                 </div>
 
-                                <div class="form-group">
-
-                                    <select name="month" class="select2-multi form-control" data-placeholder="Quelle ville ?" multiple>
-                                        <option value="">Quelle ville ?</option>
-                                        <option selected>Douala</option>
-                                        <option>Yaounde</option>
-                                        <option>Buea</option>
-                                        <option>Limbe</option>
-                                    </select>
-
-                                </div>
-
-                                <a href="#" class="btn btn-primary btn-block">Rechercher</a>
-
+                                {% include 'LGPCourseBundle:Form:course_form_search.html.twig' %}
                             </div>
 
                         </div>
 
-                        <div class="sidebar-header clearfix">
-                            <h4>Affinez</h4>
-                            <a href="#" class="sidebar-reset-filter"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
+                        {#
+                             BLOCK  AFFINEZ RECHERCHE
+                          <div class="sidebar-header clearfix">
+                             <h4>Affinez</h4>
+                             <a href="#" class="sidebar-reset-filter"><i class="fa fa-times"></i> Annuler</a>
+                         </div> #}
 
-                        <div class="sidebar-inner">
-
-                            <div class="sidebar-module">
-                                <h6 class="sidebar-title">Entrez un nom</h6>
-                                <div class="sidebar-module-inner">
-                                    <div class="sidebar-mini-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Qui ?...">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="clear"></div>
-
-                            <div class="sidebar-module">
-                                <h6 class="sidebar-title">Affinez par note</h6>
-                                <div class="sidebar-module-inner">
-                                    <input id="star_range" />
-                                </div>
-                            </div>
-
-                            <div class="clear"></div>
-
-                            <div class="sidebar-module">
-
-                                <h6 class="sidebar-title">Affinez par quartier</h6>
-                                <div class="sidebar-module-inner">
-                                    <div class="checkbox-block">
-                                        <input id="ville-1" name="ville" type="checkbox" class="checkbox"/>
-                                        <label class="" for="ville-1">Akwa <span class="checkbox-count">(90)</span></label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="ville-2" name="ville" type="checkbox" class="checkbox"/>
-                                        <label class="" for="ville-2">Bonapriso <span class="checkbox-count">(25)</span></label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="ville-3" name="ville" type="checkbox" class="checkbox"/>
-                                        <label class="" for="ville-3">Logpom <span class="checkbox-count">(15)</span></label>
-                                    </div>
-                                    <div class="ville-block">
-                                        <input id="property_type-4" name="ville" type="checkbox" class="checkbox"/>
-                                        <label class="" for="property_type-4">Bonamoussadi<span class="checkbox-count">(20)</span></label>
-                                    </div>
-                                    <div class="more-less-wrapper">
-
-                                        <div id="property_type_more_less" class="collapse"> 
-                                            <div class="more-less-inner">
-
-                                                <div class="checkbox-block">
-                                                    <input id="ville-6" name="ville" type="checkbox" class="checkbox"/>
-                                                    <label class="" for="ville-6">Bonaberi <span class="checkbox-count">(25)</span></label>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-more-less collapsed" data-toggle="collapse" data-target="#property_type_more_less">Montrer plus</button>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="clear"></div>
-
-                            <div class="sidebar-module">
-                                <h6 class="sidebar-title">Affinez par niveau</h6>
-                                <div class="sidebar-module-inner">
-                                    <div class="checkbox-block">
-                                        <input id="niveau-1" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-1">Primaire</label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="niveau-2" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-2">Collège</label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="niveau-3" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-3">Seconde</label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="niveau-4" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-4">Première</label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="niveau-5" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-5">Terminale</label>
-                                    </div>
-                                    <div class="checkbox-block">
-                                        <input id="niveau-6" name="niveau" type="checkbox" class="checkbox"/>
-                                        <label class="" for="niveau-6">Supérieur</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
+                        {#  <div class="sidebar-inner">
+ 
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Entrez un nom</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="sidebar-mini-search">
+                                         <div class="input-group">
+                                             <input type="text" class="form-control" placeholder="Qui ?...">
+                                             <span class="input-group-btn">
+                                                 <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                             </span>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+ 
+ 
+                             <div class="clear"></div>
+ 
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Affinez par note</h6>
+                                 <div class="sidebar-module-inner">
+                                     <input id="star_range" />
+                                 </div>
+                             </div>
+ 
+                             <div class="clear"></div>
+ 
+                             <div class="sidebar-module">
+ 
+                                 <h6 class="sidebar-title">Affinez par quartier</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="checkbox-block">
+                                         <input id="ville-1" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-1">Akwa <span class="checkbox-count">(90)</span></label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="ville-2" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-2">Bonapriso <span class="checkbox-count">(25)</span></label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="ville-3" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-3">Logpom <span class="checkbox-count">(15)</span></label>
+                                     </div>
+                                     <div class="ville-block">
+                                         <input id="property_type-4" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="property_type-4">Bonamoussadi<span class="checkbox-count">(20)</span></label>
+                                     </div>
+                                     <div class="more-less-wrapper">
+ 
+                                         <div id="property_type_more_less" class="collapse"> 
+                                             <div class="more-less-inner">
+ 
+                                                 <div class="checkbox-block">
+                                                     <input id="ville-6" name="ville" type="checkbox" class="checkbox"/>
+                                                     <label class="" for="ville-6">Bonaberi <span class="checkbox-count">(25)</span></label>
+                                                 </div>
+ 
+                                             </div>
+                                         </div>
+                                         <button class="btn btn-more-less collapsed" data-toggle="collapse" data-target="#property_type_more_less">Montrer plus</button>
+ 
+                                     </div>
+ 
+                                 </div>
+                             </div>
+ 
+                             <div class="clear"></div>
+ 
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Affinez par niveau</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="checkbox-block">
+                                         <input id="niveau-1" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-1">Primaire</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-2" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-2">Collège</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-3" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-3">Seconde</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-4" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-4">Première</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-5" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-5">Terminale</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-6" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-6">Supérieur</label>
+                                     </div>
+ 
+                                 </div>
+                             </div>
+ 
+ 
+                         </div> #}
 
                     </aside>
 
@@ -200,158 +190,103 @@
                     <div class="sorting-wrappper">
 
                         <div class="sorting-header">
-                            <h3 class="sorting-title uppercase">Des Grands profs en {{ matiere }}</h3>
-                            <p class="sorting-lead">175 Grands profs trouvés</p>
+
+                            <h3 class="sorting-title uppercase">Des Grands profs en {{ params.intitule_cours }}</h3>
+                            <p class="sorting-lead">{{params.matieres_profs | length}} Grands profs trouvés</p>
                         </div>
 
-                        <div class="sorting-content">
-
-                            <div class="row">
-
-                                <div class="col-sm-12 col-md-8">
-                                    <div class="sort-by-wrapper">
-                                        <label class="sorting-label">Sort by: </label> 
-                                        <div class="sorting-middle-holder">
-                                            <ul class="sort-by">
-                                                <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 col-md-4">
-                                    <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
-                                        <label class="sorting-label">Voir : </label> 
-                                        <div class="sorting-middle-holder">
-                                            <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        {#   <div class="sorting-content">
+  
+                              <div class="row">
+  
+                                  <div class="col-sm-12 col-md-8">
+                                      <div class="sort-by-wrapper">
+                                          <label class="sorting-label">Sort by: </label> 
+                                          <div class="sorting-middle-holder">
+                                              <ul class="sort-by">
+                                                  <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+  
+                                  <div class="col-sm-12 col-md-4">
+                                      <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
+                                          <label class="sorting-label">Voir : </label> 
+                                          <div class="sorting-middle-holder">
+                                              <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
+                                          </div>
+                                      </div>
+                                  </div>
+  
+                              </div>
+  
+                          </div> #}
 
                     </div>
 
                     <div class="package-list-item-wrapper on-page-result-page">
 
-                        <div class="package-list-item clearfix">
-                            <div class="image">
-                                <img src="{{ asset('images/man/01.jpg') }}" alt="Tour Package" />
-                            </div>
+                        {% if params.matieres_profs | length != 0 %} 
 
-                            <div class="content">
-                                <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
-                                <div class="row gap-10">
-                                    <div class="col-sm-12 col-md-9">
+                            {% for enseigne in params.matieres_profs %}
+                                <div class="package-list-item clearfix">
+                                    <div class="image">
+                                        {% if not enseigne.prof.user.photo %}
+                                            <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />
 
-                                        <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>
-                                        <br>
-                                        <ul class="list-info">
-                                            <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>
-
-                                            <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>
-                                        </ul>
-
+                                        {% else %}
+                                            <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />
+                                        {% endif %}
                                     </div>
-                                    <div class="col-sm-12 col-md-3 text-right text-left-sm">
 
-                                        <div class="rating-wrapper">
-                                            <div class="raty-wrapper">
-                                                <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>
-                                                <span> / 7 avis</span>
+                                    <div class="content">
+                                        <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
+                                        <div class="row gap-10">
+                                            <div class="col-sm-12 col-md-9">
+
+                                                <p class="line18"> {{enseigne.prof.presentation}} </p>
+                                                <br>
+                                                <ul class="list-info">
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}} - {{enseigne.prof.quartier | lower}}</li>
+
+                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
+                                                            {% for ens_cours in params.enseigneRep.getCoursByProf(enseigne.prof) %}
+                                                                {% if loop.index != loop.last %}
+                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                            {% else %}
+                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
+                                                            {% endif %}
+                                                        {% endfor %} 
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 text-right text-left-sm">
+
+                                                <div class="rating-wrapper">
+                                                    <div class="raty-wrapper">
+                                                        <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>
+                                                        <span> / 7 avis</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="price">{{enseigne.prix}} Fcfa</div>
+
+                                                <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>
+
                                             </div>
                                         </div>
-
-                                        <div class="price">80.000 Fcfa</div>
-
-                                        <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>
-
                                     </div>
+
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="package-list-item clearfix">
-                            <div class="image">
-                                <img src="{{ asset('images/man/03.jpg') }}" alt="Tour Package" />
-                            </div>
-
-                            <div class="content">
-                                <h5>Antony Robert <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
-                                <div class="row gap-10">
-                                    <div class="col-sm-12 col-md-9">
-
-                                        <p class="line18">Je suis un veritable enseignant qui aimerais vraiment interagir avec des etudiants et eleves...</p>
-                                        <br>
-                                        <ul class="list-info">
-                                            <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>
-
-                                            <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>
-                                        </ul>
-
-                                    </div>
-                                    <div class="col-sm-12 col-md-3 text-right text-left-sm">
-
-                                        <div class="rating-wrapper">
-                                            <div class="raty-wrapper">
-                                                <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>
-                                                <span> / 7 avis</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="price">80.000 Fcfa</div>
-
-                                        <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>
-
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
 
                         </div>
 
-                    </div>
+                        {% include('LGPCourseBundle:Pagination:pagination.html.twig') %}
 
-                    <div class="pager-wrappper clearfix">
-
-                        <div class="pager-innner">
-
-                            <div class="flex-row flex-align-middle">
-
-                                <div class="flex-column flex-sm-12">
-                                    Resultats de 1 à 4 de 175 
-                                </div>
-
-                                <div class="flex-column flex-sm-12">
-                                    <nav class="pager-right">
-                                        <ul class="pagination">
-                                            <li>
-                                                <a href="#" aria-label="Previous">
-                                                    <span aria-hidden="true">&laquo;</span>
-                                                </a>
-                                            </li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><span>...</span></li>
-                                            <li><a href="#">11</a></li>
-                                            <li><a href="#">12</a></li>
-                                            <li><a href="#">13</a></li>
-                                            <li>
-                                                <a href="#" aria-label="Next">
-                                                    <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    {% endif %}
 
                 </div>
 
@@ -360,4 +295,4 @@
         </div>
 
     </div>
-{% endblock %}
+{% endblock %} 

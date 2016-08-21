@@ -15,133 +15,177 @@ class __TwigTemplate_2d6b60949b614267e0f5a043b0b647457034fbad8719fba08f870b8e2ea
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_91836fb93b77c55193fcb846a5a5cd68f2bc45741fa71334c841f0a76d37a32c = $this->env->getExtension("native_profiler");
-        $__internal_91836fb93b77c55193fcb846a5a5cd68f2bc45741fa71334c841f0a76d37a32c->enter($__internal_91836fb93b77c55193fcb846a5a5cd68f2bc45741fa71334c841f0a76d37a32c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_227579b0dee39c01f47c9434f10431bc917c2483b60d76def4cdd2abc6eeebd1 = $this->env->getExtension("native_profiler");
+        $__internal_227579b0dee39c01f47c9434f10431bc917c2483b60d76def4cdd2abc6eeebd1->enter($__internal_227579b0dee39c01f47c9434f10431bc917c2483b60d76def4cdd2abc6eeebd1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
-        echo "<header id=\"header\">
+        echo "<!-- start Header -->
+<header id=\"header\">
 
-\t\t\t<!-- start Navbar (Header) -->
-\t\t\t<nav class=\"navbar navbar-primary navbar-fixed-top navbar-sticky-function\">
+    <!-- start Navbar (Header) -->
+    <nav class=\"navbar navbar-black navbar-fixed-top navbar-sticky-function\">
 
-\t\t\t\t<div class=\"navbar-top\">
+        <div class=\"navbar-top hidden-md hidden-lg\">
 
-\t\t\t\t\t<div class=\"container\">
+            <div class=\"container\">
 
-\t\t\t\t\t\t<div class=\"flex-row flex-align-middle\">
-\t\t\t\t\t\t\t<div class=\"flex-shrink flex-columns\">
-\t\t\t\t\t\t\t\t<a class=\"navbar-logo\" href=\"#\">
-\t\t\t\t\t\t\t\t\t<img src=\"";
-        // line 13
+                <div class=\"flex-row flex-align-middle\">
+                    <div class=\"flex-shrink flex-columns\">
+                        <a class=\"navbar-logo\" href=\"index.html\">
+                            <img src=\"";
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/logo-white.png"), "html", null, true);
         echo "\" alt=\"Logo\" />
-\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"flex-columns\">
-\t\t\t\t\t\t\t\t<div class=\"pull-right\">
+                        </a>
+                    </div>\t
+                    <div class=\"flex-columns\">
+                        <div class=\"\">
 
-\t\t\t\t\t\t\t\t\t<div class=\"navbar-mini\">
-\t\t\t\t\t\t\t\t\t\t<ul class=\"clearfix\">
+                            <div class=\"navbar-mini\">
+                                <ul class=\"clearfix\">
 
-\t\t\t\t\t\t\t\t\t\t\t<li class=\"dropdown bt-dropdown-click hidden-xs\">
-\t\t\t\t\t\t\t\t\t\t\t\t<a id=\"currncy-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"ion-android-globe hidden-xss\"></i> Francais
-\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"caret\"></span>
-\t\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">Francais</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">English</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t\t</li>
+                                    <li class=\"dropdown bt-dropdown-click hidden-xs\">
+                                        <a id=\"currncy-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                            <i class=\"ion-android-globe hidden-xss\"></i> Francais
+                                            <span class=\"caret\"></span>
+                                        </a>
+                                        <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
+                                            <li><a href=\"#\">Francais</a></li>
+                                            <li><a href=\"#\">English</a></li>
+                                        </ul>
+                                    </li>
 
-\t\t\t\t\t\t\t\t\t\t\t<li class=\"dropdown bt-dropdown-click visible-xs\">
-\t\t\t\t\t\t\t\t\t\t\t\t<a id=\"currncy-language-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-cog\"></i>
-\t\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ion-social-usd\"></i> Dollar</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ion-social-euro\"></i> Europe</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\"><i class=\"ion-social-yen\"></i> Yen</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li class=\"divider\"></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">English</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">France</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">Japanese</a></li>
-\t\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t\t</li>
-
-\t\t\t\t\t\t\t\t\t\t\t<li class=\"user-action\">
-\t\t\t\t\t\t\t\t\t\t\t\t";
+                                    <li class=\"dropdown bt-dropdown-click visible-xs\">
+                                        <a id=\"currncy-language-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                            <i class=\"fa fa-cog\"></i>
+                                        </a>
+                                        <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
+                                            <li><a href=\"#\"><i class=\"ion-social-usd\"></i> Dollar</a></li>
+                                            <li><a href=\"#\"><i class=\"ion-social-euro\"></i> Europe</a></li>
+                                            <li><a href=\"#\"><i class=\"ion-social-yen\"></i> Yen</a></li>
+                                            <li class=\"divider\"></li>
+                                            <li><a href=\"#\">English</a></li>
+                                            <li><a href=\"#\">France</a></li>
+                                            <li><a href=\"#\">Japanese</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class=\"user-action\">
+                                        ";
         // line 49
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 50
-            echo "\t\t\t\t\t\t\t\t\t\t\t    Connecté en tant que ";
+            echo "                                            Connecté en tant que ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
             echo "
-\t\t\t\t\t\t\t\t\t\t\t    -
-\t\t\t\t\t\t\t\t\t\t\t    <a href=\"";
+                                            -
+                                            <a href=\"";
             // line 52
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a>
-\t\t\t\t\t\t\t\t\t\t\t  ";
+                                        ";
         } else {
             // line 54
-            echo "\t\t\t\t\t\t\t\t\t\t\t    <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
-\t\t\t\t\t\t\t\t\t\t\t  ";
+            echo "                                            <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
+                                        ";
         }
         // line 56
-        echo "\t\t\t\t\t\t\t\t\t\t\t</li>
+        echo "                                    </li>
+                                    <li class=\"user-action\">
+                                        <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
+                                    </li>
 
-\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t</div>
+                                </ul>
+                            </div>
 
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
+                        </div>
+                    </div>
+                </div>
 
-\t\t\t\t\t</div>
+            </div>
 
-\t\t\t\t</div>
+        </div>
 
-\t\t\t\t<div class=\"navbar-bottom hidden-sm hidden-xs\">
+        <div class=\"navbar-bottom hidden-sm hidden-xs\">
 
-\t\t\t\t\t<div class=\"container\">
+            <div class=\"container\">
 
-\t\t\t\t\t\t<div class=\"row\">
+                <div class=\"row\">
+                    <div class=\"col-lg-2 col-md-2\">
+                        <a href=\" ";
+        // line 78
+        echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+        echo " \"><img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/Logo.png"), "html", null, true);
+        echo "\" alt=\"Logo\" /></a>
+                    </div>\t\t
+                    <div class=\"col-lg-7 col-md-6\">
 
-\t\t\t\t\t\t\t<div class=\"col-sm-9\">
+                        <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
+                            <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
+                                <li><a href=\" ";
+        // line 84
+        echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+        echo " \">Accueil</a></li>
+                                <li><a href=\"#\">Devenir Un Grand Prof</a></li>
+                                <li><a href=\"#\">Comment ca marche ?</a></li>
+                                <!--<li><a href=\"#\">Contactez-nous</a></li>-->
 
-\t\t\t\t\t\t\t\t<div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
-\t\t\t\t\t\t\t\t\t<ul class=\"nav navbar-nav\" id=\"responsive-menu\">
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"index.html\">Accueil</a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">Devenir Un Grand Prof</a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">Comment ca marche ?</a></li>
-\t\t\t\t\t\t\t\t\t\t<li><a href=\"#\">Contactez-nous</a></li>
-\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t</div><!--/.nav-collapse -->
+                            </ul>
 
-\t\t\t\t\t\t\t</div>
+                        </div><!--/.nav-collapse -->
 
-\t\t\t\t\t\t\t<div class=\"col-sm-3\">
+                    </div>
 
-\t\t\t\t\t\t\t\t<div class=\"navbar-phone\"><i class=\"fa fa-phone\"></i> Appelez-nous: +237 697 818 740</div>
+                    <div class=\"col-lg-3 col-md-4\">
+                        <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
+                            <ul class=\"nav navbar-nav\">
+                                <li>
+                                    ";
+        // line 99
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 100
+            echo "                                        Connecté en tant que ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
+            echo "
+                                        -
+                                        <a href=\"";
+            // line 102
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "\">Déconnexion</a>
+                                    ";
+        } else {
+            // line 104
+            echo "                                        <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"#loginModal\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
+                                    ";
+        }
+        // line 106
+        echo "                                </li>
+                                <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
+                                    <ul>
+                                        Aucun Prof rajouté\t
+                                    </ul>
 
-\t\t\t\t\t\t\t</div>
+                                </li>
 
-\t\t\t\t\t\t</div>
+                            </ul>
+                        </div>
+                    </div>
 
-\t\t\t\t\t</div>
+                </div>
 
-\t\t\t\t</div>
+            </div>
 
-\t\t\t\t<div id=\"slicknav-mobile\"></div>
+        </div>
 
-\t\t\t</nav>
-\t\t\t<!-- end Navbar (Header) -->
+        <div id=\"slicknav-mobile\"></div>
 
-\t\t</header>
+    </nav>
+    <!-- end Navbar (Header) -->
+
+</header>
 ";
         
-        $__internal_91836fb93b77c55193fcb846a5a5cd68f2bc45741fa71334c841f0a76d37a32c->leave($__internal_91836fb93b77c55193fcb846a5a5cd68f2bc45741fa71334c841f0a76d37a32c_prof);
+        $__internal_227579b0dee39c01f47c9434f10431bc917c2483b60d76def4cdd2abc6eeebd1->leave($__internal_227579b0dee39c01f47c9434f10431bc917c2483b60d76def4cdd2abc6eeebd1_prof);
 
     }
 
@@ -157,112 +201,136 @@ class __TwigTemplate_2d6b60949b614267e0f5a043b0b647457034fbad8719fba08f870b8e2ea
 
     public function getDebugInfo()
     {
-        return array (  92 => 56,  88 => 54,  83 => 52,  77 => 50,  75 => 49,  36 => 13,  22 => 1,);
+        return array (  162 => 106,  158 => 104,  153 => 102,  147 => 100,  145 => 99,  127 => 84,  116 => 78,  92 => 56,  88 => 54,  83 => 52,  77 => 50,  75 => 49,  37 => 14,  22 => 1,);
     }
 }
+/* <!-- start Header -->*/
 /* <header id="header">*/
 /* */
-/* 			<!-- start Navbar (Header) -->*/
-/* 			<nav class="navbar navbar-primary navbar-fixed-top navbar-sticky-function">*/
+/*     <!-- start Navbar (Header) -->*/
+/*     <nav class="navbar navbar-black navbar-fixed-top navbar-sticky-function">*/
 /* */
-/* 				<div class="navbar-top">*/
+/*         <div class="navbar-top hidden-md hidden-lg">*/
 /* */
-/* 					<div class="container">*/
+/*             <div class="container">*/
 /* */
-/* 						<div class="flex-row flex-align-middle">*/
-/* 							<div class="flex-shrink flex-columns">*/
-/* 								<a class="navbar-logo" href="#">*/
-/* 									<img src="{{ asset('images/logo-white.png') }}" alt="Logo" />*/
-/* 								</a>*/
-/* 							</div>*/
-/* 							<div class="flex-columns">*/
-/* 								<div class="pull-right">*/
+/*                 <div class="flex-row flex-align-middle">*/
+/*                     <div class="flex-shrink flex-columns">*/
+/*                         <a class="navbar-logo" href="index.html">*/
+/*                             <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />*/
+/*                         </a>*/
+/*                     </div>	*/
+/*                     <div class="flex-columns">*/
+/*                         <div class="">*/
 /* */
-/* 									<div class="navbar-mini">*/
-/* 										<ul class="clearfix">*/
+/*                             <div class="navbar-mini">*/
+/*                                 <ul class="clearfix">*/
 /* */
-/* 											<li class="dropdown bt-dropdown-click hidden-xs">*/
-/* 												<a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
-/* 													<i class="ion-android-globe hidden-xss"></i> Francais*/
-/* 													<span class="caret"></span>*/
-/* 												</a>*/
-/* 												<ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
-/* 													<li><a href="#">Francais</a></li>*/
-/* 													<li><a href="#">English</a></li>*/
-/* 												</ul>*/
-/* 											</li>*/
+/*                                     <li class="dropdown bt-dropdown-click hidden-xs">*/
+/*                                         <a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
+/*                                             <i class="ion-android-globe hidden-xss"></i> Francais*/
+/*                                             <span class="caret"></span>*/
+/*                                         </a>*/
+/*                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
+/*                                             <li><a href="#">Francais</a></li>*/
+/*                                             <li><a href="#">English</a></li>*/
+/*                                         </ul>*/
+/*                                     </li>*/
 /* */
-/* 											<li class="dropdown bt-dropdown-click visible-xs">*/
-/* 												<a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
-/* 													<i class="fa fa-cog"></i>*/
-/* 												</a>*/
-/* 												<ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
-/* 													<li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>*/
-/* 													<li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>*/
-/* 													<li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>*/
-/* 													<li class="divider"></li>*/
-/* 													<li><a href="#">English</a></li>*/
-/* 													<li><a href="#">France</a></li>*/
-/* 													<li><a href="#">Japanese</a></li>*/
-/* 												</ul>*/
-/* 											</li>*/
+/*                                     <li class="dropdown bt-dropdown-click visible-xs">*/
+/*                                         <a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
+/*                                             <i class="fa fa-cog"></i>*/
+/*                                         </a>*/
+/*                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
+/*                                             <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>*/
+/*                                             <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>*/
+/*                                             <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>*/
+/*                                             <li class="divider"></li>*/
+/*                                             <li><a href="#">English</a></li>*/
+/*                                             <li><a href="#">France</a></li>*/
+/*                                             <li><a href="#">Japanese</a></li>*/
+/*                                         </ul>*/
+/*                                     </li>*/
+/*                                     <li class="user-action">*/
+/*                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
+/*                                             Connecté en tant que {{ app.user.username }}*/
+/*                                             -*/
+/*                                             <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>*/
+/*                                         {% else %}*/
+/*                                             <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
+/*                                         {% endif %}*/
+/*                                     </li>*/
+/*                                     <li class="user-action">*/
+/*                                         <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
+/*                                     </li>*/
 /* */
-/* 											<li class="user-action">*/
-/* 												{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
-/* 											    Connecté en tant que {{ app.user.username }}*/
-/* 											    -*/
-/* 											    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>*/
-/* 											  {% else %}*/
-/* 											    <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
-/* 											  {% endif %}*/
-/* 											</li>*/
+/*                                 </ul>*/
+/*                             </div>*/
 /* */
-/* 										</ul>*/
-/* 									</div>*/
+/*                         </div>*/
+/*                     </div>*/
+/*                 </div>*/
 /* */
-/* 								</div>*/
-/* 							</div>*/
-/* 						</div>*/
+/*             </div>*/
 /* */
-/* 					</div>*/
+/*         </div>*/
 /* */
-/* 				</div>*/
+/*         <div class="navbar-bottom hidden-sm hidden-xs">*/
 /* */
-/* 				<div class="navbar-bottom hidden-sm hidden-xs">*/
+/*             <div class="container">*/
 /* */
-/* 					<div class="container">*/
+/*                 <div class="row">*/
+/*                     <div class="col-lg-2 col-md-2">*/
+/*                         <a href=" {{path('lgp_core_homepage')}} "><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>*/
+/*                     </div>		*/
+/*                     <div class="col-lg-7 col-md-6">*/
 /* */
-/* 						<div class="row">*/
+/*                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
+/*                             <ul class="nav navbar-nav" id="responsive-menu">*/
+/*                                 <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>*/
+/*                                 <li><a href="#">Devenir Un Grand Prof</a></li>*/
+/*                                 <li><a href="#">Comment ca marche ?</a></li>*/
+/*                                 <!--<li><a href="#">Contactez-nous</a></li>-->*/
 /* */
-/* 							<div class="col-sm-9">*/
+/*                             </ul>*/
 /* */
-/* 								<div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
-/* 									<ul class="nav navbar-nav" id="responsive-menu">*/
-/* 										<li><a href="index.html">Accueil</a></li>*/
-/* 										<li><a href="#">Devenir Un Grand Prof</a></li>*/
-/* 										<li><a href="#">Comment ca marche ?</a></li>*/
-/* 										<li><a href="#">Contactez-nous</a></li>*/
-/* 									</ul>*/
-/* 								</div><!--/.nav-collapse -->*/
+/*                         </div><!--/.nav-collapse -->*/
 /* */
-/* 							</div>*/
+/*                     </div>*/
 /* */
-/* 							<div class="col-sm-3">*/
+/*                     <div class="col-lg-3 col-md-4">*/
+/*                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
+/*                             <ul class="nav navbar-nav">*/
+/*                                 <li>*/
+/*                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
+/*                                         Connecté en tant que {{ app.user.username }}*/
+/*                                         -*/
+/*                                         <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>*/
+/*                                     {% else %}*/
+/*                                         <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>*/
+/*                                     {% endif %}*/
+/*                                 </li>*/
+/*                                 <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
+/*                                     <ul>*/
+/*                                         Aucun Prof rajouté	*/
+/*                                     </ul>*/
 /* */
-/* 								<div class="navbar-phone"><i class="fa fa-phone"></i> Appelez-nous: +237 697 818 740</div>*/
+/*                                 </li>*/
 /* */
-/* 							</div>*/
+/*                             </ul>*/
+/*                         </div>*/
+/*                     </div>*/
 /* */
-/* 						</div>*/
+/*                 </div>*/
 /* */
-/* 					</div>*/
+/*             </div>*/
 /* */
-/* 				</div>*/
+/*         </div>*/
 /* */
-/* 				<div id="slicknav-mobile"></div>*/
+/*         <div id="slicknav-mobile"></div>*/
 /* */
-/* 			</nav>*/
-/* 			<!-- end Navbar (Header) -->*/
+/*     </nav>*/
+/*     <!-- end Navbar (Header) -->*/
 /* */
-/* 		</header>*/
+/* </header>*/
 /* */

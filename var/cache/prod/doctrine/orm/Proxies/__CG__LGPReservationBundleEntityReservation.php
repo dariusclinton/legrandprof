@@ -64,10 +64,10 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'profs'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'profs'];
     }
 
     /**
@@ -406,6 +406,61 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFactures', []);
 
         return parent::getFactures();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParent', [$parent]);
+
+        return parent::setParent($parent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getParent()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);
+
+        return parent::getParent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addProf(\LGP\UserBundle\Entity\Prof $prof)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProf', [$prof]);
+
+        return parent::addProf($prof);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeProf(\LGP\UserBundle\Entity\Prof $prof)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProf', [$prof]);
+
+        return parent::removeProf($prof);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProfs()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProfs', []);
+
+        return parent::getProfs();
     }
 
 }

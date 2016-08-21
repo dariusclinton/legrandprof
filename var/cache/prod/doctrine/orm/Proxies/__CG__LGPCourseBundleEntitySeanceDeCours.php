@@ -64,10 +64,10 @@ class SeanceDeCours extends \LGP\CourseBundle\Entity\SeanceDeCours implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
     }
 
     /**
@@ -252,6 +252,50 @@ class SeanceDeCours extends \LGP\CourseBundle\Entity\SeanceDeCours implements \D
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCours', []);
 
         return parent::getCours();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setJourDeCours(\LGP\ReservationBundle\Entity\JourDeCours $jourDeCours = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJourDeCours', [$jourDeCours]);
+
+        return parent::setJourDeCours($jourDeCours);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getJourDeCours()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJourDeCours', []);
+
+        return parent::getJourDeCours();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProf', [$prof]);
+
+        return parent::setProf($prof);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProf()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProf', []);
+
+        return parent::getProf();
     }
 
 }

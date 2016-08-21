@@ -64,10 +64,10 @@ class JourDeCours extends \LGP\ReservationBundle\Entity\JourDeCours implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
     }
 
     /**
@@ -285,6 +285,39 @@ class JourDeCours extends \LGP\ReservationBundle\Entity\JourDeCours implements \
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservations', []);
 
         return parent::getReservations();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSeanceDeCour', [$seanceDeCour]);
+
+        return parent::addSeanceDeCour($seanceDeCour);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSeanceDeCour', [$seanceDeCour]);
+
+        return parent::removeSeanceDeCour($seanceDeCour);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSeanceDeCours()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSeanceDeCours', []);
+
+        return parent::getSeanceDeCours();
     }
 
 }

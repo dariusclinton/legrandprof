@@ -20,7 +20,7 @@ abstract class User extends BaseUser
      * @ORM\JoinColumn(nullable=true)
      */
     private $image;
-  
+
     /**
      * @var int
      *
@@ -277,9 +277,19 @@ abstract class User extends BaseUser
     public function setImage(\LGP\UserBundle\Entity\Image $image = null)
     {
         $this->image = $image;
-
+        
         return $this;
     }
+
+    /**
+     * Methode permettant d'activer le compte de l'utilisateur par defaut lors de l'inscription
+     * 
+    * @ORM\PrePersist
+    */
+    public function enabledUser(){
+        $this->setEnabled(true);
+    }
+
 
     /**
      * Get image

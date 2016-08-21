@@ -9,6 +9,3 @@ lgp_parent_registration:
 lgp_prof_registration:
     path:  /register/prof
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
-
-    
-    

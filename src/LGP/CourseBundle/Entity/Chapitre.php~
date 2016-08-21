@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Chapitre
  *
+<<<<<<< HEAD
  * @ORM\Table(name="chapitre")
+=======
+ * @ORM\Table(name="lgp_chapitre")
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\ChapitreRepository")
  */
 class Chapitre
@@ -43,4 +47,89 @@ class Chapitre
      */
     private $programme;
 
+<<<<<<< HEAD
+=======
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set numeroDePartie
+     *
+     * @param integer $numeroDePartie
+     *
+     * @return Chapitre
+     */
+    public function setNumeroDePartie($numeroDePartie)
+    {
+        $this->numeroDePartie = $numeroDePartie;
+    
+        return $this;
+    }
+
+    /**
+     * Get numeroDePartie
+     *
+     * @return integer
+     */
+    public function getNumeroDePartie()
+    {
+        return $this->numeroDePartie;
+    }
+
+    /**
+     * Set intitule
+     *
+     * @param string $intitule
+     *
+     * @return Chapitre
+     */
+    public function setIntitule($intitule)
+    {
+        $this->intitule = $intitule;
+    
+        return $this;
+    }
+
+    /**
+     * Get intitule
+     *
+     * @return string
+     */
+    public function getIntitule()
+    {
+        return $this->intitule;
+    }
+
+    /**
+     * Set programme
+     *
+     * @param \LGP\CourseBundle\Entity\ProgrammeDeCours $programme
+     *
+     * @return Chapitre
+     */
+    public function setProgramme(\LGP\CourseBundle\Entity\ProgrammeDeCours $programme = null)
+    {
+        $this->programme = $programme;
+    
+        return $this;
+    }
+
+    /**
+     * Get programme
+     *
+     * @return \LGP\CourseBundle\Entity\ProgrammeDeCours
+     */
+    public function getProgramme()
+    {
+        return $this->programme;
+    }
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
 }

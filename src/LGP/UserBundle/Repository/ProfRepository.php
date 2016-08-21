@@ -10,10 +10,13 @@ namespace LGP\UserBundle\Repository;
  */
 class ProfRepository extends \Doctrine\ORM\EntityRepository
 {
+<<<<<<< HEAD
   /**
    * Fonction permettant de recuperer un prof en fonction de l'id
    * de l'utilisateur
    */
+=======
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
   public function getProf($id)
   {
     $query = $this->_em->createQuery("SELECT p, u FROM LGPUserBundle:Prof p JOIN p.user u WHERE u.id = :id");

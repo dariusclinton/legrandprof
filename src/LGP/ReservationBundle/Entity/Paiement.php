@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Paiement
  *
- * @ORM\Table(name="paiement")
+ * @ORM\Table(name="lgp_paiement")
  * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\PaiementRepository")
  */
 class Paiement {
@@ -43,6 +43,12 @@ class Paiement {
      */
     private $facture;
 
+    /**
+     * @var \LGPUserBundle\Entity\Parents
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Parents", inversedBy="paiements")
+     */
+    private $parent;
 
 
     /**
@@ -125,5 +131,29 @@ class Paiement {
     public function getFacture()
     {
         return $this->facture;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \LGP\UserBundle\Entity\Parents $parent
+     *
+     * @return Paiement
+     */
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \LGP\UserBundle\Entity\Parents
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

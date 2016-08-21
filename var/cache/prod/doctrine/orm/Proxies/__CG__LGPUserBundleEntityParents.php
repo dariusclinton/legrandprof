@@ -64,10 +64,10 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
         }
 
-        return ['__isInitialized__', 'id', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
     }
 
     /**
@@ -186,6 +186,72 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addReservation', [$reservation]);
+
+        return parent::addReservation($reservation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeReservation', [$reservation]);
+
+        return parent::removeReservation($reservation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReservations()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservations', []);
+
+        return parent::getReservations();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPaiement', [$paiement]);
+
+        return parent::addPaiement($paiement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePaiement', [$paiement]);
+
+        return parent::removePaiement($paiement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPaiements()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaiements', []);
+
+        return parent::getPaiements();
     }
 
     /**
@@ -351,6 +417,17 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage', [$image]);
 
         return parent::setImage($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function enabledUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'enabledUser', []);
+
+        return parent::enabledUser();
     }
 
     /**

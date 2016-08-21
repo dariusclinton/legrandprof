@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProgrammeDeCours
  *
- * @ORM\Table(name="programme_de_cours")
+ * @ORM\Table(name="lgp_programme_de_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\ProgrammeDeCoursRepository")
  */
 class ProgrammeDeCours {
@@ -24,8 +24,7 @@ class ProgrammeDeCours {
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="programme")
-     * @ORM\JoinColumn(name="cours_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="programme")
      */
     private $cours;
     

@@ -64,10 +64,10 @@ class Evaluation extends \LGP\CourseBundle\Entity\Evaluation implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'lieu', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'cours'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'lieu', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'prof'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'lieu', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'cours'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'lieu', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Evaluation' . "\0" . 'prof'];
     }
 
     /**
@@ -252,6 +252,28 @@ class Evaluation extends \LGP\CourseBundle\Entity\Evaluation implements \Doctrin
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCours', []);
 
         return parent::getCours();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProf', [$prof]);
+
+        return parent::setProf($prof);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProf()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProf', []);
+
+        return parent::getProf();
     }
 
 }

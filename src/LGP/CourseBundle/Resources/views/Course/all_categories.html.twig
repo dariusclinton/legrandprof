@@ -1,0 +1,71 @@
+
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    categories - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+
+                    <h1 class="hero-title">Catégories</h1>
+
+                    <ol class="breadcrumb-list">
+                        <li><a href="{{path('lgp_core_homepage')}}">Accueil</a></li>
+                        <li><span>Catégories</span></li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
+    <section class="bg-light">
+        <div class="content-wrapper">
+
+            <div class="container">
+
+                <div class="GridLex-gap-30-wrappper package-grid-item-wrapper">
+
+                    <div class="GridLex-grid-noGutter-equalHeight">
+
+                        {% for category in params.categories %}
+
+                            <div class="GridLex-col-3_sm-6_xs-12 mb-30">
+                                <div class="package-grid-item"> 
+                                    <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">
+                                        <div class="image">
+                                            <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />
+                                            <div class="absolute-in-image">
+                                                <div class="duration"><span>300 Grands profs</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="content clearfix">
+                                            <h5>{{ category.intitule }}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+               {% include 'LGPCourseBundle:Pagination:pagination.html.twig' %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

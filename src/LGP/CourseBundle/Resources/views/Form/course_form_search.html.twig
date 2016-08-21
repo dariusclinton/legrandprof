@@ -1,0 +1,24 @@
+{{ form_start(form) }} 
+
+<div class="column-item-large">
+
+    {% if form.intitule is defined %}
+        <div class="form-group">
+            {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'list':'cours', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+        </div>
+    {% endif %}
+    {% if form.ville is defined %}
+        <div class="form-group">
+            {{ form_widget(form.ville, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+        </div>
+    {% endif %}
+</div> 
+<div class="column-item for-btn">
+    <div class="form-group">
+        <input type="submit" name="" value="Rechercher" class="btn btn-primary btn-block">
+    </div>
+</div>
+
+
+{{ form_rest(form) }}
+{{ form_end(form) }}

@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Facture
  *
+<<<<<<< HEAD
  * @ORM\Table(name="facture")
+=======
+ * @ORM\Table(name="lgp_facture")
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
  * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\FactureRepository")
  */
 class Facture {

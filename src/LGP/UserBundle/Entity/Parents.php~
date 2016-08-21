@@ -1,0 +1,46 @@
+<?php
+
+namespace LGP\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Parents
+ *
+ * @ORM\Table(name="lgp_parents")
+ * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ParentsRepository")
+ */
+class Parents {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="parent", cascade={"persist","remove"})
+     */
+    private $reservations;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", inversedBy="parents")
+     * @ORM\JoinTable(name="lgp_parents_paiement")
+     */
+    private $paiements;
+
+   
+}

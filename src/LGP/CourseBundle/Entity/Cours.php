@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cours
  *
- * @ORM\Table(name="cours")
+ * @ORM\Table(name="lgp_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CoursRepository")
  */
 class Cours {
@@ -29,6 +29,27 @@ class Cours {
     private $intitule;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=1000, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
+     */
+    private $alt;
+
+    /**
      * @var \LGP\CourseBundle\Entity\Categorie
      *
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Categorie", inversedBy="cours")
@@ -38,7 +59,7 @@ class Cours {
     /**
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
      * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", mappedBy="cours")
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="cours")
      */
     private $programme;
 
@@ -55,6 +76,13 @@ class Cours {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="cours")
      */
     private $evaluations;
+    
+    /**
+     * @var \LGPCourseBundle\Entity\Enseigne
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="cours")
+     */
+    private $enseignes;
 
     /**
      * Constructor
@@ -63,7 +91,9 @@ class Cours {
     {
         $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -97,6 +127,78 @@ class Cours {
     public function getIntitule()
     {
         return $this->intitule;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Cours
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Cours
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     *
+     * @return Cours
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
     }
 
     /**
@@ -213,5 +315,39 @@ class Cours {
     public function getEvaluations()
     {
         return $this->evaluations;
+    }
+
+    /**
+     * Add enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     *
+     * @return Cours
+     */
+    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseignes[] = $enseigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove enseigne
+     *
+     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     */
+    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    {
+        $this->enseignes->removeElement($enseigne);
+    }
+
+    /**
+     * Get enseignes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnseignes()
+    {
+        return $this->enseignes;
     }
 }

@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Evaluation
  *
+<<<<<<< HEAD
  * @ORM\Table(name="evaluation")
+=======
+ * @ORM\Table(name="lgp_evaluation")
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\EvaluationRepository")
  */
 class Evaluation
@@ -41,7 +45,17 @@ class Evaluation
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="evaluations")
      */
     private $cours;
+<<<<<<< HEAD
 
+=======
+    
+    /**
+     * @var \LGPUserBundle\Entity\Prof
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="evaluations")
+     */
+    private $prof;
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
 
     /**
      * Get id
@@ -124,4 +138,31 @@ class Evaluation
     {
         return $this->cours;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Set prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return Evaluation
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
+    {
+        $this->prof = $prof;
+    
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \LGP\UserBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
 }

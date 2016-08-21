@@ -64,10 +64,10 @@ class Paiement extends \LGP\ReservationBundle\Entity\Paiement implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'mode', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'date', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'facture'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'mode', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'date', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'facture', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'parent'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'mode', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'date', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'facture'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'mode', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'date', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'facture', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Paiement' . "\0" . 'parent'];
     }
 
     /**
@@ -252,6 +252,28 @@ class Paiement extends \LGP\ReservationBundle\Entity\Paiement implements \Doctri
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFacture', []);
 
         return parent::getFacture();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParent', [$parent]);
+
+        return parent::setParent($parent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getParent()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParent', []);
+
+        return parent::getParent();
     }
 
 }
