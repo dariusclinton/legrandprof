@@ -16,6 +16,7 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="LGPCoreBundle">LGP\CoreBundle\LGPCoreBundle</parameter>
+      <parameter key="PUGXMultiUserBundle">PUGX\MultiUserBundle\PUGXMultiUserBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="LGPUserBundle">LGP\UserBundle\LGPUserBundle</parameter>
       <parameter key="LGPCourseBundle">LGP\CourseBundle\LGPCourseBundle</parameter>
@@ -309,6 +310,64 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
+    <parameter key="pugx_user_discriminator_users" type="collection">
+      <parameter key="user_one" type="collection">
+        <parameter key="entity" type="collection">
+          <parameter key="class">LGP\UserBundle\Entity\Parents</parameter>
+          <parameter key="factory">PUGX\MultiUserBundle\Model\UserFactory</parameter>
+        </parameter>
+        <parameter key="registration" type="collection">
+          <parameter key="form" type="collection">
+            <parameter key="type">LGP\UserBundle\Form\Type\RegistrationParentFormType</parameter>
+            <parameter key="name">fos_user_registration_form</parameter>
+            <parameter key="validation_groups" type="collection">
+              <parameter>Registration</parameter>
+              <parameter>Default</parameter>
+            </parameter>
+          </parameter>
+          <parameter key="template">LGPUserBundle:Registration:parent.form.html.twig</parameter>
+        </parameter>
+        <parameter key="profile" type="collection">
+          <parameter key="form" type="collection">
+            <parameter key="type">LGP\UserBundle\Form\Type\ProfileParentFormType</parameter>
+            <parameter key="name">fos_user_profile_form</parameter>
+            <parameter key="validation_groups" type="collection">
+              <parameter>Profile</parameter>
+              <parameter>Default</parameter>
+            </parameter>
+          </parameter>
+          <parameter key="template">null</parameter>
+        </parameter>
+      </parameter>
+      <parameter key="user_two" type="collection">
+        <parameter key="entity" type="collection">
+          <parameter key="class">LGP\UserBundle\Entity\Prof</parameter>
+          <parameter key="factory">PUGX\MultiUserBundle\Model\UserFactory</parameter>
+        </parameter>
+        <parameter key="registration" type="collection">
+          <parameter key="form" type="collection">
+            <parameter key="type">LGP\UserBundle\Form\Type\RegistrationProfFormType</parameter>
+            <parameter key="name">fos_user_registration_form</parameter>
+            <parameter key="validation_groups" type="collection">
+              <parameter>Registration</parameter>
+              <parameter>Default</parameter>
+            </parameter>
+          </parameter>
+          <parameter key="template">LGPUserBundle:Registration:prof.form.html.twig</parameter>
+        </parameter>
+        <parameter key="profile" type="collection">
+          <parameter key="form" type="collection">
+            <parameter key="type">LGP\UserBundle\Form\Type\ProfileProfFormType</parameter>
+            <parameter key="name">fos_user_profile_form</parameter>
+            <parameter key="validation_groups" type="collection">
+              <parameter>Profile</parameter>
+              <parameter>Default</parameter>
+            </parameter>
+          </parameter>
+          <parameter key="template">null</parameter>
+        </parameter>
+      </parameter>
+    </parameter>
     <parameter key="fos_user.backend_type_orm">true</parameter>
     <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
     <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
@@ -318,7 +377,7 @@
     <parameter key="fos_user.firewall_name">main</parameter>
     <parameter key="fos_user.model_manager_name">null</parameter>
     <parameter key="fos_user.model.user.class">LGP\UserBundle\Entity\User</parameter>
-    <parameter key="fos_user.profile.form.type">FOS\UserBundle\Form\Type\ProfileFormType</parameter>
+    <parameter key="fos_user.profile.form.type">LGP\UserBundle\Form\ProfileType</parameter>
     <parameter key="fos_user.profile.form.name">fos_user_profile_form</parameter>
     <parameter key="fos_user.profile.form.validation_groups" type="collection">
       <parameter>Profile</parameter>
@@ -424,16 +483,8 @@
     </parameter>
   </parameters>
   <services>
-    <service id="app.form.registration" class="LGPUserBundle\Form\RegistrationType">
-      <tag name="form.type" alias="app_user_registration"/>
-    </service>
-    <service id="lgp.image_uploader" class="LGP\UserBundle\Uploader\ImageUploader">
-      <argument>/opt/lampp/htdocs/legrandprof/app/../web/uploads/images</argument>
-    </service>
-    <service id="lgp.doctrine_image_uploader" class="LGP\UserBundle\EventListener\ImageUploadListener">
-      <tag name="doctrine.event_listener" event="prePersist"/>
-      <tag name="doctrine.event_listener" event="preUpdate"/>
-      <argument type="service" id="lgp.image_uploader"/>
+    <service id="lgp.form.registration" class="LGPUserBundle\Form\RegistrationType">
+      <tag name="form.type" alias="lgp_user_registration"/>
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -550,7 +601,7 @@
                   <tag name="cache.pool"/>
                   <argument>P2GU4gPcIb</argument>
                   <argument></argument>
-                  <argument>UucHUi8BHCh9zNEm23mbVw</argument>
+                  <argument>P5B6h8NbbV+qzud7lOlp2A</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -563,7 +614,7 @@
                   <tag name="cache.pool"/>
                   <argument>EccDeXiE0b</argument>
                   <argument></argument>
-                  <argument>UucHUi8BHCh9zNEm23mbVw</argument>
+                  <argument>P5B6h8NbbV+qzud7lOlp2A</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1212,7 +1263,7 @@
       <tag name="cache.pool"/>
       <argument>93bQzq1Xt0</argument>
       <argument></argument>
-      <argument>UucHUi8BHCh9zNEm23mbVw</argument>
+      <argument>P5B6h8NbbV+qzud7lOlp2A</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1261,7 +1312,7 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
-              <argument key="LGPUserBundle\Form\RegistrationType">app.form.registration</argument>
+              <argument key="LGPUserBundle\Form\RegistrationType">lgp.form.registration</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType">form.type.choice</argument>
               <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>
@@ -1493,6 +1544,8 @@
               <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator">security.validator.user_password</argument>
               <argument key="doctrine.orm.validator.unique">doctrine.orm.validator.unique</argument>
               <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator">doctrine.orm.validator.unique</argument>
+              <argument key="pugx.orm.validator.unique">pugx_multi_user.orm.validator.unique</argument>
+              <argument key="PUGX\MultiUserBundle\Validator\Constraints\UniqueEntityValidator">pugx_multi_user.orm.validator.unique</argument>
             </argument>
           </service>
         </argument>
@@ -1521,7 +1574,7 @@
           <argument type="service">
             <service class="FOS\UserBundle\Validator\Initializer" public="false">
               <tag name="validator.initializer"/>
-              <argument type="service" id="fos_user.user_manager"/>
+              <argument type="service" id="pugx_user.manager.orm_user_manager"/>
             </service>
           </argument>
         </argument>
@@ -1908,6 +1961,10 @@
         <argument>Sensio\Bundle\FrameworkExtraBundle\EventListener\SecurityListener</argument>
       </call>
       <call method="addSubscriberService">
+        <argument>pugx_multi_user.listener.authentication</argument>
+        <argument>PUGX\MultiUserBundle\Listener\AuthenticationListener</argument>
+      </call>
+      <call method="addSubscriberService">
         <argument>fos_user.security.interactive_login_listener</argument>
         <argument>FOS\UserBundle\EventListener\LastLoginListener</argument>
       </call>
@@ -2003,7 +2060,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57b3b8e1c47205.75756127</argument>
+            <argument>57b9e692dd62c2.94350343</argument>
           </service>
         </argument>
       </argument>
@@ -2123,7 +2180,63 @@
           <service class="Symfony\Component\Security\Http\Firewall\ChannelListener" public="false">
             <tag name="monolog.logger" channel="security"/>
             <argument type="service">
-              <service class="Symfony\Component\Security\Http\AccessMap" public="false"/>
+              <service class="Symfony\Component\Security\Http\AccessMap" public="false">
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/login$</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/register</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/user/prof/register</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/resetting</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/admin/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+              </service>
             </argument>
             <argument type="service">
               <service class="Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint" public="false">
@@ -2327,7 +2440,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57b3b8e1c47205.75756127</argument>
+            <argument>57b9e692dd62c2.94350343</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2338,7 +2451,63 @@
             <argument type="service" id="security.token_storage"/>
             <argument type="service" id="debug.security.access.decision_manager"/>
             <argument type="service">
-              <service class="Symfony\Component\Security\Http\AccessMap" public="false"/>
+              <service class="Symfony\Component\Security\Http\AccessMap" public="false">
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/login$</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/register</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/user/prof/register</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/resetting</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>^/admin/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+              </service>
             </argument>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2683,13 +2852,6 @@
           </call>
           <call method="addEventListener">
             <argument type="collection">
-              <argument>prePersist</argument>
-              <argument>preUpdate</argument>
-            </argument>
-            <argument type="service" id="lgp.doctrine_image_uploader"/>
-          </call>
-          <call method="addEventListener">
-            <argument type="collection">
               <argument>loadClassMetadata</argument>
             </argument>
             <argument type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
@@ -2738,7 +2900,7 @@
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="Doctrine\ORM\EntityManager">
+    <service id="doctrine.orm.default_entity_manager" class="Doctrine\ORM\EntityManager" lazy="true">
       <argument type="service" id="doctrine.dbal.default_connection"/>
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
@@ -2909,9 +3071,115 @@
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
     </service>
+    <service id="pugx_user.manager.user_discriminator" class="PUGX\MultiUserBundle\Model\UserDiscriminator">
+      <argument type="service" id="session"/>
+      <argument type="collection">
+        <argument key="user_one" type="collection">
+          <argument key="entity" type="collection">
+            <argument key="class">LGP\UserBundle\Entity\Parents</argument>
+            <argument key="factory">PUGX\MultiUserBundle\Model\UserFactory</argument>
+          </argument>
+          <argument key="registration" type="collection">
+            <argument key="form" type="collection">
+              <argument key="type">LGP\UserBundle\Form\Type\RegistrationParentFormType</argument>
+              <argument key="name">fos_user_registration_form</argument>
+              <argument key="validation_groups" type="collection">
+                <argument>Registration</argument>
+                <argument>Default</argument>
+              </argument>
+            </argument>
+            <argument key="template">LGPUserBundle:Registration:parent.form.html.twig</argument>
+          </argument>
+          <argument key="profile" type="collection">
+            <argument key="form" type="collection">
+              <argument key="type">LGP\UserBundle\Form\Type\ProfileParentFormType</argument>
+              <argument key="name">fos_user_profile_form</argument>
+              <argument key="validation_groups" type="collection">
+                <argument>Profile</argument>
+                <argument>Default</argument>
+              </argument>
+            </argument>
+            <argument key="template">null</argument>
+          </argument>
+        </argument>
+        <argument key="user_two" type="collection">
+          <argument key="entity" type="collection">
+            <argument key="class">LGP\UserBundle\Entity\Prof</argument>
+            <argument key="factory">PUGX\MultiUserBundle\Model\UserFactory</argument>
+          </argument>
+          <argument key="registration" type="collection">
+            <argument key="form" type="collection">
+              <argument key="type">LGP\UserBundle\Form\Type\RegistrationProfFormType</argument>
+              <argument key="name">fos_user_registration_form</argument>
+              <argument key="validation_groups" type="collection">
+                <argument>Registration</argument>
+                <argument>Default</argument>
+              </argument>
+            </argument>
+            <argument key="template">LGPUserBundle:Registration:prof.form.html.twig</argument>
+          </argument>
+          <argument key="profile" type="collection">
+            <argument key="form" type="collection">
+              <argument key="type">LGP\UserBundle\Form\Type\ProfileProfFormType</argument>
+              <argument key="name">fos_user_profile_form</argument>
+              <argument key="validation_groups" type="collection">
+                <argument>Profile</argument>
+                <argument>Default</argument>
+              </argument>
+            </argument>
+            <argument key="template">null</argument>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="pugx_multi_user.registration_manager" class="PUGX\MultiUserBundle\Controller\RegistrationManager">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="pugx_multi_user.registration_controller"/>
+      <argument type="service" id="fos_user.registration.form.factory"/>
+    </service>
+    <service id="pugx_multi_user.profile_manager" class="PUGX\MultiUserBundle\Controller\ProfileManager">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="pugx_multi_user.profile_controller"/>
+      <argument type="service" id="fos_user.profile.form.factory"/>
+    </service>
+    <service id="pugx_multi_user.registration_controller" class="FOS\UserBundle\Controller\RegistrationController"/>
+    <service id="pugx_multi_user.profile_controller" class="FOS\UserBundle\Controller\ProfileController"/>
+    <service id="pugx_multi_user.registration_form_factory" class="PUGX\MultiUserBundle\Form\FormFactory">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="form.factory"/>
+      <argument>registration</argument>
+    </service>
+    <service id="pugx_multi_user.profile_form_factory" class="PUGX\MultiUserBundle\Form\FormFactory">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="form.factory"/>
+      <argument>profile</argument>
+    </service>
+    <service id="pugx_multi_user.listener.authentication" class="PUGX\MultiUserBundle\Listener\AuthenticationListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+    </service>
+    <service id="pugx_multi_user.orm.validator.unique" class="PUGX\MultiUserBundle\Validator\Constraints\UniqueEntityValidator">
+      <tag name="validator.constraint_validator" alias="pugx.orm.validator.unique"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="pugx_user.manager.orm_user_manager" class="PUGX\MultiUserBundle\Doctrine\UserManager">
+      <argument type="service" id="security.encoder_factory"/>
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+      <argument type="service">
+        <service class="Doctrine\Common\Persistence\ObjectManager" public="false">
+          <argument>null</argument>
+          <factory service="doctrine" method="getManager"/>
+        </service>
+      </argument>
+      <argument>LGP\UserBundle\Entity\User</argument>
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+    </service>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_user.user_manager"/>
+      <argument type="service" id="pugx_user.manager.orm_user_manager"/>
     </service>
     <service id="fos_user.security.login_manager" class="FOS\UserBundle\Security\LoginManager">
       <argument type="service" id="security.token_storage"/>
@@ -2920,10 +3188,10 @@
       <argument type="service" id="service_container"/>
     </service>
     <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
-      <argument type="service" id="fos_user.user_manager"/>
+      <argument type="service" id="pugx_user.manager.orm_user_manager"/>
     </service>
     <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
-      <argument type="service" id="fos_user.user_manager"/>
+      <argument type="service" id="pugx_user.manager.orm_user_manager"/>
     </service>
     <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
       <tag name="kernel.event_subscriber"/>
@@ -2939,31 +3207,13 @@
       <tag name="form.type" alias="fos_user_username"/>
       <argument type="service">
         <service class="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" public="false">
-          <argument type="service" id="fos_user.user_manager"/>
+          <argument type="service" id="pugx_user.manager.orm_user_manager"/>
         </service>
-      </argument>
-    </service>
-    <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_profile_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
-      <argument type="collection">
-        <argument>Profile</argument>
-        <argument>Default</argument>
       </argument>
     </service>
     <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
       <tag name="form.type" alias="fos_user_profile"/>
       <argument>LGP\UserBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_registration_form</argument>
-      <argument>LGP\UserBundle\Form\RegistrationType</argument>
-      <argument type="collection">
-        <argument>Registration</argument>
-        <argument>Default</argument>
-      </argument>
     </service>
     <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
       <tag name="form.type" alias="fos_user_registration"/>
@@ -3236,6 +3486,16 @@
       <argument>100</argument>
       <argument>true</argument>
     </service>
+    <service id="fos_user.registration.form.factory" class="PUGX\MultiUserBundle\Form\FormFactory">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="form.factory"/>
+      <argument>registration</argument>
+    </service>
+    <service id="fos_user.profile.form.factory" class="PUGX\MultiUserBundle\Form\FormFactory">
+      <argument type="service" id="pugx_user.manager.user_discriminator"/>
+      <argument type="service" id="form.factory"/>
+      <argument>profile</argument>
+    </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
@@ -3475,18 +3735,6 @@
     <service id="fos_user.util.token_generator" class="FOS\UserBundle\Util\TokenGenerator">
       <argument type="service" id="logger" on-invalid="ignore"/>
     </service>
-    <service id="fos_user.user_manager" class="FOS\UserBundle\Doctrine\UserManager">
-      <argument type="service" id="security.encoder_factory"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service">
-        <service class="Doctrine\Common\Persistence\ObjectManager" public="false">
-          <argument>null</argument>
-          <factory service="doctrine" method="getManager"/>
-        </service>
-      </argument>
-      <argument>LGP\UserBundle\Entity\User</argument>
-    </service>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool"/>
@@ -3500,7 +3748,10 @@
     <service id="doctrine.orm.default_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
     <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
+    <service id="pugx_user_discriminator" alias="pugx_user.manager.user_discriminator"/>
+    <service id="pugx_user_manager" alias="pugx_user.manager.orm_user_manager"/>
     <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.email_canonicalizer"/>
+    <service id="fos_user.user_manager" alias="pugx_user.manager.orm_user_manager"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
   </services>
 </container>

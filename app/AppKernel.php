@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new LGP\CoreBundle\LGPCoreBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new LGP\UserBundle\LGPUserBundle(),
             new LGP\CourseBundle\LGPCourseBundle(),

@@ -32,7 +32,6 @@ class appProdProjectContainer extends Container
         $this->services = array();
         $this->methodMap = array(
             'annotation_reader' => 'getAnnotationReaderService',
-            'app.form.registration' => 'getApp_Form_RegistrationService',
             'assets.context' => 'getAssets_ContextService',
             'assets.packages' => 'getAssets_PackagesService',
             'cache.app' => 'getCache_AppService',
@@ -118,8 +117,7 @@ class appProdProjectContainer extends Container
             'fos_user.resetting.form.type' => 'getFosUser_Resetting_Form_TypeService',
             'fos_user.security.interactive_login_listener' => 'getFosUser_Security_InteractiveLoginListenerService',
             'fos_user.security.login_manager' => 'getFosUser_Security_LoginManagerService',
-            'fos_user.user_manager' => 'getFosUser_UserManagerService',
-            'fos_user.user_provider.username' => 'getFosUser_UserProvider_UsernameService',
+            'fos_user.user_provider.username_email' => 'getFosUser_UserProvider_UsernameEmailService',
             'fos_user.username_form_type' => 'getFosUser_UsernameFormTypeService',
             'fos_user.util.email_canonicalizer' => 'getFosUser_Util_EmailCanonicalizerService',
             'fos_user.util.token_generator' => 'getFosUser_Util_TokenGeneratorService',
@@ -133,8 +131,7 @@ class appProdProjectContainer extends Container
             'http_kernel' => 'getHttpKernelService',
             'kernel' => 'getKernelService',
             'kernel.class_cache.cache_warmer' => 'getKernel_ClassCache_CacheWarmerService',
-            'lgp.doctrine_image_uploader' => 'getLgp_DoctrineImageUploaderService',
-            'lgp.image_uploader' => 'getLgp_ImageUploaderService',
+            'lgp.form.registration' => 'getLgp_Form_RegistrationService',
             'locale_listener' => 'getLocaleListenerService',
             'logger' => 'getLoggerService',
             'monolog.handler.console' => 'getMonolog_Handler_ConsoleService',
@@ -148,6 +145,16 @@ class appProdProjectContainer extends Container
             'monolog.logger.security' => 'getMonolog_Logger_SecurityService',
             'monolog.logger.translation' => 'getMonolog_Logger_TranslationService',
             'property_accessor' => 'getPropertyAccessorService',
+            'pugx_multi_user.listener.authentication' => 'getPugxMultiUser_Listener_AuthenticationService',
+            'pugx_multi_user.orm.validator.unique' => 'getPugxMultiUser_Orm_Validator_UniqueService',
+            'pugx_multi_user.profile_controller' => 'getPugxMultiUser_ProfileControllerService',
+            'pugx_multi_user.profile_form_factory' => 'getPugxMultiUser_ProfileFormFactoryService',
+            'pugx_multi_user.profile_manager' => 'getPugxMultiUser_ProfileManagerService',
+            'pugx_multi_user.registration_controller' => 'getPugxMultiUser_RegistrationControllerService',
+            'pugx_multi_user.registration_form_factory' => 'getPugxMultiUser_RegistrationFormFactoryService',
+            'pugx_multi_user.registration_manager' => 'getPugxMultiUser_RegistrationManagerService',
+            'pugx_user.manager.orm_user_manager' => 'getPugxUser_Manager_OrmUserManagerService',
+            'pugx_user.manager.user_discriminator' => 'getPugxUser_Manager_UserDiscriminatorService',
             'request_stack' => 'getRequestStackService',
             'response_listener' => 'getResponseListenerService',
             'router' => 'getRouterService',
@@ -252,8 +259,11 @@ class appProdProjectContainer extends Container
             'doctrine.orm.default_query_cache' => 'doctrine_cache.providers.doctrine.orm.default_query_cache',
             'doctrine.orm.default_result_cache' => 'doctrine_cache.providers.doctrine.orm.default_result_cache',
             'doctrine.orm.entity_manager' => 'doctrine.orm.default_entity_manager',
+            'fos_user.user_manager' => 'pugx_user.manager.orm_user_manager',
             'fos_user.util.username_canonicalizer' => 'fos_user.util.email_canonicalizer',
             'mailer' => 'swiftmailer.mailer.default',
+            'pugx_user_discriminator' => 'pugx_user.manager.user_discriminator',
+            'pugx_user_manager' => 'pugx_user.manager.orm_user_manager',
             'session.storage' => 'session.storage.native',
             'swiftmailer.mailer' => 'swiftmailer.mailer.default',
             'swiftmailer.spool' => 'swiftmailer.mailer.default.spool',
@@ -282,19 +292,6 @@ class appProdProjectContainer extends Container
     protected function getAnnotationReaderService()
     {
         return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\CachedReader(new \Doctrine\Common\Annotations\AnnotationReader(), new \Doctrine\Common\Cache\FilesystemCache((__DIR__.'/annotations')), false);
-    }
-
-    /*
-     * Gets the 'app.form.registration' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \LGPUserBundle\Form\RegistrationType A LGPUserBundle\Form\RegistrationType instance
-     */
-    protected function getApp_Form_RegistrationService()
-    {
-        return $this->services['app.form.registration'] = new \LGPUserBundle\Form\RegistrationType();
     }
 
     /*
@@ -365,7 +362,7 @@ class appProdProjectContainer extends Container
      */
     protected function getCache_SystemService()
     {
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('Gb5bANSPqv', '', 'gpYK3v4zULjWw6g3nVk7gA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('Gb5bANSPqv', '', 'IDV7RITvPTkwkmxr1Um9iA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /*
@@ -382,7 +379,7 @@ class appProdProjectContainer extends Container
         $a->addPool($this->get('cache.app'));
         $a->addPool($this->get('cache.system'));
         $a->addPool($this->get('cache.validator'));
-        $a->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('cmM3IrxbFf', '', 'gpYK3v4zULjWw6g3nVk7gA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
+        $a->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('cmM3IrxbFf', '', 'IDV7RITvPTkwkmxr1Um9iA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
 
         return $this->services['cache_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer(array(0 => $a));
     }
@@ -482,7 +479,6 @@ class appProdProjectContainer extends Container
     {
         $a = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
         $a->addEventSubscriber(new \FOS\UserBundle\Doctrine\UserListener($this));
-        $a->addEventListener(array(0 => 'prePersist', 1 => 'preUpdate'), $this->get('lgp.doctrine_image_uploader'));
         $a->addEventListener(array(0 => 'loadClassMetadata'), $this->get('doctrine.orm.default_listeners.attach_entity_listeners'));
 
         return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'legrandprof', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array(), 'defaultTableOptions' => array()), new \Doctrine\DBAL\Configuration(), $a, array());
@@ -507,9 +503,11 @@ class appProdProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
+     * @param bool    $lazyLoad whether to try lazy-loading the service with a proxy
+     *
      * @return \Doctrine\ORM\EntityManager A Doctrine\ORM\EntityManager instance
      */
-    protected function getDoctrine_Orm_DefaultEntityManagerService()
+    protected function getDoctrine_Orm_DefaultEntityManagerService($lazyLoad = true)
     {
         $a = $this->get('annotation_reader');
 
@@ -691,6 +689,7 @@ class appProdProjectContainer extends Container
         $instance->addSubscriberService('sensio_framework_extra.view.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener');
         $instance->addSubscriberService('sensio_framework_extra.cache.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\HttpCacheListener');
         $instance->addSubscriberService('sensio_framework_extra.security.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\SecurityListener');
+        $instance->addSubscriberService('pugx_multi_user.listener.authentication', 'PUGX\\MultiUserBundle\\Listener\\AuthenticationListener');
         $instance->addSubscriberService('fos_user.security.interactive_login_listener', 'FOS\\UserBundle\\EventListener\\LastLoginListener');
         $instance->addSubscriberService('fos_user.listener.authentication', 'FOS\\UserBundle\\EventListener\\AuthenticationListener');
         $instance->addSubscriberService('fos_user.listener.flash', 'FOS\\UserBundle\\EventListener\\FlashListener');
@@ -748,7 +747,7 @@ class appProdProjectContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('LGPUserBundle\\Form\\RegistrationType' => 'app.form.registration', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity', 'FOS\\UserBundle\\Form\\Type\\UsernameFormType' => 'fos_user.username_form_type', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType' => 'fos_user.profile.form.type', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType' => 'fos_user.registration.form.type', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType' => 'fos_user.change_password.form.type', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType' => 'fos_user.resetting.form.type'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.upload.validator', 3 => 'form.type_extension.csrf'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
+        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('LGPUserBundle\\Form\\RegistrationType' => 'lgp.form.registration', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity', 'FOS\\UserBundle\\Form\\Type\\UsernameFormType' => 'fos_user.username_form_type', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType' => 'fos_user.profile.form.type', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType' => 'fos_user.registration.form.type', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType' => 'fos_user.change_password.form.type', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType' => 'fos_user.resetting.form.type'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.upload.validator', 3 => 'form.type_extension.csrf'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
     }
 
     /*
@@ -1484,11 +1483,11 @@ class appProdProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance
+     * @return \PUGX\MultiUserBundle\Form\FormFactory A PUGX\MultiUserBundle\Form\FormFactory instance
      */
     protected function getFosUser_Profile_Form_FactoryService()
     {
-        return $this->services['fos_user.profile.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_profile_form', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType', array(0 => 'Profile', 1 => 'Default'));
+        return $this->services['fos_user.profile.form.factory'] = new \PUGX\MultiUserBundle\Form\FormFactory($this->get('pugx_user.manager.user_discriminator'), $this->get('form.factory'), 'profile');
     }
 
     /*
@@ -1510,11 +1509,11 @@ class appProdProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return \FOS\UserBundle\Form\Factory\FormFactory A FOS\UserBundle\Form\Factory\FormFactory instance
+     * @return \PUGX\MultiUserBundle\Form\FormFactory A PUGX\MultiUserBundle\Form\FormFactory instance
      */
     protected function getFosUser_Registration_Form_FactoryService()
     {
-        return $this->services['fos_user.registration.form.factory'] = new \FOS\UserBundle\Form\Factory\FormFactory($this->get('form.factory'), 'fos_user_registration_form', 'LGP\\UserBundle\\Form\\RegistrationType', array(0 => 'Registration', 1 => 'Default'));
+        return $this->services['fos_user.registration.form.factory'] = new \PUGX\MultiUserBundle\Form\FormFactory($this->get('pugx_user.manager.user_discriminator'), $this->get('form.factory'), 'registration');
     }
 
     /*
@@ -1566,7 +1565,7 @@ class appProdProjectContainer extends Container
      */
     protected function getFosUser_Security_InteractiveLoginListenerService()
     {
-        return $this->services['fos_user.security.interactive_login_listener'] = new \FOS\UserBundle\EventListener\LastLoginListener($this->get('fos_user.user_manager'));
+        return $this->services['fos_user.security.interactive_login_listener'] = new \FOS\UserBundle\EventListener\LastLoginListener($this->get('pugx_user.manager.orm_user_manager'));
     }
 
     /*
@@ -1583,21 +1582,6 @@ class appProdProjectContainer extends Container
     }
 
     /*
-     * Gets the 'fos_user.user_manager' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \FOS\UserBundle\Doctrine\UserManager A FOS\UserBundle\Doctrine\UserManager instance
-     */
-    protected function getFosUser_UserManagerService()
-    {
-        $a = $this->get('fos_user.util.email_canonicalizer');
-
-        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Doctrine\UserManager($this->get('security.encoder_factory'), $a, $a, $this->get('doctrine')->getManager(NULL), 'LGP\\UserBundle\\Entity\\User');
-    }
-
-    /*
      * Gets the 'fos_user.username_form_type' service.
      *
      * This service is shared.
@@ -1607,7 +1591,7 @@ class appProdProjectContainer extends Container
      */
     protected function getFosUser_UsernameFormTypeService()
     {
-        return $this->services['fos_user.username_form_type'] = new \FOS\UserBundle\Form\Type\UsernameFormType(new \FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer($this->get('fos_user.user_manager')));
+        return $this->services['fos_user.username_form_type'] = new \FOS\UserBundle\Form\Type\UsernameFormType(new \FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer($this->get('pugx_user.manager.orm_user_manager')));
     }
 
     /*
@@ -1646,7 +1630,7 @@ class appProdProjectContainer extends Container
      */
     protected function getFosUser_Util_UserManipulatorService()
     {
-        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('fos_user.user_manager'));
+        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('pugx_user.manager.orm_user_manager'));
     }
 
     /*
@@ -1791,29 +1775,16 @@ class appProdProjectContainer extends Container
     }
 
     /*
-     * Gets the 'lgp.doctrine_image_uploader' service.
+     * Gets the 'lgp.form.registration' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return \LGP\UserBundle\EventListener\ImageUploadListener A LGP\UserBundle\EventListener\ImageUploadListener instance
+     * @return \LGPUserBundle\Form\RegistrationType A LGPUserBundle\Form\RegistrationType instance
      */
-    protected function getLgp_DoctrineImageUploaderService()
+    protected function getLgp_Form_RegistrationService()
     {
-        return $this->services['lgp.doctrine_image_uploader'] = new \LGP\UserBundle\EventListener\ImageUploadListener($this->get('lgp.image_uploader'));
-    }
-
-    /*
-     * Gets the 'lgp.image_uploader' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \LGP\UserBundle\Uploader\ImageUploader A LGP\UserBundle\Uploader\ImageUploader instance
-     */
-    protected function getLgp_ImageUploaderService()
-    {
-        return $this->services['lgp.image_uploader'] = new \LGP\UserBundle\Uploader\ImageUploader(($this->targetDirs[3].'/app/../web/uploads/images'));
+        return $this->services['lgp.form.registration'] = new \LGPUserBundle\Form\RegistrationType();
     }
 
     /*
@@ -2027,6 +1998,138 @@ class appProdProjectContainer extends Container
     }
 
     /*
+     * Gets the 'pugx_multi_user.listener.authentication' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Listener\AuthenticationListener A PUGX\MultiUserBundle\Listener\AuthenticationListener instance
+     */
+    protected function getPugxMultiUser_Listener_AuthenticationService()
+    {
+        return $this->services['pugx_multi_user.listener.authentication'] = new \PUGX\MultiUserBundle\Listener\AuthenticationListener($this->get('pugx_user.manager.user_discriminator'));
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.orm.validator.unique' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Validator\Constraints\UniqueEntityValidator A PUGX\MultiUserBundle\Validator\Constraints\UniqueEntityValidator instance
+     */
+    protected function getPugxMultiUser_Orm_Validator_UniqueService()
+    {
+        return $this->services['pugx_multi_user.orm.validator.unique'] = new \PUGX\MultiUserBundle\Validator\Constraints\UniqueEntityValidator($this->get('doctrine'));
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.profile_controller' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Controller\ProfileController A FOS\UserBundle\Controller\ProfileController instance
+     */
+    protected function getPugxMultiUser_ProfileControllerService()
+    {
+        return $this->services['pugx_multi_user.profile_controller'] = new \FOS\UserBundle\Controller\ProfileController();
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.profile_form_factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Form\FormFactory A PUGX\MultiUserBundle\Form\FormFactory instance
+     */
+    protected function getPugxMultiUser_ProfileFormFactoryService()
+    {
+        return $this->services['pugx_multi_user.profile_form_factory'] = new \PUGX\MultiUserBundle\Form\FormFactory($this->get('pugx_user.manager.user_discriminator'), $this->get('form.factory'), 'profile');
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.profile_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Controller\ProfileManager A PUGX\MultiUserBundle\Controller\ProfileManager instance
+     */
+    protected function getPugxMultiUser_ProfileManagerService()
+    {
+        return $this->services['pugx_multi_user.profile_manager'] = new \PUGX\MultiUserBundle\Controller\ProfileManager($this->get('pugx_user.manager.user_discriminator'), $this, $this->get('pugx_multi_user.profile_controller'), $this->get('fos_user.profile.form.factory'));
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.registration_controller' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \FOS\UserBundle\Controller\RegistrationController A FOS\UserBundle\Controller\RegistrationController instance
+     */
+    protected function getPugxMultiUser_RegistrationControllerService()
+    {
+        return $this->services['pugx_multi_user.registration_controller'] = new \FOS\UserBundle\Controller\RegistrationController();
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.registration_form_factory' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Form\FormFactory A PUGX\MultiUserBundle\Form\FormFactory instance
+     */
+    protected function getPugxMultiUser_RegistrationFormFactoryService()
+    {
+        return $this->services['pugx_multi_user.registration_form_factory'] = new \PUGX\MultiUserBundle\Form\FormFactory($this->get('pugx_user.manager.user_discriminator'), $this->get('form.factory'), 'registration');
+    }
+
+    /*
+     * Gets the 'pugx_multi_user.registration_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Controller\RegistrationManager A PUGX\MultiUserBundle\Controller\RegistrationManager instance
+     */
+    protected function getPugxMultiUser_RegistrationManagerService()
+    {
+        return $this->services['pugx_multi_user.registration_manager'] = new \PUGX\MultiUserBundle\Controller\RegistrationManager($this->get('pugx_user.manager.user_discriminator'), $this, $this->get('pugx_multi_user.registration_controller'), $this->get('fos_user.registration.form.factory'));
+    }
+
+    /*
+     * Gets the 'pugx_user.manager.orm_user_manager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Doctrine\UserManager A PUGX\MultiUserBundle\Doctrine\UserManager instance
+     */
+    protected function getPugxUser_Manager_OrmUserManagerService()
+    {
+        $a = $this->get('fos_user.util.email_canonicalizer');
+
+        return $this->services['pugx_user.manager.orm_user_manager'] = new \PUGX\MultiUserBundle\Doctrine\UserManager($this->get('security.encoder_factory'), $a, $a, $this->get('doctrine')->getManager(NULL), 'LGP\\UserBundle\\Entity\\User', $this->get('pugx_user.manager.user_discriminator'));
+    }
+
+    /*
+     * Gets the 'pugx_user.manager.user_discriminator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PUGX\MultiUserBundle\Model\UserDiscriminator A PUGX\MultiUserBundle\Model\UserDiscriminator instance
+     */
+    protected function getPugxUser_Manager_UserDiscriminatorService()
+    {
+        return $this->services['pugx_user.manager.user_discriminator'] = new \PUGX\MultiUserBundle\Model\UserDiscriminator($this->get('session'), array('user_one' => array('entity' => array('class' => 'LGP\\UserBundle\\Entity\\Parents', 'factory' => 'PUGX\\MultiUserBundle\\Model\\UserFactory'), 'registration' => array('form' => array('type' => 'LGP\\UserBundle\\Form\\Type\\RegistrationParentFormType', 'name' => 'fos_user_registration_form', 'validation_groups' => array(0 => 'Registration', 1 => 'Default')), 'template' => 'LGPUserBundle:Registration:parent.form.html.twig'), 'profile' => array('form' => array('type' => 'LGP\\UserBundle\\Form\\Type\\ProfileParentFormType', 'name' => 'fos_user_profile_form', 'validation_groups' => array(0 => 'Profile', 1 => 'Default')), 'template' => NULL)), 'user_two' => array('entity' => array('class' => 'LGP\\UserBundle\\Entity\\Prof', 'factory' => 'PUGX\\MultiUserBundle\\Model\\UserFactory'), 'registration' => array('form' => array('type' => 'LGP\\UserBundle\\Form\\Type\\RegistrationProfFormType', 'name' => 'fos_user_registration_form', 'validation_groups' => array(0 => 'Registration', 1 => 'Default')), 'template' => 'LGPUserBundle:Registration:prof.form.html.twig'), 'profile' => array('form' => array('type' => 'LGP\\UserBundle\\Form\\Type\\ProfileProfFormType', 'name' => 'fos_user_profile_form', 'validation_groups' => array(0 => 'Profile', 1 => 'Default')), 'template' => NULL))));
+    }
+
+    /*
      * Gets the 'request_stack' service.
      *
      * This service is shared.
@@ -2213,7 +2316,7 @@ class appProdProjectContainer extends Container
     {
         $a = $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $b = $this->get('security.token_storage');
-        $c = $this->get('fos_user.user_provider.username');
+        $c = $this->get('fos_user.user_provider.username_email');
         $d = $this->get('event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $e = $this->get('security.authentication.trust_resolver');
         $f = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
@@ -2221,27 +2324,42 @@ class appProdProjectContainer extends Container
         $h = $this->get('security.authentication.manager');
         $i = $this->get('security.authentication.session_strategy');
 
-        $j = new \Symfony\Component\Security\Http\AccessMap();
+        $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login$');
 
-        $k = new \Symfony\Component\Security\Http\HttpUtils($f, $f);
+        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/register');
 
-        $l = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $c), 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $a);
+        $l = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/prof/register');
 
-        $m = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $k, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($k, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => 'fos_user_security_logout'));
-        $m->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        $m->addHandler($l);
+        $m = new \Symfony\Component\HttpFoundation\RequestMatcher('^/resetting');
 
-        $n = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($k, array());
-        $n->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
-        $n->setProviderKey('main');
+        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/admin/');
 
-        $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($g, $k, array(), $a);
-        $o->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+        $o = new \Symfony\Component\Security\Http\AccessMap();
+        $o->add($j, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $o->add($k, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $o->add($l, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $o->add($m, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $o->add($n, array(0 => 'ROLE_ADMIN'), NULL);
 
-        $p = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $h, $i, $k, 'main', $n, $o, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $d, NULL);
-        $p->setRememberMeServices($l);
+        $p = new \Symfony\Component\Security\Http\HttpUtils($f, $f);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d, $e), 2 => $m, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $l, $h, $a, $d, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57b0bf85924165.51744037', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $e, $k, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $k, 'fos_user_security_login', false), NULL, NULL, $a, false));
+        $q = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $c), 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $a);
+
+        $r = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $p, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($p, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => 'fos_user_security_logout'));
+        $r->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $r->addHandler($q);
+
+        $s = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($p, array());
+        $s->setOptions(array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $s->setProviderKey('main');
+
+        $t = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($g, $p, array(), $a);
+        $t->setOptions(array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+
+        $u = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $h, $i, $p, 'main', $s, $t, array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $d, NULL);
+        $u->setRememberMeServices($q);
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($o, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d, $e), 2 => $r, 3 => $u, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $q, $h, $a, $d, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57b9e801ae90c6.49923778', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $o, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $e, $p, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $p, 'fos_user_security_login', false), NULL, NULL, $a, false));
     }
 
     /*
@@ -3282,14 +3400,14 @@ class appProdProjectContainer extends Container
     {
         $this->services['validator.builder'] = $instance = \Symfony\Component\Validator\Validation::createValidatorBuilder();
 
-        $instance->setConstraintValidatorFactory(new \Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory($this, array('validator.expression' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\ExpressionValidator' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\EmailValidator' => 'validator.email', 'security.validator.user_password' => 'security.validator.user_password', 'Symfony\\Component\\Security\\Core\\Validator\\Constraints\\UserPasswordValidator' => 'security.validator.user_password', 'doctrine.orm.validator.unique' => 'doctrine.orm.validator.unique', 'Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntityValidator' => 'doctrine.orm.validator.unique')));
+        $instance->setConstraintValidatorFactory(new \Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory($this, array('validator.expression' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\ExpressionValidator' => 'validator.expression', 'Symfony\\Component\\Validator\\Constraints\\EmailValidator' => 'validator.email', 'security.validator.user_password' => 'security.validator.user_password', 'Symfony\\Component\\Security\\Core\\Validator\\Constraints\\UserPasswordValidator' => 'security.validator.user_password', 'doctrine.orm.validator.unique' => 'doctrine.orm.validator.unique', 'Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntityValidator' => 'doctrine.orm.validator.unique', 'pugx.orm.validator.unique' => 'pugx_multi_user.orm.validator.unique', 'PUGX\\MultiUserBundle\\Validator\\Constraints\\UniqueEntityValidator' => 'pugx_multi_user.orm.validator.unique')));
         $instance->setTranslator($this->get('translator.default'));
         $instance->setTranslationDomain('validators');
         $instance->addXmlMappings(array(0 => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml'), 1 => ($this->targetDirs[3].'/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml')));
         $instance->enableAnnotationMapping($this->get('annotation_reader'));
         $instance->addMethodMapping('loadValidatorMetadata');
         $instance->setMetadataCache(new \Symfony\Component\Validator\Mapping\Cache\Psr6Cache($this->get('cache.validator')));
-        $instance->addObjectInitializers(array(0 => $this->get('doctrine.orm.validator_initializer'), 1 => new \FOS\UserBundle\Validator\Initializer($this->get('fos_user.user_manager'))));
+        $instance->addObjectInitializers(array(0 => $this->get('doctrine.orm.validator_initializer'), 1 => new \FOS\UserBundle\Validator\Initializer($this->get('pugx_user.manager.orm_user_manager'))));
         $instance->addXmlMapping(($this->targetDirs[3].'/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml'));
 
         return $instance;
@@ -3335,7 +3453,7 @@ class appProdProjectContainer extends Container
      */
     protected function getCache_ValidatorService()
     {
-        return $this->services['cache.validator'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('QCM70f5EYq', '', 'gpYK3v4zULjWw6g3nVk7gA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.validator'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('QCM70f5EYq', '', 'IDV7RITvPTkwkmxr1Um9iA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /*
@@ -3356,7 +3474,7 @@ class appProdProjectContainer extends Container
     }
 
     /*
-     * Gets the 'fos_user.user_provider.username' service.
+     * Gets the 'fos_user.user_provider.username_email' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
@@ -3365,11 +3483,11 @@ class appProdProjectContainer extends Container
      * If you want to be able to request this service from the container directly,
      * make it public, otherwise you might end up with broken code.
      *
-     * @return \FOS\UserBundle\Security\UserProvider A FOS\UserBundle\Security\UserProvider instance
+     * @return \FOS\UserBundle\Security\EmailUserProvider A FOS\UserBundle\Security\EmailUserProvider instance
      */
-    protected function getFosUser_UserProvider_UsernameService()
+    protected function getFosUser_UserProvider_UsernameEmailService()
     {
-        return $this->services['fos_user.user_provider.username'] = new \FOS\UserBundle\Security\UserProvider($this->get('fos_user.user_manager'));
+        return $this->services['fos_user.user_provider.username_email'] = new \FOS\UserBundle\Security\EmailUserProvider($this->get('pugx_user.manager.orm_user_manager'));
     }
 
     /*
@@ -3428,7 +3546,7 @@ class appProdProjectContainer extends Container
     {
         $a = $this->get('security.user_checker.main');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57b0bf85924165.51744037')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57b9e801ae90c6.49923778')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -3625,6 +3743,7 @@ class appProdProjectContainer extends Container
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'LGPCoreBundle' => 'LGP\\CoreBundle\\LGPCoreBundle',
+                'PUGXMultiUserBundle' => 'PUGX\\MultiUserBundle\\PUGXMultiUserBundle',
                 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
                 'LGPUserBundle' => 'LGP\\UserBundle\\LGPUserBundle',
                 'LGPCourseBundle' => 'LGP\\CourseBundle\\LGPCourseBundle',
@@ -3912,6 +4031,64 @@ class appProdProjectContainer extends Container
             'sensio_framework_extra.converter.doctrine.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DoctrineParamConverter',
             'sensio_framework_extra.converter.datetime.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DateTimeParamConverter',
             'sensio_framework_extra.view.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener',
+            'pugx_user_discriminator_users' => array(
+                'user_one' => array(
+                    'entity' => array(
+                        'class' => 'LGP\\UserBundle\\Entity\\Parents',
+                        'factory' => 'PUGX\\MultiUserBundle\\Model\\UserFactory',
+                    ),
+                    'registration' => array(
+                        'form' => array(
+                            'type' => 'LGP\\UserBundle\\Form\\Type\\RegistrationParentFormType',
+                            'name' => 'fos_user_registration_form',
+                            'validation_groups' => array(
+                                0 => 'Registration',
+                                1 => 'Default',
+                            ),
+                        ),
+                        'template' => 'LGPUserBundle:Registration:parent.form.html.twig',
+                    ),
+                    'profile' => array(
+                        'form' => array(
+                            'type' => 'LGP\\UserBundle\\Form\\Type\\ProfileParentFormType',
+                            'name' => 'fos_user_profile_form',
+                            'validation_groups' => array(
+                                0 => 'Profile',
+                                1 => 'Default',
+                            ),
+                        ),
+                        'template' => NULL,
+                    ),
+                ),
+                'user_two' => array(
+                    'entity' => array(
+                        'class' => 'LGP\\UserBundle\\Entity\\Prof',
+                        'factory' => 'PUGX\\MultiUserBundle\\Model\\UserFactory',
+                    ),
+                    'registration' => array(
+                        'form' => array(
+                            'type' => 'LGP\\UserBundle\\Form\\Type\\RegistrationProfFormType',
+                            'name' => 'fos_user_registration_form',
+                            'validation_groups' => array(
+                                0 => 'Registration',
+                                1 => 'Default',
+                            ),
+                        ),
+                        'template' => 'LGPUserBundle:Registration:prof.form.html.twig',
+                    ),
+                    'profile' => array(
+                        'form' => array(
+                            'type' => 'LGP\\UserBundle\\Form\\Type\\ProfileProfFormType',
+                            'name' => 'fos_user_profile_form',
+                            'validation_groups' => array(
+                                0 => 'Profile',
+                                1 => 'Default',
+                            ),
+                        ),
+                        'template' => NULL,
+                    ),
+                ),
+            ),
             'fos_user.backend_type_orm' => true,
             'fos_user.security.interactive_login_listener.class' => 'FOS\\UserBundle\\EventListener\\LastLoginListener',
             'fos_user.security.login_manager.class' => 'FOS\\UserBundle\\Security\\LoginManager',
@@ -3921,7 +4098,7 @@ class appProdProjectContainer extends Container
             'fos_user.firewall_name' => 'main',
             'fos_user.model_manager_name' => NULL,
             'fos_user.model.user.class' => 'LGP\\UserBundle\\Entity\\User',
-            'fos_user.profile.form.type' => 'FOS\\UserBundle\\Form\\Type\\ProfileFormType',
+            'fos_user.profile.form.type' => 'LGP\\UserBundle\\Form\\ProfileType',
             'fos_user.profile.form.name' => 'fos_user_profile_form',
             'fos_user.profile.form.validation_groups' => array(
                 0 => 'Profile',

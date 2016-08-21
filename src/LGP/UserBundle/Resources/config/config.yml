@@ -1,0 +1,40 @@
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: LGP\UserBundle\Entity\User
+    service:
+        user_manager: pugx_user_manager
+    registration:
+        form:
+            type: LGP\UserBundle\Form\RegistrationType
+    profile:
+        form:
+            type: LGP\UserBundle\Form\ProfileType
+        
+pugx_multi_user:
+  users:
+    user_one:
+        entity: 
+          class: LGP\UserBundle\Entity\Parents
+#          factory: 
+        registration:
+          form: 
+            type: LGP\UserBundle\Form\Type\RegistrationParentFormType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: LGPUserBundle:Registration:parent.form.html.twig
+        profile:
+          form:
+            type: LGP\UserBundle\Form\Type\ProfileParentFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default] 
+    user_two:
+        entity: 
+          class: LGP\UserBundle\Entity\Prof
+        registration:
+          form: 
+            type: LGP\UserBundle\Form\Type\RegistrationProfFormType
+          template: LGPUserBundle:Registration:prof.form.html.twig
+        profile:
+          form: 
+            type: LGP\UserBundle\Form\Type\ProfileProfFormType

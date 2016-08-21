@@ -2995,6 +2995,36 @@ return $controller;
 }
 namespace Symfony\Component\Security\Http
 {
+use Symfony\Component\HttpFoundation\Request;
+interface AccessMapInterface
+{
+public function getPatterns(Request $request);
+}
+}
+namespace Symfony\Component\Security\Http
+{
+use Symfony\Component\HttpFoundation\RequestMatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
+class AccessMap implements AccessMapInterface
+{
+private $map = array();
+public function add(RequestMatcherInterface $requestMatcher, array $attributes = array(), $channel = null)
+{
+$this->map[] = array($requestMatcher, $attributes, $channel);
+}
+public function getPatterns(Request $request)
+{
+foreach ($this->map as $elements) {
+if (null === $elements[0] || $elements[0]->matches($request)) {
+return array($elements[1], $elements[2]);
+}
+}
+return array(null, null);
+}
+}
+}
+namespace Symfony\Component\Security\Http
+{
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\FinishRequestEvent;
@@ -5555,6 +5585,17 @@ throw new \InvalidArgumentException('Exception/Throwable expected, got '.gettype
 }
 $data = array('class'=> get_class($e),'message'=> $e->getMessage(),'code'=> $e->getCode(),'file'=> $e->getFile().':'.$e->getLine(),
 );
+if ($e instanceof \SoapFault) {
+if (isset($e->faultcode)) {
+$data['faultcode'] = $e->faultcode;
+}
+if (isset($e->faultactor)) {
+$data['faultactor'] = $e->faultactor;
+}
+if (isset($e->detail)) {
+$data['detail'] = $e->detail;
+}
+}
 $trace = $e->getTrace();
 foreach ($trace as $frame) {
 if (isset($frame['file'])) {

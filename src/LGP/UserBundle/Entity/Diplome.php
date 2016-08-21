@@ -42,6 +42,7 @@ class Diplome
      */
     private $annee;
 
+    private  $affichage;
 
     /**
      * Get id
@@ -123,5 +124,9 @@ class Diplome
     public function getAnnee()
     {
         return $this->annee;
+    }
+    
+    public function getAffichage() {
+      return $this->getIntitule().' '.$this->getSpecialite().' '.$this->getAnnee();
     }
 }

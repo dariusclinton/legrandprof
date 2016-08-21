@@ -3,21 +3,16 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
- * Parents
- *
- * @ORM\Table(name="lgp_parents")
- * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ParentsRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="lgp_parent")
+ * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Parents
+class Parents extends User
 {
-  /**
-   * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
-   * @ORM\JoinColumn(nullable=false)
-   */
-   private $user;
-
     /**
      * @var int
      *
@@ -25,7 +20,7 @@ class Parents
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 
     /**
@@ -36,29 +31,5 @@ class Parents
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \LGP\UserBundle\Entity\User $user
-     *
-     * @return Parents
-     */
-    public function setUser(\LGP\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \LGP\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
