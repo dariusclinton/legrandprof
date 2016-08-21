@@ -7,6 +7,8 @@
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
 
+    <h1>Creation de compte prof</h1>
+    
     <form action="{{ path('lgp_prof_registration') }}" method="POST">
         {{ form_errors(form) }}
 

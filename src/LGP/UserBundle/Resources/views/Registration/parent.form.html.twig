@@ -6,6 +6,8 @@
 
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
+    
+    <h1>Creation de compte parent</h1>
 
     <form action="{{ path('lgp_parent_registration') }}" method="POST">
         {{ form_errors(form) }}
