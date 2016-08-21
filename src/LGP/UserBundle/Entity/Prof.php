@@ -3,17 +3,19 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Prof
- *
+ * @ORM\Entity
  * @ORM\Table(name="lgp_prof")
- * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ProfRepository")
+ * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Prof
+class Prof extends User
 {
   /**
-   * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist"})
+   * @ORM\ManyToMany(targetEntity="Diplome")
    * @ORM\JoinTable(name="lgp_prof_diplome")
    */
    private $diplomes;
@@ -23,12 +25,6 @@ class Prof
    */
    private $experiencePros;
 
-  /**
-   * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
-   * @ORM\JoinColumn(nullable=false)
-   */
-   private $user;
-
     /**
      * @var int
      *
@@ -36,7 +32,7 @@ class Prof
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -113,7 +109,10 @@ class Prof
      */
     public function __construct()
     {
-        $this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
+      parent::__construct();
+      
+      $this->diplomes       = new ArrayCollection();
+      $this->experiencePros = new ArrayCollection();
     }
 
     /**
@@ -365,31 +364,6 @@ class Prof
     {
         return $this->profession;
     }
-
-    /**
-     * Set user
-     *
-     * @param \LGP\UserBundle\Entity\User $user
-     *
-     * @return Prof
-     */
-    public function setUser(\LGP\UserBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \LGP\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-   
 
     /**
      * Add diplome

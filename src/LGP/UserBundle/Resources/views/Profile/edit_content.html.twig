@@ -1,0 +1,127 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+{{ form_errors(form) }}
+
+<div class="form-group">
+    {{ form_label(form.image, "Photo de profil", {'label_attr': {}}) }}
+    {{ form_widget(form.image, {'attr': {}}) }}
+    {{ form_errors(form.image) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.nom, "Nom", {'label_attr': {}}) }}
+    {{ form_widget(form.nom, {'attr': {}}) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.prenoms, "Prénoms", {'label_attr': {}}) }}
+    {{ form_widget(form.prenoms, {'attr': {}}) }}
+    {{ form_errors(form.prenoms) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dateNaissance, "Date de naissance", {'label_attr': {}}) }}
+    {{ form_widget(form.dateNaissance, {'attr': {}}) }}
+    {{ form_errors(form.dateNaissance) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.sexe, "Sexe", {'label_attr': {}}) }}
+    {{ form_widget(form.sexe, {'attr': {}}) }}
+    {{ form_errors(form.sexe) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.numTelephone, "Numéro de téléphone", {'label_attr': {}}) }}
+    {{ form_widget(form.numTelephone, {'attr': {}}) }}
+    {{ form_errors(form.numTelephone) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.pays, "Pays de résidence", {'label_attr': {}}) }}
+    {{ form_widget(form.pays, {'attr': {}}) }}
+    {{ form_errors(form.pays) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.username, "Pseudo", {'label_attr': {}}) }}
+    {{ form_widget(form.username, {'attr': {}}) }}
+    {{ form_errors(form.username) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.email, "Adresse email", {'label_attr': {}}) }}
+    {{ form_widget(form.email, {'attr': {}}) }}
+    {{ form_errors(form.email) }}
+</div>
+
+{% if form.presentation is defined %}   
+    <div class="form-group">
+        {{ form_label(form.ville, "Ville", {'label_attr': {}}) }}
+        {{ form_widget(form.ville, {'attr': {}}) }}
+        {{ form_errors(form.ville) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.quartier, "Quartier", {'label_attr': {}}) }}
+        {{ form_widget(form.quartier, {'attr': {}}) }}
+        {{ form_errors(form.quartier) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.boitePostale, "Boite postale", {'label_attr': {}}) }}
+        {{ form_widget(form.boitePostale, {'attr': {}}) }}
+        {{ form_errors(form.boitePostale) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.situationMatrimoniale, "Situation matrimoniale", {'label_attr': {}}) }}
+        {{ form_widget(form.situationMatrimoniale, {'attr': {}}) }}
+        {{ form_errors(form.situationMatrimoniale) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.niveauScolaire, "Niveau scolaire", {'label_attr': {}}) }}
+        {{ form_widget(form.niveauScolaire, {'attr': {}}) }}
+        {{ form_errors(form.niveauScolaire) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.nombreEnfants, "Nombre d'enfants", {'label_attr': {}}) }}
+        {{ form_widget(form.nombreEnfants, {'attr': {}}) }}
+        {{ form_errors(form.nombreEnfants) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.presentation, "Présentation", {'label_attr': {}}) }}
+        {{ form_widget(form.presentation, {'attr': {}}) }}
+        {{ form_errors(form.presentation) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.profession, "Profession", {'label_attr': {}}) }}
+        {{ form_widget(form.profession, {'attr': {}}) }}
+        {{ form_errors(form.profession) }}
+    </div>
+        
+    <div class="form-group">
+        {{ form_label(form.diplomes, "Diplômes", {'label_attr': {}}) }}
+        {{ form_widget(form.diplomes, {'attr': {}}) }}
+        {{ form_errors(form.diplomes) }}
+    </div>
+    
+    {{ form_row(form.experiencePros) }}
+    <a href="#" class="btn btn-primary btn-sm" id="add_experience">Ajouter une expérience</a>
+    
+{% endif %}
+
+{{ form_rest(form) }}
+
+<div>
+    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-primary"/>
+</div>
+{{ form_end(form) }}
+
+

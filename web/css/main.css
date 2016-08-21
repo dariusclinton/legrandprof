@@ -283,7 +283,7 @@ h4,
 h5,
 h6 {
     font-family: 'Lato', sans-serif;
-    //color: #F56961;
+    /*//color: #F56961;*/
     color:#e58664;
     line-height: 1.4;
     text-rendering: optimizeLegibility
@@ -2462,7 +2462,7 @@ a.link-alt:hover {
 }
 
 .btn-primary {
-//    background: #F56961;
+/*//    background: #F56961;*/
     background: #e58664;
     border-color: #e58664;
     color: #FFF !important;

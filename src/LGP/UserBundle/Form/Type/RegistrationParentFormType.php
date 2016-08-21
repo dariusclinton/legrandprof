@@ -1,0 +1,32 @@
+<?php
+
+namespace LGP\UserBundle\Form\Type;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+
+class RegistrationParentFormType extends AbstractType
+{
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+    }
+
+    public function getParent() {
+      return 'LGP\UserBundle\Form\Type\RegistrationType';
+    }
+    
+    public function getBlockPrefix()
+    {
+        return 'lgp_parent_registration';
+    }
+    
+    public function getName()
+    {
+      return $this->getBlockPrefix();
+    }
+}

@@ -204,6 +204,10 @@ class ComposerStaticInit95765934b6178ad0696d3262eb62eb80
             array (
                 0 => __DIR__ . '/..' . '/psr/log',
             ),
+            'PUGX\\MultiUserBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/pugx/multi-user-bundle',
+            ),
         ),
         'D' => 
         array (

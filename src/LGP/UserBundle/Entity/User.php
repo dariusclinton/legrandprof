@@ -4,17 +4,23 @@ namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
- *
+ * @ORM\Entity
  * @ORM\Table(name="lgp_user")
- * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\UserRepository")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"user_one" = "Parents", "user_two" = "Prof"})
+ *
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
+    /**
+     * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
+  
     /**
      * @var int
      *
@@ -41,7 +47,7 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
+     * @ORM\Column(name="date_naissance", type="datetime")
      */
     private $dateNaissance;
 
@@ -72,18 +78,6 @@ class User extends BaseUser
      * @ORM\Column(name="date_inscription", type="datetime")
      */
     private $dateInscription;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     *
-     * @Assert\Image(maxSize="2M", maxSizeMessage="La taille du fichier doit être < 2Mo")
-     */
-     private $photo;
-
-     // fichier image
-     private $file;
 
     /**
      * Constructeur
@@ -273,48 +267,27 @@ class User extends BaseUser
         return $this->dateInscription;
     }
 
-
-    // Methode permettant d'activer le compte de l'utilisateur par defaut lors de l'inscription
     /**
-    * @ORM\PrePersist
-    */
-    public function enabledUser(){
-        $this->setEnabled(true);
-    }
-
-    /**
-     * Set photo
+     * Set image
      *
-     * @param string $photo
+     * @param \LGP\UserBundle\Entity\Image $image
      *
      * @return User
      */
-    public function setPhoto($photo)
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
     {
-        $this->photo = $photo;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get image
      *
-     * @return string
+     * @return \LGP\UserBundle\Entity\Image
      */
-    public function getPhoto()
+    public function getImage()
     {
-        return $this->photo;
-    }
-
-    // getter file
-    public function getFile()
-    {
-      return $this->file;
-    }
-
-    // setter file
-    public function setFile($file)
-    {
-      $this->file = $file;
+        return $this->image;
     }
 }
