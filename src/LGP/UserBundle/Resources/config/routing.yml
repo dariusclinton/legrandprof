@@ -2,6 +2,10 @@ lgp_user_homepage:
     path:     /
     defaults: { _controller: LGPUserBundle:Main:index }
     
+lgp_user_become_prof:
+    path:     /prof/become
+    defaults: { _controller: LGPUserBundle:Prof:become }
+    
 lgp_parent_registration:
     path:  /register/parent
     defaults: { _controller: LGPUserBundle:RegistrationParent:register }
