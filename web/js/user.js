@@ -1,16 +1,12 @@
 $(function () {
-
-    // Affichage du datepicker
-    $('.datepicker').datepicker({
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "yy-mm-dd",
-        yearRange: "1950:2010"
-    });
-
-
-
-
+    
+//    // Affichage du datepicker
+//    $('.datepicker').datepicker({
+//        changeMonth: true,
+//        changeYear: true,
+//        dateFormat: "yy-mm-dd",
+//        yearRange: "1950:2010"
+//    });
 
     /**
      *  Gestion de l'ajout des ExperiencePro
