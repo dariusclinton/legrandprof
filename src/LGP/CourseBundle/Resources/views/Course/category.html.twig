@@ -89,7 +89,7 @@
                                 {% for course in params.courses %}
                                     <div class="GridLex-col-4_sm-6_xs-12 mb-20">
                                         <div class="package-grid-item"> 
-                                            <a href=" {{path('lgp_course_find_prof',{'cours' : course.intitule})}} ">
+                                            <a href=" {{path('lgp_course_find_prof',{'intitule_cours' : course.intitule})}} ">
                                                 <div class="image">
                                                     <img src="{{ asset(course.url) }}" alt="{{course.alt}}" />
                                                 </div>
