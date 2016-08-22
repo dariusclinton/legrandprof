@@ -70,5 +70,8 @@ class ProfController extends Controller {
             $this->createNotFoundException("Impossible de trouver l'utilisateur");
         }
     }
+    public function becomeAction(){
+        return $this->render('LGPUserBundle:Prof:become.html.twig');
+    }
 
 }
