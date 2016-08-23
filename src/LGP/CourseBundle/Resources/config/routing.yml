@@ -4,25 +4,37 @@ lgp_course_category:
     requirements:
         page:   \d+
 
-lgp_course_find_prof:
-    path:     /search/profs/{intitule_cours}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
+
+lgp_course_find_category:
+    path:     /search/{category}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:category, page: 1 }
     requirements:
         page:   \d+
+
+
+lgp_course_find_prof:
+    path:     /search/profs/{intitule_cours}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
+    requirements:
+        page:   \d+
+
+
 lgp_course_find_prof_refine:
     path:     /search/profs/{ville}/{intitule_cours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchRefine, page: 1 }
     requirements:
         page:   \d+
 
+
 lgp_course_find_prof_city:
-    path:     /profs/{ville}/{page}
+    path:     search/profs/{ville}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCity, page: 1 }
     requirements:
         page:   \d+
+
     
-lgp_course_find_category:
-    path:     /search/{category}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:category, page: 1 }
+lgp_course_find:
+    path:     /search/profs/{page}
+    defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
     requirements:
         page:   \d+

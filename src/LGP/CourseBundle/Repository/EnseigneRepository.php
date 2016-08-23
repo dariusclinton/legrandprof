@@ -92,4 +92,16 @@ class EnseigneRepository extends EntityRepository {
         return $query->getResult();
     }
 
+    public function getAllProfsEnseignants($page = 1, $max = 10) {
+        if (!is_numeric($max)) {
+            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
+        }
+
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseigne e JOIN e.prof p GROUP BY p.id");
+        $query->setFirstResult(($page - 1) * $max)
+                ->setMaxResults($max);
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
+
 }
