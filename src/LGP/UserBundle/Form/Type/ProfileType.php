@@ -18,9 +18,8 @@ class ProfileType extends AbstractType {
           'required' => false
         ))
         ->add('dateNaissance', BirthdayType::class, array(
-          'widget' => 'single_text',
-          'html5'  => false,
-          'attr'   => ['class' => 'datepicker']
+          'widget' => 'choice',
+          'years'  => range(1950, 2005)
         ))
         ->add('sexe', ChoiceType::class, array(
           'choices' => array(

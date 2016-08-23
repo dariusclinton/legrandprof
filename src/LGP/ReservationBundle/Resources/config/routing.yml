@@ -1,3 +1,11 @@
 lgp_reservation_homepage:
     path:     /
     defaults: { _controller: LGPReservationBundle:Default:index }
+    
+lgp_reservation_detail:
+    path:    /detail
+    defaults: { _controller: LGPReservationBundle:Reservation:detail }
+    
+lgp_reservation_cart:
+    path:    /cart
+    defaults: { _controller: LGPReservationBundle:Reservation:cart }
