@@ -64,10 +64,10 @@ class Cours extends \LGP\CourseBundle\Entity\Cours implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'programme', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'programme', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
     }
 
     /**
@@ -296,28 +296,6 @@ class Cours extends \LGP\CourseBundle\Entity\Cours implements \Doctrine\ORM\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategorie', []);
 
         return parent::getCategorie();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setProgramme(\LGP\CourseBundle\Entity\ProgrammeDeCours $programme = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProgramme', [$programme]);
-
-        return parent::setProgramme($programme);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getProgramme()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProgramme', []);
-
-        return parent::getProgramme();
     }
 
     /**

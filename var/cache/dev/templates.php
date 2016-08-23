@@ -115,6 +115,7 @@
   'LGPUserBundle::layout.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/layout.html.twig',
   'LGPUserBundle:Parent:profile.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Parent/profile.html.twig',
   'LGPUserBundle:Parent:register.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Parent/register.html.twig',
+  'LGPUserBundle:Prof:become.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Prof/become.html.twig',
   'LGPUserBundle:Prof:profile.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Prof/profile.html.twig',
   'LGPUserBundle:Prof:register.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Prof/register.html.twig',
   'LGPUserBundle:Profile:edit.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\UserBundle/Resources/views/Profile/edit.html.twig',

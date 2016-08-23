@@ -15,8 +15,8 @@ class __TwigTemplate_b441fff5e975f4f7423daf6f62b05e95795ac195a2cab796ffe4b077ede
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2a280fc9caea367098b26f48d193623452b7bae3015285ae3286b7ce696ee98d = $this->env->getExtension("native_profiler");
-        $__internal_2a280fc9caea367098b26f48d193623452b7bae3015285ae3286b7ce696ee98d->enter($__internal_2a280fc9caea367098b26f48d193623452b7bae3015285ae3286b7ce696ee98d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Framework/Form/choice_attributes.html.php"));
+        $__internal_07f27c3b3b3aecfd3f330d9f4d2c5475e0588ff095575a423d6253a34c88cf52 = $this->env->getExtension("native_profiler");
+        $__internal_07f27c3b3b3aecfd3f330d9f4d2c5475e0588ff095575a423d6253a34c88cf52->enter($__internal_07f27c3b3b3aecfd3f330d9f4d2c5475e0588ff095575a423d6253a34c88cf52_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Framework/Form/choice_attributes.html.php"));
 
         // line 1
         echo "id=\"<?php echo \$view->escape(\$id) ?>\" name=\"<?php echo \$view->escape(\$full_name) ?>\"
@@ -30,7 +30,7 @@ class __TwigTemplate_b441fff5e975f4f7423daf6f62b05e95795ac195a2cab796ffe4b077ede
 <?php endforeach ?>
 ";
         
-        $__internal_2a280fc9caea367098b26f48d193623452b7bae3015285ae3286b7ce696ee98d->leave($__internal_2a280fc9caea367098b26f48d193623452b7bae3015285ae3286b7ce696ee98d_prof);
+        $__internal_07f27c3b3b3aecfd3f330d9f4d2c5475e0588ff095575a423d6253a34c88cf52->leave($__internal_07f27c3b3b3aecfd3f330d9f4d2c5475e0588ff095575a423d6253a34c88cf52_prof);
 
     }
 

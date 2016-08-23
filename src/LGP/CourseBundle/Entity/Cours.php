@@ -57,13 +57,6 @@ class Cours {
     private $categorie;
 
     /**
-     * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
-     * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="cours")
-     */
-    private $programme;
-
-    /**
      * @var \LGP\CourseBundle\Entity\SeanceDeCours
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="cours")
@@ -84,6 +77,7 @@ class Cours {
      */
     private $enseignes;
 
+  
     /**
      * Constructor
      */
@@ -91,9 +85,8 @@ class Cours {
     {
         $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseignes = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -223,30 +216,6 @@ class Cours {
     public function getCategorie()
     {
         return $this->categorie;
-    }
-
-    /**
-     * Set programme
-     *
-     * @param \LGP\CourseBundle\Entity\ProgrammeDeCours $programme
-     *
-     * @return Cours
-     */
-    public function setProgramme(\LGP\CourseBundle\Entity\ProgrammeDeCours $programme = null)
-    {
-        $this->programme = $programme;
-    
-        return $this;
-    }
-
-    /**
-     * Get programme
-     *
-     * @return \LGP\CourseBundle\Entity\ProgrammeDeCours
-     */
-    public function getProgramme()
-    {
-        return $this->programme;
     }
 
     /**
