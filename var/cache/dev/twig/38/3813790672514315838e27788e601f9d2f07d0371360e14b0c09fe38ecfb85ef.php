@@ -15,8 +15,8 @@ class __TwigTemplate_8ae25e054b7bfd491be717f91101818dabf791db228215cc8b89347db14
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_408835e3d2a6793a6cc1fdbb5e4ae68dcc11a5483c9d789de479ca21059c6c96 = $this->env->getExtension("native_profiler");
-        $__internal_408835e3d2a6793a6cc1fdbb5e4ae68dcc11a5483c9d789de479ca21059c6c96->enter($__internal_408835e3d2a6793a6cc1fdbb5e4ae68dcc11a5483c9d789de479ca21059c6c96_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/menu.svg"));
+        $__internal_06dc1e6cdc9edcd5eeebf333f951b5842442e57e0fbc9a24f2ba8d77c9f54be2 = $this->env->getExtension("native_profiler");
+        $__internal_06dc1e6cdc9edcd5eeebf333f951b5842442e57e0fbc9a24f2ba8d77c9f54be2->enter($__internal_06dc1e6cdc9edcd5eeebf333f951b5842442e57e0fbc9a24f2ba8d77c9f54be2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/menu.svg"));
 
         // line 1
         echo "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xml:space=\"preserve\">
@@ -24,7 +24,7 @@ class __TwigTemplate_8ae25e054b7bfd491be717f91101818dabf791db228215cc8b89347db14
 </svg>
 ";
         
-        $__internal_408835e3d2a6793a6cc1fdbb5e4ae68dcc11a5483c9d789de479ca21059c6c96->leave($__internal_408835e3d2a6793a6cc1fdbb5e4ae68dcc11a5483c9d789de479ca21059c6c96_prof);
+        $__internal_06dc1e6cdc9edcd5eeebf333f951b5842442e57e0fbc9a24f2ba8d77c9f54be2->leave($__internal_06dc1e6cdc9edcd5eeebf333f951b5842442e57e0fbc9a24f2ba8d77c9f54be2_prof);
 
     }
 

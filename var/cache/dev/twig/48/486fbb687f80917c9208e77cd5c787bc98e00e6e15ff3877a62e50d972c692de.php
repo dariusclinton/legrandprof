@@ -15,8 +15,8 @@ class __TwigTemplate_73c313552157a588148262131a75f3da42e44a56b88af44973a47d9dfb3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fb96c2168b54a26dd37650347e3a96c7ef42b2f20c9ee5980ff792ce05347a24 = $this->env->getExtension("native_profiler");
-        $__internal_fb96c2168b54a26dd37650347e3a96c7ef42b2f20c9ee5980ff792ce05347a24->enter($__internal_fb96c2168b54a26dd37650347e3a96c7ef42b2f20c9ee5980ff792ce05347a24_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FOSUser/ChangePassword/changePassword_content.html.twig"));
+        $__internal_1591b4f1ffc5c6734bf20041424457b70e11a1f5276c23527b0f9f8e825d086c = $this->env->getExtension("native_profiler");
+        $__internal_1591b4f1ffc5c6734bf20041424457b70e11a1f5276c23527b0f9f8e825d086c->enter($__internal_1591b4f1ffc5c6734bf20041424457b70e11a1f5276c23527b0f9f8e825d086c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FOSUser/ChangePassword/changePassword_content.html.twig"));
 
         // line 2
         echo "
@@ -40,7 +40,7 @@ class __TwigTemplate_73c313552157a588148262131a75f3da42e44a56b88af44973a47d9dfb3
         echo "
 ";
         
-        $__internal_fb96c2168b54a26dd37650347e3a96c7ef42b2f20c9ee5980ff792ce05347a24->leave($__internal_fb96c2168b54a26dd37650347e3a96c7ef42b2f20c9ee5980ff792ce05347a24_prof);
+        $__internal_1591b4f1ffc5c6734bf20041424457b70e11a1f5276c23527b0f9f8e825d086c->leave($__internal_1591b4f1ffc5c6734bf20041424457b70e11a1f5276c23527b0f9f8e825d086c_prof);
 
     }
 
