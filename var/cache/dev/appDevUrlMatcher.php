@@ -110,6 +110,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MainController::indexAction',  '_route' => 'lgp_user_homepage',);
             }
 
+            // lgp_user_become_prof
+            if ($pathinfo === '/user/prof/become') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::becomeAction',  '_route' => 'lgp_user_become_prof',);
+            }
+
             if (0 === strpos($pathinfo, '/user/register/p')) {
                 // lgp_parent_registration
                 if ($pathinfo === '/user/register/parent') {
@@ -125,13 +130,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // lgp_reservation_homepage
-        if (rtrim($pathinfo, '/') === '/reservation') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'lgp_reservation_homepage');
+        if (0 === strpos($pathinfo, '/reservation')) {
+            // lgp_reservation_homepage
+            if (rtrim($pathinfo, '/') === '/reservation') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'lgp_reservation_homepage');
+                }
+
+                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lgp_reservation_homepage',);
             }
 
-            return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lgp_reservation_homepage',);
+            // lgp_reservation_detail
+            if ($pathinfo === '/reservation/detail') {
+                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',  '_route' => 'lgp_reservation_detail',);
+            }
+
+            // lgp_reservation_cart
+            if ($pathinfo === '/reservation/cart') {
+                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::cartAction',  '_route' => 'lgp_reservation_cart',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/course')) {
