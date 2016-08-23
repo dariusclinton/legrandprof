@@ -72,14 +72,21 @@
                                         <div class="col-lg-6 col-md-6">
 
                                                 <div id="navbar" class="collapse navbar-collapse navbar-arrow">
+                                                        
+                                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                         <ul class="nav navbar-nav" id="responsive-menu">
                                                                 <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>
-                                                                <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>
-                                                                <li><a href="#">Comment ca marche ?</a></li>
+                                                               <li><a href="#">Besoin d'aide ?</a></li>
                                                                 <!--<li><a href="#">Contactez-nous</a></li>-->
-
                                                         </ul>
-
+                                                        {% else %}
+                                                        <ul class="nav navbar-nav" id="responsive-menu">
+                                                            <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>
+                                                            <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>
+                                                            <li><a href="#">Comment ca marche ?</a></li>
+                                                            <!--<li><a href="#">Contactez-nous</a></li>-->
+                                                        </ul>
+                                                        {% endif %}
                                                 </div><!--/.nav-collapse -->
 
                                         </div>
@@ -91,6 +98,7 @@
                                                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                                 <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>
                                                                <ul>
+                                                                   <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
                                                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                                                </ul>
                                                             {% else %}
