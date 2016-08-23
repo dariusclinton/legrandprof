@@ -47,7 +47,7 @@ abstract class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_naissance", type="datetime")
+     * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
      */
     private $dateNaissance;
 
@@ -61,7 +61,7 @@ abstract class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="num_telephone", type="string", length=255, unique=true)
+     * @ORM\Column(name="num_telephone", type="string", length=255, unique=true, nullable=true)
      */
     private $numTelephone;
 
@@ -87,6 +87,16 @@ abstract class User extends BaseUser
        parent::__construct();
 
        $this->dateInscription = new \DateTime();
+     }
+     
+     /**
+      * Surcharge de la methode afin de remplir manuellement 
+      * l'attribut $username
+      * @param type $email
+      */
+     public function setEmail($email) {
+       parent::setEmail($email);
+       $this->setUsername($email);
      }
 
     /**

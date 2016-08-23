@@ -24,11 +24,11 @@
           {{ form_errors(form.prenoms) }}
         </div>
 
-        <div class="form-group">
+        {#<div class="form-group">
           {{ form_label(form.dateNaissance, "Date de naissance", {'label_attr': {}}) }}
           {{ form_widget(form.dateNaissance, {'attr': {}}) }}
           {{ form_errors(form.dateNaissance) }}
-        </div>
+        </div>#}
 
         <div class="form-group">
           {{ form_label(form.sexe, "Sexe", {'label_attr': {}}) }}
@@ -46,12 +46,6 @@
           {{ form_label(form.pays, "Pays de résidence", {'label_attr': {}}) }}
           {{ form_widget(form.pays, {'attr': {}}) }}
           {{ form_errors(form.pays) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.username, "Pseudo", {'label_attr': {}}) }}
-          {{ form_widget(form.username, {'attr': {}}) }}
-          {{ form_errors(form.username) }}
         </div>
 
         <div class="form-group">

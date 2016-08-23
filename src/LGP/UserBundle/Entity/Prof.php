@@ -21,7 +21,7 @@ class Prof extends User
    private $diplomes;
 
   /**
-   * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+   * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"remove"})
    */
    private $experiencePros;
 
@@ -487,7 +487,6 @@ class Prof extends User
     public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
     {
         $this->experiencePros[] = $experiencePro;
-
         // On associe le prof a l'experiencePro
         $experiencePro->setProf($this);
         

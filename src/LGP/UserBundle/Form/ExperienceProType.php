@@ -20,8 +20,12 @@ class ExperienceProType extends AbstractType
         $builder
             ->add('etablissement', TextType::class)
             ->add('poste', TextType::class)
-            ->add('dateDebut', DateType::class)
-            ->add('dateFin', DateType::class)
+            ->add('dateDebut', DateType::class, array(
+              'years' => range(1950, 2016)
+            ))
+            ->add('dateFin', DateType::class, array(
+              'years' => range(1950, 2016)
+            ))
             ->add('description', TextareaType::class, array(
               'required' => false
             ))
