@@ -6,3 +6,5 @@ e44b0f,::1,GET,http://localhost/legrandprof/web/app_dev.php/,1471939224,,200
 f0b7d5,::1,GET,http://localhost/legrandprof/web/app_dev.php/detail,1471946891,,404
 1fa610,::1,GET,http://localhost/legrandprof/web/app_dev.php/reservation/detail,1471946899,6f6916,200
 6f6916,::1,GET,http://localhost/legrandprof/web/app_dev.php/reservation/detail,1471946899,,500
+24f690,::1,GET,http://localhost/legrandprof/web/app_dev.php/,1471948593,,200
+0a6373,::1,GET,http://localhost/legrandprof/web/app_dev.php/,1471948594,,200
