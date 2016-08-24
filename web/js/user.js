@@ -1,4 +1,27 @@
 $(function () {
+
+    /**
+    gestion du choix des jours de cours
+    */
+
+     $("#j2").change(function(event) {
+         start = $("#j2_start");
+         end = $("#j2_end");
+
+         /*alert(start.attr('disabled'));*/
+
+         if(start.attr('disabled')){
+            start.removeAttr('disabled');
+         } else{
+            start.attr('disabled','disabled');
+         }
+
+         if(end.attr('disabled')){
+            end.removeAttr('disabled');
+         } else{
+            end.attr('disabled','disabled');
+         }
+     });
     
 //    // Affichage du datepicker
 //    $('.datepicker').datepicker({

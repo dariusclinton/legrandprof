@@ -6,8 +6,16 @@ lgp_course_category:
 
 
 lgp_course_find_category:
-    path:     /search/{category}/{page}
+    path:     /search/categories/{category}/{page}
     defaults: { _controller: LGPCourseBundle:Course:category, page: 1 }
+    requirements:
+        page:   \d+
+
+
+  
+lgp_course_find:
+    path:     /search/profs/{page}
+    defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
     requirements:
         page:   \d+
 
@@ -32,9 +40,4 @@ lgp_course_find_prof_city:
     requirements:
         page:   \d+
 
-    
-lgp_course_find:
-    path:     /search/profs/{page}
-    defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
-    requirements:
-        page:   \d+
+  

@@ -73,7 +73,7 @@ class CourseController extends Controller {
      * @throws NotFoundHttpException
      * @throws InvalidArgumentException
      */
-    public function searchCourse($intitule_cours, $page, Request $request) {
+    public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");

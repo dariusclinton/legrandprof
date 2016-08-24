@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_967c30f6ca7dbbe4338d3af06f3ff369a2d83241cdb69cb2ccae67270d775d4f = $this->env->getExtension("native_profiler");
-        $__internal_967c30f6ca7dbbe4338d3af06f3ff369a2d83241cdb69cb2ccae67270d775d4f->enter($__internal_967c30f6ca7dbbe4338d3af06f3ff369a2d83241cdb69cb2ccae67270d775d4f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_32e20f9bd74b61eba90eb375f79b977342ebf769c2b08224b4cf83cd5f30b1ab = $this->env->getExtension("native_profiler");
+        $__internal_32e20f9bd74b61eba90eb375f79b977342ebf769c2b08224b4cf83cd5f30b1ab->enter($__internal_32e20f9bd74b61eba90eb375f79b977342ebf769c2b08224b4cf83cd5f30b1ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -101,21 +101,38 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                         <div class=\"col-lg-6 col-md-6\">
 
                                                 <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
-                                                        <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
-                                                                <li><a href=\"";
+                                                        
+                                                        ";
         // line 76
-        echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
-        echo "\">Accueil</a></li>
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 77
+            echo "                                                        <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
                                                                 <li><a href=\"";
-        // line 77
-        echo $this->env->getExtension('routing')->getPath("lgp_user_become_prof");
-        echo "\">Devenir Un Grand Prof</a></li>
-                                                                <li><a href=\"#\">Comment ca marche ?</a></li>
+            // line 78
+            echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+            echo "\">Accueil</a></li>
+                                                               <li><a href=\"#\">Besoin d'aide ?</a></li>
                                                                 <!--<li><a href=\"#\">Contactez-nous</a></li>-->
-
                                                         </ul>
-
-                                                </div><!--/.nav-collapse -->
+                                                        ";
+        } else {
+            // line 83
+            echo "                                                        <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
+                                                            <li><a href=\"";
+            // line 84
+            echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+            echo "\">Accueil</a></li>
+                                                            <li><a href=\"";
+            // line 85
+            echo $this->env->getExtension('routing')->getPath("lgp_user_become_prof");
+            echo "\">Devenir Un Grand Prof</a></li>
+                                                            <li><a href=\"#\">Comment ca marche ?</a></li>
+                                                            <!--<li><a href=\"#\">Contactez-nous</a></li>-->
+                                                        </ul>
+                                                        ";
+        }
+        // line 90
+        echo "                                                </div><!--/.nav-collapse -->
 
                                         </div>
 
@@ -124,25 +141,29 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                                 <ul class=\"nav navbar-nav\">
                                                         <li>
                                                             ";
-        // line 91
+        // line 98
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 92
+            // line 99
             echo "                                                                <div style=\"margin-top: 11px; font-weight: bold\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
             echo "<i class=\"arrow-indicator fa fa-angle-down\"></i></div>
                                                                <ul>
                                                                    <li><a href=\"";
-            // line 94
+            // line 101
+            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            echo "\">Profil</a></li>
+                                                                   <li><a href=\"";
+            // line 102
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
                                                                </ul>
                                                             ";
         } else {
-            // line 97
+            // line 105
             echo "                                                                <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"#loginModal\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
                                                             ";
         }
-        // line 99
+        // line 107
         echo "                                                        </li>
                                                         <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
                                                                 <ul>
@@ -170,7 +191,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
 ";
         
-        $__internal_967c30f6ca7dbbe4338d3af06f3ff369a2d83241cdb69cb2ccae67270d775d4f->leave($__internal_967c30f6ca7dbbe4338d3af06f3ff369a2d83241cdb69cb2ccae67270d775d4f_prof);
+        $__internal_32e20f9bd74b61eba90eb375f79b977342ebf769c2b08224b4cf83cd5f30b1ab->leave($__internal_32e20f9bd74b61eba90eb375f79b977342ebf769c2b08224b4cf83cd5f30b1ab_prof);
 
     }
 
@@ -186,7 +207,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  146 => 99,  142 => 97,  136 => 94,  130 => 92,  128 => 91,  111 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -263,14 +284,21 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                         <div class="col-lg-6 col-md-6">*/
 /* */
 /*                                                 <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
+/*                                                         */
+/*                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
 /*                                                         <ul class="nav navbar-nav" id="responsive-menu">*/
 /*                                                                 <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
-/*                                                                 <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>*/
-/*                                                                 <li><a href="#">Comment ca marche ?</a></li>*/
+/*                                                                <li><a href="#">Besoin d'aide ?</a></li>*/
 /*                                                                 <!--<li><a href="#">Contactez-nous</a></li>-->*/
-/* */
 /*                                                         </ul>*/
-/* */
+/*                                                         {% else %}*/
+/*                                                         <ul class="nav navbar-nav" id="responsive-menu">*/
+/*                                                             <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
+/*                                                             <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>*/
+/*                                                             <li><a href="#">Comment ca marche ?</a></li>*/
+/*                                                             <!--<li><a href="#">Contactez-nous</a></li>-->*/
+/*                                                         </ul>*/
+/*                                                         {% endif %}*/
 /*                                                 </div><!--/.nav-collapse -->*/
 /* */
 /*                                         </div>*/
@@ -282,6 +310,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
 /*                                                                 <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>*/
 /*                                                                <ul>*/
+/*                                                                    <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>*/
 /*                                                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>*/
 /*                                                                </ul>*/
 /*                                                             {% else %}*/
