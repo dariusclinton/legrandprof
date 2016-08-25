@@ -1,0 +1,35 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Envoi de message - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {{ form_start(form) }}
+
+  {{ form_errors(form) }}
+
+  <div class="form-group">
+    {{ form_label(form.objet, 'Objet du message', {'label_attr': {}}) }}
+    {{ form_widget(form.objet, {'attr': {}}) }}
+    {{ form_errors(form.objet)}}
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.recepteur, 'Récepteur', {'label_attr': {}}) }}
+    {{ form_widget(form.recepteur, {'attr': {}}) }}
+    {{ form_errors(form.recepteur)}}
+  </div>
+
+  <div class="form-group">
+    {{ form_label(form.contenu, 'Objet du message', {'label_attr': {}}) }}
+    {{ form_widget(form.contenu, {'attr': {}}) }}
+    {{ form_errors(form.contenu)}}
+  </div>
+
+    {{ form_rest(form) }}
+
+    <input type="submit" value="Envoyer" class="btn btn-primary">
+
+    {{ form_end(form) }}
+  {% endblock %}

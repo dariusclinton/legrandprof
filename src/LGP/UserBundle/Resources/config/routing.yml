@@ -6,6 +6,7 @@ lgp_user_become_prof:
     path:     /prof/become
     defaults: { _controller: LGPUserBundle:Prof:become }
     
+# Registration
 lgp_parent_registration:
     path:  /register/parent
     defaults: { _controller: LGPUserBundle:RegistrationParent:register }
@@ -13,3 +14,74 @@ lgp_parent_registration:
 lgp_prof_registration:
     path:  /register/prof
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
+
+# Avis
+lgp_user_parent_avis_add:
+    path: /parent/avis/add
+    defaults: { _controller: LGPUserBundle:Avis:add }
+    
+lgp_user_prof_avis_delete:
+    path: /prof/avis/delete/{id}
+    defaults: { _controller: LGPUserBundle:Avis:profDelete }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis_delete:
+    path: /parent/avis/delete/{id}
+    defaults: { _controller: LGPUserBundle:Avis:parentDelete }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis_update:
+    path: /parent/avis/update/{id}
+    defaults: { _controller: LGPUserBundle:Avis:update }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis:
+    path: /parent/avis
+    defaults: { _controller: LGPUserBundle:Avis:parent }
+    
+lgp_user_prof_avis:
+    path: /prof/avis
+    defaults: { _controller: LGPUserBundle:Avis:prof }
+    
+# Indisponibilite
+lgp_user_prof_indisponibilite:
+    path: /prof/indisponibilite
+    defaults: { _controller: LGPUserBundle:Indisponibilite:index }
+    
+lgp_user_prof_indisponibilite_add:
+    path: /prof/indisponibilite/add
+    defaults: { _controller: LGPUserBundle:Indisponibilite:add }
+    
+lgp_user_prof_indisponibilite_update:
+    path: /prof/indisponibilite/update/{id}
+    defaults: { _controller: LGPUserBundle:Indisponibilite:update }
+    requirements: 
+      id: \d+
+    
+lgp_user_prof_indisponibilite_delete:
+    path: /prof/indisponibilite/delete/{id}
+    defaults: { _controller: LGPUserBundle:Indisponibilite:delete }
+    requirements:
+      id: \d+
+      
+# Messages
+lgp_user_message_send:
+    path: /messages/send
+    defaults: { _controller: LGPUserBundle:Message:send }
+    
+lgp_user_message_receive:
+    path: /messages/receive
+    defaults: { _controller: LGPUserBundle:Message:receive }
+    
+lgp_user_message_new:
+    path: /message/new
+    defaults: { _controller: LGPUserBundle:Message:new }
+
+lgp_user_message_delete:
+    path: /message/delete/{id}
+    defaults: { _controller: LGPUserBundle:Message:delete }
+    requirements:
+      id: \d+

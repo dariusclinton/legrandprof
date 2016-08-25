@@ -19,7 +19,7 @@ abstract class User extends BaseUser
      * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
-    private $image;
+    protected $image;
 
     /**
      * @var int
@@ -35,49 +35,49 @@ abstract class User extends BaseUser
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenoms", type="string", length=255, nullable=true)
      */
-    private $prenoms;
+    protected $prenoms;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
      */
-    private $dateNaissance;
+    protected $dateNaissance;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sexe", type="string", length=255)
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @var string
      *
      * @ORM\Column(name="num_telephone", type="string", length=255, unique=true, nullable=true)
      */
-    private $numTelephone;
+    protected $numTelephone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=255)
      */
-    private $pays;
+    protected $pays;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_inscription", type="datetime")
      */
-    private $dateInscription;
+    protected $dateInscription;
 
     /**
      * Constructeur
@@ -309,5 +309,13 @@ abstract class User extends BaseUser
     public function getImage()
     {
         return $this->image;
+    }
+    
+    /**
+     * Cette fonction retourne quelques infos decrivant l'utilisateur
+     * @return type
+     */
+    public function getAffichage() {
+      return $this->prenoms.' '.$this->nom;
     }
 }

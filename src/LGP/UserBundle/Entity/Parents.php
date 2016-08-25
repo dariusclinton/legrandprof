@@ -21,7 +21,6 @@ class Parents extends User
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
     
     /**
      * @var \LGPReservationBundle\Entity\Reservation

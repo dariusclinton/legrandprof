@@ -1,64 +1,75 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
-    <div class="row">
-        <div class="col-md-4">
-            {% if app.user.image is not null %}
-                <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
-            {% endif %}
-        </div>
-        
-        <div class="col-sm-8">
-            {% if user.presentation is defined %}
-                <h1>Hello Prof !</h1>
-            {% else %}
-                <h1>Hello Parent !</h1>
-            {% endif %}
-        
-            <p>{{ 'profile.show.email'|trans }}: {{ app.user.email }}</p>
-            <p>Nom: {{ app.user.nom }}</p>
-            <p>Prenoms: {{ app.user.prenoms }}</p>
-            <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
-            <p>Sexe: {{ app.user.sexe }}</p>
-            <p>Telephone: {{ app.user.numTelephone }}</p>
-            <p>Pays: {{ app.user.pays }}</p>
-
-            {% if user.presentation is defined %}
-                <p>Ville: {{ app.user.ville }}</p>
-                <p>Quartier: {{ app.user.quartier }}</p>
-                <p>boite Postale: {{ app.user.boitePostale }}</p>
-                <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
-                <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
-                <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
-                <p>Presentation: {{ app.user.presentation }}</p>
-                <p>Profession: {{ app.user.profession }}</p>
-                
-                <h3>Experience professionnelle</h3>
-                <ul>
-                    {% for experience in app.user.experiencePros %}
-                        <li>
-                            {{ experience.etablissement }}
-                            {{ experience.poste }}
-                            {{ experience.dateDebut | date('d/m/y') }}
-                            {{ experience.dateFin | date('d/m/y') }}
-                            {{ experience.description }}
-                        </li>
-                    {% endfor %}
-                </ul>
-                
-                <h3>Diplomes</h3>
-                <ul>
-                    {% for diplome in app.user.diplomes %}
-                        <li>
-                            {{ diplome.intitule }}
-                            {{ diplome.specialite }}
-                            {{ diplome.annee }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-
-            {{ dump(app.user)}}
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      {% if app.user.image is not null %}
+        <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
+      {% endif %}
     </div>
+
+    <div class="col-sm-8">
+      {% if user.presentation is defined %}
+        <h1>Hello Prof !</h1>
+      {% else %}
+        <h1>Hello Parent !</h1>
+      {% endif %}
+
+      <p>{{ 'profile.show.email'|trans }}: {{ app.user.email }}</p>
+      <p>Nom: {{ app.user.nom }}</p>
+      <p>Prenoms: {{ app.user.prenoms }}</p>
+      <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
+      <p>Sexe: {{ app.user.sexe }}</p>
+      <p>Telephone: {{ app.user.numTelephone }}</p>
+      <p>Pays: {{ app.user.pays }}</p>
+
+      {% if user.presentation is defined %}
+        <p>Ville: {{ app.user.ville }}</p>
+        <p>Quartier: {{ app.user.quartier }}</p>
+        <p>boite Postale: {{ app.user.boitePostale }}</p>
+        <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
+        <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
+        <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
+        <p>Presentation: {{ app.user.presentation }}</p>
+        <p>Profession: {{ app.user.profession }}</p>
+
+        <h3>Experience professionnelle</h3>
+        <ul>
+          {% for experience in app.user.experiencePros %}
+            <li>
+              {{ experience.etablissement }}
+              {{ experience.poste }}
+              {{ experience.dateDebut | date('d/m/y') }}
+              {{ experience.dateFin | date('d/m/y') }}
+              {{ experience.description }}
+            </li>
+          {% endfor %}
+        </ul>
+
+        <h3>Diplomes</h3>
+        <ul>
+          {% for diplome in app.user.diplomes %}
+            <li>
+              {{ diplome.intitule }}
+              {{ diplome.specialite }}
+              {{ diplome.annee }}
+            </li>
+          {% endfor %}
+        </ul>
+
+        <a href='{{ path('lgp_user_prof_avis') }}' class="btn btn-primary">Avis</a>
+        
+      {% endif %}
+      
+      {% if user.presentation is not defined %}
+        
+        <a href='{{ path('lgp_user_parent_avis') }}' class="btn btn-primary">Avis</a>
+        
+      {% endif%}
+      
+      <a href='{{ path('lgp_user_message_send') }}' class="btn btn-primary">Messages</a>
+
+      {{ dump(app.user)}}
+    </div>
+  </div>
 </div>

@@ -1,0 +1,12 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajout d'une indisponibilité - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Ajout d'une indiponibilité</h1>
+  
+  {% include 'LGPUserBundle:Indisponibilite:formulaire.html.twig' %}
+  
+{% endblock %}

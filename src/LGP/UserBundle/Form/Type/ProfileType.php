@@ -19,18 +19,22 @@ class ProfileType extends AbstractType {
           'required' => false
         ))
         ->add('dateNaissance', BirthdayType::class, array(
-          'years'  => range(1950, 2005)
+          'years'  => range(1950, 2005),
+          'placeholder' => '--',
         ))
         ->add('sexe', ChoiceType::class, array(
-          'choices' => array(
+          'choices'     => array(
             'Masculin' => 'm',
-            'Féminin' => 'f'
-          )
+            'Féminin'  => 'f'
+          ),
+          'placeholder' => '--',
         ))
         ->add('numTelephone', TextType::class, array(
           'required' => false
         ))
-        ->add('pays', CountryType::class)
+        ->add('pays', CountryType::class, array(
+          'placeholder' => '--',
+        ))
         ->add('image', ImageType::class, array(
           'required' => false
         ))
