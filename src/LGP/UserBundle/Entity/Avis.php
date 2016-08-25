@@ -7,91 +7,145 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Avis
  *
- * @ORM\Table(name="avis")
+ * @ORM\Table(name="lgp_avis")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\AvisRepository")
  */
-class Avis
-{
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class Avis {
+
+  /**
+   * @ORM\ManyToOne(targetEntity="Parents")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $parent;
+
+  /**
+   * @ORM\ManyToOne(targetEntity="Prof")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $prof;
+  
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="note", type="integer")
+   */
+  private $note;
+
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="commentaire", type="text", nullable=true)
+   */
+  private $commentaire;
+
+  /**
+   * Get id
+   *
+   * @return int
+   */
+  public function getId() {
+    return $this->id;
+  }
+
+  /**
+   * Set note
+   *
+   * @param integer $note
+   *
+   * @return Avis
+   */
+  public function setNote($note) {
+    $this->note = $note;
+
+    return $this;
+  }
+
+  /**
+   * Get note
+   *
+   * @return int
+   */
+  public function getNote() {
+    return $this->note;
+  }
+
+  /**
+   * Set commentaire
+   *
+   * @param string $commentaire
+   *
+   * @return Avis
+   */
+  public function setCommentaire($commentaire) {
+    $this->commentaire = $commentaire;
+
+    return $this;
+  }
+
+  /**
+   * Get commentaire
+   *
+   * @return string
+   */
+  public function getCommentaire() {
+    return $this->commentaire;
+  }
+
 
     /**
-     * @var int
+     * Set parent
      *
-     * @ORM\Column(name="note", type="integer")
-     */
-    private $note;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="commentaire", type="text", nullable=true)
-     */
-    private $commentaire;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set note
-     *
-     * @param integer $note
+     * @param \LGP\UserBundle\Entity\Parents $parent
      *
      * @return Avis
      */
-    public function setNote($note)
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent)
     {
-        $this->note = $note;
+        $this->parent = $parent;
 
         return $this;
     }
 
     /**
-     * Get note
+     * Get parent
      *
-     * @return int
+     * @return \LGP\UserBundle\Entity\Parents
      */
-    public function getNote()
+    public function getParent()
     {
-        return $this->note;
+        return $this->parent;
     }
 
     /**
-     * Set commentaire
+     * Set prof
      *
-     * @param string $commentaire
+     * @param \LGP\UserBundle\Entity\Prof $prof
      *
      * @return Avis
      */
-    public function setCommentaire($commentaire)
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof)
     {
-        $this->commentaire = $commentaire;
+        $this->prof = $prof;
 
         return $this;
     }
 
     /**
-     * Get commentaire
+     * Get prof
      *
-     * @return string
+     * @return \LGP\UserBundle\Entity\Prof
      */
-    public function getCommentaire()
+    public function getProf()
     {
-        return $this->commentaire;
+        return $this->prof;
     }
 }
-

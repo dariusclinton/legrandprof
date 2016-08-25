@@ -6,6 +6,7 @@ lgp_user_become_prof:
     path:     /prof/become
     defaults: { _controller: LGPUserBundle:Prof:become }
     
+# Registration
 lgp_parent_registration:
     path:  /register/parent
     defaults: { _controller: LGPUserBundle:RegistrationParent:register }
@@ -13,3 +14,14 @@ lgp_parent_registration:
 lgp_prof_registration:
     path:  /register/prof
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
+
+# Avis
+lgp_user_avis_add:
+    path: /avis/add
+    defaults: { _controller: LGPUserBundle:AvisController:add }
+    
+lgp_user_avis:
+    path: /avis/{id}
+    defaults: { _controller: LGPUserBundle:AvisController:index }
+    requirements:
+        id: \d+

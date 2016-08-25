@@ -126,6 +126,11 @@ class Diplome
         return $this->annee;
     }
     
+    /**
+     * Cette fonction permet de retourner la chaine a afficher dans 
+     * les choix proposes au Prof et qui decrit le diplome
+     * @return type
+     */
     public function getAffichage() {
       return $this->getIntitule().' '.$this->getSpecialite().' '.$this->getAnnee();
     }

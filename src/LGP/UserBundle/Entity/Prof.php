@@ -600,4 +600,13 @@ class Prof extends User
     {
         return $this->evaluations;
     }
+    
+    /**
+     * Cette fonction permet de retourner la chaine a afficher dans 
+     * les choix proposes au Parent et qui decrit le Prof
+     * @return type
+     */
+    public function getAffichage() {
+      return $this->getNom().' '.$this->getPrenoms().' - '.$this->getProfession();
+    }
 }
