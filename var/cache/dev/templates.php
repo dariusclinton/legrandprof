@@ -138,7 +138,6 @@
   'LGPCourseBundle:Course:search_city.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Course/search_city.html.twig',
   'LGPCourseBundle:Form:course_form_search.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Form/course_form_search.html.twig',
   'LGPCourseBundle:Pagination:pagination.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\CourseBundle/Resources/views/Pagination/pagination.html.twig',
-  'LGPReservationBundle:Default:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Default/index.html.twig',
   'LGPReservationBundle:Reservation:cart.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Reservation/cart.html.twig',
   'LGPReservationBundle:Reservation:detail.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Reservation/detail.html.twig',
   'LGPReservationBundle:Reservation:index.html.twig' => 'C:\\xampp\\htdocs\\legrandprof\\src\\LGP\\ReservationBundle/Resources/views/Reservation/index.html.twig',

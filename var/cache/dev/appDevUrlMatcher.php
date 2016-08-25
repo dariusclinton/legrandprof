@@ -137,7 +137,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'lgp_reservation_homepage');
                 }
 
-                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lgp_reservation_homepage',);
+                return array (  '_controller' => 'LGPReservationBundle:Default:index',  '_route' => 'lgp_reservation_homepage',);
             }
 
             // lgp_reservation_detail
