@@ -145,9 +145,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',  '_route' => 'lgp_reservation_detail',);
             }
 
-            // lgp_reservation_cart
-            if ($pathinfo === '/reservation/cart') {
-                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::cartAction',  '_route' => 'lgp_reservation_cart',);
+            if (0 === strpos($pathinfo, '/reservation/cart')) {
+                // lgp_reservation_cart
+                if ($pathinfo === '/reservation/cart') {
+                    return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::cartAction',  '_route' => 'lgp_reservation_cart',);
+                }
+
+                // lgp_reservation_cart_add
+                if ($pathinfo === '/reservation/cart/add') {
+                    return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::addCartAction',  '_route' => 'lgp_reservation_cart_add',);
+                }
+
             }
 
         }

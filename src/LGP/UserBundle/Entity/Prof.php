@@ -15,17 +15,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Prof extends User {
 
     /**
-     * @ORM\ManyToMany(targetEntity="Diplome")
-     * @ORM\JoinTable(name="lgp_prof_diplome")
-     */
-    private $diplomes;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
-     */
-    private $experiencePros;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -112,12 +101,11 @@ class Prof extends User {
     private $seanceDeCours;
 
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="profs")
-     * @ORM\JoinTable(name="lgp_prof_reservation")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
      */
-    private $reservations;
+    private $seancesDeCours;
 
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
@@ -132,7 +120,17 @@ class Prof extends User {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
      */
     private $evaluations;
+    
+      /**
+     * @ORM\ManyToMany(targetEntity="Diplome")
+     * @ORM\JoinTable(name="lgp_prof_diplome")
+     */
+    private $diplomes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+     */
+    private $experiencePros;
 
 
     /**
@@ -376,74 +374,6 @@ class Prof extends User {
     }
 
     /**
-     * Add diplome
-     *
-     * @param \LGP\UserBundle\Entity\Diplome $diplome
-     *
-     * @return Prof
-     */
-    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
-    {
-        $this->diplomes[] = $diplome;
-    
-        return $this;
-    }
-
-    /**
-     * Remove diplome
-     *
-     * @param \LGP\UserBundle\Entity\Diplome $diplome
-     */
-    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
-    {
-        $this->diplomes->removeElement($diplome);
-    }
-
-    /**
-     * Get diplomes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDiplomes()
-    {
-        return $this->diplomes;
-    }
-
-    /**
-     * Add experiencePro
-     *
-     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
-     *
-     * @return Prof
-     */
-    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
-        $this->experiencePros[] = $experiencePro;
-    
-        return $this;
-    }
-
-    /**
-     * Remove experiencePro
-     *
-     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
-     */
-    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
-        $this->experiencePros->removeElement($experiencePro);
-    }
-
-    /**
-     * Get experiencePros
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExperiencePros()
-    {
-        return $this->experiencePros;
-    }
-
-    /**
      * Add seanceDeCour
      *
      * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
@@ -478,37 +408,37 @@ class Prof extends User {
     }
 
     /**
-     * Add reservation
+     * Add seancesDeCour
      *
-     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour
      *
      * @return Prof
      */
-    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function addSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
     {
-        $this->reservations[] = $reservation;
+        $this->seancesDeCours[] = $seancesDeCour;
     
         return $this;
     }
 
     /**
-     * Remove reservation
+     * Remove seancesDeCour
      *
-     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour
      */
-    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function removeSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
     {
-        $this->reservations->removeElement($reservation);
+        $this->seancesDeCours->removeElement($seancesDeCour);
     }
 
     /**
-     * Get reservations
+     * Get seancesDeCours
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReservations()
+    public function getSeancesDeCours()
     {
-        return $this->reservations;
+        return $this->seancesDeCours;
     }
 
     /**
@@ -577,5 +507,73 @@ class Prof extends User {
     public function getEvaluations()
     {
         return $this->evaluations;
+    }
+
+    /**
+     * Add diplome
+     *
+     * @param \LGP\UserBundle\Entity\Diplome $diplome
+     *
+     * @return Prof
+     */
+    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+        $this->diplomes[] = $diplome;
+    
+        return $this;
+    }
+
+    /**
+     * Remove diplome
+     *
+     * @param \LGP\UserBundle\Entity\Diplome $diplome
+     */
+    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+        $this->diplomes->removeElement($diplome);
+    }
+
+    /**
+     * Get diplomes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiplomes()
+    {
+        return $this->diplomes;
+    }
+
+    /**
+     * Add experiencePro
+     *
+     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
+     *
+     * @return Prof
+     */
+    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+        $this->experiencePros[] = $experiencePro;
+    
+        return $this;
+    }
+
+    /**
+     * Remove experiencePro
+     *
+     * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
+     */
+    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+        $this->experiencePros->removeElement($experiencePro);
+    }
+
+    /**
+     * Get experiencePros
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExperiencePros()
+    {
+        return $this->experiencePros;
     }
 }

@@ -15,203 +15,232 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_74fc7e3e16ff97d0bbd267a5386d989024da44b3060d2172ed5b104daa3e0cbb = $this->env->getExtension("native_profiler");
-        $__internal_74fc7e3e16ff97d0bbd267a5386d989024da44b3060d2172ed5b104daa3e0cbb->enter($__internal_74fc7e3e16ff97d0bbd267a5386d989024da44b3060d2172ed5b104daa3e0cbb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b = $this->env->getExtension("native_profiler");
+        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b->enter($__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
 <header id=\"header\">
 
-        <!-- start Navbar (Header) -->
-        <nav class=\"navbar navbar-black navbar-fixed-top navbar-sticky-function\">
+    <!-- start Navbar (Header) -->
+    <nav class=\"navbar navbar-black navbar-fixed-top navbar-sticky-function\">
 
-                <div class=\"navbar-top hidden-md hidden-lg\">
+        <div class=\"navbar-top hidden-md hidden-lg\">
 
-                        <div class=\"container\">
+            <div class=\"container\">
 
-                                <div class=\"flex-row flex-align-middle\">
-                                        <div class=\"flex-shrink flex-columns\">
-                                                <a class=\"navbar-logo\" href=\"index.html\">
-                                                        <img src=\"";
+                <div class=\"flex-row flex-align-middle\">
+                    <div class=\"flex-shrink flex-columns\">
+                        <a class=\"navbar-logo\" href=\"index.html\">
+                            <img src=\"";
         // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/logo-white.png"), "html", null, true);
         echo "\" alt=\"Logo\" />
-                                                </a>
-                                        </div>\t
-                                        <div class=\"flex-columns\">
-                                                <div class=\"\">
+                        </a>
+                    </div>\t
+                    <div class=\"flex-columns\">
+                        <div class=\"\">
 
-                                                        <div class=\"navbar-mini\">
-                                                                <ul class=\"clearfix\">
+                            <div class=\"navbar-mini\">
+                                <ul class=\"clearfix\">
 
-                                                                        <li class=\"dropdown bt-dropdown-click hidden-xs\">
-                                                                                <a id=\"currncy-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                                                                        <i class=\"ion-android-globe hidden-xss\"></i> Francais
-                                                                                        <span class=\"caret\"></span>
-                                                                                </a>
-                                                                                <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
-                                                                                        <li><a href=\"#\">Francais</a></li>
-                                                                                        <li><a href=\"#\">English</a></li>
-                                                                                </ul>
-                                                                        </li>
+                                    <li class=\"dropdown bt-dropdown-click hidden-xs\">
+                                        <a id=\"currncy-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                            <i class=\"ion-android-globe hidden-xss\"></i> Francais
+                                            <span class=\"caret\"></span>
+                                        </a>
+                                        <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
+                                            <li><a href=\"#\">Francais</a></li>
+                                            <li><a href=\"#\">English</a></li>
+                                        </ul>
+                                    </li>
 
-                                                                        <li class=\"dropdown bt-dropdown-click visible-xs\">
-                                                                                <a id=\"currncy-language-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                                                                        <i class=\"fa fa-cog\"></i>
-                                                                                </a>
-                                                                                <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
-                                                                                        <li><a href=\"#\"><i class=\"ion-social-usd\"></i> Dollar</a></li>
-                                                                                        <li><a href=\"#\"><i class=\"ion-social-euro\"></i> Europe</a></li>
-                                                                                        <li><a href=\"#\"><i class=\"ion-social-yen\"></i> Yen</a></li>
-                                                                                        <li class=\"divider\"></li>
-                                                                                        <li><a href=\"#\">English</a></li>
-                                                                                        <li><a href=\"#\">France</a></li>
-                                                                                        <li><a href=\"#\">Japanese</a></li>
-                                                                                </ul>
-                                                                        </li>
+                                    <li class=\"dropdown bt-dropdown-click visible-xs\">
+                                        <a id=\"currncy-language-dropdown\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                            <i class=\"fa fa-cog\"></i>
+                                        </a>
+                                        <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
+                                            <li><a href=\"#\"><i class=\"ion-social-usd\"></i> Dollar</a></li>
+                                            <li><a href=\"#\"><i class=\"ion-social-euro\"></i> Europe</a></li>
+                                            <li><a href=\"#\"><i class=\"ion-social-yen\"></i> Yen</a></li>
+                                            <li class=\"divider\"></li>
+                                            <li><a href=\"#\">English</a></li>
+                                            <li><a href=\"#\">France</a></li>
+                                            <li><a href=\"#\">Japanese</a></li>
+                                        </ul>
+                                    </li>
 
-                                                                        <li class=\"user-action\">
-                                                                                <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
-                                                                        </li>
+                                    <li class=\"user-action\">
+                                        <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
+                                    </li>
 
-                                                                </ul>
-                                                        </div>
-
-                                                </div>
-                                        </div>
-                                </div>
+                                </ul>
+                            </div>
 
                         </div>
-
+                    </div>
                 </div>
 
-                <div class=\"navbar-bottom hidden-sm hidden-xs\">
+            </div>
 
-                        <div class=\"container\">
+        </div>
 
-                                <div class=\"row\">
-                                        <div class=\"col-lg-2 col-md-2\">
-                                                <a href=\"";
+        <div class=\"navbar-bottom hidden-sm hidden-xs\">
+
+            <div class=\"container\">
+
+                <div class=\"row\">
+                    <div class=\"col-lg-2 col-md-2\">
+                        <a href=\"";
         // line 70
         echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/Logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" /></a>
-                                        </div>\t\t
-                                        <div class=\"col-lg-6 col-md-6\">
+                    </div>\t\t
+                    <div class=\"col-lg-6 col-md-6\">
 
-                                                <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
-                                                        
-                                                        ";
+                        <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
+
+                            ";
         // line 76
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 77
-            echo "                                                        <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
-                                                                <li><a href=\"";
+            echo "                                <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
+                                    <li><a href=\"";
             // line 78
             echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
             echo "\">Accueil</a></li>
-                                                               <li><a href=\"#\">Besoin d'aide ?</a></li>
-                                                                <!--<li><a href=\"#\">Contactez-nous</a></li>-->
-                                                        </ul>
-                                                        ";
+                                    <li><a href=\"#\">Besoin d'aide ?</a></li>
+                                    <!--<li><a href=\"#\">Contactez-nous</a></li>-->
+                                </ul>
+                            ";
         } else {
             // line 83
-            echo "                                                        <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
-                                                            <li><a href=\"";
+            echo "                                <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
+                                    <li><a href=\"";
             // line 84
             echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
             echo "\">Accueil</a></li>
-                                                            <li><a href=\"";
+                                    <li><a href=\"";
             // line 85
             echo $this->env->getExtension('routing')->getPath("lgp_user_become_prof");
             echo "\">Devenir Un Grand Prof</a></li>
-                                                            <li><a href=\"#\">Comment ca marche ?</a></li>
-                                                            <!--<li><a href=\"#\">Contactez-nous</a></li>-->
-                                                        </ul>
-                                                        ";
+                                    <li><a href=\"#\">Comment ca marche ?</a></li>
+                                    <!--<li><a href=\"#\">Contactez-nous</a></li>-->
+                                </ul>
+                            ";
         }
         // line 90
-        echo "                                                </div><!--/.nav-collapse -->
+        echo "                        </div><!--/.nav-collapse -->
 
-                                        </div>
+                    </div>
 
-                                        <div class=\"col-lg-4 col-md-4\">
-                                                <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
-                                                <ul class=\"nav navbar-nav\">
-                                                        <li>
-                                                            ";
+                    <div class=\"col-lg-4 col-md-4\">
+                        <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
+                            <ul class=\"nav navbar-nav\">
+                                <li>
+                                    ";
         // line 98
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 99
-            echo "                                                                <div style=\"margin-top: 11px; font-weight: bold\">";
+            echo "                                        <div style=\"margin-top: 11px; font-weight: bold\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
             echo "<i class=\"arrow-indicator fa fa-angle-down\"></i></div>
-                                                               <ul>
-                                                                   <li><a href=\"";
+                                        <ul>
+                                            <li><a href=\"";
             // line 101
             echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
             echo "\">Profil</a></li>
-                                                                   <li><a href=\"";
+                                            <li><a href=\"";
             // line 102
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
-                                                               </ul>
-                                                            ";
+                                        </ul>
+                                    ";
         } else {
             // line 105
-            echo "                                                                <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"#loginModal\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
-                                                            ";
+            echo "                                        <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"#loginModal\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
+                                    ";
         }
         // line 107
-        echo "                                                        </li>
-                                                        <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
-                                                               <ul style=\"width:250px;margin-left:-100px;\">
-                                                                    <li class=\"cart-li\">
-                                                                        <div class=\"cart\">
-                                                                            <img src=\"";
+        echo "                                </li>
+                                <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
+                                    <ul style=\"width:250px;margin-left:-100px;\">
+                                        <li class=\"cart-li\">
+                                            <div class=\"cart\">
+                                                <img src=\"";
         // line 112
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/01.jpg"), "html", null, true);
         echo "\">
-                                                                            <b>Antony Robert</b> 45.000 Fcfa
-                                                                            <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class=\"cart-li\">
-                                                                        <div class=\"cart\">
-                                                                            <img src=\"";
+                                                <b>Antony Robert</b> 45.000 Fcfa
+                                                <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                            </div>
+                                        </li>
+                                        <li class=\"cart-li\">
+                                            <div class=\"cart\">
+                                                <img src=\"";
         // line 119
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
         echo "\">
-                                                                            <b>Antony Robert</b> 45.000 Fcfa
-                                                                            <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
-                                                                        </div>
-                                                                    </li>
+                                                <b>Antony Robert</b> 45.000 Fcfa
+                                                <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                            </div>
+                                        </li>
 
-                                                                </ul>
+                                        ";
+        // line 125
+        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session", array(), "any", false, true), "panier", array(), "any", true, true)) {
+            // line 126
+            echo "                                            ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method"), "getItems", array(), "method"));
+            foreach ($context['_seq'] as $context["_key"] => $context["booker"]) {
+                // line 127
+                echo "                                                <li class=\"cart-li\">
+                                                    <div class=\"cart\">
+                                                        <img src=\"";
+                // line 129
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
+                echo "\">
+                                                        <b>Antony Robert</b> 45.000 Fcfa
+                                                        <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                                    </div>
+                                                </li>
+                                            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 135
+            echo "                                        ";
+        }
+        // line 136
+        echo "
+                                    </ul>
 
-                                                        </li>
+                                </li>
 
-                                                </ul>
-                                                </div>
-                                        </div>
-
-                                </div>
-
+                            </ul>
                         </div>
+                    </div>
 
                 </div>
 
-                <div id=\"slicknav-mobile\"></div>
+            </div>
 
-        </nav>
-        <!-- end Navbar (Header) -->
+        </div>
+
+        <div id=\"slicknav-mobile\"></div>
+
+    </nav>
+    <!-- end Navbar (Header) -->
 
 </header>
 
 ";
         
-        $__internal_74fc7e3e16ff97d0bbd267a5386d989024da44b3060d2172ed5b104daa3e0cbb->leave($__internal_74fc7e3e16ff97d0bbd267a5386d989024da44b3060d2172ed5b104daa3e0cbb_prof);
+        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b->leave($__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b_prof);
 
     }
 
@@ -227,151 +256,163 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  184 => 119,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  219 => 136,  216 => 135,  204 => 129,  200 => 127,  195 => 126,  193 => 125,  184 => 119,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
 /* <header id="header">*/
 /* */
-/*         <!-- start Navbar (Header) -->*/
-/*         <nav class="navbar navbar-black navbar-fixed-top navbar-sticky-function">*/
+/*     <!-- start Navbar (Header) -->*/
+/*     <nav class="navbar navbar-black navbar-fixed-top navbar-sticky-function">*/
 /* */
-/*                 <div class="navbar-top hidden-md hidden-lg">*/
+/*         <div class="navbar-top hidden-md hidden-lg">*/
 /* */
-/*                         <div class="container">*/
+/*             <div class="container">*/
 /* */
-/*                                 <div class="flex-row flex-align-middle">*/
-/*                                         <div class="flex-shrink flex-columns">*/
-/*                                                 <a class="navbar-logo" href="index.html">*/
-/*                                                         <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />*/
-/*                                                 </a>*/
-/*                                         </div>	*/
-/*                                         <div class="flex-columns">*/
-/*                                                 <div class="">*/
+/*                 <div class="flex-row flex-align-middle">*/
+/*                     <div class="flex-shrink flex-columns">*/
+/*                         <a class="navbar-logo" href="index.html">*/
+/*                             <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />*/
+/*                         </a>*/
+/*                     </div>	*/
+/*                     <div class="flex-columns">*/
+/*                         <div class="">*/
 /* */
-/*                                                         <div class="navbar-mini">*/
-/*                                                                 <ul class="clearfix">*/
+/*                             <div class="navbar-mini">*/
+/*                                 <ul class="clearfix">*/
 /* */
-/*                                                                         <li class="dropdown bt-dropdown-click hidden-xs">*/
-/*                                                                                 <a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
-/*                                                                                         <i class="ion-android-globe hidden-xss"></i> Francais*/
-/*                                                                                         <span class="caret"></span>*/
-/*                                                                                 </a>*/
-/*                                                                                 <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
-/*                                                                                         <li><a href="#">Francais</a></li>*/
-/*                                                                                         <li><a href="#">English</a></li>*/
-/*                                                                                 </ul>*/
-/*                                                                         </li>*/
+/*                                     <li class="dropdown bt-dropdown-click hidden-xs">*/
+/*                                         <a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
+/*                                             <i class="ion-android-globe hidden-xss"></i> Francais*/
+/*                                             <span class="caret"></span>*/
+/*                                         </a>*/
+/*                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
+/*                                             <li><a href="#">Francais</a></li>*/
+/*                                             <li><a href="#">English</a></li>*/
+/*                                         </ul>*/
+/*                                     </li>*/
 /* */
-/*                                                                         <li class="dropdown bt-dropdown-click visible-xs">*/
-/*                                                                                 <a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
-/*                                                                                         <i class="fa fa-cog"></i>*/
-/*                                                                                 </a>*/
-/*                                                                                 <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
-/*                                                                                         <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>*/
-/*                                                                                         <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>*/
-/*                                                                                         <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>*/
-/*                                                                                         <li class="divider"></li>*/
-/*                                                                                         <li><a href="#">English</a></li>*/
-/*                                                                                         <li><a href="#">France</a></li>*/
-/*                                                                                         <li><a href="#">Japanese</a></li>*/
-/*                                                                                 </ul>*/
-/*                                                                         </li>*/
+/*                                     <li class="dropdown bt-dropdown-click visible-xs">*/
+/*                                         <a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">*/
+/*                                             <i class="fa fa-cog"></i>*/
+/*                                         </a>*/
+/*                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
+/*                                             <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>*/
+/*                                             <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>*/
+/*                                             <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>*/
+/*                                             <li class="divider"></li>*/
+/*                                             <li><a href="#">English</a></li>*/
+/*                                             <li><a href="#">France</a></li>*/
+/*                                             <li><a href="#">Japanese</a></li>*/
+/*                                         </ul>*/
+/*                                     </li>*/
 /* */
-/*                                                                         <li class="user-action">*/
-/*                                                                                 <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
-/*                                                                         </li>*/
+/*                                     <li class="user-action">*/
+/*                                         <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
+/*                                     </li>*/
 /* */
-/*                                                                 </ul>*/
-/*                                                         </div>*/
-/* */
-/*                                                 </div>*/
-/*                                         </div>*/
-/*                                 </div>*/
+/*                                 </ul>*/
+/*                             </div>*/
 /* */
 /*                         </div>*/
+/*                     </div>*/
+/*                 </div>*/
+/* */
+/*             </div>*/
+/* */
+/*         </div>*/
+/* */
+/*         <div class="navbar-bottom hidden-sm hidden-xs">*/
+/* */
+/*             <div class="container">*/
+/* */
+/*                 <div class="row">*/
+/*                     <div class="col-lg-2 col-md-2">*/
+/*                         <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>*/
+/*                     </div>		*/
+/*                     <div class="col-lg-6 col-md-6">*/
+/* */
+/*                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
+/* */
+/*                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
+/*                                 <ul class="nav navbar-nav" id="responsive-menu">*/
+/*                                     <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
+/*                                     <li><a href="#">Besoin d'aide ?</a></li>*/
+/*                                     <!--<li><a href="#">Contactez-nous</a></li>-->*/
+/*                                 </ul>*/
+/*                             {% else %}*/
+/*                                 <ul class="nav navbar-nav" id="responsive-menu">*/
+/*                                     <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
+/*                                     <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>*/
+/*                                     <li><a href="#">Comment ca marche ?</a></li>*/
+/*                                     <!--<li><a href="#">Contactez-nous</a></li>-->*/
+/*                                 </ul>*/
+/*                             {% endif %}*/
+/*                         </div><!--/.nav-collapse -->*/
+/* */
+/*                     </div>*/
+/* */
+/*                     <div class="col-lg-4 col-md-4">*/
+/*                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
+/*                             <ul class="nav navbar-nav">*/
+/*                                 <li>*/
+/*                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
+/*                                         <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>*/
+/*                                         <ul>*/
+/*                                             <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>*/
+/*                                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>*/
+/*                                         </ul>*/
+/*                                     {% else %}*/
+/*                                         <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>*/
+/*                                     {% endif %}*/
+/*                                 </li>*/
+/*                                 <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
+/*                                     <ul style="width:250px;margin-left:-100px;">*/
+/*                                         <li class="cart-li">*/
+/*                                             <div class="cart">*/
+/*                                                 <img src="{{ asset('images/man/01.jpg') }}">*/
+/*                                                 <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                 <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                             </div>*/
+/*                                         </li>*/
+/*                                         <li class="cart-li">*/
+/*                                             <div class="cart">*/
+/*                                                 <img src="{{ asset('images/man/03.jpg') }}">*/
+/*                                                 <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                 <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                             </div>*/
+/*                                         </li>*/
+/* */
+/*                                         {% if app.session.panier is defined %}*/
+/*                                             {% for booker in app.session.get('panier').getItems() %}*/
+/*                                                 <li class="cart-li">*/
+/*                                                     <div class="cart">*/
+/*                                                         <img src="{{ asset('images/man/03.jpg') }}">*/
+/*                                                         <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                         <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                                     </div>*/
+/*                                                 </li>*/
+/*                                             {% endfor %}*/
+/*                                         {% endif %}*/
+/* */
+/*                                     </ul>*/
+/* */
+/*                                 </li>*/
+/* */
+/*                             </ul>*/
+/*                         </div>*/
+/*                     </div>*/
 /* */
 /*                 </div>*/
 /* */
-/*                 <div class="navbar-bottom hidden-sm hidden-xs">*/
+/*             </div>*/
 /* */
-/*                         <div class="container">*/
+/*         </div>*/
 /* */
-/*                                 <div class="row">*/
-/*                                         <div class="col-lg-2 col-md-2">*/
-/*                                                 <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>*/
-/*                                         </div>		*/
-/*                                         <div class="col-lg-6 col-md-6">*/
+/*         <div id="slicknav-mobile"></div>*/
 /* */
-/*                                                 <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
-/*                                                         */
-/*                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
-/*                                                         <ul class="nav navbar-nav" id="responsive-menu">*/
-/*                                                                 <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
-/*                                                                <li><a href="#">Besoin d'aide ?</a></li>*/
-/*                                                                 <!--<li><a href="#">Contactez-nous</a></li>-->*/
-/*                                                         </ul>*/
-/*                                                         {% else %}*/
-/*                                                         <ul class="nav navbar-nav" id="responsive-menu">*/
-/*                                                             <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
-/*                                                             <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>*/
-/*                                                             <li><a href="#">Comment ca marche ?</a></li>*/
-/*                                                             <!--<li><a href="#">Contactez-nous</a></li>-->*/
-/*                                                         </ul>*/
-/*                                                         {% endif %}*/
-/*                                                 </div><!--/.nav-collapse -->*/
-/* */
-/*                                         </div>*/
-/* */
-/*                                         <div class="col-lg-4 col-md-4">*/
-/*                                                 <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
-/*                                                 <ul class="nav navbar-nav">*/
-/*                                                         <li>*/
-/*                                                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
-/*                                                                 <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>*/
-/*                                                                <ul>*/
-/*                                                                    <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>*/
-/*                                                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>*/
-/*                                                                </ul>*/
-/*                                                             {% else %}*/
-/*                                                                 <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>*/
-/*                                                             {% endif %}*/
-/*                                                         </li>*/
-/*                                                         <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
-/*                                                                <ul style="width:250px;margin-left:-100px;">*/
-/*                                                                     <li class="cart-li">*/
-/*                                                                         <div class="cart">*/
-/*                                                                             <img src="{{ asset('images/man/01.jpg') }}">*/
-/*                                                                             <b>Antony Robert</b> 45.000 Fcfa*/
-/*                                                                             <b class="right"><i class="fa fa-remove"></i></b>*/
-/*                                                                         </div>*/
-/*                                                                     </li>*/
-/*                                                                     <li class="cart-li">*/
-/*                                                                         <div class="cart">*/
-/*                                                                             <img src="{{ asset('images/man/03.jpg') }}">*/
-/*                                                                             <b>Antony Robert</b> 45.000 Fcfa*/
-/*                                                                             <b class="right"><i class="fa fa-remove"></i></b>*/
-/*                                                                         </div>*/
-/*                                                                     </li>*/
-/* */
-/*                                                                 </ul>*/
-/* */
-/*                                                         </li>*/
-/* */
-/*                                                 </ul>*/
-/*                                                 </div>*/
-/*                                         </div>*/
-/* */
-/*                                 </div>*/
-/* */
-/*                         </div>*/
-/* */
-/*                 </div>*/
-/* */
-/*                 <div id="slicknav-mobile"></div>*/
-/* */
-/*         </nav>*/
-/*         <!-- end Navbar (Header) -->*/
+/*     </nav>*/
+/*     <!-- end Navbar (Header) -->*/
 /* */
 /* </header>*/
 /* */

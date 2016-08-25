@@ -52,7 +52,7 @@ class SeanceDeCours {
     /**
      * @var \LGPUserBundle\Entity\Prof
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seanceDeCours")
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seancesDeCours")
      */
     private $prof;
     

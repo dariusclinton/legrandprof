@@ -55,5 +55,151 @@ class Enseignement
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="enseignement")
      */
     private $reservationEnseignements;
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservationEnseignements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set classe
+     *
+     * @param string $classe
+     *
+     * @return Enseignement
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+    
+        return $this;
+    }
+
+    /**
+     * Get classe
+     *
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     *
+     * @return Enseignement
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return integer
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set cours
+     *
+     * @param \LGP\CourseBundle\Entity\Cours $cours
+     *
+     * @return Enseignement
+     */
+    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null)
+    {
+        $this->cours = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \LGP\CourseBundle\Entity\Cours
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return Enseignement
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
+    {
+        $this->prof = $prof;
+    
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \LGP\UserBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
+
+    /**
+     * Add reservationEnseignement
+     *
+     * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
+     *
+     * @return Enseignement
+     */
+    public function addReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
+    {
+        $this->reservationEnseignements[] = $reservationEnseignement;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservationEnseignement
+     *
+     * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
+     */
+    public function removeReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
+    {
+        $this->reservationEnseignements->removeElement($reservationEnseignement);
+    }
+
+    /**
+     * Get reservationEnseignements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservationEnseignements()
+    {
+        return $this->reservationEnseignements;
+    }
+}

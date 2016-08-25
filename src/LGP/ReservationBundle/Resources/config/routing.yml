@@ -9,3 +9,8 @@ lgp_reservation_detail:
 lgp_reservation_cart:
     path:    /cart
     defaults: { _controller: LGPReservationBundle:Reservation:cart }
+    
+lgp_reservation_cart_add:
+    path:    /cart/add
+    defaults: { _controller: LGPReservationBundle:Reservation:addCart }
+

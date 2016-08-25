@@ -15,17 +15,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Prof extends User {
 
     /**
-     * @ORM\ManyToMany(targetEntity="Diplome")
-     * @ORM\JoinTable(name="lgp_prof_diplome")
-     */
-    private $diplomes;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
-     */
-    private $experiencePros;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -112,12 +101,11 @@ class Prof extends User {
     private $seanceDeCours;
 
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="profs")
-     * @ORM\JoinTable(name="lgp_prof_reservation")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
      */
-    private $reservations;
+    private $seancesDeCours;
 
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
@@ -132,6 +120,16 @@ class Prof extends User {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
      */
     private $evaluations;
+    
+      /**
+     * @ORM\ManyToMany(targetEntity="Diplome")
+     * @ORM\JoinTable(name="lgp_prof_diplome")
+     */
+    private $diplomes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+     */
+    private $experiencePros;
 
 }
