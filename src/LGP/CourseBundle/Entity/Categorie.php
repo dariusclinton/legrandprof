@@ -56,6 +56,7 @@ class Categorie {
      */
     private $cours;
 
+   
     /**
      * Constructor
      */

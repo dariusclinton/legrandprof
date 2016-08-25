@@ -23,7 +23,7 @@ class CourseController extends Controller {
      */
     public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
@@ -75,7 +75,7 @@ class CourseController extends Controller {
      */
     public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
@@ -141,7 +141,7 @@ class CourseController extends Controller {
      */
     public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
@@ -207,7 +207,7 @@ class CourseController extends Controller {
      */
     public function searchCityAction($ville, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $max_per_page = 10;

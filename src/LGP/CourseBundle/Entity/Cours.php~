@@ -7,11 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cours
  *
-<<<<<<< HEAD
- * @ORM\Table(name="cours")
-=======
  * @ORM\Table(name="lgp_cours")
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CoursRepository")
  */
 class Cours {
@@ -33,8 +29,6 @@ class Cours {
     private $intitule;
 
     /**
-<<<<<<< HEAD
-=======
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=1000, nullable=false)
@@ -56,23 +50,11 @@ class Cours {
     private $alt;
 
     /**
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * @var \LGP\CourseBundle\Entity\Categorie
      *
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Categorie", inversedBy="cours")
      */
     private $categorie;
-
-    /**
-     * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
-     * 
-<<<<<<< HEAD
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", mappedBy="cours")
-=======
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="cours")
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
-     */
-    private $programme;
 
     /**
      * @var \LGP\CourseBundle\Entity\SeanceDeCours
@@ -87,293 +69,12 @@ class Cours {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="cours")
      */
     private $evaluations;
-<<<<<<< HEAD
-
-=======
     
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="cours")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours")
      */
-    private $enseignes;
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
-<<<<<<< HEAD
-    }
+    private $enseignements;
 
-=======
-        $this->enseigne = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    
-
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set intitule
-     *
-     * @param string $intitule
-     *
-     * @return Cours
-     */
-    public function setIntitule($intitule)
-    {
-        $this->intitule = $intitule;
-    
-        return $this;
-    }
-
-    /**
-     * Get intitule
-     *
-     * @return string
-     */
-    public function getIntitule()
-    {
-        return $this->intitule;
-    }
-
-    /**
-<<<<<<< HEAD
-=======
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Cours
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Cours
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return Cours
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-    
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
-     * Set categorie
-     *
-     * @param \LGP\CourseBundle\Entity\Categorie $categorie
-     *
-     * @return Cours
-     */
-    public function setCategorie(\LGP\CourseBundle\Entity\Categorie $categorie = null)
-    {
-        $this->categorie = $categorie;
-    
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return \LGP\CourseBundle\Entity\Categorie
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
-     * Set programme
-     *
-     * @param \LGP\CourseBundle\Entity\ProgrammeDeCours $programme
-     *
-     * @return Cours
-     */
-    public function setProgramme(\LGP\CourseBundle\Entity\ProgrammeDeCours $programme = null)
-    {
-        $this->programme = $programme;
-    
-        return $this;
-    }
-
-    /**
-     * Get programme
-     *
-     * @return \LGP\CourseBundle\Entity\ProgrammeDeCours
-     */
-    public function getProgramme()
-    {
-        return $this->programme;
-    }
-
-    /**
-     * Add seance
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seance
-     *
-     * @return Cours
-     */
-    public function addSeance(\LGP\CourseBundle\Entity\SeanceDeCours $seance)
-    {
-        $this->seances[] = $seance;
-    
-        return $this;
-    }
-
-    /**
-     * Remove seance
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seance
-     */
-    public function removeSeance(\LGP\CourseBundle\Entity\SeanceDeCours $seance)
-    {
-        $this->seances->removeElement($seance);
-    }
-
-    /**
-     * Get seances
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeances()
-    {
-        return $this->seances;
-    }
-
-    /**
-     * Add evaluation
-     *
-     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
-     *
-     * @return Cours
-     */
-    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
-        $this->evaluations[] = $evaluation;
-    
-        return $this;
-    }
-
-    /**
-     * Remove evaluation
-     *
-     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
-     */
-    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
-        $this->evaluations->removeElement($evaluation);
-    }
-
-    /**
-     * Get evaluations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEvaluations()
-    {
-        return $this->evaluations;
-    }
-<<<<<<< HEAD
-=======
-
-    /**
-     * Add enseigne
-     *
-     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
-     *
-     * @return Cours
-     */
-    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
-    {
-        $this->enseignes[] = $enseigne;
-    
-        return $this;
-    }
-
-    /**
-     * Remove enseigne
-     *
-     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
-     */
-    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
-    {
-        $this->enseignes->removeElement($enseigne);
-    }
-
-    /**
-     * Get enseignes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEnseignes()
-    {
-        return $this->enseignes;
-    }
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
 }

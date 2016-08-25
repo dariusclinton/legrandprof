@@ -64,10 +64,10 @@ class JourDeCours extends \LGP\ReservationBundle\Entity\JourDeCours implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservationEnseignements', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservations', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'intitule', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heure', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'heureFin', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'reservationEnseignements', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\JourDeCours' . "\0" . 'seanceDeCours'];
     }
 
     /**
@@ -257,34 +257,34 @@ class JourDeCours extends \LGP\ReservationBundle\Entity\JourDeCours implements \
     /**
      * {@inheritDoc}
      */
-    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function addReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addReservation', [$reservation]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addReservationEnseignement', [$reservationEnseignement]);
 
-        return parent::addReservation($reservation);
+        return parent::addReservationEnseignement($reservationEnseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function removeReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeReservation', [$reservation]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeReservationEnseignement', [$reservationEnseignement]);
 
-        return parent::removeReservation($reservation);
+        return parent::removeReservationEnseignement($reservationEnseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getReservations()
+    public function getReservationEnseignements()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservations', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservationEnseignements', []);
 
-        return parent::getReservations();
+        return parent::getReservationEnseignements();
     }
 
     /**

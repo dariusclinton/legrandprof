@@ -73,11 +73,10 @@ class Cours {
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseigne", mappedBy="cours")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours")
      */
-    private $enseignes;
+    private $enseignements;
 
-  
     /**
      * Constructor
      */
@@ -85,7 +84,7 @@ class Cours {
     {
         $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->enseignes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enseignements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -287,36 +286,36 @@ class Cours {
     }
 
     /**
-     * Add enseigne
+     * Add enseignement
      *
-     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     * @param \LGP\CourseBundle\Entity\Enseignement $enseignement
      *
      * @return Cours
      */
-    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
-        $this->enseignes[] = $enseigne;
+        $this->enseignements[] = $enseignement;
     
         return $this;
     }
 
     /**
-     * Remove enseigne
+     * Remove enseignement
      *
-     * @param \LGP\CourseBundle\Entity\Enseigne $enseigne
+     * @param \LGP\CourseBundle\Entity\Enseignement $enseignement
      */
-    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
-        $this->enseignes->removeElement($enseigne);
+        $this->enseignements->removeElement($enseignement);
     }
 
     /**
-     * Get enseignes
+     * Get enseignements
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseignes()
+    public function getEnseignements()
     {
-        return $this->enseignes;
+        return $this->enseignements;
     }
 }

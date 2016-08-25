@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_36d257ea55cd423e125f9a891cc9d5ba43c3542e84a453d0c11a10a7cdb3b499 = $this->env->getExtension("native_profiler");
-        $__internal_36d257ea55cd423e125f9a891cc9d5ba43c3542e84a453d0c11a10a7cdb3b499->enter($__internal_36d257ea55cd423e125f9a891cc9d5ba43c3542e84a453d0c11a10a7cdb3b499_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_c5e11cda8f1070f7b5d25d2ceb73589a49466e6341acf691bb61bfdd6b56fea3 = $this->env->getExtension("native_profiler");
+        $__internal_c5e11cda8f1070f7b5d25d2ceb73589a49466e6341acf691bb61bfdd6b56fea3->enter($__internal_c5e11cda8f1070f7b5d25d2ceb73589a49466e6341acf691bb61bfdd6b56fea3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -166,8 +166,28 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
         // line 107
         echo "                                                        </li>
                                                         <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
-                                                                <ul>
-                                                                        Aucun Prof rajouté\t
+                                                               <ul style=\"width:250px;margin-left:-100px;\">
+                                                                    <li class=\"cart-li\">
+                                                                        <div class=\"cart\">
+                                                                            <img src=\"";
+        // line 112
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/01.jpg"), "html", null, true);
+        echo "\">
+                                                                            <b>Antony Robert</b> 45.000 Fcfa
+                                                                            <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class=\"cart-li\">
+                                                                        <div class=\"cart\">
+                                                                            <img src=\"";
+        // line 119
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
+        echo "\">
+                                                                            <b>Antony Robert</b> 45.000 Fcfa
+                                                                            <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                                                        </div>
+                                                                    </li>
+
                                                                 </ul>
 
                                                         </li>
@@ -191,7 +211,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
 ";
         
-        $__internal_36d257ea55cd423e125f9a891cc9d5ba43c3542e84a453d0c11a10a7cdb3b499->leave($__internal_36d257ea55cd423e125f9a891cc9d5ba43c3542e84a453d0c11a10a7cdb3b499_prof);
+        $__internal_c5e11cda8f1070f7b5d25d2ceb73589a49466e6341acf691bb61bfdd6b56fea3->leave($__internal_c5e11cda8f1070f7b5d25d2ceb73589a49466e6341acf691bb61bfdd6b56fea3_prof);
 
     }
 
@@ -207,7 +227,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  184 => 119,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -318,8 +338,22 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                                             {% endif %}*/
 /*                                                         </li>*/
 /*                                                         <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
-/*                                                                 <ul>*/
-/*                                                                         Aucun Prof rajouté	*/
+/*                                                                <ul style="width:250px;margin-left:-100px;">*/
+/*                                                                     <li class="cart-li">*/
+/*                                                                         <div class="cart">*/
+/*                                                                             <img src="{{ asset('images/man/01.jpg') }}">*/
+/*                                                                             <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                                             <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                                                         </div>*/
+/*                                                                     </li>*/
+/*                                                                     <li class="cart-li">*/
+/*                                                                         <div class="cart">*/
+/*                                                                             <img src="{{ asset('images/man/03.jpg') }}">*/
+/*                                                                             <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                                             <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                                                         </div>*/
+/*                                                                     </li>*/
+/* */
 /*                                                                 </ul>*/
 /* */
 /*                                                         </li>*/

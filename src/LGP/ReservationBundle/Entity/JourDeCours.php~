@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * JourDeCours
  *
- * @ORM\Table(name="jour_de_cours")
+ * @ORM\Table(name="lgp_jour_de_cours")
  * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\JourDeCoursRepository")
  */
 class JourDeCours {
@@ -43,10 +43,18 @@ class JourDeCours {
     private $heureFin;
 
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var \LGPReservationBundle\Entity\ReservationEnseignement
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="joursDeCours")
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="joursDeCours")
      */
-    private $reservations;
+    private $reservationEnseignements;
 
+    /**
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="jourDeCours")
+     */
+    private $seanceDeCours;
+
+  
 }

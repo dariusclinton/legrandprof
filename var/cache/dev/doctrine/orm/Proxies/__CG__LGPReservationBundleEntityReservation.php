@@ -64,10 +64,10 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'profs'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'reservationEnseignements'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'lieuDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'dateDebut', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'nbApprenants', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'ville', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'quartier', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'joursDeCours', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'profs'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'isValidee', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'frequencePaiement', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'factures', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'parent', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Reservation' . "\0" . 'reservationEnseignements'];
     }
 
     /**
@@ -191,72 +191,6 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
     /**
      * {@inheritDoc}
      */
-    public function setLieuDeCours($lieuDeCours)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLieuDeCours', [$lieuDeCours]);
-
-        return parent::setLieuDeCours($lieuDeCours);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLieuDeCours()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLieuDeCours', []);
-
-        return parent::getLieuDeCours();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDateDebut($dateDebut)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateDebut', [$dateDebut]);
-
-        return parent::setDateDebut($dateDebut);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDateDebut()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateDebut', []);
-
-        return parent::getDateDebut();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setNbApprenants($nbApprenants)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNbApprenants', [$nbApprenants]);
-
-        return parent::setNbApprenants($nbApprenants);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getNbApprenants()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNbApprenants', []);
-
-        return parent::getNbApprenants();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setIsValidee($isValidee)
     {
 
@@ -296,83 +230,6 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrequencePaiement', []);
 
         return parent::getFrequencePaiement();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setVille($ville)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVille', [$ville]);
-
-        return parent::setVille($ville);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getVille()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVille', []);
-
-        return parent::getVille();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setQuartier($quartier)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuartier', [$quartier]);
-
-        return parent::setQuartier($quartier);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getQuartier()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuartier', []);
-
-        return parent::getQuartier();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addJoursDeCour(\LGP\ReservationBundle\Entity\JourDeCours $joursDeCour)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addJoursDeCour', [$joursDeCour]);
-
-        return parent::addJoursDeCour($joursDeCour);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeJoursDeCour(\LGP\ReservationBundle\Entity\JourDeCours $joursDeCour)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeJoursDeCour', [$joursDeCour]);
-
-        return parent::removeJoursDeCour($joursDeCour);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getJoursDeCours()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJoursDeCours', []);
-
-        return parent::getJoursDeCours();
     }
 
     /**
@@ -433,34 +290,34 @@ class Reservation extends \LGP\ReservationBundle\Entity\Reservation implements \
     /**
      * {@inheritDoc}
      */
-    public function addProf(\LGP\UserBundle\Entity\Prof $prof)
+    public function addReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProf', [$prof]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addReservationEnseignement', [$reservationEnseignement]);
 
-        return parent::addProf($prof);
+        return parent::addReservationEnseignement($reservationEnseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeProf(\LGP\UserBundle\Entity\Prof $prof)
+    public function removeReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProf', [$prof]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeReservationEnseignement', [$reservationEnseignement]);
 
-        return parent::removeProf($prof);
+        return parent::removeReservationEnseignement($reservationEnseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getProfs()
+    public function getReservationEnseignements()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProfs', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservationEnseignements', []);
 
-        return parent::getProfs();
+        return parent::getReservationEnseignements();
     }
 
 }

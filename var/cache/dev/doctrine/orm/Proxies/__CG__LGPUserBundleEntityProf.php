@@ -64,10 +64,10 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'seanceDeCours', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'enseignes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'evaluations', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'seanceDeCours', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'enseignements', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'evaluations', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'seanceDeCours', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'enseignes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'evaluations', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'diplomes', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'experiencePros', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'ville', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'quartier', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'boitePostale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'situationMatrimoniale', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'niveauScolaire', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'nombreEnfants', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isRecommande', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'isActif', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'presentation', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'profession', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'seanceDeCours', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'enseignements', '' . "\0" . 'LGP\\UserBundle\\Entity\\Prof' . "\0" . 'evaluations', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
     }
 
     /**
@@ -173,21 +173,6 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     }
 
     
-    /**
-     * {@inheritDoc}
-     */
-    public function getId()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
-
-        return parent::getId();
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -422,6 +407,61 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
+    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeDiplome', [$diplome]);
+
+        return parent::removeDiplome($diplome);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDiplomes()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiplomes', []);
+
+        return parent::getDiplomes();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addExperiencePro', [$experiencePro]);
+
+        return parent::addExperiencePro($experiencePro);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeExperiencePro', [$experiencePro]);
+
+        return parent::removeExperiencePro($experiencePro);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getExperiencePros()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExperiencePros', []);
+
+        return parent::getExperiencePros();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
     {
 
@@ -466,39 +506,6 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeDiplome', [$diplome]);
-
-        return parent::removeDiplome($diplome);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDiplomes()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiplomes', []);
-
-        return parent::getDiplomes();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addExperiencePro', [$experiencePro]);
-
-        return parent::addExperiencePro($experiencePro);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
     {
 
@@ -521,34 +528,34 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnseigne', [$enseigne]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnseignement', [$enseignement]);
 
-        return parent::addEnseigne($enseigne);
+        return parent::addEnseignement($enseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEnseigne', [$enseigne]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEnseignement', [$enseignement]);
 
-        return parent::removeEnseigne($enseigne);
+        return parent::removeEnseignement($enseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getEnseignes()
+    public function getEnseignements()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnseignes', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnseignements', []);
 
-        return parent::getEnseignes();
+        return parent::getEnseignements();
     }
 
     /**
@@ -560,28 +567,6 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvaluation', [$evaluation]);
 
         return parent::addEvaluation($evaluation);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeExperiencePro', [$experiencePro]);
-
-        return parent::removeExperiencePro($experiencePro);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getExperiencePros()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExperiencePros', []);
-
-        return parent::getExperiencePros();
     }
 
     /**
@@ -604,6 +589,21 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvaluations', []);
 
         return parent::getEvaluations();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
+
+        return parent::getId();
     }
 
     /**

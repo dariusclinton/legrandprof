@@ -43,11 +43,11 @@ class JourDeCours {
     private $heureFin;
 
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var \LGPReservationBundle\Entity\ReservationEnseignement
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="joursDeCours")
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="joursDeCours")
      */
-    private $reservations;
+    private $reservationEnseignements;
 
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
@@ -56,11 +56,13 @@ class JourDeCours {
      */
     private $seanceDeCours;
 
+  
     /**
      * Constructor
      */
-    public function __construct() {
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+    public function __construct()
+    {
+        $this->reservationEnseignements = new \Doctrine\Common\Collections\ArrayCollection();
         $this->seanceDeCours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -69,7 +71,8 @@ class JourDeCours {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -80,9 +83,10 @@ class JourDeCours {
      *
      * @return JourDeCours
      */
-    public function setIntitule($intitule) {
+    public function setIntitule($intitule)
+    {
         $this->intitule = $intitule;
-
+    
         return $this;
     }
 
@@ -91,7 +95,8 @@ class JourDeCours {
      *
      * @return string
      */
-    public function getIntitule() {
+    public function getIntitule()
+    {
         return $this->intitule;
     }
 
@@ -102,9 +107,10 @@ class JourDeCours {
      *
      * @return JourDeCours
      */
-    public function setHeure($heure) {
+    public function setHeure($heure)
+    {
         $this->heure = $heure;
-
+    
         return $this;
     }
 
@@ -113,7 +119,8 @@ class JourDeCours {
      *
      * @return \DateTime
      */
-    public function getHeure() {
+    public function getHeure()
+    {
         return $this->heure;
     }
 
@@ -124,9 +131,10 @@ class JourDeCours {
      *
      * @return JourDeCours
      */
-    public function setHeureFin($heureFin) {
+    public function setHeureFin($heureFin)
+    {
         $this->heureFin = $heureFin;
-
+    
         return $this;
     }
 
@@ -135,39 +143,43 @@ class JourDeCours {
      *
      * @return \DateTime
      */
-    public function getHeureFin() {
+    public function getHeureFin()
+    {
         return $this->heureFin;
     }
 
     /**
-     * Add reservation
+     * Add reservationEnseignement
      *
-     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
      *
      * @return JourDeCours
      */
-    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation) {
-        $this->reservations[] = $reservation;
-
+    public function addReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
+    {
+        $this->reservationEnseignements[] = $reservationEnseignement;
+    
         return $this;
     }
 
     /**
-     * Remove reservation
+     * Remove reservationEnseignement
      *
-     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
      */
-    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation) {
-        $this->reservations->removeElement($reservation);
+    public function removeReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
+    {
+        $this->reservationEnseignements->removeElement($reservationEnseignement);
     }
 
     /**
-     * Get reservations
+     * Get reservationEnseignements
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReservations() {
-        return $this->reservations;
+    public function getReservationEnseignements()
+    {
+        return $this->reservationEnseignements;
     }
 
     /**
@@ -177,9 +189,10 @@ class JourDeCours {
      *
      * @return JourDeCours
      */
-    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
         $this->seanceDeCours[] = $seanceDeCour;
-
+    
         return $this;
     }
 
@@ -188,7 +201,8 @@ class JourDeCours {
      *
      * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
      */
-    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    {
         $this->seanceDeCours->removeElement($seanceDeCour);
     }
 
@@ -197,8 +211,8 @@ class JourDeCours {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSeanceDeCours() {
+    public function getSeanceDeCours()
+    {
         return $this->seanceDeCours;
     }
-
 }
