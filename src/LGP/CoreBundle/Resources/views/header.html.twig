@@ -1,123 +1,157 @@
 <!-- start Header -->
 <header id="header">
 
-        <!-- start Navbar (Header) -->
-        <nav class="navbar navbar-black navbar-fixed-top navbar-sticky-function">
+    <!-- start Navbar (Header) -->
+    <nav class="navbar navbar-black navbar-fixed-top navbar-sticky-function">
 
-                <div class="navbar-top hidden-md hidden-lg">
+        <div class="navbar-top hidden-md hidden-lg">
 
-                        <div class="container">
+            <div class="container">
 
-                                <div class="flex-row flex-align-middle">
-                                        <div class="flex-shrink flex-columns">
-                                                <a class="navbar-logo" href="index.html">
-                                                        <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />
-                                                </a>
-                                        </div>	
-                                        <div class="flex-columns">
-                                                <div class="">
+                <div class="flex-row flex-align-middle">
+                    <div class="flex-shrink flex-columns">
+                        <a class="navbar-logo" href="index.html">
+                            <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />
+                        </a>
+                    </div>	
+                    <div class="flex-columns">
+                        <div class="">
 
-                                                        <div class="navbar-mini">
-                                                                <ul class="clearfix">
+                            <div class="navbar-mini">
+                                <ul class="clearfix">
 
-                                                                        <li class="dropdown bt-dropdown-click hidden-xs">
-                                                                                <a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                                                        <i class="ion-android-globe hidden-xss"></i> Francais
-                                                                                        <span class="caret"></span>
-                                                                                </a>
-                                                                                <ul class="dropdown-menu" aria-labelledby="language-dropdown">
-                                                                                        <li><a href="#">Francais</a></li>
-                                                                                        <li><a href="#">English</a></li>
-                                                                                </ul>
-                                                                        </li>
+                                    <li class="dropdown bt-dropdown-click hidden-xs">
+                                        <a id="currncy-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ion-android-globe hidden-xss"></i> Francais
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="language-dropdown">
+                                            <li><a href="#">Francais</a></li>
+                                            <li><a href="#">English</a></li>
+                                        </ul>
+                                    </li>
 
-                                                                        <li class="dropdown bt-dropdown-click visible-xs">
-                                                                                <a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                                                        <i class="fa fa-cog"></i>
-                                                                                </a>
-                                                                                <ul class="dropdown-menu" aria-labelledby="language-dropdown">
-                                                                                        <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>
-                                                                                        <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>
-                                                                                        <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>
-                                                                                        <li class="divider"></li>
-                                                                                        <li><a href="#">English</a></li>
-                                                                                        <li><a href="#">France</a></li>
-                                                                                        <li><a href="#">Japanese</a></li>
-                                                                                </ul>
-                                                                        </li>
+                                    <li class="dropdown bt-dropdown-click visible-xs">
+                                        <a id="currncy-language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="language-dropdown">
+                                            <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>
+                                            <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>
+                                            <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">France</a></li>
+                                            <li><a href="#">Japanese</a></li>
+                                        </ul>
+                                    </li>
 
-                                                                        <li class="user-action">
-                                                                                <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>
-                                                                        </li>
+                                    <li class="user-action">
+                                        <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>
+                                    </li>
 
-                                                                </ul>
-                                                        </div>
-
-                                                </div>
-                                        </div>
-                                </div>
+                                </ul>
+                            </div>
 
                         </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="navbar-bottom hidden-sm hidden-xs">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>
+                    </div>		
+                    <div class="col-lg-6 col-md-6">
+
+                        <div id="navbar" class="collapse navbar-collapse navbar-arrow">
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <ul class="nav navbar-nav" id="responsive-menu">
+                                    <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>
+                                    <li><a href="#">Besoin d'aide ?</a></li>
+                                    <!--<li><a href="#">Contactez-nous</a></li>-->
+                                </ul>
+                            {% else %}
+                                <ul class="nav navbar-nav" id="responsive-menu">
+                                    <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>
+                                    <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>
+                                    <li><a href="#">Comment ca marche ?</a></li>
+                                    <!--<li><a href="#">Contactez-nous</a></li>-->
+                                </ul>
+                            {% endif %}
+                        </div><!--/.nav-collapse -->
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div id="navbar" class="collapse navbar-collapse navbar-arrow">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>
+                                        <ul>
+                                            <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                        </ul>
+                                    {% else %}
+                                        <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>
+                                    {% endif %}
+                                </li>
+                                <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>
+                                    <ul style="width:250px;margin-left:-100px;">
+                                        <li class="cart-li">
+                                            <div class="cart">
+                                                <img src="{{ asset('images/man/01.jpg') }}">
+                                                <b>Antony Robert</b> 45.000 Fcfa
+                                                <b class="right"><i class="fa fa-remove"></i></b>
+                                            </div>
+                                        </li>
+                                        <li class="cart-li">
+                                            <div class="cart">
+                                                <img src="{{ asset('images/man/03.jpg') }}">
+                                                <b>Antony Robert</b> 45.000 Fcfa
+                                                <b class="right"><i class="fa fa-remove"></i></b>
+                                            </div>
+                                        </li>
+
+                                        {% if app.session.panier is defined %}
+                                            {% for booker in app.session.get('panier').getItems() %}
+                                                <li class="cart-li">
+                                                    <div class="cart">
+                                                        <img src="{{ asset('images/man/03.jpg') }}">
+                                                        <b>Antony Robert</b> 45.000 Fcfa
+                                                        <b class="right"><i class="fa fa-remove"></i></b>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
 
-                <div class="navbar-bottom hidden-sm hidden-xs">
+            </div>
 
-                        <div class="container">
+        </div>
 
-                                <div class="row">
-                                        <div class="col-lg-2 col-md-2">
-                                                <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>
-                                        </div>		
-                                        <div class="col-lg-6 col-md-6">
+        <div id="slicknav-mobile"></div>
 
-                                                <div id="navbar" class="collapse navbar-collapse navbar-arrow">
-                                                        <ul class="nav navbar-nav" id="responsive-menu">
-                                                                <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>
-                                                                <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>
-                                                                <li><a href="#">Comment ca marche ?</a></li>
-                                                                <!--<li><a href="#">Contactez-nous</a></li>-->
-
-                                                        </ul>
-
-                                                </div><!--/.nav-collapse -->
-
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-4">
-                                                <div id="navbar" class="collapse navbar-collapse navbar-arrow">
-                                                <ul class="nav navbar-nav">
-                                                        <li>
-                                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                                <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>
-                                                               <ul>
-                                                                   <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                                                               </ul>
-                                                            {% else %}
-                                                                <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>
-                                                            {% endif %}
-                                                        </li>
-                                                        <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>
-                                                                <ul>
-                                                                        Aucun Prof rajouté	
-                                                                </ul>
-
-                                                        </li>
-
-                                                </ul>
-                                                </div>
-                                        </div>
-
-                                </div>
-
-                        </div>
-
-                </div>
-
-                <div id="slicknav-mobile"></div>
-
-        </nav>
-        <!-- end Navbar (Header) -->
+    </nav>
+    <!-- end Navbar (Header) -->
 
 </header>
 

@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Facture
  *
+<<<<<<< HEAD
  * @ORM\Table(name="facture")
+=======
+ * @ORM\Table(name="lgp_facture")
+>>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
  * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\FactureRepository")
  */
 class Facture {
@@ -42,4 +46,103 @@ class Facture {
      */
     private $paiement;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     *
+     * @return Facture
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+    
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return Facture
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Set paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     *
+     * @return Facture
+     */
+    public function setPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement = null)
+    {
+        $this->paiement = $paiement;
+    
+        return $this;
+    }
+
+    /**
+     * Get paiement
+     *
+     * @return \LGP\ReservationBundle\Entity\Paiement
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
+    }
 }

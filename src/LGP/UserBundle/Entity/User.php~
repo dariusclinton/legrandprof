@@ -4,10 +4,8 @@ namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
-<<<<<<< HEAD
  * @ORM\Entity
  * @ORM\Table(name="lgp_user")
  * @ORM\InheritanceType("JOINED")
@@ -17,21 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 abstract class User extends BaseUser
 {
-  /**
-   * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
-   */
-  private $image;
-  
-=======
- * User
- *
- * @ORM\Table(name="lgp_user")
- * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\UserRepository")
- * @ORM\HasLifecycleCallbacks()
- */
-class User extends BaseUser
-{
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
+    /**
+     * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
+
     /**
      * @var int
      *
@@ -58,11 +47,7 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-<<<<<<< HEAD
      * @ORM\Column(name="date_naissance", type="datetime")
-=======
-     * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      */
     private $dateNaissance;
 
@@ -95,18 +80,6 @@ class User extends BaseUser
     private $dateInscription;
 
     /**
-<<<<<<< HEAD
-=======
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     *
-     * @Assert\Image(maxSize="2M", maxSizeMessage="La taille du fichier doit être < 2Mo")
-     */
-     private $photo;
-
-    /**
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * Constructeur
      */
      public function __construct()
@@ -293,40 +266,38 @@ class User extends BaseUser
     {
         return $this->dateInscription;
     }
-<<<<<<< HEAD
-=======
 
-
-    // Methode permettant d'activer le compte de l'utilisateur par defaut lors de l'inscription
     /**
+     * Set image
+     *
+     * @param \LGP\UserBundle\Entity\Image $image
+     *
+     * @return User
+     */
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+        
+        return $this;
+    }
+
+    /**
+     * Methode permettant d'activer le compte de l'utilisateur par defaut lors de l'inscription
+     * 
     * @ORM\PrePersist
     */
     public function enabledUser(){
         $this->setEnabled(true);
     }
 
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return User
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
 
     /**
-     * Get photo
+     * Get image
      *
-     * @return string
+     * @return \LGP\UserBundle\Entity\Image
      */
-    public function getPhoto()
+    public function getImage()
     {
-        return $this->photo;
+        return $this->image;
     }
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
 }

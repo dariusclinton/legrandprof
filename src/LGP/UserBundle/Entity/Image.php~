@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Image
  *
- * @ORM\Table(name="image")
+ * @ORM\Table(name="lgp_image")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -172,4 +172,3 @@ class Image
     }
 
 }
-

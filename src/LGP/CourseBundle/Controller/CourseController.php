@@ -21,9 +21,61 @@ class CourseController extends Controller {
      * @throws NotFoundHttpException
      * @throws InvalidArgumentException
      */
-    public function searchAction($intitule_cours, $page, Request $request) {
+    public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $courses = $coursRep->findAll();
+        $max_per_page = 10;
+        try {
+            $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
+//                $coursCount = $enseigneRep->countProfsByCours($coursFound);
+            $profsCount = count($profs);
+            $pageCount = ceil($profsCount / $max_per_page);
+            if ($pageCount < $page && $pageCount != 0) {
+                throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404
+            }
+            $params = array(
+                'courses' => $courses,
+                'matieres_profs' => $profs,
+                'enseigneRep' => $enseigneRep,
+                'pagination' => array(
+                    'route' => 'lgp_course_find',
+                    'pages_count' => $pageCount,
+                    'profs_count' => $profsCount,
+                    'max_per_page' => $max_per_page,
+                    'page' => $page,
+                    'route_params' => array()
+                ),
+            );
+        } catch (NoResultException $ex) {
+            throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
+        }
+        $course_form_refine = $this->createForm(CoursSearchRefineType::class);
+        $course_form_refine->handleRequest($request);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+            if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
+                throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
+            }
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
+        }
+        return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
+    }
+
+    /**
+     * 
+     * @param type $intitule_cours
+     * @param type $page
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
+     * @throws type
+     * @throws NotFoundHttpException
+     * @throws InvalidArgumentException
+     */
+    public function searchCourseAction($intitule_cours, $page, Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
@@ -89,7 +141,7 @@ class CourseController extends Controller {
      */
     public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
@@ -155,7 +207,7 @@ class CourseController extends Controller {
      */
     public function searchCityAction($ville, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseigne");
+        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $max_per_page = 10;

@@ -225,7 +225,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'lgp_reservation_homepage');
                 }
 
-                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lgp_reservation_homepage',);
+                return array (  '_controller' => 'LGPReservationBundle:Default:index',  '_route' => 'lgp_reservation_homepage',);
             }
 
             // lgp_reservation_detail
@@ -233,9 +233,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',  '_route' => 'lgp_reservation_detail',);
             }
 
-            // lgp_reservation_cart
-            if ($pathinfo === '/reservation/cart') {
-                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::cartAction',  '_route' => 'lgp_reservation_cart',);
+            if (0 === strpos($pathinfo, '/reservation/cart')) {
+                // lgp_reservation_cart
+                if ($pathinfo === '/reservation/cart') {
+                    return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::cartAction',  '_route' => 'lgp_reservation_cart',);
+                }
+
+                // lgp_reservation_cart_add
+                if ($pathinfo === '/reservation/cart/add') {
+                    return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::addCartAction',  '_route' => 'lgp_reservation_cart_add',);
+                }
+
             }
 
         }
@@ -246,27 +254,35 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_category')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::allCategoriesAction',  'page' => 1,));
             }
 
-            if (0 === strpos($pathinfo, '/course/search/profs')) {
-                // lgp_course_find_prof
-                if (preg_match('#^/course/search/profs/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchAction',  'page' => 1,));
+            if (0 === strpos($pathinfo, '/course/search')) {
+                // lgp_course_find_category
+                if (0 === strpos($pathinfo, '/course/search/categories') && preg_match('#^/course/search/categories/(?P<category>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_category')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::categoryAction',  'page' => 1,));
                 }
 
-                // lgp_course_find_prof_refine
-                if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_refine')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchRefineAction',  'page' => 1,));
+                if (0 === strpos($pathinfo, '/course/search/profs')) {
+                    // lgp_course_find
+                    if (preg_match('#^/course/search/profs(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchAction',  'page' => 1,));
+                    }
+
+                    // lgp_course_find_prof
+                    if (preg_match('#^/course/search/profs/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCourseAction',  'page' => 1,));
+                    }
+
+                    // lgp_course_find_prof_refine
+                    if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_refine')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchRefineAction',  'page' => 1,));
+                    }
+
+                    // lgp_course_find_prof_city
+                    if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
+                    }
+
                 }
 
-            }
-
-            // lgp_course_find_prof_city
-            if (0 === strpos($pathinfo, '/course/profs') && preg_match('#^/course/profs/(?P<ville>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
-            }
-
-            // lgp_course_find_category
-            if (0 === strpos($pathinfo, '/course/search') && preg_match('#^/course/search/(?P<category>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_category')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::categoryAction',  'page' => 1,));
             }
 
         }

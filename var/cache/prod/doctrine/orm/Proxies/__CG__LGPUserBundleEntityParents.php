@@ -64,10 +64,10 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'image', 'nom', 'prenoms', 'dateNaissance', 'sexe', 'numTelephone', 'pays', 'dateInscription', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
         }
 
-        return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'reservations', '' . "\0" . 'LGP\\UserBundle\\Entity\\Parents' . "\0" . 'paiements', 'image', 'nom', 'prenoms', 'dateNaissance', 'sexe', 'numTelephone', 'pays', 'dateInscription', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
     }
 
     /**
@@ -450,6 +450,17 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', []);
 
         return parent::getImage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAffichage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAffichage', []);
+
+        return parent::getAffichage();
     }
 
     /**

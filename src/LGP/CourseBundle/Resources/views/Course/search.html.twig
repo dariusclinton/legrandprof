@@ -2,39 +2,45 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    Profs de {{ params.intitule_cours }} - {{ parent() }}
+    {% if params.courseFound is defined %}
+        Profs de {{ params.courseFound.intitule }} - {{ parent() }}
+    {% else %}
+        Profs - {{ parent() }}
+    {% endif %}
 {% endblock %}
 
 {% block body %}
 
-    <!-- start end Page title -->
-    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+    {% if params.courseFound is defined %}
+        <!-- start end Page title -->
+        <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                    <h1 class="hero-title">Grands Profs en {{ params.courseFound.intitule }} </h1>
+                        <h1 class="hero-title">Grands Profs en {{ params.courseFound.intitule }} </h1>
 
-                    <ol class="breadcrumb-list">
-                        <li><a href="{{path('lgp_core_homepage')}} ">Accueil</a></li>
-                            {#  <li><a href="#">Profs</a></li> #}
-                            {% if params.ville is defined %}
-                            <li><a href=" {{path('lgp_course_find_prof_city', {'ville' : params.ville})}} "> {{params.ville}} </a></li>
-                            {% endif %}
-                        <li><span>{{ params.courseFound.intitule }}</span></li>
-                    </ol>
+                        <ol class="breadcrumb-list">
+                            <li><a href="{{path('lgp_core_homepage')}} ">Accueil</a></li>
+                                {#  <li><a href="#">Profs</a></li> #}
+                                {% if params.ville is defined %}
+                                <li><a href=" {{path('lgp_course_find_prof_city', {'ville' : params.ville})}} "> {{params.ville}} </a></li>
+                                {% endif %}
+                            <li><span>{{ params.courseFound.intitule }}</span></li>
+                        </ol>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
-    </div>
-    <!-- end Page title -->
+        <!-- end Page title -->
+    {% endif %}
 
     <div class="content-wrapper">
 
@@ -187,43 +193,45 @@
 
                 <div class="col-sm-8 col-md-9">
 
-                    <div class="sorting-wrappper">
+                    {% if params.courseFound is defined %}
+                        <div class="sorting-wrappper">
 
-                        <div class="sorting-header">
+                            <div class="sorting-header">
 
-                            <h3 class="sorting-title uppercase">Des Grands profs en {{ params.intitule_cours }}</h3>
-                            <p class="sorting-lead">{{params.matieres_profs | length}} Grands profs trouvés</p>
+                                <h3 class="sorting-title uppercase">Des Grands profs en {{ params.intitule_cours }}</h3>
+                                <p class="sorting-lead">{{params.matieres_profs | length}} Grands profs trouvés</p>
+                            </div>
+
+                            {#   <div class="sorting-content">
+      
+                                  <div class="row">
+      
+                                      <div class="col-sm-12 col-md-8">
+                                          <div class="sort-by-wrapper">
+                                              <label class="sorting-label">Sort by: </label> 
+                                              <div class="sorting-middle-holder">
+                                                  <ul class="sort-by">
+                                                      <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+      
+                                      <div class="col-sm-12 col-md-4">
+                                          <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
+                                              <label class="sorting-label">Voir : </label> 
+                                              <div class="sorting-middle-holder">
+                                                  <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
+                                              </div>
+                                          </div>
+                                      </div>
+      
+                                  </div>
+      
+                              </div> #}
+
                         </div>
-
-                        {#   <div class="sorting-content">
-  
-                              <div class="row">
-  
-                                  <div class="col-sm-12 col-md-8">
-                                      <div class="sort-by-wrapper">
-                                          <label class="sorting-label">Sort by: </label> 
-                                          <div class="sorting-middle-holder">
-                                              <ul class="sort-by">
-                                                  <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-  
-                                  <div class="col-sm-12 col-md-4">
-                                      <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
-                                          <label class="sorting-label">Voir : </label> 
-                                          <div class="sorting-middle-holder">
-                                              <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
-                                          </div>
-                                      </div>
-                                  </div>
-  
-                              </div>
-  
-                          </div> #}
-
-                    </div>
+                    {% endif %}
 
                     <div class="package-list-item-wrapper on-page-result-page">
 

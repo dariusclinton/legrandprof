@@ -7,19 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Categorie
  *
-<<<<<<< HEAD
- * @ORM\Table(name="categorie")
- * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
- */
-class Categorie
-{
-=======
  * @ORM\Table(name="lgp_categorie")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
  */
 class Categorie {
 
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
     /**
      * @var int
      *
@@ -29,11 +21,7 @@ class Categorie {
      */
     private $id;
 
-<<<<<<< HEAD
-     /**
-=======
     /**
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
@@ -46,9 +34,6 @@ class Categorie {
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
-<<<<<<< HEAD
-    
-=======
 
     /**
      * @var string
@@ -64,7 +49,6 @@ class Categorie {
      */
     private $alt;
 
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
@@ -72,10 +56,7 @@ class Categorie {
      */
     private $cours;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
+   
     /**
      * Constructor
      */
@@ -143,8 +124,6 @@ class Categorie {
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Set url
      *
      * @param string $url
@@ -193,7 +172,6 @@ class Categorie {
     }
 
     /**
->>>>>>> ec42c7beebb4f49976d9a336ca8f69c5cfd18c72
      * Add cour
      *
      * @param \LGP\CourseBundle\Entity\Cours $cour
