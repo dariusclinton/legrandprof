@@ -8,5 +8,8 @@ var/
 # Ignorer tous les fichiers dans le repertoire cache
 var/cache/
 
-#Ignorer tous les fichiers dans le repertoire logs
+# Ignorer tous les fichiers dans le repertoire logs
 var/logs/
+
+# Ignorer tous les fichiers dans le repertoire sessions
+var/sessions/
