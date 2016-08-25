@@ -36,13 +36,6 @@ class SeanceDeCours {
     private $date;
     
     /**
-     * @var \LGP\CourseBundle\Entity\Cours
-     * 
-     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="seances")
-     */
-    private $cours;
-
-    /**
      * @var \LGPReservationBundle\Entity\JourDeCours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
@@ -56,6 +49,7 @@ class SeanceDeCours {
      */
     private $prof;
     
+
 
     /**
      * Get id
@@ -113,30 +107,6 @@ class SeanceDeCours {
     public function getDate()
     {
         return $this->date;
-    }
-
-    /**
-     * Set cours
-     *
-     * @param \LGP\CourseBundle\Entity\Cours $cours
-     *
-     * @return SeanceDeCours
-     */
-    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = null)
-    {
-        $this->cours = $cours;
-    
-        return $this;
-    }
-
-    /**
-     * Get cours
-     *
-     * @return \LGP\CourseBundle\Entity\Cours
-     */
-    public function getCours()
-    {
-        return $this->cours;
     }
 
     /**

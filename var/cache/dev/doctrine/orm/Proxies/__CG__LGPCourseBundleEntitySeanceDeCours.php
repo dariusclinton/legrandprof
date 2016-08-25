@@ -64,10 +64,10 @@ class SeanceDeCours extends \LGP\CourseBundle\Entity\SeanceDeCours implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'cours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'resume', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'date', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'jourDeCours', '' . "\0" . 'LGP\\CourseBundle\\Entity\\SeanceDeCours' . "\0" . 'prof'];
     }
 
     /**
@@ -230,28 +230,6 @@ class SeanceDeCours extends \LGP\CourseBundle\Entity\SeanceDeCours implements \D
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDate', []);
 
         return parent::getDate();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setCours(\LGP\CourseBundle\Entity\Cours $cours = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCours', [$cours]);
-
-        return parent::setCours($cours);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getCours()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCours', []);
-
-        return parent::getCours();
     }
 
     /**

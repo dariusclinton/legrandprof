@@ -114,16 +114,10 @@
                                                 <b class="right"><i class="fa fa-remove"></i></b>
                                             </div>
                                         </li>
-                                        <li class="cart-li">
-                                            <div class="cart">
-                                                <img src="{{ asset('images/man/03.jpg') }}">
-                                                <b>Antony Robert</b> 45.000 Fcfa
-                                                <b class="right"><i class="fa fa-remove"></i></b>
-                                            </div>
-                                        </li>
 
-                                        {% if app.session.panier is defined %}
-                                            {% for booker in app.session.get('panier').getItems() %}
+                                        {% set panier = app.session.get('panier') %}
+                                        {% if panier is defined and not panier is null %}
+                                            {% for booker in panier.getItems() %}
                                                 <li class="cart-li">
                                                     <div class="cart">
                                                         <img src="{{ asset('images/man/03.jpg') }}">
@@ -132,6 +126,12 @@
                                                     </div>
                                                 </li>
                                             {% endfor %}
+                                        {% else %}
+                                            <li class="cart-li">
+                                                <div class="cart">
+                                                    <b>aucun prof dans le panier</b>
+                                                </div>
+                                            </li>
                                         {% endif %}
 
                                     </ul>

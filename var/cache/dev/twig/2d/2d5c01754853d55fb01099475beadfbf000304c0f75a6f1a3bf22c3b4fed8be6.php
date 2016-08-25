@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b = $this->env->getExtension("native_profiler");
-        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b->enter($__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa = $this->env->getExtension("native_profiler");
+        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa->enter($__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -177,30 +177,23 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                                 <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
                                             </div>
                                         </li>
-                                        <li class=\"cart-li\">
-                                            <div class=\"cart\">
-                                                <img src=\"";
-        // line 119
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
-        echo "\">
-                                                <b>Antony Robert</b> 45.000 Fcfa
-                                                <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
-                                            </div>
-                                        </li>
 
                                         ";
-        // line 125
-        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session", array(), "any", false, true), "panier", array(), "any", true, true)) {
-            // line 126
+        // line 118
+        $context["panier"] = $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method");
+        // line 119
+        echo "                                        ";
+        if ((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier"))))) {
+            // line 120
             echo "                                            ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method"), "getItems", array(), "method"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "getItems", array(), "method"));
             foreach ($context['_seq'] as $context["_key"] => $context["booker"]) {
-                // line 127
+                // line 121
                 echo "                                                <li class=\"cart-li\">
                                                     <div class=\"cart\">
                                                         <img src=\"";
-                // line 129
+                // line 123
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
                 echo "\">
                                                         <b>Antony Robert</b> 45.000 Fcfa
@@ -212,8 +205,16 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 135
+            // line 129
             echo "                                        ";
+        } else {
+            // line 130
+            echo "                                            <li class=\"cart-li\">
+                                                <div class=\"cart\">
+                                                    <b>aucun prof dans le panier</b>
+                                                </div>
+                                            </li>
+                                        ";
         }
         // line 136
         echo "
@@ -240,7 +241,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
 ";
         
-        $__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b->leave($__internal_bae466a999979cef14f3939becbd09776d155b67913f0f5ca53d245f1742ed5b_prof);
+        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa->leave($__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa_prof);
 
     }
 
@@ -256,7 +257,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  219 => 136,  216 => 135,  204 => 129,  200 => 127,  195 => 126,  193 => 125,  184 => 119,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  220 => 136,  212 => 130,  209 => 129,  197 => 123,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -375,16 +376,10 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                                 <b class="right"><i class="fa fa-remove"></i></b>*/
 /*                                             </div>*/
 /*                                         </li>*/
-/*                                         <li class="cart-li">*/
-/*                                             <div class="cart">*/
-/*                                                 <img src="{{ asset('images/man/03.jpg') }}">*/
-/*                                                 <b>Antony Robert</b> 45.000 Fcfa*/
-/*                                                 <b class="right"><i class="fa fa-remove"></i></b>*/
-/*                                             </div>*/
-/*                                         </li>*/
 /* */
-/*                                         {% if app.session.panier is defined %}*/
-/*                                             {% for booker in app.session.get('panier').getItems() %}*/
+/*                                         {% set panier = app.session.get('panier') %}*/
+/*                                         {% if panier is defined and not panier is null %}*/
+/*                                             {% for booker in panier.getItems() %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
 /*                                                         <img src="{{ asset('images/man/03.jpg') }}">*/
@@ -393,6 +388,12 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                                     </div>*/
 /*                                                 </li>*/
 /*                                             {% endfor %}*/
+/*                                         {% else %}*/
+/*                                             <li class="cart-li">*/
+/*                                                 <div class="cart">*/
+/*                                                     <b>aucun prof dans le panier</b>*/
+/*                                                 </div>*/
+/*                                             </li>*/
 /*                                         {% endif %}*/
 /* */
 /*                                     </ul>*/

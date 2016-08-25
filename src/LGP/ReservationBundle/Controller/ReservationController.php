@@ -22,8 +22,6 @@ class ReservationController extends Controller {
         $panier = $session->get('panier');
 
         $booker1 = new Booker();
-        $booker2 = new Booker();
-        $booker3 = new Booker();
 
         $booker1->setProf(1);
         $booker1->setCours(1);
@@ -39,34 +37,9 @@ class ReservationController extends Controller {
         $booker1->addJour("lundi");
         $booker1->addJour("mercredi");
 
-        $booker2->setProf(1);
-        $booker2->setCours(2);
-        $booker2->setDateDebut(new Date());
-        $booker2->setFrequencePaiement("trimerstriel");
-        $booker2->setLieu("Domicile parent");
-        $booker2->setNbApprenants(1);
-        $booker2->setNbHeureParJour(3);
-        $booker2->setPrixTotal(300000);
-        $booker2->setVille("Bafoussam");
-        $booker2->setQuartier("socada");
-        $booker2->setClasse("6eme");
-        $booker2->addJour("mardi");
-        $booker2->addJour("dimanche");
-
-        $panier->addItem(null,$booker1);
-        $panier->addItem(null,$booker2);
-//        $panier->addItem($booker3);
-
+        $panier->addItem(null, $booker1);
         $session->set('panier', $panier);
-
-//        var_dump($panier->getItems());
-//        $session->remove('panier');
-//        foreach ($panier->getItems() as $booker){
-//            echo $booker->getProf()." ".$booker->getVille();
-//        }
-        
         return $this->redirectToRoute("lgp_core_homepage");
-//        die("\n voila");
     }
 
     public function cartAction() {

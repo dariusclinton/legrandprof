@@ -55,14 +55,7 @@ class Cours {
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Categorie", inversedBy="cours")
      */
     private $categorie;
-
-    /**
-     * @var \LGP\CourseBundle\Entity\SeanceDeCours
-     * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="cours")
-     */
-    private $seances;
-
+    
     /**
      * @var \LGP\CourseBundle\Entity\Evaluation
      * 
@@ -77,12 +70,12 @@ class Cours {
      */
     private $enseignements;
 
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->seances = new \Doctrine\Common\Collections\ArrayCollection();
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enseignements = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -215,40 +208,6 @@ class Cours {
     public function getCategorie()
     {
         return $this->categorie;
-    }
-
-    /**
-     * Add seance
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seance
-     *
-     * @return Cours
-     */
-    public function addSeance(\LGP\CourseBundle\Entity\SeanceDeCours $seance)
-    {
-        $this->seances[] = $seance;
-    
-        return $this;
-    }
-
-    /**
-     * Remove seance
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seance
-     */
-    public function removeSeance(\LGP\CourseBundle\Entity\SeanceDeCours $seance)
-    {
-        $this->seances->removeElement($seance);
-    }
-
-    /**
-     * Get seances
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeances()
-    {
-        return $this->seances;
     }
 
     /**
