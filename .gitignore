@@ -9,7 +9,7 @@ var/
 var/cache/
 
 # Ignorer tous les fichiers dans le repertoire logs
-var/logs/*
+var/logs/
 
 # Ignorer tous les fichiers dans le repertoire sessions
 var/sessions/
