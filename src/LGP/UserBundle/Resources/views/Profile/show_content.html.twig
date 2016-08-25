@@ -57,8 +57,17 @@
           {% endfor %}
         </ul>
 
-        <a href='{{ path('lgp_user_prof_avis') }}' class="btn btn-primary">Voir les avis</a>
+        <a href='{{ path('lgp_user_prof_avis') }}' class="btn btn-primary">Avis</a>
+        
       {% endif %}
+      
+      {% if user.presentation is not defined %}
+        
+        <a href='{{ path('lgp_user_parent_avis') }}' class="btn btn-primary">Avis</a>
+        
+      {% endif%}
+      
+      <a href='{{ path('lgp_user_message_send') }}' class="btn btn-primary">Messages</a>
 
       {{ dump(app.user)}}
     </div>

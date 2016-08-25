@@ -1,0 +1,51 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Messages reçus - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Les messages reçus</h1>
+  
+  <a href="{{ path('lgp_user_message_new') }}" class="btn btn-primary">Nouveau</a>
+  <a href="{{ path('lgp_user_message_receive') }}" class="btn btn-primary">Réçus</a>
+  <a href="{{ path('lgp_user_message_send') }}" class="btn btn-primary">Envoyés</a>
+  
+  {% if messages|length <= 0 %}
+    <h1 class="text-muted">Aucun message reçu !</h1>
+  {% else %}
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Expéditeur</th>
+          <th>Objet</th>
+          <th>Contenu</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td>footer</td>
+          <td>footer</td>
+          <td>footer</td>
+          <td>footer</td>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.expediteur.prenoms }} {{ message.recepteur.nom }}</td>
+            <td>{{ message.objet }}</td>
+            <td>{{ message.contenu }}</td>
+            <td>
+              <a href='{{ path('lgp_user_message_delete',  {'id': message.id }) }}' class="bt btn-danger btn-sm delete_confirm">
+                Supprimer
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  
+{% endblock %}

@@ -310,4 +310,12 @@ abstract class User extends BaseUser
     {
         return $this->image;
     }
+    
+    /**
+     * Cette fonction retourne quelques infos decrivant l'utilisateur
+     * @return type
+     */
+    public function getAffichage() {
+      return $this->prenoms.' '.$this->nom;
+    }
 }

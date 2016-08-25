@@ -66,3 +66,22 @@ lgp_user_prof_indisponibilite_delete:
     defaults: { _controller: LGPUserBundle:Indisponibilite:delete }
     requirements:
       id: \d+
+      
+# Messages
+lgp_user_message_send:
+    path: /messages/send
+    defaults: { _controller: LGPUserBundle:Message:send }
+    
+lgp_user_message_receive:
+    path: /messages/receive
+    defaults: { _controller: LGPUserBundle:Message:receive }
+    
+lgp_user_message_new:
+    path: /message/new
+    defaults: { _controller: LGPUserBundle:Message:new }
+
+lgp_user_message_delete:
+    path: /message/delete/{id}
+    defaults: { _controller: LGPUserBundle:Message:delete }
+    requirements:
+      id: \d+
