@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class RegistrationType extends AbstractType
 {
@@ -28,9 +27,12 @@ class RegistrationType extends AbstractType
               'choices' => array(
                 'Masculin' => 'm',
                 'Féminin' => 'f'
-              )
+              ),
+              'placeholder' => '--'
             ))
-            ->add('pays', CountryType::class)
+            ->add('pays', CountryType::class, array(
+              'placeholder' => '--',
+            ))
         ;
     }
 

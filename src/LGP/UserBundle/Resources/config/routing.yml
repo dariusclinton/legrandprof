@@ -16,12 +16,53 @@ lgp_prof_registration:
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
 
 # Avis
-lgp_user_avis_add:
-    path: /avis/add
-    defaults: { _controller: LGPUserBundle:AvisController:add }
+lgp_user_parent_avis_add:
+    path: /parent/avis/add
+    defaults: { _controller: LGPUserBundle:Avis:add }
     
-lgp_user_avis:
-    path: /avis/{id}
-    defaults: { _controller: LGPUserBundle:AvisController:index }
+lgp_user_prof_avis_delete:
+    path: /prof/avis/delete/{id}
+    defaults: { _controller: LGPUserBundle:Avis:profDelete }
     requirements:
-        id: \d+
+      id: \d+
+    
+lgp_user_parent_avis_delete:
+    path: /parent/avis/delete/{id}
+    defaults: { _controller: LGPUserBundle:Avis:parentDelete }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis_update:
+    path: /parent/avis/update/{id}
+    defaults: { _controller: LGPUserBundle:Avis:update }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis:
+    path: /parent/avis
+    defaults: { _controller: LGPUserBundle:Avis:parent }
+    
+lgp_user_prof_avis:
+    path: /prof/avis
+    defaults: { _controller: LGPUserBundle:Avis:prof }
+    
+# Indisponibilite
+lgp_user_prof_indisponibilite:
+    path: /prof/indisponibilite
+    defaults: { _controller: LGPUserBundle:Indisponibilite:index }
+    
+lgp_user_prof_indisponibilite_add:
+    path: /prof/indisponibilite/add
+    defaults: { _controller: LGPUserBundle:Indisponibilite:add }
+    
+lgp_user_prof_indisponibilite_update:
+    path: /prof/indisponibilite/update/{id}
+    defaults: { _controller: LGPUserBundle:Indisponibilite:update }
+    requirements: 
+      id: \d+
+    
+lgp_user_prof_indisponibilite_delete:
+    path: /prof/indisponibilite/delete/{id}
+    defaults: { _controller: LGPUserBundle:Indisponibilite:delete }
+    requirements:
+      id: \d+

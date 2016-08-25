@@ -25,7 +25,8 @@ class AvisType extends AbstractType
             ->add('prof', EntityType::class, array(
               'class'        => 'LGPUserBundle:Prof',
               'choice_label' => 'affichage',
-              'multiple'     => false
+              'multiple'     => false,
+              'placeholder'  => '--'
             ))
         ;
     }

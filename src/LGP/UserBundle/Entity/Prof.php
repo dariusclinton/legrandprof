@@ -607,6 +607,6 @@ class Prof extends User
      * @return type
      */
     public function getAffichage() {
-      return $this->getNom().' '.$this->getPrenoms().' - '.$this->getProfession();
+      return $this->nom.' '.$this->prenoms.' - '.$this->profession;
     }
 }
