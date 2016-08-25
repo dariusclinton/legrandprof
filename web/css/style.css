@@ -3998,3 +3998,23 @@ a#btn-connect:hover{
     background-color: white;
     border-bottom: 1px double lightgrey;
 }
+li.cart-li{
+    margin-top: 15px;
+}
+li.cart-li:hover{
+    background-color: rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+.cart img{
+    width: 30%;
+    float: left;
+    margin-right: 5%;
+}
+.cart {
+    text-align: 12px;
+}
+.cart .right{
+    float: right;
+    margin-top: -15px;
+    color: #e58664;
+}
