@@ -19,9 +19,9 @@ lgp_course_find:
     requirements:
         page:   \d+
 
-
+    
 lgp_course_find_prof:
-    path:     /search/profs/{intitule_cours}/{page}
+    path:     /search/profs/{intitule_xcours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
     requirements:
         page:   \d+
