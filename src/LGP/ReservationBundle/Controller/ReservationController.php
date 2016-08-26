@@ -24,9 +24,17 @@ class ReservationController extends Controller {
         $booker1 = new Booker();
         
         $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
+        $userRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:User");
         $p = $profRep->find(1);
+        
+        if ($p) {
+            $u = $userRep->find($p->getId());
+        }
 
-        $booker1->setProf($p);
+        $booker1->setProfId($u->getId());
+        $booker1->setProfNom($u->getNom());
+        $booker1->setProfPrenoms($u->getPrenoms());
+        $booker1->setProfImage($u->getImage());
         $booker1->setCours(1);
         $booker1->setDateDebut(new Date());
         $booker1->setFrequencePaiement("trimerstriel");
@@ -42,7 +50,9 @@ class ReservationController extends Controller {
 
         $panier->addItem(null, $booker1);
         $session->set('panier', $panier);
-//        $session->remove("panier");
+//        var_dump($panier->getItems());
+//        die();
+        $session->remove("panier");
         return $this->redirectToRoute("lgp_core_homepage");
     }
 

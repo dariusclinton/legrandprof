@@ -8,7 +8,10 @@ namespace LGP\ReservationBundle\Cart;
  */
 class Booker {
 
-    private $prof;
+    private $profId;
+    private $profNom;
+    private $profPrenoms;
+    private $profImage;
     private $cours;
     private $classe;
     private $prixTotal;
@@ -25,11 +28,38 @@ class Booker {
         $this->jours = array();
     }
 
-    public function getProf() {
-        return $this->prof;
+    public function getProfId() {
+        return $this->profId;
     }
 
-    public function getCours() {
+    public function getProfNom() {
+        return $this->profNom;
+    }
+
+    public function getProfPrenoms() {
+        return $this->profPrenoms;
+    }
+    public function getProfImage() {
+        return $this->profImage;
+    }
+
+    public function setProfImage($profImage) {
+        $this->profImage = $profImage;
+    }
+
+        public function setProfId($profId) {
+        $this->profId = $profId;
+    }
+
+    public function setProfNom($profNom) {
+        $this->profNom = $profNom;
+    }
+
+    public function setProfPrenoms($profPrenoms) {
+        $this->profPrenoms = $profPrenoms;
+    }
+
+        public function getCours() {
         return $this->cours;
     }
 
@@ -71,10 +101,6 @@ class Booker {
 
     public function getJours() {
         return $this->jours;
-    }
-
-    public function setProf($prof) {
-        $this->prof = $prof;
     }
 
     public function setCours($cours) {

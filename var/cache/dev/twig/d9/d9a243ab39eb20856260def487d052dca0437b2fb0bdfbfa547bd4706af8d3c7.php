@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc = $this->env->getExtension("native_profiler");
-        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc->enter($__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a = $this->env->getExtension("native_profiler");
+        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a->enter($__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -192,7 +192,17 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
                 // line 121
                 echo "                                                <li class=\"cart-li\">
                                                     <div class=\"cart\">
-                                                       
+                                                        <img src=\"";
+                // line 123
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["booker"], "profImage", array())), "html", null, true);
+                echo "\">
+                                                        <b>";
+                // line 124
+                echo twig_escape_filter($this->env, (($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())), "html", null, true);
+                echo "</b> ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
+                echo " Fcfa
+                                                        <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
                                                     </div>
                                                 </li>
                                             ";
@@ -200,10 +210,10 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 127
+            // line 129
             echo "                                        ";
         } else {
-            // line 128
+            // line 130
             echo "                                            <li class=\"cart-li\">
                                                 <div class=\"cart\">
                                                     <b>aucun prof dans le panier</b>
@@ -211,7 +221,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
                                             </li>
                                         ";
         }
-        // line 134
+        // line 136
         echo "
                                     </ul>
 
@@ -236,7 +246,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
 ";
         
-        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc->leave($__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc_prof);
+        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a->leave($__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a_prof);
 
     }
 
@@ -252,7 +262,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     public function getDebugInfo()
     {
-        return array (  215 => 134,  207 => 128,  204 => 127,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  225 => 136,  217 => 130,  214 => 129,  201 => 124,  197 => 123,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -377,7 +387,9 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 /*                                             {% for booker in panier.items %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
-/*                                                        */
+/*                                                         <img src="{{ asset(booker.profImage) }}">*/
+/*                                                         <b>{{ booker.profPrenoms ~" "~ booker.profNom }}</b> {{booker.prixTotal}} Fcfa*/
+/*                                                         <b class="right"><i class="fa fa-remove"></i></b>*/
 /*                                                     </div>*/
 /*                                                 </li>*/
 /*                                             {% endfor %}*/

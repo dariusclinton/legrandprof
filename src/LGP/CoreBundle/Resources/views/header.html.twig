@@ -120,7 +120,9 @@
                                             {% for booker in panier.items %}
                                                 <li class="cart-li">
                                                     <div class="cart">
-                                                       
+                                                        <img src="{{ asset(booker.profImage) }}">
+                                                        <b>{{ booker.profPrenoms ~" "~ booker.profNom }}</b> {{booker.prixTotal}} Fcfa
+                                                        <b class="right"><i class="fa fa-remove"></i></b>
                                                     </div>
                                                 </li>
                                             {% endfor %}
