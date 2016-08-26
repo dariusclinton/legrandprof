@@ -1,0 +1,12 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajout d'avis - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Ajout d'un avis</h1>
+
+  {% include 'LGPUserBundle:Avis:formulaire.html.twig'%}
+  
+{% endblock %}

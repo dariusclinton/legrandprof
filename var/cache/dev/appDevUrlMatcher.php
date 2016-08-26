@@ -128,6 +128,94 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            if (0 === strpos($pathinfo, '/user/p')) {
+                // lgp_user_parent_avis_add
+                if ($pathinfo === '/user/parent/avis/add') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::addAction',  '_route' => 'lgp_user_parent_avis_add',);
+                }
+
+                // lgp_user_prof_avis_delete
+                if (0 === strpos($pathinfo, '/user/prof/avis/delete') && preg_match('#^/user/prof/avis/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_avis_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::profDeleteAction',));
+                }
+
+                if (0 === strpos($pathinfo, '/user/parent/avis')) {
+                    // lgp_user_parent_avis_delete
+                    if (0 === strpos($pathinfo, '/user/parent/avis/delete') && preg_match('#^/user/parent/avis/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_parent_avis_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::parentDeleteAction',));
+                    }
+
+                    // lgp_user_parent_avis_update
+                    if (0 === strpos($pathinfo, '/user/parent/avis/update') && preg_match('#^/user/parent/avis/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_parent_avis_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::updateAction',));
+                    }
+
+                    // lgp_user_parent_avis
+                    if ($pathinfo === '/user/parent/avis') {
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::parentAction',  '_route' => 'lgp_user_parent_avis',);
+                    }
+
+                }
+
+                if (0 === strpos($pathinfo, '/user/prof')) {
+                    // lgp_user_prof_avis
+                    if ($pathinfo === '/user/prof/avis') {
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::profAction',  '_route' => 'lgp_user_prof_avis',);
+                    }
+
+                    if (0 === strpos($pathinfo, '/user/prof/indisponibilite')) {
+                        // lgp_user_prof_indisponibilite
+                        if ($pathinfo === '/user/prof/indisponibilite') {
+                            return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::indexAction',  '_route' => 'lgp_user_prof_indisponibilite',);
+                        }
+
+                        // lgp_user_prof_indisponibilite_add
+                        if ($pathinfo === '/user/prof/indisponibilite/add') {
+                            return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::addAction',  '_route' => 'lgp_user_prof_indisponibilite_add',);
+                        }
+
+                        // lgp_user_prof_indisponibilite_update
+                        if (0 === strpos($pathinfo, '/user/prof/indisponibilite/update') && preg_match('#^/user/prof/indisponibilite/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::updateAction',));
+                        }
+
+                        // lgp_user_prof_indisponibilite_delete
+                        if (0 === strpos($pathinfo, '/user/prof/indisponibilite/delete') && preg_match('#^/user/prof/indisponibilite/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::deleteAction',));
+                        }
+
+                    }
+
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/user/message')) {
+                if (0 === strpos($pathinfo, '/user/messages')) {
+                    // lgp_user_message_send
+                    if ($pathinfo === '/user/messages/send') {
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::sendAction',  '_route' => 'lgp_user_message_send',);
+                    }
+
+                    // lgp_user_message_receive
+                    if ($pathinfo === '/user/messages/receive') {
+                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::receiveAction',  '_route' => 'lgp_user_message_receive',);
+                    }
+
+                }
+
+                // lgp_user_message_new
+                if ($pathinfo === '/user/message/new') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::newAction',  '_route' => 'lgp_user_message_new',);
+                }
+
+                // lgp_user_message_delete
+                if (0 === strpos($pathinfo, '/user/message/delete') && preg_match('#^/user/message/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_message_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::deleteAction',));
+                }
+
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/reservation')) {

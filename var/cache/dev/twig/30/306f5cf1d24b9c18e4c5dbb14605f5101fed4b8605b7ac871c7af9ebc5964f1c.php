@@ -15,8 +15,8 @@ class __TwigTemplate_a30b404429c5a11dffb339220941c2822a0be1fd57df85834075cee589e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_51a23b7d9450a37c9d1b7507c0f7a25e42316314393f2ce6e3c2d1dc2e8e00cb = $this->env->getExtension("native_profiler");
-        $__internal_51a23b7d9450a37c9d1b7507c0f7a25e42316314393f2ce6e3c2d1dc2e8e00cb->enter($__internal_51a23b7d9450a37c9d1b7507c0f7a25e42316314393f2ce6e3c2d1dc2e8e00cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:edit_content.html.twig"));
+        $__internal_f6f1ff316b077bf971686ce686415ec92a059ec90a81a7a37624a5f08463b921 = $this->env->getExtension("native_profiler");
+        $__internal_f6f1ff316b077bf971686ce686415ec92a059ec90a81a7a37624a5f08463b921->enter($__internal_f6f1ff316b077bf971686ce686415ec92a059ec90a81a7a37624a5f08463b921_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:edit_content.html.twig"));
 
         // line 2
         echo "
@@ -137,202 +137,187 @@ class __TwigTemplate_a30b404429c5a11dffb339220941c2822a0be1fd57df85834075cee589e
 <div class=\"form-group\">
     ";
         // line 49
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'label', array("label_attr" => array(), "label" => "Pseudo"));
-        echo "
-    ";
-        // line 50
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'widget', array("attr" => array()));
-        echo "
-    ";
-        // line 51
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "username", array()), 'errors');
-        echo "
-</div>
-
-<div class=\"form-group\">
-    ";
-        // line 55
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'label', array("label_attr" => array(), "label" => "Adresse email"));
         echo "
     ";
-        // line 56
+        // line 50
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'widget', array("attr" => array()));
         echo "
     ";
-        // line 57
+        // line 51
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'errors');
         echo "
 </div>
 
 ";
-        // line 60
+        // line 54
         if ($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "presentation", array(), "any", true, true)) {
             echo "   
     <div class=\"form-group\">
         ";
-            // line 62
+            // line 56
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "ville", array()), 'label', array("label_attr" => array(), "label" => "Ville"));
             echo "
         ";
-            // line 63
+            // line 57
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "ville", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 64
+            // line 58
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "ville", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 68
+            // line 62
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "quartier", array()), 'label', array("label_attr" => array(), "label" => "Quartier"));
             echo "
         ";
-            // line 69
+            // line 63
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "quartier", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 70
+            // line 64
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "quartier", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 74
+            // line 68
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "boitePostale", array()), 'label', array("label_attr" => array(), "label" => "Boite postale"));
             echo "
         ";
-            // line 75
+            // line 69
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "boitePostale", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 76
+            // line 70
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "boitePostale", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 80
+            // line 74
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "situationMatrimoniale", array()), 'label', array("label_attr" => array(), "label" => "Situation matrimoniale"));
             echo "
         ";
-            // line 81
+            // line 75
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "situationMatrimoniale", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 82
+            // line 76
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "situationMatrimoniale", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 86
+            // line 80
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveauScolaire", array()), 'label', array("label_attr" => array(), "label" => "Niveau scolaire"));
             echo "
         ";
-            // line 87
+            // line 81
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveauScolaire", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 88
+            // line 82
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "niveauScolaire", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 92
+            // line 86
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombreEnfants", array()), 'label', array("label_attr" => array(), "label" => "Nombre d'enfants"));
             echo "
         ";
-            // line 93
+            // line 87
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombreEnfants", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 94
+            // line 88
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombreEnfants", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 98
+            // line 92
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "presentation", array()), 'label', array("label_attr" => array(), "label" => "Présentation"));
             echo "
         ";
-            // line 99
+            // line 93
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "presentation", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 100
+            // line 94
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "presentation", array()), 'errors');
             echo "
     </div>
     
     <div class=\"form-group\">
         ";
-            // line 104
+            // line 98
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profession", array()), 'label', array("label_attr" => array(), "label" => "Profession"));
             echo "
         ";
-            // line 105
+            // line 99
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profession", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 106
+            // line 100
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profession", array()), 'errors');
             echo "
     </div>
         
     <div class=\"form-group\">
         ";
-            // line 110
+            // line 104
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "diplomes", array()), 'label', array("label_attr" => array(), "label" => "Diplômes"));
             echo "
         ";
-            // line 111
+            // line 105
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "diplomes", array()), 'widget', array("attr" => array()));
             echo "
         ";
-            // line 112
+            // line 106
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "diplomes", array()), 'errors');
             echo "
     </div>
     
     ";
-            // line 115
+            // line 109
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "experiencePros", array()), 'row');
             echo "
     <a href=\"#\" class=\"btn btn-primary btn-sm\" id=\"add_experience\">Ajouter une expérience</a>
     
 ";
         }
-        // line 119
+        // line 113
         echo "
 ";
-        // line 120
+        // line 114
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
 
 <div>
     <input type=\"submit\" value=\"";
-        // line 123
+        // line 117
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("profile.edit.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" class=\"btn btn-primary\"/>
 </div>
 ";
-        // line 125
+        // line 119
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
 
 
 ";
         
-        $__internal_51a23b7d9450a37c9d1b7507c0f7a25e42316314393f2ce6e3c2d1dc2e8e00cb->leave($__internal_51a23b7d9450a37c9d1b7507c0f7a25e42316314393f2ce6e3c2d1dc2e8e00cb_prof);
+        $__internal_f6f1ff316b077bf971686ce686415ec92a059ec90a81a7a37624a5f08463b921->leave($__internal_f6f1ff316b077bf971686ce686415ec92a059ec90a81a7a37624a5f08463b921_prof);
 
     }
 
@@ -348,7 +333,7 @@ class __TwigTemplate_a30b404429c5a11dffb339220941c2822a0be1fd57df85834075cee589e
 
     public function getDebugInfo()
     {
-        return array (  329 => 125,  324 => 123,  318 => 120,  315 => 119,  308 => 115,  302 => 112,  298 => 111,  294 => 110,  287 => 106,  283 => 105,  279 => 104,  272 => 100,  268 => 99,  264 => 98,  257 => 94,  253 => 93,  249 => 92,  242 => 88,  238 => 87,  234 => 86,  227 => 82,  223 => 81,  219 => 80,  212 => 76,  208 => 75,  204 => 74,  197 => 70,  193 => 69,  189 => 68,  182 => 64,  178 => 63,  174 => 62,  169 => 60,  163 => 57,  159 => 56,  155 => 55,  148 => 51,  144 => 50,  140 => 49,  133 => 45,  129 => 44,  125 => 43,  118 => 39,  114 => 38,  110 => 37,  103 => 33,  99 => 32,  95 => 31,  88 => 27,  84 => 26,  80 => 25,  73 => 21,  69 => 20,  65 => 19,  58 => 15,  54 => 14,  50 => 13,  43 => 9,  39 => 8,  35 => 7,  29 => 4,  25 => 3,  22 => 2,);
+        return array (  314 => 119,  309 => 117,  303 => 114,  300 => 113,  293 => 109,  287 => 106,  283 => 105,  279 => 104,  272 => 100,  268 => 99,  264 => 98,  257 => 94,  253 => 93,  249 => 92,  242 => 88,  238 => 87,  234 => 86,  227 => 82,  223 => 81,  219 => 80,  212 => 76,  208 => 75,  204 => 74,  197 => 70,  193 => 69,  189 => 68,  182 => 64,  178 => 63,  174 => 62,  167 => 58,  163 => 57,  159 => 56,  154 => 54,  148 => 51,  144 => 50,  140 => 49,  133 => 45,  129 => 44,  125 => 43,  118 => 39,  114 => 38,  110 => 37,  103 => 33,  99 => 32,  95 => 31,  88 => 27,  84 => 26,  80 => 25,  73 => 21,  69 => 20,  65 => 19,  58 => 15,  54 => 14,  50 => 13,  43 => 9,  39 => 8,  35 => 7,  29 => 4,  25 => 3,  22 => 2,);
     }
 }
 /* {% trans_default_domain 'FOSUserBundle' %}*/
@@ -396,12 +381,6 @@ class __TwigTemplate_a30b404429c5a11dffb339220941c2822a0be1fd57df85834075cee589e
 /*     {{ form_label(form.pays, "Pays de résidence", {'label_attr': {}}) }}*/
 /*     {{ form_widget(form.pays, {'attr': {}}) }}*/
 /*     {{ form_errors(form.pays) }}*/
-/* </div>*/
-/* */
-/* <div class="form-group">*/
-/*     {{ form_label(form.username, "Pseudo", {'label_attr': {}}) }}*/
-/*     {{ form_widget(form.username, {'attr': {}}) }}*/
-/*     {{ form_errors(form.username) }}*/
 /* </div>*/
 /* */
 /* <div class="form-group">*/

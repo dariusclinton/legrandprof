@@ -1,0 +1,60 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Indisponibilités - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Mes indiponibilités</h1>
+
+  <p>
+    <a href='{{ path('lgp_user_prof_indisponibilite_add') }}' class="btn btn-primary">
+      Ajouter
+    </a>
+  </p>
+  
+  {% if indisponibilites|length <= 0 %}
+    
+    <h1 class="text-muted">Aucune indisponibilité trouvée !</h1>
+    
+  {% else %}
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Motif</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td>footer</td>
+          <td>footer</td>
+          <td>footer</td>
+          <td>footer</td>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for indispo in indisponibilites %}
+          <tr>
+            <td>{{ indispo.dateDebut|date('d/m/y') }}</td>
+            <td>{{ indispo.dateFin|date('d/m/y') }}</td>
+            <td>{{ indispo.motif }}</td>
+            <td>
+              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="bt btn-danger btn-sm delete_confirm">
+                Supprimer
+              </a>
+              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="bt btn-info btn-sm">
+                Modifier
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      
+    </table>
+      
+  {% endif %}
+
+{% endblock %}

@@ -15,13 +15,13 @@ class __TwigTemplate_a6ec707346cafa937d8d8b630919098ddb5490dc49e176fbf554a51c9b4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0094c0c229831e16f048f2f0b92008e533aeaed8b975faae26b5066c748dd319 = $this->env->getExtension("native_profiler");
-        $__internal_0094c0c229831e16f048f2f0b92008e533aeaed8b975faae26b5066c748dd319->enter($__internal_0094c0c229831e16f048f2f0b92008e533aeaed8b975faae26b5066c748dd319_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:index.html.twig"));
+        $__internal_0b4313765a3fc22ae76fb36889816c4d2fe1b21bf2c27e18c57991a9c5eb48d4 = $this->env->getExtension("native_profiler");
+        $__internal_0b4313765a3fc22ae76fb36889816c4d2fe1b21bf2c27e18c57991a9c5eb48d4->enter($__internal_0b4313765a3fc22ae76fb36889816c4d2fe1b21bf2c27e18c57991a9c5eb48d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:index.html.twig"));
 
         // line 1
         echo "hello world";
         
-        $__internal_0094c0c229831e16f048f2f0b92008e533aeaed8b975faae26b5066c748dd319->leave($__internal_0094c0c229831e16f048f2f0b92008e533aeaed8b975faae26b5066c748dd319_prof);
+        $__internal_0b4313765a3fc22ae76fb36889816c4d2fe1b21bf2c27e18c57991a9c5eb48d4->leave($__internal_0b4313765a3fc22ae76fb36889816c4d2fe1b21bf2c27e18c57991a9c5eb48d4_prof);
 
     }
 

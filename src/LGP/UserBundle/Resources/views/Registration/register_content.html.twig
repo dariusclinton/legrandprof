@@ -3,69 +3,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-        {# {{ form_widget(form) }} #}
 
           {{ form_errors(form) }}
 
-        <div class="form-group">
-          {{ form_label(form.nom, "Nom", {'label_attr': {}}) }}
-          {{ form_widget(form.nom, {'attr': {}}) }}
-          {{ form_errors(form.nom) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.prenoms, "Prénoms", {'label_attr': {}}) }}
-          {{ form_widget(form.prenoms, {'attr': {}}) }}
-          {{ form_errors(form.prenoms) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.dateNaissance, "Date de naissance", {'label_attr': {}}) }}
-          {{ form_widget(form.dateNaissance, {'attr': {}}) }}
-          {{ form_errors(form.dateNaissance) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.sexe, "Sexe", {'label_attr': {}}) }}
-          {{ form_widget(form.sexe, {'attr': {}}) }}
-          {{ form_errors(form.sexe) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.numTelephone, "Numéro de téléphone", {'label_attr': {}}) }}
-          {{ form_widget(form.numTelephone, {'attr': {}}) }}
-          {{ form_errors(form.numTelephone) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.pays, "Pays de résidence", {'label_attr': {}}) }}
-          {{ form_widget(form.pays, {'attr': {}}) }}
-          {{ form_errors(form.pays) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.username, "Pseudo", {'label_attr': {}}) }}
-          {{ form_widget(form.username, {'attr': {}}) }}
-          {{ form_errors(form.username) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_label(form.email, "Adresse email", {'label_attr': {}}) }}
-          {{ form_widget(form.email, {'attr': {}}) }}
-          {{ form_errors(form.email) }}
-        </div>
-
-        <div class="form-group">
-          {{ form_widget(form.plainPassword, {'attr': {}}) }}
-          {{ form_errors(form.plainPassword) }}
-        </div>
-
-        {#}<div class="form-group">
-          {{ form_label(form.photo, "Photo de profil", {'label_attr': {}}) }}
-          {{ form_widget(form.photo, {'attr': {}}) }}
-          {{ form_errors(form.photo) }}
-        </div>#}
-
+          {{ form_widget(form) }}
+          
         <div class="form-group">
             <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-default"/>
         </div>

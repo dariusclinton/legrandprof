@@ -13,22 +13,28 @@ class ProfileType extends AbstractType {
   
   public function buildForm(FormBuilderInterface $builder, array $options) {
     $builder
+        ->remove('username')
         ->add('nom', TextType::class)
         ->add('prenoms', TextType::class, array(
           'required' => false
         ))
         ->add('dateNaissance', BirthdayType::class, array(
-          'widget' => 'choice',
-          'years'  => range(1950, 2005)
+          'years'  => range(1950, 2005),
+          'placeholder' => '--',
         ))
         ->add('sexe', ChoiceType::class, array(
-          'choices' => array(
+          'choices'     => array(
             'Masculin' => 'm',
-            'Féminin' => 'f'
-          )
+            'Féminin'  => 'f'
+          ),
+          'placeholder' => '--',
         ))
-        ->add('numTelephone', TextType::class)
-        ->add('pays', CountryType::class)
+        ->add('numTelephone', TextType::class, array(
+          'required' => false
+        ))
+        ->add('pays', CountryType::class, array(
+          'placeholder' => '--',
+        ))
         ->add('image', ImageType::class, array(
           'required' => false
         ))

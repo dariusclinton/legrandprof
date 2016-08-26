@@ -18,9 +18,17 @@ class IndisponibiliteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDebut', DateType::class)
-            ->add('dateFin', DateType::class)
-            ->add('motif', TextareaType::class)
+            ->add('dateDebut', DateType::class, array(
+              'years'       => range(2016, 2020),
+              'placeholder' => '--'
+            ))
+            ->add('dateFin', DateType::class, array(
+              'years'       => range(2016, 2020),
+              'placeholder' => '--'
+            ))
+            ->add('motif', TextareaType::class, array(
+              'required' => false
+            ))
             // ->add('prof')
         ;
     }

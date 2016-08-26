@@ -22,20 +22,20 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4a96183079d6b8f00abd4b0b075777b3486b62e7bab4ac25166c3020374e6dc3 = $this->env->getExtension("native_profiler");
-        $__internal_4a96183079d6b8f00abd4b0b075777b3486b62e7bab4ac25166c3020374e6dc3->enter($__internal_4a96183079d6b8f00abd4b0b075777b3486b62e7bab4ac25166c3020374e6dc3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Security:login.html.twig"));
+        $__internal_fb5727eac1c587ce31b5956df8a31eb9b012a9f4271954e0564aefa560c0105d = $this->env->getExtension("native_profiler");
+        $__internal_fb5727eac1c587ce31b5956df8a31eb9b012a9f4271954e0564aefa560c0105d->enter($__internal_fb5727eac1c587ce31b5956df8a31eb9b012a9f4271954e0564aefa560c0105d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Security:login.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_4a96183079d6b8f00abd4b0b075777b3486b62e7bab4ac25166c3020374e6dc3->leave($__internal_4a96183079d6b8f00abd4b0b075777b3486b62e7bab4ac25166c3020374e6dc3_prof);
+        $__internal_fb5727eac1c587ce31b5956df8a31eb9b012a9f4271954e0564aefa560c0105d->leave($__internal_fb5727eac1c587ce31b5956df8a31eb9b012a9f4271954e0564aefa560c0105d_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_585177bdf03acbc258292686dbec928d26dea87886372167922a2418610c286c = $this->env->getExtension("native_profiler");
-        $__internal_585177bdf03acbc258292686dbec928d26dea87886372167922a2418610c286c->enter($__internal_585177bdf03acbc258292686dbec928d26dea87886372167922a2418610c286c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_f3add1bbc6e2d620dfea1da0c6438f2a5b590b6a74cd37fd77632f5a57681e3a = $this->env->getExtension("native_profiler");
+        $__internal_f3add1bbc6e2d620dfea1da0c6438f2a5b590b6a74cd37fd77632f5a57681e3a->enter($__internal_f3add1bbc6e2d620dfea1da0c6438f2a5b590b6a74cd37fd77632f5a57681e3a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Login - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
         echo "
 ";
         
-        $__internal_585177bdf03acbc258292686dbec928d26dea87886372167922a2418610c286c->leave($__internal_585177bdf03acbc258292686dbec928d26dea87886372167922a2418610c286c_prof);
+        $__internal_f3add1bbc6e2d620dfea1da0c6438f2a5b590b6a74cd37fd77632f5a57681e3a->leave($__internal_f3add1bbc6e2d620dfea1da0c6438f2a5b590b6a74cd37fd77632f5a57681e3a_prof);
 
     }
 
     // line 9
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_ebbcd29cf5a7a3053da5010a492a83eeb2337e87a13db0b24f8320e9e9e9a924 = $this->env->getExtension("native_profiler");
-        $__internal_ebbcd29cf5a7a3053da5010a492a83eeb2337e87a13db0b24f8320e9e9e9a924->enter($__internal_ebbcd29cf5a7a3053da5010a492a83eeb2337e87a13db0b24f8320e9e9e9a924_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_b5ed25db6b44edeacbdd5550264433e4b0f4c4676dd83d0f33efa38d2d5a4280 = $this->env->getExtension("native_profiler");
+        $__internal_b5ed25db6b44edeacbdd5550264433e4b0f4c4676dd83d0f33efa38d2d5a4280->enter($__internal_b5ed25db6b44edeacbdd5550264433e4b0f4c4676dd83d0f33efa38d2d5a4280_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 10
         echo "
@@ -80,10 +80,7 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
         echo "\" />
 
         <div class=\"form-group\">
-          <label for=\"username\">";
-        // line 23
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
-        echo "</label>
+          <label for=\"username\">Adresse email</label>
           <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
         // line 24
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
@@ -120,7 +117,7 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
 </div>
 ";
         
-        $__internal_ebbcd29cf5a7a3053da5010a492a83eeb2337e87a13db0b24f8320e9e9e9a924->leave($__internal_ebbcd29cf5a7a3053da5010a492a83eeb2337e87a13db0b24f8320e9e9e9a924_prof);
+        $__internal_b5ed25db6b44edeacbdd5550264433e4b0f4c4676dd83d0f33efa38d2d5a4280->leave($__internal_b5ed25db6b44edeacbdd5550264433e4b0f4c4676dd83d0f33efa38d2d5a4280_prof);
 
     }
 
@@ -136,7 +133,7 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
 
     public function getDebugInfo()
     {
-        return array (  113 => 39,  106 => 35,  97 => 29,  89 => 24,  85 => 23,  79 => 20,  75 => 19,  72 => 18,  66 => 16,  64 => 15,  57 => 10,  51 => 9,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  110 => 39,  103 => 35,  94 => 29,  86 => 24,  79 => 20,  75 => 19,  72 => 18,  66 => 16,  64 => 15,  57 => 10,  51 => 9,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'LGPUserBundle::layout.html.twig' %}*/
@@ -161,7 +158,7 @@ class __TwigTemplate_975e776b1bf572a7952d50f42ec627772521241d8d29b369135049cee70
 /*         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />*/
 /* */
 /*         <div class="form-group">*/
-/*           <label for="username">{{ 'security.login.username'|trans }}</label>*/
+/*           <label for="username">Adresse email</label>*/
 /*           <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"*/
 /*           class="form-control"/>*/
 /*         </div>*/

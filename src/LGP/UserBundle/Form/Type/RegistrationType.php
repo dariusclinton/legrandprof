@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class RegistrationType extends AbstractType
 {
@@ -19,22 +18,21 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->remove('username')
             ->add('nom', TextType::class)
             ->add('prenoms', TextType::class, array(
               'required' => false
-            ))
-            ->add('dateNaissance', BirthdayType::class, array(
-              'widget' => 'choice',
-              'years'  => range(1950, 2005),
             ))
             ->add('sexe', ChoiceType::class, array(
               'choices' => array(
                 'Masculin' => 'm',
                 'Féminin' => 'f'
-              )
+              ),
+              'placeholder' => '--'
             ))
-            ->add('numTelephone', TextType::class)
-            ->add('pays', CountryType::class)
+            ->add('pays', CountryType::class, array(
+              'placeholder' => '--',
+            ))
         ;
     }
 

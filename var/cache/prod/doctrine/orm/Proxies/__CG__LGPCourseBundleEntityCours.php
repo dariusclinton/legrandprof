@@ -64,10 +64,10 @@ class Cours extends \LGP\CourseBundle\Entity\Cours implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'programme', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignements'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'programme', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignes'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'intitule', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'description', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'url', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'alt', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'categorie', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'seances', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'evaluations', '' . "\0" . 'LGP\\CourseBundle\\Entity\\Cours' . "\0" . 'enseignements'];
     }
 
     /**
@@ -301,28 +301,6 @@ class Cours extends \LGP\CourseBundle\Entity\Cours implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setProgramme(\LGP\CourseBundle\Entity\ProgrammeDeCours $programme = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProgramme', [$programme]);
-
-        return parent::setProgramme($programme);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getProgramme()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProgramme', []);
-
-        return parent::getProgramme();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function addSeance(\LGP\CourseBundle\Entity\SeanceDeCours $seance)
     {
 
@@ -389,34 +367,34 @@ class Cours extends \LGP\CourseBundle\Entity\Cours implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function addEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnseigne', [$enseigne]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEnseignement', [$enseignement]);
 
-        return parent::addEnseigne($enseigne);
+        return parent::addEnseignement($enseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeEnseigne(\LGP\CourseBundle\Entity\Enseigne $enseigne)
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEnseigne', [$enseigne]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEnseignement', [$enseignement]);
 
-        return parent::removeEnseigne($enseigne);
+        return parent::removeEnseignement($enseignement);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getEnseignes()
+    public function getEnseignements()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnseignes', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEnseignements', []);
 
-        return parent::getEnseignes();
+        return parent::getEnseignements();
     }
 
 }

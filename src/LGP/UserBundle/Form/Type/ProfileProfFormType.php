@@ -26,21 +26,22 @@ class ProfileProfFormType extends AbstractType {
           'required' => false
         ))
         ->add('situationMatrimoniale', ChoiceType::class, array(
-          'choices' => array(
-            '--'          => '--',
+          'choices'     => array(
             'Célibataire' => 'c',
             'Marié(e)'    => 'm',
             'Divorcé(e)'  => 'd'
-          )
+          ),
+          'placeholder' => '--'
         ))
         ->add('niveauScolaire', ChoiceType::class, array(
-          'choices' => array(
-            '--'       => '--',
+          'choices'     => array(
             'Bacc'     => 'Bacc',
             'Bacc + 1' => 'Bacc_1',
             'Bacc + 2' => 'Bacc_2',
             'Licence'  => 'Licence'
-          )
+          ),
+          'placeholder' => '--',
+          'required'    => false
         ))
         ->add('nombreEnfants', TextType::class, array(
           'required' => false
@@ -50,10 +51,11 @@ class ProfileProfFormType extends AbstractType {
         ))
         ->add('profession', ChoiceType::class, array(
           'choices'     => array(
-            '--' => '--',
             'Etudiant'  => 'Etudiant',
             'PLEG'      => 'PLEG'
-          )
+          ),
+          'placeholder' => '--',
+          'required'    => false
         ))
         ->add('diplomes', EntityType::class, array(
           'class'        => 'LGPUserBundle:Diplome',
