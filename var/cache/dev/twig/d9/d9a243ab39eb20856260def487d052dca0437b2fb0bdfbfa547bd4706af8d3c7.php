@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9c5c72123e9e0db53f78f894de1f618b0b03adb45103eb1bae6d5aee632a8031 = $this->env->getExtension("native_profiler");
-        $__internal_9c5c72123e9e0db53f78f894de1f618b0b03adb45103eb1bae6d5aee632a8031->enter($__internal_9c5c72123e9e0db53f78f894de1f618b0b03adb45103eb1bae6d5aee632a8031_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc = $this->env->getExtension("native_profiler");
+        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc->enter($__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -190,9 +190,6 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["booker"]) {
                 // line 121
-                echo "                                                ";
-                $context["prof"] = $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "prof", array());
-                // line 122
                 echo "                                                <li class=\"cart-li\">
                                                     <div class=\"cart\">
                                                        
@@ -203,10 +200,10 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 128
+            // line 127
             echo "                                        ";
         } else {
-            // line 129
+            // line 128
             echo "                                            <li class=\"cart-li\">
                                                 <div class=\"cart\">
                                                     <b>aucun prof dans le panier</b>
@@ -214,7 +211,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
                                             </li>
                                         ";
         }
-        // line 135
+        // line 134
         echo "
                                     </ul>
 
@@ -239,7 +236,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
 ";
         
-        $__internal_9c5c72123e9e0db53f78f894de1f618b0b03adb45103eb1bae6d5aee632a8031->leave($__internal_9c5c72123e9e0db53f78f894de1f618b0b03adb45103eb1bae6d5aee632a8031_prof);
+        $__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc->leave($__internal_c18b22bafdc82219c23322afa6a7c3667fb90f00a149b0622c6e0806825823fc_prof);
 
     }
 
@@ -255,7 +252,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     public function getDebugInfo()
     {
-        return array (  218 => 135,  210 => 129,  207 => 128,  196 => 122,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  215 => 134,  207 => 128,  204 => 127,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -378,7 +375,6 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 /*                                         {% set panier = app.session.get('panier') %}*/
 /*                                         {% if panier is defined and not panier is null %}*/
 /*                                             {% for booker in panier.items %}*/
-/*                                                 {% set prof = panier.prof %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
 /*                                                        */

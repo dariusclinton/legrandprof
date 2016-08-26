@@ -118,7 +118,6 @@
                                         {% set panier = app.session.get('panier') %}
                                         {% if panier is defined and not panier is null %}
                                             {% for booker in panier.items %}
-                                                {% set prof = panier.prof %}
                                                 <li class="cart-li">
                                                     <div class="cart">
                                                        
