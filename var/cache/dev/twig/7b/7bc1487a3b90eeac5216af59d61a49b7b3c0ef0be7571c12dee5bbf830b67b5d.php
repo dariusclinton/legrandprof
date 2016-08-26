@@ -15,13 +15,13 @@ class __TwigTemplate_7a36745fdbbc9912786a4620011fb5bb63ba0520266783a8d93da1717c1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f5fdd154079b7ef3ecb90fce5cea02ebd15c514c21a4b1c140f70a805d9e2b92 = $this->env->getExtension("native_profiler");
-        $__internal_f5fdd154079b7ef3ecb90fce5cea02ebd15c514c21a4b1c140f70a805d9e2b92->enter($__internal_f5fdd154079b7ef3ecb90fce5cea02ebd15c514c21a4b1c140f70a805d9e2b92_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/exception.atom.twig"));
+        $__internal_42abb225002a88500177b37fe510d2c17745d092245d275fe10fb3863fa48333 = $this->env->getExtension("native_profiler");
+        $__internal_42abb225002a88500177b37fe510d2c17745d092245d275fe10fb3863fa48333->enter($__internal_42abb225002a88500177b37fe510d2c17745d092245d275fe10fb3863fa48333_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/exception.atom.twig"));
 
         // line 1
         $this->loadTemplate("@Twig/Exception/exception.xml.twig", "@Twig/Exception/exception.atom.twig", 1)->display(array_merge($context, array("exception" => (isset($context["exception"]) ? $context["exception"] : $this->getContext($context, "exception")))));
         
-        $__internal_f5fdd154079b7ef3ecb90fce5cea02ebd15c514c21a4b1c140f70a805d9e2b92->leave($__internal_f5fdd154079b7ef3ecb90fce5cea02ebd15c514c21a4b1c140f70a805d9e2b92_prof);
+        $__internal_42abb225002a88500177b37fe510d2c17745d092245d275fe10fb3863fa48333->leave($__internal_42abb225002a88500177b37fe510d2c17745d092245d275fe10fb3863fa48333_prof);
 
     }
 

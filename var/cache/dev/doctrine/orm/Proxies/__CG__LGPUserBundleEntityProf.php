@@ -561,6 +561,17 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
+    public function getAffichage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAffichage', []);
+
+        return parent::getAffichage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setEmail($email)
     {
 
@@ -769,17 +780,6 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', []);
 
         return parent::getImage();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAffichage()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAffichage', []);
-
-        return parent::getAffichage();
     }
 
     /**

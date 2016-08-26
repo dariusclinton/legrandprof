@@ -12,8 +12,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Prof extends User {
-
+class Prof extends User
+{
     /**
      * @var int
      *
@@ -535,5 +535,14 @@ class Prof extends User {
     public function getExperiencePros()
     {
         return $this->experiencePros;
+    }
+    
+    /**
+     * Cette fonction permet de retourner la chaine a afficher dans 
+     * les choix proposes au Parent et qui decrit le Prof
+     * @return type
+     */
+    public function getAffichage() {
+      return $this->nom.' '.$this->prenoms.' - '.$this->profession;
     }
 }

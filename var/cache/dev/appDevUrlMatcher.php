@@ -112,7 +112,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // lgp_user_become_prof
             if ($pathinfo === '/user/prof/become') {
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfController::becomeAction',  '_route' => 'lgp_user_become_prof',);
+                return array (  '_controller' => 'LGPUserBundle:Prof:become',  '_route' => 'lgp_user_become_prof',);
             }
 
             if (0 === strpos($pathinfo, '/user/register/p')) {
