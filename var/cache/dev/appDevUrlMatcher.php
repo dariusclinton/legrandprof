@@ -244,6 +244,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::addCartAction',  '_route' => 'lgp_reservation_cart_add',);
                 }
 
+                // lgp_reservation_cart_remove
+                if (0 === strpos($pathinfo, '/reservation/cart/remove') && preg_match('#^/reservation/cart/remove/(?P<key>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_reservation_cart_remove')), array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::removeCartAction',));
+                }
+
             }
 
         }
@@ -267,7 +272,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     // lgp_course_find_prof
-                    if (preg_match('#^/course/search/profs/(?P<intitule_xcours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    if (preg_match('#^/course/search/profs/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCourseAction',  'page' => 1,));
                     }
 
@@ -276,11 +281,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_refine')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchRefineAction',  'page' => 1,));
                     }
 
-                    // lgp_course_find_prof_city
-                    if (preg_match('#^/course/search/profs/(?P<ville>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
-                    }
+                }
 
+                // lgp_course_find_prof_city
+                if (0 === strpos($pathinfo, '/course/search/ville') && preg_match('#^/course/search/ville/(?P<ville>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
                 }
 
             }

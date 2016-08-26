@@ -17,24 +17,24 @@ class ReservationController extends Controller {
     public function addCartAction(Request $request) {
         $session = $request->getSession();
         if (!$session->has('panier')) {
-            $session->set('panier', new Cart);
+            $session->set('panier', new Cart());
         }
         $panier = $session->get('panier');
 
-        $booker1 = new Booker();
-        
         $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
         $userRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:User");
         $p = $profRep->find(1);
         
         if ($p) {
             $u = $userRep->find($p->getId());
+            $image = $u->getImage()->getWebPath();
         }
-
+        
+        $booker1 = new Booker();
         $booker1->setProfId($u->getId());
         $booker1->setProfNom($u->getNom());
         $booker1->setProfPrenoms($u->getPrenoms());
-        $booker1->setProfImage($u->getImage());
+        $booker1->setProfImage($image);
         $booker1->setCours(1);
         $booker1->setDateDebut(new Date());
         $booker1->setFrequencePaiement("trimerstriel");
@@ -48,12 +48,28 @@ class ReservationController extends Controller {
         $booker1->addJour("lundi");
         $booker1->addJour("mercredi");
 
-        $panier->addItem(null, $booker1);
+        $panier->addItem($booker1);
         $session->set('panier', $panier);
-//        var_dump($panier->getItems());
+//        $session->remove('panier');
+//        var_dump($session->get('panier')->getItems());
+//        $session->remove("panier");
 //        die();
-        $session->remove("panier");
+//        $session->remove("panier");
         return $this->redirectToRoute("lgp_core_homepage");
+//         return $this->forward('LGPCoreBundle:Lgp:index');
+    }
+    
+    public function removeCartAction($key, Request $request){
+        $session = $request->getSession();
+        $panier = $session->get('panier');
+        
+        if ($panier) {
+            $items = $panier->getItems();
+        }
+        $panier->removeItem($key);
+        $session->set('panier', $panier);
+        return $this->redirectToRoute('lgp_core_homepage');
+//        return $this->forward('LGPCoreBundle:Lgp:index');
     }
 
     public function cartAction() {

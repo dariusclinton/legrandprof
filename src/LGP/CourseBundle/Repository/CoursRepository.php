@@ -18,7 +18,7 @@ class CoursRepository extends EntityRepository {
      * @param type $cat
      * @param type $page
      * @param type $max
-     * @return \Doctrine\ORM\Tools\Pagination\Paginator
+     * @return Paginator
      */
     public function getAllCoursesByCategory($cat, $page = 1, $max = 10) {
         $query = $this->_em->createQuery('SELECT c FROM LGPCourseBundle:Cours c WHERE c.categorie = :categorie');

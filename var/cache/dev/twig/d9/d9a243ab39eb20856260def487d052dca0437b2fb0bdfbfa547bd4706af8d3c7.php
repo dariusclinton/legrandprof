@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a = $this->env->getExtension("native_profiler");
-        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a->enter($__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_e9d5722a9ca9f82c0c03963baddcf1a10ac9640c3e1a96e95999e7b3b1138a8f = $this->env->getExtension("native_profiler");
+        $__internal_e9d5722a9ca9f82c0c03963baddcf1a10ac9640c3e1a96e95999e7b3b1138a8f->enter($__internal_e9d5722a9ca9f82c0c03963baddcf1a10ac9640c3e1a96e95999e7b3b1138a8f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -167,53 +167,46 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
         echo "                                </li>
                                 <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
                                     <ul style=\"width:250px;margin-left:-100px;\">
-                                        <li class=\"cart-li\">
-                                            <div class=\"cart\">
-                                                <img src=\"";
-        // line 112
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/01.jpg"), "html", null, true);
-        echo "\">
-                                                <b>Antony Robert</b> 45.000 Fcfa
-                                                <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
-                                            </div>
-                                        </li>
 
                                         ";
-        // line 118
+        // line 111
         $context["panier"] = $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method");
-        // line 119
+        // line 112
         echo "                                        ";
-        if ((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier"))))) {
-            // line 120
+        if (((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")))) && (twig_length_filter($this->env, $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array())) != 0))) {
+            // line 113
             echo "                                            ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
-            foreach ($context['_seq'] as $context["_key"] => $context["booker"]) {
-                // line 121
+            foreach ($context['_seq'] as $context["key"] => $context["booker"]) {
+                // line 114
                 echo "                                                <li class=\"cart-li\">
                                                     <div class=\"cart\">
                                                         <img src=\"";
-                // line 123
+                // line 116
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["booker"], "profImage", array())), "html", null, true);
                 echo "\">
                                                         <b>";
-                // line 124
-                echo twig_escape_filter($this->env, (($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())), "html", null, true);
+                // line 117
+                echo twig_escape_filter($this->env, (((($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())) . " ") . $context["key"]), "html", null, true);
                 echo "</b> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
                 echo " Fcfa
-                                                        <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
+                                                        <b class=\"right\" onclick=\"location.href='";
+                // line 118
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_cart_remove", array("key" => $context["key"])), "html", null, true);
+                echo "'\"><i class=\"fa fa-remove\"></i></b>
                                                     </div>
                                                 </li>
                                             ";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_iterated'], $context['key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 129
+            // line 122
             echo "                                        ";
         } else {
-            // line 130
+            // line 123
             echo "                                            <li class=\"cart-li\">
                                                 <div class=\"cart\">
                                                     <b>aucun prof dans le panier</b>
@@ -221,7 +214,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
                                             </li>
                                         ";
         }
-        // line 136
+        // line 129
         echo "
                                     </ul>
 
@@ -246,7 +239,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
 ";
         
-        $__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a->leave($__internal_247aadccd1d8818451ddc4a9adb86ef9ff024d0feb85836642ed0872ff81863a_prof);
+        $__internal_e9d5722a9ca9f82c0c03963baddcf1a10ac9640c3e1a96e95999e7b3b1138a8f->leave($__internal_e9d5722a9ca9f82c0c03963baddcf1a10ac9640c3e1a96e95999e7b3b1138a8f_prof);
 
     }
 
@@ -262,7 +255,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     public function getDebugInfo()
     {
-        return array (  225 => 136,  217 => 130,  214 => 129,  201 => 124,  197 => 123,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  218 => 129,  210 => 123,  207 => 122,  197 => 118,  191 => 117,  187 => 116,  183 => 114,  178 => 113,  175 => 112,  173 => 111,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -374,22 +367,15 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 /*                                 </li>*/
 /*                                 <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
 /*                                     <ul style="width:250px;margin-left:-100px;">*/
-/*                                         <li class="cart-li">*/
-/*                                             <div class="cart">*/
-/*                                                 <img src="{{ asset('images/man/01.jpg') }}">*/
-/*                                                 <b>Antony Robert</b> 45.000 Fcfa*/
-/*                                                 <b class="right"><i class="fa fa-remove"></i></b>*/
-/*                                             </div>*/
-/*                                         </li>*/
 /* */
 /*                                         {% set panier = app.session.get('panier') %}*/
-/*                                         {% if panier is defined and not panier is null %}*/
-/*                                             {% for booker in panier.items %}*/
+/*                                         {% if panier is defined and panier is not null and panier.items | length != 0 %}*/
+/*                                             {% for key,booker in panier.items %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
 /*                                                         <img src="{{ asset(booker.profImage) }}">*/
-/*                                                         <b>{{ booker.profPrenoms ~" "~ booker.profNom }}</b> {{booker.prixTotal}} Fcfa*/
-/*                                                         <b class="right"><i class="fa fa-remove"></i></b>*/
+/*                                                         <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa*/
+/*                                                         <b class="right" onclick="location.href='{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>*/
 /*                                                     </div>*/
 /*                                                 </li>*/
 /*                                             {% endfor %}*/

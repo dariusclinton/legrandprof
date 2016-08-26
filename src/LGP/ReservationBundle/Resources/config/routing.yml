@@ -13,4 +13,8 @@ lgp_reservation_cart:
 lgp_reservation_cart_add:
     path:    /cart/add
     defaults: { _controller: LGPReservationBundle:Reservation:addCart }
+ 
+lgp_reservation_cart_remove:
+    path:    /cart/remove/{key}
+    defaults: { _controller: LGPReservationBundle:Reservation:removeCart }
 
