@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa = $this->env->getExtension("native_profiler");
-        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa->enter($__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_ba9d538399847d97ae7b3680cd6f22d79c706f323211f2a6be56e055962979a6 = $this->env->getExtension("native_profiler");
+        $__internal_ba9d538399847d97ae7b3680cd6f22d79c706f323211f2a6be56e055962979a6->enter($__internal_ba9d538399847d97ae7b3680cd6f22d79c706f323211f2a6be56e055962979a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -187,16 +187,24 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
             // line 120
             echo "                                            ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "getItems", array(), "method"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["booker"]) {
                 // line 121
+                echo "                                                ";
+                $context["prof"] = $this->getAttribute($context["booker"], "prof", array());
+                // line 122
                 echo "                                                <li class=\"cart-li\">
                                                     <div class=\"cart\">
                                                         <img src=\"";
-                // line 123
-                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/03.jpg"), "html", null, true);
+                // line 124
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "parent", array()), "photo", array())), "html", null, true);
                 echo "\">
-                                                        <b>Antony Robert</b> 45.000 Fcfa
+                                                        <b>";
+                // line 125
+                echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "prenoms", array()) . " ") . $this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "nom", array())), "html", null, true);
+                echo "</b> ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
+                echo " Fcfa
                                                         <b class=\"right\"><i class=\"fa fa-remove\"></i></b>
                                                     </div>
                                                 </li>
@@ -205,10 +213,10 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 129
+            // line 130
             echo "                                        ";
         } else {
-            // line 130
+            // line 131
             echo "                                            <li class=\"cart-li\">
                                                 <div class=\"cart\">
                                                     <b>aucun prof dans le panier</b>
@@ -216,7 +224,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                             </li>
                                         ";
         }
-        // line 136
+        // line 137
         echo "
                                     </ul>
 
@@ -241,7 +249,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
 ";
         
-        $__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa->leave($__internal_a0bb16667743ea8f45daf33f88edadfda4229c2d6180fd90a1a3cac46e1a7efa_prof);
+        $__internal_ba9d538399847d97ae7b3680cd6f22d79c706f323211f2a6be56e055962979a6->leave($__internal_ba9d538399847d97ae7b3680cd6f22d79c706f323211f2a6be56e055962979a6_prof);
 
     }
 
@@ -257,7 +265,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  220 => 136,  212 => 130,  209 => 129,  197 => 123,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  228 => 137,  220 => 131,  217 => 130,  204 => 125,  200 => 124,  196 => 122,  193 => 121,  188 => 120,  185 => 119,  183 => 118,  174 => 112,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -379,11 +387,12 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /* */
 /*                                         {% set panier = app.session.get('panier') %}*/
 /*                                         {% if panier is defined and not panier is null %}*/
-/*                                             {% for booker in panier.getItems() %}*/
+/*                                             {% for booker in panier.items %}*/
+/*                                                 {% set prof = booker.prof %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
-/*                                                         <img src="{{ asset('images/man/03.jpg') }}">*/
-/*                                                         <b>Antony Robert</b> 45.000 Fcfa*/
+/*                                                         <img src="{{ asset(prof.parent.photo) }}">*/
+/*                                                         <b>{{ prof.prenoms ~" "~ prof.nom }}</b> {{booker.prixTotal}} Fcfa*/
 /*                                                         <b class="right"><i class="fa fa-remove"></i></b>*/
 /*                                                     </div>*/
 /*                                                 </li>*/
