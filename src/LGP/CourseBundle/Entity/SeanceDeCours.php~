@@ -49,5 +49,5 @@ class SeanceDeCours {
      */
     private $prof;
     
-
+    
 }

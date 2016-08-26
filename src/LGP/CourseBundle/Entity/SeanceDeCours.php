@@ -49,7 +49,7 @@ class SeanceDeCours {
      */
     private $prof;
     
-
+    
 
     /**
      * Get id

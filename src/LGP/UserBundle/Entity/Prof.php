@@ -92,14 +92,7 @@ class Prof extends User {
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
-
-    /**
-     * @var \LGPCourseBundle\Entity\SeanceDeCours
-     * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
-     */
-    private $seanceDeCours;
-
+    
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
@@ -131,7 +124,8 @@ class Prof extends User {
      * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
      */
     private $experiencePros;
-
+    
+    
 
     /**
      * Set ville
@@ -371,40 +365,6 @@ class Prof extends User {
     public function getProfession()
     {
         return $this->profession;
-    }
-
-    /**
-     * Add seanceDeCour
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
-     *
-     * @return Prof
-     */
-    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
-    {
-        $this->seanceDeCours[] = $seanceDeCour;
-    
-        return $this;
-    }
-
-    /**
-     * Remove seanceDeCour
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
-     */
-    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
-    {
-        $this->seanceDeCours->removeElement($seanceDeCour);
-    }
-
-    /**
-     * Get seanceDeCours
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeanceDeCours()
-    {
-        return $this->seanceDeCours;
     }
 
     /**

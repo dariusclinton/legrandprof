@@ -117,11 +117,12 @@
 
                                         {% set panier = app.session.get('panier') %}
                                         {% if panier is defined and not panier is null %}
-                                            {% for booker in panier.getItems() %}
+                                            {% for booker in panier.items %}
+                                                {% set prof = booker.prof %}
                                                 <li class="cart-li">
                                                     <div class="cart">
-                                                        <img src="{{ asset('images/man/03.jpg') }}">
-                                                        <b>Antony Robert</b> 45.000 Fcfa
+                                                        <img src="{{ asset(prof.parent.photo) }}">
+                                                        <b>{{ prof.prenoms ~" "~ prof.nom }}</b> {{booker.prixTotal}} Fcfa
                                                         <b class="right"><i class="fa fa-remove"></i></b>
                                                     </div>
                                                 </li>
