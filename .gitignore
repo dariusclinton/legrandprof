@@ -1,1 +1,15 @@
 /nbproject/private/
+# Pas de fichier temporaire
+*~
+
+# Ignorer tous les fichiers dans le repertoire var
+var/
+
+# Ignorer tous les fichiers dans le repertoire cache
+var/cache/
+
+# Ignorer tous les fichiers dans le repertoire logs
+var/logs/
+
+# Ignorer tous les fichiers dans le repertoire sessions
+var/sessions/
