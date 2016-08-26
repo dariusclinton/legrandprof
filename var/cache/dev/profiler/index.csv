@@ -20,3 +20,6 @@ ebbe6d,127.0.0.1,POST,http://localhost/legrandprof/web/app_dev.php/login_check,1
 3071c8,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/user/messages/receive,1472158999,,200
 3eb71e,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/,1472159015,,200
 ea9887,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/,1472159131,,200
+05c616,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/edit,1472159901,,200
+5643dc,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/edit,1472159902,,200
+1fc98d,127.0.0.1,GET,http://localhost/legrandprof/web/app_dev.php/profile/,1472159918,,200
