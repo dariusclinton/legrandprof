@@ -132,8 +132,20 @@ class Prof extends User
      */
     private $experiencePros;
 
-
     /**
+     * Constructeur
+     */
+    function __construct() {
+      parent::_construct();
+      
+      $this->seancesDeCours = new ArrayCollection();
+      $this->enseignements = new ArrayCollection();
+      $this->evaluations = new ArrayCollection();
+      $this->diplomes = new ArrayCollection();
+      $this->experiencePros = new ArrayCollection();
+    }
+
+        /**
      * Set ville
      *
      * @param string $ville
