@@ -4,8 +4,8 @@ namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
-use LGP\UserBundle\Entity\Prof;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
@@ -320,6 +320,15 @@ class CourseController extends Controller {
             ),
         );
         return $this->render('LGPCourseBundle:Course:all_categories.html.twig', array('params' => $params));
+    }
+    
+    public function updateClasseAction($profId,$coursId,Request $request){
+        if($request->isXmlHttpRequest()){
+            $em = $this->getDoctrine()->getManager();
+            $ensRep = $em->getRepository("LGPCourseBundle:Enseignment");
+            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
+            return new JsonResponse($ens);
+        }
     }
 
 }

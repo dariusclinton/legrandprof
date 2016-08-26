@@ -11,11 +11,16 @@ use Symfony\Component\Validator\Constraints\Date;
 class ReservationController extends Controller {
 
     public function detailAction($id) {
-        $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
+        $em = $this->getDoctrine()->getManager();
+        $profRep = $em->getRepository("LGPUserBundle:Prof");
+        $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $prof = $profRep->find($id);
+        if($prof){
+           $cours = $ensRep->getCoursByProf($prof);
+        }
         
-        $params =  array('prof' => $prof);
-        
+        $params = array('prof' => $prof, 'cours' => $cours);
+
         return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('params' => $params));
     }
 
@@ -28,11 +33,11 @@ class ReservationController extends Controller {
 
         $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
         $p = $profRep->find(1);
-        
+
         if ($p) {
             $image = $p->getImage()->getWebPath();
         }
-        
+
         $booker1 = new Booker();
         $booker1->setProfId($p->getId());
         $booker1->setProfNom($p->getNom());
@@ -61,11 +66,11 @@ class ReservationController extends Controller {
         return $this->redirectToRoute("lgp_core_homepage");
 //         return $this->forward('LGPCoreBundle:Lgp:index');
     }
-    
-    public function removeCartAction($key, Request $request){
+
+    public function removeCartAction($key, Request $request) {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        
+
         if ($panier) {
             $items = $panier->getItems();
         }

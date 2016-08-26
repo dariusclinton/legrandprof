@@ -40,4 +40,12 @@ lgp_course_find_prof_city:
     requirements:
         page:   \d+
 
+lgp_course_update_classe:
+    path:     update/{profId}/{coursId}
+    defaults: { _controller: LGPCourseBundle:Course:updateClasse }
+    requirements:
+        profId:   \d+
+        coursId: \d+
+        method: POST
+
   

@@ -290,6 +290,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // lgp_course_update_classe
+            if (0 === strpos($pathinfo, '/course/update') && preg_match('#^/course/update/(?P<profId>\\d+)/(?P<coursId>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_update_classe')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::updateClasseAction',));
+            }
+
         }
 
         // lgp_core_homepage

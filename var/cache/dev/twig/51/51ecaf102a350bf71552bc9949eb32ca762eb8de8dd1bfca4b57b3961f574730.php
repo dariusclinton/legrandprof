@@ -15,14 +15,14 @@ class __TwigTemplate_345c04f27cfd294d554de18d59e83ccaa27af96df71cd7767d03367a830
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bc3d4862ddd57c887fe8821465782a5fec1ef8d56b51dfea08378de768c326af = $this->env->getExtension("native_profiler");
-        $__internal_bc3d4862ddd57c887fe8821465782a5fec1ef8d56b51dfea08378de768c326af->enter($__internal_bc3d4862ddd57c887fe8821465782a5fec1ef8d56b51dfea08378de768c326af_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Framework/Form/integer_widget.html.php"));
+        $__internal_54b2fa6c353a6ea224f7dc10dc5d239e81838c10ceea614d65ef285bc1d83e6f = $this->env->getExtension("native_profiler");
+        $__internal_54b2fa6c353a6ea224f7dc10dc5d239e81838c10ceea614d65ef285bc1d83e6f->enter($__internal_54b2fa6c353a6ea224f7dc10dc5d239e81838c10ceea614d65ef285bc1d83e6f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Framework/Form/integer_widget.html.php"));
 
         // line 1
         echo "<?php echo \$view['form']->block(\$form, 'form_widget_simple', array('type' => isset(\$type) ? \$type : 'number')) ?>
 ";
         
-        $__internal_bc3d4862ddd57c887fe8821465782a5fec1ef8d56b51dfea08378de768c326af->leave($__internal_bc3d4862ddd57c887fe8821465782a5fec1ef8d56b51dfea08378de768c326af_prof);
+        $__internal_54b2fa6c353a6ea224f7dc10dc5d239e81838c10ceea614d65ef285bc1d83e6f->leave($__internal_54b2fa6c353a6ea224f7dc10dc5d239e81838c10ceea614d65ef285bc1d83e6f_prof);
 
     }
 
