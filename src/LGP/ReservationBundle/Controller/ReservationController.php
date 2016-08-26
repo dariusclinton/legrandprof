@@ -4,14 +4,17 @@ namespace LGP\ReservationBundle\Controller;
 
 use LGP\ReservationBundle\Cart\Booker;
 use LGP\ReservationBundle\Cart\Cart;
-use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class ReservationController extends Controller {
 
-    public function detailAction() {
-        return $this->render('LGPReservationBundle:Reservation:detail.html.twig');
+    public function detailAction($id) {
+        $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
+        $prof = $profRep->find($id);
+        
+        return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('prof' => $prof));
     }
 
     public function addCartAction(Request $request) {
@@ -22,18 +25,16 @@ class ReservationController extends Controller {
         $panier = $session->get('panier');
 
         $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
-        $userRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:User");
         $p = $profRep->find(1);
         
         if ($p) {
-            $u = $userRep->find($p->getId());
-            $image = $u->getImage()->getWebPath();
+            $image = $p->getImage()->getWebPath();
         }
         
         $booker1 = new Booker();
-        $booker1->setProfId($u->getId());
-        $booker1->setProfNom($u->getNom());
-        $booker1->setProfPrenoms($u->getPrenoms());
+        $booker1->setProfId($p->getId());
+        $booker1->setProfNom($p->getNom());
+        $booker1->setProfPrenoms($p->getPrenoms());
         $booker1->setProfImage($image);
         $booker1->setCours(1);
         $booker1->setDateDebut(new Date());

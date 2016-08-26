@@ -4,6 +4,7 @@ namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
+use LGP\UserBundle\Entity\Prof;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -25,7 +26,7 @@ class CourseController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
-        $courses = $coursRep->findAll();
+        $courses = $coursRep->findAll(); 
         $max_per_page = 10;
         try {
             $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
@@ -67,7 +68,7 @@ class CourseController extends Controller {
      * 
      * @param type $intitule_cours
      * @param type $page
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      * @return type
      * @throws type
      * @throws NotFoundHttpException

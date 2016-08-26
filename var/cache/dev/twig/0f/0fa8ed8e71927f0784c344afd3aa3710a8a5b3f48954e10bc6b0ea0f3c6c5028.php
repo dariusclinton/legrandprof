@@ -22,20 +22,20 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7e7847112239ec2179bb3dd662b32d9b8e8bd203a21d50f96158ad37814fb765 = $this->env->getExtension("native_profiler");
-        $__internal_7e7847112239ec2179bb3dd662b32d9b8e8bd203a21d50f96158ad37814fb765->enter($__internal_7e7847112239ec2179bb3dd662b32d9b8e8bd203a21d50f96158ad37814fb765_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
+        $__internal_ad228662ff4629ebc0decd73a312ca0bae11a04f11db2cce4a60864da7dd9e78 = $this->env->getExtension("native_profiler");
+        $__internal_ad228662ff4629ebc0decd73a312ca0bae11a04f11db2cce4a60864da7dd9e78->enter($__internal_ad228662ff4629ebc0decd73a312ca0bae11a04f11db2cce4a60864da7dd9e78_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCourse/Course/search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_7e7847112239ec2179bb3dd662b32d9b8e8bd203a21d50f96158ad37814fb765->leave($__internal_7e7847112239ec2179bb3dd662b32d9b8e8bd203a21d50f96158ad37814fb765_prof);
+        $__internal_ad228662ff4629ebc0decd73a312ca0bae11a04f11db2cce4a60864da7dd9e78->leave($__internal_ad228662ff4629ebc0decd73a312ca0bae11a04f11db2cce4a60864da7dd9e78_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_5799625b670da951412280197b90c7a82acae041788e4aaaad16f9cd49298fd8 = $this->env->getExtension("native_profiler");
-        $__internal_5799625b670da951412280197b90c7a82acae041788e4aaaad16f9cd49298fd8->enter($__internal_5799625b670da951412280197b90c7a82acae041788e4aaaad16f9cd49298fd8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_46c8f281d1e917e3e71822706bb358c4727807b55e220c387ded8d02de270b46 = $this->env->getExtension("native_profiler");
+        $__internal_46c8f281d1e917e3e71822706bb358c4727807b55e220c387ded8d02de270b46->enter($__internal_46c8f281d1e917e3e71822706bb358c4727807b55e220c387ded8d02de270b46_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    ";
@@ -55,15 +55,15 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
     ";
         }
         
-        $__internal_5799625b670da951412280197b90c7a82acae041788e4aaaad16f9cd49298fd8->leave($__internal_5799625b670da951412280197b90c7a82acae041788e4aaaad16f9cd49298fd8_prof);
+        $__internal_46c8f281d1e917e3e71822706bb358c4727807b55e220c387ded8d02de270b46->leave($__internal_46c8f281d1e917e3e71822706bb358c4727807b55e220c387ded8d02de270b46_prof);
 
     }
 
     // line 12
     public function block_body($context, array $blocks = array())
     {
-        $__internal_1a07d6b730d711a7c25786a66b21cdc756c2bf0145c647b4628de6020b8b42ab = $this->env->getExtension("native_profiler");
-        $__internal_1a07d6b730d711a7c25786a66b21cdc756c2bf0145c647b4628de6020b8b42ab->enter($__internal_1a07d6b730d711a7c25786a66b21cdc756c2bf0145c647b4628de6020b8b42ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_c34baace0191653362a065c6f20e83554346276d1d41aa43b031ce71ad72c032 = $this->env->getExtension("native_profiler");
+        $__internal_c34baace0191653362a065c6f20e83554346276d1d41aa43b031ce71ad72c032->enter($__internal_c34baace0191653362a065c6f20e83554346276d1d41aa43b031ce71ad72c032_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 13
         echo "
@@ -233,7 +233,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                                     <div class=\"image\">
                                         ";
                 // line 243
-                if ( !$this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "photo", array())) {
+                if ( !$this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "image", array())) {
                     // line 244
                     echo "                                            <img src=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
@@ -243,9 +243,9 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                 } else {
                     // line 247
                     echo "                                            <img src=\"";
-                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "photo", array())), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "image", array()), "webPath", array())), "html", null, true);
                     echo "\" alt=\" ";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array()), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "nom", array()), "html", null, true);
                     echo " \" />
                                         ";
                 }
@@ -255,7 +255,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
                                     <div class=\"content\">
                                         <h5>";
                 // line 252
-                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "prenoms", array()) . "  ") . twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "user", array()), "nom", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "prenoms", array()) . "  ") . twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "nom", array()))), "html", null, true);
                 echo " <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button></h5>
                                         <div class=\"row gap-10\">
                                             <div class=\"col-sm-12 col-md-9\">
@@ -389,7 +389,7 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
     </div>
 ";
         
-        $__internal_1a07d6b730d711a7c25786a66b21cdc756c2bf0145c647b4628de6020b8b42ab->leave($__internal_1a07d6b730d711a7c25786a66b21cdc756c2bf0145c647b4628de6020b8b42ab_prof);
+        $__internal_c34baace0191653362a065c6f20e83554346276d1d41aa43b031ce71ad72c032->leave($__internal_c34baace0191653362a065c6f20e83554346276d1d41aa43b031ce71ad72c032_prof);
 
     }
 
@@ -650,16 +650,16 @@ class __TwigTemplate_1f1c4970ec399f31dacd58113d80ff21b932c2a8858c2c0bd278d0f315d
 /*                             {% for enseigne in params.matieres_profs %}*/
 /*                                 <div class="package-list-item clearfix">*/
 /*                                     <div class="image">*/
-/*                                         {% if not enseigne.prof.user.photo %}*/
+/*                                         {% if not enseigne.prof.image %}*/
 /*                                             <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />*/
 /* */
 /*                                         {% else %}*/
-/*                                             <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />*/
+/*                                             <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" {{enseigne.prof.nom}} " />*/
 /*                                         {% endif %}*/
 /*                                     </div>*/
 /* */
 /*                                     <div class="content">*/
-/*                                         <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
+/*                                         <h5>{{enseigne.prof.prenoms ~"  "~ enseigne.prof.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>*/
 /*                                         <div class="row gap-10">*/
 /*                                             <div class="col-sm-12 col-md-9">*/
 /* */

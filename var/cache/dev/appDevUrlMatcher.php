@@ -229,8 +229,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // lgp_reservation_detail
-            if ($pathinfo === '/reservation/detail') {
-                return array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',  '_route' => 'lgp_reservation_detail',);
+            if (0 === strpos($pathinfo, '/reservation/detail') && preg_match('#^/reservation/detail/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_reservation_detail')), array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',));
             }
 
             if (0 === strpos($pathinfo, '/reservation/cart')) {

@@ -3,8 +3,10 @@ lgp_reservation_homepage:
     defaults: { _controller: LGPReservationBundle:Default:index }
     
 lgp_reservation_detail:
-    path:    /detail
+    path:    /detail/{id}
     defaults: { _controller: LGPReservationBundle:Reservation:detail }
+    requirements:
+        id: \d+
     
 lgp_reservation_cart:
     path:    /cart
