@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e51571f254ba257168b6efa05d2b06fabb15893299f43be56232db084cfd72ba = $this->env->getExtension("native_profiler");
-        $__internal_e51571f254ba257168b6efa05d2b06fabb15893299f43be56232db084cfd72ba->enter($__internal_e51571f254ba257168b6efa05d2b06fabb15893299f43be56232db084cfd72ba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7 = $this->env->getExtension("native_profiler");
+        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7->enter($__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -37,7 +37,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/logo-white.png"), "html", null, true);
         echo "\" alt=\"Logo\" />
                         </a>
-                    </div>\t
+                    </div>  
                     <div class=\"flex-columns\">
                         <div class=\"\">
 
@@ -60,10 +60,6 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                             <i class=\"fa fa-cog\"></i>
                                         </a>
                                         <ul class=\"dropdown-menu\" aria-labelledby=\"language-dropdown\">
-                                            <li><a href=\"#\"><i class=\"ion-social-usd\"></i> Dollar</a></li>
-                                            <li><a href=\"#\"><i class=\"ion-social-euro\"></i> Europe</a></li>
-                                            <li><a href=\"#\"><i class=\"ion-social-yen\"></i> Yen</a></li>
-                                            <li class=\"divider\"></li>
                                             <li><a href=\"#\">English</a></li>
                                             <li><a href=\"#\">France</a></li>
                                             <li><a href=\"#\">Japanese</a></li>
@@ -71,7 +67,10 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                     </li>
 
                                     <li class=\"user-action\">
-                                        <a data-toggle=\"modal\" href=\"#loginModal\" class=\"btn\">Connexion</a>
+                                        <a data-toggle=\"modal\" href=\"";
+        // line 46
+        echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
+        echo "\" class=\"btn\">Connexion</a>
                                     </li>
 
                                 </ul>
@@ -92,23 +91,23 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                 <div class=\"row\">
                     <div class=\"col-lg-2 col-md-2\">
                         <a href=\"";
-        // line 70
+        // line 66
         echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/Logo.png"), "html", null, true);
         echo "\" alt=\"Logo\" /></a>
-                    </div>\t\t
+                    </div>      
                     <div class=\"col-lg-6 col-md-6\">
 
                         <div id=\"navbar\" class=\"collapse navbar-collapse navbar-arrow\">
 
                             ";
-        // line 76
+        // line 72
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 77
+            // line 73
             echo "                                <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
                                     <li><a href=\"";
-            // line 78
+            // line 74
             echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
             echo "\">Accueil</a></li>
                                     <li><a href=\"#\">Besoin d'aide ?</a></li>
@@ -116,14 +115,14 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                 </ul>
                             ";
         } else {
-            // line 83
+            // line 79
             echo "                                <ul class=\"nav navbar-nav\" id=\"responsive-menu\">
                                     <li><a href=\"";
-            // line 84
+            // line 80
             echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
             echo "\">Accueil</a></li>
                                     <li><a href=\"";
-            // line 85
+            // line 81
             echo $this->env->getExtension('routing')->getPath("lgp_user_become_prof");
             echo "\">Devenir Un Grand Prof</a></li>
                                     <li><a href=\"#\">Comment ca marche ?</a></li>
@@ -131,7 +130,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                                 </ul>
                             ";
         }
-        // line 90
+        // line 86
         echo "                        </div><!--/.nav-collapse -->
 
                     </div>
@@ -141,105 +140,106 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
                             <ul class=\"nav navbar-nav\">
                                 <li>
                                     ";
-        // line 98
+        // line 94
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 99
+            // line 95
             echo "                                        <div style=\"margin-top: 11px; font-weight: bold\">";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
             echo "<i class=\"arrow-indicator fa fa-angle-down\"></i></div>
                                         <ul>
                                             <li><a href=\"";
-            // line 101
+            // line 97
             echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
             echo "\">Profil</a></li>
                                             <li><a href=\"";
-            // line 102
+            // line 98
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
                                         </ul>
                                     ";
         } else {
-            // line 105
-            echo "                                        <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"#loginModal\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
+            // line 101
+            echo "                                        <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"";
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
+            echo "\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
                                     ";
         }
-        // line 107
+        // line 103
         echo "                                </li>
-                                <li><a href=\"#\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
+                                <li><a href=\"";
+        // line 104
+        echo $this->env->getExtension('routing')->getPath("lgp_reservation_cart");
+        echo "\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
                                     <ul style=\"width:250px;margin-left:-100px;\">
-
                                         ";
-        // line 111
+        // line 106
         $context["panier"] = $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method");
-        // line 112
-        echo "                                        ";
+        // line 107
+        echo "                                            ";
         if (((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")))) && (twig_length_filter($this->env, $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array())) != 0))) {
-            // line 113
-            echo "                                            ";
+            // line 108
+            echo "                                                ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
             foreach ($context['_seq'] as $context["key"] => $context["booker"]) {
-                // line 114
-                echo "                                                <li class=\"cart-li\">
-                                                    <div class=\"cart\">
-                                                        <img src=\"";
-                // line 116
+                // line 109
+                echo "                                                    <li class=\"cart-li\">
+                                                        <div class=\"cart\">
+                                                            <img src=\"";
+                // line 111
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["booker"], "profImage", array())), "html", null, true);
                 echo "\">
-                                                        <b>";
-                // line 117
+                                                            <b>";
+                // line 112
                 echo twig_escape_filter($this->env, (((($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())) . " ") . $context["key"]), "html", null, true);
                 echo "</b> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
                 echo " Fcfa
-                                                        <b class=\"right\" onclick=\"location.href='";
-                // line 118
+                                                            <b class=\"right\" onclick=\"location.href = '";
+                // line 113
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_cart_remove", array("key" => $context["key"])), "html", null, true);
                 echo "'\"><i class=\"fa fa-remove\"></i></b>
-                                                    </div>
-                                                </li>
-                                            ";
+                                                        </div>
+                                                    </li>
+                                                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 122
-            echo "                                        ";
+            // line 117
+            echo "                                            ";
         } else {
-            // line 123
-            echo "                                            <li class=\"cart-li\">
-                                                <div class=\"cart\">
-                                                    <b>aucun prof dans le panier</b>
-                                                </div>
-                                            </li>
-                                        ";
+            // line 118
+            echo "                                                <li class=\"cart-li\">
+                                                    <div class=\"cart\">
+                                                        <b>aucun prof dans le panier</b>
+                                                    </div>
+                                                </li>
+                                            ";
         }
-        // line 129
-        echo "
-                                    </ul>
+        // line 124
+        echo "                                        </ul>
 
-                                </li>
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <div id=\"slicknav-mobile\"></div>
 
-        <div id=\"slicknav-mobile\"></div>
+        </nav>
+        <!-- end Navbar (Header) -->
 
-    </nav>
-    <!-- end Navbar (Header) -->
-
-</header>
-
-";
+    </header>";
         
-        $__internal_e51571f254ba257168b6efa05d2b06fabb15893299f43be56232db084cfd72ba->leave($__internal_e51571f254ba257168b6efa05d2b06fabb15893299f43be56232db084cfd72ba_prof);
+        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7->leave($__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7_prof);
 
     }
 
@@ -255,7 +255,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     public function getDebugInfo()
     {
-        return array (  218 => 129,  210 => 123,  207 => 122,  197 => 118,  191 => 117,  187 => 116,  183 => 114,  178 => 113,  175 => 112,  173 => 111,  167 => 107,  163 => 105,  157 => 102,  153 => 101,  147 => 99,  145 => 98,  135 => 90,  127 => 85,  123 => 84,  120 => 83,  112 => 78,  109 => 77,  107 => 76,  96 => 70,  37 => 14,  22 => 1,);
+        return array (  221 => 124,  213 => 118,  210 => 117,  200 => 113,  194 => 112,  190 => 111,  186 => 109,  181 => 108,  178 => 107,  176 => 106,  171 => 104,  168 => 103,  162 => 101,  156 => 98,  152 => 97,  146 => 95,  144 => 94,  134 => 86,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -273,7 +273,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                         <a class="navbar-logo" href="index.html">*/
 /*                             <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />*/
 /*                         </a>*/
-/*                     </div>	*/
+/*                     </div>  */
 /*                     <div class="flex-columns">*/
 /*                         <div class="">*/
 /* */
@@ -296,10 +296,6 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                             <i class="fa fa-cog"></i>*/
 /*                                         </a>*/
 /*                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">*/
-/*                                             <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>*/
-/*                                             <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>*/
-/*                                             <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>*/
-/*                                             <li class="divider"></li>*/
 /*                                             <li><a href="#">English</a></li>*/
 /*                                             <li><a href="#">France</a></li>*/
 /*                                             <li><a href="#">Japanese</a></li>*/
@@ -307,7 +303,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                     </li>*/
 /* */
 /*                                     <li class="user-action">*/
-/*                                         <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>*/
+/*                                         <a data-toggle="modal" href="{{ path('fos_user_security_login') }}" class="btn">Connexion</a>*/
 /*                                     </li>*/
 /* */
 /*                                 </ul>*/
@@ -328,7 +324,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                 <div class="row">*/
 /*                     <div class="col-lg-2 col-md-2">*/
 /*                         <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>*/
-/*                     </div>		*/
+/*                     </div>      */
 /*                     <div class="col-lg-6 col-md-6">*/
 /* */
 /*                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">*/
@@ -362,50 +358,46 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 /*                                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>*/
 /*                                         </ul>*/
 /*                                     {% else %}*/
-/*                                         <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>*/
+/*                                         <a data-toggle="modal"  id="btn-connect" href="{{ path('fos_user_security_login') }}" class="btn" style="font-size: 10px;">Connexion</a>*/
 /*                                     {% endif %}*/
 /*                                 </li>*/
-/*                                 <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
+/*                                 <li><a href="{{ path('lgp_reservation_cart') }}" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>*/
 /*                                     <ul style="width:250px;margin-left:-100px;">*/
-/* */
 /*                                         {% set panier = app.session.get('panier') %}*/
-/*                                         {% if panier is defined and panier is not null and panier.items | length != 0 %}*/
-/*                                             {% for key,booker in panier.items %}*/
+/*                                             {% if panier is defined and panier is not null and panier.items | length != 0 %}*/
+/*                                                 {% for key,booker in panier.items %}*/
+/*                                                     <li class="cart-li">*/
+/*                                                         <div class="cart">*/
+/*                                                             <img src="{{ asset(booker.profImage) }}">*/
+/*                                                             <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa*/
+/*                                                             <b class="right" onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>*/
+/*                                                         </div>*/
+/*                                                     </li>*/
+/*                                                 {% endfor %}*/
+/*                                             {% else %}*/
 /*                                                 <li class="cart-li">*/
 /*                                                     <div class="cart">*/
-/*                                                         <img src="{{ asset(booker.profImage) }}">*/
-/*                                                         <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa*/
-/*                                                         <b class="right" onclick="location.href='{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>*/
+/*                                                         <b>aucun prof dans le panier</b>*/
 /*                                                     </div>*/
 /*                                                 </li>*/
-/*                                             {% endfor %}*/
-/*                                         {% else %}*/
-/*                                             <li class="cart-li">*/
-/*                                                 <div class="cart">*/
-/*                                                     <b>aucun prof dans le panier</b>*/
-/*                                                 </div>*/
-/*                                             </li>*/
-/*                                         {% endif %}*/
+/*                                             {% endif %}*/
+/*                                         </ul>*/
 /* */
-/*                                     </ul>*/
+/*                                     </li>*/
 /* */
-/*                                 </li>*/
-/* */
-/*                             </ul>*/
+/*                                 </ul>*/
+/*                             </div>*/
 /*                         </div>*/
+/* */
 /*                     </div>*/
 /* */
 /*                 </div>*/
 /* */
 /*             </div>*/
 /* */
-/*         </div>*/
+/*             <div id="slicknav-mobile"></div>*/
 /* */
-/*         <div id="slicknav-mobile"></div>*/
+/*         </nav>*/
+/*         <!-- end Navbar (Header) -->*/
 /* */
-/*     </nav>*/
-/*     <!-- end Navbar (Header) -->*/
-/* */
-/* </header>*/
-/* */
-/* */
+/*     </header>*/
