@@ -12,8 +12,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Prof extends User
-{
+class Prof extends User {
+
     /**
      * @var int
      *
@@ -92,7 +92,14 @@ class Prof extends User
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
-    
+
+    /**
+     * @var \LGPCourseBundle\Entity\SeanceDeCours
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
+     */
+    private $seanceDeCours;
+
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
@@ -113,8 +120,8 @@ class Prof extends User
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
      */
     private $evaluations;
-    
-      /**
+
+    /**
      * @ORM\ManyToMany(targetEntity="Diplome")
      * @ORM\JoinTable(name="lgp_prof_diplome")
      */
@@ -124,8 +131,6 @@ class Prof extends User
      * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
      */
     private $experiencePros;
-    
-    
 
     /**
      * Set ville
@@ -134,10 +139,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
-    
+
         return $this;
     }
 
@@ -146,8 +150,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -158,10 +161,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setQuartier($quartier)
-    {
+    public function setQuartier($quartier) {
         $this->quartier = $quartier;
-    
+
         return $this;
     }
 
@@ -170,8 +172,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getQuartier()
-    {
+    public function getQuartier() {
         return $this->quartier;
     }
 
@@ -182,10 +183,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setBoitePostale($boitePostale)
-    {
+    public function setBoitePostale($boitePostale) {
         $this->boitePostale = $boitePostale;
-    
+
         return $this;
     }
 
@@ -194,8 +194,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getBoitePostale()
-    {
+    public function getBoitePostale() {
         return $this->boitePostale;
     }
 
@@ -206,10 +205,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setSituationMatrimoniale($situationMatrimoniale)
-    {
+    public function setSituationMatrimoniale($situationMatrimoniale) {
         $this->situationMatrimoniale = $situationMatrimoniale;
-    
+
         return $this;
     }
 
@@ -218,8 +216,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getSituationMatrimoniale()
-    {
+    public function getSituationMatrimoniale() {
         return $this->situationMatrimoniale;
     }
 
@@ -230,10 +227,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setNiveauScolaire($niveauScolaire)
-    {
+    public function setNiveauScolaire($niveauScolaire) {
         $this->niveauScolaire = $niveauScolaire;
-    
+
         return $this;
     }
 
@@ -242,8 +238,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getNiveauScolaire()
-    {
+    public function getNiveauScolaire() {
         return $this->niveauScolaire;
     }
 
@@ -254,10 +249,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setNombreEnfants($nombreEnfants)
-    {
+    public function setNombreEnfants($nombreEnfants) {
         $this->nombreEnfants = $nombreEnfants;
-    
+
         return $this;
     }
 
@@ -266,8 +260,7 @@ class Prof extends User
      *
      * @return integer
      */
-    public function getNombreEnfants()
-    {
+    public function getNombreEnfants() {
         return $this->nombreEnfants;
     }
 
@@ -278,10 +271,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setIsRecommande($isRecommande)
-    {
+    public function setIsRecommande($isRecommande) {
         $this->isRecommande = $isRecommande;
-    
+
         return $this;
     }
 
@@ -290,8 +282,7 @@ class Prof extends User
      *
      * @return boolean
      */
-    public function getIsRecommande()
-    {
+    public function getIsRecommande() {
         return $this->isRecommande;
     }
 
@@ -302,10 +293,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setIsActif($isActif)
-    {
+    public function setIsActif($isActif) {
         $this->isActif = $isActif;
-    
+
         return $this;
     }
 
@@ -314,8 +304,7 @@ class Prof extends User
      *
      * @return boolean
      */
-    public function getIsActif()
-    {
+    public function getIsActif() {
         return $this->isActif;
     }
 
@@ -326,10 +315,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setPresentation($presentation)
-    {
+    public function setPresentation($presentation) {
         $this->presentation = $presentation;
-    
+
         return $this;
     }
 
@@ -338,8 +326,7 @@ class Prof extends User
      *
      * @return string
      */
-    public function getPresentation()
-    {
+    public function getPresentation() {
         return $this->presentation;
     }
 
@@ -350,10 +337,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function setProfession($profession)
-    {
+    public function setProfession($profession) {
         $this->profession = $profession;
-    
+
         return $this;
     }
 
@@ -362,9 +348,39 @@ class Prof extends User
      *
      * @return string
      */
-    public function getProfession()
-    {
+    public function getProfession() {
         return $this->profession;
+    }
+
+    /**
+     * Add seanceDeCour
+     *
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
+     *
+     * @return Prof
+     */
+    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+        $this->seanceDeCours[] = $seanceDeCour;
+
+        return $this;
+    }
+
+    /**
+     * Remove seanceDeCour
+     *
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
+     */
+    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour) {
+        $this->seanceDeCours->removeElement($seanceDeCour);
+    }
+
+    /**
+     * Get seanceDeCours
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSeanceDeCours() {
+        return $this->seanceDeCours;
     }
 
     /**
@@ -374,10 +390,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function addSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
-    {
+    public function addSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour) {
         $this->seancesDeCours[] = $seancesDeCour;
-    
+
         return $this;
     }
 
@@ -386,8 +401,7 @@ class Prof extends User
      *
      * @param \LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour
      */
-    public function removeSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
-    {
+    public function removeSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour) {
         $this->seancesDeCours->removeElement($seancesDeCour);
     }
 
@@ -396,8 +410,7 @@ class Prof extends User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSeancesDeCours()
-    {
+    public function getSeancesDeCours() {
         return $this->seancesDeCours;
     }
 
@@ -408,10 +421,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
-    {
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
         $this->enseignements[] = $enseignement;
-    
+
         return $this;
     }
 
@@ -420,8 +432,7 @@ class Prof extends User
      *
      * @param \LGP\CourseBundle\Entity\Enseignement $enseignement
      */
-    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
-    {
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
         $this->enseignements->removeElement($enseignement);
     }
 
@@ -430,8 +441,7 @@ class Prof extends User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseignements()
-    {
+    public function getEnseignements() {
         return $this->enseignements;
     }
 
@@ -442,10 +452,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
+    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
         $this->evaluations[] = $evaluation;
-    
+
         return $this;
     }
 
@@ -454,8 +463,7 @@ class Prof extends User
      *
      * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
      */
-    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
+    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
         $this->evaluations->removeElement($evaluation);
     }
 
@@ -464,8 +472,7 @@ class Prof extends User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEvaluations()
-    {
+    public function getEvaluations() {
         return $this->evaluations;
     }
 
@@ -476,10 +483,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
-    {
+    public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome) {
         $this->diplomes[] = $diplome;
-    
+
         return $this;
     }
 
@@ -488,8 +494,7 @@ class Prof extends User
      *
      * @param \LGP\UserBundle\Entity\Diplome $diplome
      */
-    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome)
-    {
+    public function removeDiplome(\LGP\UserBundle\Entity\Diplome $diplome) {
         $this->diplomes->removeElement($diplome);
     }
 
@@ -498,8 +503,7 @@ class Prof extends User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDiplomes()
-    {
+    public function getDiplomes() {
         return $this->diplomes;
     }
 
@@ -510,10 +514,9 @@ class Prof extends User
      *
      * @return Prof
      */
-    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
+    public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro) {
         $this->experiencePros[] = $experiencePro;
-    
+
         return $this;
     }
 
@@ -522,8 +525,7 @@ class Prof extends User
      *
      * @param \LGP\UserBundle\Entity\ExperiencePro $experiencePro
      */
-    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro)
-    {
+    public function removeExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro) {
         $this->experiencePros->removeElement($experiencePro);
     }
 
@@ -532,17 +534,17 @@ class Prof extends User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getExperiencePros()
-    {
+    public function getExperiencePros() {
         return $this->experiencePros;
     }
-    
+
     /**
      * Cette fonction permet de retourner la chaine a afficher dans 
      * les choix proposes au Parent et qui decrit le Prof
      * @return type
      */
     public function getAffichage() {
-      return $this->nom.' '.$this->prenoms.' - '.$this->profession;
+        return $this->nom . ' ' . $this->prenoms . ' - ' . $this->profession;
     }
+
 }
