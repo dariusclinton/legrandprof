@@ -136,7 +136,7 @@ class Prof extends User
      * Constructeur
      */
     function __construct() {
-      parent::_construct();
+      parent::__construct();
       
       $this->seancesDeCours = new ArrayCollection();
       $this->enseignements = new ArrayCollection();
