@@ -15,8 +15,8 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7 = $this->env->getExtension("native_profiler");
-        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7->enter($__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
+        $__internal_e02ec0a9ec9d3bd8ace52e9bc8c5149b76637c4786d1a58fe77b6e90864603d6 = $this->env->getExtension("native_profiler");
+        $__internal_e02ec0a9ec9d3bd8ace52e9bc8c5149b76637c4786d1a58fe77b6e90864603d6->enter($__internal_e02ec0a9ec9d3bd8ace52e9bc8c5149b76637c4786d1a58fe77b6e90864603d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPCore/header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -239,7 +239,7 @@ class __TwigTemplate_fb41f6caeed7b8a12ca78c85fe8fd1042dd004c5527a17dfc384ea3e518
 
     </header>";
         
-        $__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7->leave($__internal_fcf74f047e9b61209fe53e5a10fa46cedb59dc9516e71d1b6b624a3b3e5d61b7_prof);
+        $__internal_e02ec0a9ec9d3bd8ace52e9bc8c5149b76637c4786d1a58fe77b6e90864603d6->leave($__internal_e02ec0a9ec9d3bd8ace52e9bc8c5149b76637c4786d1a58fe77b6e90864603d6_prof);
 
     }
 

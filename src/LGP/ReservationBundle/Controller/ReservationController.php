@@ -14,7 +14,9 @@ class ReservationController extends Controller {
         $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
         $prof = $profRep->find($id);
         
-        return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('prof' => $prof));
+        $params =  array('prof' => $prof);
+        
+        return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('params' => $params));
     }
 
     public function addCartAction(Request $request) {

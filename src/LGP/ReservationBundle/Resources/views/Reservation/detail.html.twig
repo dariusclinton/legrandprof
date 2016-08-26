@@ -218,52 +218,60 @@
 
                 </div>
 
-                <div class="col-sm-4 col-md-3 hidden-xs">
+                {% if prof is defined %}
+                    <div class="col-sm-4 col-md-3 hidden-xs">
 
-                    <div class="price-summary-wrapper">
+                        <div class="price-summary-wrapper">
 
-                        <h4 class="heading mt-0 text-primary uppercase">Antony Robert</h4>
+                            <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom }}</h4>
 
 
-                        <ul class="price-summary-list">
+                            <ul class="price-summary-list">
 
-                            <li><img src="{{ asset('images/man/01.jpg') }}"></li>
-                            <li class="divider"></li>
+                                <li>
+                                    {% if prof.image is defined %}
+                                        <img src="{{ asset(prof.image.webPath) }}">
+                                        {% else %}
+                                            <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                    {% endif %}
+                                </li>
+                                <li class="divider"></li>
 
-                            <li>
-                                <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>
-                                <div class="row gap-10 mt-10">
-                                    <div class="col-xs-7 col-sm-7">
-                                        Prix
+                                <li>
+                                    <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>
+                                    <div class="row gap-10 mt-10">
+                                        <div class="col-xs-7 col-sm-7">
+                                            Prix
+                                        </div>
+                                        <div class="col-xs-5 col-sm-5 text-right">
+                                            40.000 FCFA
+                                        </div>
                                     </div>
-                                    <div class="col-xs-5 col-sm-5 text-right">
-                                        40.000 FCFA
+
+                                </li>
+
+                                <li class="divider"></li>
+
+                                <li class="total-price">
+
+                                    <div class="row gap-10">
+                                        <div class="col-xs-5 col-sm-5">
+                                            <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>
+                                            <p>Mensuel</p>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 text-right">
+                                            <span class="block font20 font600 mb-5">40.000 Fcfa</span>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </li>
+                                </li>
 
-                            <li class="divider"></li>
+                            </ul>
 
-                            <li class="total-price">
-
-                                <div class="row gap-10">
-                                    <div class="col-xs-5 col-sm-5">
-                                        <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>
-                                        <p>Mensuel</p>
-                                    </div>
-                                    <div class="col-xs-7 col-sm-7 text-right">
-                                        <span class="block font20 font600 mb-5">40.000 Fcfa</span>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                        </ul>
+                        </div>
 
                     </div>
-
-                </div>
+                {% endif %}
 
             </div>
 

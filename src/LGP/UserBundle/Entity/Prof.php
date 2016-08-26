@@ -98,13 +98,6 @@ class Prof extends User {
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
      */
-    private $seanceDeCours;
-
-    /**
-     * @var \LGPCourseBundle\Entity\SeanceDeCours
-     * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
-     */
     private $seancesDeCours;
 
     /**

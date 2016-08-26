@@ -22,20 +22,20 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_07b2189189cbed982d23ab1813bc50ff0ba914ac9c41d78cf1bf0a5617e3ab92 = $this->env->getExtension("native_profiler");
-        $__internal_07b2189189cbed982d23ab1813bc50ff0ba914ac9c41d78cf1bf0a5617e3ab92->enter($__internal_07b2189189cbed982d23ab1813bc50ff0ba914ac9c41d78cf1bf0a5617e3ab92_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPReservation/Reservation/detail.html.twig"));
+        $__internal_39faf5f75ca429538d2f80277a28826008fe8d298ae18eb90061b47f22205593 = $this->env->getExtension("native_profiler");
+        $__internal_39faf5f75ca429538d2f80277a28826008fe8d298ae18eb90061b47f22205593->enter($__internal_39faf5f75ca429538d2f80277a28826008fe8d298ae18eb90061b47f22205593_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@LGPReservation/Reservation/detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_07b2189189cbed982d23ab1813bc50ff0ba914ac9c41d78cf1bf0a5617e3ab92->leave($__internal_07b2189189cbed982d23ab1813bc50ff0ba914ac9c41d78cf1bf0a5617e3ab92_prof);
+        $__internal_39faf5f75ca429538d2f80277a28826008fe8d298ae18eb90061b47f22205593->leave($__internal_39faf5f75ca429538d2f80277a28826008fe8d298ae18eb90061b47f22205593_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_cc1e3710bb51596ff8b3669465bec11defe43e42791b9a0b1ac3db8f4b00174b = $this->env->getExtension("native_profiler");
-        $__internal_cc1e3710bb51596ff8b3669465bec11defe43e42791b9a0b1ac3db8f4b00174b->enter($__internal_cc1e3710bb51596ff8b3669465bec11defe43e42791b9a0b1ac3db8f4b00174b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a3e24ecbaddda8759c7cdf75d93de07114d833f1e09673dd868afcf4f11f54df = $this->env->getExtension("native_profiler");
+        $__internal_a3e24ecbaddda8759c7cdf75d93de07114d833f1e09673dd868afcf4f11f54df->enter($__internal_a3e24ecbaddda8759c7cdf75d93de07114d833f1e09673dd868afcf4f11f54df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Detail Reservation  - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
         echo "
 ";
         
-        $__internal_cc1e3710bb51596ff8b3669465bec11defe43e42791b9a0b1ac3db8f4b00174b->leave($__internal_cc1e3710bb51596ff8b3669465bec11defe43e42791b9a0b1ac3db8f4b00174b_prof);
+        $__internal_a3e24ecbaddda8759c7cdf75d93de07114d833f1e09673dd868afcf4f11f54df->leave($__internal_a3e24ecbaddda8759c7cdf75d93de07114d833f1e09673dd868afcf4f11f54df_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_81205a0e317adebf519f7956566168011cca73d17102aa51ba3e9ebe66debd24 = $this->env->getExtension("native_profiler");
-        $__internal_81205a0e317adebf519f7956566168011cca73d17102aa51ba3e9ebe66debd24->enter($__internal_81205a0e317adebf519f7956566168011cca73d17102aa51ba3e9ebe66debd24_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_b0ea0c12b88727683d84714eabf77eebf21a14332cd78d5adf6f35970ad9fd13 = $this->env->getExtension("native_profiler");
+        $__internal_b0ea0c12b88727683d84714eabf77eebf21a14332cd78d5adf6f35970ad9fd13->enter($__internal_b0ea0c12b88727683d84714eabf77eebf21a14332cd78d5adf6f35970ad9fd13_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -266,56 +266,80 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
 
                 </div>
 
-                <div class=\"col-sm-4 col-md-3 hidden-xs\">
+                ";
+        // line 221
+        if (array_key_exists("prof", $context)) {
+            // line 222
+            echo "                    <div class=\"col-sm-4 col-md-3 hidden-xs\">
 
-                    <div class=\"price-summary-wrapper\">
+                        <div class=\"price-summary-wrapper\">
 
-                        <h4 class=\"heading mt-0 text-primary uppercase\">Antony Robert</h4>
+                            <h4 class=\"heading mt-0 text-primary uppercase\">";
+            // line 226
+            echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "prenoms", array()) . " ") . $this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "nom", array())), "html", null, true);
+            echo "</h4>
 
 
-                        <ul class=\"price-summary-list\">
+                            <ul class=\"price-summary-list\">
 
-                            <li><img src=\"";
-        // line 230
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/man/01.jpg"), "html", null, true);
-        echo "\"></li>
-                            <li class=\"divider\"></li>
+                                <li>
+                                    ";
+            // line 232
+            if ($this->getAttribute((isset($context["prof"]) ? $context["prof"] : null), "image", array(), "any", true, true)) {
+                // line 233
+                echo "                                        <img src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "image", array()), "webPath", array())), "html", null, true);
+                echo "\">
+                                        ";
+            } else {
+                // line 235
+                echo "                                            <img src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
+                echo "\">
+                                    ";
+            }
+            // line 237
+            echo "                                </li>
+                                <li class=\"divider\"></li>
 
-                            <li>
-                                <h6 class=\"heading mt-20 mb-5 text-primary uppercase\">Prix</h6>
-                                <div class=\"row gap-10 mt-10\">
-                                    <div class=\"col-xs-7 col-sm-7\">
-                                        Prix
+                                <li>
+                                    <h6 class=\"heading mt-20 mb-5 text-primary uppercase\">Prix</h6>
+                                    <div class=\"row gap-10 mt-10\">
+                                        <div class=\"col-xs-7 col-sm-7\">
+                                            Prix
+                                        </div>
+                                        <div class=\"col-xs-5 col-sm-5 text-right\">
+                                            40.000 FCFA
+                                        </div>
                                     </div>
-                                    <div class=\"col-xs-5 col-sm-5 text-right\">
-                                        40.000 FCFA
+
+                                </li>
+
+                                <li class=\"divider\"></li>
+
+                                <li class=\"total-price\">
+
+                                    <div class=\"row gap-10\">
+                                        <div class=\"col-xs-5 col-sm-5\">
+                                            <h5 class=\"heading mt-0 mb-0 text-white\">Prix total</h5>
+                                            <p>Mensuel</p>
+                                        </div>
+                                        <div class=\"col-xs-7 col-sm-7 text-right\">
+                                            <span class=\"block font20 font600 mb-5\">40.000 Fcfa</span>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </li>
+                                </li>
 
-                            <li class=\"divider\"></li>
+                            </ul>
 
-                            <li class=\"total-price\">
-
-                                <div class=\"row gap-10\">
-                                    <div class=\"col-xs-5 col-sm-5\">
-                                        <h5 class=\"heading mt-0 mb-0 text-white\">Prix total</h5>
-                                        <p>Mensuel</p>
-                                    </div>
-                                    <div class=\"col-xs-7 col-sm-7 text-right\">
-                                        <span class=\"block font20 font600 mb-5\">40.000 Fcfa</span>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                        </ul>
+                        </div>
 
                     </div>
-
-                </div>
-
+                ";
+        }
+        // line 275
+        echo "
             </div>
 
         </div>
@@ -325,7 +349,7 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
 
 ";
         
-        $__internal_81205a0e317adebf519f7956566168011cca73d17102aa51ba3e9ebe66debd24->leave($__internal_81205a0e317adebf519f7956566168011cca73d17102aa51ba3e9ebe66debd24_prof);
+        $__internal_b0ea0c12b88727683d84714eabf77eebf21a14332cd78d5adf6f35970ad9fd13->leave($__internal_b0ea0c12b88727683d84714eabf77eebf21a14332cd78d5adf6f35970ad9fd13_prof);
 
     }
 
@@ -341,7 +365,7 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
 
     public function getDebugInfo()
     {
-        return array (  280 => 230,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  342 => 275,  302 => 237,  296 => 235,  290 => 233,  288 => 232,  279 => 226,  273 => 222,  271 => 221,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -564,52 +588,60 @@ class __TwigTemplate_f6b1025aa2a84fcb7f2bf16792d37a88306be50e9d0957ba7707c21dd56
 /* */
 /*                 </div>*/
 /* */
-/*                 <div class="col-sm-4 col-md-3 hidden-xs">*/
+/*                 {% if prof is defined %}*/
+/*                     <div class="col-sm-4 col-md-3 hidden-xs">*/
 /* */
-/*                     <div class="price-summary-wrapper">*/
+/*                         <div class="price-summary-wrapper">*/
 /* */
-/*                         <h4 class="heading mt-0 text-primary uppercase">Antony Robert</h4>*/
+/*                             <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom }}</h4>*/
 /* */
 /* */
-/*                         <ul class="price-summary-list">*/
+/*                             <ul class="price-summary-list">*/
 /* */
-/*                             <li><img src="{{ asset('images/man/01.jpg') }}"></li>*/
-/*                             <li class="divider"></li>*/
+/*                                 <li>*/
+/*                                     {% if prof.image is defined %}*/
+/*                                         <img src="{{ asset(prof.image.webPath) }}">*/
+/*                                         {% else %}*/
+/*                                             <img src="{{ asset('uploads/profils/default.jpg') }}">*/
+/*                                     {% endif %}*/
+/*                                 </li>*/
+/*                                 <li class="divider"></li>*/
 /* */
-/*                             <li>*/
-/*                                 <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>*/
-/*                                 <div class="row gap-10 mt-10">*/
-/*                                     <div class="col-xs-7 col-sm-7">*/
-/*                                         Prix*/
+/*                                 <li>*/
+/*                                     <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>*/
+/*                                     <div class="row gap-10 mt-10">*/
+/*                                         <div class="col-xs-7 col-sm-7">*/
+/*                                             Prix*/
+/*                                         </div>*/
+/*                                         <div class="col-xs-5 col-sm-5 text-right">*/
+/*                                             40.000 FCFA*/
+/*                                         </div>*/
 /*                                     </div>*/
-/*                                     <div class="col-xs-5 col-sm-5 text-right">*/
-/*                                         40.000 FCFA*/
+/* */
+/*                                 </li>*/
+/* */
+/*                                 <li class="divider"></li>*/
+/* */
+/*                                 <li class="total-price">*/
+/* */
+/*                                     <div class="row gap-10">*/
+/*                                         <div class="col-xs-5 col-sm-5">*/
+/*                                             <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>*/
+/*                                             <p>Mensuel</p>*/
+/*                                         </div>*/
+/*                                         <div class="col-xs-7 col-sm-7 text-right">*/
+/*                                             <span class="block font20 font600 mb-5">40.000 Fcfa</span>*/
+/*                                         </div>*/
 /*                                     </div>*/
-/*                                 </div>*/
 /* */
-/*                             </li>*/
+/*                                 </li>*/
 /* */
-/*                             <li class="divider"></li>*/
+/*                             </ul>*/
 /* */
-/*                             <li class="total-price">*/
-/* */
-/*                                 <div class="row gap-10">*/
-/*                                     <div class="col-xs-5 col-sm-5">*/
-/*                                         <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>*/
-/*                                         <p>Mensuel</p>*/
-/*                                     </div>*/
-/*                                     <div class="col-xs-7 col-sm-7 text-right">*/
-/*                                         <span class="block font20 font600 mb-5">40.000 Fcfa</span>*/
-/*                                     </div>*/
-/*                                 </div>*/
-/* */
-/*                             </li>*/
-/* */
-/*                         </ul>*/
+/*                         </div>*/
 /* */
 /*                     </div>*/
-/* */
-/*                 </div>*/
+/*                 {% endif %}*/
 /* */
 /*             </div>*/
 /* */
