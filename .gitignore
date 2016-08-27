@@ -8,3 +8,6 @@
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
+
+# Backup entities generated with doctrine:generate:entities command
+*/Entity/*~
