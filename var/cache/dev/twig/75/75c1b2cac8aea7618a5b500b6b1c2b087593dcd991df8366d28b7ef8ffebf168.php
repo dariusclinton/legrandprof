@@ -22,20 +22,20 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f8e9cf2ab0254264b41486ea27572c2ae6cbae463448e574c699a6f7478fae96 = $this->env->getExtension("native_profiler");
-        $__internal_f8e9cf2ab0254264b41486ea27572c2ae6cbae463448e574c699a6f7478fae96->enter($__internal_f8e9cf2ab0254264b41486ea27572c2ae6cbae463448e574c699a6f7478fae96_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:detail.html.twig"));
+        $__internal_c4623aa77abb90e0918ace49dac07185d60ce84b73f1a656c33407f109fd775e = $this->env->getExtension("native_profiler");
+        $__internal_c4623aa77abb90e0918ace49dac07185d60ce84b73f1a656c33407f109fd775e->enter($__internal_c4623aa77abb90e0918ace49dac07185d60ce84b73f1a656c33407f109fd775e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f8e9cf2ab0254264b41486ea27572c2ae6cbae463448e574c699a6f7478fae96->leave($__internal_f8e9cf2ab0254264b41486ea27572c2ae6cbae463448e574c699a6f7478fae96_prof);
+        $__internal_c4623aa77abb90e0918ace49dac07185d60ce84b73f1a656c33407f109fd775e->leave($__internal_c4623aa77abb90e0918ace49dac07185d60ce84b73f1a656c33407f109fd775e_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_511e5fbb90fd56f5a7d429a181c369847c6aa69e4ac6fb173744da3bc59b98fe = $this->env->getExtension("native_profiler");
-        $__internal_511e5fbb90fd56f5a7d429a181c369847c6aa69e4ac6fb173744da3bc59b98fe->enter($__internal_511e5fbb90fd56f5a7d429a181c369847c6aa69e4ac6fb173744da3bc59b98fe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_d8145b6b1e58f07f0b5be33a7267246a16df9d1b68a1fd1aea61f7f7d7e8b397 = $this->env->getExtension("native_profiler");
+        $__internal_d8145b6b1e58f07f0b5be33a7267246a16df9d1b68a1fd1aea61f7f7d7e8b397->enter($__internal_d8145b6b1e58f07f0b5be33a7267246a16df9d1b68a1fd1aea61f7f7d7e8b397_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Detail Reservation  - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
         echo "
 ";
         
-        $__internal_511e5fbb90fd56f5a7d429a181c369847c6aa69e4ac6fb173744da3bc59b98fe->leave($__internal_511e5fbb90fd56f5a7d429a181c369847c6aa69e4ac6fb173744da3bc59b98fe_prof);
+        $__internal_d8145b6b1e58f07f0b5be33a7267246a16df9d1b68a1fd1aea61f7f7d7e8b397->leave($__internal_d8145b6b1e58f07f0b5be33a7267246a16df9d1b68a1fd1aea61f7f7d7e8b397_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_391276d7853fd25f5ee8f84649af7766327c99fdfc7f4d1aeed6f3fb32a196f4 = $this->env->getExtension("native_profiler");
-        $__internal_391276d7853fd25f5ee8f84649af7766327c99fdfc7f4d1aeed6f3fb32a196f4->enter($__internal_391276d7853fd25f5ee8f84649af7766327c99fdfc7f4d1aeed6f3fb32a196f4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_ade448f7935c575cf1ac117a0f053b5ea7927860df4c4c4e30a53997eb8ee3c9 = $this->env->getExtension("native_profiler");
+        $__internal_ade448f7935c575cf1ac117a0f053b5ea7927860df4c4c4e30a53997eb8ee3c9->enter($__internal_ade448f7935c575cf1ac117a0f053b5ea7927860df4c4c4e30a53997eb8ee3c9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -76,13 +76,16 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 
                     <div class=\"section-title text-left\">
 
-                        <h3>Cours de mathématiques <small> / Terminale C</small></h3>
+                        <h3>Ajouter un prof au panier</h3>
 
                     </div>
 
                     <div class=\"payment-container\">
 
-                        <form>\t
+                        <form action=\" ";
+        // line 37
+        echo $this->env->getExtension('routing')->getPath("lgp_reservation_cart_add");
+        echo " \" method=\"get\">\t
 
                             <div class=\"payment-box\">
 
@@ -95,7 +98,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                                     <div class=\"row gap-10\">
 
                                         <div class=\"col-sm-9\">
-                                            <h5 class=\"heading mt-0\">Choisir la classe de cours</h5>
+                                            <h5 class=\"heading mt-0\">Choisir le cours et la classe.</h5>
                                         </div>
 
                                         <div class=\"col-sm-3\">
@@ -146,7 +149,6 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                                         <div class=\"col-md-3\">
                                             <select id=\"classes\" name=\"classes\" class=\"form-control\">
                                                 <option disabled selected>Choisir une classe</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -173,7 +175,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                                             <b>Nombre d'heures par jour</b>
                                         </div>
                                         <div class=\"col-md-3\">
-                                            <select id=\"classe\" name=\"classe\" class=\"form-control\">
+                                            <select id=\"heuresParjours\" name=\"classe\" class=\"form-control\">
                                                 <option value=\"0.5\">30min</option>
                                                 <option value=\"1\">1h</option>
                                                 <option value=\"1.5\">1h30</option>
@@ -210,8 +212,8 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 
                                 <div class=\"col-sm-12 col-md-12\">
 
-                                    <button class=\"btn btn-primary\">Réserver ce cours</button>&nbsp;&nbsp;
-                                    <button class=\"btn\">Ajouter dans le panier</button>
+                                    <a class=\"btn btn-primary\">Réserver ce cours</a>&nbsp;&nbsp;
+                                    <button class=\"btn\" type=\"submit\">Ajouter dans le panier</button>
 
                                 </div>
 
@@ -224,12 +226,12 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                 </div>
 
                 ";
-        // line 160
+        // line 159
         if ($this->getAttribute((isset($context["params"]) ? $context["params"] : null), "prof", array(), "any", true, true)) {
-            // line 161
+            // line 160
             echo "                    ";
             $context["prof"] = $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "prof", array());
-            // line 162
+            // line 161
             echo "                        <input type=\"hidden\" name=\"prof\" id=\"profId\" value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "id", array()), "html", null, true);
             echo "\">
@@ -238,7 +240,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                             <div class=\"price-summary-wrapper\">
 
                                 <h4 class=\"heading mt-0 text-primary uppercase\">";
-            // line 167
+            // line 166
             echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "prenoms", array()) . " ") . $this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "nom", array())), "html", null, true);
             echo "</h4>
 
@@ -247,21 +249,21 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 
                                     <li>
                                         ";
-            // line 173
+            // line 172
             if ($this->getAttribute((isset($context["prof"]) ? $context["prof"] : null), "image", array(), "any", true, true)) {
-                // line 174
+                // line 173
                 echo "                                            <img src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute((isset($context["prof"]) ? $context["prof"] : $this->getContext($context, "prof")), "image", array()), "webPath", array())), "html", null, true);
                 echo "\">
                                         ";
             } else {
-                // line 176
+                // line 175
                 echo "                                            <img src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
                 echo "\">
                                         ";
             }
-            // line 178
+            // line 177
             echo "                                    </li>
                                     <li class=\"divider\"></li>
 
@@ -271,8 +273,9 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                                             <div class=\"col-xs-7 col-sm-7\">
                                                 Prix
                                             </div>
-                                            <div class=\"col-xs-5 col-sm-5 text-right\">
-                                                40.000 FCFA
+                                            <div class=\"col-xs-5 col-sm-5 text-right\" >
+                                                <span id=\"prixH\">0 </span>
+                                                FCFA/H
                                             </div>
                                         </div>
 
@@ -288,7 +291,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                                                 <p>Mensuel</p>
                                             </div>
                                             <div class=\"col-xs-7 col-sm-7 text-right\">
-                                                <span class=\"block font20 font600 mb-5\">40.000 Fcfa</span>
+                                                <span class=\"block font20 font600 mb-5\"><span id=\"prixTotal\">0</span> Fcfa</span>
                                             </div>
                                         </div>
 
@@ -302,17 +305,83 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
                         ";
         }
         // line 216
-        echo "
-                        </div>
-
+        echo "                        </div>
                     </div>
-
                 </div>
+            </div>
+            <script type=\"text/javascript\">
+                function updateClasse() {
+                    var profId = \$(\"#profId\").val();
+                    var coursId = \$(\"#course\").val();
 
+                    \$.ajax({
+                        method: \"POST\",
+                        url: \"/legrandprof/web/app_dev.php/course/update/\" + profId + \"/\" + coursId,
+                        data: {}
+                    })
+                            .success(function(answer) {
+                                window.classes = [];
+                                window.prix = [];
+                                for (i = 0; i < answer.length; i++)
+                                {
+                                    classes.push(answer[i].classe);
+                                    prix.push(answer[i].prix);
+                                }
+                                \$('#classes option').each(function() {
+                                    if (\$(this).val() != '')
+                                    {
+                                        \$(this).remove();
+                                    }
+                                });
+                                for (i = 0; i < classes.length; i++)
+                                {
+                                    \$('#classes').append('<option value=\"' + i + '\">' + classes[i] + '</option>');
+                                }
+                                if (classes.length == 0) {
+                                    \$('#classes').append('<option disabled selected></option>');
+                                }
 
-                ";
+                                updatePrix();
+                            })
+                            .error(function(answer) {
+                                console.log(answer);
+                            });
+                }
+
+                function calculTotal(){
+                    if(\$(\"#couse\").text() == \"Choisir un cours\" && \$(\"#classes\").text() == ''){
+                        return 0;
+                    }
+
+                    var selectedval = \$(\"#classes option:selected\").val();
+                    var prixHoraire = window.prix[selectedval] ;
+                    var nbHeureparjour = \$(\"#heuresParjours option:selected\").val();
+                    var nbJours = 0;
+                    for (i = 0; i < window.days.length; i++) {
+                       if(\$(\"#j\"+i).prop('checked')){
+                            nbJours += 1;
+                       }
+                    }
+
+                    var prixTotal = prixHoraire*nbHeureparjour*nbJours;
+                    return prixTotal;
+                }
+
+                function updatePrix() {
+                    \$(\"#prixH\").text('');
+                    var selectedval = \$(\"#classes option:selected\").val();
+                    \$(\"#prixH\").text(window.prix[selectedval]);
+                }
+
+                function updatePrixTotal() {
+                    \$(\"#prixTotal\").text('');
+                    prixT = calculTotal();
+                    \$(\"#prixTotal\").text(prixT);
+                }
+            </script>
+            ";
         
-        $__internal_391276d7853fd25f5ee8f84649af7766327c99fdfc7f4d1aeed6f3fb32a196f4->leave($__internal_391276d7853fd25f5ee8f84649af7766327c99fdfc7f4d1aeed6f3fb32a196f4_prof);
+        $__internal_ade448f7935c575cf1ac117a0f053b5ea7927860df4c4c4e30a53997eb8ee3c9->leave($__internal_ade448f7935c575cf1ac117a0f053b5ea7927860df4c4c4e30a53997eb8ee3c9_prof);
 
     }
 
@@ -328,7 +397,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 
     public function getDebugInfo()
     {
-        return array (  305 => 216,  265 => 178,  259 => 176,  253 => 174,  251 => 173,  242 => 167,  233 => 162,  230 => 161,  228 => 160,  139 => 73,  136 => 72,  125 => 70,  120 => 69,  118 => 68,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  308 => 216,  267 => 177,  261 => 175,  255 => 173,  253 => 172,  244 => 166,  235 => 161,  232 => 160,  230 => 159,  142 => 73,  139 => 72,  128 => 70,  123 => 69,  121 => 68,  87 => 37,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -361,13 +430,13 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /* */
 /*                     <div class="section-title text-left">*/
 /* */
-/*                         <h3>Cours de mathématiques <small> / Terminale C</small></h3>*/
+/*                         <h3>Ajouter un prof au panier</h3>*/
 /* */
 /*                     </div>*/
 /* */
 /*                     <div class="payment-container">*/
 /* */
-/*                         <form>	*/
+/*                         <form action=" {{path('lgp_reservation_cart_add')}} " method="get">	*/
 /* */
 /*                             <div class="payment-box">*/
 /* */
@@ -380,7 +449,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /*                                     <div class="row gap-10">*/
 /* */
 /*                                         <div class="col-sm-9">*/
-/*                                             <h5 class="heading mt-0">Choisir la classe de cours</h5>*/
+/*                                             <h5 class="heading mt-0">Choisir le cours et la classe.</h5>*/
 /*                                         </div>*/
 /* */
 /*                                         <div class="col-sm-3">*/
@@ -413,7 +482,6 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /*                                         <div class="col-md-3">*/
 /*                                             <select id="classes" name="classes" class="form-control">*/
 /*                                                 <option disabled selected>Choisir une classe</option>*/
-/* */
 /*                                             </select>*/
 /*                                         </div>*/
 /*                                     </div>*/
@@ -440,7 +508,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /*                                             <b>Nombre d'heures par jour</b>*/
 /*                                         </div>*/
 /*                                         <div class="col-md-3">*/
-/*                                             <select id="classe" name="classe" class="form-control">*/
+/*                                             <select id="heuresParjours" name="classe" class="form-control">*/
 /*                                                 <option value="0.5">30min</option>*/
 /*                                                 <option value="1">1h</option>*/
 /*                                                 <option value="1.5">1h30</option>*/
@@ -477,8 +545,8 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /* */
 /*                                 <div class="col-sm-12 col-md-12">*/
 /* */
-/*                                     <button class="btn btn-primary">Réserver ce cours</button>&nbsp;&nbsp;*/
-/*                                     <button class="btn">Ajouter dans le panier</button>*/
+/*                                     <a class="btn btn-primary">Réserver ce cours</a>&nbsp;&nbsp;*/
+/*                                     <button class="btn" type="submit">Ajouter dans le panier</button>*/
 /* */
 /*                                 </div>*/
 /* */
@@ -517,8 +585,9 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /*                                             <div class="col-xs-7 col-sm-7">*/
 /*                                                 Prix*/
 /*                                             </div>*/
-/*                                             <div class="col-xs-5 col-sm-5 text-right">*/
-/*                                                 40.000 FCFA*/
+/*                                             <div class="col-xs-5 col-sm-5 text-right" >*/
+/*                                                 <span id="prixH">0 </span>*/
+/*                                                 FCFA/H*/
 /*                                             </div>*/
 /*                                         </div>*/
 /* */
@@ -534,7 +603,7 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /*                                                 <p>Mensuel</p>*/
 /*                                             </div>*/
 /*                                             <div class="col-xs-7 col-sm-7 text-right">*/
-/*                                                 <span class="block font20 font600 mb-5">40.000 Fcfa</span>*/
+/*                                                 <span class="block font20 font600 mb-5"><span id="prixTotal">0</span> Fcfa</span>*/
 /*                                             </div>*/
 /*                                         </div>*/
 /* */
@@ -546,13 +615,79 @@ class __TwigTemplate_42f33e4e0edc5688e30b032df59b7d3c7bb42f65d9161ad0c50b81ad083
 /* */
 /*                         </div>*/
 /*                         {% endif %}*/
-/* */
 /*                         </div>*/
-/* */
 /*                     </div>*/
-/* */
 /*                 </div>*/
+/*             </div>*/
+/*             <script type="text/javascript">*/
+/*                 function updateClasse() {*/
+/*                     var profId = $("#profId").val();*/
+/*                     var coursId = $("#course").val();*/
 /* */
+/*                     $.ajax({*/
+/*                         method: "POST",*/
+/*                         url: "/legrandprof/web/app_dev.php/course/update/" + profId + "/" + coursId,*/
+/*                         data: {}*/
+/*                     })*/
+/*                             .success(function(answer) {*/
+/*                                 window.classes = [];*/
+/*                                 window.prix = [];*/
+/*                                 for (i = 0; i < answer.length; i++)*/
+/*                                 {*/
+/*                                     classes.push(answer[i].classe);*/
+/*                                     prix.push(answer[i].prix);*/
+/*                                 }*/
+/*                                 $('#classes option').each(function() {*/
+/*                                     if ($(this).val() != '')*/
+/*                                     {*/
+/*                                         $(this).remove();*/
+/*                                     }*/
+/*                                 });*/
+/*                                 for (i = 0; i < classes.length; i++)*/
+/*                                 {*/
+/*                                     $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');*/
+/*                                 }*/
+/*                                 if (classes.length == 0) {*/
+/*                                     $('#classes').append('<option disabled selected></option>');*/
+/*                                 }*/
 /* */
-/*                 {% endblock %}*/
+/*                                 updatePrix();*/
+/*                             })*/
+/*                             .error(function(answer) {*/
+/*                                 console.log(answer);*/
+/*                             });*/
+/*                 }*/
+/* */
+/*                 function calculTotal(){*/
+/*                     if($("#couse").text() == "Choisir un cours" && $("#classes").text() == ''){*/
+/*                         return 0;*/
+/*                     }*/
+/* */
+/*                     var selectedval = $("#classes option:selected").val();*/
+/*                     var prixHoraire = window.prix[selectedval] ;*/
+/*                     var nbHeureparjour = $("#heuresParjours option:selected").val();*/
+/*                     var nbJours = 0;*/
+/*                     for (i = 0; i < window.days.length; i++) {*/
+/*                        if($("#j"+i).prop('checked')){*/
+/*                             nbJours += 1;*/
+/*                        }*/
+/*                     }*/
+/* */
+/*                     var prixTotal = prixHoraire*nbHeureparjour*nbJours;*/
+/*                     return prixTotal;*/
+/*                 }*/
+/* */
+/*                 function updatePrix() {*/
+/*                     $("#prixH").text('');*/
+/*                     var selectedval = $("#classes option:selected").val();*/
+/*                     $("#prixH").text(window.prix[selectedval]);*/
+/*                 }*/
+/* */
+/*                 function updatePrixTotal() {*/
+/*                     $("#prixTotal").text('');*/
+/*                     prixT = calculTotal();*/
+/*                     $("#prixTotal").text(prixT);*/
+/*                 }*/
+/*             </script>*/
+/*             {% endblock %}*/
 /* */

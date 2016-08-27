@@ -105,7 +105,7 @@ class EnseignementRepository extends EntityRepository {
     }
 
     public function getClasseByCoursAndProf($profId, $coursId) {
-        $query = $this->_em->createQuery("SELECT e, c, p FROM LGPCourseBundle:Enseignement e JOIN e.cours c, e.prof p WHERE p.id = :profId AND c.id = :coursId");
+        $query = $this->_em->createQuery("SELECT e.classe, e.prix FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE p.id = :profId AND c.id = :coursId");
         $query->setParameter('profId', $profId)
                 ->setParameter('coursId', $coursId);
         return $query->getResult();

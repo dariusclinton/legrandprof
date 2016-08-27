@@ -1,5 +1,5 @@
 $(function() {
-    var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+    window.days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
     $("#joursDeCours").html('');
     var joursHtml = '';
@@ -16,39 +16,28 @@ $(function() {
         });
     }
 
+    
+
     $("#course").on('change', function(event) {
         event.preventDefault();
         updateClasse();
     });
 
-    function updateClasse() {
-        var profId = $("#profId").val();
-        var cours = $("#course").val();
+    $("#classes").on('change', function(event) {
+        event.preventDefault();
+        updatePrix();
+        updatePrixTotal();
+    });
 
-        $.ajax({
-            method: "POST",
-            url: " {{path('lgp_course_update_classe',{'id':profId, 'course':cours})}} ",
-            data: {}
-        })
-        .success(function(answer) {
-            var classes = [];
-            for (i = 0; i < answer.length; i++)
-            {
-                    classes.push(answer[i].classe);
-            }
-            $('#classes option').each(function() {
-                if ($(this).val() != '')
-                {
-                    $(this).remove();
-                }
-            });
-            for (i = 0; i < classes.length; i++)
-            {
-                $('#classes').append('<option value="' + classes[i] + '">' + classes[i] + '</option>');
-            }
-        })
-        .error(function(answer) {
-            console.log(answer);
-        });
+    $("#heuresParjours").on('change', function(event) {
+    	event.preventDefault();
+    	updatePrixTotal();
+    });
+
+     for (i = 0; i < window.days.length; i++) {
+       $("#j"+i).on('change', function(event) {
+        event.preventDefault();
+        updatePrixTotal();
+    });
     }
 });

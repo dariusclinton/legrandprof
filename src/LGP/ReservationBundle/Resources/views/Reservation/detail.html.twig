@@ -28,13 +28,13 @@
 
                     <div class="section-title text-left">
 
-                        <h3>Cours de mathématiques <small> / Terminale C</small></h3>
+                        <h3>Ajouter un prof au panier</h3>
 
                     </div>
 
                     <div class="payment-container">
 
-                        <form>	
+                        <form action=" {{path('lgp_reservation_cart_add')}} " method="get">	
 
                             <div class="payment-box">
 
@@ -47,7 +47,7 @@
                                     <div class="row gap-10">
 
                                         <div class="col-sm-9">
-                                            <h5 class="heading mt-0">Choisir la classe de cours</h5>
+                                            <h5 class="heading mt-0">Choisir le cours et la classe.</h5>
                                         </div>
 
                                         <div class="col-sm-3">
@@ -80,7 +80,6 @@
                                         <div class="col-md-3">
                                             <select id="classes" name="classes" class="form-control">
                                                 <option disabled selected>Choisir une classe</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -107,7 +106,7 @@
                                             <b>Nombre d'heures par jour</b>
                                         </div>
                                         <div class="col-md-3">
-                                            <select id="classe" name="classe" class="form-control">
+                                            <select id="heuresParjours" name="classe" class="form-control">
                                                 <option value="0.5">30min</option>
                                                 <option value="1">1h</option>
                                                 <option value="1.5">1h30</option>
@@ -144,8 +143,8 @@
 
                                 <div class="col-sm-12 col-md-12">
 
-                                    <button class="btn btn-primary">Réserver ce cours</button>&nbsp;&nbsp;
-                                    <button class="btn">Ajouter dans le panier</button>
+                                    <a class="btn btn-primary">Réserver ce cours</a>&nbsp;&nbsp;
+                                    <button class="btn" type="submit">Ajouter dans le panier</button>
 
                                 </div>
 
@@ -184,8 +183,9 @@
                                             <div class="col-xs-7 col-sm-7">
                                                 Prix
                                             </div>
-                                            <div class="col-xs-5 col-sm-5 text-right">
-                                                40.000 FCFA
+                                            <div class="col-xs-5 col-sm-5 text-right" >
+                                                <span id="prixH">0 </span>
+                                                FCFA/H
                                             </div>
                                         </div>
 
@@ -201,7 +201,7 @@
                                                 <p>Mensuel</p>
                                             </div>
                                             <div class="col-xs-7 col-sm-7 text-right">
-                                                <span class="block font20 font600 mb-5">40.000 Fcfa</span>
+                                                <span class="block font20 font600 mb-5"><span id="prixTotal">0</span> Fcfa</span>
                                             </div>
                                         </div>
 
@@ -213,12 +213,78 @@
 
                         </div>
                         {% endif %}
-
                         </div>
-
                     </div>
-
                 </div>
+            </div>
+            <script type="text/javascript">
+                function updateClasse() {
+                    var profId = $("#profId").val();
+                    var coursId = $("#course").val();
 
+                    $.ajax({
+                        method: "POST",
+                        url: "/legrandprof/web/app_dev.php/course/update/" + profId + "/" + coursId,
+                        data: {}
+                    })
+                            .success(function(answer) {
+                                window.classes = [];
+                                window.prix = [];
+                                for (i = 0; i < answer.length; i++)
+                                {
+                                    classes.push(answer[i].classe);
+                                    prix.push(answer[i].prix);
+                                }
+                                $('#classes option').each(function() {
+                                    if ($(this).val() != '')
+                                    {
+                                        $(this).remove();
+                                    }
+                                });
+                                for (i = 0; i < classes.length; i++)
+                                {
+                                    $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
+                                }
+                                if (classes.length == 0) {
+                                    $('#classes').append('<option disabled selected></option>');
+                                }
 
-                {% endblock %}
+                                updatePrix();
+                            })
+                            .error(function(answer) {
+                                console.log(answer);
+                            });
+                }
+
+                function calculTotal(){
+                    if($("#couse").text() == "Choisir un cours" && $("#classes").text() == ''){
+                        return 0;
+                    }
+
+                    var selectedval = $("#classes option:selected").val();
+                    var prixHoraire = window.prix[selectedval] ;
+                    var nbHeureparjour = $("#heuresParjours option:selected").val();
+                    var nbJours = 0;
+                    for (i = 0; i < window.days.length; i++) {
+                       if($("#j"+i).prop('checked')){
+                            nbJours += 1;
+                       }
+                    }
+
+                    var prixTotal = prixHoraire*nbHeureparjour*nbJours;
+                    return prixTotal;
+                }
+
+                function updatePrix() {
+                    $("#prixH").text('');
+                    var selectedval = $("#classes option:selected").val();
+                    $("#prixH").text(window.prix[selectedval]);
+                }
+
+                function updatePrixTotal() {
+                    $("#prixTotal").text('');
+                    prixT = calculTotal();
+                    $("#prixTotal").text(prixT);
+                }
+            </script>
+            {% endblock %}

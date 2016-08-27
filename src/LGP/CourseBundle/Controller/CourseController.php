@@ -325,10 +325,14 @@ class CourseController extends Controller {
     public function updateClasseAction($profId,$coursId,Request $request){
         if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
-            $ensRep = $em->getRepository("LGPCourseBundle:Enseignment");
+            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
             $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
             return new JsonResponse($ens);
         }
+        $em = $this->getDoctrine()->getManager();
+            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
+            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
+            return new JsonResponse($ens);
     }
 
 }
