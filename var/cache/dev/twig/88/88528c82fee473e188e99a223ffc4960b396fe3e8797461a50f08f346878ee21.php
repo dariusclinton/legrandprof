@@ -15,8 +15,8 @@ class __TwigTemplate_d83ae6d01380877805f652808b3472e73a7a72e8cced6a4a120dfdb6680
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9e88aeafb8e7d9bd5282119dafe7cda04fb953a807b27012a05444bbc8963734 = $this->env->getExtension("native_profiler");
-        $__internal_9e88aeafb8e7d9bd5282119dafe7cda04fb953a807b27012a05444bbc8963734->enter($__internal_9e88aeafb8e7d9bd5282119dafe7cda04fb953a807b27012a05444bbc8963734_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/error.css.twig"));
+        $__internal_47af9d820b3f20ec7ba2667a4d954532a6a7d9bf1decdd6b608fd31c9121bab2 = $this->env->getExtension("native_profiler");
+        $__internal_47af9d820b3f20ec7ba2667a4d954532a6a7d9bf1decdd6b608fd31c9121bab2->enter($__internal_47af9d820b3f20ec7ba2667a4d954532a6a7d9bf1decdd6b608fd31c9121bab2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/error.css.twig"));
 
         // line 1
         echo "/*
@@ -30,7 +30,7 @@ class __TwigTemplate_d83ae6d01380877805f652808b3472e73a7a72e8cced6a4a120dfdb6680
 */
 ";
         
-        $__internal_9e88aeafb8e7d9bd5282119dafe7cda04fb953a807b27012a05444bbc8963734->leave($__internal_9e88aeafb8e7d9bd5282119dafe7cda04fb953a807b27012a05444bbc8963734_prof);
+        $__internal_47af9d820b3f20ec7ba2667a4d954532a6a7d9bf1decdd6b608fd31c9121bab2->leave($__internal_47af9d820b3f20ec7ba2667a4d954532a6a7d9bf1decdd6b608fd31c9121bab2_prof);
 
     }
 
