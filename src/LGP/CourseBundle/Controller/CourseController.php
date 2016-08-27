@@ -5,6 +5,7 @@ namespace LGP\CourseBundle\Controller;
 use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
@@ -25,7 +26,7 @@ class CourseController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
-        $courses = $coursRep->findAll();
+        $courses = $coursRep->findAll(); 
         $max_per_page = 10;
         try {
             $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
@@ -67,7 +68,7 @@ class CourseController extends Controller {
      * 
      * @param type $intitule_cours
      * @param type $page
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      * @return type
      * @throws type
      * @throws NotFoundHttpException
@@ -319,6 +320,19 @@ class CourseController extends Controller {
             ),
         );
         return $this->render('LGPCourseBundle:Course:all_categories.html.twig', array('params' => $params));
+    }
+    
+    public function updateClasseAction($profId,$coursId,Request $request){
+        if($request->isXmlHttpRequest()){
+            $em = $this->getDoctrine()->getManager();
+            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
+            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
+            return new JsonResponse($ens);
+        }
+        $em = $this->getDoctrine()->getManager();
+            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
+            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
+            return new JsonResponse($ens);
     }
 
 }

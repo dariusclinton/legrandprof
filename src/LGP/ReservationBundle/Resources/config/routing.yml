@@ -3,14 +3,22 @@ lgp_reservation_homepage:
     defaults: { _controller: LGPReservationBundle:Default:index }
     
 lgp_reservation_detail:
-    path:    /detail
+    path:    /detail/{id}
     defaults: { _controller: LGPReservationBundle:Reservation:detail }
+    requirements:
+        id: \d+
     
 lgp_reservation_cart:
     path:    /cart
     defaults: { _controller: LGPReservationBundle:Reservation:cart }
     
 lgp_reservation_cart_add:
-    path:    /cart/add
+    path:    /cart/add/{profId}
     defaults: { _controller: LGPReservationBundle:Reservation:addCart }
+    requirements:
+        profId: \d+
+ 
+lgp_reservation_cart_remove:
+    path:    /cart/remove/{key}
+    defaults: { _controller: LGPReservationBundle:Reservation:removeCart }
 

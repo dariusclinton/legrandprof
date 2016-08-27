@@ -13,7 +13,7 @@
                         <a class="navbar-logo" href="index.html">
                             <img src="{{ asset('images/logo-white.png') }}" alt="Logo" />
                         </a>
-                    </div>	
+                    </div>  
                     <div class="flex-columns">
                         <div class="">
 
@@ -36,10 +36,6 @@
                                             <i class="fa fa-cog"></i>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="language-dropdown">
-                                            <li><a href="#"><i class="ion-social-usd"></i> Dollar</a></li>
-                                            <li><a href="#"><i class="ion-social-euro"></i> Europe</a></li>
-                                            <li><a href="#"><i class="ion-social-yen"></i> Yen</a></li>
-                                            <li class="divider"></li>
                                             <li><a href="#">English</a></li>
                                             <li><a href="#">France</a></li>
                                             <li><a href="#">Japanese</a></li>
@@ -47,7 +43,7 @@
                                     </li>
 
                                     <li class="user-action">
-                                        <a data-toggle="modal" href="#loginModal" class="btn">Connexion</a>
+                                        <a data-toggle="modal" href="{{ path('fos_user_security_login') }}" class="btn">Connexion</a>
                                     </li>
 
                                 </ul>
@@ -68,7 +64,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <a href="{{ path('lgp_core_homepage') }}"><img src="{{ asset('images/Logo.png') }}" alt="Logo" /></a>
-                    </div>		
+                    </div>      
                     <div class="col-lg-6 col-md-6">
 
                         <div id="navbar" class="collapse navbar-collapse navbar-arrow">
@@ -102,56 +98,46 @@
                                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                         </ul>
                                     {% else %}
-                                        <a data-toggle="modal"  id="btn-connect" href="#loginModal" class="btn" style="font-size: 10px;">Connexion</a>
+                                        <a data-toggle="modal"  id="btn-connect" href="{{ path('fos_user_security_login') }}" class="btn" style="font-size: 10px;">Connexion</a>
                                     {% endif %}
                                 </li>
-                                <li><a href="#" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>
+                                <li><a href="{{ path('lgp_reservation_cart') }}" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>
                                     <ul style="width:250px;margin-left:-100px;">
-                                        <li class="cart-li">
-                                            <div class="cart">
-                                                <img src="{{ asset('images/man/01.jpg') }}">
-                                                <b>Antony Robert</b> 45.000 Fcfa
-                                                <b class="right"><i class="fa fa-remove"></i></b>
-                                            </div>
-                                        </li>
-                                        <li class="cart-li">
-                                            <div class="cart">
-                                                <img src="{{ asset('images/man/03.jpg') }}">
-                                                <b>Antony Robert</b> 45.000 Fcfa
-                                                <b class="right"><i class="fa fa-remove"></i></b>
-                                            </div>
-                                        </li>
-
-                                        {% if app.session.panier is defined %}
-                                            {% for booker in app.session.get('panier').getItems() %}
+                                        {% set panier = app.session.get('panier') %}
+                                            {% if panier is defined and panier is not null and panier.items | length != 0 %}
+                                                {% for key,booker in panier.items %}
+                                                    <li class="cart-li">
+                                                        <div class="cart">
+                                                            <img src="{{ asset(booker.profImage) }}">
+                                                            <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa
+                                                            <b class="right" onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
+                                            {% else %}
                                                 <li class="cart-li">
                                                     <div class="cart">
-                                                        <img src="{{ asset('images/man/03.jpg') }}">
-                                                        <b>Antony Robert</b> 45.000 Fcfa
-                                                        <b class="right"><i class="fa fa-remove"></i></b>
+                                                        <b>aucun prof dans le panier</b>
                                                     </div>
                                                 </li>
-                                            {% endfor %}
-                                        {% endif %}
+                                            {% endif %}
+                                        </ul>
 
-                                    </ul>
+                                    </li>
 
-                                </li>
-
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <div id="slicknav-mobile"></div>
 
-        <div id="slicknav-mobile"></div>
+        </nav>
+        <!-- end Navbar (Header) -->
 
-    </nav>
-    <!-- end Navbar (Header) -->
-
-</header>
-
+    </header>

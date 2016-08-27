@@ -8,57 +8,72 @@ namespace LGP\ReservationBundle\Cart;
  */
 class Booker {
 
-    private $prof;
-    private $cours;
+    private $profId;
+    private $profNom;
+    private $profPrenoms;
+    private $profImage;
+    private $coursId;
     private $classe;
-    private $prixTotal;
-    private $lieu;
+    private $duree;
+    private $nombreHeure;
     private $dateDebut;
-    private $nbApprenants;
-    private $nbHeureParJour;
-    private $frequencePaiement;
+    private $nombreApprenants;
+    private $jours;
+    private $lieu;
     private $ville;
     private $quartier;
-    private $jours;
+    private $prixTotal;
 
     function __construct() {
         $this->jours = array();
     }
 
-    public function getProf() {
-        return $this->prof;
+    public function getProfId() {
+        return $this->profId;
     }
 
-    public function getCours() {
-        return $this->cours;
+    public function getProfNom() {
+        return $this->profNom;
+    }
+
+    public function getProfPrenoms() {
+        return $this->profPrenoms;
+    }
+
+    public function getProfImage() {
+        return $this->profImage;
+    }
+
+    public function getJours() {
+        return $this->jours;
+    }
+
+    public function getCoursId() {
+        return $this->coursId;
     }
 
     public function getClasse() {
         return $this->classe;
     }
 
-    public function getPrixTotal() {
-        return $this->prixTotal;
+    public function getDuree() {
+        return $this->duree;
     }
 
-    public function getLieu() {
-        return $this->lieu;
+    public function getNombreHeure() {
+        return $this->nombreHeure;
     }
 
     public function getDateDebut() {
         return $this->dateDebut;
     }
 
-    public function getNbApprenants() {
-        return $this->nbApprenants;
+    public function getNombreApprenants() {
+        return $this->nombreApprenants;
     }
 
-    public function getNbHeureParJour() {
-        return $this->nbHeureParJour;
-    }
-
-    public function getFrequencePaiement() {
-        return $this->frequencePaiement;
+    public function getLieu() {
+        return $this->lieu;
     }
 
     public function getVille() {
@@ -69,44 +84,52 @@ class Booker {
         return $this->quartier;
     }
 
-    public function getJours() {
-        return $this->jours;
+    public function getPrixTotal() {
+        return $this->prixTotal;
     }
 
-    public function setProf($prof) {
-        $this->prof = $prof;
+    public function setProfId($profId) {
+        $this->profId = $profId;
     }
 
-    public function setCours($cours) {
-        $this->cours = $cours;
+    public function setProfNom($profNom) {
+        $this->profNom = $profNom;
+    }
+
+    public function setProfPrenoms($profPrenoms) {
+        $this->profPrenoms = $profPrenoms;
+    }
+
+    public function setProfImage($profImage) {
+        $this->profImage = $profImage;
+    }
+
+    public function setCoursId($coursId) {
+        $this->coursId = $coursId;
     }
 
     public function setClasse($classe) {
         $this->classe = $classe;
     }
 
-    public function setPrixTotal($prixTotal) {
-        $this->prixTotal = $prixTotal;
+    public function setDuree($duree) {
+        $this->duree = $duree;
     }
 
-    public function setLieu($lieu) {
-        $this->lieu = $lieu;
+    public function setNombreHeure($nombreHeure) {
+        $this->nombreHeure = $nombreHeure;
     }
 
     public function setDateDebut($dateDebut) {
         $this->dateDebut = $dateDebut;
     }
 
-    public function setNbApprenants($nbApprenants) {
-        $this->nbApprenants = $nbApprenants;
+    public function setNombreApprenants($nombreApprenants) {
+        $this->nombreApprenants = $nombreApprenants;
     }
 
-    public function setNbHeureParJour($nbHeureParJour) {
-        $this->nbHeureParJour = $nbHeureParJour;
-    }
-
-    public function setFrequencePaiement($frequencePaiement) {
-        $this->frequencePaiement = $frequencePaiement;
+    public function setLieu($lieu) {
+        $this->lieu = $lieu;
     }
 
     public function setVille($ville) {
@@ -117,14 +140,16 @@ class Booker {
         $this->quartier = $quartier;
     }
 
-    public function addJour($jour) {
-        $this->jours[] = $jour;
+    public function setPrixTotal($prixTotal) {
+        $this->prixTotal = $prixTotal;
+    }
+
+    public function addJour($jour, $heure) {
+        $this->jours[$jour] = $heure;
     }
 
     public function removeJour($jour) {
-        if (in_array($jour, $this->jours)) {
-            unset($this->jours[array_search($jour, $this->jours)]);
-        }
+        unset($this->jours[$jour]);
     }
 
 }

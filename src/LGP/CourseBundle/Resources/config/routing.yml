@@ -19,7 +19,7 @@ lgp_course_find:
     requirements:
         page:   \d+
 
-
+    
 lgp_course_find_prof:
     path:     /search/profs/{intitule_cours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
@@ -35,9 +35,17 @@ lgp_course_find_prof_refine:
 
 
 lgp_course_find_prof_city:
-    path:     search/profs/{ville}/{page}
+    path:     search/ville/{ville}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCity, page: 1 }
     requirements:
         page:   \d+
+
+lgp_course_update_classe:
+    path:     update/{profId}/{coursId}
+    defaults: { _controller: LGPCourseBundle:Course:updateClasse }
+    requirements:
+        profId:   \d+
+        coursId: \d+
+        method: POST
 
   

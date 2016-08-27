@@ -240,16 +240,16 @@
                             {% for enseigne in params.matieres_profs %}
                                 <div class="package-list-item clearfix">
                                     <div class="image">
-                                        {% if not enseigne.prof.user.photo %}
+                                        {% if not enseigne.prof.image %}
                                             <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />
 
                                         {% else %}
-                                            <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />
+                                            <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" {{enseigne.prof.nom}} " />
                                         {% endif %}
                                     </div>
 
                                     <div class="content">
-                                        <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
+                                        <h5>{{enseigne.prof.prenoms ~"  "~ enseigne.prof.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
                                         <div class="row gap-10">
                                             <div class="col-sm-12 col-md-9">
 

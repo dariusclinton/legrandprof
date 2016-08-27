@@ -1,4 +1,5 @@
 <?php
+
 namespace LGP\ReservationBundle\Cart;
 
 /**
@@ -48,16 +49,8 @@ class Cart {
      * @return type
      * @throws KeyHasUseException
      */
-    public function addItem($key, $item) {
-        if ($key == null) {
-            $this->items[] = $item;
-        } else {
-            if ($this->keyExists($key)) {
-                throw new KeyHasUseException("le prof d'id $key est deja dans le panier.");
-            } else {
-                $this->items[$key] = $item;
-            }
-        }
+    public function addItem($item) {
+        $this->items[] = $item;
         return $this->items;
     }
 

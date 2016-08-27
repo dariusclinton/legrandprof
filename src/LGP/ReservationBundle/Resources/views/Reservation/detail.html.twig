@@ -6,189 +6,381 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="breadcrumb-wrapper bg-light-2">
-				
-            <div class="container">
 
-                    <ol class="breadcrumb-list booking-step">
-                            <li><a href="#">Accueil</a></li>
-                            <li><span>reservation</span></li>
-                    </ol>
+        <div class="container">
 
-            </div>
+            <ol class="breadcrumb-list booking-step">
+                <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
+                <li><span>reservation</span></li>
+            </ol>
+
+        </div>
 
     </div>
 
     <div class="content-wrapper">
 
-            <div class="container">
-                    <div class="row">
-                            <div class="col-sm-8 col-md-9" role="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-9" role="main">
 
-                                    <div class="section-title text-left">
+                    <div class="section-title text-left">
 
-                                            <h3>Cours de mathématiques <small> / Terminale C</small></h3>
-
-                                    </div>
-
-                                    <div class="payment-container">
-
-                                            <form>	
-
-                                                    <div class="payment-box">
-
-                                                            <div class="payment-header clearfix">
-
-                                                                    <div class="number">
-                                                                            1
-                                                                    </div>
-
-                                                                    <div class="row gap-10">
-
-                                                                            <div class="col-sm-9">
-                                                                                    <h5 class="heading mt-0">Détails de la réservation</h5>
-                                                                            </div>
-
-                                                                            <div class="col-sm-3">
-                                                                                    <a href="#" class="btn btn-primary btn-inverse btn-sm pull-right pull-left-xs mb-20-xss">Revoir le profil</a>
-                                                                            </div>
-
-                                                                    </div>
-
-                                                            </div>
-                                                            <br>
-                                                            <div class="payment-content">
-                                                                    <div class="row">
-                                                                            <div class="col-md-3">
-                                                                                    <div class="checkbox-block">
-                                                                                            <input id="j1" type="checkbox" class="checkbox" checked>
-                                                                                            <label class="" for="j1"><b>Lundi </b></label>
-                                                                                    </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure début">
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure Fin">
-                                                                            </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                            <div class="col-md-3">
-                                                                                    <div class="checkbox-block">
-                                                                                            <input id="j2" type="checkbox" class="checkbox">
-                                                                                            <label class="" for="j2"><b>Mardi </b></label>
-                                                                                    </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure début" disabled>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure Fin" disabled>
-                                                                            </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                            <div class="col-md-3">
-                                                                                    <div class="checkbox-block">
-                                                                                            <input id="j3" type="checkbox" class="checkbox" checked>
-                                                                                            <label class="" for="j3"><b>Mercredi </b></label>
-                                                                                    </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure début">
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure Fin">
-                                                                            </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                            <div class="col-md-3">
-                                                                                    <div class="checkbox-block">
-                                                                                            <input id="j4" type="checkbox" class="checkbox">
-                                                                                            <label class="" for="j4"><b>Jeudi </b></label>
-                                                                                    </div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure début" disabled>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                    <input type="text" class="form-control" placeholder="Heure Fin" disabled>
-                                                                            </div>
-                                                                    </div>
-
-
-                                                            </div>
-
-                                                    </div>
-
-                                                    <div class="row mt-20">
-
-                                                            <div class="col-sm-12 col-md-12">
-
-                                                                    <button class="btn btn-primary">Réserver ce cours</button>&nbsp;&nbsp;
-                                                                    <button class="btn">Ajouter dans le panier</button>
-
-                                                            </div>
-
-                                                    </div>
-
-                                            </form>
-
-                                    </div>
-
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 hidden-xs">
-
-                                    <div class="price-summary-wrapper">
-
-                                            <h4 class="heading mt-0 text-primary uppercase">Antony Robert</h4>
-
-
-                                            <ul class="price-summary-list">
-
-                                                    <li><img src="{{ asset('images/man/01.jpg') }}"></li>
-                                                    <li class="divider"></li>
-
-                                                    <li>
-                                                            <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>
-                                                            <div class="row gap-10 mt-10">
-                                                                    <div class="col-xs-7 col-sm-7">
-                                                                            Prix
-                                                                    </div>
-                                                                    <div class="col-xs-5 col-sm-5 text-right">
-                                                                            40.000 FCFA
-                                                                    </div>
-                                                            </div>
-
-                                                    </li>
-
-                                                    <li class="divider"></li>
-
-                                                    <li class="total-price">
-
-                                                            <div class="row gap-10">
-                                                                    <div class="col-xs-5 col-sm-5">
-                                                                            <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>
-                                                                            <p>Mensuel</p>
-                                                                    </div>
-                                                                    <div class="col-xs-7 col-sm-7 text-right">
-                                                                            <span class="block font20 font600 mb-5">40.000 Fcfa</span>
-                                                                    </div>
-                                                            </div>
-
-                                                    </li>
-
-                                            </ul>
-
-                                    </div>
-
-                            </div>
+                        <h3>Ajouter un prof au panier</h3>
 
                     </div>
 
+                    <div class="payment-container">
+
+                        <form action="  " method="get" id="reservationForm">	
+
+                            <div class="payment-box">
+
+                                <div class="payment-header clearfix">
+
+                                    <div class="number">
+                                        1
+                                    </div>
+
+                                    <div class="row gap-10">
+
+                                        <div class="col-sm-9">
+                                            <h5 class="heading mt-0">Choisir le cours et la classe.</h5>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <a href="#" class="btn btn-primary btn-inverse btn-sm pull-right pull-left-xs mb-20-xss">Revoir le profil</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="payment-content">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Choisir un cours</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="course" name="course" class="form-control">
+                                                <option disabled selected>Choisir un cours</option>
+                                                {% if params.cours is defined %}
+                                                    {% for ens in params.cours %}
+                                                        <option value="{{ens.cours.id}}">{{ens.cours.intitule}}</option>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>  
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Choisir une classe</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="classes" name="classes" class="form-control">
+                                                <option disabled selected>Choisir une classe</option>
+                                            </select>
+                                            {#  <img id="loader" src=" {{asset('images/original-orange-loading-gif-large.gif')}} " alt="" width="2" height="3"> #}
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+
+                                <div class="payment-header clearfix">
+
+                                    <div class="number">
+                                        2
+                                    </div>
+
+                                    <div class="row gap-10">
+
+                                        <div class="col-sm-9">
+                                            <h5 class="heading mt-0">Durée et nombre d'heures par jour</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="payment-content">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Durée</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="reservationDuree" name="duree" class="form-control">
+                                                <option value="1">1 semaine</option>
+                                                <option value="2">2 semaines</option>
+                                                <option value="3">3 semaines</option>
+                                                <option value="4">1 mois</option>
+                                                <option value="8">2 mois</option>
+                                                <option value="12">3 mois</option>
+                                                <option value="24">6 mois </option>
+                                                <option value="48">1 ans</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Nombre d'heures par jour</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="heuresParjours" name="classe" class="form-control">
+                                                <option value="1">1 heure</option>
+                                                <option value="2">2 heures</option>
+                                                <option value="3">3 heures</option>
+                                                <option value="4">4 heures</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+
+                                <div class="payment-header clearfix">
+
+                                    <div class="number">
+                                        3
+                                    </div>
+
+                                    <div class="row gap-10">
+
+                                        <div class="col-sm-9">
+                                            <h5 class="heading mt-0">Date de debut et nombres d'apprenants</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="payment-content">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Quand souhaitez-vous commencer?</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <input type="text" id="reservation-startdate" name="reservationDate" class="form-control" placeholder="Date début">
+                                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                    </div> 
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Nombre d'apprenants </b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="nbApprenants" name="nbApprenants" class="form-control">
+                                                <option value="1">1 personne</option>
+                                                <option value="2">2 personnes</option>
+                                                <option value="3">3 personnes</option>
+                                                <option value="4">4 personnes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+
+                                <div class="payment-header clearfix">
+
+                                    <div class="number">
+                                        4
+                                    </div>
+
+                                    <div class="row gap-10">
+                                        <div class="col-sm-9">
+                                            <h5 class="heading mt-0">Choisir des jours de cours</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="payment-content" id="joursDeCours"></div>
+                                <br><br>
+                                <div class="payment-header clearfix">
+
+                                    <div class="number">
+                                        5
+                                    </div>
+
+                                    <div class="row gap-10">
+                                        <div class="col-sm-9">
+                                            <h5 class="heading mt-0">Choisir le lieu de cours</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="payment-content" id="">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Lieu de cours</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <select id="lieuDeCours" name="lieuDeCours" class="form-control">
+                                                <option value="" disabled selected>Choix du lieu</option>
+                                                <option value="Chez le parent">Chez le parent</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Ville</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <input type="text" id="ville" name="" class="form-control" placeholder="ville">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <b>Quartier</b>
+                                        </div>
+                                        <div class="col-md-3 input-group">
+                                            <input type="text" id="quartier" name="" class="form-control" placeholder="quartier">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-20">
+
+                                <div class="col-sm-12 col-md-12">
+
+                                    <a class="btn btn-primary">Réserver ce cours</a>&nbsp;&nbsp;
+                                    <button class="btn" type="submit">Ajouter dans le panier</button>
+
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                {% if params.prof is defined %}
+                    {% set prof = params.prof %}
+                        <input type="hidden" name="prof" id="profId" value="{{prof.id}}">
+                        <div class="col-sm-4 col-md-3 hidden-xs">
+
+                            <div class="price-summary-wrapper">
+
+                                <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom }}</h4>
+
+
+                                <ul class="price-summary-list">
+
+                                    <li>
+                                        {% if prof.image is defined %}
+                                            <img src="{{ asset(prof.image.webPath) }}">
+                                        {% else %}
+                                            <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                        {% endif %}
+                                    </li>
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <h6 class="heading mt-20 mb-5 text-primary uppercase">Prix</h6>
+                                        <div class="row gap-10 mt-10">
+                                            <div class="col-xs-7 col-sm-7">
+                                                Prix
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 text-right" >
+                                                <span id="prixH">0 </span>
+                                                FCFA/H
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="total-price">
+
+                                        <div class="row gap-10">
+                                            <div class="col-xs-5 col-sm-5">
+                                                <h5 class="heading mt-0 mb-0 text-white">Prix total</h5>
+                                                <p>Mensuel</p>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-7 text-right">
+                                                <span class="block font20 font600 mb-5"><span id="prixTotal">0</span> Fcfa</span>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
+            <script type="text/javascript">
+                function updateClasse() {
+                    var profId = $("#profId").val();
+                    var coursId = $("#course").val();
 
-    </div>
+                    $.ajax({
+                        method: "POST",
+                        url: "/legrandprof/web/app_dev.php/course/update/" + profId + "/" + coursId,
+                        data: {}
+                    }).success(function(answer) {
+                        window.classes = [];
+                        window.prix = [];
+                        for (i = 0; i < answer.length; i++)
+                        {
+                            classes.push(answer[i].classe);
+                            prix.push(answer[i].prix);
+                        }
+                        $('#classes option').each(function() {
+                            if ($(this).val() != '')
+                            {
+                                $(this).remove();
+                            }
+                        });
+                        for (i = 0; i < classes.length; i++)
+                        {
+                            $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
+                        }
+                        if (classes.length == 0) {
+                            $('#classes').append('<option disabled selected></option>');
+                        }
 
-    
-{% endblock %}
+                        updatePrix();
+                        updatePrixTotal();
+                    }).error(function(answer) {
+                        console.log(answer);
+                    });
+                }
+
+                function calculTotal() {
+                    if ($("#couse").text() == "Choisir un cours" && $("#classes").text() == '') {
+                        return 0;
+                    }
+
+                    var selectedval = $("#classes option:selected").val();
+                    var prixHoraire = window.prix[selectedval];
+                    var nbHeureparjour = $("#heuresParjours option:selected").val();
+                    var nbJours = 0;
+                    for (i = 0; i < window.days.length; i++) {
+                        if ($("#j" + i).prop('checked')) {
+                            nbJours += 1;
+                        }
+                    }
+
+                    var prixTotal = prixHoraire * nbHeureparjour * nbJours;
+                    return prixTotal;
+                }
+
+                function updatePrix() {
+                    $("#prixH").text('');
+                    var selectedval = $("#classes option:selected").val();
+                    $("#prixH").text(window.prix[selectedval]);
+                }
+
+                function updatePrixTotal() {
+                    $("#prixTotal").text('');
+                    prixT = calculTotal();
+                    $("#prixTotal").text(prixT);
+                }
+            </script>
+            {% endblock %}
