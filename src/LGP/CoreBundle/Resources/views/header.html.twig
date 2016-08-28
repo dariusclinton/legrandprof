@@ -109,7 +109,7 @@
                                                     <li class="cart-li">
                                                         <div class="cart">
                                                             <img src="{{ asset(booker.profImage) }}">
-                                                            <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa
+                                                            <b>{{ booker.profPrenoms ~" "~ booker.profNom}}</b> {{booker.prixTotal}} Fcfa
                                                             <b class="right" onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>
                                                         </div>
                                                     </li>

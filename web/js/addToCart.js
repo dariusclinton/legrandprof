@@ -1,6 +1,5 @@
 $(function() {
     window.days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-
     $("#joursDeCours").html('');
     var joursHtml = '';
     for (i = 0; i < days.length; i++) {
@@ -102,7 +101,7 @@ $(function() {
 //            quartier: quartier,
 //            joursDeCoursSelectionnes: joursDeCoursSelectionnes
 //        };
-        var dataString = 'coursId=' + coursId + '&classe=' + classe + '&duree=' + duree + '&heureParJours=' + heureParJours + '&dateDebut=' + dateDebut + '&nbApprenants='+nbApprenants +'&prixTotal='+prixTotal+ '&lieuDeCours=' + lieuDeCours + '&ville=' + ville + '&quartier=' + quartier + '&joursDeCoursSelectionnes=' + JSON.stringify(joursDeCoursSelectionnes);
+        var dataString = 'coursId=' + coursId + '&classe=' + classe + '&duree=' + duree + '&heureParJours=' + heureParJours + '&dateDebut=' + dateDebut + '&nbApprenants=' + nbApprenants + '&prixTotal=' + prixTotal + '&lieuDeCours=' + lieuDeCours + '&ville=' + ville + '&quartier=' + quartier + '&joursDeCoursSelectionnes=' + JSON.stringify(joursDeCoursSelectionnes);
         $.ajax({
             method: "GET",
             url: "/legrandprof/web/app_dev.php/reservation/cart/add/" + profId,
@@ -110,9 +109,11 @@ $(function() {
         }).success(function(answer) {
             alert('le prof a ete ajouté au panier');
             console.log(answer);
-            setTimeout(function (){window.location.reload(true);},2000);
+            setTimeout(function() {
+                window.location.reload(true);
+            }, 2000);
         }).error(function(answer) {
-            alert('error '+answer);
+            alert('error ' + answer);
             console.log(answer);
         });
     });

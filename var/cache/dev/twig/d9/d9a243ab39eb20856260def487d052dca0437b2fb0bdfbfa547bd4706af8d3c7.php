@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_55d5a89ead79b323d8051d567ce18673d06d94da9f31ef61baf932902c8aa6b3 = $this->env->getExtension("native_profiler");
-        $__internal_55d5a89ead79b323d8051d567ce18673d06d94da9f31ef61baf932902c8aa6b3->enter($__internal_55d5a89ead79b323d8051d567ce18673d06d94da9f31ef61baf932902c8aa6b3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_bae04be0bd78a729b06529e2438b21f9f19151e1334bf6cfe32522b2747bba69 = $this->env->getExtension("native_profiler");
+        $__internal_bae04be0bd78a729b06529e2438b21f9f19151e1334bf6cfe32522b2747bba69->enter($__internal_bae04be0bd78a729b06529e2438b21f9f19151e1334bf6cfe32522b2747bba69_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -191,7 +191,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
                 echo "\">
                                                             <b>";
                 // line 112
-                echo twig_escape_filter($this->env, (((($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())) . " ") . $context["key"]), "html", null, true);
+                echo twig_escape_filter($this->env, (($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())), "html", null, true);
                 echo "</b> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
                 echo " Fcfa
@@ -239,7 +239,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     </header>";
         
-        $__internal_55d5a89ead79b323d8051d567ce18673d06d94da9f31ef61baf932902c8aa6b3->leave($__internal_55d5a89ead79b323d8051d567ce18673d06d94da9f31ef61baf932902c8aa6b3_prof);
+        $__internal_bae04be0bd78a729b06529e2438b21f9f19151e1334bf6cfe32522b2747bba69->leave($__internal_bae04be0bd78a729b06529e2438b21f9f19151e1334bf6cfe32522b2747bba69_prof);
 
     }
 
@@ -369,7 +369,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 /*                                                     <li class="cart-li">*/
 /*                                                         <div class="cart">*/
 /*                                                             <img src="{{ asset(booker.profImage) }}">*/
-/*                                                             <b>{{ booker.profPrenoms ~" "~ booker.profNom ~' '~key}}</b> {{booker.prixTotal}} Fcfa*/
+/*                                                             <b>{{ booker.profPrenoms ~" "~ booker.profNom}}</b> {{booker.prixTotal}} Fcfa*/
 /*                                                             <b class="right" onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"><i class="fa fa-remove"></i></b>*/
 /*                                                         </div>*/
 /*                                                     </li>*/
