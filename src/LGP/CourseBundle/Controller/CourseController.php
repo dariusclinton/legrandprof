@@ -26,7 +26,7 @@ class CourseController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
-        $courses = $coursRep->findAll(); 
+        $courses = $coursRep->findAll();
         $max_per_page = 10;
         try {
             $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
@@ -82,37 +82,37 @@ class CourseController extends Controller {
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
-        if ($coursFound) {
-            try {
-                $profsByCours = $enseigneRep->getProfsByCours($coursFound, $page, $max_per_page);
+        try {
+            $profsByCours = $enseigneRep->getProfsByCours($coursFound, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
-                $profsCount = count($profsByCours);
-                $pageCount = ceil($profsCount / $max_per_page);
+            $profsCount = count($profsByCours);
+            $pageCount = ceil($profsCount / $max_per_page);
 
-                if ($pageCount < $page && $pageCount != 0) {
-                    throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404
-                }
-
-                $params = array(
-                    'intitule_cours' => $intitule_cours,
-                    'courses' => $courses,
-                    'courseFound' => $coursFound,
-                    'matieres_profs' => $profsByCours,
-                    'enseigneRep' => $enseigneRep,
-                    'pagination' => array(
-                        'route' => 'lgp_course_find_prof',
-                        'pages_count' => $pageCount,
-                        'profs_count' => $profsCount,
-                        'max_per_page' => $max_per_page,
-                        'page' => $page,
-                        'route_params' => array('intitule_cours' => $coursFound->getIntitule())
-                    ),
-                );
-            } catch (NoResultException $ex) {
-                throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
+            if ($pageCount < $page && $pageCount != 0) {
+                throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404
             }
-        } else {
-            throw $this->createNotFoundException("Ce cours  n'existe pas !");
+            $intitule = "";
+            if ($coursFound) {
+                $intitule = $coursFound->getIntitule();
+            }
+
+            $params = array(
+                'intitule_cours' => $intitule_cours,
+                'courses' => $courses,
+                'courseFound' => $coursFound,
+                'matieres_profs' => $profsByCours,
+                'enseigneRep' => $enseigneRep,
+                'pagination' => array(
+                    'route' => 'lgp_course_find_prof',
+                    'pages_count' => $pageCount,
+                    'profs_count' => $profsCount,
+                    'max_per_page' => $max_per_page,
+                    'page' => $page,
+                    'route_params' => array('intitule_cours' => $intitule)
+                ),
+            );
+        } catch (NoResultException $ex) {
+            throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
         }
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
@@ -147,40 +147,38 @@ class CourseController extends Controller {
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
-
-        if ($coursFound) {
-//            $coursId = $coursFound->getId();
-            try {
-                $profsByCoursAndCity = $enseigneRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
+        try {
+            $profsByCoursAndCity = $enseigneRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
-                $profsCount = count($profsByCoursAndCity);
-                $pageCount = ceil($profsCount / $max_per_page);
+            $profsCount = count($profsByCoursAndCity);
+            $pageCount = ceil($profsCount / $max_per_page);
 
-                if ($pageCount < $page && $pageCount != 0) {
-                    throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
-                }
-
-                $params = array(
-                    'intitule_cours' => $intitule_cours,
-                    'ville' => $ville,
-                    'courseFound' => $coursFound,
-                    'courses' => $courses,
-                    'matieres_profs' => $profsByCoursAndCity,
-                    'enseigneRep' => $enseigneRep,
-                    'pagination' => array(
-                        'route' => 'lgp_course_find_prof_refine',
-                        'pages_count' => $pageCount,
-                        'profs_count' => $profsCount,
-                        'max_per_page' => $max_per_page,
-                        'page' => $page,
-                        'route_params' => array('intitule_cours' => $coursFound->getIntitule(), 'ville' => $ville)
-                    ),
-                );
-            } catch (NoResultException $ex) {
-                throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
+            if ($pageCount < $page && $pageCount != 0) {
+                throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
             }
-        } else {
-            throw $this->createNotFoundException("Ce cours  n'existe pas !");
+            $intitule = "";
+            if ($coursFound) {
+                $intitule = $coursFound->getIntitule();
+            }
+
+            $params = array(
+                'intitule_cours' => $intitule_cours,
+                'ville' => $ville,
+                'courseFound' => $coursFound,
+                'courses' => $courses,
+                'matieres_profs' => $profsByCoursAndCity,
+                'enseigneRep' => $enseigneRep,
+                'pagination' => array(
+                    'route' => 'lgp_course_find_prof_refine',
+                    'pages_count' => $pageCount,
+                    'profs_count' => $profsCount,
+                    'max_per_page' => $max_per_page,
+                    'page' => $page,
+                    'route_params' => array('intitule_cours' => $intitule, 'ville' => $ville)
+                ),
+            );
+        } catch (NoResultException $ex) {
+            throw $this->createNotFoundException("Pas de prof pour ce cours !" . $ex->getMessage());
         }
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
@@ -212,34 +210,29 @@ class CourseController extends Controller {
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
-
-        if (isset($ville) && !is_numeric($ville)) {
-            try {
-                $profsByCity = $enseigneRep->getProfsByCity($ville, $page, $max_per_page);
-                $profsCount = count($profsByCity);
-                $pageCount = ceil($profsCount / $max_per_page);
-                if ($pageCount < $page && $pageCount != 0) {
-                    throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
-                }
-                $params = array(
-                    'ville' => $ville,
-                    'courses' => $courses,
-                    'matieres_profs' => $profsByCity,
-                    'enseigneRep' => $enseigneRep,
-                    'pagination' => array(
-                        'route' => 'lgp_course_find_prof_city',
-                        'pages_count' => $pageCount,
-                        'profs_count' => $profsCount,
-                        'max_per_page' => $max_per_page,
-                        'page' => $page,
-                        'route_params' => array('ville' => $ville)
-                    ),
-                );
-            } catch (NoResultException $ex) {
-                throw $this->createNotFoundException("404: Pas de prof pour ce cours !" . $ex->getMessage());
+        try {
+            $profsByCity = $enseigneRep->getProfsByCity($ville, $page, $max_per_page);
+            $profsCount = count($profsByCity);
+            $pageCount = ceil($profsCount / $max_per_page);
+            if ($pageCount < $page && $pageCount != 0) {
+                throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
             }
-        } else {
-            throw $this->createNotFoundException("404: Oups la page demandée est introuvable !");
+            $params = array(
+                'ville' => $ville,
+                'courses' => $courses,
+                'matieres_profs' => $profsByCity,
+                'enseigneRep' => $enseigneRep,
+                'pagination' => array(
+                    'route' => 'lgp_course_find_prof_city',
+                    'pages_count' => $pageCount,
+                    'profs_count' => $profsCount,
+                    'max_per_page' => $max_per_page,
+                    'page' => $page,
+                    'route_params' => array('ville' => $ville)
+                ),
+            );
+        } catch (NoResultException $ex) {
+            throw $this->createNotFoundException("404: Pas de prof pour ce cours !" . $ex->getMessage());
         }
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
@@ -321,18 +314,18 @@ class CourseController extends Controller {
         );
         return $this->render('LGPCourseBundle:Course:all_categories.html.twig', array('params' => $params));
     }
-    
-    public function updateClasseAction($profId,$coursId,Request $request){
-        if($request->isXmlHttpRequest()){
+
+    public function updateClasseAction($profId, $coursId, Request $request) {
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
             $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
             $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
             return new JsonResponse($ens);
         }
         $em = $this->getDoctrine()->getManager();
-            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
-            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
-            return new JsonResponse($ens);
+        $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
+        return new JsonResponse($ens);
     }
 
 }

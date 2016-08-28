@@ -2,7 +2,7 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    {% if params.courseFound is defined %}
+    {% if params.courseFound is defined and params.courseFound != null %}
         Profs de {{ params.courseFound.intitule }} - {{ parent() }}
     {% else %}
         Profs - {{ parent() }}
@@ -11,7 +11,7 @@
 
 {% block body %}
 
-    {% if params.courseFound is defined %}
+    {% if params.courseFound is defined and params.courseFound != null %}
         <!-- start end Page title -->
         <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
@@ -275,13 +275,13 @@
                                                 <div class="rating-wrapper">
                                                     <div class="raty-wrapper">
                                                         <div><img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good"><input name="score" type="hidden" value="4" readonly=""></div>
-                                                        <span> / 7 avis</span>
+                                                        <span> / 0 avis</span>
                                                     </div>
                                                 </div>
 
                                                 <div class="price">{{enseigne.prix}} Fcfa</div>
 
-                                                <a href="profil.html" class="btn btn-primary btn-sm">Voir Profil</a>
+                                                <a href=" {{path('lgp_reservation_detail',{'id' : enseigne.prof.id})}} " class="btn btn-primary btn-sm">Voir Profil</a>
 
                                             </div>
                                         </div>

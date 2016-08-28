@@ -12,6 +12,8 @@ $(function() {
     for (i = 0; i < days.length; i++) {
         $('#timepicker' + i).datetimepicker({
             format: 'HH:mm'
+        }).on('changeDate', function() {
+            $('#timepicker' + i).hide();
         });
     }
 
@@ -19,10 +21,9 @@ $(function() {
         format: 'L',
         locale: 'fr',
         minDate: moment(),
-    })
-            .on('changeDate', function(e) {
-                $('#reservation-startdate').hide(100);
-            });
+    }).on('changeDate', function() {
+        $('#reservation-startdate').hide(100);
+    });
 
     $("#course").on('change', function(event) {
         event.preventDefault();
@@ -107,14 +108,17 @@ $(function() {
             url: "/legrandprof/web/app_dev.php/reservation/cart/add/" + profId,
             data: dataString,
         }).success(function(answer) {
-            alert('le prof a ete ajouté au panier');
+//            alert('le prof a ete ajouté au panier');
             console.log(answer);
             setTimeout(function() {
                 window.location.reload(true);
             }, 2000);
         }).error(function(answer) {
-            alert('error ' + answer);
+//            alert('error ' + answer);
             console.log(answer);
+            setTimeout(function() {
+                window.location.reload(true);
+            }, 2000);
         });
     });
 });
