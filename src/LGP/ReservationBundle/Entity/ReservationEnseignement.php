@@ -50,6 +50,20 @@ class ReservationEnseignement
     private $nbApprenants;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_heure_par_jour", type="integer")
+     */
+    private $nbHeureParJour;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=255)
@@ -83,6 +97,8 @@ class ReservationEnseignement
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements")
      */
     private $enseignement;
+    
+   
     /**
      * Constructor
      */
@@ -195,6 +211,54 @@ class ReservationEnseignement
     public function getNbApprenants()
     {
         return $this->nbApprenants;
+    }
+
+    /**
+     * Set nbHeureParJour
+     *
+     * @param integer $nbHeureParJour
+     *
+     * @return ReservationEnseignement
+     */
+    public function setNbHeureParJour($nbHeureParJour)
+    {
+        $this->nbHeureParJour = $nbHeureParJour;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbHeureParJour
+     *
+     * @return integer
+     */
+    public function getNbHeureParJour()
+    {
+        return $this->nbHeureParJour;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param integer $duree
+     *
+     * @return ReservationEnseignement
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return integer
+     */
+    public function getDuree()
+    {
+        return $this->duree;
     }
 
     /**

@@ -36,13 +36,6 @@ class JourDeCours {
     private $heure;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heure_fin", type="time", nullable=false)
-     */
-    private $heureFin;
-
-    /**
      * @var \LGPReservationBundle\Entity\ReservationEnseignement
      * 
      * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="joursDeCours")
@@ -122,30 +115,6 @@ class JourDeCours {
     public function getHeure()
     {
         return $this->heure;
-    }
-
-    /**
-     * Set heureFin
-     *
-     * @param \DateTime $heureFin
-     *
-     * @return JourDeCours
-     */
-    public function setHeureFin($heureFin)
-    {
-        $this->heureFin = $heureFin;
-    
-        return $this;
-    }
-
-    /**
-     * Get heureFin
-     *
-     * @return \DateTime
-     */
-    public function getHeureFin()
-    {
-        return $this->heureFin;
     }
 
     /**
