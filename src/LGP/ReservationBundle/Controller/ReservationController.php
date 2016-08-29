@@ -173,7 +173,7 @@ class ReservationController extends Controller {
                 $em->flush();
                 $session->remove('panier');
                 return new JsonResponse("reservation ok");
-            } else {
+            } else { 
                 return new JsonResponse("une erreur es survenue!!! contacté le support pour plus d'information... :) :) :) ivano ahahahahaha");
             }
         }
