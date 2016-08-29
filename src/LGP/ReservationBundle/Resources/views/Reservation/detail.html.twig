@@ -318,8 +318,9 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div id="loading" class="col-md-12">chargement &hellip;</div>
-                                <div class="col-md-6 col-sm-6" style="text-align:center">
+                                <div id="loading" class="col-md-12">chargement &hellip;{#  <img src=" {{asset('images/original-orange-loading-gif-large.gif')}}" alt="chargement" width="40" height="42"> #}</div>
+                               <div id="success" style="display:none">
+                                    <div class="col-md-6 col-sm-6 animated fadeInDown" style="text-align:center">
                                     <div class="thumbnail">
                                         {% if prof.image is defined %}
                                             <img src="{{ asset(prof.image.webPath) }}">
@@ -333,11 +334,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
-                                    Votre panier compte {{app.session.get('panier').items | length + 1}} Profs !!!
-                                </div>
+                                    {% if app.session.get('panier') is not null %}
+                                        Votre panier compte {{app.session.get('panier').items | length + 1}} Profs !!!
+                                        {% else %}
+                                            Votre panier compte 1 Prof !!!
+                                    {% endif %}
+                                </div> 
+                               </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer animated fadeIn" id="modal-footer" style="display:none">
                             <a href=" {{path('lgp_reservation_cart')}} " class="btn btn-primary" title="">Reserver maintenant</a>
                             <a href=" {{path('lgp_course_find')}} " class="btn btn-default" title="">Trouver d'autres profs</a>
                         </div>
@@ -353,7 +359,7 @@
                         method: "POST",
                         url: "/legrandprof/web/app_dev.php/course/update/" + profId + "/" + coursId,
                         data: {}
-                    }).success(function(answer) {
+                    }).success(function(answer, status) {
                         window.classes = [];
                         window.prix = [];
                         for (i = 0; i < answer.length; i++)
@@ -362,7 +368,7 @@
                             prix.push(answer[i].prix);
                         }
                         $('#classes option').each(function() {
-                            if ($(this).val() !== '' && !$(this).attr('disabled'))
+                            if ($(this).val() != '' && !$(this).attr('disabled'))
                             {
                                 $(this).remove();
                             }
@@ -374,8 +380,8 @@
 
                         updatePrix();
                         updatePrixTotal();
-                    }).error(function(answer) {
-                        console.log(answer);
+                    }).error(function(answer, status) {
+                        console.log(answer+"   "+status);
                     });
                 }
 
@@ -385,11 +391,14 @@
                     var duree = $("#reservationDuree option:selected").val();
                     var nbHeureparjour = $("#heuresParjours option:selected").val();
                     var nbApprenants = $("#nbApprenants option:selected").val();
-                    var prixHoraire = window.prix[classe];
+                    
                     var nbJours = 0;
-                    if (classe === "" && course === "") {
+                    if (classe === "") {
+                        return 0;
+                    }else if(classe == ''){
                         return 0;
                     }
+                    var prixHoraire = window.prix[classe];
                     for (i = 0; i < window.days.length; i++) {
                         if ($("#j" + i).prop('checked')) {
                             nbJours += 1;

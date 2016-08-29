@@ -54,6 +54,14 @@ $(function() {
     for (i = 0; i < window.days.length; i++) {
         $("#j" + i).on('change', function(event) {
             event.preventDefault();
+//            if ($("#j" + i).prop('checked')) {
+//                alert('checked');
+//                $("#timepicker" + i).removeAttr('disabled');
+//            }
+//            else {
+//                alert('unchecked');
+//                $("#timepicker" + i).attr('disabled', 'disabled');
+//            }
             updatePrixTotal();
         });
     }
@@ -66,7 +74,7 @@ $(function() {
         $('#myModal').modal({
             keyboard: false,
             backdrop: false,
-        })
+        });
         /**
          * recuperation de toutes valeurs de variables nescessaires
          */
@@ -111,17 +119,24 @@ $(function() {
             url: "/legrandprof/web/app_dev.php/reservation/cart/add/" + profId,
             data: dataString,
         }).success(function(answer) {
-//            alert('le prof a ete ajouté au panier');
-            console.log(answer);
+            if (answer === "success") {
+                console.log(answer);
+                $("#loading").css("display", "none");
+                $("#success").css("display", "block");
+                $("#modal-footer").css("display", "block");
+            }
+
 //            setTimeout(function() {
 //                window.location.reload(true);
 //            }, 2000);
-        }).error(function(answer) {
+        }).error(function(answer, statusCode, status) {
 //            alert('error ' + answer);
-            console.log(answer);
-//            setTimeout(function() {
-//                window.location.reload(true);
-//            }, 2000);
+            if (answer === "success") {
+                console.log(answer);
+                $("#loading").css("display", "none");
+                $("#success").css("display", "block");
+                $("#modal-footer").css("display", "block");
+            }
         });
     });
 });

@@ -44,6 +44,7 @@ class ReservationController extends Controller {
                 $session->set('panier', new Cart());
             }
             $panier = $session->get('panier');
+            if($panier == null) $session->set('panier', new Cart());
 
             $profRep = $this->getDoctrine()->getManager()->getRepository("LGPUserBundle:Prof");
             $p = $profRep->find($profId);
@@ -79,7 +80,7 @@ class ReservationController extends Controller {
 //        $session->remove("panier");
 //        die();
 //        $session->remove("panier");
-            return new JsonResponse(var_dump($session->get('panier')->getItems()));
+            return new JsonResponse('success');
 //         return $this->forward('LGPCoreBundle:Lgp:index');
         }
     }
