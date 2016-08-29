@@ -172,7 +172,7 @@ class ReservationController extends Controller {
                 $em->persist($facture);
                 $em->flush();
                 $session->remove('panier');
-                return new JsonResponse("reservation ok");
+                return $this->render("LGPReservationBundle:Reservation:index.html.twig") ;
             } else { 
                 return new JsonResponse("une erreur es survenue!!! contacté le support pour plus d'information... :) :) :) ivano ahahahahaha");
             }

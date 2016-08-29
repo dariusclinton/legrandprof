@@ -31,14 +31,14 @@ class ReservationEnseignement
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_debut", type="datetime")
+     * @ORM\Column(name="date_debut", type="date")
      */
     private $dateDebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_fin", type="datetime")
+     * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
 
