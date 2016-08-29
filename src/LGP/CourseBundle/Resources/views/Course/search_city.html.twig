@@ -7,33 +7,35 @@
 
 {% block body %}
 
-    <!-- start end Page title -->
-    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+    {% if params.matieres_profs | length != 0 %}
+        <!-- start end Page title -->
+        <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
 
-                    <h1 class="hero-title">Grands Profs dans la ville de  {{ params.ville }} </h1>
+                        <h1 class="hero-title">Grands Profs dans la ville de  {{ params.ville }} </h1>
 
-                    <ol class="breadcrumb-list">
-                        <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
-                            {#  <li><a href="#">Profs</a></li> #}
-                            {% if params.ville is defined %}
-                            <li><span> {{params.ville}} </span></li>
-                            {% endif %}
-                    </ol>
+                        <ol class="breadcrumb-list">
+                            <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
+                                {#  <li><a href="#">Profs</a></li> #}
+                                {% if params.ville is defined %}
+                                <li><span> {{params.ville}} </span></li>
+                                {% endif %}
+                        </ol>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
-    </div>
-    <!-- end Page title -->
+        <!-- end Page title -->
+    {% endif %}
 
     <div class="content-wrapper">
 
@@ -229,16 +231,16 @@
                             {% for enseigne in params.matieres_profs %}
                                 <div class="package-list-item clearfix">
                                     <div class="image">
-                                        {% if not enseigne.prof.user.photo %}
+                                        {% if not enseigne.prof.image %}
                                             <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package" />
 
                                         {% else %}
-                                            <img src="{{ asset(enseigne.prof.user.photo) }}" alt=" {{enseigne.prof.user.nom}} " />
+                                            <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" {{enseigne.prof.nom}} " />
                                         {% endif %}
                                     </div>
 
                                     <div class="content">
-                                        <h5>{{enseigne.prof.user.prenoms ~"  "~ enseigne.prof.user.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
+                                        <h5>{{enseigne.prof.prenoms ~"  "~ enseigne.prof.nom | upper}} <button class="btn"><i class="fa fa-heart-o"></i></button></h5>
                                         <div class="row gap-10">
                                             <div class="col-sm-12 col-md-9">
 
@@ -250,9 +252,9 @@
                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
                                                             {% for ens_cours in params.enseigneRep.getCoursByProf(enseigne.prof) %}
                                                                 {% if loop.index != loop.last %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
                                                             {% else %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
+                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
                                                             {% endif %}
                                                         {% endfor %} 
                                                     </li>

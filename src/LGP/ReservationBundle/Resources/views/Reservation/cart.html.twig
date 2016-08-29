@@ -6,87 +6,115 @@
 {% endblock %}
 
 {% block body %}
-    <div class="bg-grey">
-            <div class="content-wrapper">
+    {% set panier = params.panier %}
+        {% set prixReservation = 0 %}
+            <div class="bg-grey">
+                <div class="content-wrapper">
 
                     <div class="container">
-                            <h1 class="panier-title">PANIER</h1>
-                            <div class="row">
-                                    <div class="col-md-12">
-                                            <table class="table table-hover table-bordered">
-                                                    <thead>
-                                                            <th style="width:15%"></th>
-                                                            <th style="width:40%">Cours</th>
-                                                            <th style="width:20%">Jours de cours</th>
-                                                            <th style="width:20%">Sous-Total</th>
-                                                            <th style="width:5%"></th>
-                                                    </thead>
-                                                    <tbody>
+                        <h1 class="panier-title">
+                            VOTRE PANIER 
+                            {% if panier is not null and panier.items | length  != 0 %}
+                                : {{panier.items | length}} Profs 
+                            {% endif %}
+                        </h1>
+                        <div class="row">
+                            {#  <div class="col-md-12">
+                                 {% if panier %}
+                                     {{dump(panier.items)}}
+                                 {% endif %}
+                             </div>   #}
+                            <div class="col-md-12">
+                                {% if panier is not null and panier.items | length != 0 %}
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <th style="width:15%"></th>
+                                        <th style="width:40%; text-align:center;">Cours</th>
+                                        <th style="width:20%">Jours de cours et heure de debut</th>
+                                        <th style="width:20%; text-align:center;">Sous-Total</th>
+                                        <th style="width:5%"></th>
+                                        </thead>
+                                        <tbody>
+                                            {% if panier is defined and panier.items | length != 0 %}
+                                                {% for key, booker in panier.items %}
+                                                    {% set cours = params.coursRep.find(booker.coursId) %}
+                                                        {% set prof = params.profRep.find(booker.profId) %}
                                                             <tr>
-                                                                    <td><img src="{{ asset('images/man/01.jpg') }}"></td>
-                                                                    <td>
-                                                                            <p><b>Cours de mathématiques en premiere C</b></p>
-                                                                            <ul class="list-info">
-                                                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Akwa</li>
+                                                                <td> 
+                                                                    {% if prof.image is defined %}
+                                                                        <img src="{{ asset(prof.image.webPath) }}">
+                                                                    {% else %}
+                                                                        <img src="{{ asset('uploads/profils/default.jpg') }}"> 
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>
+                                                                    <p><b class="font800">Cours de <i style="color:#d84315">{{cours.intitule}}</i> en classe de <i style="color:#d84315">{{booker.classe}}</i> </b></p>
+                                                                    <ul class="list-info">
+                                                                        <li>
+                                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                                                            <span class="font800">Lieu du cours: </span>{{booker.lieu}}
+                                                                            <span class="font800">Ville et quartier:</span>
+                                                                            {{booker.ville}} - {{booker.quartier}}
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="icon"><i class="fa fa-clock-o fa-2x"></i></span>
+                                                                            <span class="font800">Durée : </span>
+                                                                            {% if booker.duree < 4  %}
+                                                                                {{booker.duree}} Semaines
+                                                                            {% elseif booker.duree < 48  %}
+                                                                                {{booker.duree / 4}} Mois
+                                                                            {% else %}
+                                                                                {{booker.duree / 48}} An
+                                                                            {% endif %}
+                                                                            <span class="font800">nombre d'heure par jours:</span>
+                                                                            {{booker.nombreHeure}} h
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                            <span class="font800">Date de début : </span>
+                                                                            {{booker.dateDebut}} 
+                                                                            <span class="font800">nombre d'apprenants :</span>
+                                                                            {{booker.nombreApprenants}}
+                                                                        </li>
+                                                                        {#   <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li> #}
+                                                                    </ul><br>
+                                                                    <p><b>Prof : </b> {{prof.prenoms ~" "~prof.nom | upper}} </p>
+                                                                </td>
+                                                                <td><br>
+                                                                    <ul class="list-info">
+                                                                        {% if booker.jours | length != 0 %}
+                                                                            {% for jour, hour in booker.jours %}
+                                                                                <li> {{jour}}, Début: ({{hour}} h) </li>
+                                                                                {% endfor %}
+                                                                            {% endif %}
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    {% set prixReservation = prixReservation + booker.prixTotal %}
+                                                                        <h2 class="price">{{booker.prixTotal}} FCFA </h2>
+                                                                    </td>
+                                                                    <td style="text-align:center">
+                                                                        <a title="supprimer du panier"  onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'" class="btn-cancel"><i class="fa fa-remove"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                                    {% endif %}
+                                                                        <tr>
+                                                                            <td colspan="5" class="recap text-right">
+                                                                                <b>Total : <span class="total">{{prixReservation}} FCFA / Mois</span></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                <button class="btn btn-primary">Réserver ces Cours</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                {% else %}
+                                                                    <h1>Votre panier est vide !!!</h1>
+                                                                    {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li>
-                                                                            </ul><br>
-                                                                            <p><b>Prof : </b> Antony Robert</p>
-                                                                    </td>
-                                                                    <td><br>
-                                                                            <ul class="list-info">
-                                                                                    <li>Lundi (16-18h)</li>
-                                                                                    <li>Mercredi (14h-16h)</li>
-                                                                                    <li>Samedi (10h-12h)</li>
-                                                                            </ul>
-                                                                    </td>
-                                                                    <td>
-                                                                            <h2 class="price">35.000 FCFA / Mois</h2>
-                                                                    </td>
-                                                                    <td>
-                                                                            <center><a href="#" class="btn-cancel"><i class="fa fa-remove"></i></a></center>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td><img src="{{ asset('images/man/03.jpg') }}"></td>
-                                                                    <td>
-                                                                            <p><b>Cours de Genie Logiciel en 2e année Informatique</b></p>
-                                                                            <ul class="list-info">
-                                                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> Douala - Bonaberi</li>
-
-                                                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Informatique, Genie Logiciel,...</li>
-                                                                            </ul><br>
-                                                                            <p><b>Prof : </b> Darius Tsafack</p>
-                                                                    </td>
-                                                                    <td><br>
-                                                                            <ul class="list-info">
-                                                                                    <li>Lundi (16-18h)</li>
-                                                                                    <li>Mercredi (14h-16h)</li>
-                                                                                    <li>Samedi (10h-12h)</li>
-                                                                            </ul>
-                                                                    </td>
-                                                                    <td>
-                                                                            <h2 class="price">40.000 FCFA / Mois</h2>
-                                                                    </td>
-                                                                    <td>
-                                                                            <center><a href="#" class="btn-cancel"><i class="fa fa-remove"></i></a></center>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td colspan="5" class="recap text-right">
-                                                                            <b>Total : <span class="total">75.000 FCFA / Mois</span></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                            <button class="btn">Réserver ces Cours</button>
-                                                                    </td>
-                                                            </tr>
-                                                    </tbody>
-                                            </table>
-                                    </div>
-
-
-                            </div>
-
-                    </div>
-            </div>
-    </div>
-    
-{% endblock %}
+                                                    {% endblock %}
