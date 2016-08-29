@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new LGP\UserBundle\LGPUserBundle(),
             new LGP\CourseBundle\LGPCourseBundle(),
             new LGP\ReservationBundle\LGPReservationBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,0 +1,12 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Modification d'une évaluation - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Modification d'une évaluation </h1>
+  
+  {% include 'LGPUserBundle:Evaluation:formulaire.html.twig' %}
+  
+{% endblock %}

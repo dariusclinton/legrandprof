@@ -81,6 +81,13 @@ class IndisponibiliteController extends Controller {
     return $this->redirectToRoute('lgp_user_prof_indisponibilite');
   }
   
+  /**
+   * 
+   * @param Indisponibilite $indispo
+   * @param Request $request
+   * @return type
+   * @throws type
+   */
   public function updateAction(Indisponibilite $indispo, Request $request) {
     $prof = $this->getUser();
     

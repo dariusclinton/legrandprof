@@ -57,6 +57,7 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         'F' => 
         array (
             'FOS\\UserBundle\\' => 15,
+            'FOS\\JsRoutingBundle\\' => 20,
         ),
         'D' => 
         array (
@@ -157,6 +158,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
         ),
+        'FOS\\JsRoutingBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -207,6 +212,13 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'PUGX\\MultiUserBundle' => 
             array (
                 0 => __DIR__ . '/..' . '/pugx/multi-user-bundle',
+            ),
+        ),
+        'J' => 
+        array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
         ),
         'D' => 
