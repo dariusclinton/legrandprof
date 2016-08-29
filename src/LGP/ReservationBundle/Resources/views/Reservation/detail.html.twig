@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="col-md-3 input-group">
                                             <select id="course" name="course" class="form-control">
-                                                <option disabled selected>Choisir un cours</option>
+                                                <option value="" disabled selected>Choisir un cours</option>
                                                 {% if params.cours is defined %}
                                                     {% for ens in params.cours %}
                                                         <option value="{{ens.cours.id}}">{{ens.cours.intitule}}</option>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-md-3 input-group">
                                             <select id="classes" name="classes" class="form-control">
-                                                <option disabled selected>Choisir une classe</option>
+                                                <option disabled selected value="">Choisir une classe</option>
                                             </select>
                                             {#  <img id="loader" src=" {{asset('images/original-orange-loading-gif-large.gif')}} " alt="" width="2" height="3"> #}
                                         </div>
@@ -260,7 +260,7 @@
 
                             <div class="price-summary-wrapper">
 
-                                <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom }}</h4>
+                                <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom | upper }}</h4>
 
 
                                 <ul class="price-summary-list">
@@ -301,19 +301,49 @@
                                                 <span class="block font20 font600 mb-5"><span id="prixTotal">0</span> Fcfa</span>
                                             </div>
                                         </div>
-
                                     </li>
-
                                 </ul>
-
                             </div>
-
                         </div>
                         {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ajout d'un prof au panier</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div id="loading" class="col-md-12">chargement &hellip;</div>
+                                <div class="col-md-6 col-sm-6" style="text-align:center">
+                                    <div class="thumbnail">
+                                        {% if prof.image is defined %}
+                                            <img src="{{ asset(prof.image.webPath) }}">
+                                        {% else %}
+                                            <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                        {% endif %}
+                                        <div class="caption">
+                                            <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom | upper }}</h4>
+                                            <p>A été ajouté a votre panier avec succès !!!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    Votre panier compte {{app.session.get('panier').items | length + 1}} Profs !!!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href=" {{path('lgp_reservation_cart')}} " class="btn btn-primary" title="">Reserver maintenant</a>
+                            <a href=" {{path('lgp_course_find')}} " class="btn btn-default" title="">Trouver d'autres profs</a>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
             <script type="text/javascript">
                 function updateClasse() {
                     var profId = $("#profId").val();
@@ -332,7 +362,7 @@
                             prix.push(answer[i].prix);
                         }
                         $('#classes option').each(function() {
-                            if ($(this).val() != '')
+                            if ($(this).val() !== '' && !$(this).attr('disabled'))
                             {
                                 $(this).remove();
                             }
@@ -340,9 +370,6 @@
                         for (i = 0; i < classes.length; i++)
                         {
                             $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
-                        }
-                        if (classes.length == 0) {
-                            $('#classes').append('<option disabled selected></option>');
                         }
 
                         updatePrix();
@@ -353,28 +380,35 @@
                 }
 
                 function calculTotal() {
-                    if ($("#couse").text() == "Choisir un cours" && $("#classes").text() == '') {
+                    var course = $("#course option:selected").val();
+                    var classe = $("#classes option:selected").val();
+                    var duree = $("#reservationDuree option:selected").val();
+                    var nbHeureparjour = $("#heuresParjours option:selected").val();
+                    var nbApprenants = $("#nbApprenants option:selected").val();
+                    var prixHoraire = window.prix[classe];
+                    var nbJours = 0;
+                    if (classe === "" && course === "") {
                         return 0;
                     }
-
-                    var selectedval = $("#classes option:selected").val();
-                    var prixHoraire = window.prix[selectedval];
-                    var nbHeureparjour = $("#heuresParjours option:selected").val();
-                    var nbJours = 0;
                     for (i = 0; i < window.days.length; i++) {
                         if ($("#j" + i).prop('checked')) {
                             nbJours += 1;
                         }
                     }
 
-                    var prixTotal = prixHoraire * nbHeureparjour * nbJours;
+                    var prixTotal = prixHoraire * nbHeureparjour * nbJours * duree * nbApprenants;
                     return prixTotal;
                 }
 
                 function updatePrix() {
-                    $("#prixH").text('');
-                    var selectedval = $("#classes option:selected").val();
-                    $("#prixH").text(window.prix[selectedval]);
+                    var selected = $("#classes option:selected");
+                    if (selected.attr('disabled')) {
+
+                    }
+                    else {
+                        var selectedVal = $("#classes option:selected").val();
+                        $("#prixH").text(window.prix[selectedVal]);
+                    }
                 }
 
                 function updatePrixTotal() {

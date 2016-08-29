@@ -63,7 +63,10 @@ $(function() {
      */
     $("#reservationForm").submit(function(event) {
         event.preventDefault();
-        alert('soumission');
+        $('#myModal').modal({
+            keyboard: false,
+            backdrop: false,
+        })
         /**
          * recuperation de toutes valeurs de variables nescessaires
          */
@@ -110,15 +113,15 @@ $(function() {
         }).success(function(answer) {
 //            alert('le prof a ete ajouté au panier');
             console.log(answer);
-            setTimeout(function() {
-                window.location.reload(true);
-            }, 2000);
+//            setTimeout(function() {
+//                window.location.reload(true);
+//            }, 2000);
         }).error(function(answer) {
 //            alert('error ' + answer);
             console.log(answer);
-            setTimeout(function() {
-                window.location.reload(true);
-            }, 2000);
+//            setTimeout(function() {
+//                window.location.reload(true);
+//            }, 2000);
         });
     });
 });

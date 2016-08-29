@@ -12,13 +12,18 @@
                 <div class="content-wrapper">
 
                     <div class="container">
-                        <h1 class="panier-title">PANIER</h1>
+                        <h1 class="panier-title">
+                            VOTRE PANIER 
+                            {% if panier.items | length  != 0 %}
+                                : {{panier.items | length}} Profs 
+                            {% endif %}
+                        </h1>
                         <div class="row">
-                            <div class="col-md-12">
-                                {% if panier %}
-                                    {{dump(panier.items)}}
-                                {% endif %}
-                            </div>  
+                            {#  <div class="col-md-12">
+                                 {% if panier %}
+                                     {{dump(panier.items)}}
+                                 {% endif %}
+                             </div>   #}
                             <div class="col-md-12">
                                 {% if panier.items | length != 0 %}
                                     <table class="table table-hover table-bordered">
@@ -105,7 +110,7 @@
                                                                 </table>
                                                                 {% else %}
                                                                     <h1>Votre panier est vide !!!</h1>
-                                                                {% endif %}
+                                                                    {% endif %}
                                                                     </div>
                                                                 </div>
                                                             </div>
