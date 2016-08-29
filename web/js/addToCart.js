@@ -1,4 +1,80 @@
 $(function() {
+    function updateClasse() {
+        var profId = $("#profId").val();
+        var coursId = $("#course").val();
+
+        $.ajax({
+            method: "POST",
+            url: Routing.generate('lgp_course_update_classe', {'profId': profId, 'coursId': coursId}),
+            data: {}
+        }).success(function(answer, status) {
+            window.classes = [];
+            window.prix = [];
+            for (i = 0; i < answer.length; i++)
+            {
+                classes.push(answer[i].classe);
+                prix.push(answer[i].prix);
+            }
+            $('#classes option').each(function() {
+                if ($(this).val() != '' && !$(this).attr('disabled'))
+                {
+                    $(this).remove();
+                }
+            });
+            for (i = 0; i < classes.length; i++)
+            {
+                $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
+            }
+
+            updatePrix();
+            updatePrixTotal();
+        }).error(function(answer, status) {
+            console.log(answer + "   " + status);
+        });
+    }
+
+    function calculTotal() {
+        var course = $("#course option:selected").val();
+        var classe = $("#classes option:selected").val();
+        var duree = $("#reservationDuree option:selected").val();
+        var nbHeureparjour = $("#heuresParjours option:selected").val();
+        var nbApprenants = $("#nbApprenants option:selected").val();
+
+        var nbJours = 0;
+        if (classe === "") {
+            return 0;
+        } else if (classe == '') {
+            return 0;
+        }
+        var prixHoraire = window.prix[classe];
+        for (i = 0; i < window.days.length; i++) {
+            if ($("#j" + i).prop('checked')) {
+                nbJours += 1;
+            }
+        }
+
+        var prixTotal = prixHoraire * nbHeureparjour * nbJours * duree * nbApprenants;
+        return prixTotal;
+    }
+
+    function updatePrix() {
+        var selected = $("#classes option:selected");
+        if (selected.attr('disabled')) {
+
+        }
+        else {
+            var selectedVal = $("#classes option:selected").val();
+            $("#prixH").text(window.prix[selectedVal]);
+        }
+    }
+
+    function updatePrixTotal() {
+        $("#prixTotal").text('');
+        prixT = calculTotal();
+        $("#prixTotal").text(prixT);
+    }
+
+
     window.days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
     $("#joursDeCours").html('');
     var joursHtml = '';
@@ -116,7 +192,7 @@ $(function() {
         var dataString = 'coursId=' + coursId + '&classe=' + classe + '&duree=' + duree + '&heureParJours=' + heureParJours + '&dateDebut=' + dateDebut + '&nbApprenants=' + nbApprenants + '&prixTotal=' + prixTotal + '&lieuDeCours=' + lieuDeCours + '&ville=' + ville + '&quartier=' + quartier + '&joursDeCoursSelectionnes=' + JSON.stringify(joursDeCoursSelectionnes);
         $.ajax({
             method: "GET",
-            url: "/legrandprof/web/app_dev.php/reservation/cart/add/" + profId,
+            url: Routing.generate('lgp_reservation_cart_add', {'profId': profId}),
             data: dataString,
         }).success(function(answer) {
             if (answer === "success") {

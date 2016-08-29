@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title> {% block title %} Le Grand Prof {% endblock %}</title>
 
-	<meta name="description" content="Template legrandprof" />
-	<meta name="keywords" content="legrandprof, prof, soutien scolaire, mathématiques" />
-	<meta name="author" content="legrandprof">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Template legrandprof" />
+        <meta name="keywords" content="legrandprof, prof, soutien scolaire, mathématiques" />
+        <meta name="author" content="legrandprof">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -36,7 +36,7 @@
 
             <!-- CSS Custom -->
             <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-            
+
             {# icon #}
             <link rel="icon" type="image/png" href="{{ asset('ico.png') }}" />
 
@@ -50,7 +50,7 @@
         <!-- start Container Wrapper -->
         <div class="container-wrapper">
             {{ include('LGPCoreBundle::header.html.twig') }}
-            
+
             {% block header_submenu %} {% endblock %}
 
             <div class="clear"></div>
@@ -63,10 +63,10 @@
         </div> <!-- end Container Wrapper -->
 
         <!-- start Back To Top -->
-	<div id="back-to-top">
-		 <a href="#"><i class="fa fa-angle-up"></i></a>
-	</div>
-	<!-- end Back To Top -->
+        <div id="back-to-top">
+            <a href="#"><i class="fa fa-angle-up"></i></a>
+        </div>
+        <!-- end Back To Top -->
 
         <!-- JS -->
         {% block javascripts %}
@@ -94,6 +94,8 @@
             <script type="text/javascript" src="{{ asset('js/customs.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/user.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/addToCart.js') }}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
         {% endblock %}
     </body>
 </html>

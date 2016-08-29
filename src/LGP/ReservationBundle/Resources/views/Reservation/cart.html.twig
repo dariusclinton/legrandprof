@@ -103,7 +103,14 @@
                                                                         <tr>
                                                                             <td colspan="5" class="recap text-right">
                                                                                 <b>Total : <span class="total">{{prixReservation}} FCFA / Mois</span></b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                <a href=" {{path('lgp_reservation_confirm', {'parentId':app.user.id})}} " class="btn btn-primary">Réserver ces Cours</a>
+                                                                                <a class="btn btn-primary" 
+                                                                                   {% if app.user is not null %}
+                                                                                       href=" {{path('lgp_reservation_confirm', {'parentId':app.user.id})}}"
+                                                                                   {% else %}
+                                                                                       disabled
+                                                                                   {% endif %}>
+                                                                                    Réserver ces Cours
+                                                                                </a>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>

@@ -47,5 +47,7 @@ lgp_course_update_classe:
         profId:   \d+
         coursId: \d+
         method: POST
+    options:
+        expose: true
 
   
