@@ -1,0 +1,52 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Mes cours - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Mes cours</h1>
+  
+  <a href="{{ path('lgp_user_prof_cours_add') }}" class="btn btn-primary">Ajouter</a>
+  
+  {% if enseignements|length <= 0 %}
+    <h2 class="text-muted">Aucun cours trouvé !</h2>
+
+  {% else %}
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Cours</th>
+          <th>Classe</th>
+          <th>Prix /heure</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Total</th>
+          <th>Total</th>
+          <th>Total</th>
+          <th>Total</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for enseignement in enseignements %}
+          <tr>
+          <td>{{ enseignement.cours.intitule }}</td>
+          <td>{{ enseignement.classe }}</td>
+          <td>{{ enseignement.prix }}</td>
+          <td>
+            <a href="{{ path('lgp_user_prof_cours_delete', { 'id': enseignement.id }) }}" class="btn btn-danger btn-sm delete_confirm">
+              Supprimer
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% endif %}
+  
+{% endblock %}

@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="lgp_prof")
  * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
+ * @ORM\HasLifecycleCallbacks
  */
 class Prof extends User {
 
@@ -552,5 +553,12 @@ class Prof extends User {
     public function getAffichage() {
         return $this->nom . ' ' . $this->prenoms . ' - ' . $this->profession;
     }
+    
+  /** 
+   * @ORM\PrePersist 
+   */
+  public function prePersist() {
+    $this->roles[] = 'ROLE_PROF';
+  }
 
 }

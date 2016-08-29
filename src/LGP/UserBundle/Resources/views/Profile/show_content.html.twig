@@ -15,7 +15,7 @@
             <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
             <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
           </p>
-          <center><a href="#" class="btn btn-primary">Compléter profil</a>
+          <center><a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
 
         </div>
       </div>
@@ -36,6 +36,8 @@
           <p>Sexe: {{ app.user.sexe }}</p>
           <p>Telephone: {{ app.user.numTelephone }}</p>
           <p>Pays: {{ app.user.pays }}</p>
+          
+          {#Si profil prof#}
           {% if user.presentation is defined %}
             <p>Ville: {{ app.user.ville }}</p>
             <p>Quartier: {{ app.user.quartier }}</p>
@@ -71,17 +73,24 @@
             </ul>
 
             <a href='{{ path('lgp_user_prof_avis') }}' class="btn btn-primary">Avis</a>
+            
+            <a href='{{ path('lgp_user_prof_cours') }}' class="btn btn-primary">Mes cours</a>
+            
+            <a href='{{ path('lgp_user_prof_evaluation') }}' class="btn btn-primary">Mes Evaluations</a>
+            
+            <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
           {% endif %}
           
           
+          <a href='{{ path('lgp_user_message_send') }}' class="btn btn-primary">Messages</a>
+          
+          
+          {#Si profil parent#}
           {% if user.presentation is not defined %}
 
             <a href='{{ path('lgp_user_parent_avis') }}' class="btn btn-primary">Avis</a>
 
           {% endif%}
-
-          <a href='{{ path('lgp_user_message_send') }}' class="btn btn-primary">Messages</a>
-          
           
           {{ dump(app.user)}}
         </div>

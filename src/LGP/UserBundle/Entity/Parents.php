@@ -10,6 +10,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="lgp_parent")
  * @UniqueEntity(fields = "username", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "LGP\UserBundle\Entity\User", message="fos_user.email.already_used")
+ * @ORM\HasLifecycleCallbacks
  */
 class Parents extends User
 {
@@ -123,4 +124,12 @@ class Parents extends User
     {
         return $this->paiements;
     }
+    
+  /**
+  * @ORM\PrePersist 
+  */
+  public function prePersist() {
+    $this->roles[] = 'ROLE_PARENT';
+  }
+
 }

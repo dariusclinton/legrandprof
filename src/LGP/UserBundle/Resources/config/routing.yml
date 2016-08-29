@@ -85,3 +85,39 @@ lgp_user_message_delete:
     defaults: { _controller: LGPUserBundle:Message:delete }
     requirements:
       id: \d+
+      
+# Cours
+lgp_user_prof_cours:
+    path: /prof/cours
+    defaults: { _controller: LGPUserBundle:Cours:index }  
+    
+lgp_user_prof_cours_add:
+    path: /prof/cours/add
+    defaults: { _controller: LGPUserBundle:Cours:add }  
+    
+lgp_user_prof_cours_delete:
+    path: /prof/cours/delete/{id}
+    defaults: { _controller: LGPUserBundle:Cours:delete }  
+    requirements:
+      id: \d+
+      
+# Evaluation
+lgp_user_prof_evaluation:
+    path: /prof/evaluations
+    defaults: { _controller: LGPUserBundle:Evaluation:index } 
+    
+lgp_user_prof_evaluation_add:
+    path: /prof/evaluations/add
+    defaults: { _controller: LGPUserBundle:Evaluation:add }  
+    
+lgp_user_prof_evaluation_update:
+    path: /prof/evaluations/update/{id}
+    defaults: { _controller: LGPUserBundle:Evaluation:update }
+    requirements:
+      id: \d+
+    
+lgp_user_prof_evaluation_delete:
+    path: /prof/evaluations/delete/{id}
+    defaults: { _controller: LGPUserBundle:Evaluation:delete }  
+    requirements:
+      id: \d+

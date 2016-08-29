@@ -44,7 +44,7 @@ class Indisponibilite
     /**
      * @var string
      *
-     * @ORM\Column(name="motif", type="text")
+     * @ORM\Column(name="motif", type="text", nullable=true)
      */
     private $motif;
 
