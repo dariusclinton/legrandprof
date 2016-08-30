@@ -26,7 +26,7 @@ class LgpController extends Controller {
 //            $this->generateUrl('lgp_course_find_prof', array("cours" => $courseForm->getIntitule()));
             $data = $form_course->getData();
             if (!isset($data['intitule'])) {
-                throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour la recherche!");
+               return $this->redirectToRoute('lgp_course_find'); 
             }
             return $this->redirectToRoute('lgp_course_find_prof', array("intitule_cours" => $data['intitule']));
         }

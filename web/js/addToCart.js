@@ -181,7 +181,7 @@ $(function() {
             return;
         }
 
-        $.ajaxStart(function() {
+        $(document).ajaxStart(function() {
             $('#myModal').modal({
                 keyboard: false,
                 backdrop: false,
