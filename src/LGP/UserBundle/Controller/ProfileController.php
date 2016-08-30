@@ -54,8 +54,11 @@ class ProfileController extends BaseController
         $form = $formFactory->createForm();
         $form->setData($user);
         
-        // Custom code
-        if ($user instanceof Prof) {
+        /**
+         * Custom code
+         */
+        // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
+        if (method_exists($user, 'getExperiencePros')) {
           $originalExperiencePros = new \Doctrine\Common\Collections\ArrayCollection();
           
           foreach ($user->getExperiencePros() as $experience) {
@@ -68,16 +71,22 @@ class ProfileController extends BaseController
 
         if ($form->isValid()) {
           
-          // Custom code
-          $em = $this->getDoctrine()->getManager();
-          
-          // Remove relationship between prof en experiencePro
-          foreach ($originalExperiencePros as $experience) {
-            if (false === $user->getExperiencePros()->contains($experience))
-              $em->remove($experience);
+          /**
+           * Custom code
+           */
+          // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
+          if (method_exists($user, 'getExperiencePros')) {
+            
+            $em = $this->getDoctrine()->getManager();
+
+            // Remove relationship between prof en experiencePro
+            foreach ($originalExperiencePros as $experience) {
+              if (false === $user->getExperiencePros()->contains($experience))
+                $em->remove($experience);
+            }
+            $em->flush();
           }
-          $em->flush();
-          ////
+          //// end custom code
           
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
