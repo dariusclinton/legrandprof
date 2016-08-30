@@ -15,8 +15,8 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_466b3343edd5c7013cfb65886c51bceaac88e5cefa8154dc9763c2c78cfd2536 = $this->env->getExtension("native_profiler");
-        $__internal_466b3343edd5c7013cfb65886c51bceaac88e5cefa8154dc9763c2c78cfd2536->enter($__internal_466b3343edd5c7013cfb65886c51bceaac88e5cefa8154dc9763c2c78cfd2536_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_3db056ac1ae24cb993582ac99cefb1f11c1350fb4688bdd47955d91ecc502fd4 = $this->env->getExtension("native_profiler");
+        $__internal_3db056ac1ae24cb993582ac99cefb1f11c1350fb4688bdd47955d91ecc502fd4->enter($__internal_3db056ac1ae24cb993582ac99cefb1f11c1350fb4688bdd47955d91ecc502fd4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -125,7 +125,10 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
             // line 81
             echo $this->env->getExtension('routing')->getPath("lgp_user_become_prof");
             echo "\">Devenir Un Grand Prof</a></li>
-                                    <li><a href=\"#\">Comment ca marche ?</a></li>
+                                    <li><a href=\"";
+            // line 82
+            echo $this->env->getExtension('routing')->getPath("lgp_core_how_it_works");
+            echo "\">Comment ca marche ?</a></li>
                                     <!--<li><a href=\"#\">Contactez-nous</a></li>-->
                                 </ul>
                             ";
@@ -239,7 +242,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     </header>";
         
-        $__internal_466b3343edd5c7013cfb65886c51bceaac88e5cefa8154dc9763c2c78cfd2536->leave($__internal_466b3343edd5c7013cfb65886c51bceaac88e5cefa8154dc9763c2c78cfd2536_prof);
+        $__internal_3db056ac1ae24cb993582ac99cefb1f11c1350fb4688bdd47955d91ecc502fd4->leave($__internal_3db056ac1ae24cb993582ac99cefb1f11c1350fb4688bdd47955d91ecc502fd4_prof);
 
     }
 
@@ -255,7 +258,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 
     public function getDebugInfo()
     {
-        return array (  221 => 124,  213 => 118,  210 => 117,  200 => 113,  194 => 112,  190 => 111,  186 => 109,  181 => 108,  178 => 107,  176 => 106,  171 => 104,  168 => 103,  162 => 101,  156 => 98,  152 => 97,  146 => 95,  144 => 94,  134 => 86,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
+        return array (  224 => 124,  216 => 118,  213 => 117,  203 => 113,  197 => 112,  193 => 111,  189 => 109,  184 => 108,  181 => 107,  179 => 106,  174 => 104,  171 => 103,  165 => 101,  159 => 98,  155 => 97,  149 => 95,  147 => 94,  137 => 86,  130 => 82,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
     }
 }
 /* <!-- start Header -->*/
@@ -339,7 +342,7 @@ class __TwigTemplate_227648eafa023adf7c146ff054d8c706ede3481d72ce8f7367fe2772be4
 /*                                 <ul class="nav navbar-nav" id="responsive-menu">*/
 /*                                     <li><a href="{{ path('lgp_core_homepage') }}">Accueil</a></li>*/
 /*                                     <li><a href="{{ path('lgp_user_become_prof') }}">Devenir Un Grand Prof</a></li>*/
-/*                                     <li><a href="#">Comment ca marche ?</a></li>*/
+/*                                     <li><a href="{{ path('lgp_core_how_it_works') }}">Comment ca marche ?</a></li>*/
 /*                                     <!--<li><a href="#">Contactez-nous</a></li>-->*/
 /*                                 </ul>*/
 /*                             {% endif %}*/
