@@ -319,28 +319,28 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div id="loading" class="col-md-12">chargement &hellip;{#  <img src=" {{asset('images/original-orange-loading-gif-large.gif')}}" alt="chargement" width="40" height="42"> #}</div>
-                               <div id="success" style="display:none">
+                                <div id="success" style="display:none">
                                     <div class="col-md-6 col-sm-6 animated fadeInDown" style="text-align:center">
-                                    <div class="thumbnail">
-                                        {% if prof.image is defined %}
-                                            <img src="{{ asset(prof.image.webPath) }}">
-                                        {% else %}
-                                            <img src="{{ asset('uploads/profils/default.jpg') }}">
-                                        {% endif %}
-                                        <div class="caption">
-                                            <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom | upper }}</h4>
-                                            <p>A été ajouté a votre panier avec succès !!!</p>
+                                        <div class="thumbnail">
+                                            {% if prof.image is defined %}
+                                                <img src="{{ asset(prof.image.webPath) }}">
+                                            {% else %}
+                                                <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                            {% endif %}
+                                            <div class="caption">
+                                                <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom | upper }}</h4>
+                                                <p>A été ajouté a votre panier avec succès !!!</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    {% if app.session.get('panier') is not null %}
-                                        Votre panier compte {{app.session.get('panier').items | length + 1}} Profs !!!
+                                    <div class="col-md-6 col-sm-6">
+                                        {% if app.session.get('panier') is not null %}
+                                            Votre panier compte {{app.session.get('panier').items | length + 1}} Profs !!!
                                         {% else %}
                                             Votre panier compte 1 Prof !!!
-                                    {% endif %}
-                                </div> 
-                               </div>
+                                        {% endif %}
+                                    </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer animated fadeIn" id="modal-footer" style="display:none">
@@ -351,79 +351,6 @@
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             <script type="text/javascript">
-                function updateClasse() {
-                    var profId = $("#profId").val();
-                    var coursId = $("#course").val();
 
-                    $.ajax({
-                        method: "POST",
-                        url: "/legrandprof/web/app_dev.php/course/update/" + profId + "/" + coursId,
-                        data: {}
-                    }).success(function(answer, status) {
-                        window.classes = [];
-                        window.prix = [];
-                        for (i = 0; i < answer.length; i++)
-                        {
-                            classes.push(answer[i].classe);
-                            prix.push(answer[i].prix);
-                        }
-                        $('#classes option').each(function() {
-                            if ($(this).val() != '' && !$(this).attr('disabled'))
-                            {
-                                $(this).remove();
-                            }
-                        });
-                        for (i = 0; i < classes.length; i++)
-                        {
-                            $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
-                        }
-
-                        updatePrix();
-                        updatePrixTotal();
-                    }).error(function(answer, status) {
-                        console.log(answer+"   "+status);
-                    });
-                }
-
-                function calculTotal() {
-                    var course = $("#course option:selected").val();
-                    var classe = $("#classes option:selected").val();
-                    var duree = $("#reservationDuree option:selected").val();
-                    var nbHeureparjour = $("#heuresParjours option:selected").val();
-                    var nbApprenants = $("#nbApprenants option:selected").val();
-                    
-                    var nbJours = 0;
-                    if (classe === "") {
-                        return 0;
-                    }else if(classe == ''){
-                        return 0;
-                    }
-                    var prixHoraire = window.prix[classe];
-                    for (i = 0; i < window.days.length; i++) {
-                        if ($("#j" + i).prop('checked')) {
-                            nbJours += 1;
-                        }
-                    }
-
-                    var prixTotal = prixHoraire * nbHeureparjour * nbJours * duree * nbApprenants;
-                    return prixTotal;
-                }
-
-                function updatePrix() {
-                    var selected = $("#classes option:selected");
-                    if (selected.attr('disabled')) {
-
-                    }
-                    else {
-                        var selectedVal = $("#classes option:selected").val();
-                        $("#prixH").text(window.prix[selectedVal]);
-                    }
-                }
-
-                function updatePrixTotal() {
-                    $("#prixTotal").text('');
-                    prixT = calculTotal();
-                    $("#prixTotal").text(prixT);
-                }
             </script>
             {% endblock %}

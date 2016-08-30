@@ -17,8 +17,17 @@ lgp_reservation_cart_add:
     defaults: { _controller: LGPReservationBundle:Reservation:addCart }
     requirements:
         profId: \d+
+    options:
+        expose: true
  
 lgp_reservation_cart_remove:
     path:    /cart/remove/{key}
     defaults: { _controller: LGPReservationBundle:Reservation:removeCart }
+
+ 
+lgp_reservation_confirm:
+    path:    /cart/confirm/{parentId}
+    defaults: { _controller: LGPReservationBundle:Reservation:confirmReservation }
+    requirements:
+        parentId: \d+
 

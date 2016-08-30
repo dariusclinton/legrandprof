@@ -33,5 +33,8 @@ class LgpController extends Controller {
 
         return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('courses' => $courses, 'categories' => $categoriesPopular, 'form' => $form_course->createView()));
     }
+    public function howAction(){
+        return $this->render('LGPCoreBundle:Lgp:how.html.twig');
+    }
 
 }

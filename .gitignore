@@ -1,4 +1,5 @@
 /nbproject/private/
+
 /var/cache/*
 /var/logs/*
 /var/sessions/*
@@ -7,4 +8,4 @@
 !var/sessions/.gitkeep
 
 # Backup entities generated with doctrine:generate:entities command
-*/Entity/*~
+**/Entity/*~
