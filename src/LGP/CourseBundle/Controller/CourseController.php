@@ -327,9 +327,13 @@ class CourseController extends Controller {
         $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
         return new JsonResponse($ens);
     }
-    public function profileAction(){
-        return $this->render('LGPCourseBundle:Course:profile.html.twig');
-    
+
+    public function profileAction($profId) {
+        $em = $this->getDoctrine()->getManager();
+        $profRep = $em->getRepository("LGPUserBundle:Prof");
+        $profFound = $profRep->find($profId);
+        $params = array('prof' => $profFound);
+        return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params));
     }
 
 }
