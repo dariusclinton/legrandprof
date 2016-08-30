@@ -1,0 +1,55 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Mes séances de cours - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Mes séances de cours</h1>
+  
+  <a href="{{ path('lgp_user_prof_seance_de_cours_add') }}" class="btn btn-primary">Ajouter</a>
+  
+  {% if seancesDeCours|length <= 0 %}
+    <h2 class="text-muted">Aucune séance de cours trouvée !</h2>
+
+  {% else %}
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Date</th>
+          <th>Résumé</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Total</th>
+          <th>Total</th>
+          <th>Total</th>
+          <th>Total</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        {% for seance in seancesDeCours %}
+          <tr>
+          <td>{{ seance.jourDeCours.intitule }}</td>
+          <td>{{ seance.date|date('d/m/y') }}</td>
+          <td>{{ seance.resume }}</td>
+          <td>
+            <a href="{{ path('lgp_user_prof_seance_de_cours_delete', { 'id': seance.id }) }}" class="btn btn-danger btn-sm delete_confirm">
+              Supprimer
+            </a>
+            <a href="{{ path('lgp_user_prof_seance_de_cours_update', { 'id': seance.id }) }}" class="btn btn-info btn-sm">
+              Modifier
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% endif %}
+  
+{% endblock %}

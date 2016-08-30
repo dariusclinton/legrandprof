@@ -19,7 +19,9 @@
 
         </div>
       </div>
+          
       <div class="col-md-9">
+        
         <div class="notifications-block">
           {% if user.presentation is defined %}
             <h1>Hello Prof !</h1>
@@ -27,6 +29,7 @@
             <h1>Hello Parent !</h1>
           {% endif %}
         </div>
+        
         <div class="notifications-block">
           <p>{{ 'profile.show.username'|trans }}: {{ app.user.username }}</p>
           <p>{{ 'profile.show.email'|trans }}: {{ app.user.email }}</p>
@@ -79,6 +82,8 @@
             <a href='{{ path('lgp_user_prof_evaluation') }}' class="btn btn-primary">Mes Evaluations</a>
             
             <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
+            
+            <a href='{{ path('lgp_user_prof_seance_de_cours') }}' class="btn btn-primary">Mes séances de cours</a>
           {% endif %}
           
           

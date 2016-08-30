@@ -121,3 +121,24 @@ lgp_user_prof_evaluation_delete:
     defaults: { _controller: LGPUserBundle:Evaluation:delete }  
     requirements:
       id: \d+
+      
+# SeanceDeCours
+lgp_user_prof_seance_de_cours:
+    path: /prof/seance-de-cours/
+    defaults: { _controller: LGPUserBundle:SeanceDeCours:index }  
+ 
+lgp_user_prof_seance_de_cours_add:
+    path: /prof/seance-de-cours/add
+    defaults: { _controller: LGPUserBundle:SeanceDeCours:add }  
+
+lgp_user_prof_seance_de_cours_delete:
+    path: /prof/seance-de-cours/delete/{id}
+    defaults: { _controller: LGPUserBundle:SeanceDeCours:delete }  
+    requirements:
+      id: \d+
+      
+lgp_user_prof_seance_de_cours_update:
+    path: /prof/seance-de-cours/update/{id}
+    defaults: { _controller: LGPUserBundle:SeanceDeCours:update }  
+    requirements:
+      id: \d+
