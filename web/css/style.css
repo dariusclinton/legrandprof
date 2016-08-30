@@ -49,7 +49,7 @@
 }
 
 .navbar-primary {
-/*//    background: #F56961;*/
+//    background: #F56961;
     background: #e58664;
 }
 .navbar-black{
@@ -536,6 +536,16 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     content: ""
+}
+
+.clear-top-small{
+    margin-top: 30px;
+}
+.clear-top-medium{
+    margin-top: 60px;
+}
+.clear-top-big{
+    margin-top: 90px;
 }
 
 .hero h1 {
@@ -2365,7 +2375,7 @@ ul.itinerary-meta li {
     height: 90px;
     line-height: 98px;
     text-align: center;
-/*//    background: #F56961;*/
+//    background: #F56961;
     background-color: #e58664;
     border-radius: 50%;
     color: #FFF;
@@ -3819,9 +3829,14 @@ ul.static-page-menu li.active a {
 
 
 .profile-img{
-    width:30%;
+    width:85%;
     height:200px;
-    border:4px solid rgba(200,120,100,0.4);
+    //border:1px solid rgba(200,120,100,0.4);
+    box-shadow: 2px 2px 3px black;
+}
+
+.profile-infos{
+
 }
 
 .title-block{
@@ -3889,6 +3904,16 @@ a#btn-connect:hover{
 .panier-title{
     margin-top: -30px;
     color: rgba(0,0,0,0.75);
+}
+.panier-subtitle{
+    margin-top: -10px;
+    font-size: 20px;
+    color: rgba(0,0,0,0.65);
+    font-weight: 300;
+}
+.panier-subtitle i{
+    font-size: 15px;
+    font-style: italic;
 }
 .bg-grey .table{
     background-color: white;
@@ -3959,8 +3984,13 @@ a#btn-connect:hover{
 }
 
 /* block dashboard */
+.dashboard .profile-block{
+    background-color: white;
+    padding: 10px;
+}
 .dashboard .profile-block img{
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
     border-radius: 5px;
     height: 220px;
     box-shadow: 2px 2px 4px white;
@@ -4018,3 +4048,90 @@ li.cart-li:hover{
     margin-top: -15px;
     color: #e58664;
 }
+
+/* Progress Step */
+
+.progress-step{
+    position: relative;
+    z-index: 100;
+    padding-top: 20px;
+    text-align: center;
+}
+.step-block{
+    display: inline-block;
+    text-align: center;
+    margin-left: 15px!important;
+    margin-right: 15px!important;
+}
+.progress-line{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: #e0e0e0;
+    margin-top: 50px;
+}
+.progress-step .step{
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    color: #9b9b9b;
+    display: block;
+    font-weight: 700;
+    line-height: 50px;
+}
+.progress-step .active .step{
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: white;
+    background-color: #e58664;
+}
+.progress-step .step-label{
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    max-height: 36px;
+    word-break: break-word;
+    color: #9b9b9b;
+    height: 36px;
+    width: 100px;
+}
+
+
+/*
+.progress-step{
+    text-align: center;
+    padding-top: 30px;
+}
+.step-block{
+    display: inline-block;
+}
+.step-block .step{
+    margin: 40px;
+    padding:15px 25px 15px 25px;
+    color:#414141;
+    background-color: white;
+    border:1px solid rgba(0,0,0,0.1);
+    border-radius: 30px;
+}
+.step-block.active .step{
+    color: white;
+    background-color: #e58664;
+}
+
+.step-label{
+    width: 100px;
+    margin-top: 20px;
+    line-height: 18px;
+}
+*/

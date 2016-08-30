@@ -49,5 +49,7 @@ lgp_course_update_classe:
         method: POST
     options:
         expose: true
-
-  
+        
+lgp_course_profile_prof:
+    path:     /profile
+    defaults: { _controller: LGPCourseBundle:Course:profile}

@@ -1,3 +1,8 @@
 lgp_core_homepage:
     path:     /
     defaults: { _controller: LGPCoreBundle:Lgp:index }
+    
+lgp_core_how_it_works:
+    path:    /how-it-works
+    defaults: { _controller: LGPCoreBundle:Lgp:how }
+    
