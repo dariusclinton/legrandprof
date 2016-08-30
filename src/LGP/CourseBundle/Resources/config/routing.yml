@@ -51,5 +51,7 @@ lgp_course_update_classe:
         expose: true
         
 lgp_course_profile_prof:
-    path:     /profile
+    path:     /profile/{profId}
     defaults: { _controller: LGPCourseBundle:Course:profile}
+    requirements:
+        profId: \d+
