@@ -327,5 +327,9 @@ class CourseController extends Controller {
         $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
         return new JsonResponse($ens);
     }
+    public function profileAction(){
+        return $this->render('LGPCourseBundle:Course:profile.html.twig');
+    
+    }
 
 }

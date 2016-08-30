@@ -1,7 +1,5 @@
 /nbproject/private/
-# Pas de fichier temporaire
-**~
-/var/**
+
 /var/cache/*
 /var/logs/*
 /var/sessions/*

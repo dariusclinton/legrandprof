@@ -67,7 +67,8 @@ class ProfileProfFormType extends AbstractType {
         ->add('experiencePros', CollectionType::class, array(
           'entry_type'   => ExperienceProType::class,
           'allow_add'    => true,
-          'allow_delete' => true
+          'allow_delete' => true,
+          'by_reference' => false
         ))
        ;
   }
