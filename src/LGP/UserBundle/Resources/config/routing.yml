@@ -94,6 +94,12 @@ lgp_user_prof_cours:
 lgp_user_prof_cours_add:
     path: /prof/cours/add
     defaults: { _controller: LGPUserBundle:Cours:add }  
+
+lgp_user_prof_cours_update:
+    path: /prof/cours/update/{id}
+    defaults: { _controller: LGPUserBundle:Cours:update }  
+    requirements:
+      id: \d+
     
 lgp_user_prof_cours_delete:
     path: /prof/cours/delete/{id}

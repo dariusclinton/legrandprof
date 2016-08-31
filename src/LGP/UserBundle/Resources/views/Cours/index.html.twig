@@ -41,6 +41,9 @@
             <a href="{{ path('lgp_user_prof_cours_delete', { 'id': enseignement.id }) }}" class="btn btn-danger btn-sm delete_confirm">
               Supprimer
             </a>
+            <a href="{{ path('lgp_user_prof_cours_update', { 'id': enseignement.id }) }}" class="btn btn-info btn-sm">
+              Modifier
+            </a>
           </td>
         </tr>
         {% endfor %}

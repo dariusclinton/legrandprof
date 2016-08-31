@@ -79,4 +79,32 @@ class CoursController extends Controller {
     
     return $this->redirectToRoute('lgp_user_prof_cours');
   }
+  
+  /**
+   * 
+   * @param \LGP\UserBundle\Controller\Cours $cours
+   * @param Request $request
+   */
+  public function updateAction(Enseignement $enseignement, Request $request) {
+    $prof = $this->getUser();
+    
+    if ($prof === null) {
+      throw $this->createNotFoundException('Utilisateur inconnu !');
+    }
+    
+    $form = $this->createForm(EnseignementType::class, $enseignement);
+    
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      
+      $em->flush();
+      
+      return $this->redirectToRoute('lgp_user_prof_cours');
+    }
+    
+    return $this->render('LGPUserBundle:Cours:update.html.twig',array(
+      'form' => $form->createView()
+    ));
+  }
 }
