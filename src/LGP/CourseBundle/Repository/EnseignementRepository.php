@@ -111,4 +111,10 @@ class EnseignementRepository extends EntityRepository {
         return $query->getResult();
     }
 
+    public function getPrixProf($prof) {
+        $query = $this->_em->createQuery("SELECT Min(e.prix) FROM LGPCourseBundle:Enseignement e WHERE e.prof = :prof");
+        $query->setParameter('prof', $prof);
+        return $query->getSingleScalarResult();
+    }
+
 }
