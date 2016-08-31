@@ -55,9 +55,12 @@
             <ul>
               {% for experience in app.user.experiencePros %}
                 <li>
-                  {{ experience.etablissement }}
                   {{ experience.poste }}
+                  à
+                  {{ experience.etablissement }}
+                  de
                   {{ experience.dateDebut | date('d/m/y') }}
+                  à
                   {{ experience.dateFin | date('d/m/y') }}
                   {{ experience.description }}
                 </li>
@@ -97,7 +100,7 @@
 
           {% endif%}
           
-          {{ dump(app.user)}}
+{#          {{ dump(app.user)}}#}
         </div>
 
       </div>

@@ -31,7 +31,7 @@ class Diplome
     /**
      * @var string
      *
-     * @ORM\Column(name="specialite", type="string", length=255)
+     * @ORM\Column(name="specialite", type="string", length=255, nullable=true)
      */
     private $specialite;
 
@@ -41,8 +41,6 @@ class Diplome
      * @ORM\Column(name="annee", type="integer")
      */
     private $annee;
-
-    private  $affichage;
 
     /**
      * Get id

@@ -61,7 +61,7 @@ class ProfileProfFormType extends AbstractType {
           'class'        => 'LGPUserBundle:Diplome',
           'choice_label' => 'affichage',
           'multiple'     => true,
-//          'expanded'     => true,
+          'expanded'     => true,
           'required'     => false,
         ))
         ->add('experiencePros', CollectionType::class, array(
