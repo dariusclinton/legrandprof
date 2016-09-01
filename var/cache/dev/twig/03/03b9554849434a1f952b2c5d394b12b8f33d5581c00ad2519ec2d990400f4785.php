@@ -22,20 +22,20 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c88f0a8297c1c98a73b9adcb6ddf4af31f470391777f92340fc69697e7157ffe = $this->env->getExtension("native_profiler");
-        $__internal_c88f0a8297c1c98a73b9adcb6ddf4af31f470391777f92340fc69697e7157ffe->enter($__internal_c88f0a8297c1c98a73b9adcb6ddf4af31f470391777f92340fc69697e7157ffe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
+        $__internal_8a4a43f54798e5e79fb7767e9dbeac21895ed5712f19dec9231bf544c1b50aa9 = $this->env->getExtension("native_profiler");
+        $__internal_8a4a43f54798e5e79fb7767e9dbeac21895ed5712f19dec9231bf544c1b50aa9->enter($__internal_8a4a43f54798e5e79fb7767e9dbeac21895ed5712f19dec9231bf544c1b50aa9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c88f0a8297c1c98a73b9adcb6ddf4af31f470391777f92340fc69697e7157ffe->leave($__internal_c88f0a8297c1c98a73b9adcb6ddf4af31f470391777f92340fc69697e7157ffe_prof);
+        $__internal_8a4a43f54798e5e79fb7767e9dbeac21895ed5712f19dec9231bf544c1b50aa9->leave($__internal_8a4a43f54798e5e79fb7767e9dbeac21895ed5712f19dec9231bf544c1b50aa9_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_32327bdbd87185d7f30d61af3aecf121453aa57ec4f5dbb20c2245cce9f8fbed = $this->env->getExtension("native_profiler");
-        $__internal_32327bdbd87185d7f30d61af3aecf121453aa57ec4f5dbb20c2245cce9f8fbed->enter($__internal_32327bdbd87185d7f30d61af3aecf121453aa57ec4f5dbb20c2245cce9f8fbed_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a73cdcbd804cdbbad7be3d5e3b88d3759ef7e30a33fbbf68421c21e200f920bd = $this->env->getExtension("native_profiler");
+        $__internal_a73cdcbd804cdbbad7be3d5e3b88d3759ef7e30a33fbbf68421c21e200f920bd->enter($__internal_a73cdcbd804cdbbad7be3d5e3b88d3759ef7e30a33fbbf68421c21e200f920bd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "  Accueil - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "
 ";
         
-        $__internal_32327bdbd87185d7f30d61af3aecf121453aa57ec4f5dbb20c2245cce9f8fbed->leave($__internal_32327bdbd87185d7f30d61af3aecf121453aa57ec4f5dbb20c2245cce9f8fbed_prof);
+        $__internal_a73cdcbd804cdbbad7be3d5e3b88d3759ef7e30a33fbbf68421c21e200f920bd->leave($__internal_a73cdcbd804cdbbad7be3d5e3b88d3759ef7e30a33fbbf68421c21e200f920bd_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_eac60bf84019bf8e87397800ff96e973f0ad7e301aae0e54adfbac5bdd71cba4 = $this->env->getExtension("native_profiler");
-        $__internal_eac60bf84019bf8e87397800ff96e973f0ad7e301aae0e54adfbac5bdd71cba4->enter($__internal_eac60bf84019bf8e87397800ff96e973f0ad7e301aae0e54adfbac5bdd71cba4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_186e48063a9bd640f6620d45415e4778f1ca94ed49c39d6ddf5a690630d16700 = $this->env->getExtension("native_profiler");
+        $__internal_186e48063a9bd640f6620d45415e4778f1ca94ed49c39d6ddf5a690630d16700->enter($__internal_186e48063a9bd640f6620d45415e4778f1ca94ed49c39d6ddf5a690630d16700_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <!-- start hero-header with windows height -->
@@ -172,8 +172,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
                 <div class=\"grid-item\" data-colspan=\"10\" data-rowspan=\"10\">
 
-                    <a href=\"recherche.html\" class=\"top-destination-image-bg\" style=\"background-image:url('";
+                    <a href=\" ";
         // line 109
+        echo $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("ville" => "douala"));
+        echo " \" class=\"top-destination-image-bg\" style=\"background-image:url('";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/villes/01.jpg"), "html", null, true);
         echo "');\">
                         <div class=\"relative\">
@@ -185,8 +187,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
                 <div class=\"grid-item\" data-colspan=\"10\" data-rowspan=\"4\">
 
-                    <a href=\"recherche.html\" class=\"top-destination-image-bg\" style=\"background-image:url('";
+                    <a href=\" ";
         // line 119
+        echo $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("ville" => "yaoundé"));
+        echo " \" class=\"top-destination-image-bg\" style=\"background-image:url('";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/villes/02.jpg"), "html", null, true);
         echo "');\">
                         <div class=\"relative\">
@@ -198,8 +202,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
                 <div class=\"grid-item\" data-colspan=\"5\" data-rowspan=\"6\">
 
-                    <a href=\"recherche.html\" class=\"top-destination-image-bg\" style=\"background-image:url('";
+                    <a href=\" ";
         // line 129
+        echo $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("ville" => "limbé"));
+        echo "  \" class=\"top-destination-image-bg\" style=\"background-image:url('";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/villes/03.jpg"), "html", null, true);
         echo "');\">
                         <div class=\"relative\">
@@ -211,8 +217,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
                 <div class=\"grid-item\" data-colspan=\"5\" data-rowspan=\"6\">
 
-                    <a href=\"recherche.html\" class=\"top-destination-image-bg\" style=\"background-image:url('";
+                    <a href=\"";
         // line 139
+        echo $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("ville" => "Buea"));
+        echo " \" class=\"top-destination-image-bg\" style=\"background-image:url('";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/villes/04.jpg"), "html", null, true);
         echo "');\">
                         <div class=\"relative\">
@@ -415,7 +423,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
     </div>
 ";
         
-        $__internal_eac60bf84019bf8e87397800ff96e973f0ad7e301aae0e54adfbac5bdd71cba4->leave($__internal_eac60bf84019bf8e87397800ff96e973f0ad7e301aae0e54adfbac5bdd71cba4_prof);
+        $__internal_186e48063a9bd640f6620d45415e4778f1ca94ed49c39d6ddf5a690630d16700->leave($__internal_186e48063a9bd640f6620d45415e4778f1ca94ed49c39d6ddf5a690630d16700_prof);
 
     }
 
@@ -431,7 +439,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     public function getDebugInfo()
     {
-        return array (  372 => 271,  294 => 195,  281 => 188,  270 => 182,  265 => 180,  260 => 177,  256 => 176,  216 => 139,  203 => 129,  190 => 119,  177 => 109,  99 => 34,  95 => 32,  86 => 30,  82 => 29,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  380 => 271,  302 => 195,  289 => 188,  278 => 182,  273 => 180,  268 => 177,  264 => 176,  222 => 139,  207 => 129,  192 => 119,  177 => 109,  99 => 34,  95 => 32,  86 => 30,  82 => 29,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -542,7 +550,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /* */
 /*                 <div class="grid-item" data-colspan="10" data-rowspan="10">*/
 /* */
-/*                     <a href="recherche.html" class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/01.jpg') }}');">*/
+/*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'douala'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/01.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Douala</h4>*/
 /*                             <span>150 Grands Profs</span>*/
@@ -552,7 +560,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /* */
 /*                 <div class="grid-item" data-colspan="10" data-rowspan="4">*/
 /* */
-/*                     <a href="recherche.html" class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/02.jpg') }}');">*/
+/*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'yaoundé'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/02.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Yaoundé</h4>*/
 /*                             <span>100 Grands Profs</span>*/
@@ -562,7 +570,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /* */
 /*                 <div class="grid-item" data-colspan="5" data-rowspan="6">*/
 /* */
-/*                     <a href="recherche.html" class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/03.jpg') }}');">*/
+/*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'limbé'})}}  " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/03.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Limbé</h4>*/
 /*                             <span>45 Grands Profs</span>*/
@@ -572,7 +580,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /* */
 /*                 <div class="grid-item" data-colspan="5" data-rowspan="6">*/
 /* */
-/*                     <a href="recherche.html" class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/04.jpg') }}');">*/
+/*                     <a href="{{path('lgp_course_find_prof_city', {'ville':'Buea'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/04.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Buea</h4>*/
 /*                             <span>52 Grands Profs</span>*/
