@@ -1,0 +1,102 @@
+<?php
+
+namespace LGP\ReservationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ReservationEnseignement
+ *
+ * @ORM\Table(name="lgp_reservation_enseignement")
+ * @ORM\Entity(repositoryClass="LGP\ReservationBundle\Repository\ReservationEnseignementRepository")
+ */
+class ReservationEnseignement
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu_de_cours", type="string", length=255)
+     */
+    private $lieuDeCours;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="datetime")
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin", type="datetime")
+     */
+    private $dateFin;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_apprenants", type="integer")
+     */
+    private $nbApprenants;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_heure_par_jour", type="integer")
+     */
+    private $nbHeureParJour;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
+     */
+    private $quartier;
+
+    /**
+     * @var \LGPReservationBundle\Entity\JourDeCours
+     * 
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservationEnseignements")
+     */
+   private $joursDeCours;
+   
+   /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="reservationEnseignements")
+     */
+    private $reservation;
+   
+   /**
+     * @var \LGPCourseBundle\Entity\Enseignement
+     * 
+     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements")
+     */
+    private $enseignement;
+    
+   
+}
