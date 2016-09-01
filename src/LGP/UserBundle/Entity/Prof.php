@@ -523,7 +523,9 @@ class Prof extends User {
      */
     public function addExperiencePro(\LGP\UserBundle\Entity\ExperiencePro $experiencePro) {
         $this->experiencePros[] = $experiencePro;
-
+        
+        $experiencePro->setProf($this);
+        
         return $this;
     }
 

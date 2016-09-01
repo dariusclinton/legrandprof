@@ -147,10 +147,6 @@ $(function() {
      */
     $("#reservationForm").submit(function(event) {
         event.preventDefault();
-        $('#myModal').modal({
-            keyboard: false,
-            backdrop: false,
-        });
         /**
          * recuperation de toutes valeurs de variables nescessaires
          */
@@ -166,9 +162,11 @@ $(function() {
         var quartier = $("#quartier").val();
         var prixTotal = $("#prixTotal").text();
         var joursDeCoursSelectionnes = {};
+        nbJours = 0;
         for (i = 0; i < window.days.length; i++) {
             if ($("#j" + i).prop('checked')) {
                 joursDeCoursSelectionnes[window.days[i]] = $('#timepicker' + i).val();
+                nbJours++;
             }
         }
 
@@ -176,6 +174,18 @@ $(function() {
         dateDebut = " + dateDebut + " nbApp = " + nbApprenants + " lieu = " + lieuDeCours + " ville = " + ville + " quartier = " + quartier)
         $.each(joursDeCoursSelectionnes, function(key, value) {
             console.log(key + "   " + value);
+        });
+
+        if (nbJours === 0) {
+            alert('vous devez selectionnez au moins un jour de cours !');
+            return;
+        }
+
+        $(document).ajaxStart(function() {
+            $('#myModal').modal({
+                keyboard: false,
+                backdrop: false,
+            });
         });
 //        var data = {
 //            coursId: coursId,

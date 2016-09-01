@@ -63,7 +63,7 @@
                                             <b>Choisir un cours</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="course" name="course" class="form-control">
+                                            <select id="course" name="course" class="form-control" required>
                                                 <option value="" disabled selected>Choisir un cours</option>
                                                 {% if params.cours is defined %}
                                                     {% for ens in params.cours %}
@@ -78,7 +78,7 @@
                                             <b>Choisir une classe</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="classes" name="classes" class="form-control">
+                                            <select id="classes" name="classes" class="form-control" required>
                                                 <option disabled selected value="">Choisir une classe</option>
                                             </select>
                                             {#  <img id="loader" src=" {{asset('images/original-orange-loading-gif-large.gif')}} " alt="" width="2" height="3"> #}
@@ -107,7 +107,7 @@
                                             <b>Durée</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="reservationDuree" name="duree" class="form-control">
+                                            <select id="reservationDuree" name="duree" class="form-control" required>
                                                 <option value="1">1 semaine</option>
                                                 <option value="2">2 semaines</option>
                                                 <option value="3">3 semaines</option>
@@ -124,7 +124,7 @@
                                             <b>Nombre d'heures par jour</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="heuresParjours" name="classe" class="form-control">
+                                            <select id="heuresParjours" name="classe" class="form-control" required>
                                                 <option value="1">1 heure</option>
                                                 <option value="2">2 heures</option>
                                                 <option value="3">3 heures</option>
@@ -155,7 +155,7 @@
                                             <b>Quand souhaitez-vous commencer?</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <input type="text" id="reservation-startdate" name="reservationDate" class="form-control" placeholder="Date début">
+                                            <input type="text" id="reservation-startdate" name="reservationDate" class="form-control" placeholder="Date début" required>
                                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                         </div>
                                     </div> 
@@ -164,7 +164,7 @@
                                             <b>Nombre d'apprenants </b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="nbApprenants" name="nbApprenants" class="form-control">
+                                            <select id="nbApprenants" name="nbApprenants" class="form-control" required>
                                                 <option value="1">1 personne</option>
                                                 <option value="2">2 personnes</option>
                                                 <option value="3">3 personnes</option>
@@ -211,7 +211,7 @@
                                             <b>Lieu de cours</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <select id="lieuDeCours" name="lieuDeCours" class="form-control">
+                                            <select id="lieuDeCours" name="lieuDeCours" class="form-control" required>
                                                 <option value="" disabled selected>Choix du lieu</option>
                                                 <option value="Chez le parent">Chez le parent</option>
                                             </select>
@@ -222,7 +222,7 @@
                                             <b>Ville</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <input type="text" id="ville" name="" class="form-control" placeholder="ville">
+                                            <input type="text" id="ville" name="" class="form-control" placeholder="ville" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -230,7 +230,7 @@
                                             <b>Quartier</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <input type="text" id="quartier" name="" class="form-control" placeholder="quartier">
+                                            <input type="text" id="quartier" name="" class="form-control" placeholder="quartier" required>
                                         </div>
                                     </div>
                                 </div>

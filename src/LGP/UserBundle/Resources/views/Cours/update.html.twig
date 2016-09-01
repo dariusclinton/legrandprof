@@ -1,0 +1,12 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Modification d'un cours - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <h1>Modification d'un cours</h1>
+  
+  {% include 'LGPUserBundle:Cours:formulaire.html.twig' %}
+  
+{% endblock %}
