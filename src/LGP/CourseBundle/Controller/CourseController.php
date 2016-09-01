@@ -335,8 +335,11 @@ class CourseController extends Controller {
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $profFound = $profRep->find($profId);
         $avis = $avisRep->findBy(array('prof' => $profFound));
-        $nombre = count($avis);
-        $params = array('prof' => $profFound, 'enseignementRep' => $enseignementRep, 'avis' => $avis, 'nombreAvis' => $nombre);
+        $params = array(
+            'prof' => $profFound,
+            'enseignementRep' => $enseignementRep,
+            'avis' => $avis,
+        );
         return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params));
     }
 
