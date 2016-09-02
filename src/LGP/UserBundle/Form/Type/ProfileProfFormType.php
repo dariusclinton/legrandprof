@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use LGP\UserBundle\Form\ExperienceProType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use LGP\UserBundle\Form\DiplomeType;
 
 
 class ProfileProfFormType extends AbstractType {
@@ -57,18 +57,19 @@ class ProfileProfFormType extends AbstractType {
           'placeholder' => '--',
           'required'    => false
         ))
-        ->add('diplomes', EntityType::class, array(
-          'class'        => 'LGPUserBundle:Diplome',
-          'choice_label' => 'affichage',
-          'multiple'     => true,
-          'expanded'     => true,
-          'required'     => false,
+        ->add('diplomes', CollectionType::class, array(
+          'entry_type'   => DiplomeType::class,
+          'allow_add'    => true,
+          'allow_delete' => true,
+          'by_reference' => false,
+          'required'     => false
         ))
         ->add('experiencePros', CollectionType::class, array(
           'entry_type'   => ExperienceProType::class,
           'allow_add'    => true,
           'allow_delete' => true,
-          'by_reference' => false
+          'by_reference' => false,
+          'required'     => false
         ))
        ;
   }
