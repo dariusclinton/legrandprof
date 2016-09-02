@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -16,8 +17,16 @@ class CoursSearchRefineType extends AbstractType {
         $builder
                 ->add('intitule', TextType::class, array('required' => true,
                     'attr' => array('placeholder' => 'Cours')))
-                ->add('ville', TextType::class, array('required' => true,
-                    'attr' => array('placeholder' => 'Ville')))
+                ->add('ville', ChoiceType::class, array(
+                    'choices' => array(
+                        'Douala' => 'Douala',
+                        'Yaounde' => 'Yaounde',
+                        'Dschang' => 'Dschang',
+                    ),
+                    'required' => true,
+                    'placeholder' => 'Sélectionnez une ville' 
+                        )
+                )
         ;
     }
 

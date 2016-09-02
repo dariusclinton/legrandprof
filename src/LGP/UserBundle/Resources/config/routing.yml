@@ -1,3 +1,4 @@
+
 lgp_user_homepage:
     path:     /
     defaults: { _controller: LGPUserBundle:Main:index }
@@ -15,6 +16,11 @@ lgp_prof_registration:
     path:  /register/prof
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
 
+# Dashboard
+lgp_user_prof_dashboard:
+    path: /dashboard
+    defaults: { _controller: LGPUserBundle:Dashboard:prof }
+    
 # Avis
 lgp_user_parent_avis_add:
     path: /parent/avis/add

@@ -1,9 +1,10 @@
-
 <div class="header-dashboard-submenu hidden-xs">
         <div class="wrapper">
-                <ul class="desktop-only">
-                        <li><a href="#" class="dashboard-header-link current">Tableau de bord</a></li>
+                <ul class="desktop-only" id="dash">
+                        <li><a href="{{ path('lgp_user_prof_dashboard') }}" class="dashboard-header-link current">Tableau de bord</a></li>
+                        <li><a href="{{ path('lgp_user_prof_cours') }}" class="dashboard-header-link " title="Ce que j'enseigne">Mes cours</a></li>
                         <li><a href="#" class="dashboard-header-link ">Mes demandes de cours</a></li>
+                        <li><a href="#" class="dashboard-header-link ">Mon compte</a></li>
                 </ul>
         </div>
 </div>

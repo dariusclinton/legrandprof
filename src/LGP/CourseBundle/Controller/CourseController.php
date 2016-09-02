@@ -331,8 +331,17 @@ class CourseController extends Controller {
     public function profileAction($profId) {
         $em = $this->getDoctrine()->getManager();
         $profRep = $em->getRepository("LGPUserBundle:Prof");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $profFound = $profRep->find($profId);
-        $params = array('prof' => $profFound);
+        $avis = $avisRep->findBy(array('prof' => $profFound));
+        $similarProfs = $enseignementRep->getSimilarProfs($profId);
+        $params = array(
+            'prof' => $profFound,
+            'enseignementRep' => $enseignementRep,
+            'avis' => $avis,
+            'similarProfs' => $similarProfs
+        );
         return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params));
     }
 
