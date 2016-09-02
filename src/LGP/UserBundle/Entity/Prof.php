@@ -116,7 +116,7 @@ class Prof extends User {
     private $evaluations;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Diplome")
+     * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="lgp_prof_diplome")
      */
     private $diplomes;
@@ -491,9 +491,11 @@ class Prof extends User {
      * @return Prof
      */
     public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome) {
-        $this->diplomes[] = $diplome;
+      if (false === $this->diplomes->contains($diplome)) {
+          $this->diplomes[] = $diplome;
+      }
 
-        return $this;
+      return $this;
     }
 
     /**

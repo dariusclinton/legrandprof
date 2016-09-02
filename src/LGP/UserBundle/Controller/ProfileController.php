@@ -60,9 +60,14 @@ class ProfileController extends BaseController
         // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
         if (method_exists($user, 'getExperiencePros')) {
           $originalExperiencePros = new \Doctrine\Common\Collections\ArrayCollection();
+          $originalDiplomes = new \Doctrine\Common\Collections\ArrayCollection();
           
           foreach ($user->getExperiencePros() as $experience) {
             $originalExperiencePros->add($experience);
+          }
+          
+          foreach ($user->getDiplomes() as $diplome) {
+            $originalDiplomes->add($diplome);
           }
         }
         ///
@@ -84,6 +89,13 @@ class ProfileController extends BaseController
               if (false === $user->getExperiencePros()->contains($experience))
                 $em->remove($experience);
             }
+            
+            // Remove relationship between prof en Diplome
+            foreach ($originalDiplomes as $diplome) {
+              if (false === $user->getDiplomes()->contains($diplome))
+                $em->remove($diplome);
+            }
+            
             $em->flush();
           }
           //// end custom code
