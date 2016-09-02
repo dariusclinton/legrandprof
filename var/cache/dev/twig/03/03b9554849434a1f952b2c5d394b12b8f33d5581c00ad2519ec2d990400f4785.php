@@ -22,20 +22,20 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4928896517929f45dbb5934677130c0d221b7a85e6a4e8e77d0ca430f219ff35 = $this->env->getExtension("native_profiler");
-        $__internal_4928896517929f45dbb5934677130c0d221b7a85e6a4e8e77d0ca430f219ff35->enter($__internal_4928896517929f45dbb5934677130c0d221b7a85e6a4e8e77d0ca430f219ff35_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
+        $__internal_b68cf321c6ee90c8804cbaf3ddf1942f041e60fbadb72c52fadb9a68c7832d19 = $this->env->getExtension("native_profiler");
+        $__internal_b68cf321c6ee90c8804cbaf3ddf1942f041e60fbadb72c52fadb9a68c7832d19->enter($__internal_b68cf321c6ee90c8804cbaf3ddf1942f041e60fbadb72c52fadb9a68c7832d19_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_4928896517929f45dbb5934677130c0d221b7a85e6a4e8e77d0ca430f219ff35->leave($__internal_4928896517929f45dbb5934677130c0d221b7a85e6a4e8e77d0ca430f219ff35_prof);
+        $__internal_b68cf321c6ee90c8804cbaf3ddf1942f041e60fbadb72c52fadb9a68c7832d19->leave($__internal_b68cf321c6ee90c8804cbaf3ddf1942f041e60fbadb72c52fadb9a68c7832d19_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_81db49f09d6b896843d2578b9603d59105c64f0191e20d27236feb01f48faea6 = $this->env->getExtension("native_profiler");
-        $__internal_81db49f09d6b896843d2578b9603d59105c64f0191e20d27236feb01f48faea6->enter($__internal_81db49f09d6b896843d2578b9603d59105c64f0191e20d27236feb01f48faea6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_dba02ed13ebf919e369ff2f05443e464fe5799f2dc21faa9087d278f1bd6fa42 = $this->env->getExtension("native_profiler");
+        $__internal_dba02ed13ebf919e369ff2f05443e464fe5799f2dc21faa9087d278f1bd6fa42->enter($__internal_dba02ed13ebf919e369ff2f05443e464fe5799f2dc21faa9087d278f1bd6fa42_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "  Accueil - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "
 ";
         
-        $__internal_81db49f09d6b896843d2578b9603d59105c64f0191e20d27236feb01f48faea6->leave($__internal_81db49f09d6b896843d2578b9603d59105c64f0191e20d27236feb01f48faea6_prof);
+        $__internal_dba02ed13ebf919e369ff2f05443e464fe5799f2dc21faa9087d278f1bd6fa42->leave($__internal_dba02ed13ebf919e369ff2f05443e464fe5799f2dc21faa9087d278f1bd6fa42_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_85b1557aaf176ad51ff30fefcbef8b7e4230f0875958b17333d74d313afcc175 = $this->env->getExtension("native_profiler");
-        $__internal_85b1557aaf176ad51ff30fefcbef8b7e4230f0875958b17333d74d313afcc175->enter($__internal_85b1557aaf176ad51ff30fefcbef8b7e4230f0875958b17333d74d313afcc175_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_8d6c8be46dcb9ddff66b35a0cfd932ddf77df6592dd4588209af4a292907cfb7 = $this->env->getExtension("native_profiler");
+        $__internal_8d6c8be46dcb9ddff66b35a0cfd932ddf77df6592dd4588209af4a292907cfb7->enter($__internal_8d6c8be46dcb9ddff66b35a0cfd932ddf77df6592dd4588209af4a292907cfb7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <!-- start hero-header with windows height -->
@@ -180,7 +180,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "');\">
                         <div class=\"relative\">
                             <h4>Douala</h4>
-                            <span>150 Grands Profs</span>
+                            <span>";
+        // line 112
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["enseignementRep"]) ? $context["enseignementRep"] : $this->getContext($context, "enseignementRep")), "getCountProfsByCity", array(0 => "Douala"), "method"), "html", null, true);
+        echo " Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -195,7 +198,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "');\">
                         <div class=\"relative\">
                             <h4>Yaoundé</h4>
-                            <span>100 Grands Profs</span>
+                            <span>";
+        // line 122
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["enseignementRep"]) ? $context["enseignementRep"] : $this->getContext($context, "enseignementRep")), "getCountProfsByCity", array(0 => "Yaounde"), "method"), "html", null, true);
+        echo " Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -210,7 +216,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "');\">
                         <div class=\"relative\">
                             <h4>Limbé</h4>
-                            <span>45 Grands Profs</span>
+                            <span>";
+        // line 132
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["enseignementRep"]) ? $context["enseignementRep"] : $this->getContext($context, "enseignementRep")), "getCountProfsByCity", array(0 => "Limbe"), "method"), "html", null, true);
+        echo " Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -225,7 +234,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         echo "');\">
                         <div class=\"relative\">
                             <h4>Buea</h4>
-                            <span>52 Grands Profs</span>
+                            <span>";
+        // line 142
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["enseignementRep"]) ? $context["enseignementRep"] : $this->getContext($context, "enseignementRep")), "getCountProfsByCity", array(0 => "Buea"), "method"), "html", null, true);
+        echo " Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -280,7 +292,10 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "alt", array()), "html", null, true);
             echo "\" />
                                         <div class=\"absolute-in-image\">
-                                            <div class=\"duration\"><span>300 Grands profs</span></div>
+                                            <div class=\"duration\"><span>";
+            // line 184
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["categoryRep"]) ? $context["categoryRep"] : $this->getContext($context, "categoryRep")), "getcountProfsByCategory", array(0 => $this->getAttribute($context["category"], "intitule", array())), "method"), "html", null, true);
+            echo " Grands profs</span></div>
                                         </div>
                                     </div>
                                     <div class=\"content clearfix\">
@@ -423,7 +438,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
     </div>
 ";
         
-        $__internal_85b1557aaf176ad51ff30fefcbef8b7e4230f0875958b17333d74d313afcc175->leave($__internal_85b1557aaf176ad51ff30fefcbef8b7e4230f0875958b17333d74d313afcc175_prof);
+        $__internal_8d6c8be46dcb9ddff66b35a0cfd932ddf77df6592dd4588209af4a292907cfb7->leave($__internal_8d6c8be46dcb9ddff66b35a0cfd932ddf77df6592dd4588209af4a292907cfb7_prof);
 
     }
 
@@ -439,7 +454,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     public function getDebugInfo()
     {
-        return array (  380 => 271,  302 => 195,  289 => 188,  278 => 182,  273 => 180,  268 => 177,  264 => 176,  222 => 139,  207 => 129,  192 => 119,  177 => 109,  99 => 34,  95 => 32,  86 => 30,  82 => 29,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  395 => 271,  317 => 195,  304 => 188,  297 => 184,  290 => 182,  285 => 180,  280 => 177,  276 => 176,  239 => 142,  231 => 139,  221 => 132,  213 => 129,  203 => 122,  195 => 119,  185 => 112,  177 => 109,  99 => 34,  95 => 32,  86 => 30,  82 => 29,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
@@ -553,7 +568,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'douala'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/01.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Douala</h4>*/
-/*                             <span>150 Grands Profs</span>*/
+/*                             <span>{{ enseignementRep.getCountProfsByCity('Douala')}} Grands Profs</span>*/
 /*                         </div>*/
 /*                     </a>*/
 /*                 </div>*/
@@ -563,7 +578,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'yaoundé'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/02.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Yaoundé</h4>*/
-/*                             <span>100 Grands Profs</span>*/
+/*                             <span>{{ enseignementRep.getCountProfsByCity('Yaounde')}} Grands Profs</span>*/
 /*                         </div>*/
 /*                     </a>*/
 /*                 </div>*/
@@ -573,7 +588,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'limbé'})}}  " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/03.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Limbé</h4>*/
-/*                             <span>45 Grands Profs</span>*/
+/*                             <span>{{ enseignementRep.getCountProfsByCity('Limbe')}} Grands Profs</span>*/
 /*                         </div>*/
 /*                     </a>*/
 /*                 </div>*/
@@ -583,7 +598,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                     <a href="{{path('lgp_course_find_prof_city', {'ville':'Buea'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/04.jpg') }}');">*/
 /*                         <div class="relative">*/
 /*                             <h4>Buea</h4>*/
-/*                             <span>52 Grands Profs</span>*/
+/*                             <span>{{ enseignementRep.getCountProfsByCity('Buea')}} Grands Profs</span>*/
 /*                         </div>*/
 /*                     </a>*/
 /*                 </div>*/
@@ -625,7 +640,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                                     <div class="image">*/
 /*                                         <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />*/
 /*                                         <div class="absolute-in-image">*/
-/*                                             <div class="duration"><span>300 Grands profs</span></div>*/
+/*                                             <div class="duration"><span>{{categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>*/
 /*                                         </div>*/
 /*                                     </div>*/
 /*                                     <div class="content clearfix">*/

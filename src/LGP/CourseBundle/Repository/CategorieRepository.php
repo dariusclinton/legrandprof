@@ -17,18 +17,14 @@ class CategorieRepository extends EntityRepository {
         $query = $this->_em->createQuery("SELECT c FROM LGPCourseBundle:Categorie c WHERE c.intitule LIKE :intitule");
         $query->setParameter("intitule", $intitule . "%");
         $query->getSingleResult();
-
-//        $query = $this->createQueryBuilder('c')
-//                ->where('c.intitule = :intitule')
-//                ->setParameter('intitule', $intitule);
-//        
-//        $query->getQuery()->getResult();
     }
 
-    public function countProfByCategory($category) {
-        $query = $this->_em->createQuery("SELECT c FROM LGPCourseBundle:Cours c WHERE c.intitule LIKE :intitule");
+    public function getcountProfsByCategory($intitule) {
+        $query = $this->_em->createQuery("SELECT p.id FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE c.id IN (SELECT c1.id FROM LGPCourseBundle:Cours c1 JOIN c1.categorie cat WHERE cat.intitule LIKE :intitule ) GROUP BY p.id");
+//        $query = $this->_em->createQuery("SELECT c FROM LGPCourseBundle:Cours c WHERE c.intitule LIKE :intitule");
         $query->setParameter("intitule", $intitule . "%");
-        $query->getSingleResult();
+        $result = $query->getResult();
+        return count($result);
     }
 
     public function getAllCategories($page = 1, $max = 10) {

@@ -24,12 +24,13 @@ class CourseController extends Controller {
      */
     public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
         try {
-            $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
+            $profs = $enseignementRep->getAllProfsEnseignants($page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profs);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -39,7 +40,8 @@ class CourseController extends Controller {
             $params = array(
                 'courses' => $courses,
                 'matieres_profs' => $profs,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find',
                     'pages_count' => $pageCount,
@@ -76,14 +78,15 @@ class CourseController extends Controller {
      */
     public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
         try {
-            $profsByCours = $enseigneRep->getProfsByCours($coursFound, $page, $max_per_page);
+            $profsByCours = $enseignementRep->getProfsByCours($coursFound, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profsByCours);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -101,7 +104,8 @@ class CourseController extends Controller {
                 'courses' => $courses,
                 'courseFound' => $coursFound,
                 'matieres_profs' => $profsByCours,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof',
                     'pages_count' => $pageCount,
@@ -142,13 +146,14 @@ class CourseController extends Controller {
      */
     public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
         try {
-            $profsByCoursAndCity = $enseigneRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
+            $profsByCoursAndCity = $enseignementRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profsByCoursAndCity);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -167,7 +172,8 @@ class CourseController extends Controller {
                 'courseFound' => $coursFound,
                 'courses' => $courses,
                 'matieres_profs' => $profsByCoursAndCity,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof_refine',
                     'pages_count' => $pageCount,
@@ -206,12 +212,13 @@ class CourseController extends Controller {
      */
     public function searchCityAction($ville, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
         try {
-            $profsByCity = $enseigneRep->getProfsByCity($ville, $page, $max_per_page);
+            $profsByCity = $enseignementRep->getProfsByCity($ville, $page, $max_per_page);
             $profsCount = count($profsByCity);
             $pageCount = ceil($profsCount / $max_per_page);
             if ($pageCount < $page && $pageCount != 0) {
@@ -221,7 +228,8 @@ class CourseController extends Controller {
                 'ville' => $ville,
                 'courses' => $courses,
                 'matieres_profs' => $profsByCity,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof_city',
                     'pages_count' => $pageCount,
@@ -303,6 +311,7 @@ class CourseController extends Controller {
         }
         $params = array(
             'categories' => $categories,
+            'categoryRep' => $categoryRepository,
             'pagination' => array(
                 'route' => 'lgp_course_category',
                 'pages_count' => $pageCount,

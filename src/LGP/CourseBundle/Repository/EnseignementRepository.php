@@ -79,6 +79,13 @@ class EnseignementRepository extends EntityRepository {
         return $paginator;
     }
 
+    public function getCountProfsByCity($ville) {
+         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.ville = :ville GROUP BY p.id");
+        $query->setParameter('ville', $ville);
+        $profsNumber = $query->getResult();
+        return count($profsNumber);
+    }
+
     /**
      * 
      * @param type $prof
