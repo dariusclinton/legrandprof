@@ -17,8 +17,10 @@
                         <div class="flex-row">
 
                             <div class="flex-column flex-md-3 flex-sm-12">  
-                                {% if prof.image is defined %}
+                                {% if prof.image is not null %}
                                     <img src="{{ asset(prof.image.webPath) }}" alt=" {{prof.nom}} "  class="profile-img" />
+                                    {% else %}
+                                        <i class="fa fa-user fa-5x profile-img"></i>
                                 {% endif %}
                             </div>
                             <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
@@ -30,7 +32,6 @@
                                         <li class="rating-box">
                                             <div class="rating-wrapper">
                                                 <div class="raty-wrapper">
-                                                    {{dump(params.similarProfs)}}
 
                                                     {% set avisSum = 0 %}
                                                         {% for avis in params.avis %}
@@ -419,83 +420,61 @@
                                                                                                                             <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
 
                                                                                                                                 <div class="GridLex-grid-noGutter-equalHeight">
-                                                                                                                                    <div class="GridLex-col-4_sm-4_xs-12 mb-20">
-                                                                                                                                        <div class="package-grid-item"> 
-                                                                                                                                            <a href="#">
-                                                                                                                                                <div class="image similar">
-                                                                                                                                                    <img src="{{ asset('images/man/02.jpg') }}"/>
-                                                                                                                                                    <div class="absolute-in-image">
-                                                                                                                                                        <div class="duration"><span>Recommandé</span></div>
+                                                                                                                                    {% if not params.similarProfs is empty %}
+                                                                                                                                            {% for enseignement in params.similarProfs %}
+                                                                                                                                                <div class="GridLex-col-4_sm-4_xs-12 mb-20">
+                                                                                                                                                    <div class="package-grid-item"> 
+                                                                                                                                                        <a href="#">
+                                                                                                                                                            <div class="image similar">
+                                                                                                                                                                {% if enseignement.prof.image is not null %}
+                                                                                                                                                                    <img src="{{ asset(enseignement.prof.image.webPath) }}"/>
+                                                                                                                                                                {% endif %}
+                                                                                                                                                                {% if enseignement.prof.isRecommande == 1 %}                                                                                                                                                                   
+                                                                                                                                                                    <div class="absolute-in-image">
+                                                                                                                                                                        <div class="duration">
+                                                                                                                                                                            <span>
+                                                                                                                                                                                Recommandé
+                                                                                                                                                                            </span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                {% endif %} 
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="content clearfix">
+                                                                                                                                                                <h6> {{ enseignement.prof.prenoms ~"  "~ enseignement.prof.nom | upper }} </h6>
+                                                                                                                                                                {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseignement.prof}) %}
+                                                                                                                                                                {% for avis in  allAvis %}
+                                                                                                                                                                    {% set avisSum = avisSum + avis.note %}
+                                                                                                                                                                {% endfor %}
+                                                                                                                                                                 {% if allAvis | length != 0 %}
+                                                                                                                                                                    {% set avisRange = avisSum / allAvis | length %}
+                                                                                                                                                                {% else %}
+                                                                                                                                                                    {% set avisRange = 0 %}
+                                                                                                                                                                {% endif %}
+                                                                                                                                                                <div class="rating-wrapper">
+                                                                                                                                                                    <div class="raty-wrapper">
+                                                                                                                                                                        <div>
+                                                                                                                                                                             {% for i in range(1,5) %}
+                                                                                                                                                                                {% if (avisRange | round) >= i %}
+                                                                                                                                                                                    <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                                                                                                                                {% else %}
+                                                                                                                                                                                    <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
+                                                                                                                                                                                {% endif %}
+                                                                                                                                                                            {% endfor %}
+                                                                                                                                                                        </div><br>
+                                                                                                                                                                        <span> / {{allAvis | length}} avis</span>
+                                                                                                                                                                    </div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="absolute-in-content">
+                                                                                                                                                                    {% set minPrice = params.enseignementRep.getPrixProf(enseignement.prof) %}
+                                                                                                                                                                    <span class="btn"><i class="fa fa-heart text-primary"></i></span>
+                                                                                                                                                                    <div class="price">{{minPrice}} F/H <br> Prix minimal</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </a>
                                                                                                                                                     </div>
                                                                                                                                                 </div>
-                                                                                                                                                <div class="content clearfix">
-                                                                                                                                                    <h6>Antony Robert</h6>
-                                                                                                                                                    <div class="rating-wrapper">
-                                                                                                                                                        <div class="raty-wrapper">
-                                                                                                                                                            {#   <div class="star-rating-12px" data-rating-score="3.5"></div> #} 
-                                                                                                                                                            <img alt="1" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="2" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="3" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="4" src="{{ asset('images/raty/star-on-sm.png') }}" title="good"><img alt="5" src="{{ asset('images/raty/star-off-sm.png') }}" title="good">
-                                                                                                                                                            <span> / 7 avis</span>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="absolute-in-content">
-                                                                                                                                                        <span class="btn"><i class="fa fa-heart text-primary"></i></span>
-                                                                                                                                                        <div class="price">80.000 F</div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </a>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-
-
-                                                                                                                                    <div class="GridLex-col-4_sm-4_xs-12 mb-20">
-                                                                                                                                        <div class="package-grid-item"> 
-                                                                                                                                            <a href="#">
-                                                                                                                                                <div class="image similar">
-                                                                                                                                                    <img src="{{ asset('images/man/02.jpg') }}"/>
-                                                                                                                                                    <div class="absolute-in-image">
-                                                                                                                                                        <div class="duration"><span>Recommandé</span></div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                                <div class="content clearfix">
-                                                                                                                                                    <h6>Antony Robert</h6>
-                                                                                                                                                    <div class="rating-wrapper">
-                                                                                                                                                        <div class="raty-wrapper">
-                                                                                                                                                            <div class="star-rating-12px" data-rating-score="3.5"></div> <span> / 7 avis</span>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="absolute-in-content">
-                                                                                                                                                        <span class="btn"><i class="fa fa-heart text-primary"></i></span>
-                                                                                                                                                        <div class="price">80.000 F</div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </a>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
-
-                                                                                                                                    <div class="GridLex-col-4_sm-4_xs-12 mb-20">
-                                                                                                                                        <div class="package-grid-item"> 
-                                                                                                                                            <a href="#">
-                                                                                                                                                <div class="image similar">
-                                                                                                                                                    <img src="{{ asset('images/man/03.jpg') }}"/>
-                                                                                                                                                    <div class="absolute-in-image">
-                                                                                                                                                        <div class="duration"><span>Recommandé</span></div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                                <div class="content clearfix">
-                                                                                                                                                    <h6>Antony Robert</h6>
-                                                                                                                                                    <div class="rating-wrapper">
-                                                                                                                                                        <div class="raty-wrapper">
-                                                                                                                                                            <div class="star-rating-12px" data-rating-score="4.5"></div> <span> / 7 avis</span>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="absolute-in-content">
-                                                                                                                                                        <span class="btn"><i class="fa fa-heart-o"></i></span>
-                                                                                                                                                        <div class="price">80.000 F</div>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            </a>
-                                                                                                                                        </div>
-                                                                                                                                    </div>
+                                                                                                                                            {% endfor %}
+                                                                                                                                    {% endif %}
 
                                                                                                                                 </div>
 

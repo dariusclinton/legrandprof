@@ -94,7 +94,7 @@ class ReservationEnseignement
    /**
      * @var \LGPCourseBundle\Entity\Enseignement
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements")
+     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements",  cascade={"persist", "remove"})
      */
     private $enseignement;
     

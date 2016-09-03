@@ -52,9 +52,10 @@ class Enseignement
     /**
      * @var \LGPReservationBundle\Entity\ReservationEnseignement
      * 
-     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="enseignement")
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="enseignement",  cascade={"persist", "remove"})
      */
     private $reservationEnseignements;
+   
     /**
      * Constructor
      */

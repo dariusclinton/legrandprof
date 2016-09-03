@@ -348,6 +348,7 @@ class CourseController extends Controller {
         $params = array(
             'prof' => $profFound,
             'enseignementRep' => $enseignementRep,
+            'avisRep' => $avisRep,
             'avis' => $avis,
             'similarProfs' => $similarProfs
         );
