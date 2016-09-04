@@ -59,18 +59,6 @@
                             </div>
 
                             <div class="sidebar-search-content">
-
-                                <div class="form-group">
-
-                                    {% if params.courses %}
-                                        <datalist id="cours">
-                                            {% for course in params.courses %}
-                                                <option> {{course.intitule}} </option>}
-                                            {% endfor %}
-                                        </datalist>
-                                    {% endif %}
-                                </div>
-
                                 {% include 'LGPCourseBundle:Form:course_form_search.html.twig' %}
                             </div>
 

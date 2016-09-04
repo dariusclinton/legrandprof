@@ -15,8 +15,8 @@ class __TwigTemplate_a397acb4a9dc77a5a8cdc625fc7b516099707f0d157abd901a6dc8baa3b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b8920be67654ceddfbfbd81309c305859bd5a194c01173db1baed7bd78cf05bf = $this->env->getExtension("native_profiler");
-        $__internal_b8920be67654ceddfbfbd81309c305859bd5a194c01173db1baed7bd78cf05bf->enter($__internal_b8920be67654ceddfbfbd81309c305859bd5a194c01173db1baed7bd78cf05bf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Form:course_form_search.html.twig"));
+        $__internal_ce0b13d7ab70c78448c0618a9fc6825483626f47fc24991556ccadc1d4455ecc = $this->env->getExtension("native_profiler");
+        $__internal_ce0b13d7ab70c78448c0618a9fc6825483626f47fc24991556ccadc1d4455ecc->enter($__internal_ce0b13d7ab70c78448c0618a9fc6825483626f47fc24991556ccadc1d4455ecc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Form:course_form_search.html.twig"));
 
         // line 1
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
@@ -28,10 +28,10 @@ class __TwigTemplate_a397acb4a9dc77a5a8cdc625fc7b516099707f0d157abd901a6dc8baa3b
         // line 5
         if ($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "intitule", array(), "any", true, true)) {
             // line 6
-            echo "        <div class=\"form-group\">
+            echo "        <div class=\"form-group\" data-onload=\"loadCourses()\">
             ";
             // line 7
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "intitule", array()), 'widget', array("attr" => array("class" => "form-control", "list" => "cours", "autocomplete" => "off", "spellcheck" => "off")));
+            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "intitule", array()), 'widget', array("attr" => array("class" => "form-control", "autocomplete" => "off", "spellcheck" => "off")));
             echo "
         </div>
     ";
@@ -65,7 +65,7 @@ class __TwigTemplate_a397acb4a9dc77a5a8cdc625fc7b516099707f0d157abd901a6dc8baa3b
         // line 24
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         
-        $__internal_b8920be67654ceddfbfbd81309c305859bd5a194c01173db1baed7bd78cf05bf->leave($__internal_b8920be67654ceddfbfbd81309c305859bd5a194c01173db1baed7bd78cf05bf_prof);
+        $__internal_ce0b13d7ab70c78448c0618a9fc6825483626f47fc24991556ccadc1d4455ecc->leave($__internal_ce0b13d7ab70c78448c0618a9fc6825483626f47fc24991556ccadc1d4455ecc_prof);
 
     }
 
@@ -89,8 +89,8 @@ class __TwigTemplate_a397acb4a9dc77a5a8cdc625fc7b516099707f0d157abd901a6dc8baa3b
 /* <div class="column-item-large">*/
 /* */
 /*     {% if form.intitule is defined %}*/
-/*         <div class="form-group">*/
-/*             {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'list':'cours', 'autocomplete':'off', 'spellcheck':'off'}}) }}*/
+/*         <div class="form-group" data-onload="loadCourses()">*/
+/*             {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}*/
 /*         </div>*/
 /*     {% endif %}*/
 /*     {% if form.ville is defined %}*/

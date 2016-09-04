@@ -3,8 +3,8 @@
 <div class="column-item-large">
 
     {% if form.intitule is defined %}
-        <div class="form-group">
-            {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'list':'cours', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+        <div class="form-group" data-onload="loadCourses()">
+            {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
         </div>
     {% endif %}
     {% if form.ville is defined %}

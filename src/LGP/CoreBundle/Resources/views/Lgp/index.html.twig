@@ -25,11 +25,11 @@
 
                 <div class="inner">
 
-                    <datalist id="cours">
+                    {# <datalist id="cours">
                         {% for course in courses %}
                             <option> {{course.intitule}} </option>}
                         {% endfor %}
-                    </datalist>
+                    </datalist> #}
 
                     {{ include("LGPCourseBundle:Form:course_form_search.html.twig") }}
 
