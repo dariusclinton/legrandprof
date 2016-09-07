@@ -13,14 +13,13 @@
                 <div class="page-title detail-page-title" style="background-image:url('{{ asset('images/detail/head.jpg') }}');">
 
                     <div class="container">
-
                         <div class="flex-row">
 
                             <div class="flex-column flex-md-3 flex-sm-12">  
                                 {% if prof.image is not null %}
                                     <img src="{{ asset(prof.image.webPath) }}" alt=" {{prof.nom}} "  class="profile-img" />
-                                    {% else %}
-                                        <i class="fa fa-user fa-5x profile-img"></i>
+                                {% else %}
+                                    <i class="fa fa-user fa-5x profile-img"></i>
                                 {% endif %}
                             </div>
                             <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
@@ -115,6 +114,21 @@
                                                             <div class="container">
 
                                                                 <div class="row">
+
+                                                                    {% for message in app.session.flashbag.get('info') %}
+                                                                        <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-success" style="z-index:1000;position:relative;display:none">
+                                                                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                                                            {{message}}
+                                                                        </div>
+                                                                    {% endfor %}
+
+                                                                    {% for message in app.session.flashbag.get('warning') %}
+                                                                        <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-danger" style="z-index:1000;position:relative;display:none">
+                                                                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                                                                            {{message}}
+                                                                            connectez vous maintenant en cliquant  <a href=" {{path('fos_user_security_login')}} " title="">ici!</a>
+                                                                        </div>
+                                                                    {% endfor %}
 
                                                                     <div class="col-md-8" role="main">
 
@@ -343,17 +357,25 @@
                                                                                                                     </div>
 
                                                                                                                     <div class="col-sm-6 text-right text-left-xs">
-                                                                                                                        <a href="#leave-comment" class="anchor btn btn-primary btn-inverse btn-sm">Laisser un avis</a>
+                                                                                                                        <a href="#leave-comment" id="btn-leave-avis" class="anchor btn btn-primary btn-inverse btn-sm">Laisser un avis</a>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-md-12 col-sm-12" id="leave-avis" style="display:none">
+                                                                                                                        <div class="col-md-12 animated">
+                                                                                                                            <button type='button' id="btn-close-avis" class='close' data-dismiss='alert' aria-hidden='true'>
+                                                                                                                                &times;
+                                                                                                                            </button>
+                                                                                                                            {% include 'LGPUserBundle:Avis:formulaire.html.twig' %}
+                                                                                                                        </div>
+
                                                                                                                     </div>
 
                                                                                                                 </div>
 
                                                                                                                 {% if params.avis | length %}
-
-                                                                                                                    {% set avis = params.avis | first %}
-                                                                                                                        {% set parent = avis.parent %}
-                                                                                                                            <ul class="review-list">
-
+                                                                                                                    <ul class="review-list">
+                                                                                                                        {% for avis in params.avis %}
+                                                                                                                            {% set parent = avis.parent %}
                                                                                                                                 <li class="clearfix">
                                                                                                                                     <div class="image img-circle">
                                                                                                                                         {% if parent.image is not null %}
@@ -397,34 +419,37 @@
                                                                                                                                         </div>
                                                                                                                                     </li>
 
-                                                                                                                                </ul>
-                                                                                                                                <div class="bt text-center pt-30">
-                                                                                                                                    <a href="#" class="btn btn-primary">Lire plus d'avis</a>
-                                                                                                                                </div>
-                                                                                                                                {% endif %}
+                                                                                                                                    {% endfor %}
 
 
+                                                                                                                                    </ul>
+                                                                                                                                    <div class="bt text-center pt-30">
+                                                                                                                                        <a href="#" class="btn btn-primary">Lire plus d'avis</a>
+                                                                                                                                    </div>
+                                                                                                                                    {% endif %}
+
+
+
+                                                                                                                                    </div>
 
                                                                                                                                 </div>
 
                                                                                                                             </div>
 
-                                                                                                                        </div>
+                                                                                                                            <div class="detail-content">
 
-                                                                                                                        <div class="detail-content">
+                                                                                                                                <div class="section-title text-left">
+                                                                                                                                    <h4>Profs similaires</h4>
+                                                                                                                                </div>
 
-                                                                                                                            <div class="section-title text-left">
-                                                                                                                                <h4>Profs similaires</h4>
-                                                                                                                            </div>
+                                                                                                                                <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
 
-                                                                                                                            <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
-
-                                                                                                                                <div class="GridLex-grid-noGutter-equalHeight">
-                                                                                                                                    {% if not params.similarProfs is empty %}
+                                                                                                                                    <div class="GridLex-grid-noGutter-equalHeight">
+                                                                                                                                        {% if not params.similarProfs is empty %}
                                                                                                                                             {% for enseignement in params.similarProfs %}
                                                                                                                                                 <div class="GridLex-col-4_sm-4_xs-12 mb-20">
                                                                                                                                                     <div class="package-grid-item"> 
-                                                                                                                                                        <a href="#">
+                                                                                                                                                        <a href=" {{ path('lgp_course_profile_prof',{'profId':enseignement.prof.id}) }} ">
                                                                                                                                                             <div class="image similar">
                                                                                                                                                                 {% if enseignement.prof.image is not null %}
                                                                                                                                                                     <img src="{{ asset(enseignement.prof.image.webPath) }}"/>
@@ -442,81 +467,81 @@
                                                                                                                                                             <div class="content clearfix">
                                                                                                                                                                 <h6> {{ enseignement.prof.prenoms ~"  "~ enseignement.prof.nom | upper }} </h6>
                                                                                                                                                                 {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseignement.prof}) %}
-                                                                                                                                                                {% for avis in  allAvis %}
-                                                                                                                                                                    {% set avisSum = avisSum + avis.note %}
-                                                                                                                                                                {% endfor %}
-                                                                                                                                                                 {% if allAvis | length != 0 %}
-                                                                                                                                                                    {% set avisRange = avisSum / allAvis | length %}
-                                                                                                                                                                {% else %}
-                                                                                                                                                                    {% set avisRange = 0 %}
-                                                                                                                                                                {% endif %}
-                                                                                                                                                                <div class="rating-wrapper">
-                                                                                                                                                                    <div class="raty-wrapper">
-                                                                                                                                                                        <div>
-                                                                                                                                                                             {% for i in range(1,5) %}
-                                                                                                                                                                                {% if (avisRange | round) >= i %}
-                                                                                                                                                                                    <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
-                                                                                                                                                                                {% else %}
-                                                                                                                                                                                    <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
-                                                                                                                                                                                {% endif %}
-                                                                                                                                                                            {% endfor %}
-                                                                                                                                                                        </div><br>
-                                                                                                                                                                        <span> / {{allAvis | length}} avis</span>
+                                                                                                                                                                        {% for avis in  allAvis %}
+                                                                                                                                                                            {% set avisSum = avisSum + avis.note %}
+                                                                                                                                                                                {% endfor %}
+                                                                                                                                                                                    {% if allAvis | length != 0 %}
+                                                                                                                                                                                        {% set avisRange = avisSum / allAvis | length %}
+                                                                                                                                                                                            {% else %}
+                                                                                                                                                                                                {% set avisRange = 0 %}
+                                                                                                                                                                                                    {% endif %}
+                                                                                                                                                                                                        <div class="rating-wrapper">
+                                                                                                                                                                                                        <div class="raty-wrapper">
+                                                                                                                                                                                                        <div>
+                                                                                                                                                                                                        {% for i in range(1,5) %}
+                                                                                                                                                                                                        {% if (avisRange | round) >= i %}
+                                                                                                                                                                                                        <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                                                                                                                                                        {% else %}
+                                                                                                                                                                                                        <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
+                                                                                                                                                                                                        {% endif %}
+                                                                                                                                                                                                        {% endfor %}
+                                                                                                                                                                                                        </div><br>
+                                                                                                                                                                                                        <span> / {{allAvis | length}} avis</span>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        <div class="absolute-in-content">
+                                                                                                                                                                                                        {% set minPrice = params.enseignementRep.getPrixProf(enseignement.prof) %}
+                                                                                                                                                                                                        <span class="btn"><i class="fa fa-heart text-primary"></i></span>
+                                                                                                                                                                                                        <div class="price">{{minPrice}} F/H <br> Prix minimal</div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </a>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            {% endfor %}
+                                                                                                                                                                                                {% endif %}
+
+                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                        </div>
+
+
+                                                                                                                                                                                    </div>
+
+                                                                                                                                                                                </div>
+
+                                                                                                                                                                                <div class="col-sm-4 hidden-sm hidden-xs">
+
+                                                                                                                                                                                    <div class="scrollspy-sidebar sidebar-detail" role="complementary">
+
+                                                                                                                                                                                        <ul class="scrollspy-sidenav">
+
+                                                                                                                                                                                            <li>
+                                                                                                                                                                                                <ul class="nav">
+                                                                                                                                                                                                    <li><a href="#section-0" class="anchor">Je donne cours de</a></li>
+                                                                                                                                                                                                    <li><a href="#section-1" class="anchor">A Propos de moi</a></li>
+                                                                                                                                                                                                    <li><a href="#section-2" class="anchor">Ma formation</a></li>
+                                                                                                                                                                                                        {# <li><a href="#section-3" class="anchor">Disponibilités</a></li> #}
+                                                                                                                                                                                                    <li><a href="#section-3" class="anchor">Avis</a></li>
+                                                                                                                                                                                                </ul>
+                                                                                                                                                                                            </li>
+
+                                                                                                                                                                                        </ul>
+
+                                                                                                                                                                                        <a href=" {{path('lgp_course_find')}} " class="btn btn-primary">Faire une autre recherche</a>
+
+                                                                                                                                                                                        <div style="width: 100%; height: 20px;"></div>
+
+                                                                                                                                                                                    </div>
+
+                                                                                                                                                                                </div>
+
+                                                                                                                                                                            </div>
+
+                                                                                                                                                                        </div>
+
                                                                                                                                                                     </div>
-                                                                                                                                                                </div>
-                                                                                                                                                                <div class="absolute-in-content">
-                                                                                                                                                                    {% set minPrice = params.enseignementRep.getPrixProf(enseignement.prof) %}
-                                                                                                                                                                    <span class="btn"><i class="fa fa-heart text-primary"></i></span>
-                                                                                                                                                                    <div class="price">{{minPrice}} F/H <br> Prix minimal</div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                        </a>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>
-                                                                                                                                            {% endfor %}
-                                                                                                                                    {% endif %}
 
-                                                                                                                                </div>
-
-                                                                                                                            </div>
-
-                                                                                                                        </div>
-
-
-                                                                                                                    </div>
-
-                                                                                                                </div>
-
-                                                                                                                <div class="col-sm-4 hidden-sm hidden-xs">
-
-                                                                                                                    <div class="scrollspy-sidebar sidebar-detail" role="complementary">
-
-                                                                                                                        <ul class="scrollspy-sidenav">
-
-                                                                                                                            <li>
-                                                                                                                                <ul class="nav">
-                                                                                                                                    <li><a href="#section-0" class="anchor">Je donne cours de</a></li>
-                                                                                                                                    <li><a href="#section-1" class="anchor">A Propos de moi</a></li>
-                                                                                                                                    <li><a href="#section-2" class="anchor">Ma formation</a></li>
-                                                                                                                                        {# <li><a href="#section-3" class="anchor">Disponibilités</a></li> #}
-                                                                                                                                    <li><a href="#section-3" class="anchor">Avis</a></li>
-                                                                                                                                </ul>
-                                                                                                                            </li>
-
-                                                                                                                        </ul>
-
-                                                                                                                        <a href=" {{path('lgp_course_find')}} " class="btn btn-primary">Faire une autre recherche</a>
-
-                                                                                                                        <div style="width: 100%; height: 20px;"></div>
-
-                                                                                                                    </div>
-
-                                                                                                                </div>
-
-                                                                                                            </div>
-
-                                                                                                        </div>
-
-                                                                                                    </div>
-
-                                                                                                    {% endblock %}
+                                                                                                                                                                    {% endblock %}

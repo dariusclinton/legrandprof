@@ -39,7 +39,7 @@ $(function() {
      });
      });*/
     $("#cours_search_intitule").autocomplete({
-        autoFocus: true,
+        autoFocus: false,
         maxResults: 10,
         source: learn
     });

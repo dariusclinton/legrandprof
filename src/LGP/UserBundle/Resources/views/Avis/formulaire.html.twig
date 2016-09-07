@@ -9,9 +9,11 @@
 {{ form_widget(form.commentaire, {'attr': {}}) }}
 {{ form_errors(form.commentaire) }}
 
-{{ form_label(form.prof, 'Veuillez choisir le prof', {'label_attr': {}}) }}
-{{ form_widget(form.prof, {'attr': {}}) }}
-{{ form_errors(form.prof) }}
+{% if form.prof is defined %}
+    {{ form_label(form.prof, 'Veuillez choisir le prof', {'label_attr': {}}) }}
+    {{ form_widget(form.prof, {'attr': {}}) }}
+    {{ form_errors(form.prof) }}
+{% endif %}
 
 {{ form_rest(form) }}
 
