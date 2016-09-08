@@ -36,18 +36,12 @@ class Categorie {
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image_url", type="string", length=255, nullable=true)
+     * @var \LGPUserBundle\Entity\Image
+     * 
+     * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Image", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image_alt", type="string", length=255, nullable=true)
-     */
-    private $alt;
+    private $image;   
 
     /**
      * @var \LGP\CourseBundle\Entity\Cours
@@ -55,8 +49,9 @@ class Categorie {
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie")
      */
     private $cours;
-
-   
+    
+    
+    
     /**
      * Constructor
      */
@@ -124,51 +119,27 @@ class Categorie {
     }
 
     /**
-     * Set url
+     * Set image
      *
-     * @param string $url
+     * @param \LGP\UserBundle\Entity\Image $image
      *
      * @return Categorie
      */
-    public function setUrl($url)
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
     {
-        $this->url = $url;
+        $this->image = $image;
     
         return $this;
     }
 
     /**
-     * Get url
+     * Get image
      *
-     * @return string
+     * @return \LGP\UserBundle\Entity\Image
      */
-    public function getUrl()
+    public function getImage()
     {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return Categorie
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-    
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
+        return $this->image;
     }
 
     /**

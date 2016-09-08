@@ -20,6 +20,13 @@ abstract class User extends BaseUser
      * @ORM\JoinColumn(nullable=true)
      */
     protected $image;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Reservation
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
+     */
+    private $reservations;
 
     /**
      * @var int
@@ -317,5 +324,39 @@ abstract class User extends BaseUser
      */
     public function getAffichage() {
       return $this->prenoms.' '.$this->nom;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return User
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }
