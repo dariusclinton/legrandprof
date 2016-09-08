@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProgrammeDeCours
  *
- * @ORM\Table(name="programme_de_cours")
+ * @ORM\Table(name="lgp_programme_de_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\ProgrammeDeCoursRepository")
  */
 class ProgrammeDeCours

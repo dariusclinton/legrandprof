@@ -60,6 +60,7 @@ class ReservationEnseignement
      * @var \LGPReservationBundle\Entity\JourDeCours
      * 
      * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservationEnseignements")
+     * @ORM\JoinTable(name="lgp_reservation_enseignement_jours_de_cours")
      */
    private $joursDeCours;
 
