@@ -1,3 +1,4 @@
+# routing for reservation
 lgp_reservation_homepage:
     path:     /
     defaults: { _controller: LGPReservationBundle:Default:index }
@@ -7,14 +8,22 @@ lgp_reservation_detail:
     defaults: { _controller: LGPReservationBundle:Reservation:detail }
     requirements:
         id: \d+
-    
+   
+lgp_reservation_confirm:
+    path:    /cart/confirm/{parentId}
+    defaults: { _controller: LGPReservationBundle:Reservation:confirmReservation }
+    requirements:
+        parentId: \d+
+
+
+# routing for cart
 lgp_reservation_cart:
     path:    /cart
-    defaults: { _controller: LGPReservationBundle:Reservation:cart }
+    defaults: { _controller: LGPReservationBundle:Cart:cart }
     
 lgp_reservation_cart_add:
     path:    /cart/add/{profId}
-    defaults: { _controller: LGPReservationBundle:Reservation:addCart }
+    defaults: { _controller: LGPReservationBundle:Cart:addCart }
     requirements:
         profId: \d+
     options:
@@ -22,12 +31,4 @@ lgp_reservation_cart_add:
  
 lgp_reservation_cart_remove:
     path:    /cart/remove/{key}
-    defaults: { _controller: LGPReservationBundle:Reservation:removeCart }
-
- 
-lgp_reservation_confirm:
-    path:    /cart/confirm/{parentId}
-    defaults: { _controller: LGPReservationBundle:Reservation:confirmReservation }
-    requirements:
-        parentId: \d+
-
+    defaults: { _controller: LGPReservationBundle:Cart:removeCart }

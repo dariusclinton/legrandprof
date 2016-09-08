@@ -4,8 +4,6 @@ namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
-use LGP\UserBundle\Entity\Avis;
-use LGP\UserBundle\Form\AvisSonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,17 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 class CourseController extends Controller {
-
-    /**
-     * 
-     * @param type $cours
-     * @param type $page
-     * @param Request $request
-     * @return type
-     * @throws type
-     * @throws NotFoundHttpException
-     * @throws InvalidArgumentException
-     */
+    
     public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -67,17 +55,7 @@ class CourseController extends Controller {
         }
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
-
-    /**
-     * 
-     * @param type $intitule_cours
-     * @param type $page
-     * @param Request $request
-     * @return type
-     * @throws type
-     * @throws NotFoundHttpException
-     * @throws InvalidArgumentException
-     */
+    
     public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -135,17 +113,6 @@ class CourseController extends Controller {
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
-    /**
-     * 
-     * @param type $ville
-     * @param type $cours
-     * @param type $page
-     * @param Request $request
-     * @return type
-     * @throws type
-     * @throws NotFoundHttpException
-     * @throws InvalidArgumentException
-     */
     public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -202,16 +169,6 @@ class CourseController extends Controller {
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
-    /**
-     * 
-     * @param type $ville
-     * @param type $page
-     * @param Request $request
-     * @return type
-     * @throws type
-     * @throws NotFoundHttpException
-     * @throws InvalidArgumentException
-     */
     public function searchCityAction($ville, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -258,74 +215,6 @@ class CourseController extends Controller {
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
-    /**
-     * 
-     * @param type $category
-     * @param type $page
-     * @return type
-     * @throws NotFoundHttpException
-     */
-    public function categoryAction($category, $page) {
-        $em = $this->getDoctrine()->getManager();
-        $categoryRepository = $em->getRepository('LGPCourseBundle:Categorie');
-        $coursRep = $em->getRepository('LGPCourseBundle:Cours');
-        $categories = $categoryRepository->findAll();
-        $cat = $categoryRepository->findOneBy(array('intitule' => $category));
-        $max_per_page = 10;
-        $courses = $coursRep->getAllCoursesByCategory($cat, $page, $max_per_page);
-        $coursesCount = count($courses);
-        $pageCount = ceil($coursesCount / $max_per_page);
-        if ($pageCount < $page && $pageCount != 0) {
-            throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
-        }
-
-        $params = array(
-            'category' => $category,
-            'categories' => $categories,
-            'courses' => $courses,
-            'pagination' => array(
-                'route' => 'lgp_course_find_category',
-                'pages_count' => $pageCount,
-                'profs_count' => $coursesCount,
-                'max_per_page' => $max_per_page,
-                'page' => $page,
-                'route_params' => array('category' => $category)
-            ),
-        );
-
-        return $this->render('LGPCourseBundle:Course:category.html.twig', array('params' => $params));
-    }
-
-    /**
-     * 
-     * @param type $page
-     * @return type
-     * @throws NotFoundHttpException
-     */
-    public function allCategoriesAction($page) {
-        $max_per_page = 10;
-        $categoryRepository = $this->getDoctrine()->getManager()->getRepository('LGPCourseBundle:Categorie');
-        $categories = $categoryRepository->getAllCategories($page, $max_per_page);
-        $categoriesCount = count($categories);
-        $pageCount = ceil($categoriesCount / $max_per_page);
-        if ($pageCount < $page && $pageCount != 0) {
-            throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
-        }
-        $params = array(
-            'categories' => $categories,
-            'categoryRep' => $categoryRepository,
-            'pagination' => array(
-                'route' => 'lgp_course_category',
-                'pages_count' => $pageCount,
-                'profs_count' => $categoriesCount,
-                'max_per_page' => $max_per_page,
-                'page' => $page,
-                'route_params' => array()
-            ),
-        );
-        return $this->render('LGPCourseBundle:Course:all_categories.html.twig', array('params' => $params));
-    }
-
     public function updateClasseAction($profId, $coursId, Request $request) {
         if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
@@ -343,47 +232,4 @@ class CourseController extends Controller {
             return new JsonResponse($courses);
         }
     }
-
-    public function profileAction($profId, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $profRep = $em->getRepository("LGPUserBundle:Prof");
-        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
-        $avisRep = $em->getRepository("LGPUserBundle:Avis");
-        $profFound = $profRep->find($profId);
-        $allAvis = $avisRep->getAvis($profFound, 3);
-        $similarProfs = $enseignementRep->getSimilarProfs($profId);
-        $avis = new Avis();
-        $form = $this->createForm(AvisSonType::class, $avis);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $parent = $this->getUser();
-            if ($parent === null) {
-                $session = $request->getSession();
-                $session->getFlashBag()->add('warning', 'vous devez être connecté pour poster un avis !!!');
-//            return $this->forward('LGPCourseBundle:Course:profile', array('profId'=> $profId));
-                return $this->redirectToRoute('lgp_course_profile_prof', array('profId' => $profId));
-            }
-            $avis->setParent($parent);
-            $avis->setProf($profFound);
-            // On persiste l'entite
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($avis);
-            $em->flush();
-
-            $session = $request->getSession();
-            $session->getFlashBag()->add('info', 'votre avis a bien été envoyé!!!');
-//            return $this->forward('LGPCourseBundle:Course:profile', array('profId'=> $profId));
-            return $this->redirectToRoute('lgp_course_profile_prof', array('profId' => $profId));
-        }
-        $params = array(
-            'prof' => $profFound,
-            'enseignementRep' => $enseignementRep,
-            'avisRep' => $avisRep,
-            'avis' => $allAvis,
-            'similarProfs' => $similarProfs
-        );
-        return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params, 'form' => $form->createView()));
-    }
-
 }

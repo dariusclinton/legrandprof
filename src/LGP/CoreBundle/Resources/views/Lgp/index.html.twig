@@ -2,7 +2,7 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-  Accueil - {{ parent() }}
+    Accueil - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -179,7 +179,9 @@
                             <div class="package-grid-item"> 
                                 <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">
                                     <div class="image">
-                                        <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />
+                                        {% if category.image is not null %}
+                                            <img src="{{ asset(category.image.webPath) }}" alt="{{category.image.alt}}" />
+                                        {% endif %}
                                         <div class="absolute-in-image">
                                             <div class="duration"><span>{{categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>
                                         </div>

@@ -4,21 +4,22 @@ lgp_course_all_intitule:
     options: 
         expose: true
 
-lgp_course_category:
+# categories
+lgp_course_categories:
     path:     /categories/{page}
-    defaults: { _controller: LGPCourseBundle:Course:allCategories, page: 1 }
+    defaults: { _controller: LGPCourseBundle:Categorie:index, page: 1 }
     requirements:
         page:   \d+
 
 
 lgp_course_find_category:
     path:     /search/categories/{category}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:category, page: 1 }
+    defaults: { _controller: LGPCourseBundle:Categorie:courseList, page: 1 }
     requirements:
         page:   \d+
 
 
-  
+# course
 lgp_course_find:
     path:     /search/profs/{page}
     defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
@@ -56,8 +57,9 @@ lgp_course_update_classe:
     options:
         expose: true
         
+# enseignement
 lgp_course_profile_prof:
     path:     /profile/{profId}
-    defaults: { _controller: LGPCourseBundle:Course:profile}
+    defaults: { _controller: LGPCourseBundle:Enseignement:profile}
     requirements:
         profId: \d+

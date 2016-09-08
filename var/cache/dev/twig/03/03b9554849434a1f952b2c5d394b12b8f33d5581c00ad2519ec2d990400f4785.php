@@ -22,36 +22,36 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_88e077631c1a81da3944e83bb6a1f03eedcb2c0aba10318e44f762f927624582 = $this->env->getExtension("native_profiler");
-        $__internal_88e077631c1a81da3944e83bb6a1f03eedcb2c0aba10318e44f762f927624582->enter($__internal_88e077631c1a81da3944e83bb6a1f03eedcb2c0aba10318e44f762f927624582_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
+        $__internal_3816adafa36d5fef36a3a4b79f7139ae9ad512677a8590b121c9d82e65c0da8e = $this->env->getExtension("native_profiler");
+        $__internal_3816adafa36d5fef36a3a4b79f7139ae9ad512677a8590b121c9d82e65c0da8e->enter($__internal_3816adafa36d5fef36a3a4b79f7139ae9ad512677a8590b121c9d82e65c0da8e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_88e077631c1a81da3944e83bb6a1f03eedcb2c0aba10318e44f762f927624582->leave($__internal_88e077631c1a81da3944e83bb6a1f03eedcb2c0aba10318e44f762f927624582_prof);
+        $__internal_3816adafa36d5fef36a3a4b79f7139ae9ad512677a8590b121c9d82e65c0da8e->leave($__internal_3816adafa36d5fef36a3a4b79f7139ae9ad512677a8590b121c9d82e65c0da8e_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_066f5a62d9f7088a691c9a96189f5af6a64b3bf67fdfdb7c635e96799af16ed2 = $this->env->getExtension("native_profiler");
-        $__internal_066f5a62d9f7088a691c9a96189f5af6a64b3bf67fdfdb7c635e96799af16ed2->enter($__internal_066f5a62d9f7088a691c9a96189f5af6a64b3bf67fdfdb7c635e96799af16ed2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_e6380710bb95d01c5c16ca9ea24d77422a4fe0d67614332800f2bfae94176869 = $this->env->getExtension("native_profiler");
+        $__internal_e6380710bb95d01c5c16ca9ea24d77422a4fe0d67614332800f2bfae94176869->enter($__internal_e6380710bb95d01c5c16ca9ea24d77422a4fe0d67614332800f2bfae94176869_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
-        echo "  Accueil - ";
+        echo "    Accueil - ";
         $this->displayParentBlock("title", $context, $blocks);
         echo "
 ";
         
-        $__internal_066f5a62d9f7088a691c9a96189f5af6a64b3bf67fdfdb7c635e96799af16ed2->leave($__internal_066f5a62d9f7088a691c9a96189f5af6a64b3bf67fdfdb7c635e96799af16ed2_prof);
+        $__internal_e6380710bb95d01c5c16ca9ea24d77422a4fe0d67614332800f2bfae94176869->leave($__internal_e6380710bb95d01c5c16ca9ea24d77422a4fe0d67614332800f2bfae94176869_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_fd948601b23363238bdb1349658d6e6a4b8af7e8e4fc62ba4e59054361620f7f = $this->env->getExtension("native_profiler");
-        $__internal_fd948601b23363238bdb1349658d6e6a4b8af7e8e4fc62ba4e59054361620f7f->enter($__internal_fd948601b23363238bdb1349658d6e6a4b8af7e8e4fc62ba4e59054361620f7f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_c3416c9288dbcab754633b3c990231fdf932a69fcaa45e601456953b2a1be026 = $this->env->getExtension("native_profiler");
+        $__internal_c3416c9288dbcab754633b3c990231fdf932a69fcaa45e601456953b2a1be026->enter($__internal_c3416c9288dbcab754633b3c990231fdf932a69fcaa45e601456953b2a1be026_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <!-- start hero-header with windows height -->
@@ -270,22 +270,28 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("category" => $this->getAttribute($context["category"], "intitule", array()))), "html", null, true);
             echo "\">
                                     <div class=\"image\">
-                                        <img src=\"";
+                                        ";
             // line 182
-            echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["category"], "url", array())), "html", null, true);
-            echo "\" alt=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "alt", array()), "html", null, true);
-            echo "\" />
-                                        <div class=\"absolute-in-image\">
+            if ( !(null === $this->getAttribute($context["category"], "image", array()))) {
+                // line 183
+                echo "                                            <img src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($context["category"], "image", array()), "webPath", array())), "html", null, true);
+                echo "\" alt=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["category"], "image", array()), "alt", array()), "html", null, true);
+                echo "\" />
+                                        ";
+            }
+            // line 185
+            echo "                                        <div class=\"absolute-in-image\">
                                             <div class=\"duration\"><span>";
-            // line 184
+            // line 186
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["categoryRep"]) ? $context["categoryRep"] : $this->getContext($context, "categoryRep")), "getcountProfsByCategory", array(0 => $this->getAttribute($context["category"], "intitule", array())), "method"), "html", null, true);
             echo " Grands profs</span></div>
                                         </div>
                                     </div>
                                     <div class=\"content clearfix\">
                                         <h5>";
-            // line 188
+            // line 190
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "intitule", array()), "html", null, true);
             echo "</h5>
                                     </div>
@@ -298,7 +304,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 195
+        // line 197
         echo "
                 </div>
 
@@ -376,7 +382,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
             <div class=\"GridLex-col-6_sm-12 image-bg\">
 
                 <div class=\"image-bg\" style=\"background-image:url('";
-        // line 271
+        // line 273
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/image-01.jpg"), "html", null, true);
         echo "');\"></div>
             </div>
@@ -423,7 +429,7 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
     </div>
 ";
         
-        $__internal_fd948601b23363238bdb1349658d6e6a4b8af7e8e4fc62ba4e59054361620f7f->leave($__internal_fd948601b23363238bdb1349658d6e6a4b8af7e8e4fc62ba4e59054361620f7f_prof);
+        $__internal_c3416c9288dbcab754633b3c990231fdf932a69fcaa45e601456953b2a1be026->leave($__internal_c3416c9288dbcab754633b3c990231fdf932a69fcaa45e601456953b2a1be026_prof);
 
     }
 
@@ -439,14 +445,14 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 
     public function getDebugInfo()
     {
-        return array (  380 => 271,  302 => 195,  289 => 188,  282 => 184,  275 => 182,  270 => 180,  265 => 177,  261 => 176,  224 => 142,  216 => 139,  206 => 132,  198 => 129,  188 => 122,  180 => 119,  170 => 112,  162 => 109,  84 => 34,  81 => 33,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
+        return array (  386 => 273,  308 => 197,  295 => 190,  288 => 186,  285 => 185,  277 => 183,  275 => 182,  270 => 180,  265 => 177,  261 => 176,  224 => 142,  216 => 139,  206 => 132,  198 => 129,  188 => 122,  180 => 119,  170 => 112,  162 => 109,  84 => 34,  81 => 33,  60 => 10,  57 => 9,  51 => 8,  41 => 5,  35 => 4,  11 => 2,);
     }
 }
 /* */
 /* {% extends "LGPCoreBundle::layout.html.twig" %}*/
 /* */
 /* {% block title %}*/
-/*   Accueil - {{ parent() }}*/
+/*     Accueil - {{ parent() }}*/
 /* {% endblock %}*/
 /* */
 /* {% block body %}*/
@@ -623,7 +629,9 @@ class __TwigTemplate_0cb001073bfc182244c65ba8d57ecef11e9ffa3d869dbce135c25163209
 /*                             <div class="package-grid-item"> */
 /*                                 <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">*/
 /*                                     <div class="image">*/
-/*                                         <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />*/
+/*                                         {% if category.image is not null %}*/
+/*                                             <img src="{{ asset(category.image.webPath) }}" alt="{{category.image.alt}}" />*/
+/*                                         {% endif %}*/
 /*                                         <div class="absolute-in-image">*/
 /*                                             <div class="duration"><span>{{categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>*/
 /*                                         </div>*/
