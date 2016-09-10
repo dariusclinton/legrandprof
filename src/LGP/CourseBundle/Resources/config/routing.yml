@@ -1,3 +1,9 @@
+lgp_course_all_intitule:
+    path:     /all/intitule
+    defaults: { _controller: LGPCourseBundle:Course:updateCourseData}
+    options: 
+        expose: true
+
 lgp_course_category:
     path:     /categories/{page}
     defaults: { _controller: LGPCourseBundle:Course:allCategories, page: 1 }

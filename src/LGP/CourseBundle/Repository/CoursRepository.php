@@ -35,5 +35,10 @@ class CoursRepository extends EntityRepository {
                 ->setMaxResults(1);
         return $query->getOneOrNullResult();
     }
+    
+    public function getIntituleCourse(){
+        $query = $this->_em->createQuery("SELECT c.intitule FROM LGPCourseBundle:Cours c");
+        return $query->getResult();
+    }
 
 }

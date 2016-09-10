@@ -4,6 +4,8 @@ namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
+use LGP\UserBundle\Entity\Avis;
+use LGP\UserBundle\Form\AvisSonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,12 +26,13 @@ class CourseController extends Controller {
      */
     public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
         try {
-            $profs = $enseigneRep->getAllProfsEnseignants($page, $max_per_page);
+            $profs = $enseignementRep->getAllProfsEnseignants($page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profs);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -39,7 +42,8 @@ class CourseController extends Controller {
             $params = array(
                 'courses' => $courses,
                 'matieres_profs' => $profs,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find',
                     'pages_count' => $pageCount,
@@ -76,14 +80,15 @@ class CourseController extends Controller {
      */
     public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
         try {
-            $profsByCours = $enseigneRep->getProfsByCours($coursFound, $page, $max_per_page);
+            $profsByCours = $enseignementRep->getProfsByCours($coursFound, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profsByCours);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -101,7 +106,8 @@ class CourseController extends Controller {
                 'courses' => $courses,
                 'courseFound' => $coursFound,
                 'matieres_profs' => $profsByCours,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof',
                     'pages_count' => $pageCount,
@@ -142,13 +148,14 @@ class CourseController extends Controller {
      */
     public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
         try {
-            $profsByCoursAndCity = $enseigneRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
+            $profsByCoursAndCity = $enseignementRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profsByCoursAndCity);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -167,7 +174,8 @@ class CourseController extends Controller {
                 'courseFound' => $coursFound,
                 'courses' => $courses,
                 'matieres_profs' => $profsByCoursAndCity,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof_refine',
                     'pages_count' => $pageCount,
@@ -206,12 +214,13 @@ class CourseController extends Controller {
      */
     public function searchCityAction($ville, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $enseigneRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
         try {
-            $profsByCity = $enseigneRep->getProfsByCity($ville, $page, $max_per_page);
+            $profsByCity = $enseignementRep->getProfsByCity($ville, $page, $max_per_page);
             $profsCount = count($profsByCity);
             $pageCount = ceil($profsCount / $max_per_page);
             if ($pageCount < $page && $pageCount != 0) {
@@ -221,7 +230,8 @@ class CourseController extends Controller {
                 'ville' => $ville,
                 'courses' => $courses,
                 'matieres_profs' => $profsByCity,
-                'enseigneRep' => $enseigneRep,
+                'enseignementRep' => $enseignementRep,
+                'avisRep' => $avisRep,
                 'pagination' => array(
                     'route' => 'lgp_course_find_prof_city',
                     'pages_count' => $pageCount,
@@ -303,6 +313,7 @@ class CourseController extends Controller {
         }
         $params = array(
             'categories' => $categories,
+            'categoryRep' => $categoryRepository,
             'pagination' => array(
                 'route' => 'lgp_course_category',
                 'pages_count' => $pageCount,
@@ -322,27 +333,57 @@ class CourseController extends Controller {
             $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
             return new JsonResponse($ens);
         }
-        $em = $this->getDoctrine()->getManager();
-        $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
-        $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
-        return new JsonResponse($ens);
     }
 
-    public function profileAction($profId) {
+    public function updateCourseDataAction(Request $request) {
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            $courseRep = $em->getRepository("LGPCourseBundle:Cours");
+            $courses = $courseRep->getIntituleCourse();
+            return new JsonResponse($courses);
+        }
+    }
+
+    public function profileAction($profId, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $profRep = $em->getRepository("LGPUserBundle:Prof");
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $profFound = $profRep->find($profId);
-        $avis = $avisRep->findBy(array('prof' => $profFound));
+        $allAvis = $avisRep->getAvis($profFound, 3);
         $similarProfs = $enseignementRep->getSimilarProfs($profId);
+        $avis = new Avis();
+        $form = $this->createForm(AvisSonType::class, $avis);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $parent = $this->getUser();
+            if ($parent === null) {
+                $session = $request->getSession();
+                $session->getFlashBag()->add('warning', 'vous devez être connecté pour poster un avis !!!');
+//            return $this->forward('LGPCourseBundle:Course:profile', array('profId'=> $profId));
+                return $this->redirectToRoute('lgp_course_profile_prof', array('profId' => $profId));
+            }
+            $avis->setParent($parent);
+            $avis->setProf($profFound);
+            // On persiste l'entite
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($avis);
+            $em->flush();
+
+            $session = $request->getSession();
+            $session->getFlashBag()->add('info', 'votre avis a bien été envoyé!!!');
+//            return $this->forward('LGPCourseBundle:Course:profile', array('profId'=> $profId));
+            return $this->redirectToRoute('lgp_course_profile_prof', array('profId' => $profId));
+        }
         $params = array(
             'prof' => $profFound,
             'enseignementRep' => $enseignementRep,
-            'avis' => $avis,
+            'avisRep' => $avisRep,
+            'avis' => $allAvis,
             'similarProfs' => $similarProfs
         );
-        return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params));
+        return $this->render('LGPCourseBundle:Course:profile.html.twig', array('params' => $params, 'form' => $form->createView()));
     }
 
 }

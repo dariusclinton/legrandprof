@@ -29,13 +29,6 @@ class JourDeCours {
     private $intitule;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heure", type="time", nullable=false)
-     */
-    private $heure;
-
-    /**
      * @var \LGPReservationBundle\Entity\ReservationEnseignement
      * 
      * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="joursDeCours")
@@ -45,18 +38,17 @@ class JourDeCours {
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="jourDeCours")
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="jourDeCours")
      */
     private $seanceDeCours;
-
-  
+    
+    
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->reservationEnseignements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->seanceDeCours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -94,30 +86,6 @@ class JourDeCours {
     }
 
     /**
-     * Set heure
-     *
-     * @param \DateTime $heure
-     *
-     * @return JourDeCours
-     */
-    public function setHeure($heure)
-    {
-        $this->heure = $heure;
-    
-        return $this;
-    }
-
-    /**
-     * Get heure
-     *
-     * @return \DateTime
-     */
-    public function getHeure()
-    {
-        return $this->heure;
-    }
-
-    /**
      * Add reservationEnseignement
      *
      * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
@@ -152,33 +120,23 @@ class JourDeCours {
     }
 
     /**
-     * Add seanceDeCour
+     * Set seanceDeCours
      *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
+     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCours
      *
      * @return JourDeCours
      */
-    public function addSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
+    public function setSeanceDeCours(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCours = null)
     {
-        $this->seanceDeCours[] = $seanceDeCour;
+        $this->seanceDeCours = $seanceDeCours;
     
         return $this;
     }
 
     /**
-     * Remove seanceDeCour
-     *
-     * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour
-     */
-    public function removeSeanceDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCour)
-    {
-        $this->seanceDeCours->removeElement($seanceDeCour);
-    }
-
-    /**
      * Get seanceDeCours
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \LGP\CourseBundle\Entity\SeanceDeCours
      */
     public function getSeanceDeCours()
     {

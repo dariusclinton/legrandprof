@@ -24,13 +24,6 @@ class Parents extends User
     protected $id;
     
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
-     * 
-     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="parent", cascade={"persist","remove"})
-     */
-    private $reservations;
-    
-    /**
      * @var \LGPReservationBundle\Entity\Paiement
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="parent")

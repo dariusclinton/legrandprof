@@ -49,7 +49,7 @@
                                         <div class="image">
                                             <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />
                                             <div class="absolute-in-image">
-                                                <div class="duration"><span>300 Grands profs</span></div>
+                                                <div class="duration"><span>{{params.categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>
                                             </div>
                                         </div>
                                         <div class="content clearfix">

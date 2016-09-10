@@ -44,11 +44,11 @@ class Reservation {
     private $factures;
     
     /**
-     * @var \LGPUserBundle\Entity\Parents
+     * @var \LGPUserBundle\Entity\User
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Parents", inversedBy="reservations")
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\User", inversedBy="reservations")
      */
-    private $parent;
+    private $user;
     
     /**
      * @var \LGPReservationBundle\Entity\ReservationEnseignement
@@ -56,6 +56,8 @@ class Reservation {
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="reservation")
      */
     private $reservationEnseignements;
+    
+    
     /**
      * Constructor
      */
@@ -158,27 +160,27 @@ class Reservation {
     }
 
     /**
-     * Set parent
+     * Set user
      *
-     * @param \LGP\UserBundle\Entity\Parents $parent
+     * @param \LGP\UserBundle\Entity\User $user
      *
      * @return Reservation
      */
-    public function setParent(\LGP\UserBundle\Entity\Parents $parent = null)
+    public function setUser(\LGP\UserBundle\Entity\User $user = null)
     {
-        $this->parent = $parent;
+        $this->user = $user;
     
         return $this;
     }
 
     /**
-     * Get parent
+     * Get user
      *
-     * @return \LGP\UserBundle\Entity\Parents
+     * @return \LGP\UserBundle\Entity\User
      */
-    public function getParent()
+    public function getUser()
     {
-        return $this->parent;
+        return $this->user;
     }
 
     /**

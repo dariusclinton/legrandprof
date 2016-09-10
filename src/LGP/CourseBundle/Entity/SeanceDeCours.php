@@ -36,9 +36,17 @@ class SeanceDeCours {
     private $date;
     
     /**
+     *
+     * @var int
+     * 
+     * @ORM\Column(name="nb_heures", type="integer")
+     */
+    private $nbHeures;
+    
+    /**
      * @var \LGPReservationBundle\Entity\JourDeCours
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
+     * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
      */
     private $jourDeCours;
 
@@ -107,6 +115,30 @@ class SeanceDeCours {
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set nbHeures
+     *
+     * @param integer $nbHeures
+     *
+     * @return SeanceDeCours
+     */
+    public function setNbHeures($nbHeures)
+    {
+        $this->nbHeures = $nbHeures;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbHeures
+     *
+     * @return integer
+     */
+    public function getNbHeures()
+    {
+        return $this->nbHeures;
     }
 
     /**

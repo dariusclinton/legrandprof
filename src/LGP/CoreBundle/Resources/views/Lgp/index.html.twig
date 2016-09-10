@@ -25,11 +25,11 @@
 
                 <div class="inner">
 
-                    <datalist id="cours">
+                    {# <datalist id="cours">
                         {% for course in courses %}
                             <option> {{course.intitule}} </option>}
                         {% endfor %}
-                    </datalist>
+                    </datalist> #}
 
                     {{ include("LGPCourseBundle:Form:course_form_search.html.twig") }}
 
@@ -109,7 +109,7 @@
                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'douala'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/01.jpg') }}');">
                         <div class="relative">
                             <h4>Douala</h4>
-                            <span>150 Grands Profs</span>
+                            <span>{{ enseignementRep.getCountProfsByCity('Douala')}} Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -119,7 +119,7 @@
                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'yaoundé'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/02.jpg') }}');">
                         <div class="relative">
                             <h4>Yaoundé</h4>
-                            <span>100 Grands Profs</span>
+                            <span>{{ enseignementRep.getCountProfsByCity('Yaounde')}} Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -129,7 +129,7 @@
                     <a href=" {{path('lgp_course_find_prof_city', {'ville':'limbé'})}}  " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/03.jpg') }}');">
                         <div class="relative">
                             <h4>Limbé</h4>
-                            <span>45 Grands Profs</span>
+                            <span>{{ enseignementRep.getCountProfsByCity('Limbe')}} Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -139,7 +139,7 @@
                     <a href="{{path('lgp_course_find_prof_city', {'ville':'Buea'})}} " class="top-destination-image-bg" style="background-image:url('{{ asset('images/villes/04.jpg') }}');">
                         <div class="relative">
                             <h4>Buea</h4>
-                            <span>52 Grands Profs</span>
+                            <span>{{ enseignementRep.getCountProfsByCity('Buea')}} Grands Profs</span>
                         </div>
                     </a>
                 </div>
@@ -181,7 +181,7 @@
                                     <div class="image">
                                         <img src="{{ asset(category.url) }}" alt="{{category.alt}}" />
                                         <div class="absolute-in-image">
-                                            <div class="duration"><span>300 Grands profs</span></div>
+                                            <div class="duration"><span>{{categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>
                                         </div>
                                     </div>
                                     <div class="content clearfix">

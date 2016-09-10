@@ -2,7 +2,8 @@ $(function() {
     function updateClasse() {
         var profId = $("#profId").val();
         var coursId = $("#course").val();
-
+        $("#loading-classe").css({'display':'block'});
+        
         $.ajax({
             method: "POST",
             url: Routing.generate('lgp_course_update_classe', {'profId': profId, 'coursId': coursId}),
@@ -28,6 +29,7 @@ $(function() {
 
             updatePrix();
             updatePrixTotal();
+            $("#loading-classe").css({'display':'none'});
         }).error(function(answer, status) {
             console.log(answer + "   " + status);
         });

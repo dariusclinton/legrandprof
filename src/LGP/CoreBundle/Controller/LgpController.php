@@ -2,19 +2,17 @@
 
 namespace LGP\CoreBundle\Controller;
 
-use LGP\CourseBundle\Form\CoursSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use LGP\CourseBundle\Form\CoursSearchType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 class LgpController extends Controller {
 
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $courseRepositoty = $em->getRepository('LGPCourseBundle:Cours');
         $categoryRepository = $em->getRepository('LGPCourseBundle:Categorie');
+        $enseignementRep = $em->getRepository('LGPCourseBundle:Enseignement');
 
-        $courses = $courseRepositoty->findAll();
         $categoriesPopular = $categoryRepository->findBy(array(), null, 8);
 
 //        $courseForm = new Cours();
@@ -31,7 +29,7 @@ class LgpController extends Controller {
             return $this->redirectToRoute('lgp_course_find_prof', array("intitule_cours" => $data['intitule']));
         }
 
-        return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('courses' => $courses, 'categories' => $categoriesPopular, 'form' => $form_course->createView()));
+        return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('enseignementRep' => $enseignementRep, 'categories' => $categoriesPopular, 'categoryRep' => $categoryRepository, 'form' => $form_course->createView()));
     }
     public function howAction(){
         return $this->render('LGPCoreBundle:Lgp:how.html.twig');
