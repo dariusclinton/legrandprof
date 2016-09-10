@@ -6,7 +6,7 @@ parameters:
     database_user: root
     database_password: 
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: smtp.unadresse.com
+    mailer_user: info@unadresse.com
+    mailer_password: pwdinf2015
     secret: bbb4d84eca91276135d1441544d61d7c58a37f6c

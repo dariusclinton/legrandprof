@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        {% if form.presentation is defined %}
+        {% if is_granted('ROLE_PROF') %}
 
           <div class="notifications-block">
             <div class="notifications-header">Informations de présentation</div>
@@ -68,11 +68,6 @@
                 <div class="col-md-2">{{ form_label(form.ville, "Ville", {'label_attr': {}}) }}</div>
                 <div class="col-md-4">{{ form_widget(form.ville, {'attr': {'class':'form-control'}}) }}</div>
                 {{ form_errors(form.ville) }}
-              </div><br>
-              <div class="row">
-                <div class="col-md-2">{{ form_label(form.quartier, "Quartier", {'label_attr': {}}) }}</div>
-                <div class="col-md-4">{{ form_widget(form.quartier, {'attr': {'class':'form-control'}}) }}</div>
-                {{ form_errors(form.quartier) }}
               </div><br>
               <div class="row">
                 <div class="col-md-2">{{ form_label(form.boitePostale, "Boite postale", {'label_attr': {}}) }}</div>
@@ -99,6 +94,12 @@
                 <div class="col-md-4">{{ form_widget(form.presentation, {'attr': {'class':'form-control'}}) }}</div>
                 {{ form_errors(form.presentation) }}
               </div><br>
+              
+              <div class="row">
+                <div class="col-md-2">{{ form_label(form.quartierCibles, "Quartiers cibles pour les répétitions", {'label_attr': {}}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.quartierCibles) }}</div>
+                {{ form_errors(form.quartierCibles) }}
+              </div><br>
               <div class="row">
                 <div class="col-md-2">{{ form_label(form.profession, "Profession", {'label_attr': {}}) }}</div>
                 <div class="col-md-4">{{ form_widget(form.profession, {'attr': {'class':'form-control'}}) }}</div>
@@ -118,9 +119,9 @@
             <div class="notifications-content">
               <div class="row">
                 <div class="col-md-2">{{ form_label(form.diplomes, "Diplômes", {'label_attr': {'class': ''}}) }}</div>
-                <div class="col-md-4">{{ form_widget(form.diplomes, {'attr': {'class': 'form-control'}}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.diplomes) }}</div>
                 {{ form_errors(form.diplomes) }}
-                <a href="#" class="btn btn-primary btn-sm" id="add_diplome">Ajouter un diplôme</a>
+                <a href="#" class="btn btn-primary btn-sm" id="add_diplome">Ajouter un diplome</a>
               </div><br>
             </div>
           </div>

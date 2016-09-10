@@ -292,16 +292,6 @@ abstract class User extends BaseUser
     }
 
     /**
-     * Methode permettant d'activer le compte de l'utilisateur par defaut lors de l'inscription
-     * 
-    * @ORM\PrePersist
-    */
-    public function enabledUser(){
-        $this->setEnabled(true);
-    }
-
-
-    /**
      * Get image
      *
      * @return \LGP\UserBundle\Entity\Image

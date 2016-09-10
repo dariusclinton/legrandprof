@@ -15,7 +15,11 @@
             <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
             <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
           </p>
-          <center><a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
+          <center>
+            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
+            <br><br>
+            <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot de passe</a>
+          </center>
 
         </div>
       </div>
@@ -23,27 +27,35 @@
       <div class="col-md-9">
         
         <div class="notifications-block">
-          {% if user.presentation is defined %}
-            <h1>Hello Prof !</h1>
-          {% else %}
-            <h1>Hello Parent !</h1>
-          {% endif %}
+          <h1>
+            Hello
+            {% if app.user.prenoms is not null %}
+              {{ app.user.prenoms }}
+            {% else %}
+              {{ app.user.nom }}
+            {% endif %}
+          </h1>
         </div>
         
         <div class="notifications-block">
-          <p>{{ 'profile.show.username'|trans }}: {{ app.user.username }}</p>
-          <p>{{ 'profile.show.email'|trans }}: {{ app.user.email }}</p>
+          <p>Email: {{ app.user.email }}</p>
           <p>Nom: {{ app.user.nom }}</p>
           <p>Prenoms: {{ app.user.prenoms }}</p>
           <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
-          <p>Sexe: {{ app.user.sexe }}</p>
+          <p>
+            Sexe: 
+            {% if app.user.sexe=='m' %}
+              Masculin
+            {% else %}
+              Féminin
+            {% endif %}
+          </p>
           <p>Telephone: {{ app.user.numTelephone }}</p>
           <p>Pays: {{ app.user.pays }}</p>
           
           {#Si profil prof#}
-          {% if user.presentation is defined %}
+          {% if is_granted('ROLE_PROF') %}
             <p>Ville: {{ app.user.ville }}</p>
-            <p>Quartier: {{ app.user.quartier }}</p>
             <p>boite Postale: {{ app.user.boitePostale }}</p>
             <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
             <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
@@ -51,6 +63,15 @@
             <p>Presentation: {{ app.user.presentation }}</p>
             <p>Profession: {{ app.user.profession }}</p>
 
+            <h3>Quartiers cibles</h3>
+            <ul>
+              {% for quartier in app.user.quartierCibles %}
+                <li>
+                  {{ quartier.affichage }}
+                </li>
+              {% endfor %}
+            </ul>
+            
             <h3>Experience professionnelle</h3>
             <ul>
               {% for experience in app.user.experiencePros %}
@@ -79,14 +100,14 @@
             </ul>
 
             <a href='{{ path('lgp_user_prof_avis') }}' class="btn btn-primary">Avis</a>
-            
             <a href='{{ path('lgp_user_prof_cours') }}' class="btn btn-primary">Mes cours</a>
-            
             <a href='{{ path('lgp_user_prof_evaluation') }}' class="btn btn-primary">Mes Evaluations</a>
-            
             <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
-            
-            <a href='{{ path('lgp_user_prof_seance_de_cours') }}' class="btn btn-primary">Mes séances de cours</a>
+            <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
+            <a href='{{ path('lgp_user_anomalies') }}' class="btn btn-primary">Anomalie du système</a>
+            <a href='{{ path('lgp_user_prof_nouvelles_categories_cours') }}' class="btn btn-primary">
+              Proposer une catégorie de cours
+            </a>
           {% endif %}
           
           
@@ -94,7 +115,7 @@
           
           
           {#Si profil parent#}
-          {% if user.presentation is not defined %}
+          {% if is_granted('ROLE_PARENT') %}
 
             <a href='{{ path('lgp_user_parent_avis') }}' class="btn btn-primary">Avis</a>
 
