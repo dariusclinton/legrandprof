@@ -7,10 +7,20 @@ fos_user:
     registration:
         form:
             type: LGP\UserBundle\Form\RegistrationType
+#        confirmation:
+#                enabled: true
     profile:
         form:
             type: LGP\UserBundle\Form\ProfileType
-        
+    resetting:
+            email:
+                template: email/password_resetting.email.twig
+    from_email:
+            address:     info@unadresse.com
+            sender_name: LeGrandProf
+    service:
+            mailer: fos_user.mailer.twig_swift
+                
 pugx_multi_user:
   users:
     user_one:

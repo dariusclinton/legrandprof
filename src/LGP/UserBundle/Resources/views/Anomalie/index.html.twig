@@ -1,0 +1,40 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Anomalies signalées - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  
+  <h1>Anomalies signalées</h1>
+    
+  <a href="{{ path('lgp_user_anomalie_add') }}" class="btn btn-primary">Signaler une anomalie</a>
+ 
+  {% if anomalies|length <= 0 %}
+    
+    <h4 class="text-muted">Aucune anomalie trouvee</h4>
+  
+  {% else %}
+  
+    <table class="table table-bordered table-stripped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Objet</th>
+          <th>Contenu</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for anomalie in anomalies %}
+          <tr>
+            <td>{{anomalie.datePublication | date('d/m/y')}}</td>
+            <td>{{anomalie.objet}}</td>
+            <td>{{anomalie.contenu}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  {% endif %}
+  
+{% endblock %}

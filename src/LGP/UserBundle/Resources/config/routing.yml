@@ -1,11 +1,6 @@
-
 lgp_user_homepage:
     path:     /
     defaults: { _controller: LGPUserBundle:Main:index }
-    
-lgp_user_become_prof:
-    path:     /prof/become
-    defaults: { _controller: LGPUserBundle:Prof:become }
     
 # Registration
 lgp_parent_registration:
@@ -17,9 +12,9 @@ lgp_prof_registration:
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
 
 # Dashboard
-lgp_user_prof_dashboard:
+lgp_user_dashboard:
     path: /dashboard
-    defaults: { _controller: LGPUserBundle:Dashboard:prof }
+    defaults: { _controller: LGPUserBundle:Dashboard:index }
     
 # Avis
 lgp_user_parent_avis_add:
@@ -154,3 +149,27 @@ lgp_user_prof_seance_de_cours_update:
     defaults: { _controller: LGPUserBundle:SeanceDeCours:update }  
     requirements:
       id: \d+
+      
+# Anomalie
+lgp_user_anomalies:
+    path: /anomalies
+    defaults: { _controller: LGPUserBundle:Anomalie:index }  
+
+lgp_user_anomalie_add:
+    path: /anomalie/add
+    defaults: { _controller: LGPUserBundle:Anomalie:add }  
+    
+# Anomalie
+lgp_user_prof_nouvelles_categories_cours:
+    path: /nouvelles-categories-cours
+    defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:index }  
+
+lgp_user_prof_nouvelle_categorie_cours_add:
+    path: /nouvelle-categorie-cours/add
+    defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:add }  
+    
+
+
+    
+
+  

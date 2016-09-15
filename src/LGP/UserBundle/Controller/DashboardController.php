@@ -11,10 +11,10 @@ class DashboardController extends Controller {
    * @return type
    * @throws type
    */
-  public function profAction() {
+  public function indexAction() {
     
-    return $this->render('LGPUserBundle:Dashboard:prof.html.twig');
+    return $this->redirectToRoute('fos_user_profile_show');
   }
   
- 
+  
 }

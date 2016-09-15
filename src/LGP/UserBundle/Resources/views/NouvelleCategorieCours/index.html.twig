@@ -1,0 +1,38 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Catégories de cours proposées - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  
+  <h1>Catégories de cours proposées</h1>
+    
+  <a href="{{ path('lgp_user_prof_nouvelle_categorie_cours_add') }}" class="btn btn-primary">Proposer une catégorie</a>
+ 
+  {% if nouvellesCategoriesCours|length <= 0 %}
+    
+    <h4 class="text-muted">Aucune catégorie trouvée</h4>
+  
+  {% else %}
+  
+    <table class="table table-bordered table-stripped">
+      <thead>
+        <tr>
+          <th>Intitule</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for categorie in nouvellesCategoriesCours %}
+          <tr>
+            <td>{{categorie.intitule }}</td>
+            <td>{{categorie.description}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  {% endif %}
+  
+{% endblock %}

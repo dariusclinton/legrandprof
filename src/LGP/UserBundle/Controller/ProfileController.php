@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Controller\ProfileController as BaseController;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Controller managing the user profile
  *
@@ -59,8 +61,8 @@ class ProfileController extends BaseController
          */
         // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
         if (method_exists($user, 'getExperiencePros')) {
-          $originalExperiencePros = new \Doctrine\Common\Collections\ArrayCollection();
-          $originalDiplomes = new \Doctrine\Common\Collections\ArrayCollection();
+          $originalExperiencePros = new ArrayCollection();
+          $originalDiplomes       = new ArrayCollection();
           
           foreach ($user->getExperiencePros() as $experience) {
             $originalExperiencePros->add($experience);
@@ -95,7 +97,7 @@ class ProfileController extends BaseController
               if (false === $user->getDiplomes()->contains($diplome))
                 $em->remove($diplome);
             }
-            
+
             $em->flush();
           }
           //// end custom code

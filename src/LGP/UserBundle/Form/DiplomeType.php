@@ -19,6 +19,8 @@ class DiplomeType extends AbstractType
             ->add('intitule', ChoiceType::class, array(
               'choices' => array(
                 'Bacc' => 'Bacc',
+                'BTS' => 'BTS',
+                'DUT' => 'DUT',
                 'Licence' => 'Licence',
               ),
               'placeholder' => '--'
@@ -27,12 +29,19 @@ class DiplomeType extends AbstractType
               'choices' => array(
                 'C'  => 'C',
                 'Physique'  => 'Physique',
+                'Chimie'  => 'Chimie',
+                'SVT'  => 'SVT',
+                'Informatique'  => 'Informatique',
               ),
               'placeholder' => '--'
             ))
             ->add('annee', ChoiceType::class, array(
               'choices' => array(
-                '1950' => '1950'
+                '1999' => '1999',
+                '2000' => '2000',
+                '2001' => '2001',
+                '2002' => '2002',
+                '2003' => '2003',
               ),
               'placeholder' => '--'
             ))

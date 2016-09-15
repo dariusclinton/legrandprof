@@ -34,9 +34,10 @@ class Prof extends User {
     /**
      * @var string
      *
-     * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
+     * @ORM\ManyToMany(targetEntity="Quartier", cascade={"persist"})
+     * @ORM\JoinTable(name="lgp_prof_quartier")
      */
-    private $quartier;
+    private $quartierCibles;
 
     /**
      * @var string
@@ -133,9 +134,9 @@ class Prof extends User {
         parent::__construct();
 
         $this->seancesDeCours = new ArrayCollection();
-        $this->enseignements = new ArrayCollection();
-        $this->evaluations = new ArrayCollection();
-        $this->diplomes = new ArrayCollection();
+        $this->enseignements  = new ArrayCollection();
+        $this->evaluations    = new ArrayCollection();
+        $this->diplomes       = new ArrayCollection();
         $this->experiencePros = new ArrayCollection();
     }
 
@@ -159,28 +160,6 @@ class Prof extends User {
      */
     public function getVille() {
         return $this->ville;
-    }
-
-    /**
-     * Set quartier
-     *
-     * @param string $quartier
-     *
-     * @return Prof
-     */
-    public function setQuartier($quartier) {
-        $this->quartier = $quartier;
-
-        return $this;
-    }
-
-    /**
-     * Get quartier
-     *
-     * @return string
-     */
-    public function getQuartier() {
-        return $this->quartier;
     }
 
     /**
@@ -491,9 +470,7 @@ class Prof extends User {
      * @return Prof
      */
     public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome) {
-      if (false === $this->diplomes->contains($diplome)) {
-          $this->diplomes[] = $diplome;
-      }
+      $this->diplomes[] = $diplome;
 
       return $this;
     }
@@ -565,4 +542,38 @@ class Prof extends User {
     $this->roles[] = 'ROLE_PROF';
   }
 
+
+    /**
+     * Add quartierCible
+     *
+     * @param \LGP\UserBundle\Entity\Quartier $quartierCible
+     *
+     * @return Prof
+     */
+    public function addQuartierCible(\LGP\UserBundle\Entity\Quartier $quartierCible)
+    {
+        $this->quartierCibles[] = $quartierCible;
+
+        return $this;
+    }
+
+    /**
+     * Remove quartierCible
+     *
+     * @param \LGP\UserBundle\Entity\Quartier $quartierCible
+     */
+    public function removeQuartierCible(\LGP\UserBundle\Entity\Quartier $quartierCible)
+    {
+        $this->quartierCibles->removeElement($quartierCible);
+    }
+
+    /**
+     * Get quartierCibles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuartierCibles()
+    {
+        return $this->quartierCibles;
+    }
 }
