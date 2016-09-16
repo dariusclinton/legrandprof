@@ -1,0 +1,65 @@
+<?php
+
+namespace LGP\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * filePDF
+ *
+ * @ORM\Table(name="file_p_d_f")
+ * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\filePDFRepository")
+ */
+class filePDF
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="url", type="string", length=255) 
+     */
+    private $url;
+
+    /**
+     *
+     * @Assert\NotBlank(message="SVP, uploadez le diplome en fichier PDF.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $file;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    function getFile() {
+      return $this->file;
+    }
+
+    /**
+     * 
+     * @param type $file
+     */
+    function setFile($file) {
+      $this->file = $file;
+    }
+}
+

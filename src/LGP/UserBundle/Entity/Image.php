@@ -151,6 +151,15 @@ class Image
     }
     
     /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+      // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
+      $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+    }
+    
+    /**
      * @ORM\PostRemove()
      */
     public function removeUpload() {

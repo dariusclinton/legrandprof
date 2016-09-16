@@ -64,10 +64,12 @@ class ProfileController extends BaseController
           $originalExperiencePros = new ArrayCollection();
           $originalDiplomes       = new ArrayCollection();
           
+          // Creation d'un ArrayCollection des experiencePro contenus dans la bdd
           foreach ($user->getExperiencePros() as $experience) {
             $originalExperiencePros->add($experience);
           }
           
+          // Creation d'un ArrayCollection des diplomes contenus dans la bdd
           foreach ($user->getDiplomes() as $diplome) {
             $originalDiplomes->add($diplome);
           }

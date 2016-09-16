@@ -50,7 +50,7 @@
               Féminin
             {% endif %}
           </p>
-          <p>Telephone: {{ app.user.numTelephone }}</p>
+          <p>Telephone: {{ app.user.telephone }}</p>
           <p>Pays: {{ app.user.pays }}</p>
           
           {#Si profil prof#}
@@ -92,9 +92,7 @@
             <ul>
               {% for diplome in app.user.diplomes %}
                 <li>
-                  {{ diplome.intitule }}
-                  {{ diplome.specialite }}
-                  {{ diplome.annee }}
+                  {{ diplome.intitule }} (<a href="{{ asset(diplome.webPath) }}">voir</a>)
                 </li>
               {% endfor %}
             </ul>

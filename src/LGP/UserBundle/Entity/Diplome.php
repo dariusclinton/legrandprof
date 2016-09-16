@@ -3,12 +3,16 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Diplome
  *
  * @ORM\Table(name="lgp_diplome")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\DiplomeRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Diplome
 {
@@ -20,27 +24,29 @@ class Diplome
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255)
      */
     private $intitule;
-
-    /**
+    
+     /**
      * @var string
-     *
-     * @ORM\Column(name="specialite", type="string", length=255, nullable=true)
+     * 
+     * @ORM\Column(name="url", type="string", length=255) 
      */
-    private $specialite;
-
+    private $url;
+    
     /**
-     * @var int
-     *
-     * @ORM\Column(name="annee", type="integer")
+     * @var UploadedFile
+     * @Assert\File(mimeTypes={"application/pdf"})
      */
-    private $annee;
+    private $file;
+    
+    private $tmpFilename;
+
 
     /**
      * Get id
@@ -77,59 +83,117 @@ class Diplome
     }
 
     /**
-     * Set specialite
+     * Set file
      *
-     * @param string $specialite
+     * @param \LGP\UserBundle\Entity\filePDF $file
      *
      * @return Diplome
      */
-    public function setSpecialite($specialite)
+    public function setFile(UploadedFile $file)
     {
-        $this->specialite = $specialite;
+        $this->file = $file;
+        
+      if (null !== $this->url) {
+        $this->tmpFilename = $this->url;
+        
+        $this->url = null;
+      }
+    }
+
+    /**
+     * Get file
+     *
+     * @return \LGP\UserBundle\Entity\filePDF
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Diplome
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get specialite
+     * Get url
      *
      * @return string
      */
-    public function getSpecialite()
+    public function getUrl()
     {
-        return $this->specialite;
-    }
-
-    /**
-     * Set annee
-     *
-     * @param integer $annee
-     *
-     * @return Diplome
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
-
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return int
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
+        return $this->url;
     }
     
     /**
-     * Cette fonction permet de retourner la chaine a afficher dans 
-     * les choix proposes au Prof et qui decrit le diplome
-     * @return type
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
-    public function getAffichage() {
-      return $this->getIntitule().' '.$this->getSpecialite().' '.$this->getAnnee();
+    public function preUpload() {
+      if (null === $this->file) {
+        return;
+      }
+      
+      $this->url = $this->file->guessExtension();
     }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+      if (null === $this->file) {
+        return;
+      }
+      
+      if (null !== $this->tmpFilename) {
+        $oldFile = $this->getUploadRootDir().'/'.$this->getId().'.'.$this->tmpFilename;
+        
+        if (file_exists($oldFile)) {
+          unlink($oldFile);
+        }
+      }
+      
+      $this->file->move($this->getUploadRootDir(), $this->getId().'.'.$this->url);
+    }
+    
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+      // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
+      $this->tmpFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+    }
+    
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() {
+      if (file_exists($this->tmpFilename)) {
+        unlink($this->tmpFilename);
+      }
+    }
+    
+    public function getUploadDir() {
+     return 'uploads/diplomes';
+    }
+    
+    public function getUploadRootDir() {
+      return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    public function getWebPath() {
+      return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getUrl();
+    }
+
 }

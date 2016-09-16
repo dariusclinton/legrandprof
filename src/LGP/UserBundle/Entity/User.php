@@ -4,6 +4,8 @@ namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
@@ -12,12 +14,14 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"user_one" = "Parents", "user_two" = "Prof"})
  *
+ * @UniqueEntity(fields="telephone", message="Ce numéro de téléphone est déjà utilisé.")
  */
 abstract class User extends BaseUser
 {
     /**
      * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
      */
     protected $image;
     
@@ -68,9 +72,14 @@ abstract class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="num_telephone", type="string", length=255, unique=true, nullable=true)
+     * @ORM\Column(name="telephone", type="string", length=255, unique=true, nullable=true)
+     * @Assert\Length(
+        min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+        max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+      )
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
      */
-    protected $numTelephone;
+    protected $telephone;
 
     /**
      * @var string
@@ -94,6 +103,7 @@ abstract class User extends BaseUser
        parent::__construct();
 
        $this->dateInscription = new \DateTime();
+       $this->pays = 'CM';
      }
      
      /**
@@ -215,13 +225,13 @@ abstract class User extends BaseUser
     /**
      * Set numTelephone
      *
-     * @param string $numTelephone
+     * @param string $telephone
      *
      * @return User
      */
-    public function setNumTelephone($numTelephone)
+    public function setTelephone($telephone)
     {
-        $this->numTelephone = $numTelephone;
+        $this->telephone = $telephone;
 
         return $this;
     }
@@ -231,9 +241,9 @@ abstract class User extends BaseUser
      *
      * @return string
      */
-    public function getNumTelephone()
+    public function getTelephone()
     {
-        return $this->numTelephone;
+        return $this->telephone;
     }
 
     /**

@@ -51,8 +51,8 @@ class ProfileProfFormType extends AbstractType {
         ->add('quartierCibles', EntityType::class, array(
           'class'        => 'LGPUserBundle:Quartier',
           'choice_label' => 'affichage',
-          'multiple'     => true,
           'expanded'     => true,
+          'multiple'     => true
         ))
         ->add('profession', ChoiceType::class, array(
           'choices'     => array(

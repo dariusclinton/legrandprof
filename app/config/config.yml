@@ -10,7 +10,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    images_directory: '%kernel.root_dir%/../web/uploads/images'
+    diplomes_directory: '%kernel.root_dir%/../web/uploads/diplomes'
 
 framework:
     #esi:             ~
@@ -81,3 +81,12 @@ swiftmailer:
 #    registration:
 #        form:
 #            type: LGP\UserBundle\Form\RegistrationType
+
+# vich uploader
+vich_uploader:
+    db_driver: orm
+    
+    mappings:
+        user_image:
+            uri_prefix:         uploads/profils
+            upload_destination: '%kernel.root_dir%/../web/uploads/profils'

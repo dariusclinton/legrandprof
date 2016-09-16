@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new LGP\CourseBundle\LGPCourseBundle(),
             new LGP\ReservationBundle\LGPReservationBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

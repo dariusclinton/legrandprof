@@ -5,6 +5,7 @@ namespace LGP\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -34,7 +35,7 @@ class Prof extends User {
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Quartier", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Quartier")
      * @ORM\JoinTable(name="lgp_prof_quartier")
      */
     private $quartierCibles;
@@ -64,6 +65,7 @@ class Prof extends User {
      * @var int
      *
      * @ORM\Column(name="nombre_enfants", type="integer", nullable=true)
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre")
      */
     private $nombreEnfants;
 
@@ -119,6 +121,7 @@ class Prof extends User {
     /**
      * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="lgp_prof_diplome")
+     * @Assert\Valid()
      */
     private $diplomes;
 
