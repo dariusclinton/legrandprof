@@ -85,8 +85,10 @@ swiftmailer:
 # vich uploader
 vich_uploader:
     db_driver: orm
-    
     mappings:
         user_image:
             uri_prefix:         uploads/profils
             upload_destination: '%kernel.root_dir%/../web/uploads/profils'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

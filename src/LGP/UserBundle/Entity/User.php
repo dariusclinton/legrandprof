@@ -113,7 +113,7 @@ abstract class User extends BaseUser
       */
      public function setEmail($email) {
        parent::setEmail($email);
-       $this->setUsername($email);
+       $this->setUsername(uniqid());
      }
 
     /**
