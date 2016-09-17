@@ -3,8 +3,9 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 /**
@@ -12,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="lgp_diplome")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\DiplomeRepository")
- * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  */
 class Diplome
 {
@@ -31,21 +32,27 @@ class Diplome
      * @ORM\Column(name="intitule", type="string", length=255)
      */
     private $intitule;
-    
-     /**
-     * @var string
-     * 
-     * @ORM\Column(name="url", type="string", length=255) 
+     
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
      */
-    private $url;
+    private $updatedAt;
     
     /**
-     * @var UploadedFile
-     * @Assert\File(mimeTypes={"application/pdf"})
+     * @Vich\UploadableField(mapping="diplome_file", fileNameProperty="fileName")
+     * @Assert\File(mimeTypes={"application/pdf"}, mimeTypesMessage="Uniquement les pdf sont valides")
+     * @var File
      */
     private $file;
     
-    private $tmpFilename;
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="file_name", type="string", length=255) 
+     */
+    private $fileName;
 
 
     /**
@@ -89,15 +96,15 @@ class Diplome
      *
      * @return Diplome
      */
-    public function setFile(UploadedFile $file)
+    public function setFile(File $file = null)
     {
-        $this->file = $file;
+      $this->file = $file;
         
-      if (null !== $this->url) {
-        $this->tmpFilename = $this->url;
-        
-        $this->url = null;
+      if ($file) {
+        $this->updatedAt = new \DateTime('now');
       }
+      
+      return $this;
     }
 
     /**
@@ -111,89 +118,26 @@ class Diplome
     }
 
     /**
-     * Set url
+     * Set fileName
      *
-     * @param string $url
+     * @param string $fileName
      *
      * @return Diplome
      */
-    public function setUrl($url)
+    public function setFileName($filename)
     {
-        $this->url = $url;
+        $this->fileName = $filename;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get fileName
      *
      * @return string
      */
-    public function getUrl()
+    public function getFileName()
     {
-        return $this->url;
+        return $this->fileName;
     }
-    
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload() {
-      if (null === $this->file) {
-        return;
-      }
-      
-      $this->url = $this->file->guessExtension();
-    }
-    
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload() {
-      if (null === $this->file) {
-        return;
-      }
-      
-      if (null !== $this->tmpFilename) {
-        $oldFile = $this->getUploadRootDir().'/'.$this->getId().'.'.$this->tmpFilename;
-        
-        if (file_exists($oldFile)) {
-          unlink($oldFile);
-        }
-      }
-      
-      $this->file->move($this->getUploadRootDir(), $this->getId().'.'.$this->url);
-    }
-    
-    /**
-     * @ORM\PreRemove()
-     */
-    public function preRemoveUpload()
-    {
-      // On sauvegarde temporairement le nom du fichier, car il dépend de l'id
-      $this->tmpFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
-    }
-    
-    /**
-     * @ORM\PostRemove()
-     */
-    public function removeUpload() {
-      if (file_exists($this->tmpFilename)) {
-        unlink($this->tmpFilename);
-      }
-    }
-    
-    public function getUploadDir() {
-     return 'uploads/diplomes';
-    }
-    
-    public function getUploadRootDir() {
-      return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-    
-    public function getWebPath() {
-      return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getUrl();
-    }
-
 }

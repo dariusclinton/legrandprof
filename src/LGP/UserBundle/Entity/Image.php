@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\File\File;
  *
  * @ORM\Table(name="lgp_image")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ImageRepository")
- * 
  * @Vich\Uploadable
  */
 class Image
@@ -26,13 +25,12 @@ class Image
      */
     private $id;
     
-    /**
-     * 
-     * @return type
+     /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
      */
-    function getId() {
-      return $this->id;
-    }
+    private $updatedAt;
     
     /**
      * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
@@ -48,16 +46,29 @@ class Image
      */
     private $imageName;
     
+    /**
+     * 
+     * @return type
+     */
+    function getId() {
+      return $this->id;
+    }
     
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return Product
+     * @return Image
      */
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
+        
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+        
         return $this;
     }
 
@@ -87,5 +98,13 @@ class Image
     public function getImageName()
     {
         return $this->imageName;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getWebPath() {
+      return 'uploads/profils/'.$this->getImageName();
     }
 }
