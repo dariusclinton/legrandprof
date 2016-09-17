@@ -96,6 +96,13 @@ class Prof extends User {
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CVFile", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    private $CVFile;
 
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
@@ -127,6 +134,7 @@ class Prof extends User {
 
     /**
      * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $experiencePros;
 
@@ -578,5 +586,29 @@ class Prof extends User {
     public function getQuartierCibles()
     {
         return $this->quartierCibles;
+    }
+
+    /**
+     * Set cVFile
+     *
+     * @param \LGP\UserBundle\Entity\CVFile $cVFile
+     *
+     * @return Prof
+     */
+    public function setCVFile(\LGP\UserBundle\Entity\CVFile $cVFile = null)
+    {
+        $this->CVFile = $cVFile;
+
+        return $this;
+    }
+
+    /**
+     * Get cVFile
+     *
+     * @return \LGP\UserBundle\Entity\CVFile
+     */
+    public function getCVFile()
+    {
+        return $this->CVFile;
     }
 }

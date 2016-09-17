@@ -38,23 +38,33 @@ class MessageController extends Controller {
    * @return type
    * @throws type
    */
-  public function receiveAction() {
+  public function receiveAction(Request $request) {
     $user = $this->getUser();
     
     if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
+    $is_read = $request->get('is_read');
+    
     $rep = $this
         ->getDoctrine()
         ->getManager()
         ->getRepository('LGPUserBundle:Message');
     
-    $messages = $rep->findBy(array('recepteur' => $user));
+    if ($is_read) {
+      $messages = $rep->findBy(array('recepteur' => $user, 'isRead' => false));
+      
+      return $this->render('LGPUserBundle:Message:receive_not_read.html.twig', array(
+        'messages' => $messages
+      ));
+    } else {
+      $messages = $rep->findBy(array('recepteur' => $user));
     
-    return $this->render('LGPUserBundle:Message:receive.html.twig', array(
-      'messages' => $messages
-    ));
+      return $this->render('LGPUserBundle:Message:receive.html.twig', array(
+        'messages' => $messages
+      ));
+    }
   }
 
   /**
@@ -109,5 +119,21 @@ class MessageController extends Controller {
     $em->flush();
     
     return $this->redirectToRoute('lgp_user_message_send');
+  }
+  
+  /**
+   * 
+   * @param Message $message
+   * @return type
+   */
+  public function voirAction(Message $message) {
+    $message->setIsRead(true);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->flush();
+    
+    return $this->render('LGPUserBundle:Message:voir.html.twig', array(
+      'message' => $message
+    ));
   }
 }

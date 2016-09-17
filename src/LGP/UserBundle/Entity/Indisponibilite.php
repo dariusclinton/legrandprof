@@ -3,6 +3,8 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Indisponibilite
@@ -153,5 +155,19 @@ class Indisponibilite
     public function getProf()
     {
         return $this->prof;
+    }
+    
+    /**
+     * @Assert\Callback
+     */
+    public function isDateFinValid(ExecutionContextInterface $context) {
+      if ($this->getDateFin() < $this->getDateDebut()) {
+        // La règle est violée, on définit l'erreur
+        $context
+          ->buildViolation('La date de fin doit être supérieure à la date de début.') // message
+          ->atPath('dateFin') // attribut de l'objet qui est violé
+          ->addViolation() // ceci déclenche l'erreur, ne l'oubliez pas
+        ;
+      }
     }
 }

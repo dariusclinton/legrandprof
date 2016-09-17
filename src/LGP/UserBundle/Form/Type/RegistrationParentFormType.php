@@ -13,9 +13,6 @@ class RegistrationParentFormType extends AbstractType
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-      $builder
-          ->add('numTelephone', TextType::class)
-      ;
     }
 
     public function getParent() {

@@ -39,23 +39,35 @@ class AvisController extends Controller {
    * @return type
    * @throws type
    */
-  public function profAction() {
+  public function profAction(Request $request) {
     $prof = $this->getUser();
     
     if ($prof === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
+    $is_read = $request->get('is_read');
+    
     $rep = $this
         ->getDoctrine()
         ->getManager()
         ->getRepository('LGPUserBundle:Avis');
     
-    $avis = $rep->findBy(array('prof' => $prof));
+    if ($is_read) {
+      $avis = $rep->findBy(array('prof' => $prof, 'isRead' => false));  
+
+      return $this->render('LGPUserBundle:Avis:avis_not_read.html.twig', array(
+        'avis' => $avis,
+      ));
+    } else {
+      $avis = $rep->findBy(array('prof' => $prof));
+      
+      return $this->render('LGPUserBundle:Avis:prof.html.twig', array(
+        'avis' => $avis,
+      ));
+    }
     
-    return $this->render('LGPUserBundle:Avis:prof.html.twig', array(
-      'avis' => $avis
-    ));
+    
   }
   
   /**
@@ -164,5 +176,33 @@ class AvisController extends Controller {
     $em->flush();
     
     return $this->redirectToRoute('lgp_user_parent_avis');
+  }
+  
+  /**
+   * 
+   * @param Avis $avis
+   */
+  public function profVoirAction(Avis $avis) {
+    $avis->setIsRead(true);
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->flush($avis);
+    
+    return $this->render('LGPUserBundle:Avis:prof.voir.html.twig', array(
+      'avis' => $avis
+    ));
+  }
+  
+  /**
+   * 
+   * @param Avis $avis
+   */
+  public function parentVoirAction(Avis $avis) {
+    $em = $this->getDoctrine()->getManager();
+    $em->flush($avis);
+    
+    return $this->render('LGPUserBundle:Avis:parent.voir.html.twig', array(
+      'avis' => $avis
+    ));
   }
 }

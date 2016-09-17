@@ -47,7 +47,11 @@ class Message
      */
     private $contenu;
 
-
+    /**
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    private $isRead = false;
+    
     /**
      * Get id
      *
@@ -162,5 +166,29 @@ class Message
     public function getExpediteur()
     {
         return $this->expediteur;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     *
+     * @return Message
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 }

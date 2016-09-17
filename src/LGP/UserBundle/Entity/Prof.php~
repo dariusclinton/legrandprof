@@ -5,6 +5,7 @@ namespace LGP\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -35,6 +36,7 @@ class Prof extends User {
      * @var string
      *
      * @ORM\ManyToMany(targetEntity="Quartier")
+     * @ORM\JoinTable(name="lgp_prof_quartier")
      */
     private $quartierCibles;
 
@@ -63,6 +65,7 @@ class Prof extends User {
      * @var int
      *
      * @ORM\Column(name="nombre_enfants", type="integer", nullable=true)
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre")
      */
     private $nombreEnfants;
 
@@ -93,6 +96,13 @@ class Prof extends User {
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CVFile", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    protected $CVFile;
 
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
@@ -118,11 +128,13 @@ class Prof extends User {
     /**
      * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="lgp_prof_diplome")
+     * @Assert\Valid()
      */
     private $diplomes;
 
     /**
      * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $experiencePros;
 
@@ -133,9 +145,9 @@ class Prof extends User {
         parent::__construct();
 
         $this->seancesDeCours = new ArrayCollection();
-        $this->enseignements = new ArrayCollection();
-        $this->evaluations = new ArrayCollection();
-        $this->diplomes = new ArrayCollection();
+        $this->enseignements  = new ArrayCollection();
+        $this->evaluations    = new ArrayCollection();
+        $this->diplomes       = new ArrayCollection();
         $this->experiencePros = new ArrayCollection();
     }
 
@@ -469,9 +481,7 @@ class Prof extends User {
      * @return Prof
      */
     public function addDiplome(\LGP\UserBundle\Entity\Diplome $diplome) {
-      if (false === $this->diplomes->contains($diplome)) {
-          $this->diplomes[] = $diplome;
-      }
+      $this->diplomes[] = $diplome;
 
       return $this;
     }
@@ -543,4 +553,38 @@ class Prof extends User {
     $this->roles[] = 'ROLE_PROF';
   }
 
+
+    /**
+     * Add quartierCible
+     *
+     * @param \LGP\UserBundle\Entity\Quartier $quartierCible
+     *
+     * @return Prof
+     */
+    public function addQuartierCible(\LGP\UserBundle\Entity\Quartier $quartierCible)
+    {
+        $this->quartierCibles[] = $quartierCible;
+
+        return $this;
+    }
+
+    /**
+     * Remove quartierCible
+     *
+     * @param \LGP\UserBundle\Entity\Quartier $quartierCible
+     */
+    public function removeQuartierCible(\LGP\UserBundle\Entity\Quartier $quartierCible)
+    {
+        $this->quartierCibles->removeElement($quartierCible);
+    }
+
+    /**
+     * Get quartierCibles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuartierCibles()
+    {
+        return $this->quartierCibles;
+    }
 }

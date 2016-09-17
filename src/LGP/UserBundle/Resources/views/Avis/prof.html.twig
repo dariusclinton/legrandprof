@@ -6,11 +6,11 @@
 
 {% block body %}
   <h1>Les avis des parents sur vous</h1>
-  
+
   {% if avis|length <= 0 %}
     <h1 class="text-muted">Aucun avis trouvé !</h1>
   {% else %}
-    <table class="table table-bordered table-hover table-striped">
+    <table class="table table-bordered table-hover table-striped avis-table">
       <thead>
         <tr>
           <th>Parent</th>
@@ -19,20 +19,16 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-        </tr>
-      </tfoot>
       <tbody>
-        {% for avs in avis %}
+        {% for avs in avis|sort %}
           <tr>
-            <td>{{ avs.parent.prenoms }} {{ avs.parent.nom }}</td>
-            <td>{{ avs.note }}</td>
-            <td>{{ avs.commentaire }}</td>
+            <td>
+              <a href="{{ path('lgp_user_prof_avis_voir', {'id': avs.id}) }}">{{ avs.parent.prenoms }} {{ avs.parent.nom }}</a>
+            </td>
+            <td><a href="{{ path('lgp_user_prof_avis_voir', {'id': avs.id}) }}">{{ avs.note }}</a></td>
+            <td>
+              <a href="{{ path('lgp_user_prof_avis_voir', {'id': avs.id}) }}">{{ avs.commentaire }}</a>
+            </td>
             <td>
               <a href='{{ path('lgp_user_prof_avis_delete',  {'id': avs.id }) }}' class="bt btn-danger btn-sm delete_confirm">
                 Supprimer
@@ -42,5 +38,9 @@
         {% endfor %}
       </tbody>
     </table>
+
+    <div class='avis-details'></div>
+
   {% endif %}
+
 {% endblock %}

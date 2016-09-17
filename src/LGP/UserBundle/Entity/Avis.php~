@@ -46,6 +46,11 @@ class Avis {
    * @ORM\Column(name="commentaire", type="text", nullable=true)
    */
   private $commentaire;
+  
+  /**
+   * @ORM\Column(name="is_read", type="boolean")
+   */
+    private $isRead = false;
 
   /**
    * Get id
@@ -100,4 +105,52 @@ class Avis {
     return $this->commentaire;
   }
 
+
+    /**
+     * Set parent
+     *
+     * @param \LGP\UserBundle\Entity\Parents $parent
+     *
+     * @return Avis
+     */
+    public function setParent(\LGP\UserBundle\Entity\Parents $parent)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \LGP\UserBundle\Entity\Parents
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return Avis
+     */
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof)
+    {
+        $this->prof = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Get prof
+     *
+     * @return \LGP\UserBundle\Entity\Prof
+     */
+    public function getProf()
+    {
+        return $this->prof;
+    }
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Message
  *
- * @ORM\Table(name="message")
+ * @ORM\Table(name="lgp_message")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\MessageRepository")
  */
 class Message
@@ -47,7 +47,11 @@ class Message
      */
     private $contenu;
 
-
+    /**
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    private $isRead = false;
+    
     /**
      * Get id
      *
@@ -139,4 +143,28 @@ class Message
         return $this->recepteur;
     }
 
+
+    /**
+     * Set expediteur
+     *
+     * @param \LGP\UserBundle\Entity\User $expediteur
+     *
+     * @return Message
+     */
+    public function setExpediteur(\LGP\UserBundle\Entity\User $expediteur)
+    {
+        $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get expediteur
+     *
+     * @return \LGP\UserBundle\Entity\User
+     */
+    public function getExpediteur()
+    {
+        return $this->expediteur;
+    }
 }
