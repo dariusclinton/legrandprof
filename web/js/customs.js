@@ -449,6 +449,8 @@ $(function() {
 			event.preventDefault();
 			$("#leave-avis").slideDown('500');
 		});
+
+		
 		$("#btn-close-avis").click(function(event) {
 			event.preventDefault();
 			$("#leave-avis").slideUp(500);
