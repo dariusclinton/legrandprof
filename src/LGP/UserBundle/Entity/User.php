@@ -27,6 +27,13 @@ abstract class User extends BaseUser
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
      */
     private $reservations;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="user")
+     */
+    private $paiements;
 
     /**
      * @var int
@@ -85,16 +92,14 @@ abstract class User extends BaseUser
      * @ORM\Column(name="date_inscription", type="datetime")
      */
     protected $dateInscription;
+    
+    public function __construct() {
+        parent::__construct();
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->paiements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateInscription = new \DateTime;
+    }
 
-    /**
-     * Constructeur
-     */
-     public function __construct()
-     {
-       parent::__construct();
-
-       $this->dateInscription = new \DateTime();
-     }
      
      /**
       * Surcharge de la methode afin de remplir manuellement 
@@ -106,15 +111,6 @@ abstract class User extends BaseUser
        $this->setUsername($email);
      }
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom
@@ -126,7 +122,7 @@ abstract class User extends BaseUser
     public function setNom($nom)
     {
         $this->nom = $nom;
-
+    
         return $this;
     }
 
@@ -150,7 +146,7 @@ abstract class User extends BaseUser
     public function setPrenoms($prenoms)
     {
         $this->prenoms = $prenoms;
-
+    
         return $this;
     }
 
@@ -174,7 +170,7 @@ abstract class User extends BaseUser
     public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
-
+    
         return $this;
     }
 
@@ -198,7 +194,7 @@ abstract class User extends BaseUser
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
-
+    
         return $this;
     }
 
@@ -222,7 +218,7 @@ abstract class User extends BaseUser
     public function setNumTelephone($numTelephone)
     {
         $this->numTelephone = $numTelephone;
-
+    
         return $this;
     }
 
@@ -246,7 +242,7 @@ abstract class User extends BaseUser
     public function setPays($pays)
     {
         $this->pays = $pays;
-
+    
         return $this;
     }
 
@@ -270,7 +266,7 @@ abstract class User extends BaseUser
     public function setDateInscription($dateInscription)
     {
         $this->dateInscription = $dateInscription;
-
+    
         return $this;
     }
 
@@ -294,7 +290,7 @@ abstract class User extends BaseUser
     public function setImage(\LGP\UserBundle\Entity\Image $image = null)
     {
         $this->image = $image;
-        
+    
         return $this;
     }
 
@@ -306,14 +302,6 @@ abstract class User extends BaseUser
     public function getImage()
     {
         return $this->image;
-    }
-    
-    /**
-     * Cette fonction retourne quelques infos decrivant l'utilisateur
-     * @return type
-     */
-    public function getAffichage() {
-      return $this->prenoms.' '.$this->nom;
     }
 
     /**
@@ -348,5 +336,39 @@ abstract class User extends BaseUser
     public function getReservations()
     {
         return $this->reservations;
+    }
+
+    /**
+     * Add paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     *
+     * @return User
+     */
+    public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements[] = $paiement;
+    
+        return $this;
+    }
+
+    /**
+     * Remove paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements->removeElement($paiement);
+    }
+
+    /**
+     * Get paiements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaiements()
+    {
+        return $this->paiements;
     }
 }

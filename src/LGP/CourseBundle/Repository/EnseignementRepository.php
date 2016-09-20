@@ -44,14 +44,14 @@ class EnseignementRepository extends EntityRepository {
      * @return Paginator
      * @throws InvalidArgumentException
      */
-    public function getProfsByCoursAndCity($cours, $ville, $page = 1, $max = 10) {
+    public function getProfsByCoursAndCity($cours, $quartier, $page = 1, $max = 10) {
         if (!is_numeric($max)) {
             throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
         }
 
         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :cours AND p.ville = :ville GROUP BY p.id");
         $query->setParameter('cours', $cours)
-                ->setParameter('ville', $ville)
+                ->setParameter('ville', $quartier)
                 ->setFirstResult(($page - 1) * $max)
                 ->setMaxResults($max);
         $paginator = new Paginator($query);

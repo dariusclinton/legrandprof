@@ -56,8 +56,6 @@ class EntreeProgramme {
      */
     private $programmeDeCours;
     
-    
-
 
     /**
      * Get id

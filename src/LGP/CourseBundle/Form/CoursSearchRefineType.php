@@ -15,16 +15,16 @@ class CoursSearchRefineType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('intitule', TextType::class, array('required' => true,
+                ->add('intitule', TextType::class, array('required' => false,
                     'attr' => array('placeholder' => 'Cours')))
-                ->add('ville', ChoiceType::class, array(
+                ->add('quartier', ChoiceType::class, array(
                     'choices' => array(
                         'Douala' => 'Douala',
                         'Yaounde' => 'Yaounde',
                         'Dschang' => 'Dschang',
                     ),
-                    'required' => true,
-                    'placeholder' => 'Sélectionnez une ville' 
+                    'required' => false,
+                    'placeholder' => 'Sélectionnez un quartier' 
                         )
                 )
         ;

@@ -55,6 +55,13 @@ class ReservationEnseignement
      * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
      */
     private $quartier;
+    
+    /**
+     * @var boolean 
+     * 
+     * @ORM\Column(name="is_finish", type="boolean", nullable=true)
+     */
+    private $isFinish;
 
     /**
      * @var \LGPReservationBundle\Entity\JourDeCours
@@ -84,6 +91,7 @@ class ReservationEnseignement
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements",  cascade={"persist", "remove"})
      */
     private $enseignement;
+    
     
     
     /**
@@ -222,6 +230,30 @@ class ReservationEnseignement
     public function getQuartier()
     {
         return $this->quartier;
+    }
+
+    /**
+     * Set isFinish
+     *
+     * @param boolean $isFinish
+     *
+     * @return ReservationEnseignement
+     */
+    public function setIsFinish($isFinish)
+    {
+        $this->isFinish = $isFinish;
+    
+        return $this;
+    }
+
+    /**
+     * Get isFinish
+     *
+     * @return boolean
+     */
+    public function getIsFinish()
+    {
+        return $this->isFinish;
     }
 
     /**

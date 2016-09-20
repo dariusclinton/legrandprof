@@ -48,7 +48,7 @@ class CourseController extends Controller {
         $course_form_refine->handleRequest($request);
         if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
             $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
+            if (!(isset($data['intitule'])) || !(isset($data['quartier']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
             return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
@@ -103,17 +103,17 @@ class CourseController extends Controller {
         $course_form_refine->handleRequest($request);
         if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
             $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
+            if (!(isset($data['intitule'])) || !(isset($data['quartier']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('quartier' => $data['quartier'], 'intitule_cours' => $data['intitule']));
         }
 
 //        $request->request->set("intitule_cours", $coursFound->getIntitule());
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
-    public function searchRefineAction($ville, $intitule_cours, $page, Request $request) {
+    public function searchRefineAction($quartier, $intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
@@ -122,7 +122,7 @@ class CourseController extends Controller {
         $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
         try {
-            $profsByCoursAndCity = $enseignementRep->getProfsByCoursAndCity($coursFound, $ville, $page, $max_per_page);
+            $profsByCoursAndCity = $enseignementRep->getProfsByCoursAndCity($coursFound, $quartier, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
             $profsCount = count($profsByCoursAndCity);
             $pageCount = ceil($profsCount / $max_per_page);
@@ -137,7 +137,7 @@ class CourseController extends Controller {
 
             $params = array(
                 'intitule_cours' => $intitule_cours,
-                'ville' => $ville,
+                'ville' => $quartier,
                 'courseFound' => $coursFound,
                 'courses' => $courses,
                 'matieres_profs' => $profsByCoursAndCity,
@@ -149,7 +149,7 @@ class CourseController extends Controller {
                     'profs_count' => $profsCount,
                     'max_per_page' => $max_per_page,
                     'page' => $page,
-                    'route_params' => array('intitule_cours' => $intitule, 'ville' => $ville)
+                    'route_params' => array('intitule_cours' => $intitule, 'ville' => $quartier)
                 ),
             );
         } catch (NoResultException $ex) {
@@ -163,7 +163,7 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
                 throw new InvalidArgumentException("Oups!!! Vous devez entrer une valeur pour les parametres de recherche!");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('quartier' => $data['quartier'], 'intitule_cours' => $data['intitule']));
         }
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));

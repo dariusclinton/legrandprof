@@ -44,12 +44,14 @@ class Paiement {
     private $facture;
 
     /**
-     * @var \LGPUserBundle\Entity\Parents
+     * @var \LGPUserBundle\Entity\User
      * 
-     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Parents", inversedBy="paiements")
+     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\User", inversedBy="paiements")
      */
-    private $parent;
+    private $user;
 
+
+  
 
     /**
      * Get id
@@ -134,26 +136,26 @@ class Paiement {
     }
 
     /**
-     * Set parent
+     * Set user
      *
-     * @param \LGP\UserBundle\Entity\Parents $parent
+     * @param \LGP\UserBundle\Entity\User $user
      *
      * @return Paiement
      */
-    public function setParent(\LGP\UserBundle\Entity\Parents $parent = null)
+    public function setUser(\LGP\UserBundle\Entity\User $user = null)
     {
-        $this->parent = $parent;
+        $this->user = $user;
     
         return $this;
     }
 
     /**
-     * Get parent
+     * Get user
      *
-     * @return \LGP\UserBundle\Entity\Parents
+     * @return \LGP\UserBundle\Entity\User
      */
-    public function getParent()
+    public function getUser()
     {
-        return $this->parent;
+        return $this->user;
     }
 }
