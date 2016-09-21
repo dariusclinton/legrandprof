@@ -1,3 +1,7 @@
+lgp_admin:
+    resource: "@LGPAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lgp_user:
     resource: "@LGPUserBundle/Resources/config/routing.yml"
     prefix:   /user
@@ -37,3 +41,12 @@ fos_user_change_password:
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
    
+# Sonata
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+    
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

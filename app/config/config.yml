@@ -5,6 +5,7 @@ imports:
     - { resource: "@LGPCoreBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/config.yml" }
+    - { resource: "@LGPAdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -110,3 +111,45 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+
+
+# Sonata
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
+            
+sonata_admin:
+    title: LeGrandProf Admin
+    title_logo: images/Logo.png
+    dashboard:
+        blocks:
+            # display two dashboard blocks
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [lgp_admin.group.user, lgp_admin.group.cours]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [lgp_admin.group.reservation]
+
+        groups:
+            lgp_admin.group.user:
+                label: Utilisateurs
+                items:
+                    - lgp.admin.prof
+            lgp_admin.group.cours:
+                label: Cours
+                items:
+                    - lgp.admin.prof
+            lgp_admin.group.reservation:
+                label: Réservation
+                items:
+                    - lgp.admin.prof

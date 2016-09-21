@@ -77,13 +77,6 @@ class Prof extends User {
     private $isRecommande = false;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_actif", type="boolean")
-     */
-    private $isActif = false;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="presentation", type="text", nullable=true)
@@ -281,28 +274,6 @@ class Prof extends User {
      */
     public function getIsRecommande() {
         return $this->isRecommande;
-    }
-
-    /**
-     * Set isActif
-     *
-     * @param boolean $isActif
-     *
-     * @return Prof
-     */
-    public function setIsActif($isActif) {
-        $this->isActif = $isActif;
-
-        return $this;
-    }
-
-    /**
-     * Get isActif
-     *
-     * @return boolean
-     */
-    public function getIsActif() {
-        return $this->isActif;
     }
 
     /**
