@@ -29,9 +29,9 @@ class ReservationController extends Controller {
         return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('params' => $params));
     }
 
-    public function confirmReservationAction($parentId, Request $request) {
+    public function confirmReservationAction($userId, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $parentRep = $em->getRepository("LGPUserBundle:Parents");
+        $userRep = $em->getRepository("LGPUserBundle:User");
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $profRep = $em->getRepository("LGPUserBundle:Prof");
@@ -39,16 +39,16 @@ class ReservationController extends Controller {
 
         if ($session->has('panier')) {
             $panier = $session->get('panier');
-            $parent = $parentRep->find($parentId);
+            $user = $userRep->find($userId);
 
-            if ($panier != null && $parent != null) {
+            if ($panier != null && $user != null) {
                 $bookers = $panier->getItems();
                 $prixReservation = 0;
 
                 $reservation = new Reservation();
-                $reservation->setIsValidee(1);
+                $reservation->setIsValidee(false);
                 $reservation->setFrequencePaiement("trimestriel");
-                $reservation->setParent($parent);
+                $reservation->setUser($user);
 
                 foreach ($bookers as $booker) {
                     $prixReservation += $booker->getPrixTotal();
@@ -59,24 +59,21 @@ class ReservationController extends Controller {
 
                     $reservationEns->setLieuDeCours($booker->getLieu());
                     $reservationEns->setDateDebut(DateTime::createFromFormat('d/m/Y', $booker->getDateDebut()));
-                    $reservationEns->setDateFin(new DateTime());
                     $reservationEns->setNbApprenants($booker->getNombreApprenants());
                     $reservationEns->setVille($booker->getVille());
                     $reservationEns->setQuartier($booker->getQuartier());
-                    $reservationEns->setNbHeureParJour($booker->getNombreHeure());
-                    $reservationEns->setDuree($booker->getDuree());
                     $reservationEns->setReservation($reservation);
                     $reservationEns->setEnseignement($enseignement);
 
-                    foreach ($booker->getJours() as $jour => $heure) {
-                        $jourDeCours = new JourDeCours();
-                        $jourDeCours->setIntitule($jour);
-                        $jourDeCours->setHeure(new DateTime($heure));
-                        $jourDeCours->addReservationEnseignement($reservationEns);
-                        $reservationEns->addJoursDeCour($jourDeCours);
-
-                        $em->persist($jourDeCours);
-                    }
+//                    foreach ($booker->getJours() as $jour => $heure) {
+//                        $jourDeCours = new JourDeCours();
+//                        $jourDeCours->setIntitule($jour);
+//                        $jourDeCours->setHeure(new DateTime($heure));
+//                        $jourDeCours->addReservationEnseignement($reservationEns);
+//                        $reservationEns->addJoursDeCour($jourDeCours);
+//
+//                        $em->persist($jourDeCours);
+//                    }
                     $em->persist($reservationEns);
                 }
                 $facture = new Facture();
@@ -97,6 +94,10 @@ class ReservationController extends Controller {
                 return $this->redirectToRoute("lgp_reservation_cart");
             }
         }
+    }
+    
+    public function paiementModeAction(){
+        return $this->render('LGPReservationBundle:Reservation:paiement.html.twig');
     }
 
 }

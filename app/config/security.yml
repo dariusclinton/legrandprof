@@ -36,3 +36,4 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/user/parent/, role: ROLE_PARENT }
         - { path: ^/user/prof/, role: ROLE_PROF }
+        - { path: ^/reservation/paiement, role: ROLE_USER }
