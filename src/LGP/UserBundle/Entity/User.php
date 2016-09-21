@@ -31,6 +31,13 @@ abstract class User extends BaseUser
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
      */
     private $reservations;
+    
+    /**
+     * @var \LGPReservationBundle\Entity\Paiement
+     * 
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="user")
+     */
+    private $paiements;
 
     /**
      * @var int
@@ -101,9 +108,11 @@ abstract class User extends BaseUser
      public function __construct()
      {
        parent::__construct();
-
+       
+       $this->reservations    = new \Doctrine\Common\Collections\ArrayCollection();
+       $this->paiements       = new \Doctrine\Common\Collections\ArrayCollection();
        $this->dateInscription = new \DateTime();
-       $this->pays = 'CM';
+       $this->pays            = 'CM';
      }
      
      /**
@@ -358,5 +367,39 @@ abstract class User extends BaseUser
     public function getReservations()
     {
         return $this->reservations;
+    }
+    
+    /**
+     * Add paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     *
+     * @return User
+     */
+    public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements[] = $paiement;
+    
+        return $this;
+    }
+
+    /**
+     * Remove paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements->removeElement($paiement);
+    }
+
+    /**
+     * Get paiements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaiements()
+    {
+        return $this->paiements;
     }
 }

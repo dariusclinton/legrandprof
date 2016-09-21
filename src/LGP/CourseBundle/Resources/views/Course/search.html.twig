@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block body %}
-
     {% if params.courseFound is defined and params.courseFound != null %}
         <!-- start end Page title -->
         <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
@@ -55,7 +54,7 @@
                         <div class="sidebar-search-wrapper bg-light-2">
 
                             <div class="">
-                                <h4>Affinez votre recherche </h4>
+                                <h4>Rechercher</h4>
                             </div>
 
                             <div class="sidebar-search-content">
@@ -215,7 +214,6 @@
                                       </div>
       
                                   </div>
-      
                               </div> #}
 
                         </div>
@@ -244,12 +242,13 @@
                                                 <p class="line18"> {{enseigne.prof.presentation}} </p>
                                                 <br>
                                                 <ul class="list-info">
-                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}} - {{enseigne.prof.quartier | lower}}</li>
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}}
+                                                    </li>
 
                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
                                                             {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
                                                                 {% if loop.index != loop.last %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule,})}} " title="">{{ens_cours.cours.intitule}}</a> -
                                                             {% else %}
                                                                 <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
                                                             {% endif %}
@@ -270,7 +269,7 @@
                                                     {% endif %}
                                                 <div class="rating-wrapper">
                                                     <div class="raty-wrapper">
-                                                        <div>
+                                                        <div>  
                                                              {% for i in range(1,5) %}
                                                                 {% if (avisRange | round) >= i %}
                                                                     <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">

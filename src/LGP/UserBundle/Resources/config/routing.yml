@@ -189,9 +189,3 @@ lgp_user_prof_nouvelles_categories_cours:
 lgp_user_prof_nouvelle_categorie_cours_add:
     path: /nouvelle-categorie-cours/add
     defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:add }  
-    
-
-
-    
-
-  

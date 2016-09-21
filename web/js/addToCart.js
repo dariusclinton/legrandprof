@@ -217,13 +217,14 @@ $(function() {
 //            setTimeout(function() {
 //                window.location.reload(true);
 //            }, 2000);
-        }).error(function(answer, statusCode, status) {
+        }).error(function(answer) {
 //            alert('error ' + answer);
-            if (answer === "success") {
+            if (answer == "error") {
                 console.log(answer);
                 $("#loading").css("display", "none");
                 $("#success").css("display", "block");
                 $("#modal-footer").css("display", "block");
+                alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!')
             }
         });
     });

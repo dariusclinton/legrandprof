@@ -98,4 +98,3 @@ class Quartier
       return $this->intitule.' - '.$this->ville;
     }
 }
-

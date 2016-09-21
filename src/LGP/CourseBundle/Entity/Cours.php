@@ -60,7 +60,7 @@ class Cours {
     /**
      * @var \LGPCourseBundle\Entity\Enseigne
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours", cascade={"persist","remove"})
      */
     private $enseignements;
 

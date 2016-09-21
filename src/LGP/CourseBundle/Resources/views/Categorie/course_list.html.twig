@@ -1,0 +1,131 @@
+
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Categorie {{ params.category }} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+
+                    <h1 class="hero-title">Catégorie {{ params.category | lower }}</h1>
+
+                    <ol class="breadcrumb-list">
+                        <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
+                        <li><a href="{{path('lgp_course_categories')}}">Categories</a></li>
+                        <li><span>{{ params.category | lower }}</span></li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-3">
+
+                    <aside class="sidebar with-filter">
+
+                        <div class="sidebar-inner">
+
+                            <div class="sidebar-module">
+                                <h6 class="sidebar-title" style="font-size:17px;margin-bottom:10px;">Plus de catégories</h6>
+                                <ul class="category">
+                                    {% for cat in params.categories %}
+                                        {% if params.category | lower != cat.intitule | lower %}
+                                            <li><a href=" {{path('lgp_course_find_category' , {'category':cat.intitule}) }} ">
+                                                    {{cat.intitule}}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <li></li>
+                                    <li><a href=" {{path('lgp_course_categories')}} " title="">voir toutes les categories</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                    </aside>
+
+
+                </div>
+
+                <div class="col-sm-8 col-md-9">
+
+                    <div class="sorting-wrappper">
+
+                        <div class="sorting-header">
+                            <h3 class="sorting-title uppercase">Cours dans la catégorie {{ params.category }}</h3>
+                            <p class="sorting-lead">
+                                {{params.courses | length}} Cours
+                            </p>
+                        </div>
+                    </div>
+                    <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
+
+
+                        <div class="GridLex-grid-noGutter-equalHeight">
+
+
+                            {% for course in params.courses %}
+                                <div class="GridLex-col-4_sm-6_xs-12 mb-20">
+                                    <div class="package-grid-item"> 
+                                        <a href=" {{path('lgp_course_find_prof',{'intitule_cours' : course.intitule})}} ">
+                                            <div class="image">
+                                                {% if course.image is not null %}
+                                                    <img src="{{ asset(course.image.webPath) }}" alt="{{course.image.alt}}" />
+                                                {% endif %}
+                                            </div>
+                                            <div class="content-category">
+                                                <h6>{{course.intitule}}</h6>
+                                                <p> {{course.description}}  </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                    </div>
+
+                    {% include 'LGPCourseBundle:Pagination:pagination.html.twig' %}
+
+
+                </div>
+
+                {#  {% if not categoryFound %}
+                     <div class="sorting-wrappper">
+                         <div class="sorting-header">
+                             <h3 class="sorting-title uppercase">La catégorie <span style="color:#dd2c00">{{ category }}</span> n'existe pas!!!</h3>
+                         </div>
+                     </div>
+                 {% endif %} #}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
