@@ -27,7 +27,7 @@ $(function() {
    * Notification des MESSAGES
    */
   
-  setInterval(updateNbAvis, 10000);
+  setInterval(updateNbAvis, 180000);
 
   function updateNbAvis() {
     var url = Routing.generate('lgp_user_message_receive');

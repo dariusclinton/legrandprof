@@ -27,7 +27,7 @@ $(function () {
    * Notification des AVIS
    */
   
-  setInterval(updateNbAvis, 10000);
+  setInterval(updateNbAvis, 180000);
 
   function updateNbAvis() {
     var url = Routing.generate('lgp_user_prof_avis');
