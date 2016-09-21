@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_quartier")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\QuartierRepository")
  */
-class Quartier
-{
+class Quartier {
+
     /**
      * @var int
      *
@@ -35,14 +35,26 @@ class Quartier
      */
     private $ville;
 
+    /**
+     * @var 
+     *
+     * @ORM\ManyToMany(targetEntity="Prof", mappedBy="quartierCibles", cascade={"persist"})
+     */
+    private $profs;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->profs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +65,7 @@ class Quartier
      *
      * @return Quartier
      */
-    public function setIntitule($intitule)
-    {
+    public function setIntitule($intitule) {
         $this->intitule = $intitule;
 
         return $this;
@@ -65,8 +76,7 @@ class Quartier
      *
      * @return string
      */
-    public function getIntitule()
-    {
+    public function getIntitule() {
         return $this->intitule;
     }
 
@@ -77,8 +87,7 @@ class Quartier
      *
      * @return Quartier
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -89,12 +98,43 @@ class Quartier
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
-    
+
     public function getAffichage() {
-      return $this->intitule.' - '.$this->ville;
+        return $this->intitule . ' - ' . $this->ville;
     }
+
+    /**
+     * Add prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     *
+     * @return Quartier
+     */
+    public function addProf(\LGP\UserBundle\Entity\Prof $prof) {
+        $this->profs[] = $prof;
+
+        return $this;
+    }
+
+    /**
+     * Remove prof
+     *
+     * @param \LGP\UserBundle\Entity\Prof $prof
+     */
+    public function removeProf(\LGP\UserBundle\Entity\Prof $prof) {
+        $this->profs->removeElement($prof);
+    }
+
+    /**
+     * Get profs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfs() {
+        return $this->profs;
+    }
+
 }

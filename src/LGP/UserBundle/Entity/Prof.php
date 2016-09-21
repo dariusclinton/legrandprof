@@ -32,9 +32,9 @@ class Prof extends User {
     private $ville;
 
     /**
-     * @var string
+     * @var 
      *
-     * @ORM\ManyToMany(targetEntity="Quartier", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Quartier", inversedBy="profs", cascade={"persist"})
      * @ORM\JoinTable(name="lgp_prof_quartier")
      */
     private $quartierCibles;

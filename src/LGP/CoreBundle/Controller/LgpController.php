@@ -25,7 +25,7 @@ class LgpController extends Controller {
             if (!isset($data['intitule']) || !isset($data['quartier'])) {
                return $this->redirectToRoute('lgp_course_find'); 
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array("intitule_cours" => $data['intitule'], "quartier" => $data['quartier']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array("intitule_cours" => $data['intitule'], "ville" => $data['quartier']->getVille()));
         }
 
         return $this->render('LGPCoreBundle:Lgp:index.html.twig', array('enseignementRep' => $enseignementRep, 'categories' => $categoriesPopular, 'categoryRep' => $categoryRepository, 'form' => $form_course->createView()));

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Quartier.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Form/CoursSearchRefineType.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CoreBundle/Controller/LgpController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Repository/EnseignementRepository.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/CourseController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/EnseignementController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Prof.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/views/Form/course_form_search.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

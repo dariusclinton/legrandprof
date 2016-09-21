@@ -242,7 +242,12 @@
                                                 <p class="line18"> {{enseigne.prof.presentation}} </p>
                                                 <br>
                                                 <ul class="list-info">
-                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> {{enseigne.prof.ville | upper}}
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span class="font600">Position: </span> 
+                                                            {% if enseigne.prof.ville is not null %}
+                                                                {{enseigne.prof.ville | upper}}
+                                                            {% else %}
+                                                            NON DEFINIE
+                                                        {% endif %}
                                                     </li>
 
                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
@@ -258,19 +263,20 @@
 
                                             </div>
                                             <div class="col-sm-12 col-md-3 text-right text-left-sm">
-                                                    {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
-                                                    {% for avis in  allAvis %}
-                                                        {% set avisSum = avisSum + avis.note %}
-                                                    {% endfor %}
-                                                     {% if allAvis | length != 0 %}
-                                                        {% set avisRange = avisSum / allAvis | length %}
-                                                    {% else %}
-                                                        {% set avisRange = 0 %}
-                                                    {% endif %}
+                                                {% set avisSum = 0 %}
+                                                {% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
+                                                {% for avis in  allAvis %}
+                                                    {% set avisSum = avisSum + avis.note %}
+                                                {% endfor %}
+                                                {% if allAvis | length != 0 %}
+                                                    {% set avisRange = avisSum / allAvis | length %}
+                                                {% else %}
+                                                    {% set avisRange = 0 %}
+                                                {% endif %}
                                                 <div class="rating-wrapper">
                                                     <div class="raty-wrapper">
                                                         <div>  
-                                                             {% for i in range(1,5) %}
+                                                            {% for i in range(1,5) %}
                                                                 {% if (avisRange | round) >= i %}
                                                                     <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
                                                                 {% else %}
@@ -281,8 +287,10 @@
                                                         <span> / {{allAvis | length}} avis</span>
                                                     </div>
                                                 </div>
-                                                {% set minPrice = params.enseignementRep.getPrixProf(enseigne.prof) %}
-                                                <div class="price">{{minPrice}} Fcfa / H <br> Prix minimal</div>
+                                                {% set minPrice %}
+                                                    {{params.enseignementRep.getPrixProf(enseigne.prof)}}
+                                                {% endset %}
+                                                <div class="price">{{minPrice}} Fcfa / Mois <br> Prix minimal</div>
                                                 <a href=" {{path('lgp_course_profile_prof',{'profId' : enseigne.prof.id})}} " class="btn btn-primary btn-sm">Voir Profil</a>
 
                                             </div>
