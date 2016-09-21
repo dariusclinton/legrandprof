@@ -1,6 +1,6 @@
 $(function () {
 
-  $('.avis-table tbody tr a').click(function (e) {
+  $('.avis-table tbody tr a.show-avis-link').click(function (e) {
     $('.avis-details').html('<img src="{{ asset(\'images / ajax - loader.gif\') }}" width="2" height="2">');
 
     var url = $(this).attr('href');
@@ -27,22 +27,22 @@ $(function () {
    * Notification des AVIS
    */
   
-  setInterval(updateNbAvis, 180000);
-
-  function updateNbAvis() {
-    var url = Routing.generate('lgp_user_prof_avis');
-    url = url + '?is_read=false';
-
-    $.ajax({
-      type: 'GET',
-      url: url,
-      success: function (data) {
-        $('#avis-link span').html(data);
-      },
-      error: function () {
-        console.log("La requête n'a pas abouti !");
-      }
-    });
-  }
+//  setInterval(updateNbAvis, 10000);
+//
+//  function updateNbAvis() {
+//    var url = Routing.generate('lgp_user_avis');
+//    url = url + '?is_read=false';
+//
+//    $.ajax({
+//      type: 'GET',
+//      url: url,
+//      success: function (data) {
+//        $('.avis-link span').html(data);
+//      },
+//      error: function () {
+//        console.log("La requête n'a pas abouti !");
+//      }
+//    });
+//  }
 
 });

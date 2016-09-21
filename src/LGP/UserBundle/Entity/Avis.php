@@ -14,10 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Avis {
 
   /**
-   * @ORM\ManyToOne(targetEntity="Parents")
+   * @ORM\ManyToOne(targetEntity="User")
    * @ORM\JoinColumn(nullable=false)
    */
-  private $parent;
+  private $user;
 
   /**
    * @ORM\ManyToOne(targetEntity="Prof")
@@ -52,8 +52,21 @@ class Avis {
   /**
    * @ORM\Column(name="is_read", type="boolean")
    */
-    private $isRead = false;
+  private $isRead = false;
+  
+  /**
+   * @ORM\Column(name="date_avis", type="datetime")
+   */
+  private $dateAvis;
 
+  
+  /**
+   * Constructeur
+   */
+  public function __construct() {
+    $this->dateAvis = new \DateTime();
+  }
+  
   /**
    * Get id
    *
@@ -107,31 +120,6 @@ class Avis {
     return $this->commentaire;
   }
 
-
-    /**
-     * Set parent
-     *
-     * @param \LGP\UserBundle\Entity\Parents $parent
-     *
-     * @return Avis
-     */
-    public function setParent(\LGP\UserBundle\Entity\Parents $parent)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return \LGP\UserBundle\Entity\Parents
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
     /**
      * Set prof
      *
@@ -178,5 +166,53 @@ class Avis {
     public function getIsRead()
     {
         return $this->isRead;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \LGP\UserBundle\Entity\User $user
+     *
+     * @return Avis
+     */
+    public function setUser(\LGP\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \LGP\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set dateAvis
+     *
+     * @param \DateTime $dateAvis
+     *
+     * @return Avis
+     */
+    public function setDateAvis($dateAvis)
+    {
+        $this->dateAvis = $dateAvis;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateAvis
+     *
+     * @return \DateTime
+     */
+    public function getDateAvis()
+    {
+        return $this->dateAvis;
     }
 }

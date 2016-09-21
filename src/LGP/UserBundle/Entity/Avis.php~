@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Avis
@@ -13,10 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Avis {
 
   /**
-   * @ORM\ManyToOne(targetEntity="Parents")
+   * @ORM\ManyToOne(targetEntity="User")
    * @ORM\JoinColumn(nullable=false)
    */
-  private $parent;
+  private $user;
 
   /**
    * @ORM\ManyToOne(targetEntity="Prof")
@@ -37,6 +38,7 @@ class Avis {
    * @var int
    *
    * @ORM\Column(name="note", type="integer")
+   * @Assert\Range(min=0, max=5, invalidMessage="Merci d'entrer un nombre")
    */
   private $note;
 
@@ -109,13 +111,13 @@ class Avis {
     /**
      * Set parent
      *
-     * @param \LGP\UserBundle\Entity\Parents $parent
+     * @param \LGP\UserBundle\Entity\User $user
      *
      * @return Avis
      */
-    public function setParent(\LGP\UserBundle\Entity\Parents $parent)
+    public function setParent(\LGP\UserBundle\Entity\User $user)
     {
-        $this->parent = $parent;
+        $this->user = $user;
 
         return $this;
     }
@@ -123,11 +125,11 @@ class Avis {
     /**
      * Get parent
      *
-     * @return \LGP\UserBundle\Entity\Parents
+     * @return \LGP\UserBundle\Entity\User
      */
     public function getParent()
     {
-        return $this->parent;
+        return $this->user;
     }
 
     /**
@@ -152,5 +154,29 @@ class Avis {
     public function getProf()
     {
         return $this->prof;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     *
+     * @return Avis
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 }

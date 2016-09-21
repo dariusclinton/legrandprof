@@ -17,48 +17,32 @@ lgp_user_dashboard:
     defaults: { _controller: LGPUserBundle:Dashboard:index }
     
 # Avis
-lgp_user_parent_avis_add:
-    path: /parent/avis/add
+lgp_user_avis_add:
+    path: /avis/add
     defaults: { _controller: LGPUserBundle:Avis:add }
     
-lgp_user_prof_avis_delete:
-    path: /prof/avis/delete/{id}
-    defaults: { _controller: LGPUserBundle:Avis:profDelete }
+lgp_user_avis_voir:
+    path: /avis/voir/{id}
+    defaults: { _controller: LGPUserBundle:Avis:voir }
     requirements:
       id: \d+
     
-lgp_user_prof_avis_voir:
-    path: /prof/avis/voir/{id}
-    defaults: { _controller: LGPUserBundle:Avis:profVoir }
+lgp_user_avis_delete:
+    path: /avis/delete/{id}
+    defaults: { _controller: LGPUserBundle:Avis:delete }
     requirements:
       id: \d+
     
-lgp_user_parent_avis_voir:
-    path: /parent/avis/voir/{id}
-    defaults: { _controller: LGPUserBundle:Avis:parentVoir }
-    requirements:
-      id: \d+
-    
-lgp_user_parent_avis_delete:
-    path: /parent/avis/delete/{id}
-    defaults: { _controller: LGPUserBundle:Avis:parentDelete }
-    requirements:
-      id: \d+
-    
-lgp_user_parent_avis_update:
-    path: /parent/avis/update/{id}
+lgp_user_avis_update:
+    path: /avis/update/{id}
     defaults: { _controller: LGPUserBundle:Avis:update }
     requirements:
       id: \d+
     
-lgp_user_parent_avis:
-    path: /parent/avis
-    defaults: { _controller: LGPUserBundle:Avis:parent }
-    
-lgp_user_prof_avis:
-    path: /prof/avis
-    defaults: { _controller: LGPUserBundle:Avis:prof }
-    options: 
+lgp_user_avis:
+    path: /avis
+    defaults: { _controller: LGPUserBundle:Avis:index }
+    options:
         expose: true
     
 # Indisponibilite

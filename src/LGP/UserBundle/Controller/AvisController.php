@@ -14,10 +14,10 @@ class AvisController extends Controller {
    * @return type
    * @throws type
    */
-  public function parentAction() {
-    $parent = $this->getUser();
+  public function indexAction(Request $request) {
+    $user = $this->getUser();
     
-    if ($parent === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
@@ -26,48 +26,27 @@ class AvisController extends Controller {
         ->getManager()
         ->getRepository('LGPUserBundle:Avis');
     
-    $avis = $rep->findBy(array('parent' => $parent));
+    $avis = $rep->findBy(array('user' => $user));
     
-    return $this->render('LGPUserBundle:Avis:parent.html.twig', array(
+    // S'il s'agit d'un prof on recupere les avis qui a recu
+    if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
+      if ($request->get('is_read')) {
+        $avisNotRead = $rep->findBy(array('prof' => $user, 'isRead' => false));
+        
+        return new \Symfony\Component\HttpFoundation\Response(count($avisNotRead));
+      }
+      
+      $avisReceived = $rep->findBy(array('prof' => $user));
+      
+      return $this->render('LGPUserBundle:Avis:index.html.twig', array(
+        'avis' => $avis,
+        'avisReceived' => $avisReceived
+      ));
+    }
+    
+    return $this->render('LGPUserBundle:Avis:index.html.twig', array(
       'avis' => $avis
     ));
-  }
-  
-    
-  /**
-   * 
-   * @return type
-   * @throws type
-   */
-  public function profAction(Request $request) {
-    $prof = $this->getUser();
-    
-    if ($prof === null) {
-      throw $this->createNotFoundException('Utilisateur inconnu !');
-    }
-    
-    $is_read = $request->get('is_read');
-    
-    $rep = $this
-        ->getDoctrine()
-        ->getManager()
-        ->getRepository('LGPUserBundle:Avis');
-    
-    if ($is_read) {
-      $avis = $rep->findBy(array('prof' => $prof, 'isRead' => false));  
-
-      return $this->render('LGPUserBundle:Avis:avis_not_read.html.twig', array(
-        'avis' => $avis,
-      ));
-    } else {
-      $avis = $rep->findBy(array('prof' => $prof));
-      
-      return $this->render('LGPUserBundle:Avis:prof.html.twig', array(
-        'avis' => $avis,
-      ));
-    }
-    
-    
   }
   
   /**
@@ -77,9 +56,9 @@ class AvisController extends Controller {
    * @throws type
    */
   public function addAction(Request $request) {
-    $parent = $this->getUser();
+    $user = $this->getUser();
     
-    if ($parent === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
@@ -89,14 +68,14 @@ class AvisController extends Controller {
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
       
-      $avis->setParent($parent);
+      $avis->setUser($user);
       
       // On persiste l'entite
       $em = $this->getDoctrine()->getManager();
       $em->persist($avis);
       $em->flush();
       
-      return $this->redirectToRoute('lgp_user_parent_avis');
+      return $this->redirectToRoute('lgp_user_avis');
     }
     
     return $this->render('LGPUserBundle:Avis:add.html.twig', array(
@@ -111,9 +90,9 @@ class AvisController extends Controller {
    * @return type
    */
   public function updateAction(Avis $avis, Request $request) {
-    $parent = $this->getUser();
+    $user = $this->getUser();
     
-    if ($parent === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
@@ -121,87 +100,50 @@ class AvisController extends Controller {
     
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
-      // On enrgistre
+      // On enregistre
       $em = $this->getDoctrine()->getManager();
       $em->flush();
       
-      return $this->redirectToRoute('lgp_user_parent_avis');
+      return $this->redirectToRoute('lgp_user_avis');
     }
     
     return $this->render('LGPUserBundle:Avis:update.html.twig', array(
       'form' => $form->createView()
     ));
   }
+  
   /**
    * 
    * @param Avis $avis
    * @return type
    */
-  public function profDeleteAction(Avis $avis) {
-    $prof = $this->getUser();
+  public function deleteAction(Avis $avis) {
+    $user = $this->getUser();
     
-    if ($prof === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
-    $em = $this
-        ->getDoctrine()
-        ->getManager();
+    $em = $this->getDoctrine()->getManager();
     
     // Suppression
     $em->remove($avis);
     $em->flush();
     
-    return $this->redirectToRoute('lgp_user_prof_avis');
-  }
-
-  /**
-   * 
-   * @param Avis $avis
-   * @return type
-   */
-  public function parentDeleteAction(Avis $avis) {
-    $parent = $this->getUser();
-    
-    if ($parent === null) {
-      throw $this->createNotFoundException('Utilisateur inconnu !');
-    }
-    
-    $em = $this
-        ->getDoctrine()
-        ->getManager();
-    
-    // Suppression
-    $em->remove($avis);
-    $em->flush();
-    
-    return $this->redirectToRoute('lgp_user_parent_avis');
+    return $this->redirectToRoute('lgp_user_avis');
   }
   
   /**
    * 
    * @param Avis $avis
    */
-  public function profVoirAction(Avis $avis) {
+  public function voirAction(Avis $avis) {
     $avis->setIsRead(true);
     
     $em = $this->getDoctrine()->getManager();
     $em->flush($avis);
     
-    return $this->render('LGPUserBundle:Avis:prof.voir.html.twig', array(
-      'avis' => $avis
-    ));
-  }
-  
-  /**
-   * 
-   * @param Avis $avis
-   */
-  public function parentVoirAction(Avis $avis) {
-    $em = $this->getDoctrine()->getManager();
-    $em->flush($avis);
-    
-    return $this->render('LGPUserBundle:Avis:parent.voir.html.twig', array(
+    return $this->render('LGPUserBundle:Avis:voir.html.twig', array(
       'avis' => $avis
     ));
   }
