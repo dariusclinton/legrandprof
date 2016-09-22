@@ -51,7 +51,7 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['quartier']))) {
                 return $this->redirectToRoute("lgp_course_find");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
         }
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
@@ -147,7 +147,7 @@ class CourseController extends Controller {
                 'profs_count' => $profsCount,
                 'max_per_page' => $max_per_page,
                 'page' => $page,
-                'route_params' => array('intitule_cours' => $intitule, 'ville' => $ville)
+                'route_params' => array('intitule_cours' => $intitule, 'ville' => $quartierFound->getVille())
             ),
         );
 
@@ -201,7 +201,7 @@ class CourseController extends Controller {
             if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
                 return $this->redirectToRoute("lgp_course_find");
             }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['ville'], 'intitule_cours' => $data['intitule']));
+            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
         }
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));

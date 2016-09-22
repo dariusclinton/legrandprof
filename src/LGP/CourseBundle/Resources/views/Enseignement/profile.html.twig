@@ -268,11 +268,11 @@
                                     {% if params.avis | length %}
                                         <ul class="review-list">
                                             {% for avis in params.avis %}
-                                                {% set parent = avis.parent %}
+                                                {% set user = avis.user %}
                                                 <li class="clearfix">
                                                     <div class="image img-circle">
-                                                        {% if parent.image is not null %}
-                                                            <img class="img-circle" src="{{ asset(parent.image.webPath) }}" alt="{{parent.prenoms}}" />
+                                                        {% if user.image is not null %}
+                                                            <img class="img-circle" src="{{ asset(user.image.webPath) }}" alt="{{user.prenoms}}" />
                                                         {% else %}
                                                             <i class="fa fa-user fa-5x img-circle"></i>
                                                         {% endif %}
@@ -280,10 +280,10 @@
                                                     <div class="content">
                                                         <div class="row gap-20 mb-0">
                                                             <div class="col-sm-9">
-                                                                <h6> {{parent.prenoms~"  "~parent.nom | upper}} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
+                                                                <h6> {{user.prenoms~"  "~user.nom | upper}} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
                                                             </div>
                                                             <div class="col-sm-3">
-                                                                <p class="review-date">01/08/2016</p>
+                                                                <p class="review-date"> {{avis.dateAvis | date('d/m/Y')}} </p>
                                                             </div>
                                                         </div>
 
