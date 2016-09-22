@@ -4,7 +4,7 @@ namespace LGP\ReservationBundle\Cart;
 
 /**
  * correspond a une entrée dans le panier c'est a dire un prof
- * booker ainsi que les informations nescessaires
+ * booké ainsi que les informations nescessaires
  */
 class Booker {
 
@@ -14,142 +14,108 @@ class Booker {
     private $profImage;
     private $coursId;
     private $classe;
-    private $duree;
-    private $nombreHeure;
     private $dateDebut;
     private $nombreApprenants;
-    private $jours;
     private $lieu;
     private $ville;
     private $quartier;
     private $prixTotal;
-
-    function __construct() {
-        $this->jours = array();
-    }
-
-    public function getProfId() {
+    
+    function getProfId() {
         return $this->profId;
     }
 
-    public function getProfNom() {
+    function getProfNom() {
         return $this->profNom;
     }
 
-    public function getProfPrenoms() {
+    function getProfPrenoms() {
         return $this->profPrenoms;
     }
 
-    public function getProfImage() {
+    function getProfImage() {
         return $this->profImage;
     }
 
-    public function getJours() {
-        return $this->jours;
-    }
-
-    public function getCoursId() {
+    function getCoursId() {
         return $this->coursId;
     }
 
-    public function getClasse() {
+    function getClasse() {
         return $this->classe;
     }
 
-    public function getDuree() {
-        return $this->duree;
-    }
-
-    public function getNombreHeure() {
-        return $this->nombreHeure;
-    }
-
-    public function getDateDebut() {
+    function getDateDebut() {
         return $this->dateDebut;
     }
 
-    public function getNombreApprenants() {
+    function getNombreApprenants() {
         return $this->nombreApprenants;
     }
 
-    public function getLieu() {
+    function getLieu() {
         return $this->lieu;
     }
 
-    public function getVille() {
+    function getVille() {
         return $this->ville;
     }
 
-    public function getQuartier() {
+    function getQuartier() {
         return $this->quartier;
     }
 
-    public function getPrixTotal() {
+    function getPrixTotal() {
         return $this->prixTotal;
     }
 
-    public function setProfId($profId) {
+    function setProfId($profId) {
         $this->profId = $profId;
     }
 
-    public function setProfNom($profNom) {
+    function setProfNom($profNom) {
         $this->profNom = $profNom;
     }
 
-    public function setProfPrenoms($profPrenoms) {
+    function setProfPrenoms($profPrenoms) {
         $this->profPrenoms = $profPrenoms;
     }
 
-    public function setProfImage($profImage) {
+    function setProfImage($profImage) {
         $this->profImage = $profImage;
     }
 
-    public function setCoursId($coursId) {
+    function setCoursId($coursId) {
         $this->coursId = $coursId;
     }
 
-    public function setClasse($classe) {
+    function setClasse($classe) {
         $this->classe = $classe;
     }
 
-    public function setDuree($duree) {
-        $this->duree = $duree;
-    }
-
-    public function setNombreHeure($nombreHeure) {
-        $this->nombreHeure = $nombreHeure;
-    }
-
-    public function setDateDebut($dateDebut) {
+    function setDateDebut($dateDebut) {
         $this->dateDebut = $dateDebut;
     }
 
-    public function setNombreApprenants($nombreApprenants) {
+    function setNombreApprenants($nombreApprenants) {
         $this->nombreApprenants = $nombreApprenants;
     }
 
-    public function setLieu($lieu) {
+    function setLieu($lieu) {
         $this->lieu = $lieu;
     }
 
-    public function setVille($ville) {
+    function setVille($ville) {
         $this->ville = $ville;
     }
 
-    public function setQuartier($quartier) {
+    function setQuartier($quartier) {
         $this->quartier = $quartier;
     }
 
-    public function setPrixTotal($prixTotal) {
+    function setPrixTotal($prixTotal) {
         $this->prixTotal = $prixTotal;
     }
 
-    public function addJour($jour, $heure) {
-        $this->jours[$jour] = $heure;
-    }
-
-    public function removeJour($jour) {
-        unset($this->jours[$jour]);
-    }
 
 }

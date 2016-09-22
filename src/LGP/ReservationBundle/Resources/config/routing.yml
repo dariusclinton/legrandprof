@@ -10,10 +10,16 @@ lgp_reservation_detail:
         id: \d+
    
 lgp_reservation_confirm:
-    path:    /cart/confirm/{parentId}
+    path:    /cart/confirm/{userId}
     defaults: { _controller: LGPReservationBundle:Reservation:confirmReservation }
     requirements:
-        parentId: \d+
+        userId: \d+ 
+
+lgp_reservation_paiement:
+    path:    /paiement
+    defaults: { _controller: LGPReservationBundle:Reservation:paiementMode }
+    requirements:
+        userId: \d+
 
 
 # routing for cart

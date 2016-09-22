@@ -26,15 +26,12 @@ class CartController extends Controller{
             //recuperation des params de la requete
             $coursId = $request->query->get('coursId');
             $classe = $request->query->get('classe');
-            $duree = $request->query->get('duree');
-            $heureParJours = $request->query->get('heureParJours');
             $dateDebut = $request->query->get('dateDebut');
             $nbApprenants = $request->query->get('nbApprenants');
             $lieuDeCours = $request->query->get('lieuDeCours');
             $ville = $request->query->get('ville');
             $quartier = $request->query->get('quartier');
             $prixTotal = $request->query->get('prixTotal');
-            $joursDeCoursSelectionnes = json_decode($request->query->get('joursDeCoursSelectionnes'));
 
             $session = $request->getSession();
             if (!$session->has('panier')) {
@@ -58,19 +55,13 @@ class CartController extends Controller{
                 $booker1->setProfImage($image);
                 $booker1->setCoursId((int) $coursId);
                 $booker1->setDateDebut($dateDebut);
-//            $booker1->setFrequencePaiement("trimerstriel");
                 $booker1->setLieu($lieuDeCours);
                 $booker1->setNombreApprenants($nbApprenants);
-                $booker1->setNombreHeure($heureParJours);
                 $booker1->setPrixTotal((double) $prixTotal);
                 $booker1->setVille($ville);
                 $booker1->setQuartier($quartier);
                 $booker1->setClasse($classe);
-                $booker1->setDuree($duree);
 
-                foreach ($joursDeCoursSelectionnes as $jour => $heure) {
-                    $booker1->addJour($jour, $heure);
-                }
                 $panier->addItem($booker1);
             }
             $session->set('panier', $panier);

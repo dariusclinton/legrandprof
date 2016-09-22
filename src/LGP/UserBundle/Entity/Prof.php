@@ -35,7 +35,7 @@ class Prof extends User {
     /**
      * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Quartier")
+     * @ORM\ManyToMany(targetEntity="Quartier", inversedBy="profs")
      * @ORM\JoinTable(name="lgp_prof_quartier")
      */
     private $quartierCibles;

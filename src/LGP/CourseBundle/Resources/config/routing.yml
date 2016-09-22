@@ -35,7 +35,7 @@ lgp_course_find_prof:
 
 
 lgp_course_find_prof_refine:
-    path:     /search/profs/{quartier}/{intitule_cours}/{page}
+    path:     /search/profs/{ville}/{intitule_cours}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchRefine, page: 1 }
     requirements:
         page:   \d+

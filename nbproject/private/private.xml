@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Controller/ReservationController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Resources/views/Reservation/paiement.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Quartier.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/web/js/customs.js</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Prof.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/composer.json</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Controller/CartController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/views/Categorie/course_list.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CoreBundle/Resources/views/Lgp/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Repository/EnseignementRepository.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/composer.lock</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Resources/views/Reservation/detail.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/views/Categorie/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/app/config/security.yml</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/app/AppKernel.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/web/js/addToCart.js</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Resources/views/Cart/cart.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/User.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/views/Enseignement/profile.html.twig</file>
+        </group>
+    </open-files>
+</project-private>
