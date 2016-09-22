@@ -17,3 +17,11 @@ services:
             - name: sonata.admin
               manager_type: orm
               label: Prof
+
+    lgp.admin.remuneration:
+        class: LGP\AdminBundle\Admin\RemunerationAdmin
+        arguments: [~, LGP\UserBundle\Entity\Remuneration, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Rémunération

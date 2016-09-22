@@ -99,17 +99,16 @@
             </ul>
             
             <h1>CV</h1>
-            <a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>
+{#            <a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>#}
+            <br />
+            
+            <h3>Rémunérations LeGrandProf <span class="badge">{{ app.user.remunerations|length }}</span></h3>
             <br />
 
             <a href='{{ path('lgp_user_prof_cours') }}' class="btn btn-primary">Mes cours</a>
             <a href='{{ path('lgp_user_prof_evaluation') }}' class="btn btn-primary">Mes Evaluations</a>
             <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
-            <a href='{{ path('lgp_user_anomalies') }}' class="btn btn-primary">Anomalie du système</a>
-            <a href='{{ path('lgp_user_prof_nouvelles_categories_cours') }}' class="btn btn-primary">
-              Proposer une catégorie de cours
-            </a>
-              
+            <a href='{{ path('lgp_user_anomalies') }}' class="btn btn-primary">Anomalies du système</a>
           {% endif %}
           
           <a href='{{ path('lgp_user_avis') }}' class="btn btn-primary">
@@ -121,7 +120,9 @@
           <a href='{{ path('lgp_user_message_receive') }}' class="btn btn-primary message-link">
             Messages <span class="badge">{{ render (controller('LGPUserBundle:Message:receive', {'is_read': 'false'})) }}</span>
           </a>
-          
+          <a href='{{ path('lgp_user_nouvelles_categories_cours') }}' class="btn btn-primary">
+              Proposer une catégorie de cours
+            </a>
 {#          {{ dump(app.user)}}#}
         </div>
 

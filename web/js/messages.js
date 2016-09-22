@@ -27,22 +27,22 @@ $(function() {
    * Notification des MESSAGES
    */
   
-  setInterval(updateNbAvis, 180000);
-
-  function updateNbAvis() {
-    var url = Routing.generate('lgp_user_message_receive');
-    url = url + '?is_read=false';
-
-    $.ajax({
-      type: 'GET',
-      url: url,
-      success: function (data) {
-        $('.message-link span').html(data);
-      },
-      error: function () {
-        console.log("La requête n'a pas abouti !");
-      }
-    });
-  }
+//  setInterval(updateNbAvis, 180000);
+//
+//  function updateNbAvis() {
+//    var url = Routing.generate('lgp_user_message_receive');
+//    url = url + '?is_read=false';
+//
+//    $.ajax({
+//      type: 'GET',
+//      url: url,
+//      success: function (data) {
+//        $('.message-link span').html(data);
+//      },
+//      error: function () {
+//        console.log("La requête n'a pas abouti !");
+//      }
+//    });
+//  }
   
 });

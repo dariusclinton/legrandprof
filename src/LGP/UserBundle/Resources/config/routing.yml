@@ -164,12 +164,36 @@ lgp_user_anomalies:
 lgp_user_anomalie_add:
     path: /anomalie/add
     defaults: { _controller: LGPUserBundle:Anomalie:add }  
+
+lgp_user_anomalie_update:
+    path: /anomalie/update/{id}
+    defaults: { _controller: LGPUserBundle:Anomalie:update }  
+    requirements:
+        id: \d+
+
+lgp_user_anomalie_delete:
+    path: /anomalie/delete/{id}
+    defaults: { _controller: LGPUserBundle:Anomalie:delete } 
+    requirements:
+        id: \d+
     
-# Anomalie
-lgp_user_prof_nouvelles_categories_cours:
+# NouvelleCategorieCours
+lgp_user_nouvelles_categories_cours:
     path: /nouvelles-categories-cours
     defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:index }  
 
-lgp_user_prof_nouvelle_categorie_cours_add:
+lgp_user_nouvelle_categorie_cours_add:
     path: /nouvelle-categorie-cours/add
     defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:add }  
+
+lgp_user_nouvelle_categorie_cours_update:
+    path: /nouvelle-categorie-cours/update/{id}
+    defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:update } 
+    requirements:
+        id: \d+
+
+lgp_user_nouvelle_categorie_cours_delete:
+    path: /nouvelle-categorie-cours/delete/{id}
+    defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:delete } 
+    requirements:
+        id: \d+

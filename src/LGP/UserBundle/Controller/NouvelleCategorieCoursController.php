@@ -15,9 +15,9 @@ class NouvelleCategorieCoursController extends Controller {
    * @throws type
    */
   public function indexAction() {
-    $prof = $this->getUser();
+    $user = $this->getUser();
     
-    if ($prof === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
@@ -26,7 +26,7 @@ class NouvelleCategorieCoursController extends Controller {
         ->getManager()
         ->getRepository('LGPUserBundle:NouvelleCategorieCours');
     
-    $nouvellesCategoriesCours = $rep->findBy(array('prof' => $prof));
+    $nouvellesCategoriesCours = $rep->findBy(array('user' => $user));
     
     return $this->render('LGPUserBundle:NouvelleCategorieCours:index.html.twig', array(
       'nouvellesCategoriesCours' => $nouvellesCategoriesCours
@@ -40,31 +40,80 @@ class NouvelleCategorieCoursController extends Controller {
    * @throws type
    */
   public function addAction(Request $request) {
-    $prof = $this->getUser();
+    $user = $this->getUser();
     
-    if ($prof === null) {
+    if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
     
     $nouvelleCategorieCours = new NouvelleCategorieCours();
     
     $form = $this->createForm(NouvelleCategorieCoursType::class, $nouvelleCategorieCours);
-    
     $form->handleRequest($request);
     
     if ($form->isSubmitted() && $form->isValid()) {
-      $nouvelleCategorieCours->setProf($prof);
+      $nouvelleCategorieCours->setUser($user);
       
       $em = $this->getDoctrine()->getManager();
       
       $em->persist($nouvelleCategorieCours);
       $em->flush();
       
-      return $this->redirectToRoute('lgp_user_prof_nouvelles_categories_cours');
+      return $this->redirectToRoute('lgp_user_nouvelles_categories_cours');
     }
     
     return $this->render('LGPUserBundle:NouvelleCategorieCours:add.html.twig', array(
       'form' => $form->createView()
     ));
+  }
+  
+  /**
+   * 
+   * @param NouvelleCategorieCours $nouvelleCategorieCours
+   * @param Request $request
+   * @return type
+   * @throws type
+   */
+  public function updateAction(NouvelleCategorieCours $nouvelleCategorieCours, Request $request) {
+    $user = $this->getUser();
+    
+    if ($user === null) {
+      throw $this->createNotFoundException('Utilisateur inconnu !');
+    }
+    
+    $form = $this->createForm(NouvelleCategorieCoursType::class, $nouvelleCategorieCours);
+    $form->handleRequest($request);
+    
+    if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+      
+      $em->flush();
+      
+      return $this->redirectToRoute('lgp_user_nouvelles_categories_cours');
+    }
+    
+    return $this->render('LGPUserBundle:NouvelleCategorieCours:add.html.twig', array(
+      'form' => $form->createView()
+    ));
+  }
+  
+  /**
+   * 
+   * @param NouvelleCategorieCours $nouvelleCategorieCours
+   * @return type
+   * @throws type
+   */
+  public function deleteAction(NouvelleCategorieCours $nouvelleCategorieCours) {
+    $user = $this->getUser();
+    
+    if ($user === null) {
+      throw $this->createNotFoundException('Utilisateur inconnu !');
+    }
+    
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($nouvelleCategorieCours);
+    $em->flush();
+    
+    return $this->redirectToRoute('lgp_user_nouvelles_categories_cours');
   }
 }

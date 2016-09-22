@@ -132,6 +132,11 @@ class Prof extends User {
     private $experiencePros;
 
     /**
+     * @ORM\OneToMany(targetEntity="Remuneration", mappedBy="prof", cascade={"persist", "remove"})
+     */
+    private $remunerations;
+
+    /**
      * Constructeur
      */
     function __construct() {
@@ -142,6 +147,7 @@ class Prof extends User {
         $this->evaluations    = new ArrayCollection();
         $this->diplomes       = new ArrayCollection();
         $this->experiencePros = new ArrayCollection();
+        $this->remunerations  = new ArrayCollection();
     }
 
     /**
@@ -581,5 +587,39 @@ class Prof extends User {
     public function getCVFile()
     {
         return $this->CVFile;
+    }
+
+    /**
+     * Add remuneration
+     *
+     * @param \LGP\UserBundle\Entity\Remuneration $remuneration
+     *
+     * @return Prof
+     */
+    public function addRemuneration(\LGP\UserBundle\Entity\Remuneration $remuneration)
+    {
+        $this->remunerations[] = $remuneration;
+    
+        return $this;
+    }
+
+    /**
+     * Remove remuneration
+     *
+     * @param \LGP\UserBundle\Entity\Remuneration $remuneration
+     */
+    public function removeRemuneration(\LGP\UserBundle\Entity\Remuneration $remuneration)
+    {
+        $this->remunerations->removeElement($remuneration);
+    }
+
+    /**
+     * Get remunerations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRemunerations()
+    {
+        return $this->remunerations;
     }
 }

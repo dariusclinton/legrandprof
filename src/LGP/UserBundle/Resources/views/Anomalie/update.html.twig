@@ -1,0 +1,14 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Mise à jour d'une anomalie - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  
+  <h1>Mise à jour d'une anomalie</h1>
+    
+{#  Inclusion du formulaire #}
+  {% include 'LGPUserBundle:Anomalie:formulaire.html.twig' %}
+  
+{% endblock %}

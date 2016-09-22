@@ -8,7 +8,9 @@
   <h1>Les messages reçus</h1>
   
   <a href="{{ path('lgp_user_message_new') }}" class="btn btn-primary">Nouveau</a>
-  <a href="{{ path('lgp_user_message_receive') }}" class="btn btn-primary">Réçus</a>
+  <a href="{{ path('lgp_user_message_receive') }}" class="btn btn-primary">
+    Reçus<span class="badge">{{ render (controller('LGPUserBundle:Message:receive', {'is_read': 'false'})) }}</span>
+  </a>
   <a href="{{ path('lgp_user_message_send') }}" class="btn btn-primary">Envoyés</a>
   
   {% if messages|length <= 0 %}
@@ -20,6 +22,7 @@
           <th>Expéditeur</th>
           <th>Objet</th>
           <th>Contenu</th>
+          <th>Date</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -35,6 +38,7 @@
             <td>
               <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}"> {{ message.contenu }} </a>
             </td>
+            <td>{{ message.dateEnvoi|date('d/m/Y') }}</td>
             <td>
               <a href='{{ path('lgp_user_message_delete',  {'id': message.id }) }}' class="bt btn-danger btn-sm delete_confirm">
                 Supprimer

@@ -81,9 +81,9 @@ abstract class User extends BaseUser
      *
      * @ORM\Column(name="telephone", type="string", length=255, unique=true, nullable=true)
      * @Assert\Length(
-        min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
-        max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
-      )
+     *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+     *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+     * )
      * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
      */
     protected $telephone;

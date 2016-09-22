@@ -20,6 +20,7 @@
           <th>Récepteur</th>
           <th>Objet</th>
           <th>Contenu</th>
+          <th>Date</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -35,6 +36,7 @@
             <td>
               <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}"> {{ message.contenu }} </a>
             </td>
+            <td>{{ message.dateEnvoi|date('d/m/Y') }}</td>
             <td>
               <a href='{{ path('lgp_user_message_delete',  {'id': message.id }) }}' class="bt btn-danger btn-sm delete_confirm">
                 Supprimer

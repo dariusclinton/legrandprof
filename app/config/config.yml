@@ -152,4 +152,4 @@ sonata_admin:
             lgp_admin.group.reservation:
                 label: Réservation
                 items:
-                    - lgp.admin.prof
+                    - lgp.admin.remuneration

@@ -43,9 +43,9 @@ class NouvelleCategorieCours
     private $dateProposition;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Prof")
      */
-    private $user;
+    private $prof;
 
     /**
      * Constructeur
@@ -115,13 +115,13 @@ class NouvelleCategorieCours
     /**
      * Set prof
      *
-     * @param \LGP\UserBundle\Entity\User $user
+     * @param \LGP\UserBundle\Entity\Prof $prof
      *
      * @return NouvelleCategorieCours
      */
-    public function setUser(\LGP\UserBundle\Entity\User $user = null)
+    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
     {
-        $this->user = $user;
+        $this->prof = $prof;
 
         return $this;
     }
@@ -129,34 +129,10 @@ class NouvelleCategorieCours
     /**
      * Get prof
      *
-     * @return \LGP\UserBundle\Entity\User
+     * @return \LGP\UserBundle\Entity\Prof
      */
-    public function getUser()
+    public function getProf()
     {
-        return $this->user;
-    }
-
-    /**
-     * Set dateProposition
-     *
-     * @param \DateTime $dateProposition
-     *
-     * @return NouvelleCategorieCours
-     */
-    public function setDateProposition($dateProposition)
-    {
-        $this->dateProposition = $dateProposition;
-    
-        return $this;
-    }
-
-    /**
-     * Get dateProposition
-     *
-     * @return \DateTime
-     */
-    public function getDateProposition()
-    {
-        return $this->dateProposition;
+        return $this->prof;
     }
 }

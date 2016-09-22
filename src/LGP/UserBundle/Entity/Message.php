@@ -53,6 +53,11 @@ class Message
     private $isRead = false;
     
     /**
+     * @ORM\Column(name="date_envoi", type="datetime")
+     */
+    private $dateEnvoi = false;
+    
+    /**
      * Get id
      *
      * @return int
@@ -116,7 +121,7 @@ class Message
      */
     public function __construct()
     {
-        $this->recepteur = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateEnvoi = new \DateTime();
     }
 
     /**
@@ -190,5 +195,29 @@ class Message
     public function getIsRead()
     {
         return $this->isRead;
+    }
+
+    /**
+     * Set dateEnvoi
+     *
+     * @param \DateTime $dateEnvoi
+     *
+     * @return Message
+     */
+    public function setDateEnvoi(\DateTime $dateEnvoi)
+    {
+        $this->dateEnvoi = $dateEnvoi;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEnvoi
+     *
+     * @return \DateTime
+     */
+    public function getDateEnvoi()
+    {
+        return $this->dateEnvoi;
     }
 }

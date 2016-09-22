@@ -1,7 +1,3 @@
-#lgp_admin:
-#    resource: "@LGPAdminBundle/Resources/config/routing.yml"
-#    prefix:   /
-
 lgp_user:
     resource: "@LGPUserBundle/Resources/config/routing.yml"
     prefix:   /user

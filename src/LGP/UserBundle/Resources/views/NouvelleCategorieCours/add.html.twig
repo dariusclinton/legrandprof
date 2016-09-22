@@ -8,26 +8,6 @@
   
   <h1>Proposition d'une nouvelle catégorie de cours </h1>
     
-  {{ form_start(form) }}
-  
-  {{ form_errors(form) }}
-  
-  <div class="form-group">
-    {{ form_label(form.intitule, "Intitulé de la catégorie", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_widget(form.intitule, {'attr': {'class': 'form-control'}}) }}
-    {{ form_errors(form.intitule) }}
-  </div>
-  
-  <div class="form-group">
-    {{ form_label(form.description, "Description", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-    {{ form_errors(form.description) }}
-  </div>
-  
-  {{ form_rest(form) }}
-  
-  <input type="submit" class="btn btn-primary" value='Soumettre'/>
-  
-  {{ form_end(form) }}
+  {% include 'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' %}
   
 {% endblock %}

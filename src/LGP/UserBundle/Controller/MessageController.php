@@ -55,9 +55,7 @@ class MessageController extends Controller {
     if ($is_read) {
       $messages = $rep->findBy(array('recepteur' => $user, 'isRead' => false));
       
-      return $this->render('LGPUserBundle:Message:receive_not_read.html.twig', array(
-        'messages' => $messages
-      ));
+      return new \Symfony\Component\HttpFoundation\Response(count($messages));
     } else {
       $messages = $rep->findBy(array('recepteur' => $user));
     

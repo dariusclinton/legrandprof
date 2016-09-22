@@ -8,26 +8,7 @@
   
   <h1>Ajout d'une anomalie</h1>
     
-  {{ form_start(form) }}
-  
-  {{ form_errors(form) }}
-  
-  <div class="form-group">
-    {{ form_label(form.objet, "Objet de l'anomalie", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_widget(form.objet, {'attr': {'class': 'form-control'}}) }}
-    {{ form_errors(form.objet) }}
-  </div>
-  
-  <div class="form-group">
-    {{ form_label(form.contenu, "Contenu", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
-    {{ form_errors(form.contenu) }}
-  </div>
-  
-  {{ form_rest(form) }}
-  
-  <input type="submit" class="btn btn-primary" value='Soumettre'/>
-  
-  {{ form_end(form) }}
+{#  Inclusion du formulaire #}
+  {% include 'LGPUserBundle:Anomalie:formulaire.html.twig' %}
   
 {% endblock %}

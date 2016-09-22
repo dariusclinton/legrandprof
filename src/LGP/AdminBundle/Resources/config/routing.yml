@@ -1,3 +1,0 @@
-lgp_admin_homepage:
-    path:     /
-    defaults: { _controller: LGPAdminBundle:Default:index }
