@@ -27,6 +27,18 @@ lgp_user_prof_avis_delete:
     requirements:
       id: \d+
     
+lgp_user_prof_avis_voir:
+    path: /prof/avis/voir/{id}
+    defaults: { _controller: LGPUserBundle:Avis:profVoir }
+    requirements:
+      id: \d+
+    
+lgp_user_parent_avis_voir:
+    path: /parent/avis/voir/{id}
+    defaults: { _controller: LGPUserBundle:Avis:parentVoir }
+    requirements:
+      id: \d+
+    
 lgp_user_parent_avis_delete:
     path: /parent/avis/delete/{id}
     defaults: { _controller: LGPUserBundle:Avis:parentDelete }
@@ -46,6 +58,8 @@ lgp_user_parent_avis:
 lgp_user_prof_avis:
     path: /prof/avis
     defaults: { _controller: LGPUserBundle:Avis:prof }
+    options: 
+        expose: true
     
 # Indisponibilite
 lgp_user_prof_indisponibilite:
@@ -76,6 +90,8 @@ lgp_user_message_send:
 lgp_user_message_receive:
     path: /messages/receive
     defaults: { _controller: LGPUserBundle:Message:receive }
+    options:
+        expose: true
     
 lgp_user_message_new:
     path: /message/new
@@ -84,6 +100,12 @@ lgp_user_message_new:
 lgp_user_message_delete:
     path: /message/delete/{id}
     defaults: { _controller: LGPUserBundle:Message:delete }
+    requirements:
+      id: \d+
+
+lgp_user_message_voir:
+    path: /message/{id}
+    defaults: { _controller: LGPUserBundle:Message:voir }
     requirements:
       id: \d+
       
@@ -167,9 +189,3 @@ lgp_user_prof_nouvelles_categories_cours:
 lgp_user_prof_nouvelle_categorie_cours_add:
     path: /nouvelle-categorie-cours/add
     defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:add }  
-    
-
-
-    
-
-  

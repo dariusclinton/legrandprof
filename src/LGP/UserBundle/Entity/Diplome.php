@@ -3,12 +3,17 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 /**
  * Diplome
  *
  * @ORM\Table(name="lgp_diplome")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\DiplomeRepository")
+ * @Vich\Uploadable
  */
 class Diplome
 {
@@ -20,27 +25,35 @@ class Diplome
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255)
      */
     private $intitule;
-
+     
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+    
+    /**
+     * @Vich\UploadableField(mapping="diplome_file", fileNameProperty="fileName")
+     * @Assert\File(mimeTypes={"application/pdf"}, mimeTypesMessage="Uniquement les pdf sont valides")
+     * @var File
+     */
+    private $file;
+    
     /**
      * @var string
-     *
-     * @ORM\Column(name="specialite", type="string", length=255, nullable=true)
+     * 
+     * @ORM\Column(name="file_name", type="string", length=255) 
      */
-    private $specialite;
+    private $fileName;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="annee", type="integer")
-     */
-    private $annee;
 
     /**
      * Get id
@@ -77,59 +90,54 @@ class Diplome
     }
 
     /**
-     * Set specialite
+     * Set file
      *
-     * @param string $specialite
+     * @param \LGP\UserBundle\Entity\filePDF $file
      *
      * @return Diplome
      */
-    public function setSpecialite($specialite)
+    public function setFile(File $file = null)
     {
-        $this->specialite = $specialite;
+      $this->file = $file;
+        
+      if ($file) {
+        $this->updatedAt = new \DateTime('now');
+      }
+      
+      return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \LGP\UserBundle\Entity\filePDF
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     *
+     * @return Diplome
+     */
+    public function setFileName($filename)
+    {
+        $this->fileName = $filename;
 
         return $this;
     }
 
     /**
-     * Get specialite
+     * Get fileName
      *
      * @return string
      */
-    public function getSpecialite()
+    public function getFileName()
     {
-        return $this->specialite;
-    }
-
-    /**
-     * Set annee
-     *
-     * @param integer $annee
-     *
-     * @return Diplome
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
-
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return int
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
-    
-    /**
-     * Cette fonction permet de retourner la chaine a afficher dans 
-     * les choix proposes au Prof et qui decrit le diplome
-     * @return type
-     */
-    public function getAffichage() {
-      return $this->getIntitule().' '.$this->getSpecialite().' '.$this->getAnnee();
+        return $this->fileName;
     }
 }

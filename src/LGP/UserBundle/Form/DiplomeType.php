@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class DiplomeType extends AbstractType
 {
@@ -17,33 +18,16 @@ class DiplomeType extends AbstractType
     {
         $builder
             ->add('intitule', ChoiceType::class, array(
-              'choices' => array(
-                'Bacc' => 'Bacc',
-                'BTS' => 'BTS',
-                'DUT' => 'DUT',
+              'choices'     => array(
+                'Bacc'    => 'Bacc',
+                'DUT'     => 'DUT',
+                'BTS'     => 'BTS',
                 'Licence' => 'Licence',
               ),
               'placeholder' => '--'
             ))
-            ->add('specialite', ChoiceType::class, array(
-              'choices' => array(
-                'C'  => 'C',
-                'Physique'  => 'Physique',
-                'Chimie'  => 'Chimie',
-                'SVT'  => 'SVT',
-                'Informatique'  => 'Informatique',
-              ),
-              'placeholder' => '--'
-            ))
-            ->add('annee', ChoiceType::class, array(
-              'choices' => array(
-                '1999' => '1999',
-                '2000' => '2000',
-                '2001' => '2001',
-                '2002' => '2002',
-                '2003' => '2003',
-              ),
-              'placeholder' => '--'
+            ->add('file', FileType::class, array(
+              'required' => false
             ))
         ;
     }

@@ -39,6 +39,11 @@ class Anomalie
      * @ORM\Column(name="date_publication", type="datetime")
      */
     private $datePublication;
+    
+    /**
+     * @ORM\Column(name="is_read", type="boolean")
+     */
+    private $isRead = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -148,5 +153,29 @@ class Anomalie
      */
     function setDatePublication($datePublication) {
       $this->datePublication = $datePublication;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     *
+     * @return Anomalie
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 }

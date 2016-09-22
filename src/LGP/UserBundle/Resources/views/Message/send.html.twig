@@ -14,7 +14,7 @@
   {% if messages|length <= 0 %}
     <h1 class="text-muted">Aucun message trouvé !</h1>
   {% else %}
-    <table class="table table-bordered table-hover table-striped">
+    <table class="table table-bordered table-hover table-striped messages-table">
       <thead>
         <tr>
           <th>Récepteur</th>
@@ -23,20 +23,18 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-        </tr>
-      </tfoot>
       <tbody>
         {% for message in messages %}
           <tr>
-            <td>{{ message.recepteur.prenoms }} {{ message.recepteur.nom }}</td>
-            <td>{{ message.objet }}</td>
-            <td>{{ message.contenu }}</td>
+            <td>
+              <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}">{{ message.recepteur.prenoms }} {{ message.recepteur.nom }} </a>
+            </td>
+            <td>
+              <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}">{{ message.objet }}</a>
+            </td>
+            <td>
+              <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}"> {{ message.contenu }} </a>
+            </td>
             <td>
               <a href='{{ path('lgp_user_message_delete',  {'id': message.id }) }}' class="bt btn-danger btn-sm delete_confirm">
                 Supprimer
@@ -46,6 +44,8 @@
         {% endfor %}
       </tbody>
     </table>
+      
+    <div class="messages-details"></div>
   {% endif %}
   
 {% endblock %}

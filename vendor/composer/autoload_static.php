@@ -15,9 +15,19 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
+        '8ac9dba77d5c65db2811440ee8265f5d' => __DIR__ . '/..' . '/sonata-project/block-bundle/Resources/stubs/symfony2.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\EventManager\\' => 18,
+            'Zend\\Code\\' => 10,
+        ),
+        'V' => 
+        array (
+            'Vich\\UploaderBundle\\' => 20,
+        ),
         'T' => 
         array (
             'Tests\\' => 6,
@@ -28,6 +38,7 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Php56\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Security\\Acl\\' => 31,
             'Symfony\\Component\\' => 18,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
@@ -38,17 +49,30 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'Stof\\DoctrineExtensionsBundle\\' => 30,
+            'Sonata\\DoctrineORMAdminBundle\\' => 30,
+            'Sonata\\CoreBundle\\' => 18,
+            'Sonata\\Cache\\Tests\\' => 19,
+            'Sonata\\Cache\\' => 13,
+            'Sonata\\BlockBundle\\' => 19,
+            'Sonata\\AdminBundle\\' => 19,
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Cache\\' => 10,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'K' => 
+        array (
+            'Knp\\Menu\\' => 9,
+            'Knp\\Bundle\\MenuBundle\\' => 22,
         ),
         'I' => 
         array (
@@ -59,6 +83,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'FOS\\UserBundle\\' => 15,
             'FOS\\JsRoutingBundle\\' => 20,
         ),
+        'E' => 
+        array (
+            'Exporter\\' => 9,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -67,9 +95,25 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
         ),
+        'C' => 
+        array (
+            'Cocur\\Slugify\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\EventManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-eventmanager/src',
+        ),
+        'Zend\\Code\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-code/src',
+        ),
+        'Vich\\UploaderBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vich/uploader-bundle',
+        ),
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -89,6 +133,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Security\\Acl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/security-acl',
         ),
         'Symfony\\Component\\' => 
         array (
@@ -130,6 +178,34 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Doctrine',
         ),
+        'Stof\\DoctrineExtensionsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stof/doctrine-extensions-bundle',
+        ),
+        'Sonata\\DoctrineORMAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-orm-admin-bundle',
+        ),
+        'Sonata\\CoreBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/core-bundle',
+        ),
+        'Sonata\\Cache\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/cache/test',
+        ),
+        'Sonata\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/cache/lib',
+        ),
+        'Sonata\\BlockBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/block-bundle',
+        ),
+        'Sonata\\AdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/admin-bundle',
+        ),
         'Sensio\\Bundle\\GeneratorBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/generator-bundle',
@@ -142,6 +218,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         array (
             0 => __DIR__ . '/..' . '/sensio/distribution-bundle',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
@@ -149,6 +229,14 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Knp\\Menu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
+        ),
+        'Knp\\Bundle\\MenuBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-menu-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -161,6 +249,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         'FOS\\JsRoutingBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
+        ),
+        'Exporter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/exporter/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -182,6 +274,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
+        ),
     );
 
     public static $fallbackDirsPsr4 = array (
@@ -191,6 +287,10 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
     public static $prefixesPsr0 = array (
         'T' => 
         array (
+            'Twig_Extensions_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/extensions/lib',
+            ),
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
@@ -205,13 +305,20 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
         ),
         'P' => 
         array (
-            'Psr\\Log\\' => 
+            'ProxyManager\\' => 
             array (
-                0 => __DIR__ . '/..' . '/psr/log',
+                0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
             ),
             'PUGX\\MultiUserBundle' => 
             array (
                 0 => __DIR__ . '/..' . '/pugx/multi-user-bundle',
+            ),
+        ),
+        'M' => 
+        array (
+            'Metadata\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/metadata/src',
             ),
         ),
         'J' => 
@@ -219,6 +326,13 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'JsonpCallbackValidator' => 
             array (
                 0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+            ),
+        ),
+        'G' => 
+        array (
+            'Gedmo\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/lib',
             ),
         ),
         'D' => 
@@ -246,6 +360,13 @@ class ComposerStaticInitffb04640eb66c59ac37eaa73e851dee2
             'Doctrine\\Common\\Annotations\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
+            ),
+        ),
+        'B' => 
+        array (
+            'Behat\\Transliterator' => 
+            array (
+                0 => __DIR__ . '/..' . '/behat/transliterator/src',
             ),
         ),
     );

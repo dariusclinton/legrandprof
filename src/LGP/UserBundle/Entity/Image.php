@@ -3,15 +3,16 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Image
  *
  * @ORM\Table(name="lgp_image")
  * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ImageRepository")
- * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -23,152 +24,87 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
+    
+     /**
+     * @ORM\Column(type="datetime")
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @var \DateTime
      */
-    private $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
-     */
-    private $alt;
-
-    /**
-   * @Assert\Image(maxSize="2M", maxSizeMessage="La taille du fichier doit être < 2Mo")
-   */
-  private $file;
-  
-  private $tmpFilename;
+    private $updatedAt;
     
     /**
-     * Get id
-     *
-     * @return int
+     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
+     * @Assert\Image()
+     * @var File
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
+    private $imageFile;
+    
     /**
-     * Set url
+     * @ORM\Column(type="string", length=255)
      *
-     * @param string $url
+     * @var string
+     */
+    private $imageName;
+    
+    /**
+     * 
+     * @return type
+     */
+    function getId() {
+      return $this->id;
+    }
+    
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
      * @return Image
      */
-    public function setUrl($url)
+    public function setImageFile(File $image = null)
     {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-    
-    function getFile() {
-      return $this->file;
-    }
-
-    function setFile(UploadedFile $file) {
-      $this->file = $file;
-      
-      if (null !== $this->url) {
-        $this->tmpFilename = $this->url;
+        $this->imageFile = $image;
         
-        $this->url = null;
-        $this->alt = null;
-      }
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function preUpload() {
-      if (null === $this->file) {
-        return;
-      }
-      
-      $this->url = $this->file->guessExtension();
-      $this->alt = $this->file->getClientOriginalName();
-    }
-    
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload() {
-      if (null === $this->file) {
-        return;
-      }
-      
-      if (null !== $this->tmpFilename) {
-        $oldFile = $this->getUploadRootDir().'/'.$this->getId().'.'.$this->tmpFilename;
-        if (file_exists($oldFile)) {
-          unlink($oldFile);
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
         }
-      }
-      
-      $this->file->move($this->getUploadRootDir(), $this->getId().'.'.$this->url);
+        
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $imageName
+     *
+     * @return Product
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
     
     /**
-     * @ORM\PostRemove()
+     * 
+     * @return type
      */
-    public function removeUpload() {
-      if (file_exists($this->tmpFilename)) {
-        unlink($this->tmpFilename);
-      }
-    }
-    
-    public function getUploadDir() {
-     return 'uploads/images';
-    }
-    
-    public function getUploadRootDir() {
-      return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-    
     public function getWebPath() {
-      return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getUrl();
+      return 'uploads/profils/'.$this->getImageName();
     }
-
 }

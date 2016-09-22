@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Avis
@@ -37,6 +38,7 @@ class Avis {
    * @var int
    *
    * @ORM\Column(name="note", type="integer")
+   * @Assert\Range(min=0, max=5, invalidMessage="Merci d'entrer un nombre")
    */
   private $note;
 
@@ -46,6 +48,11 @@ class Avis {
    * @ORM\Column(name="commentaire", type="text", nullable=true)
    */
   private $commentaire;
+  
+  /**
+   * @ORM\Column(name="is_read", type="boolean")
+   */
+    private $isRead = false;
 
   /**
    * Get id
@@ -147,5 +154,29 @@ class Avis {
     public function getProf()
     {
         return $this->prof;
+    }
+
+    /**
+     * Set isRead
+     *
+     * @param boolean $isRead
+     *
+     * @return Avis
+     */
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+
+        return $this;
+    }
+
+    /**
+     * Get isRead
+     *
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 }

@@ -5,12 +5,13 @@ imports:
     - { resource: "@LGPCoreBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/config.yml" }
+    - { resource: "@LGPAdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    images_directory: '%kernel.root_dir%/../web/uploads/images'
+    diplomes_directory: '%kernel.root_dir%/../web/uploads/diplomes'
 
 framework:
     #esi:             ~
@@ -40,8 +41,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-#    form_themes:
+    form_themes:
 #        - 'bootstrap_3_layout.html.twig'
+         - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -81,3 +83,73 @@ swiftmailer:
 #    registration:
 #        form:
 #            type: LGP\UserBundle\Form\RegistrationType
+
+# vich uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        user_image:
+            uri_prefix:         ../../../uploads/profils
+            upload_destination: '%kernel.root_dir%/../web/uploads/profils'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            
+        diplome_file:
+            uri_prefix:         ../../../uploads/diplomes
+            upload_destination: '%kernel.root_dir%/../web/uploads/diplomes'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            
+        cv_file:
+            uri_prefix:         ../../../uploads/cv
+            upload_destination: '%kernel.root_dir%/../web/uploads/cv'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+
+# Sonata
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
+            
+sonata_admin:
+    title: LeGrandProf Admin
+    title_logo: images/Logo.png
+    dashboard:
+        blocks:
+            # display two dashboard blocks
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [lgp_admin.group.user, lgp_admin.group.cours]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [lgp_admin.group.reservation]
+
+        groups:
+            lgp_admin.group.user:
+                label: Utilisateurs
+                items:
+                    - lgp.admin.prof
+            lgp_admin.group.cours:
+                label: Cours
+                items:
+                    - lgp.admin.prof
+            lgp_admin.group.reservation:
+                label: Réservation
+                items:
+                    - lgp.admin.prof

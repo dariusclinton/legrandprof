@@ -5,6 +5,7 @@ namespace LGP\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -32,9 +33,9 @@ class Prof extends User {
     private $ville;
 
     /**
-     * @var 
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Quartier", inversedBy="profs", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Quartier", inversedBy="profs")
      * @ORM\JoinTable(name="lgp_prof_quartier")
      */
     private $quartierCibles;
@@ -64,6 +65,7 @@ class Prof extends User {
      * @var int
      *
      * @ORM\Column(name="nombre_enfants", type="integer", nullable=true)
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre")
      */
     private $nombreEnfants;
 
@@ -73,13 +75,6 @@ class Prof extends User {
      * @ORM\Column(name="is_recommande", type="boolean")
      */
     private $isRecommande = false;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_actif", type="boolean")
-     */
-    private $isActif = false;
 
     /**
      * @var string
@@ -94,6 +89,13 @@ class Prof extends User {
      * @ORM\Column(name="profession", type="string", length=255, nullable=true)
      */
     private $profession;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CVFile", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    private $CVFile;
 
     /**
      * @var \LGPCourseBundle\Entity\SeanceDeCours
@@ -119,11 +121,13 @@ class Prof extends User {
     /**
      * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="lgp_prof_diplome")
+     * @Assert\Valid()
      */
     private $diplomes;
 
     /**
      * @ORM\OneToMany(targetEntity="ExperiencePro", mappedBy="prof", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $experiencePros;
 
@@ -270,28 +274,6 @@ class Prof extends User {
      */
     public function getIsRecommande() {
         return $this->isRecommande;
-    }
-
-    /**
-     * Set isActif
-     *
-     * @param boolean $isActif
-     *
-     * @return Prof
-     */
-    public function setIsActif($isActif) {
-        $this->isActif = $isActif;
-
-        return $this;
-    }
-
-    /**
-     * Get isActif
-     *
-     * @return boolean
-     */
-    public function getIsActif() {
-        return $this->isActif;
     }
 
     /**
@@ -575,5 +557,29 @@ class Prof extends User {
     public function getQuartierCibles()
     {
         return $this->quartierCibles;
+    }
+
+    /**
+     * Set cVFile
+     *
+     * @param \LGP\UserBundle\Entity\CVFile $cVFile
+     *
+     * @return Prof
+     */
+    public function setCVFile(\LGP\UserBundle\Entity\CVFile $cVFile = null)
+    {
+        $this->CVFile = $cVFile;
+
+        return $this;
+    }
+
+    /**
+     * Get cVFile
+     *
+     * @return \LGP\UserBundle\Entity\CVFile
+     */
+    public function getCVFile()
+    {
+        return $this->CVFile;
     }
 }

@@ -9,3 +9,11 @@ services:
         tags:
             - { name: form.type, alias: lgp_user_registration }
 
+
+    lgp.admin.prof:
+        class: LGP\AdminBundle\Admin\ProfAdmin
+        arguments: [~, LGP\UserBundle\Entity\Prof, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Prof

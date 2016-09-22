@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use LGP\UserBundle\Form\DiplomeType;
 use LGP\UserBundle\Form\QuartierType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use LGP\UserBundle\Form\CVFileType;
 
 
 class ProfileProfFormType extends AbstractType {
@@ -51,8 +52,8 @@ class ProfileProfFormType extends AbstractType {
         ->add('quartierCibles', EntityType::class, array(
           'class'        => 'LGPUserBundle:Quartier',
           'choice_label' => 'affichage',
-          'multiple'     => true,
           'expanded'     => true,
+          'multiple'     => true
         ))
         ->add('profession', ChoiceType::class, array(
           'choices'     => array(
@@ -73,6 +74,7 @@ class ProfileProfFormType extends AbstractType {
           'allow_delete' => true,
           'by_reference' => false
         ))
+        ->add('CVFile', CVFileType::class)
        ;
   }
   

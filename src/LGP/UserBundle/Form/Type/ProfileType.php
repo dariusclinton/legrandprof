@@ -29,7 +29,7 @@ class ProfileType extends AbstractType {
           ),
           'placeholder' => '--',
         ))
-        ->add('numTelephone', TextType::class, array(
+        ->add('telephone', TextType::class, array(
           'required' => false
         ))
         ->add('pays', CountryType::class, array(

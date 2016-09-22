@@ -4,6 +4,8 @@ namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
@@ -12,12 +14,14 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"user_one" = "Parents", "user_two" = "Prof"})
  *
+ * @UniqueEntity(fields="telephone", message="Ce numéro de téléphone est déjà utilisé.")
  */
 abstract class User extends BaseUser
 {
     /**
      * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
      */
     protected $image;
     
@@ -75,9 +79,14 @@ abstract class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="num_telephone", type="string", length=255, unique=true, nullable=true)
+     * @ORM\Column(name="telephone", type="string", length=255, unique=true, nullable=true)
+     * @Assert\Length(
+        min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+        max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+      )
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
      */
-    protected $numTelephone;
+    protected $telephone;
 
     /**
      * @var string
@@ -92,14 +101,19 @@ abstract class User extends BaseUser
      * @ORM\Column(name="date_inscription", type="datetime")
      */
     protected $dateInscription;
-    
-    public function __construct() {
-        parent::__construct();
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->paiements = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dateInscription = new \DateTime;
-    }
 
+    /**
+     * Constructeur
+     */
+     public function __construct()
+     {
+       parent::__construct();
+       
+       $this->reservations    = new \Doctrine\Common\Collections\ArrayCollection();
+       $this->paiements       = new \Doctrine\Common\Collections\ArrayCollection();
+       $this->dateInscription = new \DateTime();
+       $this->pays            = 'CM';
+     }
      
      /**
       * Surcharge de la methode afin de remplir manuellement 
@@ -108,9 +122,18 @@ abstract class User extends BaseUser
       */
      public function setEmail($email) {
        parent::setEmail($email);
-       $this->setUsername($email);
+       $this->setUsername(uniqid());
      }
 
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set nom
@@ -122,7 +145,7 @@ abstract class User extends BaseUser
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -146,7 +169,7 @@ abstract class User extends BaseUser
     public function setPrenoms($prenoms)
     {
         $this->prenoms = $prenoms;
-    
+
         return $this;
     }
 
@@ -170,7 +193,7 @@ abstract class User extends BaseUser
     public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
-    
+
         return $this;
     }
 
@@ -194,7 +217,7 @@ abstract class User extends BaseUser
     public function setSexe($sexe)
     {
         $this->sexe = $sexe;
-    
+
         return $this;
     }
 
@@ -211,14 +234,14 @@ abstract class User extends BaseUser
     /**
      * Set numTelephone
      *
-     * @param string $numTelephone
+     * @param string $telephone
      *
      * @return User
      */
-    public function setNumTelephone($numTelephone)
+    public function setTelephone($telephone)
     {
-        $this->numTelephone = $numTelephone;
-    
+        $this->telephone = $telephone;
+
         return $this;
     }
 
@@ -227,9 +250,9 @@ abstract class User extends BaseUser
      *
      * @return string
      */
-    public function getNumTelephone()
+    public function getTelephone()
     {
-        return $this->numTelephone;
+        return $this->telephone;
     }
 
     /**
@@ -242,7 +265,7 @@ abstract class User extends BaseUser
     public function setPays($pays)
     {
         $this->pays = $pays;
-    
+
         return $this;
     }
 
@@ -266,7 +289,7 @@ abstract class User extends BaseUser
     public function setDateInscription($dateInscription)
     {
         $this->dateInscription = $dateInscription;
-    
+
         return $this;
     }
 
@@ -290,7 +313,7 @@ abstract class User extends BaseUser
     public function setImage(\LGP\UserBundle\Entity\Image $image = null)
     {
         $this->image = $image;
-    
+        
         return $this;
     }
 
@@ -302,6 +325,14 @@ abstract class User extends BaseUser
     public function getImage()
     {
         return $this->image;
+    }
+    
+    /**
+     * Cette fonction retourne quelques infos decrivant l'utilisateur
+     * @return type
+     */
+    public function getAffichage() {
+      return $this->prenoms.' '.$this->nom;
     }
 
     /**
@@ -337,7 +368,7 @@ abstract class User extends BaseUser
     {
         return $this->reservations;
     }
-
+    
     /**
      * Add paiement
      *
