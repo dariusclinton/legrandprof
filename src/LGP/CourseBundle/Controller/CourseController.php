@@ -12,6 +12,24 @@ use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 class CourseController extends Controller {
 
+    public function createFormRefine($course_form_refine) {
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+            
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
+            }
+            die($data['intitule']. "  ".$data['quartier']->getVille());
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
+            } elseif (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            } else {
+                return $this->redirectToRoute('lgp_course_find');
+            }
+        }
+    }
+
     public function searchAction($page, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -46,13 +64,8 @@ class CourseController extends Controller {
         }
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
-            $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) || !(isset($data['quartier']))) {
-                return $this->redirectToRoute("lgp_course_find");
-            }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
-        }
+        $this->createFormRefine($course_form_refine);
+
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
@@ -97,13 +110,7 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
-            $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) || !(isset($data['quartier']))) {
-                return $this->redirectToRoute("lgp_course_find");
-            }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
-        }
+        $this->createFormRefine($course_form_refine);
 
 //        $request->request->set("intitule_cours", $coursFound->getIntitule());
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
@@ -153,13 +160,7 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
-            $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) && !(isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find');
-            }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
-        }
+        $this->createFormRefine($course_form_refine);
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
@@ -196,13 +197,7 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
-            $data = $course_form_refine->getData();
-            if (!(isset($data['intitule'])) || !(isset($data['ville']))) {
-                return $this->redirectToRoute("lgp_course_find");
-            }
-            return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
-        }
+        $this->createFormRefine($course_form_refine);
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }

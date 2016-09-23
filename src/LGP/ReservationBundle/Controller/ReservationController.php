@@ -75,7 +75,7 @@ class ReservationController extends Controller {
                 }
                 $facture = new Facture();
                 $facture->setMontant($prixReservation);
-                $facture->addReservation($reservation);
+                $facture->setReservation($reservation);
                 $reservation->addFacture($facture);
                 $em->persist($reservation);
                 $em->persist($facture);

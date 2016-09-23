@@ -34,12 +34,18 @@ class Reservation {
      * @ORM\Column(name="frequence_paiement", type="string", length=255, nullable=true)
      */
     private $frequencePaiement;
+    
+    /**
+     * @var \Datetime
+     * 
+     * @ORM\Column(name="date_reservation",type="datetime", nullable=false)
+     */
+    private $dateReservation;
 
     /**
      * @var \LGPReservationBundle\Entity\Facture
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Facture", inversedBy="reservations")
-     * @ORM\JoinTable(name="lgp_reservations_factures")
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Facture", mappedBy="reservation", cascade={"persist","remove"})
      */
     private $factures;
     
@@ -56,6 +62,8 @@ class Reservation {
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="reservation")
      */
     private $reservationEnseignements;
+    
+    
     
     
     /**
@@ -87,7 +95,7 @@ class Reservation {
     public function setIsValidee($isValidee)
     {
         $this->isValidee = $isValidee;
-    
+
         return $this;
     }
 
@@ -111,7 +119,7 @@ class Reservation {
     public function setFrequencePaiement($frequencePaiement)
     {
         $this->frequencePaiement = $frequencePaiement;
-    
+
         return $this;
     }
 
@@ -126,6 +134,30 @@ class Reservation {
     }
 
     /**
+     * Set dateReservation
+     *
+     * @param \DateTime $dateReservation
+     *
+     * @return Reservation
+     */
+    public function setDateReservation($dateReservation)
+    {
+        $this->dateReservation = $dateReservation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateReservation
+     *
+     * @return \DateTime
+     */
+    public function getDateReservation()
+    {
+        return $this->dateReservation;
+    }
+
+    /**
      * Add facture
      *
      * @param \LGP\ReservationBundle\Entity\Facture $facture
@@ -135,7 +167,7 @@ class Reservation {
     public function addFacture(\LGP\ReservationBundle\Entity\Facture $facture)
     {
         $this->factures[] = $facture;
-    
+
         return $this;
     }
 
@@ -169,7 +201,7 @@ class Reservation {
     public function setUser(\LGP\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
@@ -193,7 +225,7 @@ class Reservation {
     public function addReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement)
     {
         $this->reservationEnseignements[] = $reservationEnseignement;
-    
+
         return $this;
     }
 
