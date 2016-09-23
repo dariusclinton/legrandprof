@@ -30,9 +30,9 @@ class Facture {
     /**
      * @var \LGPReservationBundle\Entity\Reservation
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="factures")
+     * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="factures")
      */
-    private $reservations;
+    private $reservation;
 
     /**
      * @var \LGPReservationBundle\Entity\Paiement
@@ -40,14 +40,6 @@ class Facture {
      * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="facture")
      */
     private $paiement;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -69,7 +61,7 @@ class Facture {
     public function setMontant($montant)
     {
         $this->montant = $montant;
-    
+
         return $this;
     }
 
@@ -84,37 +76,27 @@ class Facture {
     }
 
     /**
-     * Add reservation
+     * Set reservation
      *
      * @param \LGP\ReservationBundle\Entity\Reservation $reservation
      *
      * @return Facture
      */
-    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function setReservation(\LGP\ReservationBundle\Entity\Reservation $reservation = null)
     {
-        $this->reservations[] = $reservation;
-    
+        $this->reservation = $reservation;
+
         return $this;
     }
 
     /**
-     * Remove reservation
+     * Get reservation
      *
-     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     * @return \LGP\ReservationBundle\Entity\Reservation
      */
-    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    public function getReservation()
     {
-        $this->reservations->removeElement($reservation);
-    }
-
-    /**
-     * Get reservations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReservations()
-    {
-        return $this->reservations;
+        return $this->reservation;
     }
 
     /**
@@ -127,7 +109,7 @@ class Facture {
     public function setPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement = null)
     {
         $this->paiement = $paiement;
-    
+
         return $this;
     }
 
