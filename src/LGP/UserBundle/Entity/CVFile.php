@@ -26,7 +26,7 @@ class CVFile
     private $id;
     
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
@@ -42,10 +42,9 @@ class CVFile
     /**
      * @var string
      *
-     * @ORM\Column(name="fileName", type="string", length=255)
+     * @ORM\Column(name="fileName", type="string", length=255, nullable=true)
      */
     private $fileName;
-
 
     /**
      * Get id
