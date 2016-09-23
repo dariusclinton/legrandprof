@@ -268,7 +268,7 @@
                     <div id="success" style="display:none">
                         <div class="col-md-6 col-sm-6 animated fadeInDown" style="text-align:center">
                             <div class="thumbnail">
-                                {% if prof.image is defined %}
+                                {% if prof.image is not null %}
                                     <img src="{{ asset(prof.image.webPath) }}">
                                 {% else %}
                                     <img src="{{ asset('uploads/profils/default.jpg') }}">
