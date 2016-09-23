@@ -474,10 +474,10 @@ $(function () {
 
     $("#confirmation-avis").slideDown('500');
 
-    /* for paiement frequence choice */
-    $("#paiement-frequence").change(function (event) {
-        event.preventDefault();
-        $("#paiementForm").submit();
-    });
+    // /* for paiement frequence choice */
+    // $("#paiement-frequence").change(function (event) {
+    //     event.preventDefault();
+    //     $("#paiementForm").submit();
+    // });
 
 });

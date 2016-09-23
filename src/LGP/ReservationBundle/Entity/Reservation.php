@@ -68,6 +68,7 @@ class Reservation {
      */
     public function __construct()
     {
+        $this->dateReservation = new \DateTime();
         $this->factures = new \Doctrine\Common\Collections\ArrayCollection();
         $this->reservationEnseignements = new \Doctrine\Common\Collections\ArrayCollection();
     }
