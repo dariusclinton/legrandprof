@@ -3,14 +3,11 @@
 namespace LGP\ReservationBundle\Controller;
 
 use DateTime;
-use LGP\ReservationBundle\Cart\Booker;
-use LGP\ReservationBundle\Cart\Cart;
+use LGP\CourseBundle\Form\CoursSearchType;
 use LGP\ReservationBundle\Entity\Facture;
-use LGP\ReservationBundle\Entity\JourDeCours;
 use LGP\ReservationBundle\Entity\Reservation;
 use LGP\ReservationBundle\Entity\ReservationEnseignement;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ReservationController extends Controller {
@@ -47,7 +44,7 @@ class ReservationController extends Controller {
 
                 $reservation = new Reservation();
                 $reservation->setIsValidee(false);
-                $reservation->setFrequencePaiement("trimestriel");
+                $reservation->setFrequencePaiement($panier->getPaiementFrequence());
                 $reservation->setUser($user);
 
                 foreach ($bookers as $booker) {
@@ -96,8 +93,12 @@ class ReservationController extends Controller {
         }
     }
     
-    public function paiementModeAction(){
+    public function paiementModeAction(Request $request){
         return $this->render('LGPReservationBundle:Reservation:paiement.html.twig');
+    }
+    
+    public function confirmviewReservationAction(){
+        return $this->render('LGPReservationBundle:Reservation:confirm_reservation.html.twig');
     }
 
 }

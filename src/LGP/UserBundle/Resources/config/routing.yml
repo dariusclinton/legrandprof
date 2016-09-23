@@ -197,3 +197,8 @@ lgp_user_nouvelle_categorie_cours_delete:
     defaults: { _controller: LGPUserBundle:NouvelleCategorieCours:delete } 
     requirements:
         id: \d+
+        
+# Reservation
+lgp_user_mes_reservations:
+    path: /mes-reservations
+    defaults: { _controller: LGPUserBundle:Reservation:index }

@@ -22,14 +22,14 @@ class EnseignementController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $parent = $this->getUser();
-            if ($parent === null) {
+            $user = $this->getUser();
+            if ($user === null) {
                 $session = $request->getSession();
                 $session->getFlashBag()->add('warning', 'vous devez être connecté pour poster un avis !!!');
 //            return $this->forward('LGPCourseBundle:Course:profile', array('profId'=> $profId));
                 return $this->redirectToRoute('lgp_course_profile_prof', array('profId' => $profId));
             }
-            $avis->setParent($parent);
+            $avis->setUser($user);
             $avis->setProf($profFound);
             // On persiste l'entite
             $em = $this->getDoctrine()->getManager();

@@ -1,0 +1,31 @@
+
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    mode de paiment  - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="bg-grey">
+        <div class="content-wrapper">
+            {% include 'LGPReservationBundle:Reservation:etapes.html.twig' %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h3 >Confirmez votre reservation en cliquant sur le bouton</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <a href=" {{path('lgp_reservation_confirm', {'userId' : app.user.id} )}} " class="btn btn-primary" title="">Reserver</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

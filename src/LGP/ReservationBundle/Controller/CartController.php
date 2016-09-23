@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class CartController extends Controller{
+class CartController extends Controller {
 
     public function cartAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
@@ -63,6 +63,8 @@ class CartController extends Controller{
                 $booker1->setClasse($classe);
 
                 $panier->addItem($booker1);
+            } else {
+                return new JsonResponse('error');
             }
             $session->set('panier', $panier);
 //        $session->remove('panier');
@@ -70,10 +72,9 @@ class CartController extends Controller{
 //        $session->remove("panier");
 //        die();
 //        $session->remove("panier");
-           return new JsonResponse('success');
+            return new JsonResponse('success');
 //         return $this->forward('LGPCoreBundle:Lgp:index');
         }
-        return new JsonResponse('error');
     }
 
     public function removeCartAction($key, Request $request) {
@@ -86,6 +87,27 @@ class CartController extends Controller{
         $session->set('panier', $panier);
         return $this->redirectToRoute('lgp_reservation_cart');
 //        return $this->forward('LGPCoreBundle:Lgp:index');
+    }
+
+    public function cartUpdatePaiementAction(Request $request) {
+        if ($request->isXmlHttpRequest()) {
+            //recuperation des params de la requete
+            $paiement = $request->query->get('frequence_paiement');
+
+            $session = $request->getSession();
+            if (!$session->has('panier')) {
+                $session->set('panier', new Cart());
+            }
+            $panier = $session->get('panier');
+            if ($panier == null) {
+                $session->set('panier', new Cart());
+            }
+
+            $panier->setPaiementFrequence($paiement);
+            $session->set('panier', $panier);
+
+            return new JsonResponse('success');
+        }
     }
 
 }
