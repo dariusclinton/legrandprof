@@ -14,6 +14,12 @@ lgp_reservation_confirm:
     defaults: { _controller: LGPReservationBundle:Reservation:confirmReservation }
     requirements:
         userId: \d+ 
+   
+lgp_reservation_confirm_page:
+    path:    /confirmation
+    defaults: { _controller: LGPReservationBundle:Reservation:confirmviewReservation }
+    options:
+        expose: true
 
 lgp_reservation_paiement:
     path:    /paiement
@@ -26,6 +32,12 @@ lgp_reservation_paiement:
 lgp_reservation_cart:
     path:    /cart
     defaults: { _controller: LGPReservationBundle:Cart:cart }
+    
+lgp_reservation_cart_update_paiement:
+    path:    /cart/paiement
+    defaults: { _controller: LGPReservationBundle:Cart:cartUpdatePaiement }
+    options:
+        expose: true
     
 lgp_reservation_cart_add:
     path:    /cart/add/{profId}

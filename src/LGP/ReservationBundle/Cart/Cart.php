@@ -12,6 +12,12 @@ class Cart {
      * @var type array()
      */
     private $items;
+    
+    /**
+     * pour la frequence de paiement pour la reservation
+     * @var string
+     */
+    private $paiementFrequence;
 
     /**
      * initialisation du panier lors de la construction
@@ -19,7 +25,16 @@ class Cart {
     function __construct() {
         $this->items = array();
     }
+    
+    function getPaiementFrequence() {
+        return $this->paiementFrequence;
+    }
 
+    function setPaiementFrequence($paiementFrequence) {
+        $this->paiementFrequence = $paiementFrequence;
+    }
+
+    
     /**
      * retourne l'ensemble des elements du panier (la liste des profs choisi par le parent)
      * @return type array()

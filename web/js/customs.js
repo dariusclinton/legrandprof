@@ -457,7 +457,7 @@ $(function () {
 
     $("#btn-leave-avis").click(function () {
 //        alert('test '+$("#leave-avis").hasClass('test'));
-        
+
         if ($("#leave-avis").hasClass('test')) {
             $("#leave-avis").slideDown('500');
             $("#leave-avis-text").text("Annuler");
@@ -473,5 +473,11 @@ $(function () {
     });
 
     $("#confirmation-avis").slideDown('500');
+
+    /* for paiement frequence choice */
+    $("#paiement-frequence").change(function (event) {
+        event.preventDefault();
+        $("#paiementForm").submit();
+    });
 
 });

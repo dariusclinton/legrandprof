@@ -221,4 +221,24 @@ $(function () {
             }
         });
     });
+    
+    $("#paiementForm").submit(function(event){
+        event.preventDefault();
+        var paiement = $("#paiement-frequence option:selected").val();
+        
+        $.ajax({
+            method: "GET",
+            url: Routing.generate('lgp_reservation_cart_update_paiement'),
+            data: "frequence_paiement="+paiement,
+            success: function(answer){
+                console.log(answer);
+                if(answer == "success"){
+                    window.location.href = Routing.generate('lgp_reservation_confirm_page') ;
+                }
+            },
+            error: function(answer){
+                console.log(answer);
+            }
+        })
+    });
 });

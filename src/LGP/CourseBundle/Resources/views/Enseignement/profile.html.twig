@@ -16,8 +16,11 @@
             <div class="flex-row">
 
                 <div class="flex-column flex-md-3 flex-sm-12">  
-                    {% if prof.image is defined %}
+                    {% if prof.image is not null %}
                         <img src="{{ asset(prof.image.webPath) }}" alt=" {{prof.nom}} "  class="profile-img" />
+
+                        {% else %}
+                            <i class="fa fa-user fa-5x profile-img" style="color:#fff"></i>
                     {% endif %}
                 </div>
                 <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
