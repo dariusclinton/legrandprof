@@ -209,7 +209,7 @@
                             <ul class="price-summary-list">
 
                                 <li>
-                                    {% if prof.image is defined %}
+                                    {% if prof.image is not null %}
                                         <img src="{{ asset(prof.image.webPath) }}">
                                     {% else %}
                                         <img src="{{ asset('uploads/profils/default.jpg') }}">
