@@ -292,7 +292,7 @@
                                                 {% endset %}
                                                 <div class="price">{{minPrice}} Fcfa / Mois <br> Prix minimal</div>
                                                 <a href=" {{path('lgp_course_profile_prof',{'profId' : enseigne.prof.id})}} " class="btn btn-primary btn-sm">Voir Profil</a>
-
+                                                <a href=" {{ path('lgp_reservation_detail',{'id': enseigne.prof.id})}} " class="anchor btn btn-primary btn-sm" style="margin-top: 10px;">Réserver un cours</a>
                                             </div>
                                         </div>
                                     </div>
