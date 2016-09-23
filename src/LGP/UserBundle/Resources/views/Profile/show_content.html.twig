@@ -99,7 +99,11 @@
             </ul>
             
             <h1>CV</h1>
-{#            <a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>#}
+            {% if app.user.CVFile is not null %}
+              {% if app.user.CVFile.fileName is not null %}
+                (<a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>)
+              {% endif %}
+            {% endif %}
             <br />
             
             <h3>Rémunérations LeGrandProf <span class="badge">{{ app.user.remunerations|length }}</span></h3>
