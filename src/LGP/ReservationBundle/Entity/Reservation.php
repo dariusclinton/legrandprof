@@ -63,9 +63,6 @@ class Reservation {
      */
     private $reservationEnseignements;
     
-    
-    
-    
     /**
      * Constructor
      */
