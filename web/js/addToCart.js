@@ -211,7 +211,6 @@ $(function () {
 //                window.location.reload(true);
 //            }, 2000);
         }).error(function (answer) {
-//            alert('error ' + answer);
             if (answer == "error") {
                 console.log(answer);
                 $("#loading").css("display", "none");
