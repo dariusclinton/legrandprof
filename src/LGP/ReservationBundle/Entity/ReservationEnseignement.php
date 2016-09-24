@@ -61,12 +61,12 @@ class ReservationEnseignement
      * 
      * @ORM\Column(name="is_finish", type="boolean", nullable=true)
      */
-    private $isFinish;
+    private $isFinish = false;
 
     /**
      * @var \LGPReservationBundle\Entity\JourDeCours
      * 
-     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservationEnseignements")
+     * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservationEnseignements", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="lgp_reservation_enseignement_jours_de_cours")
      */
    private $joursDeCours;
@@ -74,7 +74,7 @@ class ReservationEnseignement
     /**
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
      * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="reservationEnseignement")
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="reservationEnseignement", cascade={"persist", "remove"})
      */
    private $programmeDeCours;
    

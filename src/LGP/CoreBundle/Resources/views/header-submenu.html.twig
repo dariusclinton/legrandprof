@@ -5,7 +5,7 @@
       
       {% if is_granted('ROLE_PROF') %}
         <li><a href="{{ path('lgp_user_prof_cours') }}" class="dashboard-header-link " title="Ce que j'enseigne">Mes cours</a></li>
-        <li><a href="#" class="dashboard-header-link ">Mes demandes de cours</a></li>
+        <li><a href="{{ path('lgp_user_prof_demandes_de_cours') }}" class="dashboard-header-link ">Mes demandes de cours</a></li>
       {% endif %}
       
       <li><a href="#" class="dashboard-header-link ">Mon compte</a></li>

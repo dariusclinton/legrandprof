@@ -3,12 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/CVFile.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/app/config/config.yml</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Form/ProgrammeDeCoursType.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/MesDemandesDeCours/edit.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Form/JourDeCoursType.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Controller/MesDemandesDeCoursController.php</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Profile/show_content.html.twig</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/CourseController.php</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/EnseignementController.php</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Avis.php</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Avis/formulaire.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/Prof.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/config/routing.yml</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/MesDemandesDeCours/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Entity/Reservation.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Form/ReservationEnseignementType.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Entity/Enseignement.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Reservation/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/ReservationBundle/Entity/ReservationEnseignement.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/User.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Controller/ReservationController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CoreBundle/Resources/views/header-submenu.html.twig</file>
         </group>
     </open-files>
 </project-private>

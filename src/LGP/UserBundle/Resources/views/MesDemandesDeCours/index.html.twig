@@ -1,21 +1,21 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-  Mes réservations - {{ parent() }}
+  Mes demandes de cous - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-  
-  <h1>Mes réservations</h1>
-    
-  <a href="{{ path('lgp_course_find') }}" class="btn btn-primary">Rechercher un prof</a>
- 
-  {% if reservations|length <= 0 %}
-    
-    <h4 class="text-muted">Vous n'avez encore effectué aucune réservation</h4>
-  
+
+  <h1>Les demandes de cours qui vous ont été adressées</h1>
+
+  {#  <a href="{{ path('lgp_course_find') }}" class="btn btn-primary">Rechercher un prof</a>#}
+
+  {% if reservation_enseignements|length <= 0 %}
+
+    <h4 class="text-muted">Vous n'avez encore aucune demande de cours.</h4>
+
   {% else %}
-  
+
     <table class="table table-bordered table-stripped">
       <thead>
         <tr>
@@ -23,7 +23,6 @@
           <th>Cours</th>
           <th>Classe</th>
           <th>Nombre d'apprenants</th>
-          <th>Prof</th>
           <th>Début</th>
           <th>Lieu de cours</th>
           <th>Ville</th>
@@ -33,33 +32,37 @@
         </tr>
       </thead> 
       <tbody>
-        {% for reservation in reservations %}
-          {% for res_ens in reservation.reservationEnseignements %}
+        {% for res_enseigns in reservation_enseignements %}
+          {% for res_ens in res_enseigns %}
             <tr>
-              <td>{{ reservation.dateReservation|date('d/m/Y') }}</td>
-              <td>{{ res_ens.enseignement.cours.intitule }}</td>
-              <td>{{ res_ens.enseignement.classe }}</td>
+              <td>
+                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
+              </td>
+              <td>
+                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.cours.intitule }}</a>
+              </td>
+              <td>
+                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.classe }}</a>
+              </td>
               <td>{{ res_ens.nbApprenants }}</td>
-              <td>{{ res_ens.enseignement.prof.nom }} {{ res_ens.enseignement.prof.prenoms }}</td>
               <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
               <td>{{ res_ens.lieuDeCours }}</td>
               <td>{{ res_ens.ville }}</td>
               <td>{{ res_ens.quartier }}</td>
-              <td>{{ reservation.frequencePaiement }}</td>
+              <td>{{ res_ens.reservation.frequencePaiement }}</td>
               <td>
-                {% if reservation.isValidee %}
+                {% if res_ens.reservation.isValidee %}
                   <span class="label label-success">Validée</span>
                 {% else %}
                   <span class="label label-danger">En attente</span>
                 {% endif %}
               </td>
-  {#            <td></td>#}
             </tr>
           {% endfor %}
         {% endfor %}
       </tbody>
     </table>
-    
+
   {% endif %}
-  
+
 {% endblock %}

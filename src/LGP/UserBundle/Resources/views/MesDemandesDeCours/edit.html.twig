@@ -1,0 +1,39 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Edition d'une demande de cous - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-md-12">
+      
+      <h1>Edition du cours {{ reservationEnseignement.enseignement.cours.intitule }}</h1>
+      
+      {{ form_start(form) }}
+      
+      {{ form_errors(form) }}
+      
+      <div class="form-group">
+        {{ form_row(form.isFinish) }}
+      </div>
+      
+      <div class="form-group">
+        {{ form_row(form.joursDeCours) }}
+      </div>
+      
+      <div class="form-group">
+        {{ form_row(form.programmeDeCours) }}
+        <a href="#" class="btn btn-primary btn-sm" id="add_entree_programme_de_cours">Ajouter</a>
+      </div>
+      
+      {{ form_rest(form) }}
+        
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Enregistrer">
+      </div>
+      
+      {{ form_end(form) }}
+    </div>
+  </div>
+{% endblock %}
