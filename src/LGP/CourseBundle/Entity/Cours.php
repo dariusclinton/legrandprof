@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Cours
@@ -36,6 +37,12 @@ class Cours {
     private $description;
 
     /**
+     * @Gedmo\Slug(fields={"intitule", "id"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var \LGP\UserBundle\Entity\Image
      * 
      * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Image", cascade={ "persist", "remove" })
@@ -64,12 +71,10 @@ class Cours {
      */
     private $enseignements;
 
-    
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enseignements = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -79,8 +84,7 @@ class Cours {
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -91,10 +95,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function setIntitule($intitule)
-    {
+    public function setIntitule($intitule) {
         $this->intitule = $intitule;
-    
+
         return $this;
     }
 
@@ -103,8 +106,7 @@ class Cours {
      *
      * @return string
      */
-    public function getIntitule()
-    {
+    public function getIntitule() {
         return $this->intitule;
     }
 
@@ -115,10 +117,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -127,8 +128,7 @@ class Cours {
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -139,10 +139,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
-    {
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null) {
         $this->image = $image;
-    
+
         return $this;
     }
 
@@ -151,8 +150,7 @@ class Cours {
      *
      * @return \LGP\UserBundle\Entity\Image
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
@@ -163,10 +161,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function setCategorie(\LGP\CourseBundle\Entity\Categorie $categorie = null)
-    {
+    public function setCategorie(\LGP\CourseBundle\Entity\Categorie $categorie = null) {
         $this->categorie = $categorie;
-    
+
         return $this;
     }
 
@@ -175,8 +172,7 @@ class Cours {
      *
      * @return \LGP\CourseBundle\Entity\Categorie
      */
-    public function getCategorie()
-    {
+    public function getCategorie() {
         return $this->categorie;
     }
 
@@ -187,10 +183,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
+    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
         $this->evaluations[] = $evaluation;
-    
+
         return $this;
     }
 
@@ -199,8 +194,7 @@ class Cours {
      *
      * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
      */
-    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
-    {
+    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
         $this->evaluations->removeElement($evaluation);
     }
 
@@ -209,8 +203,7 @@ class Cours {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEvaluations()
-    {
+    public function getEvaluations() {
         return $this->evaluations;
     }
 
@@ -221,10 +214,9 @@ class Cours {
      *
      * @return Cours
      */
-    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
-    {
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
         $this->enseignements[] = $enseignement;
-    
+
         return $this;
     }
 
@@ -233,8 +225,7 @@ class Cours {
      *
      * @param \LGP\CourseBundle\Entity\Enseignement $enseignement
      */
-    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
-    {
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
         $this->enseignements->removeElement($enseignement);
     }
 
@@ -243,8 +234,32 @@ class Cours {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseignements()
-    {
+    public function getEnseignements() {
         return $this->enseignements;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Cours
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

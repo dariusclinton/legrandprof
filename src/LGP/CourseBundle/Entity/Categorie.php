@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Categorie
@@ -41,22 +42,25 @@ class Categorie {
      * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Image", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
-    private $image;   
+    private $image;
+
+    /**
+     * @Gedmo\Slug(fields={"intitule", "id"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var \LGP\CourseBundle\Entity\Cours
      * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie", cascade={"persist","remove"})
      */
     private $cours;
-    
-    
-    
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -65,8 +69,7 @@ class Categorie {
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -77,10 +80,9 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setIntitule($intitule)
-    {
+    public function setIntitule($intitule) {
         $this->intitule = $intitule;
-    
+
         return $this;
     }
 
@@ -89,8 +91,7 @@ class Categorie {
      *
      * @return string
      */
-    public function getIntitule()
-    {
+    public function getIntitule() {
         return $this->intitule;
     }
 
@@ -101,10 +102,9 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -113,8 +113,7 @@ class Categorie {
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -125,10 +124,9 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
-    {
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null) {
         $this->image = $image;
-    
+
         return $this;
     }
 
@@ -137,11 +135,10 @@ class Categorie {
      *
      * @return \LGP\UserBundle\Entity\Image
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
-
+    
     /**
      * Add cour
      *
@@ -149,10 +146,9 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function addCour(\LGP\CourseBundle\Entity\Cours $cour)
-    {
+    public function addCour(\LGP\CourseBundle\Entity\Cours $cour) {
         $this->cours[] = $cour;
-    
+
         return $this;
     }
 
@@ -161,8 +157,7 @@ class Categorie {
      *
      * @param \LGP\CourseBundle\Entity\Cours $cour
      */
-    public function removeCour(\LGP\CourseBundle\Entity\Cours $cour)
-    {
+    public function removeCour(\LGP\CourseBundle\Entity\Cours $cour) {
         $this->cours->removeElement($cour);
     }
 
@@ -171,8 +166,32 @@ class Categorie {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCours()
-    {
+    public function getCours() {
         return $this->cours;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Categorie
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
