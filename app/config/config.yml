@@ -153,3 +153,8 @@ sonata_admin:
                 label: Réservation
                 items:
                     - lgp.admin.remuneration
+                    
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

@@ -15,18 +15,17 @@ class CourseController extends Controller {
     public function createFormRefine($course_form_refine) {
         if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
             $data = $course_form_refine->getData();
-            
+
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
             }
-            die($data['intitule']. "  ".$data['quartier']->getVille());
             if ((isset($data['quartier']))) {
                 return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
-            } elseif (isset($data['intitule'])) {
-                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
-            } else {
-                return $this->redirectToRoute('lgp_course_find');
             }
+            if (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            }
+            return $this->redirectToRoute('lgp_course_find');
         }
     }
 
@@ -64,13 +63,35 @@ class CourseController extends Controller {
         }
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        $this->createFormRefine($course_form_refine);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
+            }
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
+            }
+            if (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            }
+            return $this->redirectToRoute('lgp_course_find');
+        }
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
     public function searchCourseAction($intitule_cours, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
+//        
+//        $course = new \LGP\CourseBundle\Entity\Cours();
+//        $course->setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
+//        $course->setIntitule("reseaux et service distribués");
+//        $course->setCategorie($em->getRepository("LGPCourseBundle:Categorie")->find(7));
+//        $em->persist($course);
+//        $em->flush();
+//        die('insertion reussie');
+        
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
@@ -110,7 +131,20 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        $this->createFormRefine($course_form_refine);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
+            }
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
+            }
+            if (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            }
+            return $this->redirectToRoute('lgp_course_find');
+        }
 
 //        $request->request->set("intitule_cours", $coursFound->getIntitule());
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
@@ -160,7 +194,20 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        $this->createFormRefine($course_form_refine);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
+            }
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
+            }
+            if (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            }
+            return $this->redirectToRoute('lgp_course_find');
+        }
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
@@ -197,7 +244,20 @@ class CourseController extends Controller {
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
-        $this->createFormRefine($course_form_refine);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                return $this->redirectToRoute('lgp_course_find_prof_refine', array('ville' => $data['quartier']->getVille(), 'intitule_cours' => $data['intitule']));
+            }
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city', array('ville' => $data['quartier']->getVille()));
+            }
+            if (isset($data['intitule'])) {
+                return $this->redirectToRoute('lgp_course_find_prof', array('intitule_cours' => $data['intitule']));
+            }
+            return $this->redirectToRoute('lgp_course_find');
+        }
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }

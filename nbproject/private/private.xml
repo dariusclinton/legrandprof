@@ -20,6 +20,10 @@
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Entity/User.php</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Controller/ReservationController.php</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CoreBundle/Resources/views/header-submenu.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Entity/Cours.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/CourseController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Entity/Categorie.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/CategorieController.php</file>
         </group>
     </open-files>
 </project-private>
