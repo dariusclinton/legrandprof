@@ -52,7 +52,7 @@
           </p>
           <p>Telephone: {{ app.user.telephone }}</p>
           <p>Pays: {{ app.user.pays }}</p>
-          
+
           {#Si profil prof#}
           {% if is_granted('ROLE_PROF') %}
             <p>Ville: {{ app.user.ville }}</p>
@@ -133,6 +133,8 @@
           
 {#          {{ dump(app.user)}}#}
         </div>
+
+
 
       </div>
     </div>
