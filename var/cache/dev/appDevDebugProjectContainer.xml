@@ -1241,9 +1241,9 @@
               <argument type="service">
                 <service class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
                   <tag name="cache.pool"/>
-                  <argument>P2GU4gPcIb</argument>
+                  <argument>yI6AlT0I-R</argument>
                   <argument>0</argument>
-                  <argument>Lud2Wq-VOylOvalVZ0m0IQ</argument>
+                  <argument>rbXVQi0GSczHk8yY8i3XOA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1254,9 +1254,9 @@
               <argument type="service">
                 <service class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
                   <tag name="cache.pool"/>
-                  <argument>EccDeXiE0b</argument>
+                  <argument>E-lP8KGXpO</argument>
                   <argument>0</argument>
-                  <argument>Lud2Wq-VOylOvalVZ0m0IQ</argument>
+                  <argument>rbXVQi0GSczHk8yY8i3XOA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1968,7 +1968,7 @@
     </service>
     <service id="cache.app" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
       <tag name="cache.pool"/>
-      <argument>Pz7hfyXZo5</argument>
+      <argument>-AGz2Wh9Z5</argument>
       <argument>0</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <call method="setLogger">
@@ -1977,9 +1977,9 @@
     </service>
     <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface">
       <tag name="cache.pool"/>
-      <argument>93bQzq1Xt0</argument>
+      <argument>jcE3Z980jC</argument>
       <argument>0</argument>
-      <argument>Lud2Wq-VOylOvalVZ0m0IQ</argument>
+      <argument>rbXVQi0GSczHk8yY8i3XOA</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2778,7 +2778,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57e8f188c8b0f6.55196332</argument>
+            <argument>57e9216bbd01f8.10524174</argument>
           </service>
         </argument>
       </argument>
@@ -3188,7 +3188,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57e8f188c8b0f6.55196332</argument>
+            <argument>57e9216bbd01f8.10524174</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -5746,20 +5746,37 @@
           <argument>mopa_bootstrap.form.type_extension.horizontal</argument>
           <argument>mopa_bootstrap.form.type_extension.widget_collection</argument>
           <argument>mopa_bootstrap.form.type_extension.tabbed</argument>
+          <argument>form.type_extension.form.http_foundation</argument>
+          <argument>form.type_extension.form.validator</argument>
+          <argument>form.type_extension.csrf</argument>
+          <argument>form.type_extension.form.data_collector</argument>
+          <argument>sonata.admin.form.extension.field</argument>
+          <argument>mopa_bootstrap.form.type_extension.help</argument>
+          <argument>mopa_bootstrap.form.type_extension.legend</argument>
+          <argument>mopa_bootstrap.form.type_extension.error</argument>
+          <argument>mopa_bootstrap.form.type_extension.widget</argument>
+          <argument>mopa_bootstrap.form.type_extension.horizontal</argument>
+          <argument>mopa_bootstrap.form.type_extension.widget_collection</argument>
+          <argument>mopa_bootstrap.form.type_extension.tabbed</argument>
         </argument>
         <argument key="repeated" type="collection">
+          <argument>form.type_extension.repeated.validator</argument>
           <argument>form.type_extension.repeated.validator</argument>
         </argument>
         <argument key="submit" type="collection">
           <argument>form.type_extension.submit.validator</argument>
+          <argument>form.type_extension.submit.validator</argument>
         </argument>
         <argument key="choice" type="collection">
+          <argument>sonata.admin.form.extension.choice</argument>
           <argument>sonata.admin.form.extension.choice</argument>
         </argument>
         <argument key="button" type="collection">
           <argument>mopa_bootstrap.form.type_extension.button</argument>
+          <argument>mopa_bootstrap.form.type_extension.button</argument>
         </argument>
         <argument key="date" type="collection">
+          <argument>mopa_bootstrap.form.type_extension.date</argument>
           <argument>mopa_bootstrap.form.type_extension.date</argument>
         </argument>
       </argument>

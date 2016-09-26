@@ -15,8 +15,8 @@ class __TwigTemplate_e8d322b60cea59e2269ddf1333c554c75fe8c654ef81917ea671aed670e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9f6a3a170059a735902e2c0dd888cf457a8bb09c384914a765c923e2c1a505cc = $this->env->getExtension("native_profiler");
-        $__internal_9f6a3a170059a735902e2c0dd888cf457a8bb09c384914a765c923e2c1a505cc->enter($__internal_9f6a3a170059a735902e2c0dd888cf457a8bb09c384914a765c923e2c1a505cc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::footer.html.twig"));
+        $__internal_ad527cd0c7996912dfa1671a6dde4a2a29359059f685419a2047105e31156750 = $this->env->getExtension("native_profiler");
+        $__internal_ad527cd0c7996912dfa1671a6dde4a2a29359059f685419a2047105e31156750->enter($__internal_ad527cd0c7996912dfa1671a6dde4a2a29359059f685419a2047105e31156750_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::footer.html.twig"));
 
         // line 1
         echo "<footer class=\"footer\">
@@ -109,7 +109,7 @@ class __TwigTemplate_e8d322b60cea59e2269ddf1333c554c75fe8c654ef81917ea671aed670e
 </footer>
 ";
         
-        $__internal_9f6a3a170059a735902e2c0dd888cf457a8bb09c384914a765c923e2c1a505cc->leave($__internal_9f6a3a170059a735902e2c0dd888cf457a8bb09c384914a765c923e2c1a505cc_prof);
+        $__internal_ad527cd0c7996912dfa1671a6dde4a2a29359059f685419a2047105e31156750->leave($__internal_ad527cd0c7996912dfa1671a6dde4a2a29359059f685419a2047105e31156750_prof);
 
     }
 
