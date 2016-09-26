@@ -53,6 +53,19 @@ $(function () {
         $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
     });
 
+    /**
+    * Header Dashboard slide Down
+    */
+
+        // Mouse-enter dropdown
+       $('#dash li').on("mouseenter", function() {
+            $(this).find('ul').first().stop(true, true).delay(150).slideDown(300, 'easeInOutQuad');
+       });
+
+       // Mouse-leave dropdown
+       $('#dash li').on("mouseleave", function() {
+            $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
+       });
 
 
     /**

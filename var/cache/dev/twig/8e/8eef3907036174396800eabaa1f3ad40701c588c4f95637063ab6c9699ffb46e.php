@@ -1,0 +1,405 @@
+<?php
+
+/* LGPCourseBundle:Categorie:course_list.html.twig */
+class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0af1ba extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        // line 2
+        $this->parent = $this->loadTemplate("LGPCoreBundle::layout.html.twig", "LGPCourseBundle:Categorie:course_list.html.twig", 2);
+        $this->blocks = array(
+            'title' => array($this, 'block_title'),
+            'body' => array($this, 'block_body'),
+        );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "LGPCoreBundle::layout.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $__internal_6be11fdd80ca309f3f4e7f2c111769394efdc1c4bd0a5dc97d9cd32a4542c75b = $this->env->getExtension("native_profiler");
+        $__internal_6be11fdd80ca309f3f4e7f2c111769394efdc1c4bd0a5dc97d9cd32a4542c75b->enter($__internal_6be11fdd80ca309f3f4e7f2c111769394efdc1c4bd0a5dc97d9cd32a4542c75b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Categorie:course_list.html.twig"));
+
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_6be11fdd80ca309f3f4e7f2c111769394efdc1c4bd0a5dc97d9cd32a4542c75b->leave($__internal_6be11fdd80ca309f3f4e7f2c111769394efdc1c4bd0a5dc97d9cd32a4542c75b_prof);
+
+    }
+
+    // line 4
+    public function block_title($context, array $blocks = array())
+    {
+        $__internal_1c1cfac74956cdfb3727da3d852a225c3b944d6f22a36160151a2ff8e82097bc = $this->env->getExtension("native_profiler");
+        $__internal_1c1cfac74956cdfb3727da3d852a225c3b944d6f22a36160151a2ff8e82097bc->enter($__internal_1c1cfac74956cdfb3727da3d852a225c3b944d6f22a36160151a2ff8e82097bc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+
+        // line 5
+        echo "    Categorie ";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "html", null, true);
+        echo " - ";
+        $this->displayParentBlock("title", $context, $blocks);
+        echo "
+";
+        
+        $__internal_1c1cfac74956cdfb3727da3d852a225c3b944d6f22a36160151a2ff8e82097bc->leave($__internal_1c1cfac74956cdfb3727da3d852a225c3b944d6f22a36160151a2ff8e82097bc_prof);
+
+    }
+
+    // line 8
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_c22620bee74c463269ba03972329f7555988d86529026e0d5f52e24fd47a37aa = $this->env->getExtension("native_profiler");
+        $__internal_c22620bee74c463269ba03972329f7555988d86529026e0d5f52e24fd47a37aa->enter($__internal_c22620bee74c463269ba03972329f7555988d86529026e0d5f52e24fd47a37aa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 9
+        echo "
+    <!-- start end Page title -->
+    <div class=\"page-title\" style=\"background-image:url('";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/hero-header/breadcrumb.jpg"), "html", null, true);
+        echo "');\">
+
+        <div class=\"container\">
+
+            <div class=\"row\">
+
+                <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
+
+                    <h1 class=\"hero-title\">Catégorie ";
+        // line 19
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())), "html", null, true);
+        echo "</h1>
+
+                    <ol class=\"breadcrumb-list\">
+                        <li><a href=\" ";
+        // line 22
+        echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+        echo " \">Accueil</a></li>
+                        <li><a href=\"";
+        // line 23
+        echo $this->env->getExtension('routing')->getPath("lgp_course_categories");
+        echo "\">Categories</a></li>
+                        <li><span>";
+        // line 24
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())), "html", null, true);
+        echo "</span></li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
+    <div class=\"content-wrapper\">
+
+        <div class=\"container\">
+
+            <div class=\"row\">
+
+                <div class=\"col-sm-4 col-md-3\">
+
+                    <aside class=\"sidebar with-filter\">
+
+                        <div class=\"sidebar-inner\">
+
+                            <div class=\"sidebar-module\">
+                                <h6 class=\"sidebar-title\" style=\"font-size:17px;margin-bottom:10px;\">Plus de catégories</h6>
+                                <ul class=\"category\">
+                                    ";
+        // line 51
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "categories", array()));
+        foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
+            // line 52
+            echo "                                        ";
+            if ((twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())) != twig_lower_filter($this->env, $this->getAttribute($context["cat"], "intitule", array())))) {
+                // line 53
+                echo "                                            <li><a href=\" ";
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("category" => $this->getAttribute($context["cat"], "intitule", array()))), "html", null, true);
+                echo " \">
+                                                    ";
+                // line 54
+                echo twig_escape_filter($this->env, $this->getAttribute($context["cat"], "intitule", array()), "html", null, true);
+                echo "
+                                                </a>
+                                            </li>
+                                        ";
+            }
+            // line 58
+            echo "                                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cat'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 59
+        echo "                                    <li></li>
+                                    <li><a href=\" ";
+        // line 60
+        echo $this->env->getExtension('routing')->getPath("lgp_course_categories");
+        echo " \" title=\"\">voir toutes les categories</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                    </aside>
+
+
+                </div>
+
+                <div class=\"col-sm-8 col-md-9\">
+
+                    <div class=\"sorting-wrappper\">
+
+                        <div class=\"sorting-header\">
+                            <h3 class=\"sorting-title uppercase\">Cours dans la catégorie ";
+        // line 77
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "html", null, true);
+        echo "</h3>
+                            <p class=\"sorting-lead\">
+                                ";
+        // line 79
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courses", array())), "html", null, true);
+        echo " Cours
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller\">
+
+
+                        <div class=\"GridLex-grid-noGutter-equalHeight\">
+
+
+                            ";
+        // line 89
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courses", array()));
+        foreach ($context['_seq'] as $context["_key"] => $context["course"]) {
+            // line 90
+            echo "                                <div class=\"GridLex-col-4_sm-6_xs-12 mb-20\">
+                                    <div class=\"package-grid-item\"> 
+                                        <a href=\" ";
+            // line 92
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($context["course"], "intitule", array()))), "html", null, true);
+            echo " \">
+                                            <div class=\"image\">
+                                                ";
+            // line 94
+            if ( !(null === $this->getAttribute($context["course"], "image", array()))) {
+                // line 95
+                echo "                                                    <img src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($context["course"], "image", array()), "webPath", array())), "html", null, true);
+                echo "\" alt=\"";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["course"], "image", array()), "imageName", array()), "html", null, true);
+                echo "\" />
+                                                ";
+            }
+            // line 97
+            echo "                                            </div>
+                                            <div class=\"content-category\">
+                                                <h6>";
+            // line 99
+            echo twig_escape_filter($this->env, $this->getAttribute($context["course"], "intitule", array()), "html", null, true);
+            echo "</h6>
+                                                <p> ";
+            // line 100
+            echo twig_escape_filter($this->env, $this->getAttribute($context["course"], "description", array()), "html", null, true);
+            echo "  </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['course'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 106
+        echo "
+
+                        </div>
+
+                    </div>
+
+                    ";
+        // line 112
+        $this->loadTemplate("LGPCourseBundle:Pagination:pagination.html.twig", "LGPCourseBundle:Categorie:course_list.html.twig", 112)->display($context);
+        // line 113
+        echo "
+
+                </div>
+
+                ";
+        // line 124
+        echo "
+            </div>
+
+        </div>
+
+    </div>
+
+";
+        
+        $__internal_c22620bee74c463269ba03972329f7555988d86529026e0d5f52e24fd47a37aa->leave($__internal_c22620bee74c463269ba03972329f7555988d86529026e0d5f52e24fd47a37aa_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "LGPCourseBundle:Categorie:course_list.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  243 => 124,  237 => 113,  235 => 112,  227 => 106,  215 => 100,  211 => 99,  207 => 97,  199 => 95,  197 => 94,  192 => 92,  188 => 90,  184 => 89,  171 => 79,  166 => 77,  146 => 60,  143 => 59,  137 => 58,  130 => 54,  125 => 53,  122 => 52,  118 => 51,  88 => 24,  84 => 23,  80 => 22,  74 => 19,  63 => 11,  59 => 9,  53 => 8,  41 => 5,  35 => 4,  11 => 2,);
+    }
+
+    public function getSource()
+    {
+        return "
+{% extends \"LGPCoreBundle::layout.html.twig\" %}
+
+{% block title %}
+    Categorie {{ params.category }} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <!-- start end Page title -->
+    <div class=\"page-title\" style=\"background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');\">
+
+        <div class=\"container\">
+
+            <div class=\"row\">
+
+                <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
+
+                    <h1 class=\"hero-title\">Catégorie {{ params.category | lower }}</h1>
+
+                    <ol class=\"breadcrumb-list\">
+                        <li><a href=\" {{path('lgp_core_homepage')}} \">Accueil</a></li>
+                        <li><a href=\"{{path('lgp_course_categories')}}\">Categories</a></li>
+                        <li><span>{{ params.category | lower }}</span></li>
+                    </ol>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
+    <div class=\"content-wrapper\">
+
+        <div class=\"container\">
+
+            <div class=\"row\">
+
+                <div class=\"col-sm-4 col-md-3\">
+
+                    <aside class=\"sidebar with-filter\">
+
+                        <div class=\"sidebar-inner\">
+
+                            <div class=\"sidebar-module\">
+                                <h6 class=\"sidebar-title\" style=\"font-size:17px;margin-bottom:10px;\">Plus de catégories</h6>
+                                <ul class=\"category\">
+                                    {% for cat in params.categories %}
+                                        {% if params.category | lower != cat.intitule | lower %}
+                                            <li><a href=\" {{path('lgp_course_find_category' , {'category':cat.intitule}) }} \">
+                                                    {{cat.intitule}}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <li></li>
+                                    <li><a href=\" {{path('lgp_course_categories')}} \" title=\"\">voir toutes les categories</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                    </aside>
+
+
+                </div>
+
+                <div class=\"col-sm-8 col-md-9\">
+
+                    <div class=\"sorting-wrappper\">
+
+                        <div class=\"sorting-header\">
+                            <h3 class=\"sorting-title uppercase\">Cours dans la catégorie {{ params.category }}</h3>
+                            <p class=\"sorting-lead\">
+                                {{params.courses | length}} Cours
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller\">
+
+
+                        <div class=\"GridLex-grid-noGutter-equalHeight\">
+
+
+                            {% for course in params.courses %}
+                                <div class=\"GridLex-col-4_sm-6_xs-12 mb-20\">
+                                    <div class=\"package-grid-item\"> 
+                                        <a href=\" {{path('lgp_course_find_prof',{'intitule_cours' : course.intitule})}} \">
+                                            <div class=\"image\">
+                                                {% if course.image is not null %}
+                                                    <img src=\"{{ asset(course.image.webPath) }}\" alt=\"{{course.image.imageName}}\" />
+                                                {% endif %}
+                                            </div>
+                                            <div class=\"content-category\">
+                                                <h6>{{course.intitule}}</h6>
+                                                <p> {{course.description}}  </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                    </div>
+
+                    {% include 'LGPCourseBundle:Pagination:pagination.html.twig' %}
+
+
+                </div>
+
+                {#  {% if not categoryFound %}
+                     <div class=\"sorting-wrappper\">
+                         <div class=\"sorting-header\">
+                             <h3 class=\"sorting-title uppercase\">La catégorie <span style=\"color:#dd2c00\">{{ category }}</span> n'existe pas!!!</h3>
+                         </div>
+                     </div>
+                 {% endif %} #}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}";
+    }
+}

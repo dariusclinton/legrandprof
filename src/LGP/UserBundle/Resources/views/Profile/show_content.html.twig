@@ -27,88 +27,118 @@
       <div class="col-md-9">
         
         <div class="notifications-block">
-          <h1>
-            Hello
-            {% if app.user.prenoms is not null %}
-              {{ app.user.prenoms }}
-            {% else %}
-              {{ app.user.nom }}
-            {% endif %}
-          </h1>
+            <div class="notifications-header">
+                Hello
+                {% if app.user.prenoms is not null %}
+                  {{ app.user.prenoms }}
+                {% else %}
+                  {{ app.user.nom }}
+                {% endif %}
+            </div>
+            <div class="notifications-content">
+                <h1>
+                  Hello
+                  {% if app.user.prenoms is not null %}
+                    {{ app.user.prenoms }}
+                  {% else %}
+                    {{ app.user.nom }}
+                  {% endif %}
+                </h1>
+            </div>
         </div>
         
         <div class="notifications-block">
-          <p>Email: {{ app.user.email }}</p>
-          <p>Nom: {{ app.user.nom }}</p>
-          <p>Prenoms: {{ app.user.prenoms }}</p>
-          <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
-          <p>
-            Sexe: 
-            {% if app.user.sexe=='m' %}
-              Masculin
-            {% else %}
-              Féminin
-            {% endif %}
-          </p>
-          <p>Telephone: {{ app.user.telephone }}</p>
-          <p>Pays: {{ app.user.pays }}</p>
-          
-          {#Si profil prof#}
-          {% if is_granted('ROLE_PROF') %}
-            <p>Ville: {{ app.user.ville }}</p>
-            <p>boite Postale: {{ app.user.boitePostale }}</p>
-            <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
-            <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
-            <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
-            <p>Presentation: {{ app.user.presentation }}</p>
-            <p>Profession: {{ app.user.profession }}</p>
+            <div class="notifications-header">
+                Qui suis je ?
+            </div>
+            <div class="notifications-content">
+                <p>Email: {{ app.user.email }}</p>
+                <p>Nom: {{ app.user.nom }}</p>
+                <p>Prenoms: {{ app.user.prenoms }}</p>
+                <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
+                <p>
+                  Sexe: 
+                  {% if app.user.sexe=='m' %}
+                    Masculin
+                  {% else %}
+                    Féminin
+                  {% endif %}
+                </p>
+                <p>Telephone: {{ app.user.telephone }}</p>
+                <p>Pays: {{ app.user.pays }}</p>
 
-            <h3>Quartiers cibles</h3>
-            <ul>
-              {% for quartier in app.user.quartierCibles %}
-                <li>
-                  {{ quartier.affichage }}
-                </li>
-              {% endfor %}
-            </ul>
-            
-            <h3>Experience professionnelle</h3>
-            <ul>
-              {% for experience in app.user.experiencePros %}
-                <li>
-                  {{ experience.poste }}
-                  à
-                  {{ experience.etablissement }}
-                  de
-                  {{ experience.dateDebut | date('d/m/y') }}
-                  à
-                  {{ experience.dateFin | date('d/m/y') }}
-                  {{ experience.description }}
-                </li>
-              {% endfor %}
-            </ul>
-
-            <h3>Diplomes</h3>
-            <ul>
-              {% for diplome in app.user.diplomes %}
-                <li>
-                  {{ diplome.intitule }} 
-                  (<a href="{{ vich_uploader_asset(diplome, 'file') }}" target="blank">voir</a>)
-                </li>
-              {% endfor %}
-            </ul>
-            
-            <h1>CV</h1>
-            {% if app.user.CVFile is not null %}
-              {% if app.user.CVFile.fileName is not null %}
-                (<a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>)
-              {% endif %}
-            {% endif %}
-            <br />
-            
-            <h3>Rémunérations LeGrandProf <span class="badge">{{ app.user.remunerations|length }}</span></h3>
-            <br />
-
+                {#Si profil prof#}
+                {% if is_granted('ROLE_PROF') %}
+                  <p>Ville: {{ app.user.ville }}</p>
+                  <p>boite Postale: {{ app.user.boitePostale }}</p>
+                  <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
+                  <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
+                  <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
+                  <p>Presentation: {{ app.user.presentation }}</p>
+                  <p>Profession: {{ app.user.profession }}</p>
+            </div>
+        </div>
+        <div class="notifications-block">
+            <div class="notifications-header">Quartiers cibles</div>
+            <div class="notifications-content">
+                    <ul>
+                      {% for quartier in app.user.quartierCibles %}
+                        <li>
+                          {{ quartier.affichage }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+            </div>
+        </div>
+        <div class="notifications-block">
+            <div class="notifications-header">Expérience professionnelle</div>
+            <div class="notifications-content">
+                <ul>
+                  {% for experience in app.user.experiencePros %}
+                    <li>
+                      {{ experience.poste }}
+                      à
+                      {{ experience.etablissement }}
+                      de
+                      {{ experience.dateDebut | date('d/m/y') }}
+                      à
+                      {{ experience.dateFin | date('d/m/y') }}
+                      {{ experience.description }}
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="notifications-block">
+            <div class="notifications-header">Diplomes</div>
+            <div class="notifications-content">
+                <ul>
+                  {% for diplome in app.user.diplomes %}
+                    <li>
+                      {{ diplome.intitule }} 
+                      (<a href="{{ vich_uploader_asset(diplome, 'file') }}" target="blank">voir</a>)
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="notifications-block">
+            <div class="notifications-header">CV</div>
+            <div class="notifications-content">
+                {% if app.user.CVFile is not null %}
+                  {% if app.user.CVFile.fileName is not null %}
+                    (<a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>)
+                  {% endif %}
+                {% endif %}
+                <br />
+            </div>
+        </div>
+        <div class="notifications-block">
+            <div class="notifications-header">Rémunérations LeGrandProf <span class="badge">{{ app.user.remunerations|length }}</span></div>
+            <div class="notifications-content">
+            </div>
+        </div>
+        <div>
             <a href='{{ path('lgp_user_prof_cours') }}' class="btn btn-primary">Mes cours</a>
             <a href='{{ path('lgp_user_prof_evaluation') }}' class="btn btn-primary">Mes Evaluations</a>
             <a href='{{ path('lgp_user_prof_indisponibilite') }}' class="btn btn-primary">Mes indisponibilités</a>
