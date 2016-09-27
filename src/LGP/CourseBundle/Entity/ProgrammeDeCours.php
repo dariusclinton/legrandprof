@@ -31,9 +31,9 @@ class ProgrammeDeCours
     /**
      * @var \LGP\CourseBundle\Entity\EntreeProgramme
      * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\EntreeProgramme", inversedBy="programmeDeCours")
+     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\EntreeProgramme", mappedBy="programmeDeCours", cascade={"persist", "remove"})
      */
-   private $entreeProgramme;
+   private $entreesProgrammes;
 
     /**
      * Get id
@@ -68,28 +68,46 @@ class ProgrammeDeCours
     {
         return $this->reservationEnseignement;
     }
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->entreesProgrammes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set entreeProgramme
+     * Add entreesProgramme
      *
-     * @param \LGP\CourseBundle\Entity\EntreeProgramme $entreeProgramme
+     * @param \LGP\CourseBundle\Entity\EntreeProgramme $entreesProgramme
      *
      * @return ProgrammeDeCours
      */
-    public function setEntreeProgramme(\LGP\CourseBundle\Entity\EntreeProgramme $entreeProgramme = null)
+    public function addEntreesProgramme(\LGP\CourseBundle\Entity\EntreeProgramme $entreesProgramme)
     {
-        $this->entreeProgramme = $entreeProgramme;
-    
+        $this->entreesProgrammes[] = $entreesProgramme;
+
         return $this;
     }
 
     /**
-     * Get entreeProgramme
+     * Remove entreesProgramme
      *
-     * @return \LGP\CourseBundle\Entity\EntreeProgramme
+     * @param \LGP\CourseBundle\Entity\EntreeProgramme $entreesProgramme
      */
-    public function getEntreeProgramme()
+    public function removeEntreesProgramme(\LGP\CourseBundle\Entity\EntreeProgramme $entreesProgramme)
     {
-        return $this->entreeProgramme;
+        $this->entreesProgrammes->removeElement($entreesProgramme);
+    }
+
+    /**
+     * Get entreesProgrammes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEntreesProgrammes()
+    {
+        return $this->entreesProgrammes;
     }
 }

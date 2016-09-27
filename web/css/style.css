@@ -981,6 +981,11 @@ ul.availabily-list li.availabily-content.sold-out > div.date-from:after {
     width: 25%;
     padding: 0 10px;
 }
+.main-search-wrapper.full-width .column-item-medium {
+    float: left;
+    width: 37%;
+    padding: 0 10px;
+}
 
 .main-search-wrapper.full-width .column-item-large {
     float: left;
@@ -3985,6 +3990,17 @@ a#btn-connect:hover{
 .dashboard-header-link:hover{
     color:rgba(200,200,200,1);
 }
+#account{
+    left:43%;
+}
+#account li a{
+    color: rgba(0,0,0,0.5);
+}
+@media screen and (max-width: 900px){
+    #account{
+        left:58%;
+    }
+}
 
 /* Header Dashboard SubMenu-sub */
 .header-dashboard-submenu-sub{
@@ -4168,3 +4184,25 @@ li.cart-li:hover{
     font-size: 15px;
     color: rgb(100,100,100);
 }
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload {
+    height: 40px;
+}
+.fileUpload .upload input{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.fileUpload .upload label{
+    display: none;
+} 

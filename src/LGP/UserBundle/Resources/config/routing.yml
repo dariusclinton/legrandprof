@@ -202,3 +202,14 @@ lgp_user_nouvelle_categorie_cours_delete:
 lgp_user_mes_reservations:
     path: /mes-reservations
     defaults: { _controller: LGPUserBundle:Reservation:index }
+    
+# Demandes de cours
+lgp_user_prof_demandes_de_cours:
+    path: /prof/mes-demandes-de-cours
+    defaults: { _controller: LGPUserBundle:MesDemandesDeCours:index }
+
+lgp_user_prof_demande_de_cours_edit:
+    path: /prof/demande-de-cours/edit/{id}
+    defaults: { _controller: LGPUserBundle:MesDemandesDeCours:edit }
+    requirements:
+        id: \d+

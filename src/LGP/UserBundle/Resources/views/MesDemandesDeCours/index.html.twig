@@ -1,0 +1,88 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Mes demandes de cous - {{ parent() }}
+{% endblock %}
+
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            {% if reservation_enseignements|length <= 0 %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes demandes de cours</div>
+                <div class="notifications-content">
+                  Aucune demande de cours trouvée !
+                </div>
+              </div>
+            {% else %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes demandes de cours</div>
+                <div class="notifications-content">
+                    
+                    <table class="table table-bordered table-stripped">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Cours</th>
+                          <th>Classe</th>
+                          <th>Nombre d'apprenants</th>
+                          <th>Début</th>
+                          <th>Lieu de cours</th>
+                          <th>Ville</th>
+                          <th>Quartier</th>
+                          <th>Fréquence de paiement</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead> 
+                      <tbody>
+                        {% for res_enseigns in reservation_enseignements %}
+                          {% for res_ens in res_enseigns %}
+                            <tr>
+                              <td>
+                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
+                              </td>
+                              <td>
+                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.cours.intitule }}</a>
+                              </td>
+                              <td>
+                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.classe }}</a>
+                              </td>
+                              <td>{{ res_ens.nbApprenants }}</td>
+                              <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
+                              <td>{{ res_ens.lieuDeCours }}</td>
+                              <td>{{ res_ens.ville }}</td>
+                              <td>{{ res_ens.quartier }}</td>
+                              <td>{{ res_ens.reservation.frequencePaiement }}</td>
+                              <td>
+                                {% if res_ens.reservation.isValidee %}
+                                  <span class="label label-success">Validée</span>
+                                {% else %}
+                                  <span class="label label-danger">En attente</span>
+                                {% endif %}
+                              </td>
+                            </tr>
+                          {% endfor %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

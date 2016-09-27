@@ -31,12 +31,12 @@
           <th>Fréquence de paiement</th>
           <th>Status</th>
         </tr>
-      </thead>
+      </thead> 
       <tbody>
         {% for reservation in reservations %}
           {% for res_ens in reservation.reservationEnseignements %}
             <tr>
-              <td>date</td>
+              <td>{{ reservation.dateReservation|date('d/m/Y') }}</td>
               <td>{{ res_ens.enseignement.cours.intitule }}</td>
               <td>{{ res_ens.enseignement.classe }}</td>
               <td>{{ res_ens.nbApprenants }}</td>

@@ -47,12 +47,13 @@ class EntreeProgramme {
      *
      * @ORM\Column(name="isComplete", type="boolean")
      */
-    private $isComplete;
+    private $isComplete = false;
 
     /**
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
      * 
-     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", mappedBy="entreeProgramme")
+     * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="entreesProgrammes")
+     * @ORM\Column(nullable=false)
      */
     private $programmeDeCours;
     

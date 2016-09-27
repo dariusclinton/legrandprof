@@ -4,57 +4,81 @@
   Indisponibilités - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
-  <h1>Mes indiponibilités</h1>
+    
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 class="title-block-dash">Gérer mes indisponibilités</h3>
+            <ul class="menu-dash">
+              <li><a href="{{ path('lgp_user_prof_indisponibilite') }}">Mes indisponibilités</a></li>
+              <li><a href="{{ path('lgp_user_prof_indisponibilite_add') }}">Signaler une indisponibilité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            {% if indisponibilites|length <= 0 %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes indisponibilités</div>
+                <div class="notifications-content">
+                  Aucun indisponibilité trouvée !
+                </div>
+              </div>
+            {% else %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes indisponibilités</div>
+                <div class="notifications-content">
+                    
+                    <table class="table table-hover table-striped">
+                      <thead>
+                        <tr>
+                          <th>Début</th>
+                          <th>Fin</th>
+                          <th>Motif</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <td>footer</td>
+                          <td>footer</td>
+                          <td>footer</td>
+                          <td>footer</td>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        {% for indispo in indisponibilites %}
+                          <tr>
+                            <td>{{ indispo.dateDebut|date('d/m/y') }}</td>
+                            <td>{{ indispo.dateFin|date('d/m/y') }}</td>
+                            <td>{{ indispo.motif }}</td>
+                            <td>
+                              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="bt btn-danger btn-sm delete_confirm">
+                                Supprimer
+                              </a>
+                              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="bt btn-info btn-sm">
+                                Modifier
+                              </a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
 
-  <p>
-    <a href='{{ path('lgp_user_prof_indisponibilite_add') }}' class="btn btn-primary">
-      Ajouter
-    </a>
-  </p>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
-  {% if indisponibilites|length <= 0 %}
-    
-    <h1 class="text-muted">Aucune indisponibilité trouvée !</h1>
-    
-  {% else %}
-    <table class="table table-bordered table-hover table-striped">
-      <thead>
-        <tr>
-          <th>Début</th>
-          <th>Fin</th>
-          <th>Motif</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-          <td>footer</td>
-        </tr>
-      </tfoot>
-      <tbody>
-        {% for indispo in indisponibilites %}
-          <tr>
-            <td>{{ indispo.dateDebut|date('d/m/y') }}</td>
-            <td>{{ indispo.dateFin|date('d/m/y') }}</td>
-            <td>{{ indispo.motif }}</td>
-            <td>
-              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="bt btn-danger btn-sm delete_confirm">
-                Supprimer
-              </a>
-              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="bt btn-info btn-sm">
-                Modifier
-              </a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-      
-    </table>
-      
-  {% endif %}
-
 {% endblock %}
