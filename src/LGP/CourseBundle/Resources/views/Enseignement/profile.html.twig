@@ -132,7 +132,7 @@
                                 {% for ens_cours in params.enseignementRep.getCoursByProf(prof) %}
                                     <li class="list-group-item">
                                         <b>
-                                            <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">
+                                            <a href=" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug})}} " title="">
                                                 {{ens_cours.cours.intitule}}
                                             </a>
                                         </b>
@@ -168,7 +168,7 @@
                                             <dd> 
                                                 de la ville de  &nbsp;&nbsp;&nbsp;&nbsp; 
                                                 <b>
-                                                    <a href=" {{path('lgp_course_find_prof_city', {'ville':quartiersProf.ville})}} " title="Profs de {{quartiersProf.ville}}">
+                                                    <a href=" {{path('lgp_course_find_prof_city', {'slugVille':quartiersProf.slugVille})}} " title="Profs de {{quartiersProf.ville}}">
                                                         {{quartiersProf.ville}}
                                                     </a>
                                                 </b>

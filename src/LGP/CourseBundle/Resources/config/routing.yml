@@ -35,14 +35,26 @@ lgp_course_find_prof:
 
 
 lgp_course_find_prof_refine:
-    path:     /search/profs/{ville}/{intitule_cours}/{page}
+    path:     /search/profs/{slugVille}/{slug}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchRefine, page: 1 }
     requirements:
         page:   \d+
 
+lgp_course_find_prof_refine_quarter:
+    path:     /search/profs/{slugVille}/{slugQuartier}/{slug}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchRefineAll, page: 1 }
+    requirements:
+        page:   \d+
+
+lgp_course_find_prof_update_quarter:
+    path:     /search/update/{ville}
+    defaults: { _controller: LGPCourseBundle:Course:updateQuarter}
+    options:
+        expose: true
+    methods: [POST]
 
 lgp_course_find_prof_city:
-    path:     search/ville/{ville}/{page}
+    path:     search/ville/{slugVille}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCity, page: 1 }
     requirements:
         page:   \d+
@@ -53,7 +65,7 @@ lgp_course_update_classe:
     requirements:
         profId:   \d+
         coursId: \d+
-        method: POST
+    methods: [POST]
     options:
         expose: true
         

@@ -37,8 +37,8 @@ class Cours {
     private $description;
 
     /**
-     * @Gedmo\Slug(fields={"intitule", "id"})
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"intitule"}, unique=false, updatable=true)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
 
