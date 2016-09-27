@@ -1,4 +1,9 @@
 /nbproject/private/
+/.idea
+/.idea/*
+
+/.idea
+/.idea/*
 
 # Cache and logs (Symfony2)
 /app/cache/*
@@ -28,6 +33,7 @@
 !bin/console
 !bin/symfony_requirements
 /vendor/
+/vendor/*
 
 # Assets and user uploads
 /web/uploads/
@@ -44,5 +50,3 @@
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
-
-.idea*

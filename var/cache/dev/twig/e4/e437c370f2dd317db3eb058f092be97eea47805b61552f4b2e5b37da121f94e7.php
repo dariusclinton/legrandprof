@@ -22,20 +22,20 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7d6325bf868df75c7e35cea4ed5153f6ec5322193e63d6e720e270ad3c6baaf2 = $this->env->getExtension("native_profiler");
-        $__internal_7d6325bf868df75c7e35cea4ed5153f6ec5322193e63d6e720e270ad3c6baaf2->enter($__internal_7d6325bf868df75c7e35cea4ed5153f6ec5322193e63d6e720e270ad3c6baaf2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_d684be27809a9c55a86a2ad80359488ede6e5f9a07c47f796cb0c95dacf06118 = $this->env->getExtension("native_profiler");
+        $__internal_d684be27809a9c55a86a2ad80359488ede6e5f9a07c47f796cb0c95dacf06118->enter($__internal_d684be27809a9c55a86a2ad80359488ede6e5f9a07c47f796cb0c95dacf06118_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_7d6325bf868df75c7e35cea4ed5153f6ec5322193e63d6e720e270ad3c6baaf2->leave($__internal_7d6325bf868df75c7e35cea4ed5153f6ec5322193e63d6e720e270ad3c6baaf2_prof);
+        $__internal_d684be27809a9c55a86a2ad80359488ede6e5f9a07c47f796cb0c95dacf06118->leave($__internal_d684be27809a9c55a86a2ad80359488ede6e5f9a07c47f796cb0c95dacf06118_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_9f1e4be9ffed83728bcef8cb32212d43340afaba89904469858b191d33434a37 = $this->env->getExtension("native_profiler");
-        $__internal_9f1e4be9ffed83728bcef8cb32212d43340afaba89904469858b191d33434a37->enter($__internal_9f1e4be9ffed83728bcef8cb32212d43340afaba89904469858b191d33434a37_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_cd5a222aef9f4afc69b9de8dc6ca13beb202b11dc0e8003cf736513b42c662e0 = $this->env->getExtension("native_profiler");
+        $__internal_cd5a222aef9f4afc69b9de8dc6ca13beb202b11dc0e8003cf736513b42c662e0->enter($__internal_cd5a222aef9f4afc69b9de8dc6ca13beb202b11dc0e8003cf736513b42c662e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    ";
@@ -55,15 +55,15 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     ";
         }
         
-        $__internal_9f1e4be9ffed83728bcef8cb32212d43340afaba89904469858b191d33434a37->leave($__internal_9f1e4be9ffed83728bcef8cb32212d43340afaba89904469858b191d33434a37_prof);
+        $__internal_cd5a222aef9f4afc69b9de8dc6ca13beb202b11dc0e8003cf736513b42c662e0->leave($__internal_cd5a222aef9f4afc69b9de8dc6ca13beb202b11dc0e8003cf736513b42c662e0_prof);
 
     }
 
     // line 12
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ccb12d77b47e2a13c28879ab6cf42023c4e53b94da23751aac94ca1e0e9cf10a = $this->env->getExtension("native_profiler");
-        $__internal_ccb12d77b47e2a13c28879ab6cf42023c4e53b94da23751aac94ca1e0e9cf10a->enter($__internal_ccb12d77b47e2a13c28879ab6cf42023c4e53b94da23751aac94ca1e0e9cf10a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_a159e7296213532c0310b6b05eebbf7580e252862aa9026d7da3db426e37ede6 = $this->env->getExtension("native_profiler");
+        $__internal_a159e7296213532c0310b6b05eebbf7580e252862aa9026d7da3db426e37ede6->enter($__internal_a159e7296213532c0310b6b05eebbf7580e252862aa9026d7da3db426e37ede6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 13
         echo "    ";
@@ -169,7 +169,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
                                 <h3 class=\"sorting-title uppercase\">Des Grands profs en ";
             // line 188
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "intitule_cours", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
             echo "</h3>
                                 <p class=\"sorting-lead\">";
             // line 189
@@ -276,7 +276,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                     if (($this->getAttribute($context["loop"], "index", array()) != $this->getAttribute($context["loop"], "last", array()))) {
                         // line 256
                         echo "                                                                <a href=\" ";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
                         echo " \" title=\"\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a> -
@@ -284,7 +284,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                     } else {
                         // line 258
                         echo "                                                                <a href=\" ";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()))), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
                         echo " \" title=\"\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a>
@@ -440,7 +440,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     </div>
 ";
         
-        $__internal_ccb12d77b47e2a13c28879ab6cf42023c4e53b94da23751aac94ca1e0e9cf10a->leave($__internal_ccb12d77b47e2a13c28879ab6cf42023c4e53b94da23751aac94ca1e0e9cf10a_prof);
+        $__internal_a159e7296213532c0310b6b05eebbf7580e252862aa9026d7da3db426e37ede6->leave($__internal_a159e7296213532c0310b6b05eebbf7580e252862aa9026d7da3db426e37ede6_prof);
 
     }
 
@@ -648,7 +648,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
                             <div class=\"sorting-header\">
 
-                                <h3 class=\"sorting-title uppercase\">Des Grands profs en {{ params.intitule_cours }}</h3>
+                                <h3 class=\"sorting-title uppercase\">Des Grands profs en {{ params.courseFound.intitule }}</h3>
                                 <p class=\"sorting-lead\">{{params.matieres_profs | length}} Grands profs trouvés</p>
                             </div>
 
@@ -716,9 +716,9 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                                                     <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span class=\"font600\">Cours :</span> 
                                                             {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
                                                                 {% if loop.index != loop.last %}
-                                                                <a href=\" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule,})}} \" title=\"\">{{ens_cours.cours.intitule}}</a> -
+                                                                <a href=\" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug,})}} \" title=\"\">{{ens_cours.cours.intitule}}</a> -
                                                             {% else %}
-                                                                <a href=\" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} \" title=\"\">{{ens_cours.cours.intitule}}</a>
+                                                                <a href=\" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug})}} \" title=\"\">{{ens_cours.cours.intitule}}</a>
                                                             {% endif %}
                                                         {% endfor %} 
                                                     </li>

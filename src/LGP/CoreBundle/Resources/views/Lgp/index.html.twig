@@ -177,7 +177,7 @@
 
                         <div class="GridLex-col-3_sm-6_xs-12 mb-30">
                             <div class="package-grid-item"> 
-                                <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">
+                                <a href="{{ path('lgp_course_find_category', {'slug': category.slug}) }}">
                                     <div class="image">
                                         {% if category.image is not null %}
                                             <img src="{{ asset(category.image.webPath) }}" alt="{{ category.image.imageName }} " />

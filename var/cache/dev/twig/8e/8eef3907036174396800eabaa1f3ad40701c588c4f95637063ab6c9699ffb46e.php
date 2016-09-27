@@ -22,38 +22,38 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ee5173c045205aed1b681842a6922313e59b2819a00266f6e11f7cbe1ef8f666 = $this->env->getExtension("native_profiler");
-        $__internal_ee5173c045205aed1b681842a6922313e59b2819a00266f6e11f7cbe1ef8f666->enter($__internal_ee5173c045205aed1b681842a6922313e59b2819a00266f6e11f7cbe1ef8f666_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Categorie:course_list.html.twig"));
+        $__internal_78a47785622a063c643fc1f153ccdff44258228189c551862683225c9c77f540 = $this->env->getExtension("native_profiler");
+        $__internal_78a47785622a063c643fc1f153ccdff44258228189c551862683225c9c77f540->enter($__internal_78a47785622a063c643fc1f153ccdff44258228189c551862683225c9c77f540_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Categorie:course_list.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ee5173c045205aed1b681842a6922313e59b2819a00266f6e11f7cbe1ef8f666->leave($__internal_ee5173c045205aed1b681842a6922313e59b2819a00266f6e11f7cbe1ef8f666_prof);
+        $__internal_78a47785622a063c643fc1f153ccdff44258228189c551862683225c9c77f540->leave($__internal_78a47785622a063c643fc1f153ccdff44258228189c551862683225c9c77f540_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_d4f07b3dea30b35c850b77d5e61dd5914b7a8e61d7ac1fa4314ed1ea9f421564 = $this->env->getExtension("native_profiler");
-        $__internal_d4f07b3dea30b35c850b77d5e61dd5914b7a8e61d7ac1fa4314ed1ea9f421564->enter($__internal_d4f07b3dea30b35c850b77d5e61dd5914b7a8e61d7ac1fa4314ed1ea9f421564_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_2a071c8e29707f8828b2747c3dedbd714556242da5e9fc3977bce173b8c2cded = $this->env->getExtension("native_profiler");
+        $__internal_2a071c8e29707f8828b2747c3dedbd714556242da5e9fc3977bce173b8c2cded->enter($__internal_2a071c8e29707f8828b2747c3dedbd714556242da5e9fc3977bce173b8c2cded_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
-        echo "    Categorie ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "html", null, true);
+        echo "    Categorie-";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "slug", array()), "html", null, true);
         echo " - ";
         $this->displayParentBlock("title", $context, $blocks);
         echo "
 ";
         
-        $__internal_d4f07b3dea30b35c850b77d5e61dd5914b7a8e61d7ac1fa4314ed1ea9f421564->leave($__internal_d4f07b3dea30b35c850b77d5e61dd5914b7a8e61d7ac1fa4314ed1ea9f421564_prof);
+        $__internal_2a071c8e29707f8828b2747c3dedbd714556242da5e9fc3977bce173b8c2cded->leave($__internal_2a071c8e29707f8828b2747c3dedbd714556242da5e9fc3977bce173b8c2cded_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_b39f6ffe2cb86f3dab7f6e7c7a3e746e278ba015d1bdacbb0bbcc5adad178006 = $this->env->getExtension("native_profiler");
-        $__internal_b39f6ffe2cb86f3dab7f6e7c7a3e746e278ba015d1bdacbb0bbcc5adad178006->enter($__internal_b39f6ffe2cb86f3dab7f6e7c7a3e746e278ba015d1bdacbb0bbcc5adad178006_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_df0166e53651392ddfa7e415620d5242c88d11e74385f188a4a83d70720f0674 = $this->env->getExtension("native_profiler");
+        $__internal_df0166e53651392ddfa7e415620d5242c88d11e74385f188a4a83d70720f0674->enter($__internal_df0166e53651392ddfa7e415620d5242c88d11e74385f188a4a83d70720f0674_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -71,7 +71,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
 
                     <h1 class=\"hero-title\">Catégorie ";
         // line 19
-        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())), "html", null, true);
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "intitule", array())), "html", null, true);
         echo "</h1>
 
                     <ol class=\"breadcrumb-list\">
@@ -85,7 +85,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
         echo "\">Categories</a></li>
                         <li><span>";
         // line 24
-        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())), "html", null, true);
+        echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "intitule", array())), "html", null, true);
         echo "</span></li>
                     </ol>
 
@@ -120,10 +120,10 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
         foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
             // line 52
             echo "                                        ";
-            if ((twig_lower_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array())) != twig_lower_filter($this->env, $this->getAttribute($context["cat"], "intitule", array())))) {
+            if ((twig_lower_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "intitule", array())) != twig_lower_filter($this->env, $this->getAttribute($context["cat"], "intitule", array())))) {
                 // line 53
                 echo "                                            <li><a href=\" ";
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("category" => $this->getAttribute($context["cat"], "intitule", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("slug" => $this->getAttribute($context["cat"], "slug", array()))), "html", null, true);
                 echo " \">
                                                     ";
                 // line 54
@@ -163,7 +163,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
                         <div class=\"sorting-header\">
                             <h3 class=\"sorting-title uppercase\">Cours dans la catégorie ";
         // line 77
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "category", array()), "intitule", array()), "html", null, true);
         echo "</h3>
                             <p class=\"sorting-lead\">
                                 ";
@@ -189,7 +189,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
                                     <div class=\"package-grid-item\"> 
                                         <a href=\" ";
             // line 92
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("intitule_cours" => $this->getAttribute($context["course"], "intitule", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($context["course"], "slug", array()))), "html", null, true);
             echo " \">
                                             <div class=\"image\">
                                                 ";
@@ -249,7 +249,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
 
 ";
         
-        $__internal_b39f6ffe2cb86f3dab7f6e7c7a3e746e278ba015d1bdacbb0bbcc5adad178006->leave($__internal_b39f6ffe2cb86f3dab7f6e7c7a3e746e278ba015d1bdacbb0bbcc5adad178006_prof);
+        $__internal_df0166e53651392ddfa7e415620d5242c88d11e74385f188a4a83d70720f0674->leave($__internal_df0166e53651392ddfa7e415620d5242c88d11e74385f188a4a83d70720f0674_prof);
 
     }
 
@@ -274,7 +274,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
 {% extends \"LGPCoreBundle::layout.html.twig\" %}
 
 {% block title %}
-    Categorie {{ params.category }} - {{ parent() }}
+    Categorie-{{ params.category.slug }} - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -288,12 +288,12 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
 
                 <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
 
-                    <h1 class=\"hero-title\">Catégorie {{ params.category | lower }}</h1>
+                    <h1 class=\"hero-title\">Catégorie {{ params.category.intitule | lower }}</h1>
 
                     <ol class=\"breadcrumb-list\">
                         <li><a href=\" {{path('lgp_core_homepage')}} \">Accueil</a></li>
                         <li><a href=\"{{path('lgp_course_categories')}}\">Categories</a></li>
-                        <li><span>{{ params.category | lower }}</span></li>
+                        <li><span>{{ params.category.intitule | lower }}</span></li>
                     </ol>
 
                 </div>
@@ -321,8 +321,8 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
                                 <h6 class=\"sidebar-title\" style=\"font-size:17px;margin-bottom:10px;\">Plus de catégories</h6>
                                 <ul class=\"category\">
                                     {% for cat in params.categories %}
-                                        {% if params.category | lower != cat.intitule | lower %}
-                                            <li><a href=\" {{path('lgp_course_find_category' , {'category':cat.intitule}) }} \">
+                                        {% if params.category.intitule | lower != cat.intitule | lower %}
+                                            <li><a href=\" {{path('lgp_course_find_category' , {'slug':cat.slug}) }} \">
                                                     {{cat.intitule}}
                                                 </a>
                                             </li>
@@ -346,7 +346,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
                     <div class=\"sorting-wrappper\">
 
                         <div class=\"sorting-header\">
-                            <h3 class=\"sorting-title uppercase\">Cours dans la catégorie {{ params.category }}</h3>
+                            <h3 class=\"sorting-title uppercase\">Cours dans la catégorie {{ params.category.intitule }}</h3>
                             <p class=\"sorting-lead\">
                                 {{params.courses | length}} Cours
                             </p>
@@ -361,7 +361,7 @@ class __TwigTemplate_99f912b5856255cddeea7c2a89e2a764ede41373132952874ae3bd705b0
                             {% for course in params.courses %}
                                 <div class=\"GridLex-col-4_sm-6_xs-12 mb-20\">
                                     <div class=\"package-grid-item\"> 
-                                        <a href=\" {{path('lgp_course_find_prof',{'intitule_cours' : course.intitule})}} \">
+                                        <a href=\" {{path('lgp_course_find_prof',{'slug' : course.slug})}} \">
                                             <div class=\"image\">
                                                 {% if course.image is not null %}
                                                     <img src=\"{{ asset(course.image.webPath) }}\" alt=\"{{course.image.imageName}}\" />

@@ -13,7 +13,7 @@ lgp_course_categories:
 
 
 lgp_course_find_category:
-    path:     /search/categories/{category}/{page}
+    path:     /search/categories/{slug}/{page}
     defaults: { _controller: LGPCourseBundle:Categorie:courseList, page: 1 }
     requirements:
         page:   \d+
@@ -28,7 +28,7 @@ lgp_course_find:
 
     
 lgp_course_find_prof:
-    path:     /search/profs/{intitule_cours}/{page}
+    path:     /search/profs/{slug}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
     requirements:
         page:   \d+

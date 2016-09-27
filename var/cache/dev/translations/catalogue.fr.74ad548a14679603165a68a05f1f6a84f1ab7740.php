@@ -104,6 +104,7 @@ $catalogue = new MessageCatalogue('fr', array (
     'fos_user.group.blank' => 'Entrez un nom s\'il vous plait',
     'fos_user.group.short' => '[-Inf,Inf]Le nom est trop court',
     'fos_user.group.long' => '[-Inf,Inf]Le nom est trop long',
+    'fos_group.name.already_used' => 'Le nom est déjà utilisé',
   ),
   'security' => 
   array (

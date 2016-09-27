@@ -426,7 +426,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             if (0 === strpos($pathinfo, '/course/search')) {
                 // lgp_course_find_category
-                if (0 === strpos($pathinfo, '/course/search/categories') && preg_match('#^/course/search/categories/(?P<category>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                if (0 === strpos($pathinfo, '/course/search/categories') && preg_match('#^/course/search/categories/(?P<slug>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_category')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CategorieController::courseListAction',  'page' => 1,));
                 }
 
@@ -437,7 +437,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     // lgp_course_find_prof
-                    if (preg_match('#^/course/search/profs/(?P<intitule_cours>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    if (preg_match('#^/course/search/profs/(?P<slug>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCourseAction',  'page' => 1,));
                     }
 
@@ -509,8 +509,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // fos_user_security_logout
             if ($pathinfo === '/logout') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_fos_user_security_logout;
                 }
 

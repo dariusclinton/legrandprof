@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
+use LGP\CourseBundle\Entity\Cours;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -81,7 +82,7 @@ class CourseController extends Controller {
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
-    public function searchCourseAction($intitule_cours, $page, Request $request) {
+    public function searchCourseAction(Cours $course, $page, Request $request) {
         $em = $this->getDoctrine()->getManager();
 //        
 //        $course = new \LGP\CourseBundle\Entity\Cours();
@@ -96,10 +97,9 @@ class CourseController extends Controller {
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $coursFound = $coursRep->getCoursByIntitule($intitule_cours);
         $max_per_page = 10;
 
-        $profsByCours = $enseignementRep->getProfsByCours($coursFound, $page, $max_per_page);
+        $profsByCours = $enseignementRep->getProfsByCours($course, $page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
         $profsCount = count($profsByCours);
         $pageCount = ceil($profsCount / $max_per_page);
@@ -107,15 +107,10 @@ class CourseController extends Controller {
         if ($pageCount < $page && $pageCount != 0) {
             throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404
         }
-        $intitule = "";
-        if ($coursFound) {
-            $intitule = $coursFound->getIntitule();
-        }
 
         $params = array(
-            'intitule_cours' => $intitule_cours,
             'courses' => $courses,
-            'courseFound' => $coursFound,
+            'courseFound' => $course,
             'matieres_profs' => $profsByCours,
             'enseignementRep' => $enseignementRep,
             'avisRep' => $avisRep,
@@ -125,7 +120,7 @@ class CourseController extends Controller {
                 'profs_count' => $profsCount,
                 'max_per_page' => $max_per_page,
                 'page' => $page,
-                'route_params' => array('intitule_cours' => $intitule)
+                'route_params' => array('slug' => $course->getSlug())
             ),
         );
 

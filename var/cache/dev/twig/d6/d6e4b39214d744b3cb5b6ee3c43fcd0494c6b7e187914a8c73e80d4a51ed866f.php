@@ -22,20 +22,20 @@ class __TwigTemplate_9065434e8a2d58ac343b103147535b885fb3220cd20618d0424bb7f0a2a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c11cd2442b609f0032d6333a953647e7ce60f7b3b0be0fc02c9000d719e2f145 = $this->env->getExtension("native_profiler");
-        $__internal_c11cd2442b609f0032d6333a953647e7ce60f7b3b0be0fc02c9000d719e2f145->enter($__internal_c11cd2442b609f0032d6333a953647e7ce60f7b3b0be0fc02c9000d719e2f145_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
+        $__internal_ad107ba4279ff117c419cb5c24107e6f2c9d511f75be0cf01ccf1c745a2aedc6 = $this->env->getExtension("native_profiler");
+        $__internal_ad107ba4279ff117c419cb5c24107e6f2c9d511f75be0cf01ccf1c745a2aedc6->enter($__internal_ad107ba4279ff117c419cb5c24107e6f2c9d511f75be0cf01ccf1c745a2aedc6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle:Lgp:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c11cd2442b609f0032d6333a953647e7ce60f7b3b0be0fc02c9000d719e2f145->leave($__internal_c11cd2442b609f0032d6333a953647e7ce60f7b3b0be0fc02c9000d719e2f145_prof);
+        $__internal_ad107ba4279ff117c419cb5c24107e6f2c9d511f75be0cf01ccf1c745a2aedc6->leave($__internal_ad107ba4279ff117c419cb5c24107e6f2c9d511f75be0cf01ccf1c745a2aedc6_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_df4b5c6694cf482aa63dddcb7d3b23505d4b14417299e2f615a20b4a2e912b58 = $this->env->getExtension("native_profiler");
-        $__internal_df4b5c6694cf482aa63dddcb7d3b23505d4b14417299e2f615a20b4a2e912b58->enter($__internal_df4b5c6694cf482aa63dddcb7d3b23505d4b14417299e2f615a20b4a2e912b58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_968ee8b3f754e62ecd13d8ed6e63d64824e3f46c9a10d560982bc8c19cbb922a = $this->env->getExtension("native_profiler");
+        $__internal_968ee8b3f754e62ecd13d8ed6e63d64824e3f46c9a10d560982bc8c19cbb922a->enter($__internal_968ee8b3f754e62ecd13d8ed6e63d64824e3f46c9a10d560982bc8c19cbb922a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Accueil - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_9065434e8a2d58ac343b103147535b885fb3220cd20618d0424bb7f0a2a
         echo "
 ";
         
-        $__internal_df4b5c6694cf482aa63dddcb7d3b23505d4b14417299e2f615a20b4a2e912b58->leave($__internal_df4b5c6694cf482aa63dddcb7d3b23505d4b14417299e2f615a20b4a2e912b58_prof);
+        $__internal_968ee8b3f754e62ecd13d8ed6e63d64824e3f46c9a10d560982bc8c19cbb922a->leave($__internal_968ee8b3f754e62ecd13d8ed6e63d64824e3f46c9a10d560982bc8c19cbb922a_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_c8fe248019ec1d04bcb0b5b975d0f4db75ffd2c1067d8af30b0c00ccd978c3c8 = $this->env->getExtension("native_profiler");
-        $__internal_c8fe248019ec1d04bcb0b5b975d0f4db75ffd2c1067d8af30b0c00ccd978c3c8->enter($__internal_c8fe248019ec1d04bcb0b5b975d0f4db75ffd2c1067d8af30b0c00ccd978c3c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4bec056acb4d804a77a2f6ef75dcb252a4bd9c196bb41596141063663986041c = $this->env->getExtension("native_profiler");
+        $__internal_4bec056acb4d804a77a2f6ef75dcb252a4bd9c196bb41596141063663986041c->enter($__internal_4bec056acb4d804a77a2f6ef75dcb252a4bd9c196bb41596141063663986041c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <!-- start hero-header with windows height -->
@@ -267,7 +267,7 @@ class __TwigTemplate_9065434e8a2d58ac343b103147535b885fb3220cd20618d0424bb7f0a2a
                             <div class=\"package-grid-item\"> 
                                 <a href=\"";
             // line 180
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("category" => $this->getAttribute($context["category"], "intitule", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_category", array("slug" => $this->getAttribute($context["category"], "slug", array()))), "html", null, true);
             echo "\">
                                     <div class=\"image\">
                                         ";
@@ -429,7 +429,7 @@ class __TwigTemplate_9065434e8a2d58ac343b103147535b885fb3220cd20618d0424bb7f0a2a
     </div>
 ";
         
-        $__internal_c8fe248019ec1d04bcb0b5b975d0f4db75ffd2c1067d8af30b0c00ccd978c3c8->leave($__internal_c8fe248019ec1d04bcb0b5b975d0f4db75ffd2c1067d8af30b0c00ccd978c3c8_prof);
+        $__internal_4bec056acb4d804a77a2f6ef75dcb252a4bd9c196bb41596141063663986041c->leave($__internal_4bec056acb4d804a77a2f6ef75dcb252a4bd9c196bb41596141063663986041c_prof);
 
     }
 
@@ -629,7 +629,7 @@ class __TwigTemplate_9065434e8a2d58ac343b103147535b885fb3220cd20618d0424bb7f0a2a
 
                         <div class=\"GridLex-col-3_sm-6_xs-12 mb-30\">
                             <div class=\"package-grid-item\"> 
-                                <a href=\"{{ path('lgp_course_find_category', {'category': category.intitule}) }}\">
+                                <a href=\"{{ path('lgp_course_find_category', {'slug': category.slug}) }}\">
                                     <div class=\"image\">
                                         {% if category.image is not null %}
                                             <img src=\"{{ asset(category.image.webPath) }}\" alt=\"{{ category.image.imageName }} \" />
