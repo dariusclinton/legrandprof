@@ -4206,3 +4206,24 @@ li.cart-li:hover{
 .fileUpload .upload label{
     display: none;
 } 
+
+/* Register styles */
+.hero-title-register{
+    font-weight: 400;
+    line-height: 30px;
+    color:white;
+    font-size: 30px;
+}
+.hero-subtitle-register{
+    font-weight: 400;
+    margin-top: 0px;
+    color:white;
+    font-size: 20px;
+}
+.lead-register{
+    font-size: 15px;
+    font-weight: 200;
+}
+.left{
+    text-align: left;
+}
