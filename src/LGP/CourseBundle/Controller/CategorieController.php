@@ -2,11 +2,15 @@
 
 namespace LGP\CourseBundle\Controller;
 
+use LGP\CourseBundle\Entity\Categorie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class CategorieController extends Controller {
+class CategorieController extends Controller
+{
 
-    public function indexAction($page) {
+    public function indexAction($page)
+    {
         $max_per_page = 10;
         $categoryRepository = $this->getDoctrine()->getManager()->getRepository('LGPCourseBundle:Categorie');
         $categories = $categoryRepository->getAllCategories($page, $max_per_page);
@@ -29,20 +33,20 @@ class CategorieController extends Controller {
     }
 
     /**
-     * 
+     *
      * @param type $category
      * @param type $page
      * @return type
      * @throws NotFoundHttpException
      */
-    public function courseListAction($category, $page) {
+    public function courseListAction(Categorie $category, $page)
+    {
         $em = $this->getDoctrine()->getManager();
         $categoryRepository = $em->getRepository('LGPCourseBundle:Categorie');
         $coursRep = $em->getRepository('LGPCourseBundle:Cours');
         $categories = $categoryRepository->findAll();
-        $cat = $categoryRepository->findOneBy(array('intitule' => $category));
         $max_per_page = 10;
-        $courses = $coursRep->getAllCoursesByCategory($cat, $page, $max_per_page);
+        $courses = $coursRep->getAllCoursesByCategory($category, $page, $max_per_page);
         $coursesCount = count($courses);
         $pageCount = ceil($coursesCount / $max_per_page);
         if ($pageCount < $page && $pageCount != 0) {
@@ -58,7 +62,7 @@ class CategorieController extends Controller {
                 'profs_count' => $coursesCount,
                 'max_per_page' => $max_per_page,
                 'page' => $page,
-                'route_params' => array('category' => $category)
+                'route_params' => array('slug' => $category->getSlug())
             ),
         );
         return $this->render('LGPCourseBundle:Categorie:course_list.html.twig', array('params' => $params));

@@ -185,7 +185,7 @@
 
                             <div class="sorting-header">
 
-                                <h3 class="sorting-title uppercase">Des Grands profs en {{ params.intitule_cours }}</h3>
+                                <h3 class="sorting-title uppercase">Des Grands profs en {{ params.courseFound.intitule }}</h3>
                                 <p class="sorting-lead">{{params.matieres_profs | length}} Grands profs trouvés</p>
                             </div>
 
@@ -253,9 +253,9 @@
                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
                                                             {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
                                                                 {% if loop.index != loop.last %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule,})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                                <a href=" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug,})}} " title="">{{ens_cours.cours.intitule}}</a> -
                                                             {% else %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
+                                                                <a href=" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug})}} " title="">{{ens_cours.cours.intitule}}</a>
                                                             {% endif %}
                                                         {% endfor %} 
                                                     </li>
