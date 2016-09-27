@@ -28,10 +28,10 @@ class RegistrationType extends AbstractType
                 'Masculin' => 'm',
                 'Féminin' => 'f'
               ),
-              'placeholder' => '--'
+              'placeholder' => 'Sexe'
             ))
             ->add('pays', CountryType::class, array(
-              'placeholder' => '--',
+              'placeholder' => 'Pays',
             ))
         ;
     }
