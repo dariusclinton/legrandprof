@@ -17,7 +17,19 @@ class CourseController extends Controller
 
     public function searchAction($page, Request $request)
     {
+
+
         $em = $this->getDoctrine()->getManager();
+
+
+        $quartier = new Quartier();
+        $quartier->setIntitule("Abbo Boutila")
+            ->setVille("Garoua Garoua");
+        $em->persist($quartier);
+        $em->flush();
+        die("insertion reussie");
+
+
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
@@ -323,13 +335,6 @@ class CourseController extends Controller
 
     public function searchCityAction(Quartier $quartier, $page, Request $request)
     {
-     /*   $quartier = new Quartier();
-       $quartier->setIntitule("Abbo Boutila")
-       ->setVille("Garoua Boulai");
-       $em->persist($quartier);
-       $em->flush();
-       die("test");
-/*
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
@@ -397,7 +402,7 @@ class CourseController extends Controller
         }
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
-    */}
+    }
 
     public function updateClasseAction($profId, $coursId, Request $request)
     {
