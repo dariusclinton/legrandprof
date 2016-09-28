@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
     <!-- start hero-header with windows height -->
     <div class="hero" style="background-image:url('{{asset('images/hero-header/01.1.jpg') }}');">
 
@@ -127,7 +128,6 @@
     
     
     
-    {% trans_default_domain 'FOSUserBundle' %}
 
     
 {% endblock fos_user_content %}

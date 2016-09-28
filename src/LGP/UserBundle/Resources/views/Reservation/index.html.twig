@@ -4,62 +4,82 @@
   Mes réservations - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   
-  <h1>Mes réservations</h1>
-    
-  <a href="{{ path('lgp_course_find') }}" class="btn btn-primary">Rechercher un prof</a>
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            {% if reservations|length <= 0 %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes réservations</div>
+                <div class="notifications-content">
+                  Aucune réservation trouvée !
+                </div>
+              </div>
+            {% else %}
+              <div class="notifications-block">
+                <div class="notifications-header">Mes réservations</div>
+                <div class="notifications-content">
+                    
+                    <table class="table table-bordered table-stripped">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Cours</th>
+                          <th>Classe</th>
+                          <th>Nombre d'apprenants</th>
+                          <th>Prof</th>
+                          <th>Début</th>
+                          <th>Lieu de cours</th>
+                          <th>Ville</th>
+                          <th>Quartier</th>
+                          <th>Fréquence de paiement</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead> 
+                      <tbody>
+                        {% for reservation in reservations %}
+                          {% for res_ens in reservation.reservationEnseignements %}
+                            <tr>
+                              <td>{{ reservation.dateReservation|date('d/m/Y') }}</td>
+                              <td>{{ res_ens.enseignement.cours.intitule }}</td>
+                              <td>{{ res_ens.enseignement.classe }}</td>
+                              <td>{{ res_ens.nbApprenants }}</td>
+                              <td>{{ res_ens.enseignement.prof.nom }} {{ res_ens.enseignement.prof.prenoms }}</td>
+                              <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
+                              <td>{{ res_ens.lieuDeCours }}</td>
+                              <td>{{ res_ens.ville }}</td>
+                              <td>{{ res_ens.quartier }}</td>
+                              <td>{{ reservation.frequencePaiement }}</td>
+                              <td>
+                                {% if reservation.isValidee %}
+                                  <span class="label label-success">Validée</span>
+                                {% else %}
+                                  <span class="label label-danger">En attente</span>
+                                {% endif %}
+                              </td>
+                  {#            <td></td>#}
+                            </tr>
+                          {% endfor %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
  
-  {% if reservations|length <= 0 %}
-    
-    <h4 class="text-muted">Vous n'avez encore effectué aucune réservation</h4>
-  
-  {% else %}
-  
-    <table class="table table-bordered table-stripped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Cours</th>
-          <th>Classe</th>
-          <th>Nombre d'apprenants</th>
-          <th>Prof</th>
-          <th>Début</th>
-          <th>Lieu de cours</th>
-          <th>Ville</th>
-          <th>Quartier</th>
-          <th>Fréquence de paiement</th>
-          <th>Status</th>
-        </tr>
-      </thead> 
-      <tbody>
-        {% for reservation in reservations %}
-          {% for res_ens in reservation.reservationEnseignements %}
-            <tr>
-              <td>{{ reservation.dateReservation|date('d/m/Y') }}</td>
-              <td>{{ res_ens.enseignement.cours.intitule }}</td>
-              <td>{{ res_ens.enseignement.classe }}</td>
-              <td>{{ res_ens.nbApprenants }}</td>
-              <td>{{ res_ens.enseignement.prof.nom }} {{ res_ens.enseignement.prof.prenoms }}</td>
-              <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
-              <td>{{ res_ens.lieuDeCours }}</td>
-              <td>{{ res_ens.ville }}</td>
-              <td>{{ res_ens.quartier }}</td>
-              <td>{{ reservation.frequencePaiement }}</td>
-              <td>
-                {% if reservation.isValidee %}
-                  <span class="label label-success">Validée</span>
-                {% else %}
-                  <span class="label label-danger">En attente</span>
-                {% endif %}
-              </td>
-  {#            <td></td>#}
-            </tr>
-          {% endfor %}
-        {% endfor %}
-      </tbody>
-    </table>
-    
-  {% endif %}
-  
 {% endblock %}
