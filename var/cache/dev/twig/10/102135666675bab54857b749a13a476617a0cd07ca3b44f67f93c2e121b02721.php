@@ -15,8 +15,8 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_afaaad92a348b22d196e43ed00d62e473b86d987f16f743fe537c2e0ddebf3c5 = $this->env->getExtension("native_profiler");
-        $__internal_afaaad92a348b22d196e43ed00d62e473b86d987f16f743fe537c2e0ddebf3c5->enter($__internal_afaaad92a348b22d196e43ed00d62e473b86d987f16f743fe537c2e0ddebf3c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
+        $__internal_33f86e09955b5c67928ffa5f617f70f8a4c96c1a482e2a4c7f21dd9d3ac7e9d2 = $this->env->getExtension("native_profiler");
+        $__internal_33f86e09955b5c67928ffa5f617f70f8a4c96c1a482e2a4c7f21dd9d3ac7e9d2->enter($__internal_33f86e09955b5c67928ffa5f617f70f8a4c96c1a482e2a4c7f21dd9d3ac7e9d2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
 
         // line 1
         echo "<div class=\"header-dashboard-submenu hidden-xs\">
@@ -38,39 +38,43 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
             // line 8
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_demandes_de_cours");
             echo "\" class=\"dashboard-header-link \">Mes demandes de cours</a></li>
-      ";
-        }
-        // line 10
-        echo "      
+      
+      
         <li><a href=\"#\" class=\"dashboard-header-link \">Mon compte</a>
             <ul id=\"account\">
                 <li><a href=\"";
-        // line 13
-        echo $this->env->getExtension('routing')->getPath("lgp_user_dashboard");
-        echo "\">Mon profil</a></li>
+            // line 13
+            echo $this->env->getExtension('routing')->getPath("lgp_user_dashboard");
+            echo "\">Mon profil</a></li>
                 <li><a href=\"";
-        // line 14
-        echo $this->env->getExtension('routing')->getPath("lgp_user_prof_evaluation");
-        echo "\">Mes évaluations</a></li>
+            // line 14
+            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_evaluation");
+            echo "\">Mes évaluations</a></li>
                 <li><a href=\"";
-        // line 15
-        echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite");
-        echo "\">Mes indisponibilités</a></li>
+            // line 15
+            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite");
+            echo "\">Mes indisponibilités</a></li>
                 <li><a href=\"";
-        // line 16
-        echo $this->env->getExtension('routing')->getPath("lgp_user_prof_seance_de_cours");
-        echo "\">Mes séances de cours</a></li>
+            // line 16
+            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_seance_de_cours");
+            echo "\">Mes séances de cours</a></li>
             </ul>
         </li>
-        <li><a href=\"";
-        // line 19
+        ";
+        }
+        // line 20
+        echo "        <li><a href=\"";
         echo $this->env->getExtension('routing')->getPath("lgp_user_mes_reservations");
         echo "\" class=\"dashboard-header-link \">Mes réservations</a></li>
+        <li><a href=\"";
+        // line 21
+        echo $this->env->getExtension('routing')->getPath("lgp_user_avis");
+        echo "\" class=\"dashboard-header-link \">Mes avis</a></li>
     </ul>
   </div>
 </div>";
         
-        $__internal_afaaad92a348b22d196e43ed00d62e473b86d987f16f743fe537c2e0ddebf3c5->leave($__internal_afaaad92a348b22d196e43ed00d62e473b86d987f16f743fe537c2e0ddebf3c5_prof);
+        $__internal_33f86e09955b5c67928ffa5f617f70f8a4c96c1a482e2a4c7f21dd9d3ac7e9d2->leave($__internal_33f86e09955b5c67928ffa5f617f70f8a4c96c1a482e2a4c7f21dd9d3ac7e9d2_prof);
 
     }
 
@@ -86,7 +90,7 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     public function getDebugInfo()
     {
-        return array (  67 => 19,  61 => 16,  57 => 15,  53 => 14,  49 => 13,  44 => 10,  39 => 8,  34 => 7,  32 => 6,  27 => 4,  22 => 1,);
+        return array (  71 => 21,  66 => 20,  59 => 16,  55 => 15,  51 => 14,  47 => 13,  39 => 8,  34 => 7,  32 => 6,  27 => 4,  22 => 1,);
     }
 
     public function getSource()
@@ -99,7 +103,7 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
       {% if is_granted('ROLE_PROF') %}
         <li><a href=\"{{ path('lgp_user_prof_cours') }}\" class=\"dashboard-header-link \" title=\"Ce que j'enseigne\">Mes cours</a></li>
         <li><a href=\"{{ path('lgp_user_prof_demandes_de_cours') }}\" class=\"dashboard-header-link \">Mes demandes de cours</a></li>
-      {% endif %}
+      
       
         <li><a href=\"#\" class=\"dashboard-header-link \">Mon compte</a>
             <ul id=\"account\">
@@ -109,7 +113,9 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
                 <li><a href=\"{{ path('lgp_user_prof_seance_de_cours') }}\">Mes séances de cours</a></li>
             </ul>
         </li>
+        {% endif %}
         <li><a href=\"{{ path('lgp_user_mes_reservations')}}\" class=\"dashboard-header-link \">Mes réservations</a></li>
+        <li><a href=\"{{ path('lgp_user_avis')}}\" class=\"dashboard-header-link \">Mes avis</a></li>
     </ul>
   </div>
 </div>";

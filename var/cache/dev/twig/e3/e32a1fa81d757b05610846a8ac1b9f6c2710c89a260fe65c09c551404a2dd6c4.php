@@ -15,8 +15,8 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bb878db9cba47ec47c4ebbabb1ee4206536607ed234a0dee84735543168e6568 = $this->env->getExtension("native_profiler");
-        $__internal_bb878db9cba47ec47c4ebbabb1ee4206536607ed234a0dee84735543168e6568->enter($__internal_bb878db9cba47ec47c4ebbabb1ee4206536607ed234a0dee84735543168e6568_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_c646673d75a856a6b1f72c0d940669f78e1a75b466ed16aa6b330ea0609293ca = $this->env->getExtension("native_profiler");
+        $__internal_c646673d75a856a6b1f72c0d940669f78e1a75b466ed16aa6b330ea0609293ca->enter($__internal_c646673d75a856a6b1f72c0d940669f78e1a75b466ed16aa6b330ea0609293ca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -146,9 +146,9 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
         // line 94
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 95
-            echo "                    <div style=\"margin-top: 11px; font-weight: bold\">";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
-            echo "<i class=\"arrow-indicator fa fa-angle-down\"></i></div>
+            echo "                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\">";
+            echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "prenoms", array())), "html", null, true);
+            echo "</a>
                     <ul>
                       <li><a href=\"";
             // line 97
@@ -169,37 +169,69 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
         }
         // line 103
         echo "                </li>
+                <li>
+                  ";
+        // line 105
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 106
+            echo "                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\"><i class=\"fa fa-cog\"></i></a>
+                    <ul>
+                      <li><a href=\"";
+            // line 108
+            echo $this->env->getExtension('routing')->getPath("lgp_user_message_receive");
+            echo "\">Messages</a></li>
+                      <li><a href=\"";
+            // line 109
+            echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelles_categories_cours");
+            echo "\">Proposer une catégorie de cours</a></li>
+                      
+                      ";
+            // line 111
+            if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
+                // line 112
+                echo "                      <li><a href=\"";
+                echo $this->env->getExtension('routing')->getPath("lgp_user_anomalies");
+                echo "\">Anomalies du système</a></li>
+                      ";
+            }
+            // line 114
+            echo "                    </ul>
+                    
+                  ";
+        }
+        // line 117
+        echo "                </li>
                 <li><a href=\"";
-        // line 104
+        // line 118
         echo $this->env->getExtension('routing')->getPath("lgp_reservation_cart");
         echo "\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
                   <ul style=\"width:250px;margin-left:-100px;\">
                     ";
-        // line 106
+        // line 120
         $context["panier"] = $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method");
-        // line 107
+        // line 121
         echo "                    ";
         if (((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")))) && (twig_length_filter($this->env, $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array())) != 0))) {
-            // line 108
+            // line 122
             echo "                      ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
             foreach ($context['_seq'] as $context["key"] => $context["booker"]) {
-                // line 109
+                // line 123
                 echo "                        <li class=\"cart-li\">
                           <div class=\"cart\">
                             <img src=\"";
-                // line 111
+                // line 125
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["booker"], "profImage", array())), "html", null, true);
                 echo "\">
                             <b>";
-                // line 112
+                // line 126
                 echo twig_escape_filter($this->env, (($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())), "html", null, true);
                 echo "</b> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
                 echo " Fcfa
                             <b class=\"right\" onclick=\"location.href = '";
-                // line 113
+                // line 127
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_cart_remove", array("key" => $context["key"])), "html", null, true);
                 echo "'\"><i class=\"fa fa-remove\"></i></b>
                           </div>
@@ -209,10 +241,10 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 117
+            // line 131
             echo "                    ";
         } else {
-            // line 118
+            // line 132
             echo "                      <li class=\"cart-li\">
                         <div class=\"cart\">
                           <b>aucun prof dans le panier</b>
@@ -220,7 +252,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
                       </li>
                     ";
         }
-        // line 124
+        // line 138
         echo "                  </ul>
 
                 </li>
@@ -242,7 +274,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
 </header>";
         
-        $__internal_bb878db9cba47ec47c4ebbabb1ee4206536607ed234a0dee84735543168e6568->leave($__internal_bb878db9cba47ec47c4ebbabb1ee4206536607ed234a0dee84735543168e6568_prof);
+        $__internal_c646673d75a856a6b1f72c0d940669f78e1a75b466ed16aa6b330ea0609293ca->leave($__internal_c646673d75a856a6b1f72c0d940669f78e1a75b466ed16aa6b330ea0609293ca_prof);
 
     }
 
@@ -258,7 +290,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
     public function getDebugInfo()
     {
-        return array (  224 => 124,  216 => 118,  213 => 117,  203 => 113,  197 => 112,  193 => 111,  189 => 109,  184 => 108,  181 => 107,  179 => 106,  174 => 104,  171 => 103,  165 => 101,  159 => 98,  155 => 97,  149 => 95,  147 => 94,  137 => 86,  130 => 82,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
+        return array (  256 => 138,  248 => 132,  245 => 131,  235 => 127,  229 => 126,  225 => 125,  221 => 123,  216 => 122,  213 => 121,  211 => 120,  206 => 118,  203 => 117,  198 => 114,  192 => 112,  190 => 111,  185 => 109,  181 => 108,  177 => 106,  175 => 105,  171 => 103,  165 => 101,  159 => 98,  155 => 97,  149 => 95,  147 => 94,  137 => 86,  130 => 82,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
     }
 
     public function getSource()
@@ -357,13 +389,27 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
               <ul class=\"nav navbar-nav\">
                 <li>
                   {% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-                    <div style=\"margin-top: 11px; font-weight: bold\">{{ app.user.username }}<i class=\"arrow-indicator fa fa-angle-down\"></i></div>
+                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\">{{ app.user.prenoms | capitalize }}</a>
                     <ul>
                       <li><a href=\"{{ path('lgp_user_dashboard') }}\">Tableau de bord</a></li>
                       <li><a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a></li>
                     </ul>
                   {% else %}
                     <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"{{ path('fos_user_security_login') }}\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
+                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\"><i class=\"fa fa-cog\"></i></a>
+                    <ul>
+                      <li><a href=\"{{ path('lgp_user_message_receive') }}\">Messages</a></li>
+                      <li><a href=\"{{ path('lgp_user_nouvelles_categories_cours') }}\">Proposer une catégorie de cours</a></li>
+                      
+                      {% if is_granted('ROLE_PROF') %}
+                      <li><a href=\"{{ path('lgp_user_anomalies') }}\">Anomalies du système</a></li>
+                      {% endif %}
+                    </ul>
+                    
                   {% endif %}
                 </li>
                 <li><a href=\"{{ path('lgp_reservation_cart') }}\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>

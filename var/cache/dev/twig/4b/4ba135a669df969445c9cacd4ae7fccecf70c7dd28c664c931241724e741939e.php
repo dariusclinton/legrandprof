@@ -15,8 +15,8 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_145fb1cf2ae7a9ee8d98176d7ac00989bf96031e57a200d440d5052d889b3b35 = $this->env->getExtension("native_profiler");
-        $__internal_145fb1cf2ae7a9ee8d98176d7ac00989bf96031e57a200d440d5052d889b3b35->enter($__internal_145fb1cf2ae7a9ee8d98176d7ac00989bf96031e57a200d440d5052d889b3b35_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
+        $__internal_7386122460a4bb7eb12103e0530f3efc7b0414ecc85116e2191940963976f317 = $this->env->getExtension("native_profiler");
+        $__internal_7386122460a4bb7eb12103e0530f3efc7b0414ecc85116e2191940963976f317->enter($__internal_7386122460a4bb7eb12103e0530f3efc7b0414ecc85116e2191940963976f317_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
 
         // line 1
         echo "<h4>Expéditeur: ";
@@ -36,7 +36,7 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "contenu", array()), "html", null, true);
         echo "</p>";
         
-        $__internal_145fb1cf2ae7a9ee8d98176d7ac00989bf96031e57a200d440d5052d889b3b35->leave($__internal_145fb1cf2ae7a9ee8d98176d7ac00989bf96031e57a200d440d5052d889b3b35_prof);
+        $__internal_7386122460a4bb7eb12103e0530f3efc7b0414ecc85116e2191940963976f317->leave($__internal_7386122460a4bb7eb12103e0530f3efc7b0414ecc85116e2191940963976f317_prof);
 
     }
 

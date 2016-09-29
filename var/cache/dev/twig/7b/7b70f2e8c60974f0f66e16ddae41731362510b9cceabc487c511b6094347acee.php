@@ -11,6 +11,7 @@ class __TwigTemplate_71999b132578628f8d4e1c2c094331800c290a9ceb98d63f9850f0d609e
         $this->parent = $this->loadTemplate("LGPCoreBundle::layout.html.twig", "LGPUserBundle:NouvelleCategorieCours:add.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'header_submenu' => array($this, 'block_header_submenu'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -22,20 +23,20 @@ class __TwigTemplate_71999b132578628f8d4e1c2c094331800c290a9ceb98d63f9850f0d609e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d9a95ecf33f399591a642a7dee21ccb9ccabe7e8f6080315dce5391bafacc658 = $this->env->getExtension("native_profiler");
-        $__internal_d9a95ecf33f399591a642a7dee21ccb9ccabe7e8f6080315dce5391bafacc658->enter($__internal_d9a95ecf33f399591a642a7dee21ccb9ccabe7e8f6080315dce5391bafacc658_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:NouvelleCategorieCours:add.html.twig"));
+        $__internal_7aebb897bcbf2ebfbc4118624340d00ea3fd6ffb1e7f5c4013b33114b40f3a7a = $this->env->getExtension("native_profiler");
+        $__internal_7aebb897bcbf2ebfbc4118624340d00ea3fd6ffb1e7f5c4013b33114b40f3a7a->enter($__internal_7aebb897bcbf2ebfbc4118624340d00ea3fd6ffb1e7f5c4013b33114b40f3a7a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:NouvelleCategorieCours:add.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d9a95ecf33f399591a642a7dee21ccb9ccabe7e8f6080315dce5391bafacc658->leave($__internal_d9a95ecf33f399591a642a7dee21ccb9ccabe7e8f6080315dce5391bafacc658_prof);
+        $__internal_7aebb897bcbf2ebfbc4118624340d00ea3fd6ffb1e7f5c4013b33114b40f3a7a->leave($__internal_7aebb897bcbf2ebfbc4118624340d00ea3fd6ffb1e7f5c4013b33114b40f3a7a_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_0a0031c47a69877d5f30125efe6812bd9261494f33896c21b44f6923f002bb3f = $this->env->getExtension("native_profiler");
-        $__internal_0a0031c47a69877d5f30125efe6812bd9261494f33896c21b44f6923f002bb3f->enter($__internal_0a0031c47a69877d5f30125efe6812bd9261494f33896c21b44f6923f002bb3f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_ea202d19a654a91f4c8f44b9e3424148b71ba65f0bc740ef050265e6fc45d1c4 = $this->env->getExtension("native_profiler");
+        $__internal_ea202d19a654a91f4c8f44b9e3424148b71ba65f0bc740ef050265e6fc45d1c4->enter($__internal_ea202d19a654a91f4c8f44b9e3424148b71ba65f0bc740ef050265e6fc45d1c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Proposition d'une nouvelle catégorie de cours - ";
@@ -43,28 +44,73 @@ class __TwigTemplate_71999b132578628f8d4e1c2c094331800c290a9ceb98d63f9850f0d609e
         echo "
 ";
         
-        $__internal_0a0031c47a69877d5f30125efe6812bd9261494f33896c21b44f6923f002bb3f->leave($__internal_0a0031c47a69877d5f30125efe6812bd9261494f33896c21b44f6923f002bb3f_prof);
+        $__internal_ea202d19a654a91f4c8f44b9e3424148b71ba65f0bc740ef050265e6fc45d1c4->leave($__internal_ea202d19a654a91f4c8f44b9e3424148b71ba65f0bc740ef050265e6fc45d1c4_prof);
 
     }
 
     // line 7
-    public function block_body($context, array $blocks = array())
+    public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_f6bf311eccbdc8d0aaa1273df835a33a1302974fefb60ea1cd4358743ddbd117 = $this->env->getExtension("native_profiler");
-        $__internal_f6bf311eccbdc8d0aaa1273df835a33a1302974fefb60ea1cd4358743ddbd117->enter($__internal_f6bf311eccbdc8d0aaa1273df835a33a1302974fefb60ea1cd4358743ddbd117_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_66fabbba3e538fee32abd084ea5da8e35d3471bcd60df8704c52d9ac4382a939 = $this->env->getExtension("native_profiler");
+        $__internal_66fabbba3e538fee32abd084ea5da8e35d3471bcd60df8704c52d9ac4382a939->enter($__internal_66fabbba3e538fee32abd084ea5da8e35d3471bcd60df8704c52d9ac4382a939_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
-        // line 8
-        echo "  
-  <h1>Proposition d'une nouvelle catégorie de cours </h1>
-    
+        echo " 
   ";
-        // line 11
-        $this->loadTemplate("LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig", "LGPUserBundle:NouvelleCategorieCours:add.html.twig", 11)->display($context);
-        // line 12
-        echo "  
+        // line 8
+        echo twig_include($this->env, $context, "LGPCoreBundle::header-submenu.html.twig");
+        echo "
 ";
         
-        $__internal_f6bf311eccbdc8d0aaa1273df835a33a1302974fefb60ea1cd4358743ddbd117->leave($__internal_f6bf311eccbdc8d0aaa1273df835a33a1302974fefb60ea1cd4358743ddbd117_prof);
+        $__internal_66fabbba3e538fee32abd084ea5da8e35d3471bcd60df8704c52d9ac4382a939->leave($__internal_66fabbba3e538fee32abd084ea5da8e35d3471bcd60df8704c52d9ac4382a939_prof);
+
+    }
+
+    // line 11
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_6ebd7370fd1f8a8cafe4adb434d833feb8bde472351c410e7163d13c5e2d96e0 = $this->env->getExtension("native_profiler");
+        $__internal_6ebd7370fd1f8a8cafe4adb434d833feb8bde472351c410e7163d13c5e2d96e0->enter($__internal_6ebd7370fd1f8a8cafe4adb434d833feb8bde472351c410e7163d13c5e2d96e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 12
+        echo "  
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Categories de cours</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"";
+        // line 20
+        echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelles_categories_cours");
+        echo "\">Catégories de cours</a></li>
+              <li><a href=\"";
+        // line 21
+        echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelle_categorie_cours_add");
+        echo "\">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Ajouter une catégorie</div>
+                <div class=\"notifications-content\">
+                    ";
+        // line 28
+        $this->loadTemplate("LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig", "LGPUserBundle:NouvelleCategorieCours:add.html.twig", 28)->display($context);
+        // line 29
+        echo "                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  
+  
+";
+        
+        $__internal_6ebd7370fd1f8a8cafe4adb434d833feb8bde472351c410e7163d13c5e2d96e0->leave($__internal_6ebd7370fd1f8a8cafe4adb434d833feb8bde472351c410e7163d13c5e2d96e0_prof);
 
     }
 
@@ -80,7 +126,7 @@ class __TwigTemplate_71999b132578628f8d4e1c2c094331800c290a9ceb98d63f9850f0d609e
 
     public function getDebugInfo()
     {
-        return array (  64 => 12,  62 => 11,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  101 => 29,  99 => 28,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -91,11 +137,37 @@ class __TwigTemplate_71999b132578628f8d4e1c2c094331800c290a9ceb98d63f9850f0d609e
   Proposition d'une nouvelle catégorie de cours - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   
-  <h1>Proposition d'une nouvelle catégorie de cours </h1>
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Categories de cours</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"{{ path('lgp_user_nouvelles_categories_cours') }}\">Catégories de cours</a></li>
+              <li><a href=\"{{ path('lgp_user_nouvelle_categorie_cours_add') }}\">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Ajouter une catégorie</div>
+                <div class=\"notifications-content\">
+                    {% include 'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' %}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     
-  {% include 'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' %}
+  
   
 {% endblock %}";
     }

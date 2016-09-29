@@ -11,6 +11,7 @@ class __TwigTemplate_34799609f1579efd8f7e83beb7012b8e5e0587644acaf91d3424fcd10da
         $this->parent = $this->loadTemplate("LGPCoreBundle::layout.html.twig", "LGPUserBundle:NouvelleCategorieCours:index.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'header_submenu' => array($this, 'block_header_submenu'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -22,20 +23,20 @@ class __TwigTemplate_34799609f1579efd8f7e83beb7012b8e5e0587644acaf91d3424fcd10da
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8693029c569942e6d8db3cece100a5f43174628b2e161357cd70f2bd3c8239de = $this->env->getExtension("native_profiler");
-        $__internal_8693029c569942e6d8db3cece100a5f43174628b2e161357cd70f2bd3c8239de->enter($__internal_8693029c569942e6d8db3cece100a5f43174628b2e161357cd70f2bd3c8239de_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:NouvelleCategorieCours:index.html.twig"));
+        $__internal_a2706b7360a13c382996069286ed59bd675c3356f311c7fd1e905eda29844f24 = $this->env->getExtension("native_profiler");
+        $__internal_a2706b7360a13c382996069286ed59bd675c3356f311c7fd1e905eda29844f24->enter($__internal_a2706b7360a13c382996069286ed59bd675c3356f311c7fd1e905eda29844f24_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:NouvelleCategorieCours:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_8693029c569942e6d8db3cece100a5f43174628b2e161357cd70f2bd3c8239de->leave($__internal_8693029c569942e6d8db3cece100a5f43174628b2e161357cd70f2bd3c8239de_prof);
+        $__internal_a2706b7360a13c382996069286ed59bd675c3356f311c7fd1e905eda29844f24->leave($__internal_a2706b7360a13c382996069286ed59bd675c3356f311c7fd1e905eda29844f24_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_5ae6dae9abbe2dff565642261e3040c71b6940b844b8ccf726c3d46b15808f6d = $this->env->getExtension("native_profiler");
-        $__internal_5ae6dae9abbe2dff565642261e3040c71b6940b844b8ccf726c3d46b15808f6d->enter($__internal_5ae6dae9abbe2dff565642261e3040c71b6940b844b8ccf726c3d46b15808f6d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5c3a9b0c677b3aa29983d205654fbfe1cc907544e76a2a620b61af06cf9a7388 = $this->env->getExtension("native_profiler");
+        $__internal_5c3a9b0c677b3aa29983d205654fbfe1cc907544e76a2a620b61af06cf9a7388->enter($__internal_5c3a9b0c677b3aa29983d205654fbfe1cc907544e76a2a620b61af06cf9a7388_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Catégories de cours proposées - ";
@@ -43,92 +44,138 @@ class __TwigTemplate_34799609f1579efd8f7e83beb7012b8e5e0587644acaf91d3424fcd10da
         echo "
 ";
         
-        $__internal_5ae6dae9abbe2dff565642261e3040c71b6940b844b8ccf726c3d46b15808f6d->leave($__internal_5ae6dae9abbe2dff565642261e3040c71b6940b844b8ccf726c3d46b15808f6d_prof);
+        $__internal_5c3a9b0c677b3aa29983d205654fbfe1cc907544e76a2a620b61af06cf9a7388->leave($__internal_5c3a9b0c677b3aa29983d205654fbfe1cc907544e76a2a620b61af06cf9a7388_prof);
 
     }
 
     // line 7
+    public function block_header_submenu($context, array $blocks = array())
+    {
+        $__internal_4e75517981c3aeb0fb2c3914e4a80c86eb3630d8b45527900444db018e665aba = $this->env->getExtension("native_profiler");
+        $__internal_4e75517981c3aeb0fb2c3914e4a80c86eb3630d8b45527900444db018e665aba->enter($__internal_4e75517981c3aeb0fb2c3914e4a80c86eb3630d8b45527900444db018e665aba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
+
+        echo " 
+  ";
+        // line 8
+        echo twig_include($this->env, $context, "LGPCoreBundle::header-submenu.html.twig");
+        echo "
+";
+        
+        $__internal_4e75517981c3aeb0fb2c3914e4a80c86eb3630d8b45527900444db018e665aba->leave($__internal_4e75517981c3aeb0fb2c3914e4a80c86eb3630d8b45527900444db018e665aba_prof);
+
+    }
+
+    // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4e8262e597898889143d31e17dcb0856f2428ea240fd5232545fcfabbc0889b0 = $this->env->getExtension("native_profiler");
-        $__internal_4e8262e597898889143d31e17dcb0856f2428ea240fd5232545fcfabbc0889b0->enter($__internal_4e8262e597898889143d31e17dcb0856f2428ea240fd5232545fcfabbc0889b0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_ccafc7e6581fcbf08b9ef18ddac32883ab8a38a24ef11940dcbd0dfd937bc7f4 = $this->env->getExtension("native_profiler");
+        $__internal_ccafc7e6581fcbf08b9ef18ddac32883ab8a38a24ef11940dcbd0dfd937bc7f4->enter($__internal_ccafc7e6581fcbf08b9ef18ddac32883ab8a38a24ef11940dcbd0dfd937bc7f4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 8
-        echo "  
-  <h1>Catégories de cours proposées</h1>
-    
-  <a href=\"";
-        // line 11
+        // line 12
+        echo "    
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Categories de cours</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"";
+        // line 20
+        echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelles_categories_cours");
+        echo "\">Catégories de cours</a></li>
+              <li><a href=\"";
+        // line 21
         echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelle_categorie_cours_add");
-        echo "\" class=\"btn btn-primary\">Proposer une catégorie</a>
- 
-  ";
-        // line 13
+        echo "\">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+            ";
+        // line 25
         if ((twig_length_filter($this->env, (isset($context["nouvellesCategoriesCours"]) ? $context["nouvellesCategoriesCours"] : $this->getContext($context, "nouvellesCategoriesCours"))) <= 0)) {
-            // line 14
-            echo "    
-    <h4 class=\"text-muted\">Aucune catégorie trouvée</h4>
-  
-  ";
+            // line 26
+            echo "              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Catégories proposées</div>
+                <div class=\"notifications-content\">
+                    Aucune catégorie proposée !
+                </div>
+              </div>
+            ";
         } else {
-            // line 18
-            echo "  
-    <table class=\"table table-bordered table-stripped\">
-      <thead>
-        <tr>
-          <th>Intitule</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        ";
-            // line 29
+            // line 33
+            echo "              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Catégories proposées</div>
+                <div class=\"notifications-content\">
+                    
+                    <table class=\"table table-bordered table-stripped\">
+                      <thead>
+                        <tr>
+                          <th>Intitule</th>
+                          <th>Description</th>
+                          <th>Date</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ";
+            // line 48
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["nouvellesCategoriesCours"]) ? $context["nouvellesCategoriesCours"] : $this->getContext($context, "nouvellesCategoriesCours")));
             foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-                // line 30
-                echo "          <tr>
-            <td>";
-                // line 31
+                // line 49
+                echo "                          <tr>
+                            <td>";
+                // line 50
                 echo twig_escape_filter($this->env, $this->getAttribute($context["categorie"], "intitule", array()), "html", null, true);
                 echo "</td>
-            <td>";
-                // line 32
+                            <td>";
+                // line 51
                 echo twig_escape_filter($this->env, $this->getAttribute($context["categorie"], "description", array()), "html", null, true);
                 echo "</td>
-            <td>";
-                // line 33
+                            <td>";
+                // line 52
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["categorie"], "dateProposition", array()), "d/m/Y"), "html", null, true);
                 echo "</td>
-            <td>
-              <a href=\"";
-                // line 35
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_nouvelle_categorie_cours_update", array("id" => $this->getAttribute($context["categorie"], "id", array()))), "html", null, true);
-                echo "\" class=\"btn btn-info btn-sm\">Modifier</a> 
-              <a href=\"";
-                // line 36
+                            <td>
+                                <a href=\"";
+                // line 54
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_nouvelle_categorie_cours_delete", array("id" => $this->getAttribute($context["categorie"], "id", array()))), "html", null, true);
-                echo "\" class=\"btn btn-danger btn-sm delete_confirm\">Supprimer</a>
-            </td>
-          </tr>
-        ";
+                echo "\" class=\"delete_confirm\"><i class='fa fa-remove'></i></a>
+                            </td>
+                            <td>
+                                <a href=\"";
+                // line 57
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_nouvelle_categorie_cours_update", array("id" => $this->getAttribute($context["categorie"], "id", array()))), "html", null, true);
+                echo "\" class=\"\"><i class='fa fa-edit'></i></a> 
+                            </td>
+                          </tr>
+                        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categorie'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 40
-            echo "      </tbody>
-    </table>
-    
-  ";
+            // line 61
+            echo "                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            ";
         }
-        // line 44
-        echo "  
+        // line 67
+        echo "
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 ";
         
-        $__internal_4e8262e597898889143d31e17dcb0856f2428ea240fd5232545fcfabbc0889b0->leave($__internal_4e8262e597898889143d31e17dcb0856f2428ea240fd5232545fcfabbc0889b0_prof);
+        $__internal_ccafc7e6581fcbf08b9ef18ddac32883ab8a38a24ef11940dcbd0dfd937bc7f4->leave($__internal_ccafc7e6581fcbf08b9ef18ddac32883ab8a38a24ef11940dcbd0dfd937bc7f4_prof);
 
     }
 
@@ -144,7 +191,7 @@ class __TwigTemplate_34799609f1579efd8f7e83beb7012b8e5e0587644acaf91d3424fcd10da
 
     public function getDebugInfo()
     {
-        return array (  128 => 44,  122 => 40,  112 => 36,  108 => 35,  103 => 33,  99 => 32,  95 => 31,  92 => 30,  88 => 29,  75 => 18,  69 => 14,  67 => 13,  62 => 11,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  168 => 67,  160 => 61,  150 => 57,  144 => 54,  139 => 52,  135 => 51,  131 => 50,  128 => 49,  124 => 48,  107 => 33,  98 => 26,  96 => 25,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -155,43 +202,73 @@ class __TwigTemplate_34799609f1579efd8f7e83beb7012b8e5e0587644acaf91d3424fcd10da
   Catégories de cours proposées - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
-  
-  <h1>Catégories de cours proposées</h1>
     
-  <a href=\"{{ path('lgp_user_nouvelle_categorie_cours_add') }}\" class=\"btn btn-primary\">Proposer une catégorie</a>
- 
-  {% if nouvellesCategoriesCours|length <= 0 %}
-    
-    <h4 class=\"text-muted\">Aucune catégorie trouvée</h4>
-  
-  {% else %}
-  
-    <table class=\"table table-bordered table-stripped\">
-      <thead>
-        <tr>
-          <th>Intitule</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for categorie in nouvellesCategoriesCours %}
-          <tr>
-            <td>{{categorie.intitule }}</td>
-            <td>{{categorie.description}}</td>
-            <td>{{categorie.dateProposition|date('d/m/Y')}}</td>
-            <td>
-              <a href=\"{{ path('lgp_user_nouvelle_categorie_cours_update', {'id': categorie.id}) }}\" class=\"btn btn-info btn-sm\">Modifier</a> 
-              <a href=\"{{ path('lgp_user_nouvelle_categorie_cours_delete', {'id': categorie.id}) }}\" class=\"btn btn-danger btn-sm delete_confirm\">Supprimer</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    
-  {% endif %}
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Categories de cours</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"{{ path('lgp_user_nouvelles_categories_cours') }}\">Catégories de cours</a></li>
+              <li><a href=\"{{ path('lgp_user_nouvelle_categorie_cours_add') }}\">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+            {% if nouvellesCategoriesCours|length <= 0 %}
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Catégories proposées</div>
+                <div class=\"notifications-content\">
+                    Aucune catégorie proposée !
+                </div>
+              </div>
+            {% else %}
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Catégories proposées</div>
+                <div class=\"notifications-content\">
+                    
+                    <table class=\"table table-bordered table-stripped\">
+                      <thead>
+                        <tr>
+                          <th>Intitule</th>
+                          <th>Description</th>
+                          <th>Date</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for categorie in nouvellesCategoriesCours %}
+                          <tr>
+                            <td>{{categorie.intitule }}</td>
+                            <td>{{categorie.description}}</td>
+                            <td>{{categorie.dateProposition|date('d/m/Y')}}</td>
+                            <td>
+                                <a href=\"{{ path('lgp_user_nouvelle_categorie_cours_delete', {'id': categorie.id}) }}\" class=\"delete_confirm\"><i class='fa fa-remove'></i></a>
+                            </td>
+                            <td>
+                                <a href=\"{{ path('lgp_user_nouvelle_categorie_cours_update', {'id': categorie.id}) }}\" class=\"\"><i class='fa fa-edit'></i></a> 
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
 {% endblock %}";
     }
