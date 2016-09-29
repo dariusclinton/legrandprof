@@ -1,14 +1,14 @@
 <?php
 
-namespace LGP\UserBundle\Form;
+namespace LGP\CourseBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class ImageType extends AbstractType
+class ImageCourseType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,7 +18,7 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('imageFile', FileType::class, array(
-              'required' => false,
+                'required' => false
             ))
         ;
     }
@@ -29,7 +29,7 @@ class ImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'LGP\UserBundle\Entity\Image'
+            'data_class' => 'LGP\CourseBundle\Entity\ImageCourse'
         ));
     }
 }

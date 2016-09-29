@@ -154,46 +154,46 @@ $(function () {
    * @type $
    */
 
-  // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
-  var $container3 = $('div#fos_user_profile_form_quartierCibles');
-
-  // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
-  var index3 = $container3.find(':input').length;
-
-  // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
-  $('#add_quartier').click(function (e) {
-    addQuartier($container3);
-    e.preventDefault();
-    return false;
-  });
- 
-  // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
-  $container3.children('div').each(function () {
-    addDeleteLink($(this));
-  });
- 
-
-  // Fonction qui ajoute un formulaire de ExperienceProType
-  function addQuartier($container) {
-    // Dans le contenu de l'attribut « data-prototype », on remplace :
-    // - le texte "__name__label__" qu'il contient par le label du champ
-    // - le texte "__name__" qu'il contient par le numéro du champ
-    var template = $container.attr('data-prototype')
-            .replace(/__name__label__/g, 'Quartier n ' + (index3 + 1))
-            .replace(/__name__/g, index3);
-
-    // On cree un objet jquery qui contient ce template
-    var $prototype = $(template);
-
-    // On ajoute au prototype un lien pour pourvoir supprimer l'experience
-    addDeleteLink($prototype);
-
-    // On ajoute le prototype a la fin de la balise <div>
-    $container.append($prototype);
-
-    // On incremente le compteur
-    index3++;
-  }
+  // // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
+  // var $container3 = $('div#fos_user_profile_form_quartierCibles');
+  //
+  // // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
+  // var index3 = $container3.find(':input').length;
+  //
+  // // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
+  // $('#add_quartier').click(function (e) {
+  //   addQuartier($container3);
+  //   e.preventDefault();
+  //   return false;
+  // });
+  //
+  // // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
+  // $container3.children('div').each(function () {
+  //   addDeleteLink($(this));
+  // });
+  //
+  //
+  // // Fonction qui ajoute un formulaire de ExperienceProType
+  // function addQuartier($container) {
+  //   // Dans le contenu de l'attribut « data-prototype », on remplace :
+  //   // - le texte "__name__label__" qu'il contient par le label du champ
+  //   // - le texte "__name__" qu'il contient par le numéro du champ
+  //   var template = $container.attr('data-prototype')
+  //           .replace(/__name__label__/g, 'Quartier n ' + (index3 + 1))
+  //           .replace(/__name__/g, index3);
+  //
+  //   // On cree un objet jquery qui contient ce template
+  //   var $prototype = $(template);
+  //
+  //   // On ajoute au prototype un lien pour pourvoir supprimer l'experience
+  //   addDeleteLink($prototype);
+  //
+  //   // On ajoute le prototype a la fin de la balise <div>
+  //   $container.append($prototype);
+  //
+  //   // On incremente le compteur
+  //   index3++;
+  // }
   
   
 
@@ -262,23 +262,31 @@ $(function () {
     /**
      * Changement de l'intitule du quartier en fonction de la ville
      */
-    $('div[id*="fos_user_profile_form_quartierCibles_"] div > select').each(function(index) {
-      $(this).change(function() {
-        alert('Ville changed');
-        
-        var $form = $(this).closest('form');
-        
-        var data = {};
-        data[$(this).attr('name')] = $(this).val();
-        
-        $.ajax({
-          url: $form.attr('action'),
-          type: $form.attr('method'),
-          data: data,
-          success: function(html) {
-           alert(html); 
-          }
-        });
-      });
-    });
+    // $('div[id*="fos_user_profile_form_quartierCibles_"] div > select').each(function(index) {
+    //   $(this).change(function() {
+    //     alert('Ville changed');
+    //
+    //     var $form = $(this).closest('form');
+    //
+    //     var data = {};
+    //     data[$(this).attr('name')] = $(this).val();
+    //
+    //     $.ajax({
+    //       url: $form.attr('action'),
+    //       type: $form.attr('method'),
+    //       data: data,
+    //       success: function(html) {
+    //        alert(html);
+    //       }
+    //     });
+    //   });
+    // });
+
+
+  /**
+   * Gestion du chargement de quartiers en fonction de la ville
+   */
+  $('#s57ec2b3f83f5a_ville').change(function() {
+    alert('Ville has changed');
+  })
 });

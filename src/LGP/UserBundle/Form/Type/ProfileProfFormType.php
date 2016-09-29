@@ -27,9 +27,9 @@ class ProfileProfFormType extends AbstractType {
         ))
         ->add('situationMatrimoniale', ChoiceType::class, array(
           'choices'     => array(
-            'Célibataire' => 'c',
-            'Marié(e)'    => 'm',
-            'Divorcé(e)'  => 'd'
+            'Célibataire' => 'Célibataire',
+            'Marié(e)'    => 'Marié(e)',
+            'Divorcé(e)'  => 'Divorcé(e)'
           ),
           'placeholder' => '--'
         ))

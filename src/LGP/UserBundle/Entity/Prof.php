@@ -98,21 +98,21 @@ class Prof extends User {
     private $CVFile;
 
     /**
-     * @var \LGPCourseBundle\Entity\SeanceDeCours
+     * @var \LGP\CourseBundle\Entity\SeanceDeCours
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="prof")
      */
     private $seancesDeCours;
 
     /**
-     * @var \LGPCourseBundle\Entity\Enseigne
+     * @var \LGP\CourseBundle\Entity\Enseigne
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="prof")
      */
     private $enseignements;
 
     /**
-     * @var \LGPCourseBundle\Entity\Evaluation
+     * @var \LGP\CourseBundle\Entity\Evaluation
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="prof")
      */

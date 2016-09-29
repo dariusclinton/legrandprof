@@ -32,7 +32,7 @@ class Cours {
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", length=1000, nullable=false)
+     * @ORM\Column(name="description", type="text", length=1000, nullable=true)
      */
     private $description;
 
@@ -43,9 +43,9 @@ class Cours {
     private $slug;
 
     /**
-     * @var \LGP\UserBundle\Entity\Image
+     * @var \LGP\CourseBundle\Entity\ImageCourse
      * 
-     * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Image", cascade={ "persist", "remove" })
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ImageCourse", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
     private $image;
@@ -65,7 +65,7 @@ class Cours {
     private $evaluations;
 
     /**
-     * @var \LGPCourseBundle\Entity\Enseigne
+     * @var \LGP\CourseBundle\Entity\Enseigne
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours", cascade={"persist","remove"})
      */
@@ -135,11 +135,11 @@ class Cours {
     /**
      * Set image
      *
-     * @param \LGP\UserBundle\Entity\Image $image
+     * @param \LGP\CourseBundle\Entity\ImageCourse $image
      *
      * @return Cours
      */
-    public function setImage(\LGP\UserBundle\Entity\Image $image = null) {
+    public function setImage(\LGP\CourseBundle\Entity\ImageCourse $image = null) {
         $this->image = $image;
 
         return $this;
@@ -148,7 +148,7 @@ class Cours {
     /**
      * Get image
      *
-     * @return \LGP\UserBundle\Entity\Image
+     * @return \LGP\CourseBundle\Entity\ImageCourse
      */
     public function getImage() {
         return $this->image;

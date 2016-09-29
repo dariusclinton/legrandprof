@@ -1,6 +1,6 @@
 <?php
 
-namespace LGP\UserBundle\Entity;
+namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * Image
  *
- * @ORM\Table(name="lgp_image")
- * @ORM\Entity(repositoryClass="LGP\UserBundle\Repository\ImageRepository")
+ * @ORM\Table(name="lgp_image_categorie")
+ * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\ImageCategorieRepository")
  * @Vich\Uploadable
  */
-class Image
+class ImageCategorie
 {
     /**
      * @var int
@@ -24,56 +24,30 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
-     /**
-     * @ORM\Column(type="datetime")
-     *
+
+    /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-    
+
     /**
-     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
+     * @var string
+     *
+     * @ORM\Column(name="imageName", type="string", length=255)
+     */
+    private $imageName;
+
+    /**
+     * @Vich\UploadableField(mapping="categorie_image", fileNameProperty="imageName")
      * @Assert\Image()
      * @var File
      */
     private $imageFile;
-    
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
-     */
-    private $imageName;
-    
-    /**
-     * 
-     * @return type
-     */
-    function getId() {
-      return $this->id;
-    }
-    
-    /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return Image
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-        
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTime('now');
-        }
-        
-        return $this;
-    }
 
     /**
-     * @return File|null
+     * @return File
      */
     public function getImageFile()
     {
@@ -81,9 +55,63 @@ class Image
     }
 
     /**
+     * @param File $image
+     *
+     * @return Image
+     */
+    public function setImageFile(File $image)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Image
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set imageName
+     *
      * @param string $imageName
      *
-     * @return Product
+     * @return Image
      */
     public function setImageName($imageName)
     {
@@ -93,10 +121,13 @@ class Image
     }
 
     /**
-     * @return string|null
+     * Get imageName
+     *
+     * @return string
      */
     public function getImageName()
     {
         return $this->imageName;
     }
 }
+

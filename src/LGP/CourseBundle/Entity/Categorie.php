@@ -37,9 +37,9 @@ class Categorie {
     private $description;
 
     /**
-     * @var \LGPUserBundle\Entity\Image
+     * @var \LGP\CourseBundle\Entity\Image
      * 
-     * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Image", cascade={ "persist", "remove" })
+     * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ImageCategorie", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
     private $image;
@@ -120,11 +120,11 @@ class Categorie {
     /**
      * Set image
      *
-     * @param \LGP\UserBundle\Entity\Image $image
+     * @param \LGP\CourseBundle\Entity\ImageCategorie $image
      *
      * @return Categorie
      */
-    public function setImage(\LGP\UserBundle\Entity\Image $image = null) {
+    public function setImage(\LGP\CourseBundle\Entity\ImageCategorie $image = null) {
         $this->image = $image;
 
         return $this;
@@ -133,7 +133,7 @@ class Categorie {
     /**
      * Get image
      *
-     * @return \LGP\UserBundle\Entity\Image
+     * @return \LGP\CourseBundle\Entity\ImageCategorie
      */
     public function getImage() {
         return $this->image;

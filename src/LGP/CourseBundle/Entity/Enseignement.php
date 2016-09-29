@@ -203,4 +203,12 @@ class Enseignement
     {
         return $this->reservationEnseignements;
     }
+
+    /**
+     * Cette fonction affiche une description de l'enseigement
+     * @return string
+     */
+    public function affichage() {
+        return $this->getCours()->getIntitule() . " - " . $this->classe . " - " .$this->prix;
+    }
 }
