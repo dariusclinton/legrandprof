@@ -4,10 +4,36 @@
   Proposition d'une nouvelle catégorie de cours - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   
-  <h1>Proposition d'une nouvelle catégorie de cours </h1>
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 class="title-block-dash">Categories de cours</h3>
+            <ul class="menu-dash">
+              <li><a href="{{ path('lgp_user_nouvelles_categories_cours') }}">Catégories de cours</a></li>
+              <li><a href="{{ path('lgp_user_nouvelle_categorie_cours_add') }}">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+              <div class="notifications-block">
+                <div class="notifications-header">Ajouter une catégorie</div>
+                <div class="notifications-content">
+                    {% include 'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' %}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     
-  {% include 'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' %}
+  
   
 {% endblock %}

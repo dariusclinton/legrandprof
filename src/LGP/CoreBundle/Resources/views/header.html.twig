@@ -92,13 +92,27 @@
               <ul class="nav navbar-nav">
                 <li>
                   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <div style="margin-top: 11px; font-weight: bold">{{ app.user.username }}<i class="arrow-indicator fa fa-angle-down"></i></div>
+                      <a href="#" style="margin-top: 0px; font-weight: bold">{{ app.user.prenoms | capitalize }}</a>
                     <ul>
                       <li><a href="{{ path('lgp_user_dashboard') }}">Tableau de bord</a></li>
                       <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                     </ul>
                   {% else %}
                     <a data-toggle="modal"  id="btn-connect" href="{{ path('fos_user_security_login') }}" class="btn" style="font-size: 10px;">Connexion</a>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                      <a href="#" style="margin-top: 0px; font-weight: bold"><i class="fa fa-cog"></i></a>
+                    <ul>
+                      <li><a href="{{ path('lgp_user_message_receive') }}">Messages</a></li>
+                      <li><a href="{{ path('lgp_user_nouvelles_categories_cours') }}">Proposer une catégorie de cours</a></li>
+                      
+                      {% if is_granted('ROLE_PROF') %}
+                      <li><a href="{{ path('lgp_user_anomalies') }}">Anomalies du système</a></li>
+                      {% endif %}
+                    </ul>
+                    
                   {% endif %}
                 </li>
                 <li><a href="{{ path('lgp_reservation_cart') }}" style="font-weight:200;"><i class="pe-7s-cart" style="font-size:22px;"></i> &nbsp;<span style="font-size:15px;">Panier</span></a>
