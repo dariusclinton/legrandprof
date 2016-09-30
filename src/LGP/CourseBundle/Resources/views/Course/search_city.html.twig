@@ -257,9 +257,9 @@
                                                     <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Cours :</span> 
                                                             {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
                                                                 {% if loop.index != loop.last %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a> -
+                                                                <a href=" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug})}} " title="">{{ens_cours.cours.intitule}}</a> -
                                                             {% else %}
-                                                                <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">{{ens_cours.cours.intitule}}</a>
+                                                                <a href=" {{path('lgp_course_find_prof',{'slug':ens_cours.cours.slug})}} " title="">{{ens_cours.cours.intitule}}</a>
                                                             {% endif %}
                                                         {% endfor %} 
                                                     </li>

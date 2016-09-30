@@ -1,4 +1,3 @@
-
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
@@ -15,18 +14,19 @@
 
             <div class="flex-row">
 
-                <div class="flex-column flex-md-3 flex-sm-12">  
+                <div class="flex-column flex-md-3 flex-sm-12">
                     {% if prof.image is not null %}
-                        <img src="{{ asset(prof.image.webPath) }}" alt=" {{prof.nom}} "  class="profile-img" />
+                        <img src="{{ asset(prof.image.webPath) }}" alt=" {{ prof.nom }} " class="profile-img"/>
 
-                        {% else %}
-                            <i class="fa fa-user fa-5x profile-img" style="color:#fff"></i>
+                    {% else %}
+                        <i class="fa fa-user fa-5x profile-img" style="color:#fff"></i>
+                        {#<img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package"/>#}
                     {% endif %}
                 </div>
                 <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
                     <div class="profile-infos">
-                        <h1 class="hero-title"> {{prof.prenoms ~" "~ prof.nom | upper}} </h1>
-                        <p class="line18"> {{prof.profession}} </p>
+                        <h1 class="hero-title"> {{ prof.prenoms ~" "~ prof.nom | upper }} </h1>
+                        <p class="line18"> {{ prof.profession }} </p>
 
                         <ul class="list-col clearfix">
                             <li class="rating-box">
@@ -43,12 +43,13 @@
                                         {% endif %}
                                         {% for i in range(1,5) %}
                                             {% if (avisRange | round) >= i %}
-                                                <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                <img alt=" {{ i }} " src="{{ asset('images/raty/star-on-sm.png') }}">
                                             {% else %}
-                                                <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
+                                                <img alt=" {{ i }} " src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                     title="">
                                             {% endif %}
                                         {% endfor %}
-                                        <span style="display: block;"> / {{params.avis | length}} avis</span>
+                                        <span style="display: block;"> / {{ params.avis | length }} avis</span>
                                     </div>
                                 </div>
                             </li>
@@ -59,18 +60,18 @@
                                     {% if prof is not null %}
                                         {% if prof.isRecommande %}
                                             <span class="on" style="color:#81c784"><i class="fa fa-check"></i></span>
-                                            {% else %}
+                                        {% else %}
                                             <span class="off" style="color:#e57373"><i class="fa fa-remove"></i></span>
-                                            {% endif %}
                                         {% endif %}
+                                    {% endif %}
                                 </div>
                             </li>
                             <li class="price-box">
                                 <div class="meta">
                                     {% set minPrice %}
-                                        {{params.enseignementRep.getPrixProf(prof) }}
+                                        {{ params.enseignementRep.getPrixProf(prof) }}
                                     {% endset %}
-                                    <span class="block">{{minPrice}} Fcfa / mois</span>
+                                    <span class="block">{{ minPrice }} Fcfa / mois</span>
                                     Prix minimal
                                 </div>
                             </li>
@@ -82,7 +83,8 @@
 
                 <div class="flex-column flex-md-3 flex-align-bottom flex-sm-12 mt-20-sm">
                     <div class="text-right text-left-sm">
-                        <a href=" {{ path('lgp_reservation_detail',{'id': prof.id})}} " class="anchor btn btn-primary">Réserver un cours</a>
+                        <a href=" {{ path('lgp_reservation_detail',{'id': prof.id}) }} " class="anchor btn btn-primary">Réserver
+                            un cours</a>
                     </div>
                 </div>
             </div>
@@ -93,11 +95,11 @@
     <div class="breadcrumb-wrapper bg-light-2">
         <div class="container">
             <ol class="breadcrumb-list">
-                <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
-                <li><a href=" {{path('lgp_course_find')}} ">Profs</a></li>
-                    {#  <li><a href="#">Douala</a></li>
-                     <li><a href="#">Informatique</a></li> #}
-                <li><span> {{prof.prenoms ~" "~ prof.nom | upper}} </span></li>
+                <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
+                <li><a href=" {{ path('lgp_course_find') }} ">Profs</a></li>
+                {#  <li><a href="#">Douala</a></li>
+                 <li><a href="#">Informatique</a></li> #}
+                <li><span> {{ prof.prenoms ~" "~ prof.nom | upper }} </span></li>
             </ol>
         </div>
     </div>
@@ -108,15 +110,17 @@
 
             <div class="row">
                 {% for message in app.session.flashbag.get('info') %}
-                    <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-success" style="z-index: 1000; position: relative; display: none">
+                    <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-success"
+                         style="z-index: 1000; position: relative; display: none">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{message}}
+                        {{ message }}
                     </div>
                 {% endfor %}
                 {% for message in app.session.flashbag.get('warning') %}
-                    <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-danger" style="z-index: 1000; position: relative; display: none">
+                    <div id="confirmation-avis" class="col-md-12 col-sm-12 alert alert-danger"
+                         style="z-index: 1000; position: relative; display: none">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{message}}
+                        {{ message }}
                     </div>
                 {% endfor %}
                 <div class="col-md-8" role="main">
@@ -132,8 +136,9 @@
                                 {% for ens_cours in params.enseignementRep.getCoursByProf(prof) %}
                                     <li class="list-group-item">
                                         <b>
-                                            <a href=" {{path('lgp_course_find_prof',{'intitule_cours':ens_cours.cours.intitule})}} " title="">
-                                                {{ens_cours.cours.intitule}}
+                                            <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                               title="">
+                                                {{ ens_cours.cours.intitule }}
                                             </a>
                                         </b>
                                         <span>Dans les classes ci-dessous : </span>
@@ -142,10 +147,11 @@
                                             {% for enseignementClasse in classes %}
                                                 <li>
                                                     <dl class="dl-horizontal">
-                                                        <dt>{{enseignementClasse.classe}}</dt>
-                                                        <dd> 
-                                                            ------ &nbsp;&nbsp;&nbsp;&nbsp; 
-                                                            <b>{{enseignementClasse.prix | number_format(2,',','.')}}</b> FCFA / Mois
+                                                        <dt>{{ enseignementClasse.classe }}</dt>
+                                                        <dd>
+                                                            ------ &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <b>{{ enseignementClasse.prix | number_format(2,',','.') }}</b>
+                                                            FCFA / Mois
                                                         </dd>
                                                     </dl>
                                                 </li>
@@ -164,12 +170,13 @@
                                 <li class="list-group-item">
                                     {% for quartiersProf in prof.quartierCibles %}
                                         <dl class="dl-horizontal">
-                                            <dt>{{quartiersProf.intitule}}</dt>
-                                            <dd> 
-                                                de la ville de  &nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <dt>{{ quartiersProf.intitule }}</dt>
+                                            <dd>
+                                                de la ville de &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <b>
-                                                    <a href=" {{path('lgp_course_find_prof_city', {'ville':quartiersProf.ville})}} " title="Profs de {{quartiersProf.ville}}">
-                                                        {{quartiersProf.ville}}
+                                                    <a href=" {{ path('lgp_course_find_prof_city', {'slugVille':quartiersProf.slugVille}) }} "
+                                                       title="Profs de {{ quartiersProf.ville }}">
+                                                        {{ quartiersProf.ville }}
                                                     </a>
                                                 </b>
                                             </dd>
@@ -185,7 +192,7 @@
                                 <h4>A Propos de moi</h4>
                             </div>
                             <p>
-                                {{prof.presentation}}
+                                {{ prof.presentation }}
                             </p>
 
                         </div>
@@ -208,15 +215,17 @@
                                             <div class="itinerary-item-wrapper">
 
                                                 <div class="panel-group bootstarp-toggle">
-                                                  {% if prof.diplomes is empty %}
-                                                    NON DEFINIE
-                                                  {% endif %}
-                                                    {% set compt = 1 %}     
+                                                    {% if prof.diplomes is empty %}
+                                                        NON DEFINIE
+                                                    {% endif %}
+                                                    {% set compt = 1 %}
                                                     {% for diplome in prof.diplomes %}
                                                         <div class="panel itinerary-item">
                                                             <div class="panel-heading">
                                                                 <h5 class="panel-title">
-                                                                    <a data-toggle="collapse" data-parent="#"><span class="absolute-day-number"> {{compt}} </span> {{diplome.intitule}} </a>
+                                                                    <a data-toggle="collapse" data-parent="#"><span
+                                                                                class="absolute-day-number"> {{ compt }} </span> {{ diplome.intitule }}
+                                                                    </a>
                                                                     {% set compt = compt + 1 %}
                                                                 </h5>
                                                             </div>
@@ -236,7 +245,6 @@
                         </div>
 
 
-
                         <div id="section-4" class="detail-content">
 
                             <div class="section-title text-left">
@@ -250,11 +258,12 @@
                                     <div class="row gap-20">
 
                                         <div class="col-sm-6">
-                                            <h5>{{params.avis | length}} avis</h5>
+                                            <h5>{{ params.avis | length }} avis</h5>
                                         </div>
 
                                         <div class="col-sm-6 text-right text-left-xs">
-                                            <button id="btn-leave-avis" class="anchor btn btn-primary btn-inverse btn-sm">
+                                            <button id="btn-leave-avis"
+                                                    class="anchor btn btn-primary btn-inverse btn-sm">
                                                 <span id="leave-avis-text">Laisser un avis</span>
                                             </button>
                                         </div>
@@ -274,19 +283,23 @@
                                                 {% set user = avis.user %}
                                                 <li class="clearfix">
                                                     <div class="image img-circle">
-                                                        {% if user.image is not null %}
-                                                            <img class="img-circle" src="{{ asset(user.image.webPath) }}" alt="{{user.prenoms}}" />
+                                                        {% if user.image is null %}
+                                                            <img class="img-circle"
+                                                                 src="{{ asset('uploads/profils/default.jpg') }}"
+                                                                 alt="Tour Package"/>
                                                         {% else %}
-                                                            <i class="fa fa-user fa-5x img-circle"></i>
+                                                            <img class="img-circle"
+                                                                 src="{{ asset(user.image.webPath) }}"
+                                                                 alt=" image utilisateur "/>
                                                         {% endif %}
                                                     </div>
                                                     <div class="content">
                                                         <div class="row gap-20 mb-0">
                                                             <div class="col-sm-9">
-                                                                <h6> {{user.prenoms~"  "~user.nom | upper}} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
+                                                                <h6> {{ user.prenoms~"  "~user.nom | upper }} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
                                                             </div>
                                                             <div class="col-sm-3">
-                                                                <p class="review-date"> {{avis.dateAvis | date('d/m/Y')}} </p>
+                                                                <p class="review-date"> {{ avis.dateAvis | date('d/m/Y') }} </p>
                                                             </div>
                                                         </div>
 
@@ -296,9 +309,12 @@
                                                                 {% set avisNote = avis.note %}
                                                                 {% for i in range(1,5) %}
                                                                     {% if (avisNote | round) >= i %}
-                                                                        <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                        <img alt=" {{ i }} "
+                                                                             src="{{ asset('images/raty/star-on-sm.png') }}">
                                                                     {% else %}
-                                                                        <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
+                                                                        <img alt=" {{ i }} "
+                                                                             src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                                             title="">
                                                                     {% endif %}
                                                                 {% endfor %}
                                                             </div>
@@ -307,7 +323,7 @@
                                                         <div class="review-text">
 
                                                             <p>
-                                                                {{avis.commentaire}}
+                                                                {{ avis.commentaire }}
                                                             </p>
 
                                                         </div>
@@ -341,7 +357,7 @@
                                     {% if not params.similarProfs is empty %}
                                         {% for enseignement in params.similarProfs %}
                                             <div class="GridLex-col-4_sm-4_xs-12 mb-20">
-                                                <div class="package-grid-item"> 
+                                                <div class="package-grid-item">
                                                     <a href=" {{ path('lgp_course_profile_prof',{'profId':enseignement.prof.id}) }} ">
                                                         <div class="image similar">
                                                             {% if enseignement.prof.image is not null %}
@@ -355,11 +371,11 @@
                                                                         </span>
                                                                     </div>
                                                                 </div>
-                                                            {% endif %} 
+                                                            {% endif %}
                                                         </div>
                                                         <div class="content clearfix">
-                                                            <h6> 
-                                                                {{ enseignement.prof.prenoms ~"  "~ enseignement.prof.nom | upper }} 
+                                                            <h6>
+                                                                {{ enseignement.prof.prenoms ~"  "~ enseignement.prof.nom | upper }}
                                                             </h6>
                                                             {% set avisSum = 0 %}
                                                             {% set allAvis = params.avisRep.findBy({'prof':enseignement.prof}) %}
@@ -376,19 +392,26 @@
                                                                     <div>
                                                                         {% for i in range(1,5) %}
                                                                             {% if (avisRange | round) >= i %}
-                                                                                <img alt=" {{i}} " src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                                <img alt=" {{ i }} "
+                                                                                     src="{{ asset('images/raty/star-on-sm.png') }}">
                                                                             {% else %}
-                                                                                <img alt=" {{i}} " src="{{ asset('images/raty/star-off-sm.png') }}" title=""> 
+                                                                                <img alt=" {{ i }} "
+                                                                                     src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                                                     title="">
                                                                             {% endif %}
                                                                         {% endfor %}
-                                                                    </div><br>
-                                                                    <span> / {{allAvis | length}} avis</span>
+                                                                    </div>
+                                                                    <br>
+                                                                    <span> / {{ allAvis | length }} avis</span>
                                                                 </div>
                                                             </div>
                                                             <div class="absolute-in-content">
                                                                 {% set minPrice = params.enseignementRep.getPrixProf(enseignement.prof) %}
-                                                                <span class="btn"><i class="fa fa-heart text-primary"></i></span>
-                                                                <div class="price">{{minPrice}} F/Mois <br> Prix minimal</div>
+                                                                <span class="btn">
+                                                                    <i class="fa fa-heart text-primary"></i></span>
+                                                                <div class="price">{{ minPrice }} F/Mois <br> Prix
+                                                                    minimal
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -406,7 +429,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 hidden-sm hidden-xs">
+                <div class="col-md-4 hidden-sm hidden-xs" style="">
 
                     <div class="scrollspy-sidebar sidebar-detail" role="complementary">
 
@@ -414,16 +437,16 @@
 
                             <li>
                                 <ul class="nav">
-                                    <li><a href="#section-0" class="anchor">Je donne cours de</a></li>
-                                    <li><a href="#section-1" class="anchor">A Propos de moi</a></li>
-                                    <li><a href="#section-2" class="anchor">Ma formation</a></li>
-                                        {# <li><a href="#section-3" class="anchor">Disponibilités</a></li> #}
-                                    <li><a href="#section-3" class="anchor">Avis</a></li>
+                                    <li><a href="#section-0" class="anchor" style="">MES COURS</a></li>
+                                    <li><a href="#section-1" class="anchor">MES QUARTIERS CIBLES</a></li>
+                                    <li><a href="#section-2" class="anchor">A PROPOS DE MOI</a></li>
+                                    <li><a href="#section-3" class="anchor">MA FORMATION</a></li>
+                                    <li><a href="#section-4" class="anchor">Avis</a></li>
+                                    <li><a href="#section-5" class="anchor">PROFS MILAIRES</a></li>
                                 </ul>
                             </li>
-
                         </ul>
-                        <a href=" {{path('lgp_course_find')}} " class="btn btn-primary">
+                        <a href=" {{ path('lgp_course_find') }} " class="btn btn-primary">
                             Faire une autre recherche
                         </a>
                     </div>

@@ -4,42 +4,72 @@
   Catégories de cours proposées - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
-  
-  <h1>Catégories de cours proposées</h1>
     
-  <a href="{{ path('lgp_user_nouvelle_categorie_cours_add') }}" class="btn btn-primary">Proposer une catégorie</a>
- 
-  {% if nouvellesCategoriesCours|length <= 0 %}
-    
-    <h4 class="text-muted">Aucune catégorie trouvée</h4>
-  
-  {% else %}
-  
-    <table class="table table-bordered table-stripped">
-      <thead>
-        <tr>
-          <th>Intitule</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for categorie in nouvellesCategoriesCours %}
-          <tr>
-            <td>{{categorie.intitule }}</td>
-            <td>{{categorie.description}}</td>
-            <td>{{categorie.dateProposition|date('d/m/Y')}}</td>
-            <td>
-              <a href="{{ path('lgp_user_nouvelle_categorie_cours_update', {'id': categorie.id}) }}" class="btn btn-info btn-sm">Modifier</a> 
-              <a href="{{ path('lgp_user_nouvelle_categorie_cours_delete', {'id': categorie.id}) }}" class="btn btn-danger btn-sm delete_confirm">Supprimer</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    
-  {% endif %}
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 class="title-block-dash">Categories de cours</h3>
+            <ul class="menu-dash">
+              <li><a href="{{ path('lgp_user_nouvelles_categories_cours') }}">Catégories de cours</a></li>
+              <li><a href="{{ path('lgp_user_nouvelle_categorie_cours_add') }}">Ajouter une catégorie</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            {% if nouvellesCategoriesCours|length <= 0 %}
+              <div class="notifications-block">
+                <div class="notifications-header">Catégories proposées</div>
+                <div class="notifications-content">
+                    Aucune catégorie proposée !
+                </div>
+              </div>
+            {% else %}
+              <div class="notifications-block">
+                <div class="notifications-header">Catégories proposées</div>
+                <div class="notifications-content">
+                    
+                    <table class="table table-bordered table-stripped">
+                      <thead>
+                        <tr>
+                          <th>Intitule</th>
+                          <th>Description</th>
+                          <th>Date</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for categorie in nouvellesCategoriesCours %}
+                          <tr>
+                            <td>{{categorie.intitule }}</td>
+                            <td>{{categorie.description}}</td>
+                            <td>{{categorie.dateProposition|date('d/m/Y')}}</td>
+                            <td>
+                                <a href="{{ path('lgp_user_nouvelle_categorie_cours_delete', {'id': categorie.id}) }}" class="delete_confirm"><i class='fa fa-remove'></i></a>
+                            </td>
+                            <td>
+                                <a href="{{ path('lgp_user_nouvelle_categorie_cours_update', {'id': categorie.id}) }}" class=""><i class='fa fa-edit'></i></a> 
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
 {% endblock %}

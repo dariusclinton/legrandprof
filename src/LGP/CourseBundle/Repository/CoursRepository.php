@@ -12,7 +12,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  * repository methods below.
  */
 class CoursRepository extends EntityRepository {
-
+  
     /**
      * 
      * @param type $cat

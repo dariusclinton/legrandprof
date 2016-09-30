@@ -7,27 +7,31 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class CoursSearchRefineType extends AbstractType {
+class CoursSearchRefineType extends AbstractType
+{
 
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
-                ->add('intitule', TextType::class, array('required' => false,
-                    'attr' => array('placeholder' => 'Cours')))
-                ->add('quartier', EntityType::class, array(
+            ->add('quartier1', EntityType::class, [
                     'class' => 'LGPUserBundle:Quartier',
-                    'choice_label' => function($quartier) {
-                        return $quartier->getVille();
+                    'choice_label' => function ($quartier) {
+                        return $quartier->getIntitule();
                     },
-                    'choice_value' => 'ville',
+                    'choice_value' => 'id',
                     'required' => false,
-                    'placeholder' => 'Sélectionnez une ville'
-                        )
-                )
-        ;
+                    'placeholder' => 'Sélectionnez un quartier'
+                ]
+            );
+    }
+
+    public function getParent()
+    {
+        return "LGP\CourseBundle\Form\CoursSearchType";
     }
 
 }

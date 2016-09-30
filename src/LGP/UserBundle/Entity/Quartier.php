@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Quartier
@@ -34,6 +35,22 @@ class Quartier {
      * @ORM\Column(name="ville", type="string", length=255)
      */
     private $ville;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"ville"}, unique=false, updatable=true, )
+     * @ORM\Column(name="slug_ville", type="string", length=255)
+     */
+    private $slugVille;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"intitule"}, unique=false, updatable=true)
+     * @ORM\Column(name="slug_quartier", type="string", length=255)
+     */
+    private $slugQuartier;
 
     /**
      * @var 
@@ -141,4 +158,52 @@ class Quartier {
         return $this->profs;
     }
 
+
+    /**
+     * Set slugVille
+     *
+     * @param string $slugVille
+     *
+     * @return Quartier
+     */
+    public function setSlugVille($slugVille)
+    {
+        $this->slugVille = $slugVille;
+
+        return $this;
+    }
+
+    /**
+     * Get slugVille
+     *
+     * @return string
+     */
+    public function getSlugVille()
+    {
+        return $this->slugVille;
+    }
+
+    /**
+     * Set slugQuartier
+     *
+     * @param string $slugQuartier
+     *
+     * @return Quartier
+     */
+    public function setSlugQuartier($slugQuartier)
+    {
+        $this->slugQuartier = $slugQuartier;
+
+        return $this;
+    }
+
+    /**
+     * Get slugQuartier
+     *
+     * @return string
+     */
+    public function getSlugQuartier()
+    {
+        return $this->slugQuartier;
+    }
 }

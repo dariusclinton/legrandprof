@@ -3,5 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
+        <group>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Controller/CourseController.php</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/SeanceDeCours/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Reservation/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Indisponibilite/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/MesDemandesDeCours/index.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/config/routing.yml</file>
+        </group>
     </open-files>
 </project-private>
