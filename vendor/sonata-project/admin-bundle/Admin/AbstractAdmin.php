@@ -65,6 +65,8 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             Doctrine\\\Orm|Doctrine\\\Phpcr|Doctrine\\\MongoDB|Doctrine\\\CouchDB
         )\\\(.*)@x';
 
+    const MOSAIC_ICON_CLASS = 'fa fa-th-large fa-fw';
+
     /**
      * The list FieldDescription constructed from the configureListField method.
      *
@@ -332,6 +334,8 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     /**
      * The generated breadcrumbs.
      *
+     * NEXT_MAJOR : remove this property
+     *
      * @var array
      */
     protected $breadcrumbs = array();
@@ -416,12 +420,19 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
 
     protected $cacheIsGranted = array();
 
+    /**
+     * Action list for the search result.
+     *
+     * @var string[]
+     */
+    protected $searchResultActions = array('edit', 'show');
+
     protected $listModes = array(
         'list' => array(
             'class' => 'fa fa-list fa-fw',
         ),
         'mosaic' => array(
-            'class' => 'fa fa-th-large fa-fw',
+            'class' => self::MOSAIC_ICON_CLASS,
         ),
     );
 
@@ -518,6 +529,13 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     private $managerType;
 
     /**
+     * The breadcrumbsBuilder component.
+     *
+     * @var BreadcrumbsBuilderInterface
+     */
+    private $breadcrumbsBuilder;
+
+    /**
      * @param string $code
      * @param string $class
      * @param string $baseControllerName
@@ -566,7 +584,22 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
         $datagrid = $this->getDatagrid();
         $datagrid->buildPager();
 
-        return $this->getModelManager()->getDataSourceIterator($datagrid, $this->getExportFields());
+        $fields = array();
+
+        foreach ($this->getExportFields() as $key => $field) {
+            $label = $this->getTranslationLabel($field, 'export', 'label');
+            $transLabel = $this->trans($label);
+
+            // NEXT_MAJOR: Remove this hack, because all field labels will be translated with the major release
+            // No translation key exists
+            if ($transLabel == $label) {
+                $fields[$key] = $field;
+            } else {
+                $fields[$transLabel] = $field;
+            }
+        }
+
+        return $this->getModelManager()->getDataSourceIterator($datagrid, $fields);
     }
 
     /**
@@ -745,6 +778,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             $parameters = array_merge(
                 $this->getModelManager()->getDefaultSortValues($this->getClass()),
                 $this->datagridValues,
+                $this->getDefaultFilterValues(),
                 $filters
             );
 
@@ -1054,6 +1088,8 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             );
         }
 
+        $actions = $this->configureBatchActions($actions);
+
         foreach ($this->getExtensions() as $extension) {
             // TODO: remove method check in next major release
             if (method_exists($extension, 'configureBatchActions')) {
@@ -1301,6 +1337,12 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function createQuery($context = 'list')
     {
+        if (func_num_args() > 0) {
+            @trigger_error(
+                'The $context argument of '.__METHOD__.' is deprecated since 3.3, to be removed in 4.0.',
+                E_USER_DEPRECATED
+            );
+        }
         $query = $this->getModelManager()->createQuery($this->class);
 
         foreach ($this->extensions as $extension) {
@@ -1333,6 +1375,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
 
         $menu = $this->menuFactory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->setExtra('translation_domain', $this->translationDomain);
 
         // Prevents BC break with KnpMenuBundle v1.x
         if (method_exists($menu, 'setCurrentUri')) {
@@ -1599,6 +1642,19 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function setSubject($subject)
     {
+        if (is_object($subject) && !is_a($subject, $this->class, true)) {
+            $message = <<<'EOT'
+You are trying to set entity an instance of "%s",
+which is not the one registered with this admin class ("%s").
+This is deprecated since 3.5 and will no longer be supported in 4.0.
+EOT;
+
+            @trigger_error(
+                sprintf($message, get_class($subject), $this->class),
+                E_USER_DEPRECATED
+            ); // NEXT_MAJOR : throw an exception instead
+        }
+
         $this->subject = $subject;
     }
 
@@ -1609,11 +1665,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     {
         if ($this->subject === null && $this->request) {
             $id = $this->request->get($this->getIdParameter());
-            if (!preg_match('#^[0-9A-Fa-f\-]+$#', $id)) {
-                $this->subject = false;
-            } else {
-                $this->subject = $this->getModelManager()->find($this->class, $id);
-            }
+            $this->subject = $this->getModelManager()->find($this->class, $id);
         }
 
         return $this->subject;
@@ -1947,20 +1999,13 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function getBreadcrumbs($action)
     {
-        if ($this->isChild()) {
-            return $this->getParent()->getBreadcrumbs($action);
-        }
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
+            ' Use Sonata\AdminBundle\Admin\BreadcrumbsBuilder::getBreadcrumbs instead.',
+            E_USER_DEPRECATED
+        );
 
-        $menu = $this->buildBreadcrumbs($action);
-
-        do {
-            $breadcrumbs[] = $menu;
-        } while ($menu = $menu->getParent());
-
-        $breadcrumbs = array_reverse($breadcrumbs);
-        array_shift($breadcrumbs);
-
-        return $breadcrumbs;
+        return $this->getBreadcrumbsBuilder()->getBreadcrumbs($this, $action);
     }
 
     /**
@@ -1975,54 +2020,55 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function buildBreadcrumbs($action, MenuItemInterface $menu = null)
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.',
+            E_USER_DEPRECATED
+        );
+
         if (isset($this->breadcrumbs[$action])) {
             return $this->breadcrumbs[$action];
         }
 
-        if (!$menu) {
-            $menu = $this->menuFactory->createItem('root');
+        return $this->breadcrumbs[$action] = $this->getBreadcrumbsBuilder()
+            ->buildBreadcrumbs($this, $action, $menu);
+    }
 
-            $menu = $menu->addChild(
-                $this->trans($this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'), array(), 'SonataAdminBundle'),
-                array('uri' => $this->routeGenerator->generate('sonata_admin_dashboard'))
-            );
-        }
-
-        $menu = $menu->addChild(
-            $this->trans($this->getLabelTranslatorStrategy()->getLabel(sprintf('%s_list', $this->getClassnameLabel()), 'breadcrumb', 'link')),
-            array('uri' => $this->hasRoute('list') && $this->isGranted('LIST') ? $this->generateUrl('list') : null)
+    /**
+     * NEXT_MAJOR : remove this method.
+     *
+     * @return BreadcrumbsBuilderInterface
+     */
+    final public function getBreadcrumbsBuilder()
+    {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
+            ' Use the sonata.admin.breadcrumbs_builder service instead.',
+            E_USER_DEPRECATED
         );
-
-        $childAdmin = $this->getCurrentChildAdmin();
-
-        if ($childAdmin) {
-            $id = $this->request->get($this->getIdParameter());
-
-            $menu = $menu->addChild(
-                $this->toString($this->getSubject()),
-                array('uri' => $this->hasRoute('edit') && $this->isGranted('EDIT') ? $this->generateUrl('edit', array('id' => $id)) : null)
-            );
-
-            return $childAdmin->buildBreadcrumbs($action, $menu);
+        if ($this->breadcrumbsBuilder === null) {
+            $this->breadcrumbsBuilder = new BreadcrumbsBuilder($this->getConfigurationPool()->getContainer()->getParameter('sonata.admin.configuration.breadcrumbs'));
         }
 
-        if ($action === 'list' && $this->isChild()) {
-            $menu->setUri(false);
-        } elseif ($action !== 'create' && $this->hasSubject()) {
-            $menu = $menu->addChild($this->toString($this->getSubject()));
-        } else {
-            $menu = $menu->addChild(
-                $this->trans(
-                    $this->getLabelTranslatorStrategy()->getLabel(
-                        sprintf('%s_%s', $this->getClassnameLabel(), $action),
-                        'breadcrumb',
-                        'link'
-                    )
-                )
-            );
-        }
+        return $this->breadcrumbsBuilder;
+    }
 
-        return $this->breadcrumbs[$action] = $menu;
+    /**
+     * NEXT_MAJOR : remove this method.
+     *
+     * @param BreadcrumbsBuilderInterface
+     *
+     * @return AbstractAdmin
+     */
+    final public function setBreadcrumbsBuilder(BreadcrumbsBuilderInterface $value)
+    {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
+            ' Use the sonata.admin.breadcrumbs_builder service instead.',
+            E_USER_DEPRECATED
+        );
+        $this->breadcrumbsBuilder = $value;
+
+        return $this;
     }
 
     /**
@@ -2064,10 +2110,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     {
         $domain = $domain ?: $this->getTranslationDomain();
 
-        if (!$this->translator) {
-            return $id;
-        }
-
         return $this->translator->trans($id, $parameters, $domain, $locale);
     }
 
@@ -2085,10 +2127,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     public function transChoice($id, $count, array $parameters = array(), $domain = null, $locale = null)
     {
         $domain = $domain ?: $this->getTranslationDomain();
-
-        if (!$this->translator) {
-            return $id;
-        }
 
         return $this->translator->transChoice($id, $count, $parameters, $domain, $locale);
     }
@@ -2752,37 +2790,57 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     {
         $list = array();
 
-        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))) {
+        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))
+            && $this->hasAccess('create')
+            && $this->hasRoute('create')
+        ) {
             $list['create'] = array(
                 'template' => 'SonataAdminBundle:Button:create_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'delete', 'acl', 'history')) && $object) {
+        if (in_array($action, array('show', 'delete', 'acl', 'history'))
+            && $this->canAccessObject('edit', $object)
+            && $this->hasRoute('edit')
+        ) {
             $list['edit'] = array(
                 'template' => 'SonataAdminBundle:Button:edit_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'edit', 'acl')) && $object) {
+        if (in_array($action, array('show', 'edit', 'acl'))
+            && $this->canAccessObject('history', $object)
+            && $this->hasRoute('history')
+        ) {
             $list['history'] = array(
                 'template' => 'SonataAdminBundle:Button:history_button.html.twig',
             );
         }
 
-        if (in_array($action, array('edit', 'history')) && $object) {
+        if (in_array($action, array('edit', 'history'))
+            && $this->isAclEnabled()
+            && $this->canAccessObject('acl', $object)
+            && $this->hasRoute('acl')
+        ) {
             $list['acl'] = array(
                 'template' => 'SonataAdminBundle:Button:acl_button.html.twig',
             );
         }
 
-        if (in_array($action, array('edit', 'history', 'acl')) && $object) {
+        if (in_array($action, array('edit', 'history', 'acl'))
+            && $this->canAccessObject('show', $object)
+            && count($this->getShow()) > 0
+            && $this->hasRoute('show')
+        ) {
             $list['show'] = array(
                 'template' => 'SonataAdminBundle:Button:show_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'edit', 'delete', 'acl', 'batch'))) {
+        if (in_array($action, array('show', 'edit', 'delete', 'acl', 'batch'))
+            && $this->hasAccess('list')
+            && $this->hasRoute('list')
+        ) {
             $list['list'] = array(
                 'template' => 'SonataAdminBundle:Button:list_button.html.twig',
             );
@@ -2843,6 +2901,88 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     }
 
     /**
+     * Setting to true will enable mosaic button for the admin screen.
+     * Setting to false will hide mosaic button for the admin screen.
+     *
+     * @param bool $isShown
+     */
+    final public function showMosaicButton($isShown)
+    {
+        if ($isShown) {
+            $this->listModes['mosaic'] = array('class' => self::MOSAIC_ICON_CLASS);
+        } else {
+            unset($this->listModes['mosaic']);
+        }
+    }
+
+    /**
+     * @param FormMapper $form
+     */
+    final public function getSearchResultLink($object)
+    {
+        foreach ($this->searchResultActions as $action) {
+            if ($this->hasRoute($action) && $this->hasAccess($action, $object)) {
+                return $this->generateObjectUrl($action, $object);
+            }
+        }
+
+        return;
+    }
+
+    /**
+     * Checks if a filter type is set to a default value.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    final public function isDefaultFilter($name)
+    {
+        $filter = $this->getFilterParameters();
+        $default = $this->getDefaultFilterValues();
+
+        if (!array_key_exists($name, $filter) || !array_key_exists($name, $default)) {
+            return false;
+        }
+
+        return $filter[$name] == $default[$name];
+    }
+
+    /**
+     * Check object existence and access, without throw Exception.
+     *
+     * @param string $action
+     * @param object $object
+     *
+     * @return bool
+     */
+    public function canAccessObject($action, $object)
+    {
+        return $object && $this->id($object) && $this->hasAccess($action, $object);
+    }
+
+    /**
+     * Returns a list of default filters.
+     *
+     * @return array
+     */
+    final protected function getDefaultFilterValues()
+    {
+        $defaultFilterValues = array();
+
+        $this->configureDefaultFilterValues($defaultFilterValues);
+
+        foreach ($this->getExtensions() as $extension) {
+            // NEXT_MAJOR: remove method check in next major release
+            if (method_exists($extension, 'configureDefaultFilterValues')) {
+                $extension->configureDefaultFilterValues($this, $defaultFilterValues);
+            }
+        }
+
+        return $defaultFilterValues;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $form)
@@ -2850,32 +2990,44 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param ListMapper $list
      */
     protected function configureListFields(ListMapper $list)
     {
     }
 
     /**
-     * {@inheritdoc}
+     * @param DatagridMapper $filter
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
     }
 
     /**
-     * {@inheritdoc}
+     * @param ShowMapper $show
      */
     protected function configureShowFields(ShowMapper $show)
     {
     }
 
     /**
-     * {@inheritdoc}
+     * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
     {
     }
+
+     /**
+      * Allows you to customize batch actions.
+      *
+      * @param array $actions List of actions
+      *
+      * @return array
+      */
+     protected function configureBatchActions($actions)
+     {
+         return $actions;
+     }
 
     /**
      * DEPRECATED: Use configureTabMenu instead.
@@ -3098,6 +3250,15 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
         }
 
         return $access;
+    }
+
+    /**
+     * Returns a list of default filters.
+     *
+     * @param array $filterValues
+     */
+    protected function configureDefaultFilterValues(array &$filterValues)
+    {
     }
 
     /**

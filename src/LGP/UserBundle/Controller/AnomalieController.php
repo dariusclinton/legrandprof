@@ -16,16 +16,16 @@ class AnomalieController extends Controller {
    */
   public function indexAction() {
     $user = $this->getUser();
-    
+
     if ($user === null) {
       throw $this->createNotFoundException('Utilisateur inconnu !');
     }
-    
+
     $rep = $this
-              ->getDoctrine()
-              ->getManager()
-              ->getRepository('LGPUserBundle:Anomalie');
-    
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('LGPUserBundle:Anomalie');
+
     $anomalies = $rep->findBy(array('user' => $user));
     
     return $this->render('LGPUserBundle:Anomalie:index.html.twig', array(

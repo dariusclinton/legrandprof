@@ -1,10 +1,8 @@
-Silex 1 Integration
-===================
+Silex Integration
+=================
 
 KnpMenu provides an extension for the [Silex](http://silex-project.org/)
-microframework version 1. **This extension is not compatible with Silex 2.** 
-If you use Silex version 2, please do a pull request to provide the necessary
-integration.
+microframework.
 
 RouterAwareFactory
 ------------------

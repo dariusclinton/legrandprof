@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    (<a href="{{ "../../../../uploads/profils/" ~ object.image.imageName }}" target="blank">Voir le profil</a>)
+{% endblock %}

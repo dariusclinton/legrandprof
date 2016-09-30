@@ -52,7 +52,9 @@ class Configuration implements ConfigurationInterface
                                 ->performNoDeepMerging()
                                 ->beforeNormalization()
                                     ->ifString()
-                                    ->then(function ($v) { return array($v); })
+                                    ->then(function ($v) {
+                                        return array($v);
+                                    })
                                 ->end()
                                 ->prototype('scalar')->end()
                             ->end()
@@ -71,6 +73,15 @@ class Configuration implements ConfigurationInterface
 
                 ->scalarNode('title')->defaultValue('Sonata Admin')->cannotBeEmpty()->end()
                 ->scalarNode('title_logo')->defaultValue('bundles/sonataadmin/logo_title.png')->cannotBeEmpty()->end()
+                ->arrayNode('breadcrumbs')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('child_admin_route')
+                            ->defaultValue('edit')
+                            ->info('Change the default route used to generate the link to the parent object, when in a child admin')
+                        ->end()
+                    ->end()
+                ->end()
                 ->arrayNode('options')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -381,6 +392,11 @@ class Configuration implements ConfigurationInterface
                 ->end()
 
                 ->scalarNode('persist_filters')->defaultFalse()->end()
+
+                ->booleanNode('show_mosaic_button')
+                    ->defaultTrue()
+                    ->info('Show mosaic button on all admin screens')
+                ->end()
 
             ->end()
         ->end();

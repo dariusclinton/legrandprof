@@ -125,4 +125,11 @@ class CVFile
       
       return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getWebPath() {
+        return '../../../web/uploads/cv/' + $this->fileName;
+    }
 }

@@ -112,6 +112,22 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+        categorie_image:
+            uri_prefix:         ../../../uploads/categories
+            upload_destination: '%kernel.root_dir%/../web/uploads/categories'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        course_image:
+            uri_prefix:         ../../../uploads/courses
+            upload_destination: '%kernel.root_dir%/../web/uploads/courses'
+            namer:              vich_uploader.namer_origname
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
 
 # Sonata
 sonata_block:
@@ -133,24 +149,27 @@ sonata_admin:
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.user, lgp_admin.group.cours]
+                    groups: [lgp_admin.group.user]
             -
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.reservation]
+                    groups: [lgp_admin.group.reservation, lgp_admin.group.cours]
 
         groups:
             lgp_admin.group.user:
                 label: Utilisateurs
                 items:
                     - lgp.admin.prof
+                    - lgp.admin.parent
+                    - lgp.admin.quartier_cible
             lgp_admin.group.cours:
                 label: Cours
                 items:
-                    - lgp.admin.prof
+                    - lgp.admin.categorie_cours
+                    - lgp.admin.cours
             lgp_admin.group.reservation:
-                label: Réservation
+                label: Réservations
                 items:
                     - lgp.admin.remuneration
                     

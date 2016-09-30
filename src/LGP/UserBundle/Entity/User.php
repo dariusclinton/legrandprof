@@ -26,14 +26,14 @@ abstract class User extends BaseUser
     protected $image;
     
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var \LGP\ReservationBundle\Entity\Reservation
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
      */
     private $reservations;
     
     /**
-     * @var \LGPReservationBundle\Entity\Paiement
+     * @var \LGP\ReservationBundle\Entity\Paiement
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="user")
      */
@@ -119,6 +119,8 @@ abstract class User extends BaseUser
       * Surcharge de la methode afin de remplir manuellement 
       * l'attribut $username
       * @param type $email
+      *
+      * @return string
       */
      public function setEmail($email) {
        parent::setEmail($email);

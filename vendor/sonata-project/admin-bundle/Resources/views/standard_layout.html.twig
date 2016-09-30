@@ -86,13 +86,19 @@ file that was distributed with this source code.
             {% else %}
                 {% if action is defined %}
                     -
-                    {% for menu in admin.breadcrumbs(action) %}
+                    {% for menu in breadcrumbs_builder.breadcrumbs(admin, action) %}
                         {% if not loop.first %}
                             {%  if loop.index != 2 %}
                                 &gt;
                             {% endif %}
 
-                            {{ menu.label }}
+                            {%- set translation_domain = menu.extra('translation_domain', 'messages') -%}
+                            {%- set label = menu.label -%}
+                            {%- if translation_domain is not same as(false) -%}
+                                {%- set label = label|trans(menu.extra('translation_params', {}), translation_domain) -%}
+                            {%- endif -%}
+
+                            {{ label }}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
@@ -138,17 +144,29 @@ file that was distributed with this source code.
                                         <ol class="nav navbar-top-links breadcrumb">
                                             {% if _breadcrumb is empty %}
                                                 {% if action is defined %}
-                                                    {% for menu in admin.breadcrumbs(action) %}
+                                                    {% for menu in breadcrumbs_builder.breadcrumbs(admin, action) %}
+                                                        {%- set translation_domain = menu.extra('translation_domain', 'messages') -%}
+                                                        {%- set label = menu.label -%}
+                                                        {%- if translation_domain is not same as(false) -%}
+                                                            {%- set label = label|trans(menu.extra('translation_params', {}), translation_domain) -%}
+                                                        {%- endif -%}
+
                                                         {% if not loop.last  %}
                                                             <li>
                                                                 {% if menu.uri is not empty %}
-                                                                    <a href="{{ menu.uri }}">{{ menu.label|raw }}</a>
+                                                                    <a href="{{ menu.uri }}">
+                                                                        {% if menu.extra('safe_label', true) %}
+                                                                            {{- label|raw -}}
+                                                                        {% else %}
+                                                                            {{- label -}}
+                                                                        {% endif %}
+                                                                    </a>
                                                                 {% else %}
-                                                                    {{ menu.label }}
+                                                                    {{ label }}
                                                                 {% endif %}
                                                             </li>
                                                         {% else %}
-                                                            <li class="active"><span>{{ menu.label }}</span></li>
+                                                            <li class="active"><span>{{ label }}</span></li>
                                                         {% endif %}
                                                     {% endfor %}
                                                 {% endif %}
@@ -162,24 +180,30 @@ file that was distributed with this source code.
                         </div>
 
                         {% block sonata_top_nav_menu %}
-                            <div class="navbar-custom-menu">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-plus-square fa-fw"></i> <i class="fa fa-caret-down"></i>
-                                        </a>
-                                        {% include sonata_admin.adminPool.getTemplate('add_block') %}
-                                    </li>
-                                    <li class="dropdown user-menu">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            {% include sonata_admin.adminPool.getTemplate('user_block') %}
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                            {% if app.user and is_granted('ROLE_SONATA_ADMIN') %}
+                                <div class="navbar-custom-menu">
+                                    <ul class="nav navbar-nav">
+                                        {% block sonata_top_nav_menu_add_block %}
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </a>
+                                                {% include sonata_admin.adminPool.getTemplate('add_block') %}
+                                            </li>
+                                        {% endblock %}
+                                        {% block sonata_top_nav_menu_user_block %}
+                                            <li class="dropdown user-menu">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-user fa-fw" aria-hidden="true"></i> <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    {% include sonata_admin.adminPool.getTemplate('user_block') %}
+                                                </ul>
+                                            </li>
+                                        {% endblock %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                         {% endblock %}
                     </nav>
                 {% endblock sonata_nav %}
@@ -192,25 +216,21 @@ file that was distributed with this source code.
                     <section class="sidebar">
                         {% block sonata_side_nav %}
                             {% block sonata_sidebar_search %}
-                                {% if app.user and is_granted('ROLE_SONATA_ADMIN') %}
-                                    <form action="{{ path('sonata_admin_search') }}" method="GET" class="sidebar-form" role="search">
-                                        <div class="input-group custom-search-form">
-                                            <input type="text" name="q" value="{{ app.request.get('q') }}" class="form-control" placeholder="{{ 'search_placeholder'|trans({}, 'SonataAdminBundle') }}">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-flat" type="submit">
-                                                        <i class="fa fa-search"></i>
-                                                    </button>
-                                                </span>
-                                        </div>
-                                    </form>
-                                {% endif %}
+                                <form action="{{ path('sonata_admin_search') }}" method="GET" class="sidebar-form" role="search">
+                                    <div class="input-group custom-search-form">
+                                        <input type="text" name="q" value="{{ app.request.get('q') }}" class="form-control" placeholder="{{ 'search_placeholder'|trans({}, 'SonataAdminBundle') }}">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-flat" type="submit">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                    </div>
+                                </form>
                             {% endblock sonata_sidebar_search %}
 
                             {% block side_bar_before_nav %} {% endblock %}
                             {% block side_bar_nav %}
-                                {% if app.user and is_granted('ROLE_SONATA_ADMIN') %}
-                                    {{ knp_menu_render('sonata_admin_sidebar', {template: sonata_admin.adminPool.getTemplate('knp_menu_template')}) }}
-                                {% endif %}
+                                {{ knp_menu_render('sonata_admin_sidebar', {template: sonata_admin.adminPool.getTemplate('knp_menu_template')}) }}
                             {% endblock side_bar_nav %}
                             {% block side_bar_after_nav %}
                                 <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
@@ -255,7 +275,7 @@ file that was distributed with this source code.
                                                         {% endfor %}
                                                     </div>
                                                 {% endif %}
-                                                
+
                                                 {% block sonata_admin_content_actions_wrappers %}
                                                     {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
                                                         <ul class="nav navbar-nav navbar-right">

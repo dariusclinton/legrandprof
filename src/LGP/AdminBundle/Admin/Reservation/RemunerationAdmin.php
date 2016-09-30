@@ -1,6 +1,6 @@
 <?php
 
-namespace LGP\AdminBundle\Admin;
+namespace LGP\AdminBundle\Admin\Reservation;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;

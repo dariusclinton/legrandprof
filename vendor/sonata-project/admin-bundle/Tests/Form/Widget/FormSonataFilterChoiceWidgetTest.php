@@ -36,7 +36,7 @@ class FormSonataFilterChoiceWidgetTest extends BaseWidgetTest
 
         $this->assertContains(
             '<option value="1">[trans]label_type_contains[/trans]</option>',
-           $html
+            $html
         );
 
         $this->assertContains(
@@ -50,43 +50,33 @@ class FormSonataFilterChoiceWidgetTest extends BaseWidgetTest
         );
     }
 
-    protected function cleanHtmlAttributeWhitespace($html)
-    {
-        $html = preg_replace_callback('~<([A-Z0-9]+) \K(.*?)>~i', function ($m) {
-            $replacement = preg_replace('~\s*~', '', $m[0]);
-
-            return $replacement;
-        }, $html);
-
-        return $html;
-    }
-
     protected function getParentClass()
     {
         if (class_exists('Symfony\Component\Form\Extension\Core\Type\RangeType')) {
             return 'Sonata\AdminBundle\Form\Type\Filter\ChoiceType';
-        } else {
-            return 'sonata_type_filter_choice';
         }
+
+        return 'sonata_type_filter_choice';
     }
 
     protected function getChoiceClass()
     {
         if (class_exists('Symfony\Component\Form\Extension\Core\Type\RangeType')) {
             return 'Symfony\Component\Form\Extension\Core\Type\ChoiceType';
-        } else {
-            return 'choice';
         }
+
+        return 'choice';
     }
 
     protected function getExtensions()
     {
         $mock = $this->getMockBuilder('Symfony\Component\Translation\TranslatorInterface')->getMock();
 
-        $mock->expects($this->exactly(3))
-            ->method('trans')
-            ->will($this->returnCallback(function ($arg) { return $arg; })
-            );
+        $mock->method('trans')
+            ->will($this->returnCallback(function ($arg) {
+                return $arg;
+            })
+        );
 
         $extensions = parent::getExtensions();
         $guesser = $this->getMock('Symfony\Component\Form\FormTypeGuesserInterface');

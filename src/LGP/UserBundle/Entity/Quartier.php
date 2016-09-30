@@ -119,6 +119,10 @@ class Quartier {
         return $this->ville;
     }
 
+    /**
+     * Affichage d'une desciption de Quartier
+     * @return string
+     */
     public function getAffichage() {
         return $this->intitule . ' - ' . $this->ville;
     }

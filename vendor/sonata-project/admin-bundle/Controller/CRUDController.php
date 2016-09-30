@@ -63,6 +63,9 @@ class CRUDController extends Controller
      */
     public function render($view, array $parameters = array(), Response $response = null)
     {
+        if (!$this->isXmlHttpRequest()) {
+            $parameters['breadcrumbs_builder'] = $this->get('sonata.admin.breadcrumbs_builder');
+        }
         $parameters['admin'] = isset($parameters['admin']) ?
             $parameters['admin'] :
             $this->admin;
@@ -368,6 +371,15 @@ class CRUDController extends Controller
             unset($data['_sonata_csrf_token']);
         }
 
+        // NEXT_MAJOR: Remove reflection check.
+        $reflector = new \ReflectionMethod($this->admin, 'getBatchActions');
+        if ($reflector->getDeclaringClass()->getName() === get_class($this->admin)) {
+            @trigger_error('Override Sonata\AdminBundle\Admin\AbstractAdmin::getBatchActions method'
+                .' is deprecated since version 3.2.'
+                .' Use Sonata\AdminBundle\Admin\AbstractAdmin::configureBatchActions instead.'
+                .' The method will be final in 4.0.', E_USER_DEPRECATED
+            );
+        }
         $batchActions = $this->admin->getBatchActions();
         if (!array_key_exists($action, $batchActions)) {
             throw new \RuntimeException(sprintf('The `%s` batch action is not defined', $action));
@@ -405,14 +417,17 @@ class CRUDController extends Controller
             true;
 
         if ($askConfirmation && $confirmation != 'ok') {
-            $translationDomain = $batchActions[$action]['translation_domain'] ?: $this->admin->getTranslationDomain();
-            $actionLabel = $this->admin->trans($batchActions[$action]['label'], array(), $translationDomain);
+            $actionLabel = $batchActions[$action]['label'];
+            $batchTranslationDomain = isset($batchActions[$action]['translation_domain']) ?
+                $batchActions[$action]['translation_domain'] :
+                $this->admin->getTranslationDomain();
 
             $formView = $datagrid->getForm()->createView();
 
             return $this->render($this->admin->getTemplate('batch_confirmation'), array(
                 'action' => 'list',
                 'action_label' => $actionLabel,
+                'batch_translation_domain' => $batchTranslationDomain,
                 'datagrid' => $datagrid,
                 'form' => $formView,
                 'data' => $data,
@@ -831,7 +846,7 @@ class CRUDController extends Controller
      *
      * @return Response|RedirectResponse
      *
-     * @throws AccessDeniedException If access is not granted.
+     * @throws AccessDeniedException If access is not granted
      * @throws NotFoundHttpException If the object does not exist or the ACL is not enabled
      */
     public function aclAction($id = null)
@@ -1007,9 +1022,9 @@ class CRUDController extends Controller
     {
         if ($this->container->has('logger')) {
             return $this->container->get('logger');
-        } else {
-            return new NullLogger();
         }
+
+        return new NullLogger();
     }
 
     /**

@@ -70,7 +70,7 @@ class KnpMenuServiceProvider implements ServiceProviderInterface
         }
 
         $app['knp_menu.helper'] = $app->share(function () use ($app) {
-            return new Helper($app['knp_menu.renderer_provider'], $app['knp_menu.menu_provider'], $app['knp_menu.menu_manipulator'], $app['knp_menu.matcher']);
+            return new Helper($app['knp_menu.renderer_provider'], $app['knp_menu.menu_provider'], $app['knp_menu.menu_manipulator']);
         });
 
         if (isset($app['twig'])) {
