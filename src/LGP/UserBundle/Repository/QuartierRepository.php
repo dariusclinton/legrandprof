@@ -18,7 +18,7 @@ class QuartierRepository extends \Doctrine\ORM\EntityRepository
   }
 
   public function getQuarterIntitulesByCity($ville){
-    $query = $this->_em->createQuery("SELECT q.intitule, q.ville FROM LGPUserBundle:Quartier q WHERE q.ville = :ville");
+    $query = $this->_em->createQuery("SELECT DISTINCT q.intitule FROM LGPUserBundle:Quartier q WHERE q.ville = :ville Group By q.intitule");
     $query->setParameter("ville",$ville);
     return $query->getResult();
   }
