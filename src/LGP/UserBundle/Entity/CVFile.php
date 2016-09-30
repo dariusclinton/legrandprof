@@ -130,6 +130,6 @@ class CVFile
      * @return string
      */
     public function getWebPath() {
-        return '../../../web/uploads/cv/' + $this->fileName;
+        return 'uploads/cv/' . $this->getFileName();
     }
 }

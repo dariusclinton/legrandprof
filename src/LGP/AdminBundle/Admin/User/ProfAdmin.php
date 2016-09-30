@@ -96,6 +96,10 @@ class ProfAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('image', null, array(
+                'label'    => 'Image',
+                'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
+            ))
             ->addIdentifier('nom')
             ->addIdentifier('prenoms', null, array(
                 'label' => 'Prénoms'
@@ -121,10 +125,6 @@ class ProfAdmin extends Admin
             ->add('profession')
             ->add('isRecommande', null, array(
                 'label' => 'Recommandé'
-            ))
-            ->add('image', null, array(
-                'label'    => 'Image',
-                'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
             ))
             ->add('CVFile', null, array(
                 'label' => 'CV',

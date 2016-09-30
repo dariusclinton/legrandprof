@@ -2,6 +2,8 @@
 
 {% block field %}
     {% for diplome in object.diplomes %}
-        (<a href="{{ "../../../../uploads/diplomes/" ~ diplome.fileName }}" target="blank">{{ diplome.intitule }}</a>)
+        {% if diplome.fileName is not null %}
+            (<a href="{{ asset(diplome.webPath) }}" target="blank">{{ diplome.intitule }}</a>)
+        {% endif %}
     {% endfor %}
 {% endblock %}

@@ -99,4 +99,11 @@ class Image
     {
         return $this->imageName;
     }
+
+    /**
+     * @return string
+     */
+    public function getWebPath() {
+        return 'uploads/profils/' . $this->getImageName();
+    }
 }

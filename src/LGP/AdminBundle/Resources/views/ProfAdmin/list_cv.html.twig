@@ -1,5 +1,7 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-    (<a href="{{ "../../../../uploads/cv/" ~ object.CVFile.fileName }}" target="blank">Voir le CV</a>)
+    {% if object.CVFile is not null %}
+        (<a href="{{ asset(object.CVFile.webPath) }}" target="blank">Voir le CV</a>)
+    {% endif %}
 {% endblock %}
