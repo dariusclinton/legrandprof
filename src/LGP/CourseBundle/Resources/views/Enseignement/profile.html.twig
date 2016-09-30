@@ -16,8 +16,8 @@
 
                 <div class="flex-column flex-md-3 flex-sm-12">
                     {% if prof.image is not null %}
-                        <img src="{{ asset(prof.image.webPath) }}" alt=" {{ prof.nom }} " class="profile-img"/>
-
+                        <img src="{{ vich_uploader_asset(prof.image, 'imageFile') }}" alt=" image prof "
+                             class="profile-img"/>
                     {% else %}
                         <i class="fa fa-user fa-5x profile-img" style="color:#fff"></i>
                         {#<img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package"/>#}
@@ -289,7 +289,7 @@
                                                                  alt="Tour Package"/>
                                                         {% else %}
                                                             <img class="img-circle"
-                                                                 src="{{ asset(user.image.webPath) }}"
+                                                                 src="{{ vich_uploader_asset(user.image, 'imageFile') }}"
                                                                  alt=" image utilisateur "/>
                                                         {% endif %}
                                                     </div>
@@ -361,7 +361,11 @@
                                                     <a href=" {{ path('lgp_course_profile_prof',{'profId':enseignement.prof.id}) }} ">
                                                         <div class="image similar">
                                                             {% if enseignement.prof.image is not null %}
-                                                                <img src="{{ asset(enseignement.prof.image.webPath) }}"/>
+                                                                <img src="{{ vich_uploader_asset(enseignement.prof.image, 'imageFile') }}"
+                                                                     alt=" image prof "/>
+                                                            {% else %}
+                                                                <img src="{{ asset('uploads/profils/default.jpg') }}"
+                                                                     alt="Tour Package"/>
                                                             {% endif %}
                                                             {% if enseignement.prof.isRecommande %}
                                                                 <div class="absolute-in-image">

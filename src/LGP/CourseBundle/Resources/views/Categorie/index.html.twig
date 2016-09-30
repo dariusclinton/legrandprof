@@ -48,7 +48,7 @@
                                     <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">
                                         <div class="image">
                                             {% if category.image is not null %}
-                                                <img src="{{ asset(category.image.webPath) }}" alt="{{category.image.imageName}}" />
+                                                <img src="{{ vich_uploader_asset(category.image, 'imageFile') }}" alt=" image categorie " />
                                             {% endif %}
                                             <div class="absolute-in-image">
                                                 <div class="duration"><span>{{params.categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>
