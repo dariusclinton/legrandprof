@@ -24,7 +24,7 @@ class CoursSearchType extends AbstractType
                     'choice_label' => function ($quartier) {
                         return $quartier->getVille();
                     },
-                    'choice_value' => 'id',
+                    'choice_value' => 'ville',
                     'required' => false,
                     'placeholder' => 'Sélectionnez une ville'
                 )

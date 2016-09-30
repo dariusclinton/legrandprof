@@ -13,7 +13,7 @@ $(function () {
                     }
                 });
                 for (i = 0; i < answer.length; i++) {
-                    $('#cours_search_refine_quartier1').append('<option value="' + answer[i].ville + '">' + answer[i].intitule + '</option>');
+                    $('#cours_search_refine_quartier1').append('<option value="' + answer[i].intitule + '">' + answer[i].intitule + '</option>');
                 }
             },
             error: function (answer) {

@@ -22,12 +22,12 @@ class CourseController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
-        $quartier = new Quartier();
+       /* $quartier = new Quartier();
         $quartier->setIntitule("Abbo Boutila")
             ->setVille("Garoua Garoua");
         $em->persist($quartier);
         $em->flush();
-        die("insertion reussie");
+        die("insertion reussie");*/
 
 
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");

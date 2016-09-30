@@ -92,7 +92,7 @@
                                         <a href=" {{path('lgp_course_find_prof',{'slug' : course.slug})}} ">
                                             <div class="image">
                                                 {% if course.image is not null %}
-                                                    <img src="{{ asset(course.image.webPath) }}" alt="{{course.image.imageName}}" />
+                                                    <img src="{{ vich_uploader_asset(course.image, 'imageFile') }}" alt=" image cours " />
                                                 {% endif %}
                                             </div>
                                             <div class="content-category">

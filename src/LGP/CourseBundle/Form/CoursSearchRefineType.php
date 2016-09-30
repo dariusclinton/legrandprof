@@ -4,6 +4,7 @@ namespace LGP\CourseBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -17,12 +18,7 @@ class CoursSearchRefineType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quartier1', EntityType::class, [
-                    'class' => 'LGPUserBundle:Quartier',
-                    'choice_label' => function ($quartier) {
-                        return $quartier->getIntitule();
-                    },
-                    'choice_value' => 'id',
+            ->add('quartier1', ChoiceType::class, [
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
                 ]
