@@ -280,7 +280,11 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     /**
      * The translator component.
      *
+     * NEXT_MAJOR: remove this property
+     *
      * @var \Symfony\Component\Translation\TranslatorInterface
+     *
+     * @deprecated since 3.x, to be removed with 4.0
      */
     protected $translator;
 
@@ -2108,6 +2112,11 @@ EOT;
      */
     public function trans($id, array $parameters = array(), $domain = null, $locale = null)
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
+            E_USER_DEPRECATED
+        );
+
         $domain = $domain ?: $this->getTranslationDomain();
 
         return $this->translator->trans($id, $parameters, $domain, $locale);
@@ -2116,6 +2125,8 @@ EOT;
     /**
      * Translate a message id.
      *
+     * NEXT_MAJOR: remove this method
+     *
      * @param string      $id
      * @param int         $count
      * @param array       $parameters
@@ -2123,9 +2134,16 @@ EOT;
      * @param string|null $locale
      *
      * @return string the translated string
+     *
+     * @deprecated since 3.x, to be removed with 4.0
      */
     public function transChoice($id, $count, array $parameters = array(), $domain = null, $locale = null)
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
+            E_USER_DEPRECATED
+        );
+
         $domain = $domain ?: $this->getTranslationDomain();
 
         return $this->translator->transChoice($id, $count, $parameters, $domain, $locale);
@@ -2149,17 +2167,35 @@ EOT;
 
     /**
      * {@inheritdoc}
+     *
+     * NEXT_MAJOR: remove this method
+     *
+     * @deprecated since 3.x, to be removed with 4.0
      */
     public function setTranslator(TranslatorInterface $translator)
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
+            E_USER_DEPRECATED
+        );
+
         $this->translator = $translator;
     }
 
     /**
      * {@inheritdoc}
+     *
+     * NEXT_MAJOR: remove this method
+     *
+     * @deprecated since 3.x, to be removed with 4.0
      */
     public function getTranslator()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
+            E_USER_DEPRECATED
+        );
+
         return $this->translator;
     }
 
@@ -2795,7 +2831,7 @@ EOT;
             && $this->hasRoute('create')
         ) {
             $list['create'] = array(
-                'template' => 'SonataAdminBundle:Button:create_button.html.twig',
+                'template' => $this->getTemplate('button_create'),
             );
         }
 
@@ -2804,7 +2840,7 @@ EOT;
             && $this->hasRoute('edit')
         ) {
             $list['edit'] = array(
-                'template' => 'SonataAdminBundle:Button:edit_button.html.twig',
+                'template' => $this->getTemplate('button_edit'),
             );
         }
 
@@ -2813,7 +2849,7 @@ EOT;
             && $this->hasRoute('history')
         ) {
             $list['history'] = array(
-                'template' => 'SonataAdminBundle:Button:history_button.html.twig',
+                'template' => $this->getTemplate('button_history'),
             );
         }
 
@@ -2823,7 +2859,7 @@ EOT;
             && $this->hasRoute('acl')
         ) {
             $list['acl'] = array(
-                'template' => 'SonataAdminBundle:Button:acl_button.html.twig',
+                'template' => $this->getTemplate('button_acl'),
             );
         }
 
@@ -2833,7 +2869,7 @@ EOT;
             && $this->hasRoute('show')
         ) {
             $list['show'] = array(
-                'template' => 'SonataAdminBundle:Button:show_button.html.twig',
+                'template' => $this->getTemplate('button_show'),
             );
         }
 
@@ -2842,7 +2878,7 @@ EOT;
             && $this->hasRoute('list')
         ) {
             $list['list'] = array(
-                'template' => 'SonataAdminBundle:Button:list_button.html.twig',
+                'template' => $this->getTemplate('button_list'),
             );
         }
 
@@ -2882,7 +2918,7 @@ EOT;
             $actions['create'] = array(
                 'label' => 'link_add',
                 'translation_domain' => 'SonataAdminBundle',
-                'template' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig',
+                'template' => $this->getTemplate('action_create'),
                 'url' => $this->generateUrl('create'),
                 'icon' => 'plus-circle',
             );
