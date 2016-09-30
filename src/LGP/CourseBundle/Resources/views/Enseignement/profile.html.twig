@@ -354,7 +354,7 @@
                             <div class="GridLex-gap-20-wrappper package-grid-item-wrapper on-page-result-page alt-smaller">
 
                                 <div class="GridLex-grid-noGutter-equalHeight">
-                                    {% if not params.similarProfs is empty %}
+                                    {% if params.similarProfs is not empty %}
                                         {% for enseignement in params.similarProfs %}
                                             <div class="GridLex-col-4_sm-4_xs-12 mb-20">
                                                 <div class="package-grid-item">
@@ -422,6 +422,8 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
+                                    {% else %}
+                                        <b>- Aucun prof similaire</b>
                                     {% endif %}
 
                                 </div>
