@@ -34,7 +34,7 @@ class Diplome
     private $intitule;
      
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
@@ -50,7 +50,7 @@ class Diplome
     /**
      * @var string
      * 
-     * @ORM\Column(name="file_name", type="string", length=255) 
+     * @ORM\Column(name="file_name", type="string", length=255, nullable=true)
      */
     private $fileName;
 
@@ -139,5 +139,12 @@ class Diplome
     public function getFileName()
     {
         return $this->fileName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebPath() {
+        return 'uploads/diplomes/' . $this->getFileName();
     }
 }

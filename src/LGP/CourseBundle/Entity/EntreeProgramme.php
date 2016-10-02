@@ -58,6 +58,8 @@ class EntreeProgramme {
     private $programmeDeCours;
     
 
+    
+
     /**
      * Get id
      *
@@ -78,7 +80,7 @@ class EntreeProgramme {
     public function setPartie($partie)
     {
         $this->partie = $partie;
-    
+
         return $this;
     }
 
@@ -102,7 +104,7 @@ class EntreeProgramme {
     public function setIntitule($intitule)
     {
         $this->intitule = $intitule;
-    
+
         return $this;
     }
 
@@ -126,7 +128,7 @@ class EntreeProgramme {
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
@@ -150,7 +152,7 @@ class EntreeProgramme {
     public function setIsComplete($isComplete)
     {
         $this->isComplete = $isComplete;
-    
+
         return $this;
     }
 
@@ -167,21 +169,21 @@ class EntreeProgramme {
     /**
      * Set programmeDeCours
      *
-     * @param \LGP\CourseBundle\Entity\ProgrammeDeCours $programmeDeCours
+     * @param string $programmeDeCours
      *
      * @return EntreeProgramme
      */
-    public function setProgrammeDeCours(\LGP\CourseBundle\Entity\ProgrammeDeCours $programmeDeCours = null)
+    public function setProgrammeDeCours($programmeDeCours)
     {
         $this->programmeDeCours = $programmeDeCours;
-    
+
         return $this;
     }
 
     /**
      * Get programmeDeCours
      *
-     * @return \LGP\CourseBundle\Entity\ProgrammeDeCours
+     * @return string
      */
     public function getProgrammeDeCours()
     {

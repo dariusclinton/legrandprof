@@ -129,5 +129,11 @@ class ImageCourse
     {
         return $this->imageName;
     }
-}
 
+    /**
+     * @return string
+     */
+    public function getWebPath() {
+        return 'uploads/courses/' . $this->getImageName();
+    }
+}

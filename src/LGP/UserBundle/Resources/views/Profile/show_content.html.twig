@@ -6,7 +6,7 @@
       <div class="col-md-3">
         <div class="profile-block">
           {% if app.user.image is not null %}
-            <img src="{{ vich_uploader_asset(app.user.image, 'imageFile') }}" class="img-responsive">
+            <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
           {% endif %}
         </div>
         <div class="infos-block">
@@ -116,8 +116,10 @@
                 <ul>
                   {% for diplome in app.user.diplomes %}
                     <li>
-                      {{ diplome.intitule }} 
-                      (<a href="{{ vich_uploader_asset(diplome, 'file') }}" target="blank">voir</a>)
+                      {{ diplome.intitule }}
+                        {% if diplome.fileName is not null %}
+                            (<a href="{{ asset(diplome.webPath) }}" target="blank">voir</a>)
+                        {% endif %}
                     </li>
                   {% endfor %}
                 </ul>
@@ -128,7 +130,7 @@
             <div class="notifications-content">
                 {% if app.user.CVFile is not null %}
                   {% if app.user.CVFile.fileName is not null %}
-                    (<a href="{{ vich_uploader_asset(app.user.CVFile, 'file') }}" target="blank">Voir le CV</a>)
+                    (<a href="{{ asset(app.user.CVFile.webPath) }}" target="blank">Voir le CV</a>)
                   {% endif %}
                 {% endif %}
                 <br />

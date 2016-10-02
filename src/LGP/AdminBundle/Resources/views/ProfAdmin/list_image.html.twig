@@ -1,5 +1,8 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-    (<a href="{{ "../../../../uploads/profils/" ~ object.image.imageName }}" target="blank">Voir le profil</a>)
+    {% if object.image is not null %}
+        <img src="{{ asset(object.image.webPath) }}" alt="{{ object.image.imageName }}"
+             class="img-circle img-responsive">
+    {% endif %}
 {% endblock %}

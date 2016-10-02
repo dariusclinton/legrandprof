@@ -129,5 +129,11 @@ class ImageCategorie
     {
         return $this->imageName;
     }
-}
 
+    /**
+     * @return string
+     */
+    public function getWebPath() {
+        return 'uploads/categories/' . $this->getImageName();
+    }
+}

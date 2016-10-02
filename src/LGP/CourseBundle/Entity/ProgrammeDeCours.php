@@ -35,6 +35,16 @@ class ProgrammeDeCours
      */
    private $entreesProgrammes;
 
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->entreesProgrammes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -55,7 +65,7 @@ class ProgrammeDeCours
     public function setReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement = null)
     {
         $this->reservationEnseignement = $reservationEnseignement;
-    
+
         return $this;
     }
 
@@ -67,14 +77,6 @@ class ProgrammeDeCours
     public function getReservationEnseignement()
     {
         return $this->reservationEnseignement;
-    }
-   
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->entreesProgrammes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

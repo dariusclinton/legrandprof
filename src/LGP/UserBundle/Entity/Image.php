@@ -1,8 +1,10 @@
 <?php
-
 namespace LGP\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -67,14 +69,12 @@ class Image {
 
 		return $this;
 	}
-
 	/**
 	 * @return File|null
 	 */
 	public function getImageFile() {
 		return $this->imageFile;
 	}
-
 	/**
 	 * @param string $imageName
 	 *
@@ -82,14 +82,18 @@ class Image {
 	 */
 	public function setImageName($imageName) {
 		$this->imageName = $imageName;
-
 		return $this;
 	}
-
 	/**
 	 * @return string|null
 	 */
 	public function getImageName() {
 		return $this->imageName;
+	}
+	/**
+	 * @return string
+	 */
+	public function getWebPath() {
+		return 'uploads/profils/'.$this->getImageName();
 	}
 }
