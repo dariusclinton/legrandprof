@@ -53,7 +53,6 @@ class EntreeProgramme {
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="entreesProgrammes")
-     * @ORM\Column(nullable=false)
      */
     private $programmeDeCours;
     
@@ -169,11 +168,11 @@ class EntreeProgramme {
     /**
      * Set programmeDeCours
      *
-     * @param string $programmeDeCours
+     * @param \LGP\CourseBundle\Entity\ProgrammeDeCours $programmeDeCours
      *
      * @return EntreeProgramme
      */
-    public function setProgrammeDeCours($programmeDeCours)
+    public function setProgrammeDeCours(\LGP\CourseBundle\Entity\ProgrammeDeCours $programmeDeCours = null)
     {
         $this->programmeDeCours = $programmeDeCours;
 
@@ -183,7 +182,7 @@ class EntreeProgramme {
     /**
      * Get programmeDeCours
      *
-     * @return string
+     * @return \LGP\CourseBundle\Entity\ProgrammeDeCours
      */
     public function getProgrammeDeCours()
     {

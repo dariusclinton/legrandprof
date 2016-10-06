@@ -36,7 +36,7 @@ class ProgrammeDeCours
    private $entreesProgrammes;
 
 
-
+    
     /**
      * Constructor
      */
