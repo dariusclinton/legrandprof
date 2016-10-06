@@ -137,4 +137,3 @@ class ImageCourse
         return 'uploads/courses/' . $this->getImageName();
     }
 }
-

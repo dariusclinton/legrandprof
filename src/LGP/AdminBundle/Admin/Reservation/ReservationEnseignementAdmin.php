@@ -62,7 +62,7 @@ class ReservationEnseignementAdmin extends Admin
       ))
       ->add('enseignement', 'sonata_type_model', array(
         'class'   => 'LGPCourseBundle:Enseignement',
-        'property' => 'id'
+        'property' => 'affichage'
       ))
       ->add('enseignement.prof', 'sonata_type_model', array(
         'class'   => 'LGPUserBundle:Prof',
@@ -101,7 +101,7 @@ class ReservationEnseignementAdmin extends Admin
       ))
       ->add('enseignement', null, array(
         'label'                => 'Enseignement',
-        'associated_property' => 'id'
+        'associated_property' => 'affichage'
       ))
       ->add('enseignement.prof', null, array(
         'label'                => 'Prof',

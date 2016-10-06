@@ -137,4 +137,3 @@ class ImageCategorie
         return 'uploads/categories/' . $this->getImageName();
     }
 }
-

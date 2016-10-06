@@ -17,12 +17,17 @@ class CoursSearchRefineType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('quartier1', ChoiceType::class, [
+       /* $builder
+            ->add('quartier1', EntityType::class, array(
+                    'class' => 'LGPUserBundle:Quartier',
+                    'choice_label' => function ($quartier) {
+                        return $quartier->getIntitule();
+                    },
+                    'choice_value' => 'id',
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
-                ]
-            );
+                )
+            );*/
     }
 
     public function getParent()
