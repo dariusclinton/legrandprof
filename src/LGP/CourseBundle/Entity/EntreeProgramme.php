@@ -51,12 +51,12 @@ class EntreeProgramme {
 
     /**
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="entreesProgrammes")
      * @ORM\Column(nullable=false)
      */
     private $programmeDeCours;
-    
+
 
     /**
      * Get id
@@ -78,7 +78,7 @@ class EntreeProgramme {
     public function setPartie($partie)
     {
         $this->partie = $partie;
-    
+
         return $this;
     }
 
@@ -102,7 +102,7 @@ class EntreeProgramme {
     public function setIntitule($intitule)
     {
         $this->intitule = $intitule;
-    
+
         return $this;
     }
 
@@ -126,7 +126,7 @@ class EntreeProgramme {
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
@@ -150,7 +150,7 @@ class EntreeProgramme {
     public function setIsComplete($isComplete)
     {
         $this->isComplete = $isComplete;
-    
+
         return $this;
     }
 
@@ -174,7 +174,7 @@ class EntreeProgramme {
     public function setProgrammeDeCours(\LGP\CourseBundle\Entity\ProgrammeDeCours $programmeDeCours = null)
     {
         $this->programmeDeCours = $programmeDeCours;
-    
+
         return $this;
     }
 

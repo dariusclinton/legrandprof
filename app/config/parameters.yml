@@ -6,7 +6,7 @@ parameters:
     database_user: root
     database_password: null
     mailer_transport: smtp
-    mailer_host: smtp.unadresse.com
-    mailer_user: info@unadresse.com
-    mailer_password: pwdinf2015
+    mailer_host: glo.globexcamhost.com
+    mailer_user: info@legrandprof.com
+    mailer_password: SystInfo
     secret: bbb4d84eca91276135d1441544d61d7c58a37f6c

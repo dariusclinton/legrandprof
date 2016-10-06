@@ -5,7 +5,7 @@ imports:
     - { resource: "@LGPCoreBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/services.yml" }
     - { resource: "@LGPUserBundle/Resources/config/config.yml" }
-    - { resource: "@LGPAdminBundle/Resources/config/services.yml" }
+    - { resource: "@LGPAdminBundle/Resources/config/admin.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -42,7 +42,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
-        - 'bootstrap_3_layout.html.twig'
+#        - 'bootstrap_3_layout.html.twig'
 #         - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
@@ -73,6 +73,8 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
+    encryption: ssl
+
     spool:     { type: memory }
 
 # FOSUserBundle
@@ -149,12 +151,12 @@ sonata_admin:
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.user]
+                    groups: [lgp_admin.group.reservation, lgp_admin.group.cours]
             -
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.reservation, lgp_admin.group.cours]
+                    groups: [lgp_admin.group.user]
 
         groups:
             lgp_admin.group.user:
@@ -168,11 +170,16 @@ sonata_admin:
                 items:
                     - lgp.admin.categorie_cours
                     - lgp.admin.cours
+                    - lgp.admin.enseignement
+                    - lgp.admin.programmedecours
             lgp_admin.group.reservation:
                 label: Réservations
                 items:
+                    - lgp.admin.reservation
                     - lgp.admin.remuneration
-                    
+                    - lgp.admin.jourdecours
+                    - lgp.admin.reservationenseignement
+
 stof_doctrine_extensions:
     orm:
         default:

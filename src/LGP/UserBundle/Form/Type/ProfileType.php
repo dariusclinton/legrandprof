@@ -24,8 +24,8 @@ class ProfileType extends AbstractType {
         ))
         ->add('sexe', ChoiceType::class, array(
           'choices'     => array(
-            'Masculin' => 'm',
-            'Féminin'  => 'f'
+            'Masculin' => 'Masculin',
+            'Féminin' => 'Féminin'
           ),
           'placeholder' => '--',
         ))

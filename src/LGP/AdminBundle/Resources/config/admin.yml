@@ -1,0 +1,94 @@
+services:
+# Admin
+
+#    User
+    lgp.admin.prof:
+        class: LGP\AdminBundle\Admin\User\ProfAdmin
+        arguments: [~, LGP\UserBundle\Entity\Prof, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Profs
+
+    lgp.admin.parent:
+        class: LGP\AdminBundle\Admin\User\ParentsAdmin
+        arguments: [~, LGP\UserBundle\Entity\Parents, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Parents
+
+    lgp.admin.quartier_cible:
+            class: LGP\AdminBundle\Admin\User\QuartierAdmin
+            arguments: [~, LGP\UserBundle\Entity\Quartier, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Quartiers cibles
+
+# Reservation
+    lgp.admin.reservation:
+        class: LGP\AdminBundle\Admin\Reservation\ReservationAdmin
+        arguments: [~, LGP\ReservationBundle\Entity\Reservation, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Réservations
+
+    lgp.admin.remuneration:
+        class: LGP\AdminBundle\Admin\Reservation\RemunerationAdmin
+        arguments: [~, LGP\UserBundle\Entity\Remuneration, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Rémunérations
+
+    lgp.admin.jourdecours:
+        class: LGP\AdminBundle\Admin\Reservation\JourDeCoursAdmin
+        arguments: [~, LGP\ReservationBundle\Entity\JourDeCours, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Jours de cours
+
+    lgp.admin.reservationenseignement:
+        class: LGP\AdminBundle\Admin\Reservation\ReservationEnseignementAdmin
+        arguments: [~, LGP\ReservationBundle\Entity\ReservationEnseignement, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Réservation enseignement
+
+
+# Cours
+    lgp.admin.categorie_cours:
+        class: LGP\AdminBundle\Admin\Course\CategorieAdmin
+        arguments: [~, LGP\CourseBundle\Entity\Categorie, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Catégories cours
+
+    lgp.admin.cours:
+        class: LGP\AdminBundle\Admin\Course\CourseAdmin
+        arguments: [~, LGP\CourseBundle\Entity\Cours, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Cours
+
+    lgp.admin.enseignement:
+        class: LGP\AdminBundle\Admin\Course\EnseignementAdmin
+        arguments: [~, LGP\CourseBundle\Entity\Enseignement, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Enseignement
+
+    lgp.admin.programmedecours:
+        class: LGP\AdminBundle\Admin\Course\ProgrammeDeCoursAdmin
+        arguments: [~, LGP\CourseBundle\Entity\ProgrammeDeCours, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Programmes de cours
