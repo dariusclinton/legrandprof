@@ -18,7 +18,7 @@ class ReservationEnseignementType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options)
   {
     $builder
-      ->add('isFinish', CheckboxType::class, array(
+      ->add('isFinish', 'checkbox', array(
         'required' => false
       ))
       ->add('joursDeCours', EntityType::class, array(

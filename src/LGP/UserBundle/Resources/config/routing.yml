@@ -202,6 +202,12 @@ lgp_user_nouvelle_categorie_cours_delete:
 lgp_user_mes_reservations:
     path: /mes-reservations
     defaults: { _controller: LGPUserBundle:Reservation:index }
+
+lgp_user_programme_et_jours_de_cours_voir:
+    path: /reservation-enseignement/{id}/programme-et-jours-de-cours
+    defaults: { _controller: LGPUserBundle:Reservation:showProgrammeAndJoursDeCours }
+    requirements:
+        id: \d+
     
 # Demandes de cours
 lgp_user_prof_demandes_de_cours:

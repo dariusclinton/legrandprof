@@ -1,0 +1,68 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Programme et jours de cours - {{ parent() }}
+{% endblock %}
+
+{% block header_submenu %}
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+  <h1 class="text-muted">{{ reservationEnseignement.enseignement.cours.intitule }}</h1>
+  <hr>
+  <h1>Jours de cours</h1>
+  {% if joursDeCours|length <= 0 %}
+    <h4 class="text-muted">Jours de cours non disponibles.</h4>
+
+  {% else %}
+    <table class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th>Intitulé</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for jour in joursDeCours %}
+        <tr>
+          <td>{{ jour.intitule }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h1>Programme de cours</h1>
+  {% if entreesProgramme|length <= 0 %}
+    <h4 class="text-muted">Programme non disponible.</h4>
+
+  {% else %}
+    <table class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th>Partie</th>
+        <th>Intitulé</th>
+        <th>Type</th>
+        <th>Achevé ?</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for entree in entreesProgramme %}
+        <tr>
+          <td>{{ entree.partie }}</td>
+          <td>{{ entree.intitule }}</td>
+          <td>{{ entree.type }}</td>
+          <td>
+            {% if entree.isComplete %}
+              <span class="label label-primary">Oui</span>
+            {% else %}
+              <span class="label label-danger">Non</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

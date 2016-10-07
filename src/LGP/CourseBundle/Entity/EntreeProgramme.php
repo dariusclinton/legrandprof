@@ -51,8 +51,9 @@ class EntreeProgramme {
 
     /**
      * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="entreesProgrammes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $programmeDeCours;
     

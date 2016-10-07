@@ -20,8 +20,9 @@ class ReservationAdmin extends Admin
   protected function configureFormFields(FormMapper $formMapper)
   {
     $formMapper
-      ->add('idValidee', 'checkbox', array(
-        'required' => false
+      ->add('isValidee', 'checkbox', array(
+        'required' => false,
+        'label'    => 'Validée ?'
       ))
       ->add('frequencePaiement', 'choice', array(
         'choices' => array(
@@ -55,9 +56,9 @@ class ReservationAdmin extends Admin
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->addIdentifier('isValidee', null, array('label' => 'Validée'))
-      ->add('dateReservation', null, array('label' => 'Date de réservation'))
-      ->add('frequencePaiement', null, array('label' => 'Fréquence de  paiement'))
+      ->add('isValidee', null, array('label' => 'Validée'))
+      ->addIdentifier('dateReservation', null, array('label' => 'Date de réservation'))
+      ->addIdentifier('frequencePaiement', null, array('label' => 'Fréquence de  paiement'))
       ->add('factures', null, array(
         'associated_property' => 'montant',
       ));

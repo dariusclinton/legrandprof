@@ -158,6 +158,18 @@ sonata_admin:
                 settings:
                     groups: [lgp_admin.group.user]
 
+            -
+                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                position: top                        # zone in the dashboard
+                type:     sonata.admin.block.stats   # block id
+                settings:
+                    code:  sonata.page.admin.page    # admin code - service id
+                    icon:  fa-magic                  # font awesome icon
+                    text:  Edited Pages
+                    color: bg-yellow                 # colors: bg-green, bg-red and bg-aqua
+                    filters:                         # filter values
+                        edited: { value: 1 }
+
         groups:
             lgp_admin.group.user:
                 label: Utilisateurs
