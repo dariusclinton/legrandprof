@@ -58,13 +58,6 @@ class Cours {
     private $categorie;
 
     /**
-     * @var \LGP\CourseBundle\Entity\Evaluation
-     * 
-     * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="cours")
-     */
-    private $evaluations;
-
-    /**
      * @var \LGP\CourseBundle\Entity\Enseigne
      * 
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours", cascade={"persist","remove"})
@@ -174,37 +167,6 @@ class Cours {
      */
     public function getCategorie() {
         return $this->categorie;
-    }
-
-    /**
-     * Add evaluation
-     *
-     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
-     *
-     * @return Cours
-     */
-    public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
-        $this->evaluations[] = $evaluation;
-
-        return $this;
-    }
-
-    /**
-     * Remove evaluation
-     *
-     * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
-     */
-    public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation) {
-        $this->evaluations->removeElement($evaluation);
-    }
-
-    /**
-     * Get evaluations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEvaluations() {
-        return $this->evaluations;
     }
 
     /**
