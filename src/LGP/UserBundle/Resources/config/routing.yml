@@ -1,6 +1,8 @@
 lgp_user_homepage:
     path:     /
     defaults: { _controller: LGPUserBundle:Main:index }
+    options:
+        expose: true
     
 # Registration
 lgp_parent_registration:

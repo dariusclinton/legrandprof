@@ -144,6 +144,8 @@ sonata_block:
 sonata_admin:
     title: LeGrandProf Admin
     title_logo: images/Logo.png
+    templates:
+        layout: LGPAdminBundle::standard_layout.html.twig
     dashboard:
         blocks:
             # display two dashboard blocks
@@ -157,18 +159,6 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
                 settings:
                     groups: [lgp_admin.group.user]
-
-            -
-                class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
-                position: top                        # zone in the dashboard
-                type:     sonata.admin.block.stats   # block id
-                settings:
-                    code:  sonata.page.admin.page    # admin code - service id
-                    icon:  fa-magic                  # font awesome icon
-                    text:  Edited Pages
-                    color: bg-yellow                 # colors: bg-green, bg-red and bg-aqua
-                    filters:                         # filter values
-                        edited: { value: 1 }
 
         groups:
             lgp_admin.group.user:

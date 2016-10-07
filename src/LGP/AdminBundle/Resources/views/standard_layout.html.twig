@@ -1,0 +1,33 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+
+  {# Icon #}
+  <link rel="icon" type="image/png" href="{{ asset('ico.png') }}"/>
+{% endblock stylesheets %}
+
+{% block sonata_top_nav_menu %}
+  {{ parent() }}
+  <div id="stats-user"></div>
+
+  <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+  <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
+  <script type="text/javascript">
+    $(function () {
+      var url = Routing.generate('lgp_user_homepage');
+//      alert(url);
+
+      $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+          $('#stats-user').html(data);
+        },
+        error: function () {
+          console.log(" La requête n'a pas abouti !");
+        }
+      });
+    });
+  </script>
+{% endblock %}
