@@ -20,11 +20,15 @@ class IndisponibiliteType extends AbstractType
         $builder
             ->add('dateDebut', DateType::class, array(
               'years'       => range(2016, 2020),
-              'placeholder' => '--'
+              'placeholder' => array(
+                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'
+              ),
             ))
             ->add('dateFin', DateType::class, array(
               'years'       => range(2016, 2020),
-              'placeholder' => '--'
+              'placeholder' => array(
+                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'
+              ),
             ))
             ->add('motif', TextareaType::class, array(
               'required' => false

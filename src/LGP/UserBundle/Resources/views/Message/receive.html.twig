@@ -4,6 +4,10 @@
   Messages reçus - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %}
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   <h1>Les messages reçus</h1>
   
@@ -14,12 +18,12 @@
   <a href="{{ path('lgp_user_message_send') }}" class="btn btn-primary">Envoyés</a>
   
   {% if messages|length <= 0 %}
-    <h1 class="text-muted">Aucun message reçu !</h1>
+    <h5 class="text-muted">Aucun message reçu !</h5>
   {% else %}
     <table class="table table-bordered table-hover table-striped messages-table">
       <thead>
         <tr>
-          <th>Expéditeur</th>
+          <th>De</th>
           <th>Objet</th>
           <th>Contenu</th>
           <th>Date</th>

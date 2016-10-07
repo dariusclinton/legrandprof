@@ -4,12 +4,12 @@
   Avis - {{ parent() }}
 {% endblock %}
 
-{% block header_submenu %} 
+{% block header_submenu %}
   {{ include('LGPCoreBundle::header-submenu.html.twig') }}
 {% endblock %}
 
 {% block body %}
-    
+
   <div class="bg-grey dashboard">
     <div class="content-wrapper">
       <div class="container">
@@ -22,181 +22,119 @@
             </ul>
           </div>
           <div class="col-md-9">
-            {% if avis|length <= 0 %}
-              <div class="notifications-block">
-                <div class="notifications-header">Mes avis</div>
-                <div class="notifications-content">
-                    Vous n'avez encore donné aucun avis !
-                </div>
-              </div>
-            {% else %}
-              <div class="notifications-block">
-                <div class="notifications-header">Mes avis</div>
-                <div class="notifications-content">
-                    
-                    {# Si l'utilisateur est Prof  #}
-                    {% if is_granted('ROLE_PROF') %}
 
-                      <!-- Nav tabs -->
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#envoyes" role="tab" data-toggle="tab">Envoyes</a></li>
-                        <li>
-                          <a href="#recus" role="tab" data-toggle="tab">
-                            Recus <span class="badge avis-link">{{ render (controller('LGPUserBundle:Avis:index', {'is_read': 'false'})) }}</span>
-                          </a>
-                        </li>
-                      </ul>
-                      <br>
+            <div class="notifications-block">
+              <div class="notifications-header">Mes avis</div>
+              <div class="notifications-content">
 
-                      <!-- Tab panes -->
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="envoyes">
 
-                          {% if avis|length <= 0 %}
-                            <h1 class="text-muted">Aucun avis trouvé !</h1>
-                          {% else %}
-                            <table class="table table-hover table-striped avis-table">
-                              <thead>
-                                <tr>
-                                  <th>Prof</th>
-                                  <th>Note</th>
-                                  <th>Commentaire</th>
-                                  <th>Date</th>
-                                  <th></th>
-                                  <th></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {% for avs in avis %}
-                                  <tr>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.prof.prenoms }} {{ avs.prof.nom }}</a>
-                                    </td>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.note }}</a>
-                                    </td>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.commentaire }}</a>
-                                    </td>
-                                    <td> {{ avs.dateAvis|date('d/m/Y') }}</td>
-                                    <td>
-                                      <a href='{{ path('lgp_user_avis_delete',  {'id': avs.id }) }}' class="delete_confirm">
-                                          <i class='fa fa-remove'></i>
-                                      </a>
-                                    </td>
-                                    <td>
-                                      <a href='{{ path('lgp_user_avis_update',  {'id': avs.id }) }}' class="">
-                                          <i class='fa fa-edit'></i>
-                                      </a>
-                                    </td>
-                                  </tr>
-                                {% endfor %}
-                              </tbody>
-                            </table>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="active"><a href="#envoyes" role="tab" data-toggle="tab">Envoyes</a></li>
+                  <li>
+                    <a href="#recus" role="tab" data-toggle="tab">
+                      Recus <span
+                          class="badge avis-link">{{ render (controller('LGPUserBundle:Avis:index', {'is_read': 'false'})) }}</span>
+                    </a>
+                  </li>
+                </ul>
+                <br>
 
-                            <div class='avis-details'></div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active" id="envoyes">
 
-                          {% endif %}
-                        </div> {# end tab-pane recu#}
-
-                        <div class="tab-pane" id="recus">
-                          {% if avisReceived|length <= 0 %}
-                            <h1 class="text-muted">Aucun avis trouvé !</h1>
-                          {% else %}
-                            <table class="table table-hover table-striped avis-table">
-                              <thead>
-                                <tr>
-                                  <th>Prof</th>
-                                  <th>Note</th>
-                                  <th>Commentaire</th>
-                                  <th>Date</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {% for avs in avisReceived %}
-                                  <tr>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.prof.prenoms }} {{ avs.prof.nom }}</a>
-                                    </td>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.note }}</a>
-                                    </td>
-                                    <td>
-                                      <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.commentaire }}</a>
-                                    </td>
-                                    <td>{{ avs.dateAvis|date('d/m/Y') }}
-                                  </tr>
-                                {% endfor %}
-                              </tbody>
-                            </table>
-
-                            <div class='avis-details'></div>
-
-                          {% endif %}
-
-                        </div>{# end tab-pane recu#}
-                      </div>
-
-                    {# Si l'utilisateur est Parent        #}
+                    {% if avis|length <= 0 %}
+                      <h5 class="text-muted">Aucun avis trouvé !</h5>
                     {% else %}
-
-                      {% if avis|length <= 0 %}
-                        <h1 class="text-muted">Aucun avis trouvé !</h1>
-                      {% else %}
-                        <table class="table table-hover table-striped avis-table">
-                          <thead>
-                            <tr>
-                              <th>Prof</th>
-                              <th>Note</th>
-                              <th>Commentaire</th>
-                              <th>Date</th>
-                              <th></th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for avs in avis %}
-                              <tr>
-                                <td>
-                                  <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.prof.prenoms }} {{ avs.prof.nom }}</a>
-                                </td>
-                                <td>
-                                  <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.note }}</a>
-                                </td>
-                                <td>
-                                  <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}" class="show-avis-link">{{ avs.commentaire }}</a>
-                                </td>
-                                <td> {{ avs.dateAvis|date('d/m/Y') }}</td>
-                                <td>
-                                  <a href='{{ path('lgp_user_avis_update',  {'id': avs.id }) }}' class="">
-                                      <i class='fa fa-edit'></i>
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href='{{ path('lgp_user_avis_delete',  {'id': avs.id }) }}' class=" delete_confirm">
-                                      <i class='fa fa-remove'></i>
-                                  </a>
-                                </td>
-                              </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-
-                        <div class='avis-details'></div>
-
-                      {% endif %}
-
+                      <table class="table table-hover table-striped avis-table">
+                        <thead>
+                        <tr>
+                          <th>Note</th>
+                          <th>Commentaire</th>
+                          <th>Date</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for avs in avis %}
+                          <tr>
+                            <td>
+                              <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}"
+                                 class="show-avis-link">{{ avs.note }}</a>
+                            </td>
+                            <td>
+                              <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}"
+                                 class="show-avis-link">{{ avs.commentaire }}</a>
+                            </td>
+                            <td> {{ avs.dateAvis|date('d/m/Y') }}</td>
+                            <td>
+                              <a href='{{ path('lgp_user_avis_delete',  {'id': avs.id }) }}' class="delete_confirm">
+                                <i class='fa fa-remove'></i>
+                              </a>
+                            </td>
+                            <td>
+                              <a href='{{ path('lgp_user_avis_update',  {'id': avs.id }) }}' class="">
+                                <i class='fa fa-edit'></i>
+                              </a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
 
                     {% endif %}
-                </div>
-              </div>
+                  </div> {# end tab-pane envoye#}
 
-            {% endif %}
+                  {# Si l'utilisateur est Prof  #}
+                  {% if is_granted('ROLE_PROF') %}
+                  <div class="tab-pane" id="recus">
+                    {% if avisReceived|length <= 0 %}
+                      <h5 class="text-muted">Aucun avis trouvé !</h5>
+                    {% else %}
+                      <table class="table table-hover table-striped avis-table">
+                        <thead>
+                        <tr>
+                          <th>Note</th>
+                          <th>Commentaire</th>
+                          <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for avs in avisReceived %}
+                          <tr>
+                            <td>
+                              <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}"
+                                 class="show-avis-link">{{ avs.note }}</a>
+                            </td>
+                            <td>
+                              <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}"
+                                 class="show-avis-link">{{ avs.commentaire }}</a>
+                            </td>
+                            <td>{{ avs.dateAvis|date('d/m/Y') }}
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+
+                    {% endif %}
+
+                  </div>{# end tab-pane recu#}
+                </div>
+
+                {% endif %}
+              </div>
+            </div>
 
           </div>
+
+        </div>
+        <div class="row">
+          <div class='avis-details'></div>
         </div>
       </div>
     </div>
   </div>
-  
+
 {% endblock %}

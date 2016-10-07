@@ -158,6 +158,7 @@ class Indisponibilite
     }
     
     /**
+     * Contrainte sur les dateDebut et dateFin
      * @Assert\Callback
      */
     public function isDateFinValid(ExecutionContextInterface $context) {

@@ -1,39 +1,84 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-  Edition d'une demande de cous - {{ parent() }}
+  Edition {{ reservationEnseignement.enseignement.affichage }} - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %}
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
+
 {% block body %}
-  <div class="row">
-    <div class="col-md-12">
-      
-      <h1>Edition du cours <small>{{ reservationEnseignement.enseignement.cours.intitule }}</small></h1>
-      
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 border-bottom text-center">
+        <h1 class="text-muted">{{ reservationEnseignement.enseignement.affichage }}</h1>
+      </div>
+    </div>
+
+    <div class="row">
+
       {{ form_start(form) }}
-      
+
       {{ form_errors(form) }}
-      
-      <div class="form-group">
-        {{ form_row(form.isFinish) }}
+
+      <div class="col-md-4">
+
+        <h3>Status du cours</h3>
+        <div class="form-group">
+          {{ form_label(form.isFinish, "Cours achevé ?") }}
+          {{ form_widget(form.isFinish, {'attr': {}}) }}
+          {{ form_errors(form.isFinish) }}
+        </div>
+
+        <h3>Jours de cours</h3>
+        <div class="form-group">
+          {{ form_label(form.joursDeCours, " ") }}
+          {{ form_widget(form.joursDeCours) }}
+          {{ form_errors(form.joursDeCours) }}
+        </div>
+
+        <h3>Programme de cours</h3>
+        <div class="form-group">
+          {{ form_label(form.programmeDeCours, " ") }}
+          {{ form_widget(form.programmeDeCours.entreesProgrammes) }}
+          {{ form_errors(form.programmeDeCours.entreesProgrammes) }}
+          <a href="#" class="btn btn-primary btn-sm" id="add_entree_programme_de_cours">Ajouter</a>
+        </div>
       </div>
-      
-      <div class="form-group">
-        {{ form_row(form.joursDeCours) }}
+
+      <div class="col-md-4">
+        <h3>Séances de cours</h3>
+        <div class="form-group">
+          {{ form_label(form.seancesDeCours, " ") }}
+          {{ form_widget(form.seancesDeCours) }}
+          {{ form_errors(form.seancesDeCours) }}
+          <a href="#" class="btn btn-primary btn-sm" id="add_seance_de_cours">Ajouter</a>
+        </div>
       </div>
-      
-      <div class="form-group">
-        {{ form_row(form.programmeDeCours) }}
-        <a href="#" class="btn btn-primary btn-sm" id="add_entree_programme_de_cours">Ajouter</a>
+
+      <div class="col-md-4">
+        <h3>Evaluations</h3>
+        {{ form_label(form.evaluations, " ") }}
+        {{ form_widget(form.evaluations) }}
+        {{ form_errors(form.evaluations) }}
+        <a href="#" class="btn btn-primary btn-sm" id="add_evaluation">Ajouter</a>
       </div>
-      
+
       {{ form_rest(form) }}
-        
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Enregistrer">
+
+      <hr>
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary pull-right" value="Enregistrer">
+        </div>
       </div>
-      
+
       {{ form_end(form) }}
+
     </div>
   </div>
+
 {% endblock %}

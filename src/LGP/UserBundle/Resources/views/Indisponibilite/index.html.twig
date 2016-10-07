@@ -26,7 +26,7 @@
               <div class="notifications-block">
                 <div class="notifications-header">Mes indisponibilités</div>
                 <div class="notifications-content">
-                  Aucun indisponibilité trouvée !
+                  Aucune indisponibilité trouvée !
                 </div>
               </div>
             {% else %}
@@ -43,19 +43,11 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tfoot>
-                        <tr>
-                          <td>footer</td>
-                          <td>footer</td>
-                          <td>footer</td>
-                          <td>footer</td>
-                        </tr>
-                      </tfoot>
                       <tbody>
                         {% for indispo in indisponibilites %}
                           <tr>
-                            <td>{{ indispo.dateDebut|date('d/m/y') }}</td>
-                            <td>{{ indispo.dateFin|date('d/m/y') }}</td>
+                            <td>{{ indispo.dateDebut|date('d/m/Y') }}</td>
+                            <td>{{ indispo.dateFin|date('d/m/Y') }}</td>
                             <td>{{ indispo.motif }}</td>
                             <td>
                               <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="bt btn-danger btn-sm delete_confirm">

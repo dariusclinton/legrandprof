@@ -59,8 +59,8 @@ class ProfileController extends BaseController
         /**
          * Custom code
          */
-        // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
-        if (method_exists($user, 'getExperiencePros')) {
+        // S'il s'agit d'un Prof
+      if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
           $originalExperiencePros = new ArrayCollection();
           $originalDiplomes       = new ArrayCollection();
           
@@ -83,8 +83,8 @@ class ProfileController extends BaseController
           /**
            * Custom code
            */
-          // Si l'entite possede la methode getExperiencePros, alors il s'agit d'un Prof
-          if (method_exists($user, 'getExperiencePros')) {
+          // S'il s'agit d'un Prof
+          if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
             
             $em = $this->getDoctrine()->getManager();
 

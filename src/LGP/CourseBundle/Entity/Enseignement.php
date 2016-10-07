@@ -209,6 +209,6 @@ class Enseignement
      * @return string
      */
     public function affichage() {
-        return $this->getCours()->getIntitule() . " - " . $this->classe . " - " .$this->prix;
+        return $this->getCours()->getIntitule() . " - " . $this->classe;
     }
 }

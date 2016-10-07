@@ -34,10 +34,14 @@ class ReservationController extends Controller {
   public function showProgrammeAndJoursDeCoursAction(ReservationEnseignement $reservationEnseignement) {
     $entreesProgramme = $reservationEnseignement->getProgrammeDeCours()->getEntreesProgrammes();
     $joursDeCours = $reservationEnseignement->getJoursDeCours();
+    $evaluations = $reservationEnseignement->getEvaluations();
+    $seancesDeCours = $reservationEnseignement->getSeancesDeCours();
 
     return $this->render('LGPUserBundle:Reservation:showProgrammeAndJoursDeCours.html.twig', array(
       'entreesProgramme' => $entreesProgramme,
       'joursDeCours'      => $joursDeCours,
+      'evaluations' => $evaluations,
+      'seancesDeCours' => $seancesDeCours,
       'reservationEnseignement' => $reservationEnseignement
     ));
   }
