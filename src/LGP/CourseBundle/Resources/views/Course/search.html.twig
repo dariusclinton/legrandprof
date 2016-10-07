@@ -230,7 +230,7 @@
                                     {% if enseigne.prof.image is null %}
                                         <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package"/>
                                     {% else %}
-                                        <img src="{{ vich_uploader_asset(enseigne.prof.image, 'imageFile') }}" alt=" image prof " />
+                                        <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof " />
                                     {% endif %}
                                 </div>
 

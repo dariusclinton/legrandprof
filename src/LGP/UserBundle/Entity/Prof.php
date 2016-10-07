@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -135,6 +136,14 @@ class Prof extends User {
      * @ORM\OneToMany(targetEntity="Remuneration", mappedBy="prof", cascade={"persist", "remove"})
      */
     private $remunerations;
+
+    /**
+     * @var slug
+     *
+     * @Gedmo\Slug(fields={"prenoms", "nom"}, unique=false, updatable=true)
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
     /**
      * Constructeur
@@ -621,5 +630,29 @@ class Prof extends User {
     public function getRemunerations()
     {
         return $this->remunerations;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Prof
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

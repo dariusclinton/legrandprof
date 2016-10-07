@@ -37,6 +37,7 @@
 
 # Assets and user uploads
 /web/uploads/
+!/web/uploads/profils/default.jpg
 
 # PHPUnit
 /app/phpunit.xml
