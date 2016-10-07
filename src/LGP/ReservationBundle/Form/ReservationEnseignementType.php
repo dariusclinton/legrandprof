@@ -2,8 +2,11 @@
 
 namespace LGP\ReservationBundle\Form;
 
+use LGP\CourseBundle\Form\EvaluationType;
 use LGP\CourseBundle\Form\ProgrammeDeCoursType;
+use LGP\CourseBundle\Form\SeanceDeCoursType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -27,7 +30,19 @@ class ReservationEnseignementType extends AbstractType
         'multiple' => true,
         'expanded' => true,
       ))
-      ->add('programmeDeCours', ProgrammeDeCoursType::class);
+      ->add('programmeDeCours', ProgrammeDeCoursType::class)
+      ->add('seancesDeCours', CollectionType::class, array(
+        'entry_type'   => SeanceDeCoursType::class,
+        'allow_add'    => true,
+        'allow_delete' => true,
+        'by_reference' => false
+      ))
+      ->add('evaluations', CollectionType::class, array(
+          'entry_type'   => EvaluationType::class,
+          'allow_add'    => true,
+          'allow_delete' => true,
+          'by_reference' => false
+        ));
   }
 
   /**

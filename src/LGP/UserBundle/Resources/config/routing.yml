@@ -1,6 +1,8 @@
 lgp_user_homepage:
     path:     /
     defaults: { _controller: LGPUserBundle:Main:index }
+    options:
+        expose: true
     
 # Registration
 lgp_parent_registration:
@@ -117,17 +119,7 @@ lgp_user_prof_cours_delete:
 # Evaluation
 lgp_user_prof_evaluation:
     path: /prof/evaluations
-    defaults: { _controller: LGPUserBundle:Evaluation:index } 
-    
-lgp_user_prof_evaluation_add:
-    path: /prof/evaluations/add
-    defaults: { _controller: LGPUserBundle:Evaluation:add }  
-    
-lgp_user_prof_evaluation_update:
-    path: /prof/evaluations/update/{id}
-    defaults: { _controller: LGPUserBundle:Evaluation:update }
-    requirements:
-      id: \d+
+    defaults: { _controller: LGPUserBundle:Evaluation:index }
     
 lgp_user_prof_evaluation_delete:
     path: /prof/evaluations/delete/{id}
@@ -139,20 +131,10 @@ lgp_user_prof_evaluation_delete:
 lgp_user_prof_seance_de_cours:
     path: /prof/seance-de-cours/
     defaults: { _controller: LGPUserBundle:SeanceDeCours:index }  
- 
-lgp_user_prof_seance_de_cours_add:
-    path: /prof/seance-de-cours/add
-    defaults: { _controller: LGPUserBundle:SeanceDeCours:add }  
 
 lgp_user_prof_seance_de_cours_delete:
     path: /prof/seance-de-cours/delete/{id}
     defaults: { _controller: LGPUserBundle:SeanceDeCours:delete }  
-    requirements:
-      id: \d+
-      
-lgp_user_prof_seance_de_cours_update:
-    path: /prof/seance-de-cours/update/{id}
-    defaults: { _controller: LGPUserBundle:SeanceDeCours:update }  
     requirements:
       id: \d+
       

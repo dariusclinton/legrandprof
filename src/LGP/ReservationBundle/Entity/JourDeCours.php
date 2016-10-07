@@ -38,13 +38,6 @@ class JourDeCours
    */
   private $reservationEnseignements;
 
-  /**
-   * @var \LGPCourseBundle\Entity\SeanceDeCours
-   *
-   * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="jourDeCours")
-   */
-  private $seanceDeCours;
-
 
   /**
    * Constructor
@@ -120,29 +113,5 @@ class JourDeCours
   public function getReservationEnseignements()
   {
     return $this->reservationEnseignements;
-  }
-
-  /**
-   * Set seanceDeCours
-   *
-   * @param \LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCours
-   *
-   * @return JourDeCours
-   */
-  public function setSeanceDeCours(\LGP\CourseBundle\Entity\SeanceDeCours $seanceDeCours = null)
-  {
-    $this->seanceDeCours = $seanceDeCours;
-
-    return $this;
-  }
-
-  /**
-   * Get seanceDeCours
-   *
-   * @return \LGP\CourseBundle\Entity\SeanceDeCours
-   */
-  public function getSeanceDeCours()
-  {
-    return $this->seanceDeCours;
   }
 }

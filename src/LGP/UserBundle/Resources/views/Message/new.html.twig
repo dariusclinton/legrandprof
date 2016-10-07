@@ -4,6 +4,10 @@
   Envoi de message - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %}
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   {{ form_start(form) }}
 

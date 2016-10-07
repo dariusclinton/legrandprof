@@ -10,182 +10,188 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lgp_seance_de_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\SeanceDeCoursRepository")
  */
-class SeanceDeCours {
+class SeanceDeCours
+{
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="resume", type="string", length=255, nullable=true)
-     */
-    private $resume;
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="resume", type="string", length=255, nullable=true)
+   */
+  private $resume;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date", nullable=false)
-     */
-    private $date;
-    
-    /**
-     *
-     * @var int
-     * 
-     * @ORM\Column(name="nb_heures", type="integer")
-     */
-    private $nbHeures;
-    
-    /**
-     * @var \LGPReservationBundle\Entity\JourDeCours
-     * 
-     * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="seanceDeCours")
-     */
-    private $jourDeCours;
+  /**
+   * @var \DateTime
+   *
+   * @ORM\Column(name="date", type="date", nullable=false)
+   */
+  private $date;
 
-    /**
-     * @var \LGPUserBundle\Entity\Prof
-     * 
-     * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seancesDeCours")
-     */
-    private $prof;
-    
-    
+  /**
+   *
+   * @var int
+   *
+   * @ORM\Column(name="duree", type="integer")
+   */
+  private $duree;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * @var \LGPReservationBundle\Entity\ReservationEnseignement
+   *
+   * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", inversedBy="seancesDeCours")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $reservationEnseignement;
 
-    /**
-     * Set resume
-     *
-     * @param string $resume
-     *
-     * @return SeanceDeCours
-     */
-    public function setResume($resume)
-    {
-        $this->resume = $resume;
-    
-        return $this;
-    }
+  /**
+   * @var \LGPUserBundle\Entity\Prof
+   *
+   * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seancesDeCours")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $prof;
 
-    /**
-     * Get resume
-     *
-     * @return string
-     */
-    public function getResume()
-    {
-        return $this->resume;
-    }
+  public function __construct()
+  {
+    $this->date = new \DateTime();
+  }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return SeanceDeCours
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    
-        return $this;
-    }
+  /**
+   * Get id
+   *
+   * @return integer
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
+  /**
+   * Set resume
+   *
+   * @param string $resume
+   *
+   * @return SeanceDeCours
+   */
+  public function setResume($resume)
+  {
+    $this->resume = $resume;
 
-    /**
-     * Set nbHeures
-     *
-     * @param integer $nbHeures
-     *
-     * @return SeanceDeCours
-     */
-    public function setNbHeures($nbHeures)
-    {
-        $this->nbHeures = $nbHeures;
-    
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get nbHeures
-     *
-     * @return integer
-     */
-    public function getNbHeures()
-    {
-        return $this->nbHeures;
-    }
+  /**
+   * Get resume
+   *
+   * @return string
+   */
+  public function getResume()
+  {
+    return $this->resume;
+  }
 
-    /**
-     * Set jourDeCours
-     *
-     * @param \LGP\ReservationBundle\Entity\JourDeCours $jourDeCours
-     *
-     * @return SeanceDeCours
-     */
-    public function setJourDeCours(\LGP\ReservationBundle\Entity\JourDeCours $jourDeCours = null)
-    {
-        $this->jourDeCours = $jourDeCours;
-    
-        return $this;
-    }
+  /**
+   * Set date
+   *
+   * @param \DateTime $date
+   *
+   * @return SeanceDeCours
+   */
+  public function setDate($date)
+  {
+    $this->date = $date;
 
-    /**
-     * Get jourDeCours
-     *
-     * @return \LGP\ReservationBundle\Entity\JourDeCours
-     */
-    public function getJourDeCours()
-    {
-        return $this->jourDeCours;
-    }
+    return $this;
+  }
 
-    /**
-     * Set prof
-     *
-     * @param \LGP\UserBundle\Entity\Prof $prof
-     *
-     * @return SeanceDeCours
-     */
-    public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
-    {
-        $this->prof = $prof;
-    
-        return $this;
-    }
+  /**
+   * Get date
+   *
+   * @return \DateTime
+   */
+  public function getDate()
+  {
+    return $this->date;
+  }
 
-    /**
-     * Get prof
-     *
-     * @return \LGP\UserBundle\Entity\Prof
-     */
-    public function getProf()
-    {
-        return $this->prof;
-    }
+  /**
+   * Set duree
+   *
+   * @param integer $duree
+   *
+   * @return SeanceDeCours
+   */
+  public function setDuree($duree)
+  {
+    $this->duree = $duree;
+
+    return $this;
+  }
+
+  /**
+   * Get duree
+   *
+   * @return integer
+   */
+  public function getDuree()
+  {
+    return $this->duree;
+  }
+
+  /**
+   * Set prof
+   *
+   * @param \LGP\UserBundle\Entity\Prof $prof
+   *
+   * @return SeanceDeCours
+   */
+  public function setProf(\LGP\UserBundle\Entity\Prof $prof = null)
+  {
+    $this->prof = $prof;
+
+    return $this;
+  }
+
+  /**
+   * Get prof
+   *
+   * @return \LGP\UserBundle\Entity\Prof
+   */
+  public function getProf()
+  {
+    return $this->prof;
+  }
+
+  /**
+   * Set reservationEnseignement
+   *
+   * @param \LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement
+   *
+   * @return SeanceDeCours
+   */
+  public function setReservationEnseignement(\LGP\ReservationBundle\Entity\ReservationEnseignement $reservationEnseignement = null)
+  {
+    $this->reservationEnseignement = $reservationEnseignement;
+
+    return $this;
+  }
+
+  /**
+   * Get reservationEnseignement
+   *
+   * @return \LGP\ReservationBundle\Entity\ReservationEnseignement
+   */
+  public function getReservationEnseignement()
+  {
+    return $this->reservationEnseignement;
+  }
 }

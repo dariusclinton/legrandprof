@@ -1,7 +1,7 @@
 $(function () {
 
   $('.avis-table tbody tr a.show-avis-link').click(function (e) {
-    $('.avis-details').html('<img src="{{ asset(\'images / ajax - loader.gif\') }}" width="2" height="2">');
+    $('.avis-details').html('<span><i class="fa fa-spinner fa-4x fa-spin"></i></span>');
 
     var url = $(this).attr('href');
 

@@ -11,34 +11,37 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class EvaluationType extends AbstractType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('date', DateType::class, array(
-              'years'       => range(2016, 2016),
-              'placeholder' => '--'
-            ))
-            ->add('lieu', TextType::class)
-            ->add('cours', EntityType::class, array(
-              'class'        => 'LGPCourseBundle:Cours',
-              'choice_label' => 'intitule',
-              'multiple'     => false,
-              'placeholder'  => '--'
-            ))
-        ;
-    }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'LGP\CourseBundle\Entity\Evaluation'
-        ));
-    }
+  /**
+   * @param FormBuilderInterface $builder
+   * @param array $options
+   */
+  public function buildForm(FormBuilderInterface $builder, array $options)
+  {
+    $builder
+      ->add('date', DateType::class, array(
+        'years' => range(2016, 2020),
+        'placeholder' => array(
+          'year' => 'Year', 'month' => 'Month', 'day' => 'Day'
+        ),
+        'attr' => array(
+          'class' => 'form-control'
+        )
+      ))
+      ->add('duree', TextType::class, array(
+        'label' => 'Durée (heures)',
+        'attr' => array(
+          'class' => 'form-control'
+        )
+      ));
+  }
+
+  /**
+   * @param OptionsResolver $resolver
+   */
+  public function configureOptions(OptionsResolver $resolver)
+  {
+    $resolver->setDefaults(array(
+      'data_class' => 'LGP\CourseBundle\Entity\Evaluation'
+    ));
+  }
 }

@@ -75,6 +75,7 @@ class ReservationEnseignement
    * @var \LGP\CourseBundle\Entity\ProgrammeDeCours
    *
    * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ProgrammeDeCours", inversedBy="reservationEnseignement", cascade={"persist", "remove"})
+   * @ORM\JoinColumn(nullable=false)
    */
   private $programmeDeCours;
 
@@ -92,6 +93,22 @@ class ReservationEnseignement
    */
   private $enseignement;
 
+  /**
+   * @var \LGPCourseBundle\Entity\Evaluation
+   *
+   * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="reservationEnseignement",  cascade={"persist", "remove"})
+   *
+   */
+  private $evaluations;
+
+  /**
+   * @var \LGPCourseBundle\Entity\SeanceDeCours
+   *
+   * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="reservationEnseignement",  cascade={"persist", "remove"})
+   *
+   */
+  private $seancesDeCours;
+
 
   /**
    * Constructor
@@ -99,6 +116,8 @@ class ReservationEnseignement
   public function __construct()
   {
     $this->joursDeCours = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->seancesDeCours = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
   }
 
   /**
@@ -359,5 +378,77 @@ class ReservationEnseignement
   public function getEnseignement()
   {
     return $this->enseignement;
+  }
+
+  /**
+   * Add seancesDeCour
+   *
+   * @param \LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour
+   *
+   * @return ReservationEnseignement
+   */
+  public function addSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
+  {
+    $this->seancesDeCours[] = $seancesDeCour;
+
+    $seancesDeCour->setReservationEnseignement($this);
+
+    return $this;
+  }
+
+  /**
+   * Remove seancesDeCour
+   *
+   * @param \LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour
+   */
+  public function removeSeancesDeCour(\LGP\CourseBundle\Entity\SeanceDeCours $seancesDeCour)
+  {
+    $this->seancesDeCours->removeElement($seancesDeCour);
+  }
+
+  /**
+   * Get seancesDeCours
+   *
+   * @return \Doctrine\Common\Collections\Collection
+   */
+  public function getSeancesDeCours()
+  {
+    return $this->seancesDeCours;
+  }
+
+  /**
+   * Add evaluation
+   *
+   * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+   *
+   * @return ReservationEnseignement
+   */
+  public function addEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+  {
+    $this->evaluations[] = $evaluation;
+
+    $evaluation->setReservationEnseignement($this);
+
+    return $this;
+  }
+
+  /**
+   * Remove evaluation
+   *
+   * @param \LGP\CourseBundle\Entity\Evaluation $evaluation
+   */
+  public function removeEvaluation(\LGP\CourseBundle\Entity\Evaluation $evaluation)
+  {
+    $this->evaluations->removeElement($evaluation);
+  }
+
+  /**
+   * Get evaluations
+   *
+   * @return \Doctrine\Common\Collections\Collection
+   */
+  public function getEvaluations()
+  {
+    return $this->evaluations;
   }
 }

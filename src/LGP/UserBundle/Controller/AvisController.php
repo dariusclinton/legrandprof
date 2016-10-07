@@ -28,14 +28,15 @@ class AvisController extends Controller {
     
     $avis = $rep->findBy(array('user' => $user));
     
-    // S'il s'agit d'un prof on recupere les avis qui a recu
+    // S'il s'agit d'un prof on recupere les avis non lu
     if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
       if ($request->get('is_read')) {
         $avisNotRead = $rep->findBy(array('prof' => $user, 'isRead' => false));
         
         return new \Symfony\Component\HttpFoundation\Response(count($avisNotRead));
       }
-      
+
+      // Avis recu par le prof
       $avisReceived = $rep->findBy(array('prof' => $user));
       
       return $this->render('LGPUserBundle:Avis:index.html.twig', array(
