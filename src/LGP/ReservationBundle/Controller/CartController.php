@@ -17,6 +17,12 @@ class CartController extends Controller {
         $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $session = $request->getSession();
         $panier = $session->get('panier');
+        $step = $session->get('step');
+        if(!$step)
+            $session->set('step', 'step1');
+        $step = 'step1';
+        $session->set('step', $step);
+
         $params = array('profRep' => $profRep, 'coursRep' => $coursRep, 'ensRep' => $ensRep, 'panier' => $panier);
         return $this->render('LGPReservationBundle:Cart:cart.html.twig', array('params' => $params));
     }
