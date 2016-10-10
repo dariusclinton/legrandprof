@@ -179,7 +179,7 @@ interface AdminInterface
     public function getManagerType();
 
     /**
-     * @param string $context NEXT_MAJOR: remove this argument
+     * @param string $context
      *
      * @return ProxyQueryInterface
      */
@@ -216,13 +216,13 @@ interface AdminInterface
     /**
      * @return Request
      *
-     * @throws \RuntimeException if no request is set
+     * @throws \RuntimeException if no request is set.
      */
     public function getRequest();
 
     /**
      * @return bool true if a request object is linked to this Admin, false
-     *              otherwise
+     *              otherwise.
      */
     public function hasRequest();
 
@@ -268,16 +268,12 @@ interface AdminInterface
     /**
      * translate a message id.
      *
-     * NEXT_MAJOR: remove this method
-     *
      * @param string $id
      * @param array  $parameters
      * @param null   $domain
      * @param null   $locale
      *
      * @return string the translated string
-     *
-     * @deprecated since 3.x, to be removed in 4.0
      */
     public function trans($id, array $parameters = array(), $domain = null, $locale = null);
 
@@ -941,12 +937,11 @@ interface AdminInterface
     public function getPersistentParameters();
 
     /**
-     * NEXT_MAJOR: remove this signature
      * Get breadcrumbs for $action.
      *
      * @param string $action
      *
-     * @return mixed array|Traversable
+     * @return array
      */
     public function getBreadcrumbs($action);
 
@@ -1055,41 +1050,4 @@ interface AdminInterface
 //     * @return bool
 //     */
 //    public function hasAccess($action, $object = null);
-
-    //TODO: uncomment this method for 4.0
-    /*
-     * Returns the result link for an object.
-     *
-     * @param mixed $object
-     *
-     * @return string|null
-     */
-    //public function getSearchResultLink($object)
-
-//    TODO: uncomment this method in 4.0
-//    /**
-//     * Setting to true will enable mosaic button for the admin screen.
-//     * Setting to false will hide mosaic button for the admin screen.
-//     *
-//     * @param bool $isShown
-//     */
-//    public function showMosaicButton($isShown);
-
-    /*
-     * Checks if a filter type is set to a default value
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-//    NEXT_MAJOR: uncomment this method in 4.0
-    // public function isDefaultFilter($name);
-
-    /*
-     * Returns a list of default filters.
-     *
-     * @return array
-     */
-//    NEXT_MAJOR: uncomment this method in 4.0
-    // public function getDefaultFilterValues();
 }

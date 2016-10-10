@@ -63,9 +63,6 @@ class CRUDController extends Controller
      */
     public function render($view, array $parameters = array(), Response $response = null)
     {
-        if (!$this->isXmlHttpRequest()) {
-            $parameters['breadcrumbs_builder'] = $this->get('sonata.admin.breadcrumbs_builder');
-        }
         $parameters['admin'] = isset($parameters['admin']) ?
             $parameters['admin'] :
             $this->admin;
@@ -185,7 +182,7 @@ class CRUDController extends Controller
 
                 $this->addFlash(
                     'sonata_flash_success',
-                    $this->trans(
+                    $this->admin->trans(
                         'flash_delete_success',
                         array('%name%' => $this->escapeHtml($objectName)),
                         'SonataAdminBundle'
@@ -200,7 +197,7 @@ class CRUDController extends Controller
 
                 $this->addFlash(
                     'sonata_flash_error',
-                    $this->trans(
+                    $this->admin->trans(
                         'flash_delete_error',
                         array('%name%' => $this->escapeHtml($objectName)),
                         'SonataAdminBundle'
@@ -277,7 +274,7 @@ class CRUDController extends Controller
 
                     $this->addFlash(
                         'sonata_flash_success',
-                        $this->trans(
+                        $this->admin->trans(
                             'flash_edit_success',
                             array('%name%' => $this->escapeHtml($this->admin->toString($object))),
                             'SonataAdminBundle'
@@ -291,7 +288,7 @@ class CRUDController extends Controller
 
                     $isFormValid = false;
                 } catch (LockException $e) {
-                    $this->addFlash('sonata_flash_error', $this->trans('flash_lock_error', array(
+                    $this->addFlash('sonata_flash_error', $this->admin->trans('flash_lock_error', array(
                         '%name%' => $this->escapeHtml($this->admin->toString($object)),
                         '%link_start%' => '<a href="'.$this->admin->generateObjectUrl('edit', $object).'">',
                         '%link_end%' => '</a>',
@@ -304,7 +301,7 @@ class CRUDController extends Controller
                 if (!$this->isXmlHttpRequest()) {
                     $this->addFlash(
                         'sonata_flash_error',
-                        $this->trans(
+                        $this->admin->trans(
                             'flash_edit_error',
                             array('%name%' => $this->escapeHtml($this->admin->toString($object))),
                             'SonataAdminBundle'
@@ -371,15 +368,6 @@ class CRUDController extends Controller
             unset($data['_sonata_csrf_token']);
         }
 
-        // NEXT_MAJOR: Remove reflection check.
-        $reflector = new \ReflectionMethod($this->admin, 'getBatchActions');
-        if ($reflector->getDeclaringClass()->getName() === get_class($this->admin)) {
-            @trigger_error('Override Sonata\AdminBundle\Admin\AbstractAdmin::getBatchActions method'
-                .' is deprecated since version 3.2.'
-                .' Use Sonata\AdminBundle\Admin\AbstractAdmin::configureBatchActions instead.'
-                .' The method will be final in 4.0.', E_USER_DEPRECATED
-            );
-        }
         $batchActions = $this->admin->getBatchActions();
         if (!array_key_exists($action, $batchActions)) {
             throw new \RuntimeException(sprintf('The `%s` batch action is not defined', $action));
@@ -417,17 +405,14 @@ class CRUDController extends Controller
             true;
 
         if ($askConfirmation && $confirmation != 'ok') {
-            $actionLabel = $batchActions[$action]['label'];
-            $batchTranslationDomain = isset($batchActions[$action]['translation_domain']) ?
-                $batchActions[$action]['translation_domain'] :
-                $this->admin->getTranslationDomain();
+            $translationDomain = $batchActions[$action]['translation_domain'] ?: $this->admin->getTranslationDomain();
+            $actionLabel = $this->admin->trans($batchActions[$action]['label'], array(), $translationDomain);
 
             $formView = $datagrid->getForm()->createView();
 
             return $this->render($this->admin->getTemplate('batch_confirmation'), array(
                 'action' => 'list',
                 'action_label' => $actionLabel,
-                'batch_translation_domain' => $batchTranslationDomain,
                 'datagrid' => $datagrid,
                 'form' => $formView,
                 'data' => $data,
@@ -526,7 +511,7 @@ class CRUDController extends Controller
 
                     $this->addFlash(
                         'sonata_flash_success',
-                        $this->trans(
+                        $this->admin->trans(
                             'flash_create_success',
                             array('%name%' => $this->escapeHtml($this->admin->toString($object))),
                             'SonataAdminBundle'
@@ -547,7 +532,7 @@ class CRUDController extends Controller
                 if (!$this->isXmlHttpRequest()) {
                     $this->addFlash(
                         'sonata_flash_error',
-                        $this->trans(
+                        $this->admin->trans(
                             'flash_create_error',
                             array('%name%' => $this->escapeHtml($this->admin->toString($object))),
                             'SonataAdminBundle'
@@ -846,7 +831,7 @@ class CRUDController extends Controller
      *
      * @return Response|RedirectResponse
      *
-     * @throws AccessDeniedException If access is not granted
+     * @throws AccessDeniedException If access is not granted.
      * @throws NotFoundHttpException If the object does not exist or the ACL is not enabled
      */
     public function aclAction($id = null)
@@ -1022,9 +1007,9 @@ class CRUDController extends Controller
     {
         if ($this->container->has('logger')) {
             return $this->container->get('logger');
+        } else {
+            return new NullLogger();
         }
-
-        return new NullLogger();
     }
 
     /**
@@ -1363,22 +1348,5 @@ class CRUDController extends Controller
      */
     protected function preList(Request $request)
     {
-    }
-
-    /**
-     * Translate a message id.
-     *
-     * @param string $id
-     * @param array  $parameters
-     * @param string $domain
-     * @param string $locale
-     *
-     * @return string translated string
-     */
-    final protected function trans($id, array $parameters = array(), $domain = null, $locale = null)
-    {
-        $domain = $domain ?: $this->admin->getTranslationDomain();
-
-        return $this->get('translator')->trans($id, $parameters, $domain, $locale);
     }
 }

@@ -13,13 +13,12 @@ namespace Sonata\AdminBundle\Tests\Block;
 
 use Sonata\AdminBundle\Admin\Pool;
 use Sonata\AdminBundle\Block\AdminListBlockService;
-use Sonata\AdminBundle\Tests\Fixtures\Block\FakeBlockService;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Tests\Block\AbstractBlockServiceTest;
 
 /**
  * @author Sullivan Senechal <soullivaneuh@gmail.com>
  */
-class AdminListBlockServiceTest extends AbstractBlockServiceTestCase
+class AdminListBlockServiceTest extends AbstractBlockServiceTest
 {
     /**
      * @var Pool

@@ -22,10 +22,8 @@ use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 interface BuilderInterface
 {
     /**
-     * Adds missing information to the given field description from the model manager metadata, and the given admin.
-     *
-     * @param AdminInterface            $admin            will be used to gather information
-     * @param FieldDescriptionInterface $fieldDescription will be modified
+     * @param AdminInterface            $admin
+     * @param FieldDescriptionInterface $fieldDescription
      */
     public function fixFieldDescription(AdminInterface $admin, FieldDescriptionInterface $fieldDescription);
 }

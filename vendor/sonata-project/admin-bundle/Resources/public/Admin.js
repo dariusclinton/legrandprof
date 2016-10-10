@@ -56,7 +56,7 @@ var Admin = {
         });
     },
     setup_select2: function(subject) {
-        if (window.SONATA_CONFIG && window.SONATA_CONFIG.USE_SELECT2) {
+        if (window.SONATA_CONFIG && window.SONATA_CONFIG.USE_SELECT2 && window.Select2) {
             Admin.log('[core|setup_select2] configure Select2 on', subject);
 
             jQuery('select:not([data-sonata-select2="false"])', subject).each(function() {
@@ -74,9 +74,7 @@ var Admin = {
 
                 select.select2({
                     width: function(){
-                        // Select2 v3 and v4 BC. If window.Select2 is defined, then the v3 is installed.
-                        // NEXT_MAJOR: Remove Select2 v3 support.
-                        return Admin.get_select2_width(window.Select2 ? this.element : jQuery(this));
+                        return Admin.get_select2_width(this.element);
                     },
                     dropdownAutoWidth: true,
                     minimumResultsForSearch: 10,
@@ -448,9 +446,7 @@ var Admin = {
 
         subject.select2({
             width: function(){
-                // Select2 v3 and v4 BC. If window.Select2 is defined, then the v3 is installed.
-                // NEXT_MAJOR: Remove Select2 v3 support.
-                return Admin.get_select2_width(window.Select2 ? this.element : jQuery(this));
+                return Admin.get_select2_width(this.element);
             },
             dropdownAutoWidth: true,
             data: transformedData,

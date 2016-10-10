@@ -11,8 +11,6 @@
 
 namespace Sonata\AdminBundle\Tests\Controller;
 
-use Exporter\Exporter;
-use Exporter\Writer\JsonWriter;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Admin\FieldDescriptionCollection;
 use Sonata\AdminBundle\Admin\Pool;
@@ -110,11 +108,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
     private $kernel;
 
     /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
      * {@inheritdoc}
      */
     protected function setUp()
@@ -126,7 +119,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->pool->setAdminServiceIds(array('foo.admin'));
         $this->request->attributes->set('_sonata_admin', 'foo.admin');
         $this->admin = $this->getMock('Sonata\AdminBundle\Admin\AdminInterface');
-        $this->translator = $this->getMock('Symfony\Component\Translation\TranslatorInterface');
         $this->parameters = array();
         $this->template = '';
 
@@ -168,7 +160,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $request = $this->request;
         $admin = $this->admin;
         $session = $this->session;
-        $translator = $this->translator;
 
         $twig = $this->getMockBuilder('Twig_Environment')
             ->disableOriginalConstructor()
@@ -187,16 +178,11 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
                 }
             }));
 
-        // NEXT_MAJOR : require sonata/exporter ^1.7 and remove conditional
-        if (class_exists('Exporter\Exporter')) {
-            $exporter = new Exporter(array(new JsonWriter('/tmp/sonataadmin/export.json')));
-        } else {
-            $exporter = $this->getMock('Sonata\AdminBundle\Export\Exporter');
+        $exporter = $this->getMock('Sonata\AdminBundle\Export\Exporter');
 
-            $exporter->expects($this->any())
-                ->method('getResponse')
-                ->will($this->returnValue(new StreamedResponse()));
-        }
+        $exporter->expects($this->any())
+            ->method('getResponse')
+            ->will($this->returnValue(new StreamedResponse()));
 
         $this->auditManager = $this->getMockBuilder('Sonata\AdminBundle\Model\AuditManager')
             ->disableOriginalConstructor()
@@ -248,6 +234,7 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
             $this->csrfProvider->expects($this->any())
                 ->method('isTokenValid')
                 ->will($this->returnCallback(function (CsrfToken $token) {
+
                     if ($token->getValue() == 'csrf-token-123_'.$token->getId()) {
                         return true;
                     }
@@ -286,8 +273,7 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
                 $requestStack,
                 $csrfProvider,
                 $logger,
-                $kernel,
-                $translator
+                $kernel
             ) {
                 switch ($id) {
                     case 'sonata.admin.pool':
@@ -317,8 +303,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
                         return $logger;
                     case 'kernel':
                         return $kernel;
-                    case 'translator':
-                        return $translator;
                 }
             }));
 
@@ -332,7 +316,7 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
                     return true;
                 }
 
-                if ($id == 'security.csrf.token_manager' && Kernel::MAJOR_VERSION >= 3 && $tthis->getCsrfProvider() !== null) {
+                if ($id == 'security.csrf.token_manager' && Kernel::MAJOR_VERSION >= 3  && $tthis->getCsrfProvider() !== null) {
                     return true;
                 }
 
@@ -345,10 +329,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
                 }
 
                 if ($id == 'templating') {
-                    return true;
-                }
-
-                if ($id == 'translator') {
                     return true;
                 }
 
@@ -794,8 +774,8 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $modelManager->expects($this->once())
             ->method('batchDelete')
             ->will($this->returnCallback(function () {
-                throw new ModelManagerException();
-            }));
+                    throw new ModelManagerException();
+                }));
 
         $this->admin->expects($this->once())
             ->method('getModelManager')
@@ -1165,8 +1145,8 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->admin->expects($this->once())
             ->method('delete')
             ->will($this->returnCallback(function () {
-                throw new ModelManagerException();
-            }));
+                    throw new ModelManagerException();
+                }));
 
         $this->kernel->expects($this->once())
             ->method('isDebug')
@@ -3237,11 +3217,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->controller->batchAction($this->request);
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionActionNotDefined()
     {
         $this->setExpectedException('RuntimeException', 'The `foo` batch action is not defined');
@@ -3273,11 +3248,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionMethodNotExist()
     {
         $this->setExpectedException('RuntimeException', 'A `Sonata\AdminBundle\Controller\CRUDController::batchActionFoo` method must be callable');
@@ -3300,11 +3270,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->controller->batchAction($this->request);
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionWithoutConfirmation()
     {
         $batchActions = array('delete' => array('label' => 'Foo Bar', 'ask_confirmation' => false));
@@ -3355,11 +3320,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('list?', $result->getTargetUrl());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionWithoutConfirmation2()
     {
         $batchActions = array('delete' => array('label' => 'Foo Bar', 'ask_confirmation' => false));
@@ -3411,11 +3371,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('list?', $result->getTargetUrl());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionWithConfirmation()
     {
         $batchActions = array('delete' => array('label' => 'Foo Bar', 'translation_domain' => 'FooBarBaz', 'ask_confirmation' => true));
@@ -3423,6 +3378,11 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->admin->expects($this->once())
             ->method('getBatchActions')
             ->will($this->returnValue($batchActions));
+
+        $this->admin->expects($this->once())
+            ->method('trans')
+            ->with($this->equalTo('Foo Bar'), $this->anything(), $this->equalTo('FooBarBaz'))
+            ->will($this->returnValue('Foo Bar'));
 
         $data = array('action' => 'delete', 'idx' => array('123', '456'), 'all_elements' => false);
 
@@ -3465,11 +3425,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('SonataAdminBundle:CRUD:batch_confirmation.html.twig', $this->template);
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionNonRelevantAction()
     {
         $controller = new BatchAdminController();
@@ -3499,11 +3454,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('list?', $result->getTargetUrl());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionNonRelevantAction2()
     {
         $controller = new BatchAdminController();
@@ -3533,11 +3483,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('list?', $result->getTargetUrl());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionNoItems()
     {
         $batchActions = array('delete' => array('label' => 'Foo Bar', 'ask_confirmation' => true));
@@ -3564,11 +3509,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('list?', $result->getTargetUrl());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionNoItemsEmptyQuery()
     {
         $controller = new BatchAdminController();
@@ -3612,11 +3552,6 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('batchActionBar executed', $result->getContent());
     }
 
-    /**
-     * NEXT_MAJOR: Remove this legacy group.
-     *
-     * @group legacy
-     */
     public function testBatchActionWithRequesData()
     {
         $batchActions = array('delete' => array('label' => 'Foo Bar', 'ask_confirmation' => false));
@@ -3695,8 +3630,8 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
         $subject->expects($this->once())
             ->method($method)
             ->will($this->returnCallback(function () use ($exception) {
-                throw $exception;
-            }));
+                    throw $exception;
+                }));
 
         $this->logger->expects($this->once())
             ->method('error')
@@ -3708,7 +3643,7 @@ class CRUDControllerTest extends \PHPUnit_Framework_TestCase
 
     private function expectTranslate($id, array $parameters = array(), $domain = null, $locale = null)
     {
-        $this->translator->expects($this->once())
+        $this->admin->expects($this->once())
             ->method('trans')
             ->with($this->equalTo($id), $this->equalTo($parameters), $this->equalTo($domain), $this->equalTo($locale))
             ->will($this->returnValue($id));

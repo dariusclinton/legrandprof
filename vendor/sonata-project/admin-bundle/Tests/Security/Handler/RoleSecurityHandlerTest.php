@@ -84,6 +84,7 @@ class RoleSecurityHandlerTest extends \PHPUnit_Framework_TestCase
         $this->authorizationChecker->expects($this->any())
             ->method('isGranted')
             ->will($this->returnCallback(function (array $attributes, $object) {
+
                 if (in_array('ROLE_BATMAN', $attributes)) {
                     return true;
                 }
@@ -101,10 +102,6 @@ class RoleSecurityHandlerTest extends \PHPUnit_Framework_TestCase
                 }
 
                 if (in_array('ROLE_FOO_BAR_DEF', $attributes) && is_a($object, 'stdClass')) {
-                    return true;
-                }
-
-                if (in_array('ROLE_FOO_BAR_BAZ_ALL', $attributes)) {
                     return true;
                 }
 
@@ -177,10 +174,6 @@ class RoleSecurityHandlerTest extends \PHPUnit_Framework_TestCase
             array(false, array(), 'foo.bar.baz.xyz', 'BAZ', new \stdClass()),
             array(false, array(), 'foo.bar.baz.xyz', array('BAZ'), new \stdClass()),
             array(false, array('ROLE_AUTH_EXCEPTION'), 'foo.bar.baz.xyz', array('BAZ'), new \stdClass()),
-
-            // ALL role
-            array(true, array(), 'foo.bar.baz', 'LIST'),
-            array(true, array(), 'foo.bar.baz', array('LIST', 'EDIT')),
         );
     }
 

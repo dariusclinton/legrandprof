@@ -75,15 +75,11 @@ class AdminPoolLoader extends Loader
             }
 
             $reflection = new \ReflectionObject($admin);
-            if (file_exists($reflection->getFileName())) {
-                $collection->addResource(new FileResource($reflection->getFileName()));
-            }
+            $collection->addResource(new FileResource($reflection->getFileName()));
         }
 
         $reflection = new \ReflectionObject($this->container);
-        if (file_exists($reflection->getFileName())) {
-            $collection->addResource(new FileResource($reflection->getFileName()));
-        }
+        $collection->addResource(new FileResource($reflection->getFileName()));
 
         return $collection;
     }

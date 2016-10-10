@@ -65,8 +65,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             Doctrine\\\Orm|Doctrine\\\Phpcr|Doctrine\\\MongoDB|Doctrine\\\CouchDB
         )\\\(.*)@x';
 
-    const MOSAIC_ICON_CLASS = 'fa fa-th-large fa-fw';
-
     /**
      * The list FieldDescription constructed from the configureListField method.
      *
@@ -280,11 +278,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     /**
      * The translator component.
      *
-     * NEXT_MAJOR: remove this property
-     *
      * @var \Symfony\Component\Translation\TranslatorInterface
-     *
-     * @deprecated since 3.x, to be removed with 4.0
      */
     protected $translator;
 
@@ -337,8 +331,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
 
     /**
      * The generated breadcrumbs.
-     *
-     * NEXT_MAJOR : remove this property
      *
      * @var array
      */
@@ -424,19 +416,12 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
 
     protected $cacheIsGranted = array();
 
-    /**
-     * Action list for the search result.
-     *
-     * @var string[]
-     */
-    protected $searchResultActions = array('edit', 'show');
-
     protected $listModes = array(
         'list' => array(
             'class' => 'fa fa-list fa-fw',
         ),
         'mosaic' => array(
-            'class' => self::MOSAIC_ICON_CLASS,
+            'class' => 'fa fa-th-large fa-fw',
         ),
     );
 
@@ -533,13 +518,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
     private $managerType;
 
     /**
-     * The breadcrumbsBuilder component.
-     *
-     * @var BreadcrumbsBuilderInterface
-     */
-    private $breadcrumbsBuilder;
-
-    /**
      * @param string $code
      * @param string $class
      * @param string $baseControllerName
@@ -588,22 +566,7 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
         $datagrid = $this->getDatagrid();
         $datagrid->buildPager();
 
-        $fields = array();
-
-        foreach ($this->getExportFields() as $key => $field) {
-            $label = $this->getTranslationLabel($field, 'export', 'label');
-            $transLabel = $this->trans($label);
-
-            // NEXT_MAJOR: Remove this hack, because all field labels will be translated with the major release
-            // No translation key exists
-            if ($transLabel == $label) {
-                $fields[$key] = $field;
-            } else {
-                $fields[$transLabel] = $field;
-            }
-        }
-
-        return $this->getModelManager()->getDataSourceIterator($datagrid, $fields);
+        return $this->getModelManager()->getDataSourceIterator($datagrid, $this->getExportFields());
     }
 
     /**
@@ -782,7 +745,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             $parameters = array_merge(
                 $this->getModelManager()->getDefaultSortValues($this->getClass()),
                 $this->datagridValues,
-                $this->getDefaultFilterValues(),
                 $filters
             );
 
@@ -1092,8 +1054,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
             );
         }
 
-        $actions = $this->configureBatchActions($actions);
-
         foreach ($this->getExtensions() as $extension) {
             // TODO: remove method check in next major release
             if (method_exists($extension, 'configureBatchActions')) {
@@ -1341,12 +1301,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function createQuery($context = 'list')
     {
-        if (func_num_args() > 0) {
-            @trigger_error(
-                'The $context argument of '.__METHOD__.' is deprecated since 3.3, to be removed in 4.0.',
-                E_USER_DEPRECATED
-            );
-        }
         $query = $this->getModelManager()->createQuery($this->class);
 
         foreach ($this->extensions as $extension) {
@@ -1379,7 +1333,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
 
         $menu = $this->menuFactory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
-        $menu->setExtra('translation_domain', $this->translationDomain);
 
         // Prevents BC break with KnpMenuBundle v1.x
         if (method_exists($menu, 'setCurrentUri')) {
@@ -1646,19 +1599,6 @@ abstract class AbstractAdmin implements AdminInterface, DomainObjectInterface
      */
     public function setSubject($subject)
     {
-        if (is_object($subject) && !is_a($subject, $this->class, true)) {
-            $message = <<<'EOT'
-You are trying to set entity an instance of "%s",
-which is not the one registered with this admin class ("%s").
-This is deprecated since 3.5 and will no longer be supported in 4.0.
-EOT;
-
-            @trigger_error(
-                sprintf($message, get_class($subject), $this->class),
-                E_USER_DEPRECATED
-            ); // NEXT_MAJOR : throw an exception instead
-        }
-
         $this->subject = $subject;
     }
 
@@ -1669,7 +1609,11 @@ EOT;
     {
         if ($this->subject === null && $this->request) {
             $id = $this->request->get($this->getIdParameter());
-            $this->subject = $this->getModelManager()->find($this->class, $id);
+            if (!preg_match('#^[0-9A-Fa-f\-]+$#', $id)) {
+                $this->subject = false;
+            } else {
+                $this->subject = $this->getModelManager()->find($this->class, $id);
+            }
         }
 
         return $this->subject;
@@ -2003,13 +1947,20 @@ EOT;
      */
     public function getBreadcrumbs($action)
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
-            ' Use Sonata\AdminBundle\Admin\BreadcrumbsBuilder::getBreadcrumbs instead.',
-            E_USER_DEPRECATED
-        );
+        if ($this->isChild()) {
+            return $this->getParent()->getBreadcrumbs($action);
+        }
 
-        return $this->getBreadcrumbsBuilder()->getBreadcrumbs($this, $action);
+        $menu = $this->buildBreadcrumbs($action);
+
+        do {
+            $breadcrumbs[] = $menu;
+        } while ($menu = $menu->getParent());
+
+        $breadcrumbs = array_reverse($breadcrumbs);
+        array_shift($breadcrumbs);
+
+        return $breadcrumbs;
     }
 
     /**
@@ -2024,55 +1975,54 @@ EOT;
      */
     public function buildBreadcrumbs($action, MenuItemInterface $menu = null)
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.',
-            E_USER_DEPRECATED
-        );
-
         if (isset($this->breadcrumbs[$action])) {
             return $this->breadcrumbs[$action];
         }
 
-        return $this->breadcrumbs[$action] = $this->getBreadcrumbsBuilder()
-            ->buildBreadcrumbs($this, $action, $menu);
-    }
+        if (!$menu) {
+            $menu = $this->menuFactory->createItem('root');
 
-    /**
-     * NEXT_MAJOR : remove this method.
-     *
-     * @return BreadcrumbsBuilderInterface
-     */
-    final public function getBreadcrumbsBuilder()
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
-            ' Use the sonata.admin.breadcrumbs_builder service instead.',
-            E_USER_DEPRECATED
-        );
-        if ($this->breadcrumbsBuilder === null) {
-            $this->breadcrumbsBuilder = new BreadcrumbsBuilder($this->getConfigurationPool()->getContainer()->getParameter('sonata.admin.configuration.breadcrumbs'));
+            $menu = $menu->addChild(
+                $this->trans($this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'), array(), 'SonataAdminBundle'),
+                array('uri' => $this->routeGenerator->generate('sonata_admin_dashboard'))
+            );
         }
 
-        return $this->breadcrumbsBuilder;
-    }
-
-    /**
-     * NEXT_MAJOR : remove this method.
-     *
-     * @param BreadcrumbsBuilderInterface
-     *
-     * @return AbstractAdmin
-     */
-    final public function setBreadcrumbsBuilder(BreadcrumbsBuilderInterface $value)
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.2 and will be removed in 4.0.'.
-            ' Use the sonata.admin.breadcrumbs_builder service instead.',
-            E_USER_DEPRECATED
+        $menu = $menu->addChild(
+            $this->trans($this->getLabelTranslatorStrategy()->getLabel(sprintf('%s_list', $this->getClassnameLabel()), 'breadcrumb', 'link')),
+            array('uri' => $this->hasRoute('list') && $this->isGranted('LIST') ? $this->generateUrl('list') : null)
         );
-        $this->breadcrumbsBuilder = $value;
 
-        return $this;
+        $childAdmin = $this->getCurrentChildAdmin();
+
+        if ($childAdmin) {
+            $id = $this->request->get($this->getIdParameter());
+
+            $menu = $menu->addChild(
+                $this->toString($this->getSubject()),
+                array('uri' => $this->hasRoute('edit') && $this->isGranted('EDIT') ? $this->generateUrl('edit', array('id' => $id)) : null)
+            );
+
+            return $childAdmin->buildBreadcrumbs($action, $menu);
+        }
+
+        if ($action === 'list' && $this->isChild()) {
+            $menu->setUri(false);
+        } elseif ($action !== 'create' && $this->hasSubject()) {
+            $menu = $menu->addChild($this->toString($this->getSubject()));
+        } else {
+            $menu = $menu->addChild(
+                $this->trans(
+                    $this->getLabelTranslatorStrategy()->getLabel(
+                        sprintf('%s_%s', $this->getClassnameLabel(), $action),
+                        'breadcrumb',
+                        'link'
+                    )
+                )
+            );
+        }
+
+        return $this->breadcrumbs[$action] = $menu;
     }
 
     /**
@@ -2112,20 +2062,17 @@ EOT;
      */
     public function trans($id, array $parameters = array(), $domain = null, $locale = null)
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
-            E_USER_DEPRECATED
-        );
-
         $domain = $domain ?: $this->getTranslationDomain();
+
+        if (!$this->translator) {
+            return $id;
+        }
 
         return $this->translator->trans($id, $parameters, $domain, $locale);
     }
 
     /**
      * Translate a message id.
-     *
-     * NEXT_MAJOR: remove this method
      *
      * @param string      $id
      * @param int         $count
@@ -2134,17 +2081,14 @@ EOT;
      * @param string|null $locale
      *
      * @return string the translated string
-     *
-     * @deprecated since 3.x, to be removed with 4.0
      */
     public function transChoice($id, $count, array $parameters = array(), $domain = null, $locale = null)
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
-            E_USER_DEPRECATED
-        );
-
         $domain = $domain ?: $this->getTranslationDomain();
+
+        if (!$this->translator) {
+            return $id;
+        }
 
         return $this->translator->transChoice($id, $count, $parameters, $domain, $locale);
     }
@@ -2167,35 +2111,17 @@ EOT;
 
     /**
      * {@inheritdoc}
-     *
-     * NEXT_MAJOR: remove this method
-     *
-     * @deprecated since 3.x, to be removed with 4.0
      */
     public function setTranslator(TranslatorInterface $translator)
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
-            E_USER_DEPRECATED
-        );
-
         $this->translator = $translator;
     }
 
     /**
      * {@inheritdoc}
-     *
-     * NEXT_MAJOR: remove this method
-     *
-     * @deprecated since 3.x, to be removed with 4.0
      */
     public function getTranslator()
     {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since version 3.x and will be removed in 4.0.'.
-            E_USER_DEPRECATED
-        );
-
         return $this->translator;
     }
 
@@ -2826,59 +2752,39 @@ EOT;
     {
         $list = array();
 
-        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))
-            && $this->hasAccess('create')
-            && $this->hasRoute('create')
-        ) {
+        if (in_array($action, array('tree', 'show', 'edit', 'delete', 'list', 'batch'))) {
             $list['create'] = array(
-                'template' => $this->getTemplate('button_create'),
+                'template' => 'SonataAdminBundle:Button:create_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'delete', 'acl', 'history'))
-            && $this->canAccessObject('edit', $object)
-            && $this->hasRoute('edit')
-        ) {
+        if (in_array($action, array('show', 'delete', 'acl', 'history')) && $object) {
             $list['edit'] = array(
-                'template' => $this->getTemplate('button_edit'),
+                'template' => 'SonataAdminBundle:Button:edit_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'edit', 'acl'))
-            && $this->canAccessObject('history', $object)
-            && $this->hasRoute('history')
-        ) {
+        if (in_array($action, array('show', 'edit', 'acl')) && $object) {
             $list['history'] = array(
-                'template' => $this->getTemplate('button_history'),
+                'template' => 'SonataAdminBundle:Button:history_button.html.twig',
             );
         }
 
-        if (in_array($action, array('edit', 'history'))
-            && $this->isAclEnabled()
-            && $this->canAccessObject('acl', $object)
-            && $this->hasRoute('acl')
-        ) {
+        if (in_array($action, array('edit', 'history')) && $object) {
             $list['acl'] = array(
-                'template' => $this->getTemplate('button_acl'),
+                'template' => 'SonataAdminBundle:Button:acl_button.html.twig',
             );
         }
 
-        if (in_array($action, array('edit', 'history', 'acl'))
-            && $this->canAccessObject('show', $object)
-            && count($this->getShow()) > 0
-            && $this->hasRoute('show')
-        ) {
+        if (in_array($action, array('edit', 'history', 'acl')) && $object) {
             $list['show'] = array(
-                'template' => $this->getTemplate('button_show'),
+                'template' => 'SonataAdminBundle:Button:show_button.html.twig',
             );
         }
 
-        if (in_array($action, array('show', 'edit', 'delete', 'acl', 'batch'))
-            && $this->hasAccess('list')
-            && $this->hasRoute('list')
-        ) {
+        if (in_array($action, array('show', 'edit', 'delete', 'acl', 'batch'))) {
             $list['list'] = array(
-                'template' => $this->getTemplate('button_list'),
+                'template' => 'SonataAdminBundle:Button:list_button.html.twig',
             );
         }
 
@@ -2918,7 +2824,7 @@ EOT;
             $actions['create'] = array(
                 'label' => 'link_add',
                 'translation_domain' => 'SonataAdminBundle',
-                'template' => $this->getTemplate('action_create'),
+                'template' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig',
                 'url' => $this->generateUrl('create'),
                 'icon' => 'plus-circle',
             );
@@ -2937,88 +2843,6 @@ EOT;
     }
 
     /**
-     * Setting to true will enable mosaic button for the admin screen.
-     * Setting to false will hide mosaic button for the admin screen.
-     *
-     * @param bool $isShown
-     */
-    final public function showMosaicButton($isShown)
-    {
-        if ($isShown) {
-            $this->listModes['mosaic'] = array('class' => self::MOSAIC_ICON_CLASS);
-        } else {
-            unset($this->listModes['mosaic']);
-        }
-    }
-
-    /**
-     * @param FormMapper $form
-     */
-    final public function getSearchResultLink($object)
-    {
-        foreach ($this->searchResultActions as $action) {
-            if ($this->hasRoute($action) && $this->hasAccess($action, $object)) {
-                return $this->generateObjectUrl($action, $object);
-            }
-        }
-
-        return;
-    }
-
-    /**
-     * Checks if a filter type is set to a default value.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    final public function isDefaultFilter($name)
-    {
-        $filter = $this->getFilterParameters();
-        $default = $this->getDefaultFilterValues();
-
-        if (!array_key_exists($name, $filter) || !array_key_exists($name, $default)) {
-            return false;
-        }
-
-        return $filter[$name] == $default[$name];
-    }
-
-    /**
-     * Check object existence and access, without throw Exception.
-     *
-     * @param string $action
-     * @param object $object
-     *
-     * @return bool
-     */
-    public function canAccessObject($action, $object)
-    {
-        return $object && $this->id($object) && $this->hasAccess($action, $object);
-    }
-
-    /**
-     * Returns a list of default filters.
-     *
-     * @return array
-     */
-    final protected function getDefaultFilterValues()
-    {
-        $defaultFilterValues = array();
-
-        $this->configureDefaultFilterValues($defaultFilterValues);
-
-        foreach ($this->getExtensions() as $extension) {
-            // NEXT_MAJOR: remove method check in next major release
-            if (method_exists($extension, 'configureDefaultFilterValues')) {
-                $extension->configureDefaultFilterValues($this, $defaultFilterValues);
-            }
-        }
-
-        return $defaultFilterValues;
-    }
-
-    /**
      * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $form)
@@ -3026,44 +2850,32 @@ EOT;
     }
 
     /**
-     * @param ListMapper $list
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $list)
     {
     }
 
     /**
-     * @param DatagridMapper $filter
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {
     }
 
     /**
-     * @param ShowMapper $show
+     * {@inheritdoc}
      */
     protected function configureShowFields(ShowMapper $show)
     {
     }
 
     /**
-     * @param RouteCollection $collection
+     * {@inheritdoc}
      */
     protected function configureRoutes(RouteCollection $collection)
     {
     }
-
-     /**
-      * Allows you to customize batch actions.
-      *
-      * @param array $actions List of actions
-      *
-      * @return array
-      */
-     protected function configureBatchActions($actions)
-     {
-         return $actions;
-     }
 
     /**
      * DEPRECATED: Use configureTabMenu instead.
@@ -3286,15 +3098,6 @@ EOT;
         }
 
         return $access;
-    }
-
-    /**
-     * Returns a list of default filters.
-     *
-     * @param array $filterValues
-     */
-    protected function configureDefaultFilterValues(array &$filterValues)
-    {
     }
 
     /**

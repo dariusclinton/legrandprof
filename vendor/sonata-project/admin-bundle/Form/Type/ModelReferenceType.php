@@ -33,9 +33,9 @@ class ModelReferenceType extends AbstractType
     }
 
     /**
-     * NEXT_MAJOR: Remove method, when bumping requirements to SF 2.7+.
-     *
      * {@inheritdoc}
+     *
+     * @todo Remove it when bumping requirements to SF 2.7+
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -59,16 +59,13 @@ class ModelReferenceType extends AbstractType
      */
     public function getParent()
     {
-        // NEXT_MAJOR: Remove ternary (when requirement of Symfony is >= 2.8)
-        return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\TextType'
-            : 'text';
+        return 'text';
     }
 
     /**
-     * NEXT_MAJOR: Remove when dropping Symfony <2.8 support.
-     *
      * {@inheritdoc}
+     *
+     * @todo Remove when dropping Symfony <2.8 support
      */
     public function getName()
     {

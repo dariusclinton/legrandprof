@@ -81,9 +81,9 @@ class ModelType extends AbstractType
     }
 
     /**
-     * NEXT_MAJOR: Remove method, when bumping requirements to SF 2.7+.
-     *
      * {@inheritdoc}
+     *
+     * @todo Remove it when bumping requirements to SF 2.7+
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -111,6 +111,7 @@ class ModelType extends AbstractType
                     $options['choices'],
                     $propertyAccessor
                 );
+
             };
         } else {
             $options['choice_list'] = function (Options $options, $previousValue) use ($propertyAccessor) {
@@ -171,16 +172,13 @@ class ModelType extends AbstractType
      */
     public function getParent()
     {
-        // NEXT_MAJOR: Remove ternary (when requirement of Symfony is >= 2.8)
-        return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\ChoiceType'
-            : 'choice';
+        return 'choice';
     }
 
     /**
-     * NEXT_MAJOR: Remove when dropping Symfony <2.8 support.
-     *
      * {@inheritdoc}
+     *
+     * @todo Remove when dropping Symfony <2.8 support
      */
     public function getName()
     {

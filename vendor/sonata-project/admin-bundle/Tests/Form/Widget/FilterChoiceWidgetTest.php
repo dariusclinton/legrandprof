@@ -94,10 +94,10 @@ class FilterChoiceWidgetTest extends BaseWidgetTest
             return array(
                 'placeholder' => 'Choose an option',
             );
-        }
-
-        return array(
+        } else {
+            return array(
                 'empty_value' => 'Choose an option',
             );
+        }
     }
 }

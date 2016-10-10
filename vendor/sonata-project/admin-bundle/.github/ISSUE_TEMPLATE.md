@@ -1,52 +1,23 @@
-<!--
-    Before you open an issue, make sure this one does not already exists.
-    Please also read the "guidelines for contributing" link above before posting.
--->
+Delete this sentence after you read the "Issues" paragraph from the
+"guidelines for contributing" link above.
 
-<!--
-    If you are reporting a bug, please try to fill in the following.
-    Otherwise remove it.
--->
+If you are reporting a bug, please try to fill in the following, otherwise
+remove it along with this sentence.
 
-### Environment
+| Question       | Answer
+|----------------|-------------------------------
+| Bundle version | composer show sonata-project/*
+| Symfony version| composer show symfony/*
+| php version    | php --version
 
-#### Sonata packages
+# Error message
 
-```bash
-$ composer show sonata-project/*
-# Put the result here.
+```
+Error message goes here
 ```
 
-#### Symfony packages
+# Steps to reproduce
 
-```bash
-$ composer show symfony/*
-# Put the result here.
-```
+# Expected results
 
-#### PHP version
-
-```bash
-$ php -v
-# Put the result here.
-```
-
-## Subject
-
-<!--
-    Give here as many details as possible.
-    Next sections are for ERRORS only.
--->
-
-## Steps to reproduce
-
-## Expected results
-
-## Actual results
-
-<!--
-    If it's an error message or piece of code, use code block tags,
-    and make sure you provide the whole stack trace(s),
-    not just the first error message you can see.
-    More details here: https://github.com/sonata-project/SonataAdminBundle/blob/3.x/CONTRIBUTING.md#issues
--->
+# Actual results

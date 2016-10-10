@@ -181,7 +181,6 @@ Full Configuration Options
                     - bundles/sonataadmin/css/styles.css
                     - bundles/sonataadmin/css/layout.css
                     - bundles/sonataadmin/css/tree.css
-                    - bundles/sonataadmin/css/colors.css
                 javascripts:
 
                     # Defaults:
@@ -214,4 +213,3 @@ Full Configuration Options
                     instanceof:           []
                     uses:                 []
             persist_filters:      false
-            show_mosaic_button:   true

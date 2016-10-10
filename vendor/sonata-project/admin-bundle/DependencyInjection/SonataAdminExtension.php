@@ -29,10 +29,20 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
     /**
      * @param array            $configs   An array of configuration settings
      * @param ContainerBuilder $container A ContainerBuilder instance
+     *
+     * @throws \RuntimeException
      */
     public function load(array $configs, ContainerBuilder $container)
     {
         $bundles = $container->getParameter('kernel.bundles');
+
+        if (!isset($bundles['SonataCoreBundle'])) {
+            throw new \RuntimeException(<<<'BOOM'
+Boom! you are living on the edge ;) The AdminBundle requires the CoreBundle!
+Please add ``"sonata-project/core-bundle": "~2.2"`` into your composer.json file and add the SonataCoreBundle into the AppKernel');
+BOOM
+            );
+        }
 
         if (isset($bundles['SonataUserBundle'])) {
             // integrate the SonataUserBundle / FOSUserBundle if the bundle exists
@@ -91,7 +101,6 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
         $container->setParameter('sonata.admin.configuration.dashboard_groups', $config['dashboard']['groups']);
         $container->setParameter('sonata.admin.configuration.dashboard_blocks', $config['dashboard']['blocks']);
         $container->setParameter('sonata.admin.configuration.sort_admins', $config['options']['sort_admins']);
-        $container->setParameter('sonata.admin.configuration.breadcrumbs', $config['breadcrumbs']);
 
         if (null === $config['security']['acl_user_manager'] && isset($bundles['FOSUserBundle'])) {
             $container->setParameter('sonata.admin.security.acl_user_manager', 'fos_user.user_manager');
@@ -194,8 +203,6 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
         // set filter persistence
         $container->setParameter('sonata.admin.configuration.filters.persist', $config['persist_filters']);
 
-        $container->setParameter('sonata.admin.configuration.show.mosaic.button', $config['show_mosaic_button']);
-
         $this->configureClassesToCompile();
 
         $this->replacePropertyAccessor($container);
@@ -226,7 +233,7 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
     {
         $this->addClassesToCompile(array(
             'Sonata\\AdminBundle\\Admin\\AbstractAdmin',
-            'Sonata\\AdminBundle\\Admin\\AbstractAdminExtension',
+            'Sonata\\AdminBundle\\Admin\\AdminExtension',
             'Sonata\\AdminBundle\\Admin\\AdminExtensionInterface',
             'Sonata\\AdminBundle\\Admin\\AdminHelper',
             'Sonata\\AdminBundle\\Admin\\AdminInterface',
@@ -249,6 +256,7 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
             'Sonata\\AdminBundle\\Datagrid\\ProxyQueryInterface',
             'Sonata\\AdminBundle\\Exception\\ModelManagerException',
             'Sonata\\AdminBundle\\Exception\\NoValueException',
+            'Sonata\\AdminBundle\\Export\\Exporter',
             'Sonata\\AdminBundle\\Filter\\Filter',
             'Sonata\\AdminBundle\\Filter\\FilterFactory',
             'Sonata\\AdminBundle\\Filter\\FilterFactoryInterface',
@@ -269,7 +277,7 @@ class SonataAdminExtension extends Extension implements PrependExtensionInterfac
             'Sonata\\AdminBundle\\Form\\Type\\Filter\\NumberType',
             'Sonata\\AdminBundle\\Form\\Type\\ModelReferenceType',
             'Sonata\\AdminBundle\\Form\\Type\\ModelType',
-            'Sonata\\AdminBundle\\Form\\Type\\ModelListType',
+            'Sonata\\AdminBundle\\Form\\Type\\ModelTypeList',
             'Sonata\\AdminBundle\\Guesser\\TypeGuesserChain',
             'Sonata\\AdminBundle\\Guesser\\TypeGuesserInterface',
             'Sonata\\AdminBundle\\Model\\AuditManager',

@@ -89,11 +89,6 @@ class FormMapper extends BaseGroupedMapper
 
         $group = $this->addFieldToCurrentGroup($label);
 
-        // Try to autodetect type
-        if ($name instanceof FormBuilderInterface && null === $type) {
-            $fieldDescriptionOptions['type'] = get_class($name->getType()->getInnerType());
-        }
-
         if (!isset($fieldDescriptionOptions['type']) && is_string($type)) {
             $fieldDescriptionOptions['type'] = $type;
         }
@@ -186,7 +181,8 @@ class FormMapper extends BaseGroupedMapper
     }
 
     /**
-     * Removes a group.
+     * @return FormBuilderInterface
+     *                              Removes a group.
      *
      * @param string $group          The group to delete
      * @param string $tab            The tab the group belongs to, defaults to 'default'

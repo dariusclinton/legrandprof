@@ -15,11 +15,6 @@ use Sonata\AdminBundle\Form\Type\ModelTypeList;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * @group legacy
- *
- * NEXT_MAJOR: Change test class name and content according to the renaming.
- */
 class ModelTypeListTest extends TypeTestCase
 {
     public function testGetDefaultOptions()
