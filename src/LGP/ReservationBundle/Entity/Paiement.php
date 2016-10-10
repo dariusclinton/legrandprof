@@ -36,22 +36,20 @@ class Paiement {
     private $date;
 
     /**
-     * @var \LGPReservationBundle\Entity\Facture
+     * @var \LGP\ReservationBundle\Entity\Facture
      * 
      * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\Facture", inversedBy="paiement")
-     * @ORM\JoinColumn(name="facture_id", referencedColumnName="id")
      */
     private $facture;
 
     /**
-     * @var \LGPUserBundle\Entity\User
+     * @var \LGP\UserBundle\Entity\User
      * 
      * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\User", inversedBy="paiements")
      */
     private $user;
 
-
-  
+    
 
     /**
      * Get id
@@ -73,7 +71,7 @@ class Paiement {
     public function setMode($mode)
     {
         $this->mode = $mode;
-    
+
         return $this;
     }
 
@@ -97,7 +95,7 @@ class Paiement {
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -121,7 +119,7 @@ class Paiement {
     public function setFacture(\LGP\ReservationBundle\Entity\Facture $facture = null)
     {
         $this->facture = $facture;
-    
+
         return $this;
     }
 
@@ -145,7 +143,7 @@ class Paiement {
     public function setUser(\LGP\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 

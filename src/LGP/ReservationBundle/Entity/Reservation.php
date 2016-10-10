@@ -43,21 +43,21 @@ class Reservation {
     private $dateReservation;
 
     /**
-     * @var \LGPReservationBundle\Entity\Facture
+     * @var \LGP\ReservationBundle\Entity\Facture
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Facture", mappedBy="reservation", cascade={"persist","remove"})
      */
     private $factures;
     
     /**
-     * @var \LGPUserBundle\Entity\User
+     * @var \LGP\UserBundle\Entity\User
      * 
      * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\User", inversedBy="reservations")
      */
     private $user;
     
     /**
-     * @var \LGPReservationBundle\Entity\ReservationEnseignement
+     * @var \LGP\ReservationBundle\Entity\ReservationEnseignement
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="reservation")
      */

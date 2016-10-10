@@ -201,3 +201,15 @@ lgp_user_prof_demande_de_cours_edit:
     defaults: { _controller: LGPUserBundle:MesDemandesDeCours:edit }
     requirements:
         id: \d+
+
+# Paiement
+lgp_user_mes_paiements:
+    path: /mes-paiements
+    defaults: { _controller: LGPUserBundle:Paiement:index }
+
+lgp_user_programme_et_jours_de_cours_voir:
+    path: /reservation-enseignement/{id}/programme-et-jours-de-cours
+    defaults: { _controller: LGPUserBundle:Reservation:showProgrammeAndJoursDeCours }
+    requirements:
+        id: \d+
+

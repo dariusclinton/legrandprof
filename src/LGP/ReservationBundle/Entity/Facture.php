@@ -27,19 +27,29 @@ class Facture {
      */
     private $montant;
 
+
     /**
-     * @var \LGPReservationBundle\Entity\Reservation
+     * @var string
+     *
+     * @ORM\Column(name="file_name", type="string", length=255, unique=true)
+     */
+    private $fileName;
+
+    /**
+     * @var \LGP\ReservationBundle\Entity\Reservation
      * 
      * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="factures")
      */
     private $reservation;
 
     /**
-     * @var \LGPReservationBundle\Entity\Paiement
+     * @var \LGP\ReservationBundle\Entity\Paiement
      * 
      * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="facture")
      */
     private $paiement;
+
+    
 
     /**
      * Get id
@@ -73,6 +83,30 @@ class Facture {
     public function getMontant()
     {
         return $this->montant;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     *
+     * @return Facture
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
     }
 
     /**
