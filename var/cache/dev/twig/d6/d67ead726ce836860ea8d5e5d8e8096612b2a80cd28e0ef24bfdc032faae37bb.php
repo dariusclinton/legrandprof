@@ -15,8 +15,8 @@ class __TwigTemplate_b74cf5ee09b5b19c480d94479ebd62aac023901b8e2148ff1899eff44d0
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0a8c8d7933207703eb54120192c21fa4dae3bc4897e68b5fcbafc4b8a257d2d7 = $this->env->getExtension("native_profiler");
-        $__internal_0a8c8d7933207703eb54120192c21fa4dae3bc4897e68b5fcbafc4b8a257d2d7->enter($__internal_0a8c8d7933207703eb54120192c21fa4dae3bc4897e68b5fcbafc4b8a257d2d7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "knp_menu_base.html.twig"));
+        $__internal_cb1f929b604c712d21c953252ccec68df124e45ae65d5d3037b652509c5b7cfd = $this->env->getExtension("native_profiler");
+        $__internal_cb1f929b604c712d21c953252ccec68df124e45ae65d5d3037b652509c5b7cfd->enter($__internal_cb1f929b604c712d21c953252ccec68df124e45ae65d5d3037b652509c5b7cfd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "knp_menu_base.html.twig"));
 
         // line 1
         if ($this->getAttribute((isset($context["options"]) ? $context["options"] : $this->getContext($context, "options")), "compressed", array())) {
@@ -25,7 +25,7 @@ class __TwigTemplate_b74cf5ee09b5b19c480d94479ebd62aac023901b8e2148ff1899eff44d0
             $this->displayBlock("root", $context, $blocks);
         }
         
-        $__internal_0a8c8d7933207703eb54120192c21fa4dae3bc4897e68b5fcbafc4b8a257d2d7->leave($__internal_0a8c8d7933207703eb54120192c21fa4dae3bc4897e68b5fcbafc4b8a257d2d7_prof);
+        $__internal_cb1f929b604c712d21c953252ccec68df124e45ae65d5d3037b652509c5b7cfd->leave($__internal_cb1f929b604c712d21c953252ccec68df124e45ae65d5d3037b652509c5b7cfd_prof);
 
     }
 

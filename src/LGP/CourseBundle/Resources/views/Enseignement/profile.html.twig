@@ -25,7 +25,7 @@
                 </div>
                 <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
                     <div class="profile-infos">
-                        <h1 class="hero-title"> {{ prof.prenoms ~" "~ prof.nom | upper }} </h1>
+                        <h1 class="hero-title"> {{ prof.prenoms | upper ~" "~ prof.nom | upper }} </h1>
                         <p class="line18"> {{ prof.profession }} </p>
 
                         <ul class="list-col clearfix">
@@ -83,7 +83,7 @@
 
                 <div class="flex-column flex-md-3 flex-align-bottom flex-sm-12 mt-20-sm">
                     <div class="text-right text-left-sm">
-                        <a href=" {{ path('lgp_reservation_detail',{'id': prof.id}) }} " class="anchor btn btn-primary">Réserver
+                        <a href=" {{ path('lgp_reservation_detail',{'slug': prof.slug}) }} " class="anchor btn btn-primary">Réserver
                             un cours</a>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
                                                     <div class="content">
                                                         <div class="row gap-20 mb-0">
                                                             <div class="col-sm-9">
-                                                                <h6> {{ user.prenoms~"  "~user.nom | upper }} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
+                                                                <h6> {{ (user.prenoms~"  "~user.nom) | upper }} {# <span>/ de Yaoundé-Bastos</span> #}</h6>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <p class="review-date"> {{ avis.dateAvis | date('d/m/Y') }} </p>
@@ -361,7 +361,8 @@
                                                     <a href=" {{ path('lgp_course_profile_prof',{'profId':enseignement.prof.id}) }} ">
                                                         <div class="image similar">
                                                             {% if enseignement.prof.image is not null %}
-                                                                <img src="{{ asset(enseignement.prof.image.webPath) }}"
+                                                                <img src="{{ asset(enseignement.prof.image.webPath
+                                                                ) }}"
                                                                      alt=" image prof "/>
                                                             {% else %}
                                                                 <img src="{{ asset('uploads/profils/default.jpg') }}"
@@ -379,7 +380,7 @@
                                                         </div>
                                                         <div class="content clearfix">
                                                             <h6>
-                                                                {{ enseignement.prof.prenoms ~"  "~ enseignement.prof.nom | upper }}
+                                                                {{ enseignement.prof.prenoms | upper ~"  "~ enseignement.prof.nom | upper }}
                                                             </h6>
                                                             {% set avisSum = 0 %}
                                                             {% set allAvis = params.avisRep.findBy({'prof':enseignement.prof}) %}

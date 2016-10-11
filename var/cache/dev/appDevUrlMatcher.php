@@ -351,7 +351,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // lgp_reservation_detail
-            if (0 === strpos($pathinfo, '/reservation/detail') && preg_match('#^/reservation/detail/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/reservation/detail') && preg_match('#^/reservation/detail/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_reservation_detail')), array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',));
             }
 
@@ -468,7 +468,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_lgp_course_update_classe:
 
             // lgp_course_profile_prof
-            if (0 === strpos($pathinfo, '/course/profile') && preg_match('#^/course/profile/(?P<profId>\\d+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/course/profile') && preg_match('#^/course/profile/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_profile_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\EnseignementController::profileAction',));
             }
 

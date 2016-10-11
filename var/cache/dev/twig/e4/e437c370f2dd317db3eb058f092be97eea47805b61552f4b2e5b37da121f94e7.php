@@ -22,20 +22,20 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5c3c9b74daf05b544c62c97eb10b7899aea14cd35c08be58e725c137dc24ce6d = $this->env->getExtension("native_profiler");
-        $__internal_5c3c9b74daf05b544c62c97eb10b7899aea14cd35c08be58e725c137dc24ce6d->enter($__internal_5c3c9b74daf05b544c62c97eb10b7899aea14cd35c08be58e725c137dc24ce6d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_b4ac30cc853778276f0b9375772af4edebb0463368f2f3953ced4af663183e2e = $this->env->getExtension("native_profiler");
+        $__internal_b4ac30cc853778276f0b9375772af4edebb0463368f2f3953ced4af663183e2e->enter($__internal_b4ac30cc853778276f0b9375772af4edebb0463368f2f3953ced4af663183e2e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5c3c9b74daf05b544c62c97eb10b7899aea14cd35c08be58e725c137dc24ce6d->leave($__internal_5c3c9b74daf05b544c62c97eb10b7899aea14cd35c08be58e725c137dc24ce6d_prof);
+        $__internal_b4ac30cc853778276f0b9375772af4edebb0463368f2f3953ced4af663183e2e->leave($__internal_b4ac30cc853778276f0b9375772af4edebb0463368f2f3953ced4af663183e2e_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1c01c66c253ca0ec2b4ec5a937f3c2450ed151dbcf6a34361aa6210abc2f497f = $this->env->getExtension("native_profiler");
-        $__internal_1c01c66c253ca0ec2b4ec5a937f3c2450ed151dbcf6a34361aa6210abc2f497f->enter($__internal_1c01c66c253ca0ec2b4ec5a937f3c2450ed151dbcf6a34361aa6210abc2f497f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_ace24e241ab15436b46ec5089d3f6459050746d6092f0fd371f4a21cd79398b9 = $this->env->getExtension("native_profiler");
+        $__internal_ace24e241ab15436b46ec5089d3f6459050746d6092f0fd371f4a21cd79398b9->enter($__internal_ace24e241ab15436b46ec5089d3f6459050746d6092f0fd371f4a21cd79398b9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    ";
@@ -55,15 +55,15 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     ";
         }
         
-        $__internal_1c01c66c253ca0ec2b4ec5a937f3c2450ed151dbcf6a34361aa6210abc2f497f->leave($__internal_1c01c66c253ca0ec2b4ec5a937f3c2450ed151dbcf6a34361aa6210abc2f497f_prof);
+        $__internal_ace24e241ab15436b46ec5089d3f6459050746d6092f0fd371f4a21cd79398b9->leave($__internal_ace24e241ab15436b46ec5089d3f6459050746d6092f0fd371f4a21cd79398b9_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_23c7c581b5e20cec8bcb1abc1d9ce841c6f83f3fff81d7a6210d5321f2fbf018 = $this->env->getExtension("native_profiler");
-        $__internal_23c7c581b5e20cec8bcb1abc1d9ce841c6f83f3fff81d7a6210d5321f2fbf018->enter($__internal_23c7c581b5e20cec8bcb1abc1d9ce841c6f83f3fff81d7a6210d5321f2fbf018_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5f928b58dd98061b84bc3b93c74d0759dfa958b7ef5ae4e2c1d01d5f49646362 = $this->env->getExtension("native_profiler");
+        $__internal_5f928b58dd98061b84bc3b93c74d0759dfa958b7ef5ae4e2c1d01d5f49646362->enter($__internal_5f928b58dd98061b84bc3b93c74d0759dfa958b7ef5ae4e2c1d01d5f49646362_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
         echo "    ";
@@ -415,12 +415,12 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                 echo " Fcfa / Mois <br> Prix minimal</div>
                                             <a href=\" ";
                 // line 303
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_profile_prof", array("profId" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "id", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_profile_prof", array("slug" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "slug", array()))), "html", null, true);
                 echo " \"
                                                class=\"btn btn-primary btn-sm\">Voir Profil</a>
                                             <a href=\" ";
                 // line 305
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_detail", array("id" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "id", array()))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_detail", array("slug" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "slug", array()))), "html", null, true);
                 echo " \"
                                                class=\"anchor btn btn-primary btn-sm\" style=\"margin-top: 10px;\">Réserver
                                                 un cours</a>
@@ -456,7 +456,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     </div>
 ";
         
-        $__internal_23c7c581b5e20cec8bcb1abc1d9ce841c6f83f3fff81d7a6210d5321f2fbf018->leave($__internal_23c7c581b5e20cec8bcb1abc1d9ce841c6f83f3fff81d7a6210d5321f2fbf018_prof);
+        $__internal_5f928b58dd98061b84bc3b93c74d0759dfa958b7ef5ae4e2c1d01d5f49646362->leave($__internal_5f928b58dd98061b84bc3b93c74d0759dfa958b7ef5ae4e2c1d01d5f49646362_prof);
 
     }
 
@@ -779,9 +779,9 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                                                 {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
                                             {% endset %}
                                             <div class=\"price\">{{ minPrice }} Fcfa / Mois <br> Prix minimal</div>
-                                            <a href=\" {{ path('lgp_course_profile_prof',{'profId' : enseigne.prof.id}) }} \"
+                                            <a href=\" {{ path('lgp_course_profile_prof',{'slug' : enseigne.prof.slug}) }} \"
                                                class=\"btn btn-primary btn-sm\">Voir Profil</a>
-                                            <a href=\" {{ path('lgp_reservation_detail',{'id': enseigne.prof.id}) }} \"
+                                            <a href=\" {{ path('lgp_reservation_detail',{'slug': enseigne.prof.slug}) }} \"
                                                class=\"anchor btn btn-primary btn-sm\" style=\"margin-top: 10px;\">Réserver
                                                 un cours</a>
                                         </div>

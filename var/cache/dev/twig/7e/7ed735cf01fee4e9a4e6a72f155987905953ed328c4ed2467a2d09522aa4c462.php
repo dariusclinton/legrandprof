@@ -15,8 +15,8 @@ class __TwigTemplate_39277d522211addaddca7769614272b941ba1bdc05890380a1b599f9a62
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b38c3db01f23b2c9ceebbf87ce4de043164a612fcc560e41c5e3aaa627cf2d61 = $this->env->getExtension("native_profiler");
-        $__internal_b38c3db01f23b2c9ceebbf87ce4de043164a612fcc560e41c5e3aaa627cf2d61->enter($__internal_b38c3db01f23b2c9ceebbf87ce4de043164a612fcc560e41c5e3aaa627cf2d61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:User:index.html.twig"));
+        $__internal_4bdc272b745a6bd8196e58edae5f53d7d5ce75ff3e60ee89b7f46280b2459ef3 = $this->env->getExtension("native_profiler");
+        $__internal_4bdc272b745a6bd8196e58edae5f53d7d5ce75ff3e60ee89b7f46280b2459ef3->enter($__internal_4bdc272b745a6bd8196e58edae5f53d7d5ce75ff3e60ee89b7f46280b2459ef3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:User:index.html.twig"));
 
         // line 1
         echo "<ul class=\"nav nav-pills\">
@@ -40,7 +40,7 @@ class __TwigTemplate_39277d522211addaddca7769614272b941ba1bdc05890380a1b599f9a62
         echo "</span>Cours</a> </li>
 </ul>";
         
-        $__internal_b38c3db01f23b2c9ceebbf87ce4de043164a612fcc560e41c5e3aaa627cf2d61->leave($__internal_b38c3db01f23b2c9ceebbf87ce4de043164a612fcc560e41c5e3aaa627cf2d61_prof);
+        $__internal_4bdc272b745a6bd8196e58edae5f53d7d5ce75ff3e60ee89b7f46280b2459ef3->leave($__internal_4bdc272b745a6bd8196e58edae5f53d7d5ce75ff3e60ee89b7f46280b2459ef3_prof);
 
     }
 
