@@ -3,6 +3,7 @@
 namespace LGP\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Facture
@@ -24,6 +25,8 @@ class Facture {
      * @var integer
      *
      * @ORM\Column(name="montant", type="integer", nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Range(min=0, minMessage="Vous devez entrer un nombre positif", invalidMessage="vous devez entrer un nombre")
      */
     private $montant;
 

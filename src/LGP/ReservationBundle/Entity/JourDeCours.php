@@ -4,6 +4,7 @@ namespace LGP\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * JourDeCours
@@ -28,11 +29,18 @@ class JourDeCours
    * @var string
    *
    * @ORM\Column(name="intitule", type="string", length=255, nullable=false, unique=true)
+   * @Assert\NotBlank(message="Ce champs est obligatoire")
+   * @Assert\Length(
+   *     min=3,
+   *     max=255,
+   *     minMessage ="La longueur doit être au moins de 3 caractères",
+   *     maxMessage="La longueur doit être au plus de 255 caractères"
+   * )
    */
   private $intitule;
 
   /**
-   * @var \LGPReservationBundle\Entity\ReservationEnseignement
+   * @var \LGP\ReservationBundle\Entity\ReservationEnseignement
    *
    * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="joursDeCours")
    */

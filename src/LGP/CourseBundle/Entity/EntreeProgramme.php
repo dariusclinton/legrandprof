@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * EntreeProgramme
@@ -25,13 +26,26 @@ class EntreeProgramme {
      * @var string
      *
      * @ORM\Column(name="partie", type="string", length=255)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $partie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="string", length=255)
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $intitule;
 
@@ -39,6 +53,12 @@ class EntreeProgramme {
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $type;
 

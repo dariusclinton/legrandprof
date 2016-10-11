@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evaluation
@@ -25,6 +26,8 @@ class Evaluation
    * @var \DateTime
    *
    * @ORM\Column(name="date", type="datetime", nullable=false)
+   * @Assert\NotBlank(message="Ce champs est obligatoire")
+   * @Assert\DateTime(message="vous devez entrer une date valide")
    */
   private $date;
 
@@ -32,6 +35,8 @@ class Evaluation
    * @var int
    *
    * @ORM\Column(name="duree", type="integer", nullable=false)
+   * @Assert\NotBlank(message="Ce champs est obligatoire")
+   * @Assert\Range(min=0, minMessage="Vous devez entrer un nombre positif", invalidMessage="vous devez entrer un nombre")
    */
   private $duree;
 
@@ -44,7 +49,7 @@ class Evaluation
   private $reservationEnseignement;
 
   /**
-   * @var \LGPUserBundle\Entity\Prof
+   * @var \LGP\UserBundle\Entity\Prof
    *
    * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="evaluations")
    * @ORM\JoinColumn(nullable=false)

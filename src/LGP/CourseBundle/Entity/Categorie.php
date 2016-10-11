@@ -4,6 +4,7 @@ namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categorie
@@ -11,7 +12,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="lgp_categorie")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CategorieRepository")
  */
-class Categorie {
+class Categorie
+{
 
     /**
      * @var int
@@ -26,6 +28,13 @@ class Categorie {
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $intitule;
 
@@ -33,12 +42,18 @@ class Categorie {
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $description;
 
     /**
      * @var \LGP\CourseBundle\Entity\Image
-     * 
+     *
      * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ImageCategorie", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
@@ -52,7 +67,7 @@ class Categorie {
 
     /**
      * @var \LGP\CourseBundle\Entity\Cours
-     * 
+     *
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Cours", mappedBy="categorie", cascade={"persist","remove"})
      */
     private $cours;
@@ -60,7 +75,8 @@ class Categorie {
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -69,7 +85,8 @@ class Categorie {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -80,7 +97,8 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setIntitule($intitule) {
+    public function setIntitule($intitule)
+    {
         $this->intitule = $intitule;
 
         return $this;
@@ -91,7 +109,8 @@ class Categorie {
      *
      * @return string
      */
-    public function getIntitule() {
+    public function getIntitule()
+    {
         return $this->intitule;
     }
 
@@ -102,7 +121,8 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -113,7 +133,8 @@ class Categorie {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -124,7 +145,8 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function setImage(\LGP\CourseBundle\Entity\ImageCategorie $image = null) {
+    public function setImage(\LGP\CourseBundle\Entity\ImageCategorie $image = null)
+    {
         $this->image = $image;
 
         return $this;
@@ -135,10 +157,11 @@ class Categorie {
      *
      * @return \LGP\CourseBundle\Entity\ImageCategorie
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
-    
+
     /**
      * Add cour
      *
@@ -146,7 +169,8 @@ class Categorie {
      *
      * @return Categorie
      */
-    public function addCour(\LGP\CourseBundle\Entity\Cours $cour) {
+    public function addCour(\LGP\CourseBundle\Entity\Cours $cour)
+    {
         $this->cours[] = $cour;
 
         return $this;
@@ -157,7 +181,8 @@ class Categorie {
      *
      * @param \LGP\CourseBundle\Entity\Cours $cour
      */
-    public function removeCour(\LGP\CourseBundle\Entity\Cours $cour) {
+    public function removeCour(\LGP\CourseBundle\Entity\Cours $cour)
+    {
         $this->cours->removeElement($cour);
     }
 
@@ -166,7 +191,8 @@ class Categorie {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCours() {
+    public function getCours()
+    {
         return $this->cours;
     }
 

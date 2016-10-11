@@ -3,6 +3,7 @@
 namespace LGP\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
@@ -32,6 +33,12 @@ class Reservation {
      * @var string
      *
      * @ORM\Column(name="frequence_paiement", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $frequencePaiement;
     
@@ -39,6 +46,8 @@ class Reservation {
      * @var \Datetime
      * 
      * @ORM\Column(name="date_reservation",type="datetime", nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\DateTime(message="Vous devez entrer une date valide")
      */
     private $dateReservation;
 
