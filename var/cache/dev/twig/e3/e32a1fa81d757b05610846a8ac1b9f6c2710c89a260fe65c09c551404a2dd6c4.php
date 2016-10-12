@@ -15,8 +15,8 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_95abb98e8ab585e6bf06865a2687e20a50e1fe0ad68a7673c8e00081492cda1d = $this->env->getExtension("native_profiler");
-        $__internal_95abb98e8ab585e6bf06865a2687e20a50e1fe0ad68a7673c8e00081492cda1d->enter($__internal_95abb98e8ab585e6bf06865a2687e20a50e1fe0ad68a7673c8e00081492cda1d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
+        $__internal_ed3f75f2d06a453ff07a31260d51f291b453b6b2ba84806492904a6c9c8618ae = $this->env->getExtension("native_profiler");
+        $__internal_ed3f75f2d06a453ff07a31260d51f291b453b6b2ba84806492904a6c9c8618ae->enter($__internal_ed3f75f2d06a453ff07a31260d51f291b453b6b2ba84806492904a6c9c8618ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header.html.twig"));
 
         // line 1
         echo "<!-- start Header -->
@@ -146,92 +146,112 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
         // line 94
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 95
-            echo "                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\">";
+            echo "                      <a href=\"";
+            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            echo "\" style=\"margin-top: 0px; font-weight: bold\">";
             echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "prenoms", array())), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "nom", array())), "html", null, true);
             echo "</a>
                     <ul>
-                      <li><a href=\"";
+                      ";
             // line 97
-            echo $this->env->getExtension('routing')->getPath("lgp_user_dashboard");
-            echo "\">Tableau de bord</a></li>
+            if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
+                // line 98
+                echo "                        <li><a href=\"";
+                echo $this->env->getExtension('routing')->getPath("lgp_user_prof_dashboard");
+                echo "\">Tableau de bord</a></li>
+
+                        ";
+            } else {
+                // line 101
+                echo "                          <li><a href=\"";
+                echo $this->env->getExtension('routing')->getPath("lgp_user_parent_dashboard");
+                echo "\">Tableau de bord</a></li>
+                      ";
+            }
+            // line 103
+            echo "                      <li><a href=\"";
+            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            echo "\">Profil</a></li>
                       <li><a href=\"";
-            // line 98
+            // line 104
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
                     </ul>
                   ";
         } else {
-            // line 101
+            // line 107
             echo "                    <a data-toggle=\"modal\"  id=\"btn-connect\" href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\" class=\"btn\" style=\"font-size: 10px;\">Connexion</a>
                   ";
         }
-        // line 103
+        // line 109
         echo "                </li>
                 <li>
                   ";
-        // line 105
+        // line 111
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 106
+            // line 112
             echo "                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\"><i class=\"fa fa-cog\"></i></a>
                     <ul>
                       <li><a href=\"";
-            // line 108
+            // line 114
             echo $this->env->getExtension('routing')->getPath("lgp_user_message_receive");
             echo "\">Messages</a></li>
                       <li><a href=\"";
-            // line 109
+            // line 115
             echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelles_categories_cours");
             echo "\">Proposer une catégorie de cours</a></li>
                       
                       ";
-            // line 111
+            // line 117
             if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
-                // line 112
+                // line 118
                 echo "                      <li><a href=\"";
                 echo $this->env->getExtension('routing')->getPath("lgp_user_anomalies");
                 echo "\">Anomalies du système</a></li>
                       ";
             }
-            // line 114
+            // line 120
             echo "                    </ul>
                     
                   ";
         }
-        // line 117
+        // line 123
         echo "                </li>
                 <li><a href=\"";
-        // line 118
+        // line 124
         echo $this->env->getExtension('routing')->getPath("lgp_reservation_cart");
         echo "\" style=\"font-weight:200;\"><i class=\"pe-7s-cart\" style=\"font-size:22px;\"></i> &nbsp;<span style=\"font-size:15px;\">Panier</span></a>
                   <ul style=\"width:250px;margin-left:-100px;\">
                     ";
-        // line 120
+        // line 126
         $context["panier"] = $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "panier"), "method");
-        // line 121
+        // line 127
         echo "                    ";
         if (((array_key_exists("panier", $context) &&  !(null === (isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")))) && (twig_length_filter($this->env, $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array())) != 0))) {
-            // line 122
+            // line 128
             echo "                      ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), "items", array()));
             foreach ($context['_seq'] as $context["key"] => $context["booker"]) {
-                // line 123
+                // line 129
                 echo "                        <li class=\"cart-li\">
                           <div class=\"cart\">
                             <img src=\"";
-                // line 125
+                // line 131
                 echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($context["booker"], "profImage", array())), "html", null, true);
                 echo "\">
                             <b>";
-                // line 126
+                // line 132
                 echo twig_escape_filter($this->env, (($this->getAttribute($context["booker"], "profPrenoms", array()) . " ") . $this->getAttribute($context["booker"], "profNom", array())), "html", null, true);
                 echo "</b> ";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["booker"], "prixTotal", array()), "html", null, true);
                 echo " Fcfa
                             <b class=\"right\" onclick=\"location.href = '";
-                // line 127
+                // line 133
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_cart_remove", array("key" => $context["key"])), "html", null, true);
                 echo "'\"><i class=\"fa fa-remove\"></i></b>
                           </div>
@@ -241,10 +261,10 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['booker'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 131
+            // line 137
             echo "                    ";
         } else {
-            // line 132
+            // line 138
             echo "                      <li class=\"cart-li\">
                         <div class=\"cart\">
                           <b>aucun prof dans le panier</b>
@@ -252,7 +272,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
                       </li>
                     ";
         }
-        // line 138
+        // line 144
         echo "                  </ul>
 
                 </li>
@@ -274,7 +294,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
 </header>";
         
-        $__internal_95abb98e8ab585e6bf06865a2687e20a50e1fe0ad68a7673c8e00081492cda1d->leave($__internal_95abb98e8ab585e6bf06865a2687e20a50e1fe0ad68a7673c8e00081492cda1d_prof);
+        $__internal_ed3f75f2d06a453ff07a31260d51f291b453b6b2ba84806492904a6c9c8618ae->leave($__internal_ed3f75f2d06a453ff07a31260d51f291b453b6b2ba84806492904a6c9c8618ae_prof);
 
     }
 
@@ -290,7 +310,7 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
 
     public function getDebugInfo()
     {
-        return array (  256 => 138,  248 => 132,  245 => 131,  235 => 127,  229 => 126,  225 => 125,  221 => 123,  216 => 122,  213 => 121,  211 => 120,  206 => 118,  203 => 117,  198 => 114,  192 => 112,  190 => 111,  185 => 109,  181 => 108,  177 => 106,  175 => 105,  171 => 103,  165 => 101,  159 => 98,  155 => 97,  149 => 95,  147 => 94,  137 => 86,  130 => 82,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
+        return array (  276 => 144,  268 => 138,  265 => 137,  255 => 133,  249 => 132,  245 => 131,  241 => 129,  236 => 128,  233 => 127,  231 => 126,  226 => 124,  223 => 123,  218 => 120,  212 => 118,  210 => 117,  205 => 115,  201 => 114,  197 => 112,  195 => 111,  191 => 109,  185 => 107,  179 => 104,  174 => 103,  168 => 101,  161 => 98,  159 => 97,  149 => 95,  147 => 94,  137 => 86,  130 => 82,  126 => 81,  122 => 80,  119 => 79,  111 => 74,  108 => 73,  106 => 72,  95 => 66,  72 => 46,  37 => 14,  22 => 1,);
     }
 
     public function getSource()
@@ -389,9 +409,15 @@ class __TwigTemplate_3eb82ad6d01fe3d8752e3c377e83da69c6500330d25c645521b479f62f3
               <ul class=\"nav navbar-nav\">
                 <li>
                   {% if is_granted(\"IS_AUTHENTICATED_REMEMBERED\") %}
-                      <a href=\"#\" style=\"margin-top: 0px; font-weight: bold\">{{ app.user.prenoms | capitalize }}</a>
+                      <a href=\"{{ path('fos_user_profile_show') }}\" style=\"margin-top: 0px; font-weight: bold\">{{ app.user.prenoms | capitalize }} {{ app.user.nom | capitalize }}</a>
                     <ul>
-                      <li><a href=\"{{ path('lgp_user_dashboard') }}\">Tableau de bord</a></li>
+                      {% if is_granted('ROLE_PROF') %}
+                        <li><a href=\"{{ path('lgp_user_prof_dashboard') }}\">Tableau de bord</a></li>
+
+                        {% else %}
+                          <li><a href=\"{{ path('lgp_user_parent_dashboard') }}\">Tableau de bord</a></li>
+                      {% endif %}
+                      <li><a href=\"{{ path('fos_user_profile_show') }}\">Profil</a></li>
                       <li><a href=\"{{ path('fos_user_security_logout') }}\">Déconnexion</a></li>
                     </ul>
                   {% else %}

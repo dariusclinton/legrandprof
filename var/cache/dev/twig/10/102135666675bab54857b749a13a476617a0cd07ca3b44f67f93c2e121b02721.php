@@ -15,27 +15,39 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928 = $this->env->getExtension("native_profiler");
-        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928->enter($__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
+        $__internal_454bd1bb4787d4d51b57f89ee2b27c881dda50049ce4ee0037afe7926700873f = $this->env->getExtension("native_profiler");
+        $__internal_454bd1bb4787d4d51b57f89ee2b27c881dda50049ce4ee0037afe7926700873f->enter($__internal_454bd1bb4787d4d51b57f89ee2b27c881dda50049ce4ee0037afe7926700873f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
 
         // line 1
         echo "<div class=\"header-dashboard-submenu hidden-xs\">
   <div class=\"wrapper\">
     <ul class=\"desktop-only\" id=\"dash\">
-      <li><a href=\"";
-        // line 4
-        echo $this->env->getExtension('routing')->getPath("lgp_user_dashboard");
-        echo "\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
-      
       ";
-        // line 6
+        // line 4
         if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
+            // line 5
+            echo "        <li><a href=\"";
+            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_dashboard");
+            echo "\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
+        ";
+        } else {
             // line 7
+            echo "          <li><a href=\"";
+            echo $this->env->getExtension('routing')->getPath("lgp_user_parent_dashboard");
+            echo "\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
+      ";
+        }
+        // line 9
+        echo "      
+      ";
+        // line 10
+        if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
+            // line 11
             echo "        <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_cours");
             echo "\" class=\"dashboard-header-link \" title=\"Ce que j'enseigne\">Mes cours</a></li>
         <li><a href=\"";
-            // line 8
+            // line 12
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_demandes_de_cours");
             echo "\" class=\"dashboard-header-link \">Mes demandes de cours</a></li>
       
@@ -43,38 +55,34 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
         <li><a href=\"#\" class=\"dashboard-header-link \">Mon compte</a>
             <ul id=\"account\">
                 <li><a href=\"";
-            // line 13
-            echo $this->env->getExtension('routing')->getPath("lgp_user_dashboard");
-            echo "\">Mon profil</a></li>
-                <li><a href=\"";
-            // line 14
+            // line 17
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_evaluation");
             echo "\">Mes évaluations</a></li>
                 <li><a href=\"";
-            // line 15
+            // line 18
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite");
             echo "\">Mes indisponibilités</a></li>
                 <li><a href=\"";
-            // line 16
+            // line 19
             echo $this->env->getExtension('routing')->getPath("lgp_user_prof_seance_de_cours");
             echo "\">Mes séances de cours</a></li>
             </ul>
         </li>
         ";
         }
-        // line 20
+        // line 23
         echo "        <li><a href=\"";
         echo $this->env->getExtension('routing')->getPath("lgp_user_mes_reservations");
         echo "\" class=\"dashboard-header-link \">Mes réservations</a></li>
         <li><a href=\"";
-        // line 21
+        // line 24
         echo $this->env->getExtension('routing')->getPath("lgp_user_avis");
         echo "\" class=\"dashboard-header-link \">Mes avis</a></li>
     </ul>
   </div>
 </div>";
         
-        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928->leave($__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928_prof);
+        $__internal_454bd1bb4787d4d51b57f89ee2b27c881dda50049ce4ee0037afe7926700873f->leave($__internal_454bd1bb4787d4d51b57f89ee2b27c881dda50049ce4ee0037afe7926700873f_prof);
 
     }
 
@@ -90,7 +98,7 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     public function getDebugInfo()
     {
-        return array (  71 => 21,  66 => 20,  59 => 16,  55 => 15,  51 => 14,  47 => 13,  39 => 8,  34 => 7,  32 => 6,  27 => 4,  22 => 1,);
+        return array (  79 => 24,  74 => 23,  67 => 19,  63 => 18,  59 => 17,  51 => 12,  46 => 11,  44 => 10,  41 => 9,  35 => 7,  29 => 5,  27 => 4,  22 => 1,);
     }
 
     public function getSource()
@@ -98,7 +106,11 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
         return "<div class=\"header-dashboard-submenu hidden-xs\">
   <div class=\"wrapper\">
     <ul class=\"desktop-only\" id=\"dash\">
-      <li><a href=\"{{ path('lgp_user_dashboard') }}\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
+      {% if is_granted('ROLE_PROF') %}
+        <li><a href=\"{{ path('lgp_user_prof_dashboard') }}\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
+        {% else %}
+          <li><a href=\"{{ path('lgp_user_parent_dashboard') }}\" class=\"dashboard-header-link current\">Tableau de bord</a></li>
+      {% endif %}
       
       {% if is_granted('ROLE_PROF') %}
         <li><a href=\"{{ path('lgp_user_prof_cours') }}\" class=\"dashboard-header-link \" title=\"Ce que j'enseigne\">Mes cours</a></li>
@@ -107,7 +119,6 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
       
         <li><a href=\"#\" class=\"dashboard-header-link \">Mon compte</a>
             <ul id=\"account\">
-                <li><a href=\"{{ path('lgp_user_dashboard') }}\">Mon profil</a></li>
                 <li><a href=\"{{ path('lgp_user_prof_evaluation') }}\">Mes évaluations</a></li>
                 <li><a href=\"{{ path('lgp_user_prof_indisponibilite') }}\">Mes indisponibilités</a></li>
                 <li><a href=\"{{ path('lgp_user_prof_seance_de_cours') }}\">Mes séances de cours</a></li>

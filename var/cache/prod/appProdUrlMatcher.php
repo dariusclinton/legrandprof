@@ -50,9 +50,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
-            // lgp_user_dashboard
-            if ($pathinfo === '/user/dashboard') {
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::indexAction',  '_route' => 'lgp_user_dashboard',);
+            if (0 === strpos($pathinfo, '/user/p')) {
+                // lgp_user_prof_dashboard
+                if ($pathinfo === '/user/prof/dashboard') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::profAction',  '_route' => 'lgp_user_prof_dashboard',);
+                }
+
+                // lgp_user_parent_dashboard
+                if ($pathinfo === '/user/parent/dashboard') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::parentAction',  '_route' => 'lgp_user_parent_dashboard',);
+                }
+
             }
 
             if (0 === strpos($pathinfo, '/user/avis')) {
@@ -278,7 +286,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
 
             // lgp_reservation_detail
-            if (0 === strpos($pathinfo, '/reservation/detail') && preg_match('#^/reservation/detail/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/reservation/detail') && preg_match('#^/reservation/detail/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_reservation_detail')), array (  '_controller' => 'LGP\\ReservationBundle\\Controller\\ReservationController::detailAction',));
             }
 
@@ -395,7 +403,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             not_lgp_course_update_classe:
 
             // lgp_course_profile_prof
-            if (0 === strpos($pathinfo, '/course/profile') && preg_match('#^/course/profile/(?P<profId>\\d+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/course/profile') && preg_match('#^/course/profile/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_profile_prof')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\EnseignementController::profileAction',));
             }
 
@@ -443,8 +451,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             // fos_user_security_logout
             if ($pathinfo === '/logout') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_fos_user_security_logout;
                 }
 

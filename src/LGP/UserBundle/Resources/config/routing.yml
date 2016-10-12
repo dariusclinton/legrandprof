@@ -14,9 +14,13 @@ lgp_prof_registration:
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
 
 # Dashboard
-lgp_user_dashboard:
-    path: /dashboard
-    defaults: { _controller: LGPUserBundle:Dashboard:index }
+lgp_user_prof_dashboard:
+    path: /prof/dashboard
+    defaults: { _controller: LGPUserBundle:Dashboard:prof }
+
+lgp_user_parent_dashboard:
+    path: /parent/dashboard
+    defaults: { _controller: LGPUserBundle:Dashboard:parent }
     
 # Avis
 lgp_user_avis_add:

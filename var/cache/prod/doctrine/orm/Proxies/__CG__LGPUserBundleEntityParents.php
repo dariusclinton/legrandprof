@@ -176,6 +176,17 @@ class Parents extends \LGP\UserBundle\Entity\Parents implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
+    public function prePersist()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'prePersist', []);
+
+        return parent::prePersist();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setEmail($email)
     {
 

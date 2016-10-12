@@ -123,6 +123,7 @@
   'LGPUserBundle:NouvelleCategorieCours:formulaire.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/NouvelleCategorieCours/formulaire.html.twig',
   'LGPUserBundle:NouvelleCategorieCours:update.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/NouvelleCategorieCours/update.html.twig',
   'LGPUserBundle:NouvelleCategorieCours:index.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/NouvelleCategorieCours/index.html.twig',
+  'LGPUserBundle:Dashboard:parent.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Dashboard/parent.html.twig',
   'LGPUserBundle:Dashboard:prof.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Dashboard/prof.html.twig',
   'LGPUserBundle:Evaluation:index.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Evaluation/index.html.twig',
   'LGPUserBundle:Reservation:showProgrammeAndJoursDeCours.html.twig' => '/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Reservation/showProgrammeAndJoursDeCours.html.twig',

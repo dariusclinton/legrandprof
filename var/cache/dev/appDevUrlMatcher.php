@@ -123,9 +123,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // lgp_user_dashboard
-            if ($pathinfo === '/user/dashboard') {
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::indexAction',  '_route' => 'lgp_user_dashboard',);
+            if (0 === strpos($pathinfo, '/user/p')) {
+                // lgp_user_prof_dashboard
+                if ($pathinfo === '/user/prof/dashboard') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::profAction',  '_route' => 'lgp_user_prof_dashboard',);
+                }
+
+                // lgp_user_parent_dashboard
+                if ($pathinfo === '/user/parent/dashboard') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::parentAction',  '_route' => 'lgp_user_parent_dashboard',);
+                }
+
             }
 
             if (0 === strpos($pathinfo, '/user/avis')) {

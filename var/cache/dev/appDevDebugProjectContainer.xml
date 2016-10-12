@@ -96,8 +96,12 @@
     <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
     <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
+      <parameter key="ROLE_PROF" type="collection">
+        <parameter>ROLE_PARENT</parameter>
+      </parameter>
       <parameter key="ROLE_ADMIN" type="collection">
-        <parameter>ROLE_USER</parameter>
+        <parameter>ROLE_PROF</parameter>
+        <parameter>ROLE_PARENT</parameter>
         <parameter>ROLE_SONATA_ADMIN</parameter>
       </parameter>
       <parameter key="ROLE_SUPER_ADMIN" type="collection">
@@ -2316,7 +2320,7 @@
                   <tag name="cache.pool"/>
                   <argument>yI6AlT0I-R</argument>
                   <argument>0</argument>
-                  <argument>QCuCOQ6Fz8QyIMisEtkFlg</argument>
+                  <argument>nXxcYAK2gfccbZ4czyHXBA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2329,7 +2333,7 @@
                   <tag name="cache.pool"/>
                   <argument>E-lP8KGXpO</argument>
                   <argument>0</argument>
-                  <argument>QCuCOQ6Fz8QyIMisEtkFlg</argument>
+                  <argument>nXxcYAK2gfccbZ4czyHXBA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3052,7 +3056,7 @@
       <tag name="cache.pool"/>
       <argument>jcE3Z980jC</argument>
       <argument>0</argument>
-      <argument>QCuCOQ6Fz8QyIMisEtkFlg</argument>
+      <argument>nXxcYAK2gfccbZ4czyHXBA</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3855,7 +3859,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57fe50628a14c5.91825928</argument>
+            <argument>57fe53336e7939.27156847</argument>
           </service>
         </argument>
       </argument>
@@ -3876,8 +3880,12 @@
     </service>
     <service id="security.role_hierarchy" class="Symfony\Component\Security\Core\Role\RoleHierarchy" public="false">
       <argument type="collection">
+        <argument key="ROLE_PROF" type="collection">
+          <argument>ROLE_PARENT</argument>
+        </argument>
         <argument key="ROLE_ADMIN" type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_PROF</argument>
+          <argument>ROLE_PARENT</argument>
           <argument>ROLE_SONATA_ADMIN</argument>
         </argument>
         <argument key="ROLE_SUPER_ADMIN" type="collection">
@@ -4267,7 +4275,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57fe50628a14c5.91825928</argument>
+            <argument>57fe53336e7939.27156847</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>

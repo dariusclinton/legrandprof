@@ -227,7 +227,6 @@ class appProdProjectContainer extends Container
             'sonata.admin.block.admin_list' => 'getSonata_Admin_Block_AdminListService',
             'sonata.admin.block.search_result' => 'getSonata_Admin_Block_SearchResultService',
             'sonata.admin.block.stats' => 'getSonata_Admin_Block_StatsService',
-            'sonata.admin.breadcrumbs_builder' => 'getSonata_Admin_BreadcrumbsBuilderService',
             'sonata.admin.builder.filter.factory' => 'getSonata_Admin_Builder_Filter_FactoryService',
             'sonata.admin.builder.orm_datagrid' => 'getSonata_Admin_Builder_OrmDatagridService',
             'sonata.admin.builder.orm_form' => 'getSonata_Admin_Builder_OrmFormService',
@@ -541,7 +540,7 @@ class appProdProjectContainer extends Container
      */
     protected function getCache_SystemService()
     {
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('Gb5bANSPqv', 0, 'NlJU7IQPRzV4w1rdmOfTMA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('Gb5bANSPqv', 0, 'Q-LruJrBbfhmAvpgxCT-xA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /*
@@ -558,7 +557,7 @@ class appProdProjectContainer extends Container
         $a->addPool($this->get('cache.app'));
         $a->addPool($this->get('cache.system'));
         $a->addPool($this->get('cache.validator'));
-        $a->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('cmM3IrxbFf', 0, 'NlJU7IQPRzV4w1rdmOfTMA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
+        $a->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('cmM3IrxbFf', 0, 'Q-LruJrBbfhmAvpgxCT-xA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
 
         return $this->services['cache_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer(array(0 => $a));
     }
@@ -714,7 +713,7 @@ class appProdProjectContainer extends Container
     {
         if ($lazyLoad) {
 
-            return $this->services['doctrine.orm.default_entity_manager'] = new DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239dd61d16d04deceeb(
+            return $this->services['doctrine.orm.default_entity_manager'] = new DoctrineORMEntityManager_000000002c0ef59700000000a1d3d006e7b1d65eabc5e239dd61d16d04deceeb(
                 function (&$wrappedInstance, \ProxyManager\Proxy\LazyLoadingInterface $proxy) {
                     $wrappedInstance = $this->getDoctrine_Orm_DefaultEntityManagerService(false);
 
@@ -1914,7 +1913,7 @@ class appProdProjectContainer extends Container
      */
     protected function getFosUser_Util_UserManipulatorService()
     {
-        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('pugx_user.manager.orm_user_manager'));
+        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('pugx_user.manager.orm_user_manager'), $this->get('event_dispatcher'), $this);
     }
 
     /*
@@ -2208,8 +2207,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Catégories cours');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2245,8 +2243,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Cours');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2282,8 +2279,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Enseignement');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2319,8 +2315,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Jours de cours');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2356,8 +2351,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Parents');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2393,8 +2387,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Profs');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2430,8 +2423,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Programmes de cours');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2467,8 +2459,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Quartiers cibles');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2504,8 +2495,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Rémunérations');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2541,8 +2531,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Réservations');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -2578,8 +2567,7 @@ class appProdProjectContainer extends Container
         $instance->setPagerType('default');
         $instance->setLabel('Réservation enseignement');
         $instance->setPersistFilters(false);
-        $instance->showMosaicButton(true);
-        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
         $instance->setSecurityInformation(array());
         $instance->initialize();
         $instance->addExtension($this->get('sonata.admin.event.extension'));
@@ -3179,7 +3167,7 @@ class appProdProjectContainer extends Container
         $w = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $h, $i, $r, 'main', $u, $v, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $d, $this->get('security.csrf.token_manager'));
         $w->setRememberMeServices($s);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d, $e), 2 => $t, 3 => $w, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $s, $h, $a, $d, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57f8b2419a87e7.38752135', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $e, $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $r, '/login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d, $e), 2 => $t, 3 => $w, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $s, $h, $a, $d, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '57fe5265e8e494.90357273', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $q, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $e, $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $r, '/login', false), NULL, NULL, $a, false));
     }
 
     /*
@@ -3526,19 +3514,6 @@ class appProdProjectContainer extends Container
     }
 
     /*
-     * Gets the 'sonata.admin.breadcrumbs_builder' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return \Sonata\AdminBundle\Admin\BreadcrumbsBuilder A Sonata\AdminBundle\Admin\BreadcrumbsBuilder instance
-     */
-    protected function getSonata_Admin_BreadcrumbsBuilderService()
-    {
-        return $this->services['sonata.admin.breadcrumbs_builder'] = new \Sonata\AdminBundle\Admin\BreadcrumbsBuilder(array('child_admin_route' => 'edit'));
-    }
-
-    /*
      * Gets the 'sonata.admin.builder.filter.factory' service.
      *
      * This service is shared.
@@ -3548,7 +3523,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSonata_Admin_Builder_Filter_FactoryService()
     {
-        return $this->services['sonata.admin.builder.filter.factory'] = new \Sonata\AdminBundle\Filter\FilterFactory($this, array('Sonata\\DoctrineORMAdminBundle\\Filter\\BooleanFilter' => 'sonata.admin.orm.filter.type.boolean', 'doctrine_orm_boolean' => 'sonata.admin.orm.filter.type.boolean', 'Sonata\\DoctrineORMAdminBundle\\Filter\\CallbackFilter' => 'sonata.admin.orm.filter.type.callback', 'doctrine_orm_callback' => 'sonata.admin.orm.filter.type.callback', 'Sonata\\DoctrineORMAdminBundle\\Filter\\ChoiceFilter' => 'sonata.admin.orm.filter.type.choice', 'doctrine_orm_choice' => 'sonata.admin.orm.filter.type.choice', 'Sonata\\DoctrineORMAdminBundle\\Filter\\ModelFilter' => 'sonata.admin.orm.filter.type.model', 'doctrine_orm_model' => 'sonata.admin.orm.filter.type.model', 'Sonata\\DoctrineORMAdminBundle\\Filter\\ModelAutocompleteFilter' => 'sonata.admin.orm.filter.type.model_autocomplete', 'doctrine_orm_model_autocomplete' => 'sonata.admin.orm.filter.type.model_autocomplete', 'Sonata\\DoctrineORMAdminBundle\\Filter\\StringFilter' => 'sonata.admin.orm.filter.type.string', 'doctrine_orm_string' => 'sonata.admin.orm.filter.type.string', 'Sonata\\DoctrineORMAdminBundle\\Filter\\NumberFilter' => 'sonata.admin.orm.filter.type.number', 'doctrine_orm_number' => 'sonata.admin.orm.filter.type.number', 'Sonata\\DoctrineORMAdminBundle\\Filter\\DateFilter' => 'sonata.admin.orm.filter.type.date', 'doctrine_orm_date' => 'sonata.admin.orm.filter.type.date', 'Sonata\\DoctrineORMAdminBundle\\Filter\\DateRangeFilter' => 'sonata.admin.orm.filter.type.date_range', 'doctrine_orm_date_range' => 'sonata.admin.orm.filter.type.date_range', 'Sonata\\DoctrineORMAdminBundle\\Filter\\DateTimeFilter' => 'sonata.admin.orm.filter.type.datetime', 'doctrine_orm_datetime' => 'sonata.admin.orm.filter.type.datetime', 'Sonata\\DoctrineORMAdminBundle\\Filter\\TimeFilter' => 'sonata.admin.orm.filter.type.time', 'doctrine_orm_time' => 'sonata.admin.orm.filter.type.time', 'Sonata\\DoctrineORMAdminBundle\\Filter\\DateTimeRangeFilter' => 'sonata.admin.orm.filter.type.datetime_range', 'doctrine_orm_datetime_range' => 'sonata.admin.orm.filter.type.datetime_range', 'Sonata\\DoctrineORMAdminBundle\\Filter\\ClassFilter' => 'sonata.admin.orm.filter.type.class', 'doctrine_orm_class' => 'sonata.admin.orm.filter.type.class'));
+        return $this->services['sonata.admin.builder.filter.factory'] = new \Sonata\AdminBundle\Filter\FilterFactory($this, array('doctrine_orm_boolean' => 'sonata.admin.orm.filter.type.boolean', 'doctrine_orm_callback' => 'sonata.admin.orm.filter.type.callback', 'doctrine_orm_choice' => 'sonata.admin.orm.filter.type.choice', 'doctrine_orm_model' => 'sonata.admin.orm.filter.type.model', 'doctrine_orm_model_autocomplete' => 'sonata.admin.orm.filter.type.model_autocomplete', 'doctrine_orm_string' => 'sonata.admin.orm.filter.type.string', 'doctrine_orm_number' => 'sonata.admin.orm.filter.type.number', 'doctrine_orm_date' => 'sonata.admin.orm.filter.type.date', 'doctrine_orm_date_range' => 'sonata.admin.orm.filter.type.date_range', 'doctrine_orm_datetime' => 'sonata.admin.orm.filter.type.datetime', 'doctrine_orm_time' => 'sonata.admin.orm.filter.type.time', 'doctrine_orm_datetime_range' => 'sonata.admin.orm.filter.type.datetime_range', 'doctrine_orm_class' => 'sonata.admin.orm.filter.type.class'));
     }
 
     /*
@@ -3587,7 +3562,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSonata_Admin_Builder_OrmListService()
     {
-        return $this->services['sonata.admin.builder.orm_list'] = new \Sonata\DoctrineORMAdminBundle\Builder\ListBuilder($this->get('sonata.admin.guesser.orm_list_chain'), array('array' => 'SonataAdminBundle:CRUD:list_array.html.twig', 'boolean' => 'SonataAdminBundle:CRUD:list_boolean.html.twig', 'date' => 'SonataAdminBundle:CRUD:list_date.html.twig', 'time' => 'SonataAdminBundle:CRUD:list_time.html.twig', 'datetime' => 'SonataAdminBundle:CRUD:list_datetime.html.twig', 'text' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'textarea' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'email' => 'SonataAdminBundle:CRUD:list_email.html.twig', 'trans' => 'SonataAdminBundle:CRUD:list_trans.html.twig', 'string' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'smallint' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'bigint' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'integer' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'decimal' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'identifier' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'currency' => 'SonataAdminBundle:CRUD:list_currency.html.twig', 'percent' => 'SonataAdminBundle:CRUD:list_percent.html.twig', 'choice' => 'SonataAdminBundle:CRUD:list_choice.html.twig', 'url' => 'SonataAdminBundle:CRUD:list_url.html.twig', 'html' => 'SonataAdminBundle:CRUD:list_html.html.twig'));
+        return $this->services['sonata.admin.builder.orm_list'] = new \Sonata\DoctrineORMAdminBundle\Builder\ListBuilder($this->get('sonata.admin.guesser.orm_list_chain'), array('array' => 'SonataAdminBundle:CRUD:list_array.html.twig', 'boolean' => 'SonataAdminBundle:CRUD:list_boolean.html.twig', 'date' => 'SonataAdminBundle:CRUD:list_date.html.twig', 'time' => 'SonataAdminBundle:CRUD:list_time.html.twig', 'datetime' => 'SonataAdminBundle:CRUD:list_datetime.html.twig', 'text' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'textarea' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'email' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'trans' => 'SonataAdminBundle:CRUD:list_trans.html.twig', 'string' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'smallint' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'bigint' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'integer' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'decimal' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'identifier' => 'SonataAdminBundle:CRUD:list_string.html.twig', 'currency' => 'SonataAdminBundle:CRUD:list_currency.html.twig', 'percent' => 'SonataAdminBundle:CRUD:list_percent.html.twig', 'choice' => 'SonataAdminBundle:CRUD:list_choice.html.twig', 'url' => 'SonataAdminBundle:CRUD:list_url.html.twig', 'html' => 'SonataAdminBundle:CRUD:list_html.html.twig'));
     }
 
     /*
@@ -3600,7 +3575,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSonata_Admin_Builder_OrmShowService()
     {
-        return $this->services['sonata.admin.builder.orm_show'] = new \Sonata\DoctrineORMAdminBundle\Builder\ShowBuilder($this->get('sonata.admin.guesser.orm_show_chain'), array('array' => 'SonataAdminBundle:CRUD:show_array.html.twig', 'boolean' => 'SonataAdminBundle:CRUD:show_boolean.html.twig', 'date' => 'SonataAdminBundle:CRUD:show_date.html.twig', 'time' => 'SonataAdminBundle:CRUD:show_time.html.twig', 'datetime' => 'SonataAdminBundle:CRUD:show_datetime.html.twig', 'text' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'email' => 'SonataAdminBundle:CRUD:show_email.html.twig', 'trans' => 'SonataAdminBundle:CRUD:show_trans.html.twig', 'string' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'smallint' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'bigint' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'integer' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'decimal' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'currency' => 'SonataAdminBundle:CRUD:show_currency.html.twig', 'percent' => 'SonataAdminBundle:CRUD:show_percent.html.twig', 'choice' => 'SonataAdminBundle:CRUD:show_choice.html.twig', 'url' => 'SonataAdminBundle:CRUD:show_url.html.twig', 'html' => 'SonataAdminBundle:CRUD:show_html.html.twig'));
+        return $this->services['sonata.admin.builder.orm_show'] = new \Sonata\DoctrineORMAdminBundle\Builder\ShowBuilder($this->get('sonata.admin.guesser.orm_show_chain'), array('array' => 'SonataAdminBundle:CRUD:show_array.html.twig', 'boolean' => 'SonataAdminBundle:CRUD:show_boolean.html.twig', 'date' => 'SonataAdminBundle:CRUD:show_date.html.twig', 'time' => 'SonataAdminBundle:CRUD:show_time.html.twig', 'datetime' => 'SonataAdminBundle:CRUD:show_datetime.html.twig', 'text' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'trans' => 'SonataAdminBundle:CRUD:show_trans.html.twig', 'string' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'smallint' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'bigint' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'integer' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'decimal' => 'SonataAdminBundle:CRUD:base_show_field.html.twig', 'currency' => 'SonataAdminBundle:CRUD:show_currency.html.twig', 'percent' => 'SonataAdminBundle:CRUD:show_percent.html.twig', 'choice' => 'SonataAdminBundle:CRUD:show_choice.html.twig', 'url' => 'SonataAdminBundle:CRUD:show_url.html.twig', 'html' => 'SonataAdminBundle:CRUD:show_html.html.twig'));
     }
 
     /*
@@ -4278,7 +4253,7 @@ class appProdProjectContainer extends Container
     {
         $this->services['sonata.admin.pool'] = $instance = new \Sonata\AdminBundle\Admin\Pool($this, 'LeGrandProf Admin', 'images/Logo.png', array('html5_validate' => true, 'sort_admins' => false, 'confirm_exit' => true, 'use_select2' => true, 'use_icheck' => true, 'use_bootlint' => false, 'use_stickyforms' => true, 'pager_links' => NULL, 'form_type' => 'standard', 'dropdown_number_groups_per_colums' => 2, 'title_mode' => 'both', 'lock_protection' => false, 'javascripts' => array(0 => 'bundles/sonatacore/vendor/jquery/dist/jquery.min.js', 1 => 'bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js', 2 => 'bundles/sonatacore/vendor/moment/min/moment.min.js', 3 => 'bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js', 4 => 'bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js', 5 => 'bundles/sonatacore/vendor/bootstrap/dist/js/bootstrap.min.js', 6 => 'bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js', 7 => 'bundles/sonataadmin/vendor/jquery-form/jquery.form.js', 8 => 'bundles/sonataadmin/jquery/jquery.confirmExit.js', 9 => 'bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js', 10 => 'bundles/sonatacore/vendor/select2/select2.min.js', 11 => 'bundles/sonataadmin/vendor/admin-lte/dist/js/app.min.js', 12 => 'bundles/sonataadmin/vendor/iCheck/icheck.min.js', 13 => 'bundles/sonataadmin/vendor/slimScroll/jquery.slimscroll.min.js', 14 => 'bundles/sonataadmin/vendor/waypoints/lib/jquery.waypoints.min.js', 15 => 'bundles/sonataadmin/vendor/waypoints/lib/shortcuts/sticky.min.js', 16 => 'bundles/sonataadmin/Admin.js', 17 => 'bundles/sonataadmin/treeview.js'), 'stylesheets' => array(0 => 'bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css', 1 => 'bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css', 2 => 'bundles/sonatacore/vendor/ionicons/css/ionicons.min.css', 3 => 'bundles/sonataadmin/vendor/admin-lte/dist/css/AdminLTE.min.css', 4 => 'bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css', 5 => 'bundles/sonataadmin/vendor/iCheck/skins/square/blue.css', 6 => 'bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css', 7 => 'bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css', 8 => 'bundles/sonatacore/vendor/select2/select2.css', 9 => 'bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css', 10 => 'bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css', 11 => 'bundles/sonataadmin/css/styles.css', 12 => 'bundles/sonataadmin/css/layout.css', 13 => 'bundles/sonataadmin/css/tree.css')), $this->get('property_accessor'));
 
-        $instance->setTemplates(array('layout' => 'LGPAdminBundle::standard_layout.html.twig', 'user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig', 'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig', 'button_create' => 'SonataAdminBundle:Button:create_button.html.twig', 'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig', 'button_history' => 'SonataAdminBundle:Button:history_button.html.twig', 'button_list' => 'SonataAdminBundle:Button:list_button.html.twig', 'button_show' => 'SonataAdminBundle:Button:show_button.html.twig'));
+        $instance->setTemplates(array('layout' => 'LGPAdminBundle::standard_layout.html.twig', 'user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig'));
         $instance->setAdminServiceIds(array(0 => 'lgp.admin.prof', 1 => 'lgp.admin.parent', 2 => 'lgp.admin.quartier_cible', 3 => 'lgp.admin.reservation', 4 => 'lgp.admin.remuneration', 5 => 'lgp.admin.jourdecours', 6 => 'lgp.admin.reservationenseignement', 7 => 'lgp.admin.categorie_cours', 8 => 'lgp.admin.cours', 9 => 'lgp.admin.enseignement', 10 => 'lgp.admin.programmedecours'));
         $instance->setAdminGroups(array('lgp_admin.group.user' => array('label' => 'Utilisateurs', 'items' => array(0 => array('admin' => 'lgp.admin.prof', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.parent', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.quartier_cible', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.cours' => array('label' => 'Cours', 'items' => array(0 => array('admin' => 'lgp.admin.categorie_cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.enseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.programmedecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.reservation' => array('label' => 'Réservations', 'items' => array(0 => array('admin' => 'lgp.admin.reservation', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.remuneration', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.jourdecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.reservationenseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle')));
         $instance->setAdminClasses(array('LGP\\UserBundle\\Entity\\Prof' => array(0 => 'lgp.admin.prof'), 'LGP\\UserBundle\\Entity\\Parents' => array(0 => 'lgp.admin.parent'), 'LGP\\UserBundle\\Entity\\Quartier' => array(0 => 'lgp.admin.quartier_cible'), 'LGP\\ReservationBundle\\Entity\\Reservation' => array(0 => 'lgp.admin.reservation'), 'LGP\\UserBundle\\Entity\\Remuneration' => array(0 => 'lgp.admin.remuneration'), 'LGP\\ReservationBundle\\Entity\\JourDeCours' => array(0 => 'lgp.admin.jourdecours'), 'LGP\\ReservationBundle\\Entity\\ReservationEnseignement' => array(0 => 'lgp.admin.reservationenseignement'), 'LGP\\CourseBundle\\Entity\\Categorie' => array(0 => 'lgp.admin.categorie_cours'), 'LGP\\CourseBundle\\Entity\\Cours' => array(0 => 'lgp.admin.cours'), 'LGP\\CourseBundle\\Entity\\Enseignement' => array(0 => 'lgp.admin.enseignement'), 'LGP\\CourseBundle\\Entity\\ProgrammeDeCours' => array(0 => 'lgp.admin.programmedecours')));
@@ -4413,7 +4388,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSonata_Admin_Twig_ExtensionService()
     {
-        $this->services['sonata.admin.twig.extension'] = $instance = new \Sonata\AdminBundle\Twig\Extension\SonataAdminExtension($this->get('sonata.admin.pool'), $this->get('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('translator.default'));
+        $this->services['sonata.admin.twig.extension'] = $instance = new \Sonata\AdminBundle\Twig\Extension\SonataAdminExtension($this->get('sonata.admin.pool'), $this->get('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE));
 
         $instance->setXEditableTypeMapping(array('choice' => 'select', 'boolean' => 'select', 'text' => 'text', 'textarea' => 'textarea', 'html' => 'textarea', 'email' => 'email', 'string' => 'text', 'smallint' => 'text', 'bigint' => 'text', 'integer' => 'number', 'decimal' => 'number', 'currency' => 'number', 'percent' => 'number', 'url' => 'url', 'date' => 'date'));
 
@@ -4430,7 +4405,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSonata_Admin_Twig_GlobalService()
     {
-        return $this->services['sonata.admin.twig.global'] = new \Sonata\AdminBundle\Twig\GlobalVariables($this->get('sonata.admin.pool'));
+        return $this->services['sonata.admin.twig.global'] = new \Sonata\AdminBundle\Twig\GlobalVariables($this);
     }
 
     /*
@@ -6100,7 +6075,7 @@ class appProdProjectContainer extends Container
      */
     protected function getCache_ValidatorService()
     {
-        return $this->services['cache.validator'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('QCM70f5EYq', 0, 'NlJU7IQPRzV4w1rdmOfTMA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.validator'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('QCM70f5EYq', 0, 'Q-LruJrBbfhmAvpgxCT-xA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /*
@@ -6211,7 +6186,7 @@ class appProdProjectContainer extends Container
     {
         $a = $this->get('security.user_checker.main');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57f8b2419a87e7.38752135')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('57fe5265e8e494.90357273')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -6287,7 +6262,7 @@ class appProdProjectContainer extends Container
      */
     protected function getSecurity_RoleHierarchyService()
     {
-        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_ADMIN' => array(0 => 'ROLE_USER', 1 => 'ROLE_SONATA_ADMIN'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_ADMIN', 1 => 'ROLE_ALLOWED_TO_SWITCH')));
+        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_PROF' => array(0 => 'ROLE_PARENT'), 'ROLE_ADMIN' => array(0 => 'ROLE_PROF', 1 => 'ROLE_PARENT', 2 => 'ROLE_SONATA_ADMIN'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_ADMIN', 1 => 'ROLE_ALLOWED_TO_SWITCH')));
     }
 
     /*
@@ -6572,9 +6547,13 @@ class appProdProjectContainer extends Container
             'security.authentication.trust_resolver.anonymous_class' => 'Symfony\\Component\\Security\\Core\\Authentication\\Token\\AnonymousToken',
             'security.authentication.trust_resolver.rememberme_class' => 'Symfony\\Component\\Security\\Core\\Authentication\\Token\\RememberMeToken',
             'security.role_hierarchy.roles' => array(
+                'ROLE_PROF' => array(
+                    0 => 'ROLE_PARENT',
+                ),
                 'ROLE_ADMIN' => array(
-                    0 => 'ROLE_USER',
-                    1 => 'ROLE_SONATA_ADMIN',
+                    0 => 'ROLE_PROF',
+                    1 => 'ROLE_PARENT',
+                    2 => 'ROLE_SONATA_ADMIN',
                 ),
                 'ROLE_SUPER_ADMIN' => array(
                     0 => 'ROLE_ADMIN',
@@ -7070,7 +7049,7 @@ class appProdProjectContainer extends Container
                         'datetime' => 'SonataAdminBundle:CRUD:list_datetime.html.twig',
                         'text' => 'SonataAdminBundle:CRUD:list_string.html.twig',
                         'textarea' => 'SonataAdminBundle:CRUD:list_string.html.twig',
-                        'email' => 'SonataAdminBundle:CRUD:list_email.html.twig',
+                        'email' => 'SonataAdminBundle:CRUD:list_string.html.twig',
                         'trans' => 'SonataAdminBundle:CRUD:list_trans.html.twig',
                         'string' => 'SonataAdminBundle:CRUD:list_string.html.twig',
                         'smallint' => 'SonataAdminBundle:CRUD:list_string.html.twig',
@@ -7091,7 +7070,6 @@ class appProdProjectContainer extends Container
                         'time' => 'SonataAdminBundle:CRUD:show_time.html.twig',
                         'datetime' => 'SonataAdminBundle:CRUD:show_datetime.html.twig',
                         'text' => 'SonataAdminBundle:CRUD:base_show_field.html.twig',
-                        'email' => 'SonataAdminBundle:CRUD:show_email.html.twig',
                         'trans' => 'SonataAdminBundle:CRUD:show_trans.html.twig',
                         'string' => 'SonataAdminBundle:CRUD:base_show_field.html.twig',
                         'smallint' => 'SonataAdminBundle:CRUD:base_show_field.html.twig',
@@ -7162,13 +7140,6 @@ class appProdProjectContainer extends Container
                 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig',
                 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig',
                 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig',
-                'action_create' => 'SonataAdminBundle:CRUD:dashboard__action_create.html.twig',
-                'button_acl' => 'SonataAdminBundle:Button:acl_button.html.twig',
-                'button_create' => 'SonataAdminBundle:Button:create_button.html.twig',
-                'button_edit' => 'SonataAdminBundle:Button:edit_button.html.twig',
-                'button_history' => 'SonataAdminBundle:Button:history_button.html.twig',
-                'button_list' => 'SonataAdminBundle:Button:list_button.html.twig',
-                'button_show' => 'SonataAdminBundle:Button:show_button.html.twig',
             ),
             'sonata.admin.configuration.admin_services' => array(
 
@@ -7343,9 +7314,6 @@ class appProdProjectContainer extends Container
                 ),
             ),
             'sonata.admin.configuration.sort_admins' => false,
-            'sonata.admin.configuration.breadcrumbs' => array(
-                'child_admin_route' => 'edit',
-            ),
             'sonata.admin.security.acl_user_manager' => 'fos_user.user_manager',
             'sonata.admin.configuration.security.information' => array(
 
@@ -7395,7 +7363,6 @@ class appProdProjectContainer extends Container
                 ),
             ),
             'sonata.admin.configuration.filters.persist' => false,
-            'sonata.admin.configuration.show.mosaic.button' => true,
             'stof_doctrine_extensions.event_listener.locale.class' => 'Stof\\DoctrineExtensionsBundle\\EventListener\\LocaleListener',
             'stof_doctrine_extensions.event_listener.logger.class' => 'Stof\\DoctrineExtensionsBundle\\EventListener\\LoggerListener',
             'stof_doctrine_extensions.event_listener.blame.class' => 'Stof\\DoctrineExtensionsBundle\\EventListener\\BlameListener',
@@ -7478,232 +7445,232 @@ class appProdProjectContainer extends Container
     }
 }
 
-class DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239dd61d16d04deceeb extends \Doctrine\ORM\EntityManager implements \ProxyManager\Proxy\VirtualProxyInterface
+class DoctrineORMEntityManager_000000002c0ef59700000000a1d3d006e7b1d65eabc5e239dd61d16d04deceeb extends \Doctrine\ORM\EntityManager implements \ProxyManager\Proxy\VirtualProxyInterface
 {
-    private $valueHolder57f8b24245f1b411851067 = null;
-    private $initializer57f8b24245f2d871820700 = null;
-    private static $publicProperties57f8b24245eee218217013 = array(
+    private $valueHolder57fe5266b065d490697453 = null;
+    private $initializer57fe5266b0671078750937 = null;
+    private static $publicProperties57fe5266b062e522093884 = array(
         
     );
     public function getConnection()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getConnection', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getConnection();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getConnection', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getConnection();
     }
     public function getMetadataFactory()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getMetadataFactory', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getMetadataFactory();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getMetadataFactory', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getMetadataFactory();
     }
     public function getExpressionBuilder()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getExpressionBuilder', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getExpressionBuilder();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getExpressionBuilder', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getExpressionBuilder();
     }
     public function beginTransaction()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'beginTransaction', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->beginTransaction();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'beginTransaction', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->beginTransaction();
     }
     public function getCache()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getCache', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getCache();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getCache', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getCache();
     }
     public function transactional($func)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'transactional', array('func' => $func), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->transactional($func);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'transactional', array('func' => $func), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->transactional($func);
     }
     public function commit()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'commit', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->commit();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'commit', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->commit();
     }
     public function rollback()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'rollback', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->rollback();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'rollback', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->rollback();
     }
     public function getClassMetadata($className)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getClassMetadata', array('className' => $className), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getClassMetadata($className);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getClassMetadata', array('className' => $className), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getClassMetadata($className);
     }
     public function createQuery($dql = '')
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'createQuery', array('dql' => $dql), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->createQuery($dql);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'createQuery', array('dql' => $dql), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->createQuery($dql);
     }
     public function createNamedQuery($name)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'createNamedQuery', array('name' => $name), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->createNamedQuery($name);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'createNamedQuery', array('name' => $name), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->createNamedQuery($name);
     }
     public function createNativeQuery($sql, \Doctrine\ORM\Query\ResultSetMapping $rsm)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'createNativeQuery', array('sql' => $sql, 'rsm' => $rsm), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->createNativeQuery($sql, $rsm);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'createNativeQuery', array('sql' => $sql, 'rsm' => $rsm), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->createNativeQuery($sql, $rsm);
     }
     public function createNamedNativeQuery($name)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'createNamedNativeQuery', array('name' => $name), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->createNamedNativeQuery($name);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'createNamedNativeQuery', array('name' => $name), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->createNamedNativeQuery($name);
     }
     public function createQueryBuilder()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'createQueryBuilder', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->createQueryBuilder();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'createQueryBuilder', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->createQueryBuilder();
     }
     public function flush($entity = null)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'flush', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->flush($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'flush', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->flush($entity);
     }
     public function find($entityName, $id, $lockMode = null, $lockVersion = null)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'find', array('entityName' => $entityName, 'id' => $id, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->find($entityName, $id, $lockMode, $lockVersion);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'find', array('entityName' => $entityName, 'id' => $id, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->find($entityName, $id, $lockMode, $lockVersion);
     }
     public function getReference($entityName, $id)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getReference', array('entityName' => $entityName, 'id' => $id), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getReference($entityName, $id);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getReference', array('entityName' => $entityName, 'id' => $id), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getReference($entityName, $id);
     }
     public function getPartialReference($entityName, $identifier)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getPartialReference', array('entityName' => $entityName, 'identifier' => $identifier), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getPartialReference($entityName, $identifier);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getPartialReference', array('entityName' => $entityName, 'identifier' => $identifier), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getPartialReference($entityName, $identifier);
     }
     public function clear($entityName = null)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'clear', array('entityName' => $entityName), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->clear($entityName);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'clear', array('entityName' => $entityName), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->clear($entityName);
     }
     public function close()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'close', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->close();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'close', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->close();
     }
     public function persist($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'persist', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->persist($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'persist', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->persist($entity);
     }
     public function remove($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'remove', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->remove($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'remove', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->remove($entity);
     }
     public function refresh($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'refresh', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->refresh($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'refresh', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->refresh($entity);
     }
     public function detach($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'detach', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->detach($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'detach', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->detach($entity);
     }
     public function merge($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'merge', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->merge($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'merge', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->merge($entity);
     }
     public function copy($entity, $deep = false)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'copy', array('entity' => $entity, 'deep' => $deep), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->copy($entity, $deep);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'copy', array('entity' => $entity, 'deep' => $deep), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->copy($entity, $deep);
     }
     public function lock($entity, $lockMode, $lockVersion = null)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'lock', array('entity' => $entity, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->lock($entity, $lockMode, $lockVersion);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'lock', array('entity' => $entity, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->lock($entity, $lockMode, $lockVersion);
     }
     public function getRepository($entityName)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getRepository', array('entityName' => $entityName), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getRepository($entityName);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getRepository', array('entityName' => $entityName), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getRepository($entityName);
     }
     public function contains($entity)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'contains', array('entity' => $entity), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->contains($entity);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'contains', array('entity' => $entity), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->contains($entity);
     }
     public function getEventManager()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getEventManager', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getEventManager();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getEventManager', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getEventManager();
     }
     public function getConfiguration()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getConfiguration', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getConfiguration();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getConfiguration', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getConfiguration();
     }
     public function isOpen()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'isOpen', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->isOpen();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'isOpen', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->isOpen();
     }
     public function getUnitOfWork()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getUnitOfWork', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getUnitOfWork();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getUnitOfWork', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getUnitOfWork();
     }
     public function getHydrator($hydrationMode)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getHydrator', array('hydrationMode' => $hydrationMode), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getHydrator($hydrationMode);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getHydrator', array('hydrationMode' => $hydrationMode), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getHydrator($hydrationMode);
     }
     public function newHydrator($hydrationMode)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'newHydrator', array('hydrationMode' => $hydrationMode), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->newHydrator($hydrationMode);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'newHydrator', array('hydrationMode' => $hydrationMode), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->newHydrator($hydrationMode);
     }
     public function getProxyFactory()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getProxyFactory', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getProxyFactory();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getProxyFactory', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getProxyFactory();
     }
     public function initializeObject($obj)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'initializeObject', array('obj' => $obj), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->initializeObject($obj);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'initializeObject', array('obj' => $obj), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->initializeObject($obj);
     }
     public function getFilters()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'getFilters', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->getFilters();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'getFilters', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->getFilters();
     }
     public function isFiltersStateClean()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'isFiltersStateClean', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->isFiltersStateClean();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'isFiltersStateClean', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->isFiltersStateClean();
     }
     public function hasFilters()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'hasFilters', array(), $this->initializer57f8b24245f2d871820700);
-        return $this->valueHolder57f8b24245f1b411851067->hasFilters();
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'hasFilters', array(), $this->initializer57fe5266b0671078750937);
+        return $this->valueHolder57fe5266b065d490697453->hasFilters();
     }
     public function __construct($initializer)
     {
-        $this->initializer57f8b24245f2d871820700 = $initializer;
+        $this->initializer57fe5266b0671078750937 = $initializer;
     }
     public function & __get($name)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__get', array('name' => $name), $this->initializer57f8b24245f2d871820700);
-        if (isset(self::$publicProperties57f8b24245eee218217013[$name])) {
-            return $this->valueHolder57f8b24245f1b411851067->$name;
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__get', array('name' => $name), $this->initializer57fe5266b0671078750937);
+        if (isset(self::$publicProperties57fe5266b062e522093884[$name])) {
+            return $this->valueHolder57fe5266b065d490697453->$name;
         }
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder57f8b24245f1b411851067;
+            $targetObject = $this->valueHolder57fe5266b065d490697453;
             $backtrace = debug_backtrace(false);
             trigger_error('Undefined property: ' . get_parent_class($this) . '::$' . $name . ' in ' . $backtrace[0]['file'] . ' on line ' . $backtrace[0]['line'], \E_USER_NOTICE);
             return $targetObject->$name;;
             return;
         }
-        $targetObject = $this->valueHolder57f8b24245f1b411851067;
+        $targetObject = $this->valueHolder57fe5266b065d490697453;
         $accessor = function & () use ($targetObject, $name) {
             return $targetObject->$name;
         };
@@ -7715,14 +7682,14 @@ class DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239d
     }
     public function __set($name, $value)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__set', array('name' => $name, 'value' => $value), $this->initializer57f8b24245f2d871820700);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__set', array('name' => $name, 'value' => $value), $this->initializer57fe5266b0671078750937);
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder57f8b24245f1b411851067;
+            $targetObject = $this->valueHolder57fe5266b065d490697453;
             return $targetObject->$name = $value;;
             return;
         }
-        $targetObject = $this->valueHolder57f8b24245f1b411851067;
+        $targetObject = $this->valueHolder57fe5266b065d490697453;
         $accessor = function & () use ($targetObject, $name, $value) {
             return $targetObject->$name = $value;
         };
@@ -7734,14 +7701,14 @@ class DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239d
     }
     public function __isset($name)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__isset', array('name' => $name), $this->initializer57f8b24245f2d871820700);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__isset', array('name' => $name), $this->initializer57fe5266b0671078750937);
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder57f8b24245f1b411851067;
+            $targetObject = $this->valueHolder57fe5266b065d490697453;
             return isset($targetObject->$name);;
             return;
         }
-        $targetObject = $this->valueHolder57f8b24245f1b411851067;
+        $targetObject = $this->valueHolder57fe5266b065d490697453;
         $accessor = function () use ($targetObject, $name) {
             return isset($targetObject->$name);
         };
@@ -7753,14 +7720,14 @@ class DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239d
     }
     public function __unset($name)
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__unset', array('name' => $name), $this->initializer57f8b24245f2d871820700);
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__unset', array('name' => $name), $this->initializer57fe5266b0671078750937);
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder57f8b24245f1b411851067;
+            $targetObject = $this->valueHolder57fe5266b065d490697453;
             unset($targetObject->$name);;
             return;
         }
-        $targetObject = $this->valueHolder57f8b24245f1b411851067;
+        $targetObject = $this->valueHolder57fe5266b065d490697453;
         $accessor = function () use ($targetObject, $name) {
             unset($targetObject->$name);
         };
@@ -7772,35 +7739,35 @@ class DoctrineORMEntityManager_0000000027ff96e200000000eb6e4e6be7b1d65eabc5e239d
     }
     public function __clone()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__clone', array(), $this->initializer57f8b24245f2d871820700);
-        $this->valueHolder57f8b24245f1b411851067 = clone $this->valueHolder57f8b24245f1b411851067;
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__clone', array(), $this->initializer57fe5266b0671078750937);
+        $this->valueHolder57fe5266b065d490697453 = clone $this->valueHolder57fe5266b065d490697453;
     }
     public function __sleep()
     {
-        $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, '__sleep', array(), $this->initializer57f8b24245f2d871820700);
-        return array('valueHolder57f8b24245f1b411851067');
+        $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, '__sleep', array(), $this->initializer57fe5266b0671078750937);
+        return array('valueHolder57fe5266b065d490697453');
     }
     public function __wakeup()
     {
     }
     public function setProxyInitializer(\Closure $initializer = null)
     {
-        $this->initializer57f8b24245f2d871820700 = $initializer;
+        $this->initializer57fe5266b0671078750937 = $initializer;
     }
     public function getProxyInitializer()
     {
-        return $this->initializer57f8b24245f2d871820700;
+        return $this->initializer57fe5266b0671078750937;
     }
     public function initializeProxy()
     {
-        return $this->initializer57f8b24245f2d871820700 && $this->initializer57f8b24245f2d871820700->__invoke($this->valueHolder57f8b24245f1b411851067, $this, 'initializeProxy', array(), $this->initializer57f8b24245f2d871820700);
+        return $this->initializer57fe5266b0671078750937 && $this->initializer57fe5266b0671078750937->__invoke($this->valueHolder57fe5266b065d490697453, $this, 'initializeProxy', array(), $this->initializer57fe5266b0671078750937);
     }
     public function isProxyInitialized()
     {
-        return null !== $this->valueHolder57f8b24245f1b411851067;
+        return null !== $this->valueHolder57fe5266b065d490697453;
     }
     public function getWrappedValueHolderValue()
     {
-        return $this->valueHolder57f8b24245f1b411851067;
+        return $this->valueHolder57fe5266b065d490697453;
     }
 }

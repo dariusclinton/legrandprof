@@ -20,12 +20,12 @@ class __TwigTemplate_c494ff52b964fcbd35e9af7b0c5f8ea3a79e5ab554c10f913f10a311d50
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_61f2061431cad58b8be61b9770b88f4dbb76273e750f075590151f0a5eef6785 = $this->env->getExtension("native_profiler");
-        $__internal_61f2061431cad58b8be61b9770b88f4dbb76273e750f075590151f0a5eef6785->enter($__internal_61f2061431cad58b8be61b9770b88f4dbb76273e750f075590151f0a5eef6785_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Pager:links.html.twig"));
+        $__internal_ed05bdce71f3f7417be2aeb3145bb8ddc0daa09ba8ff5f46747811f2d78d6368 = $this->env->getExtension("native_profiler");
+        $__internal_ed05bdce71f3f7417be2aeb3145bb8ddc0daa09ba8ff5f46747811f2d78d6368->enter($__internal_ed05bdce71f3f7417be2aeb3145bb8ddc0daa09ba8ff5f46747811f2d78d6368_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Pager:links.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_61f2061431cad58b8be61b9770b88f4dbb76273e750f075590151f0a5eef6785->leave($__internal_61f2061431cad58b8be61b9770b88f4dbb76273e750f075590151f0a5eef6785_prof);
+        $__internal_ed05bdce71f3f7417be2aeb3145bb8ddc0daa09ba8ff5f46747811f2d78d6368->leave($__internal_ed05bdce71f3f7417be2aeb3145bb8ddc0daa09ba8ff5f46747811f2d78d6368_prof);
 
     }
 

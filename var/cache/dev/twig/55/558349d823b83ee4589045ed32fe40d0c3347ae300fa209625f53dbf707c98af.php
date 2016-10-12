@@ -15,14 +15,14 @@ class __TwigTemplate_776287cef300abd970d15afce508b41308222336da8f8ac2e621949802d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f5c9e329197c97cb462572926187f4a5ff041650b94fa0b411323cd5b837b586 = $this->env->getExtension("native_profiler");
-        $__internal_f5c9e329197c97cb462572926187f4a5ff041650b94fa0b411323cd5b837b586->enter($__internal_f5c9e329197c97cb462572926187f4a5ff041650b94fa0b411323cd5b837b586_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:base_acl_macro.html.twig"));
+        $__internal_022a9cf9cf714f19cbd88d236c51c7f31975eda6b03e6ca6da8eb45277ce344c = $this->env->getExtension("native_profiler");
+        $__internal_022a9cf9cf714f19cbd88d236c51c7f31975eda6b03e6ca6da8eb45277ce344c->enter($__internal_022a9cf9cf714f19cbd88d236c51c7f31975eda6b03e6ca6da8eb45277ce344c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:base_acl_macro.html.twig"));
 
         // line 11
         echo "
 ";
         
-        $__internal_f5c9e329197c97cb462572926187f4a5ff041650b94fa0b411323cd5b837b586->leave($__internal_f5c9e329197c97cb462572926187f4a5ff041650b94fa0b411323cd5b837b586_prof);
+        $__internal_022a9cf9cf714f19cbd88d236c51c7f31975eda6b03e6ca6da8eb45277ce344c->leave($__internal_022a9cf9cf714f19cbd88d236c51c7f31975eda6b03e6ca6da8eb45277ce344c_prof);
 
     }
 
@@ -43,8 +43,8 @@ class __TwigTemplate_776287cef300abd970d15afce508b41308222336da8f8ac2e621949802d
 
         ob_start();
         try {
-            $__internal_f1e5b2a64fbde979fd5abb2174f418cce13936c5410dfd2f3c70a6a4391b4f28 = $this->env->getExtension("native_profiler");
-            $__internal_f1e5b2a64fbde979fd5abb2174f418cce13936c5410dfd2f3c70a6a4391b4f28->enter($__internal_f1e5b2a64fbde979fd5abb2174f418cce13936c5410dfd2f3c70a6a4391b4f28_prof = new Twig_Profiler_Profile($this->getTemplateName(), "macro", "render_form"));
+            $__internal_65d3af64f2fb8247e44f9f3140db2569afb8e8ab15eabcfa299c6cc1f886ad01 = $this->env->getExtension("native_profiler");
+            $__internal_65d3af64f2fb8247e44f9f3140db2569afb8e8ab15eabcfa299c6cc1f886ad01->enter($__internal_65d3af64f2fb8247e44f9f3140db2569afb8e8ab15eabcfa299c6cc1f886ad01_prof = new Twig_Profiler_Profile($this->getTemplateName(), "macro", "render_form"));
 
             // line 13
             echo "    <form class=\"form-horizontal\"
@@ -199,7 +199,7 @@ class __TwigTemplate_776287cef300abd970d15afce508b41308222336da8f8ac2e621949802d
     </form>
 ";
             
-            $__internal_f1e5b2a64fbde979fd5abb2174f418cce13936c5410dfd2f3c70a6a4391b4f28->leave($__internal_f1e5b2a64fbde979fd5abb2174f418cce13936c5410dfd2f3c70a6a4391b4f28_prof);
+            $__internal_65d3af64f2fb8247e44f9f3140db2569afb8e8ab15eabcfa299c6cc1f886ad01->leave($__internal_65d3af64f2fb8247e44f9f3140db2569afb8e8ab15eabcfa299c6cc1f886ad01_prof);
 
         } catch (Exception $e) {
             ob_end_clean();

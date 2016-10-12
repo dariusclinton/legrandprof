@@ -92,9 +92,15 @@
               <ul class="nav navbar-nav">
                 <li>
                   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                      <a href="#" style="margin-top: 0px; font-weight: bold">{{ app.user.prenoms | capitalize }}</a>
+                      <a href="{{ path('fos_user_profile_show') }}" style="margin-top: 0px; font-weight: bold">{{ app.user.prenoms | capitalize }} {{ app.user.nom | capitalize }}</a>
                     <ul>
-                      <li><a href="{{ path('lgp_user_dashboard') }}">Tableau de bord</a></li>
+                      {% if is_granted('ROLE_PROF') %}
+                        <li><a href="{{ path('lgp_user_prof_dashboard') }}">Tableau de bord</a></li>
+
+                        {% else %}
+                          <li><a href="{{ path('lgp_user_parent_dashboard') }}">Tableau de bord</a></li>
+                      {% endif %}
+                      <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
                       <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                     </ul>
                   {% else %}
