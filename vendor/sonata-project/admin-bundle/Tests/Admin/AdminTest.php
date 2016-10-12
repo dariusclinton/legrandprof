@@ -19,7 +19,6 @@ use Sonata\AdminBundle\Route\RoutesCache;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\CommentAdmin;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\CommentWithCustomRouteAdmin;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\FieldDescription;
-use Sonata\AdminBundle\Tests\Fixtures\Admin\FilteredAdmin;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\ModelAdmin;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\PostAdmin;
 use Sonata\AdminBundle\Tests\Fixtures\Admin\PostWithCustomRouteAdmin;
@@ -27,7 +26,6 @@ use Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Post;
 use Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Tag;
 use Sonata\AdminBundle\Tests\Fixtures\Entity\FooToString;
 use Sonata\AdminBundle\Tests\Fixtures\Entity\FooToStringNull;
-use Sonata\CoreBundle\Model\Adapter\AdapterInterface;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -59,22 +57,17 @@ class AdminTest extends \PHPUnit_Framework_TestCase
 
     public function testGetClass()
     {
-        $class = 'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Post';
+        $class = 'Application\Sonata\NewsBundle\Entity\Post';
         $baseControllerName = 'SonataNewsBundle:PostAdmin';
 
         $admin = new PostAdmin('sonata.post.admin.post', $class, $baseControllerName);
 
-        $admin->setSubject(new \Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getClass()
-        );
+        $testObject = new \stdClass();
+        $admin->setSubject($testObject);
+        $this->assertSame('stdClass', $admin->getClass());
 
         $admin->setSubClasses(array('foo'));
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getClass()
-        );
+        $this->assertSame('stdClass', $admin->getClass());
 
         $admin->setSubject(null);
         $admin->setSubClasses(array());
@@ -222,6 +215,240 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $admin->setSecurityHandler($securityHandler->reveal());
 
         $this->assertTrue($admin->hasAccess('edit_action'));
+    }
+
+    public function testGetBreadCrumbs()
+    {
+        $class = 'Application\Sonata\NewsBundle\Entity\Post';
+        $baseControllerName = 'SonataNewsBundle:PostAdmin';
+
+        $admin = new PostAdmin('sonata.post.admin.post', $class, $baseControllerName);
+        $commentAdmin = new CommentAdmin(
+            'sonata.post.admin.comment',
+            'Application\Sonata\NewsBundle\Entity\Comment',
+            'SonataNewsBundle:CommentAdmin'
+        );
+        $subCommentAdmin = new CommentAdmin(
+            'sonata.post.admin.comment',
+            'Application\Sonata\NewsBundle\Entity\Comment',
+            'SonataNewsBundle:CommentAdmin'
+        );
+        $admin->addChild($commentAdmin);
+        $admin->setRequest(new Request(array('id' => 42)));
+        $commentAdmin->setRequest(new Request());
+        $commentAdmin->initialize();
+        $admin->initialize();
+        $commentAdmin->setCurrentChild($subCommentAdmin);
+
+        $menuFactory = $this->getMock('Knp\Menu\FactoryInterface');
+        $menu = $this->getMock('Knp\Menu\ItemInterface');
+        $translatorStrategy = $this->getMock(
+            'Sonata\AdminBundle\Translator\LabelTranslatorStrategyInterface'
+        );
+        $routeGenerator = $this->getMock(
+            'Sonata\AdminBundle\Route\RouteGeneratorInterface'
+        );
+        $modelManager = $this->getMock(
+            'Sonata\AdminBundle\Model\ModelManagerInterface'
+        );
+
+        $admin->setMenuFactory($menuFactory);
+        $admin->setLabelTranslatorStrategy($translatorStrategy);
+        $admin->setRouteGenerator($routeGenerator);
+        $admin->setModelManager($modelManager);
+
+        $commentAdmin->setLabelTranslatorStrategy($translatorStrategy);
+        $commentAdmin->setRouteGenerator($routeGenerator);
+
+        $modelManager->expects($this->exactly(1))
+            ->method('find')
+            ->with('Application\Sonata\NewsBundle\Entity\Post', 42)
+            ->will($this->returnValue(new DummySubject()));
+
+        $menuFactory->expects($this->exactly(5))
+            ->method('createItem')
+            ->with('root')
+            ->will($this->returnValue($menu));
+
+        $menu->expects($this->once())
+            ->method('setUri')
+            ->with($this->identicalTo(false));
+
+        $menu->expects($this->exactly(5))
+            ->method('getParent')
+            ->will($this->returnValue(false));
+
+        $routeGenerator->expects($this->exactly(5))
+            ->method('generate')
+            ->with('sonata_admin_dashboard')
+            ->will($this->returnValue('http://somehost.com'));
+
+        $translatorStrategy->expects($this->exactly(18))
+            ->method('getLabel')
+            ->withConsecutive(
+                array('dashboard'),
+                array('Post_list'),
+                array('Comment_list'),
+                array('Comment_repost'),
+
+                array('dashboard'),
+                array('Post_list'),
+                array('Comment_list'),
+                array('Comment_flag'),
+
+                array('dashboard'),
+                array('Post_list'),
+                array('Comment_list'),
+                array('Comment_edit'),
+
+                array('dashboard'),
+                array('Post_list'),
+                array('Comment_list'),
+
+                array('dashboard'),
+                array('Post_list'),
+                array('Comment_list')
+            )
+            ->will($this->onConsecutiveCalls(
+                'someLabel',
+                'someOtherLabel',
+                'someInterestingLabel',
+                'someFancyLabel',
+
+                'someCoolLabel',
+                'someTipTopLabel',
+                'someFunkyLabel',
+                'someAwesomeLabel',
+
+                'someLikeableLabel',
+                'someMildlyInterestingLabel',
+                'someWTFLabel',
+                'someBadLabel',
+
+                'someBoringLabel',
+                'someLongLabel',
+                'someEndlessLabel',
+
+                'someAlmostThereLabel',
+                'someOriginalLabel',
+                'someOkayishLabel'
+            ));
+
+        $menu->expects($this->exactly(24))
+            ->method('addChild')
+            ->withConsecutive(
+                array('someLabel'),
+                array('someOtherLabel'),
+                array('dummy subject representation'),
+                array('someInterestingLabel'),
+                array('someFancyLabel'),
+
+                array('someCoolLabel'),
+                array('someTipTopLabel'),
+                array('dummy subject representation'),
+                array('someFunkyLabel'),
+                array('someAwesomeLabel'),
+
+                array('someLikeableLabel'),
+                array('someMildlyInterestingLabel'),
+                array('dummy subject representation'),
+                array('someWTFLabel'),
+                array('someBadLabel'),
+
+                array('someBoringLabel'),
+                array('someLongLabel'),
+                array('dummy subject representation'),
+                array('someEndlessLabel'),
+
+                array('someAlmostThereLabel'),
+                array('someOriginalLabel'),
+                array('dummy subject representation'),
+                array('someOkayishLabel'),
+                array('dummy subject representation')
+            )
+            ->will($this->returnValue($menu));
+
+        $admin->getBreadcrumbs('repost');
+        $admin->setSubject(new DummySubject());
+        $admin->getBreadcrumbs('flag');
+
+        $commentAdmin->getBreadcrumbs('edit');
+
+        $commentAdmin->getBreadcrumbs('list');
+        $commentAdmin->setSubject(new DummySubject());
+        $commentAdmin->getBreadcrumbs('reply');
+    }
+
+    public function testGetBreadCrumbsWithNoCurrentAdmin()
+    {
+        $class = 'Application\Sonata\NewsBundle\Entity\Post';
+        $baseControllerName = 'SonataNewsBundle:PostAdmin';
+
+        $admin = new PostAdmin('sonata.post.admin.post', $class, $baseControllerName);
+        $commentAdmin = new CommentAdmin(
+            'sonata.post.admin.comment',
+            'Application\Sonata\NewsBundle\Entity\Comment',
+            'SonataNewsBundle:CommentAdmin'
+        );
+        $admin->addChild($commentAdmin);
+        $admin->setRequest(new Request(array('id' => 42)));
+        $commentAdmin->setRequest(new Request());
+        $commentAdmin->initialize();
+        $admin->initialize();
+
+        $menuFactory = $this->getMock('Knp\Menu\FactoryInterface');
+        $menu = $this->getMock('Knp\Menu\ItemInterface');
+        $translatorStrategy = $this->getMock(
+            'Sonata\AdminBundle\Translator\LabelTranslatorStrategyInterface'
+        );
+        $routeGenerator = $this->getMock(
+            'Sonata\AdminBundle\Route\RouteGeneratorInterface'
+        );
+
+        $admin->setMenuFactory($menuFactory);
+        $admin->setLabelTranslatorStrategy($translatorStrategy);
+        $admin->setRouteGenerator($routeGenerator);
+
+        $menuFactory->expects($this->exactly(2))
+            ->method('createItem')
+            ->with('root')
+            ->will($this->returnValue($menu));
+
+        $translatorStrategy->expects($this->exactly(5))
+            ->method('getLabel')
+            ->withConsecutive(
+                array('dashboard'),
+                array('Post_list'),
+                array('Post_repost'),
+
+                array('dashboard'),
+                array('Post_list')
+            )
+            ->will($this->onConsecutiveCalls(
+                'someLabel',
+                'someOtherLabel',
+                'someInterestingLabel',
+                'someFancyLabel',
+                'someCoolLabel'
+            ));
+
+        $menu->expects($this->exactly(6))
+            ->method('addChild')
+            ->withConsecutive(
+                array('someLabel'),
+                array('someOtherLabel'),
+                array('someInterestingLabel'),
+                array('someFancyLabel'),
+
+                array('someCoolLabel'),
+                array('dummy subject representation')
+            )
+            ->will($this->returnValue($menu));
+
+        $admin->getBreadcrumbs('repost');
+        $admin->setSubject(new DummySubject());
+        $flagBreadcrumb = $admin->getBreadcrumbs('flag');
+        $this->assertSame($flagBreadcrumb, $admin->getBreadcrumbs('flag'));
     }
 
     /**
@@ -610,28 +837,18 @@ class AdminTest extends \PHPUnit_Framework_TestCase
      */
     public function testSubClass()
     {
-        $admin = new PostAdmin(
-            'sonata.post.admin.post',
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Post',
-            'SonataNewsBundle:PostAdmin'
-        );
+        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
         $this->assertFalse($admin->hasSubClass('test'));
         $this->assertFalse($admin->hasActiveSubClass());
         $this->assertCount(0, $admin->getSubClasses());
         $this->assertNull($admin->getActiveSubClass());
         $this->assertNull($admin->getActiveSubclassCode());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Post',
-            $admin->getClass()
-        );
+        $this->assertSame('NewsBundle\Entity\Post', $admin->getClass());
 
         // Just for the record, if there is no inheritance set, the getSubject is not used
         // the getSubject can also lead to some issue
-        $admin->setSubject(new \Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getClass()
-        );
+         $admin->setSubject(new \stdClass());
+        $this->assertSame('stdClass', $admin->getClass());
 
         $admin->setSubClasses(array('extended1' => 'NewsBundle\Entity\PostExtended1', 'extended2' => 'NewsBundle\Entity\PostExtended2'));
         $this->assertFalse($admin->hasSubClass('test'));
@@ -640,10 +857,7 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(2, $admin->getSubClasses());
         $this->assertNull($admin->getActiveSubClass());
         $this->assertNull($admin->getActiveSubclassCode());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getClass()
-        );
+        $this->assertSame('stdClass', $admin->getClass());
 
         $request = new \Symfony\Component\HttpFoundation\Request(array('subclass' => 'extended1'));
         $admin->setRequest($request);
@@ -651,15 +865,9 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($admin->hasSubClass('extended1'));
         $this->assertTrue($admin->hasActiveSubClass());
         $this->assertCount(2, $admin->getSubClasses());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getActiveSubClass()
-        );
+        $this->assertSame('stdClass', $admin->getActiveSubClass());
         $this->assertSame('extended1', $admin->getActiveSubclassCode());
-        $this->assertSame(
-            'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\BlogPost',
-            $admin->getClass()
-        );
+        $this->assertSame('stdClass', $admin->getClass());
 
         $request->query->set('subclass', 'inject');
         $this->assertNull($admin->getActiveSubclassCode());
@@ -1193,6 +1401,13 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('sonata.post.admin.post', $admin->getObjectIdentifier());
     }
 
+    public function testTransWithNoTranslator()
+    {
+        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
+
+        $this->assertSame('foo', $admin->trans('foo'));
+    }
+
     public function testTrans()
     {
         $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
@@ -1209,9 +1424,6 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('fooTranslated', $admin->trans('foo'));
     }
 
-    /**
-     * @group Legacy
-     */
     public function testTransWithMessageDomain()
     {
         $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
@@ -1225,6 +1437,13 @@ class AdminTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue('fooTranslated'));
 
         $this->assertSame('fooTranslated', $admin->trans('foo', array('name' => 'Andrej'), 'fooMessageDomain'));
+    }
+
+    public function testTransChoiceWithNoTranslator()
+    {
+        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
+
+        $this->assertSame('foo', $admin->transChoice('foo', 2));
     }
 
     public function testTransChoice()
@@ -1243,9 +1462,6 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('fooTranslated', $admin->transChoice('foo', 2));
     }
 
-    /**
-     * @group Legacy
-     */
     public function testTransChoiceWithMessageDomain()
     {
         $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
@@ -1530,97 +1746,31 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($bazFieldDescription, $modelAdmin->getFilterFieldDescription('baz'));
     }
 
-    public function testGetSubjectNoRequest()
-    {
-        $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $modelManager
-            ->expects($this->never())
-            ->method('find');
-
-        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-        $admin->setModelManager($modelManager);
-
-        $this->assertNull($admin->getSubject());
-    }
-
-    public function testGetSideMenu()
-    {
-        $item = $this->getMock('Knp\Menu\ItemInterface');
-        $item
-            ->expects($this->once())
-            ->method('setChildrenAttribute')
-            ->with('class', 'nav navbar-nav');
-        $item
-            ->expects($this->once())
-            ->method('setExtra')
-            ->with('translation_domain', 'foo_bar_baz');
-
-        $menuFactory = $this->getMock('Knp\Menu\FactoryInterface');
-        $menuFactory
-            ->expects($this->once())
-            ->method('createItem')
-            ->will($this->returnValue($item));
-
-        $modelAdmin = new ModelAdmin('sonata.post.admin.model', 'Application\Sonata\FooBundle\Entity\Model', 'SonataFooBundle:ModelAdmin');
-        $modelAdmin->setMenuFactory($menuFactory);
-        $modelAdmin->setTranslationDomain('foo_bar_baz');
-
-        $modelAdmin->getSideMenu('foo');
-    }
-
-    /**
-     * @return array
-     */
-    public function provideGetSubject()
-    {
-        return array(
-            array(23),
-            array('azerty'),
-            array('4f69bbb5f14a13347f000092'),
-            array('0779ca8d-e2be-11e4-ac58-0242ac11000b'),
-            array('123'.AdapterInterface::ID_SEPARATOR.'my_type'), // composite keys are supported
-        );
-    }
-
-    /**
-     * @dataProvider provideGetSubject
-     */
-    public function testGetSubjectFailed($id)
-    {
-        $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $modelManager
-            ->expects($this->once())
-            ->method('find')
-            ->with('NewsBundle\Entity\Post', $id)
-            ->will($this->returnValue(null)); // entity not found
-
-        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-        $admin->setModelManager($modelManager);
-
-        $admin->setRequest(new Request(array('id' => $id)));
-        $this->assertNull($admin->getSubject());
-    }
-
-    /**
-     * @dataProvider provideGetSubject
-     */
-    public function testGetSubject($id)
+    public function testGetSubject()
     {
         $entity = new Post();
-
         $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
         $modelManager
-            ->expects($this->once())
+            ->expects($this->any())
             ->method('find')
-            ->with('NewsBundle\Entity\Post', $id)
             ->will($this->returnValue($entity));
-
         $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
         $admin->setModelManager($modelManager);
 
-        $admin->setRequest(new Request(array('id' => $id)));
+        $admin->setRequest(new Request(array('id' => 'azerty')));
+        $this->assertFalse($admin->getSubject());
+
+        $admin->setSubject(null);
+        $admin->setRequest(new Request(array('id' => 42)));
         $this->assertSame($entity, $admin->getSubject());
-        $this->assertSame($entity, $admin->getSubject()); // model manager must be used only once
+
+        $admin->setSubject(null);
+        $admin->setRequest(new Request(array('id' => '4f69bbb5f14a13347f000092')));
+        $this->assertSame($entity, $admin->getSubject());
+
+        $admin->setSubject(null);
+        $admin->setRequest(new Request(array('id' => '0779ca8d-e2be-11e4-ac58-0242ac11000b')));
+        $this->assertSame($entity, $admin->getSubject());
     }
 
     /**
@@ -1630,97 +1780,13 @@ class AdminTest extends \PHPUnit_Framework_TestCase
     {
         $expected = array(
             'create' => array(
-                'template' => 'Foo.html.twig',
+                'template' => 'SonataAdminBundle:Button:create_button.html.twig',
             ),
         );
 
         $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-
-        $securityHandler = $this->getMock('Sonata\AdminBundle\Security\Handler\SecurityHandlerInterface');
-        $securityHandler
-            ->expects($this->once())
-            ->method('isGranted')
-            ->with($admin, 'CREATE', $admin)
-            ->will($this->returnValue(true));
-        $admin->setSecurityHandler($securityHandler);
-
-        $routeGenerator = $this->getMock('Sonata\AdminBundle\Route\RouteGeneratorInterface');
-        $routeGenerator
-            ->expects($this->once())
-            ->method('hasAdminRoute')
-            ->with($admin, 'create')
-            ->will($this->returnValue(true));
-        $admin->setRouteGenerator($routeGenerator);
-
-        $admin->setTemplate('button_create', 'Foo.html.twig');
 
         $this->assertSame($expected, $admin->getActionButtons('list', null));
-    }
-
-    /**
-     * @covers Sonata\AdminBundle\Admin\AbstractAdmin::configureActionButtons
-     */
-    public function testGetActionButtonsListCreateDisabled()
-    {
-        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-
-        $securityHandler = $this->getMock('Sonata\AdminBundle\Security\Handler\SecurityHandlerInterface');
-        $securityHandler
-            ->expects($this->once())
-            ->method('isGranted')
-            ->with($admin, 'CREATE', $admin)
-            ->will($this->returnValue(false));
-        $admin->setSecurityHandler($securityHandler);
-
-        $this->assertSame(array(), $admin->getActionButtons('list', null));
-    }
-
-    /**
-     * @covers Sonata\AdminBundle\Admin\AbstractAdmin::configureBatchActions
-     */
-    public function getBatchActions()
-    {
-        $expected = array(
-            'action' => array(
-                'label' => 'action_delete',
-                'translation_domain' => 'SonataAdminBundle',
-                'ask_confirmation' => true, // by default always true
-            ),
-            'foo' => array(
-                'label' => 'action_foo',
-            ),
-        );
-
-        $modelAdmin = new PostAdmin('sonata.post.admin.model', 'Application\Sonata\FooBundle\Entity\Model', 'SonataFooBundle:ModelAdmin');
-
-        $this->assertSame($expected, $modelAdmin->getBatchActions());
-    }
-
-    /**
-     * @covers Sonata\AdminBundle\Admin\AbstractAdmin::showMosaicButton
-     */
-    public function testShowMosaicButton()
-    {
-        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-        $listModes = $admin->getListModes();
-
-        $admin->showMosaicButton(true);
-
-        $this->assertSame($listModes, $admin->getListModes());
-    }
-
-    /**
-     * @covers Sonata\AdminBundle\Admin\AbstractAdmin::showMosaicButton
-     */
-    public function testShowMosaicButtonHideMosaic()
-    {
-        $admin = new PostAdmin('sonata.post.admin.post', 'NewsBundle\Entity\Post', 'SonataNewsBundle:PostAdmin');
-        $listModes = $admin->getListModes();
-        $expected['list'] = $listModes['list'];
-
-        $admin->showMosaicButton(false);
-
-        $this->assertSame($expected, $admin->getListModes());
     }
 
     /**
@@ -1758,208 +1824,6 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('create', $admin->getDashboardActions());
     }
 
-    public function testDefaultFilters()
-    {
-        $admin = new FilteredAdmin('sonata.post.admin.model', 'Application\Sonata\FooBundle\Entity\Model', 'SonataFooBundle:ModelAdmin');
-
-        $subjectId = uniqid();
-
-        $request = $this->getMock('Symfony\Component\HttpFoundation\Request', array('get'));
-        $request->query->set('filter', array(
-            'a' => array(
-                'value' => 'b',
-            ),
-            'foo' => array(
-                'type' => '1',
-                'value' => 'bar',
-            ),
-            'baz' => array(
-                'type' => '5',
-                'value' => 'test',
-            ),
-        ));
-
-        $request->expects($this->any())
-            ->method('get')
-            ->will($this->returnValue($subjectId));
-
-        $admin->setRequest($request);
-
-        $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $modelManager->expects($this->any())
-            ->method('getDefaultSortValues')
-            ->will($this->returnValue(array()));
-
-        $admin->setModelManager($modelManager);
-
-        $this->assertEquals(array(
-            'foo' => array(
-                'type' => '1',
-                'value' => 'bar',
-            ),
-            'baz' => array(
-                'type' => '5',
-                'value' => 'test',
-            ),
-            '_page' => 1,
-            '_per_page' => 32,
-            'a' => array(
-                'value' => 'b',
-            ),
-        ), $admin->getFilterParameters());
-
-        $this->assertTrue($admin->isDefaultFilter('foo'));
-        $this->assertFalse($admin->isDefaultFilter('bar'));
-        $this->assertFalse($admin->isDefaultFilter('a'));
-    }
-
-    /**
-     * @group legacy
-     */
-    public function testDefaultBreadcrumbsBuilder()
-    {
-        $container = $this->getMock('Symfony\Component\DependencyInjection\ContainerInterface');
-        $container->expects($this->once())
-            ->method('getParameter')
-            ->with('sonata.admin.configuration.breadcrumbs')
-            ->will($this->returnValue(array()));
-
-        $pool = $this->getMockBuilder('Sonata\AdminBundle\Admin\Pool')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $pool->expects($this->once())
-            ->method('getContainer')
-            ->will($this->returnValue($container));
-
-        $admin = $this->getMockForAbstractClass('Sonata\AdminBundle\Admin\AbstractAdmin', array(
-            'admin.my_code', 'My\Class', 'MyBundle:ClassAdmin',
-        ), '', true, true, true, array('getConfigurationPool'));
-        $admin->expects($this->once())
-            ->method('getConfigurationPool')
-            ->will($this->returnValue($pool));
-
-        $this->assertInstanceOf(
-            'Sonata\AdminBundle\Admin\BreadcrumbsBuilder',
-            $admin->getBreadcrumbsBuilder()
-        );
-    }
-
-    /**
-     * @group legacy
-     */
-    public function testBreadcrumbsBuilderSetter()
-    {
-        $admin = $this->getMockForAbstractClass('Sonata\AdminBundle\Admin\AbstractAdmin', array(
-            'admin.my_code', 'My\Class', 'MyBundle:ClassAdmin',
-        ));
-        $this->assertSame($admin, $admin->setBreadcrumbsBuilder($builder = $this->getMock(
-            'Sonata\AdminBundle\Admin\BreadcrumbsBuilderInterface'
-        )));
-        $this->assertSame($builder, $admin->getBreadcrumbsBuilder());
-    }
-
-    /**
-     * @group legacy
-     */
-    public function testGetBreadcrumbs()
-    {
-        $admin = $this->getMockForAbstractClass('Sonata\AdminBundle\Admin\AbstractAdmin', array(
-            'admin.my_code', 'My\Class', 'MyBundle:ClassAdmin',
-        ));
-        $builder = $this->prophesize(
-            'Sonata\AdminBundle\Admin\BreadcrumbsBuilderInterface'
-        );
-        $action = 'myaction';
-        $builder->getBreadcrumbs($admin, $action)->shouldBeCalled();
-        $admin->setBreadcrumbsBuilder($builder->reveal())->getBreadcrumbs($action);
-    }
-
-    /**
-     * @group legacy
-     */
-    public function testBuildBreadcrumbs()
-    {
-        $admin = $this->getMockForAbstractClass('Sonata\AdminBundle\Admin\AbstractAdmin', array(
-            'admin.my_code', 'My\Class', 'MyBundle:ClassAdmin',
-        ));
-        $builder = $this->prophesize(
-            'Sonata\AdminBundle\Admin\BreadcrumbsBuilderInterface'
-        );
-        $action = 'myaction';
-        $menu = $this->getMock('Knp\Menu\ItemInterface');
-        $builder->buildBreadcrumbs($admin, $action, $menu)
-            ->shouldBeCalledTimes(1)
-            ->willReturn($menu);
-        $admin->setBreadcrumbsBuilder($builder->reveal());
-
-        /* check the called is proxied only once */
-        $this->assertSame($menu, $admin->buildBreadcrumbs($action, $menu));
-        $this->assertSame($menu, $admin->buildBreadcrumbs($action, $menu));
-    }
-
-    /**
-     * NEXT_MAJOR: remove this method.
-     *
-     * @group legacy
-     */
-    public function testCreateQueryLegacyCallWorks()
-    {
-        $admin = $this->getMockForAbstractClass('Sonata\AdminBundle\Admin\AbstractAdmin', array(
-            'admin.my_code', 'My\Class', 'MyBundle:ClassAdmin',
-        ));
-        $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $modelManager->expects($this->once())
-            ->method('createQuery')
-            ->with('My\Class')
-            ->willReturn('a query');
-
-        $admin->setModelManager($modelManager);
-        $this->assertSame('a query', $admin->createQuery('list'));
-    }
-
-    public function testGetDataSourceIterator()
-    {
-        $datagrid = $this->getMock('Sonata\AdminBundle\Datagrid\DatagridInterface');
-        $datagrid->method('buildPager');
-
-        $modelManager = $this->getMock('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $modelManager->method('getExportFields')->will($this->returnValue(array(
-            'field',
-            'foo',
-            'bar',
-        )));
-        $modelManager->expects($this->once())->method('getDataSourceIterator')
-            ->with($this->equalTo($datagrid), $this->equalTo(array(
-                'Feld' => 'field',
-                1 => 'foo',
-                2 => 'bar',
-            )));
-
-        $admin = $this->getMockBuilder('Sonata\AdminBundle\Admin\AbstractAdmin')
-            ->disableOriginalConstructor()
-            ->setMethods(array('getDatagrid', 'getTranslationLabel', 'trans'))
-            ->getMockForAbstractClass();
-        $admin->method('getDatagrid')->will($this->returnValue($datagrid));
-        $admin->setModelManager($modelManager);
-
-        $admin->expects($this->any())
-            ->method('getTranslationLabel')
-            ->will($this->returnCallback(function ($label, $context = '', $type = '') {
-                return $context.'.'.$type.'_'.$label;
-            }));
-        $admin->expects($this->any())
-            ->method('trans')
-            ->will($this->returnCallback(function ($label) {
-                if ($label == 'export.label_field') {
-                    return 'Feld';
-                }
-
-                return $label;
-            }));
-
-        $admin->getDataSourceIterator();
-    }
-
     private function createTagAdmin(Post $post)
     {
         $postAdmin = $this->getMockBuilder('Sonata\AdminBundle\Tests\Fixtures\Admin\PostAdmin')
@@ -1972,11 +1836,7 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $formBuilder->expects($this->any())->method('getForm')->will($this->returnValue(null));
 
         $tagAdmin = $this->getMockBuilder('Sonata\AdminBundle\Tests\Fixtures\Admin\TagAdmin')
-            ->setConstructorArgs(array(
-                'admin.tag',
-                'Sonata\AdminBundle\Tests\Fixtures\Bundle\Entity\Tag',
-                'MyBundle:MyController',
-            ))
+            ->disableOriginalConstructor()
             ->setMethods(array('getFormBuilder'))
             ->getMock();
 
@@ -1998,5 +1858,13 @@ class AdminTest extends \PHPUnit_Framework_TestCase
         $tagAdmin->setConfigurationPool($configurationPool);
 
         return $tagAdmin;
+    }
+}
+
+class DummySubject
+{
+    public function __toString()
+    {
+        return 'dummy subject representation';
     }
 }

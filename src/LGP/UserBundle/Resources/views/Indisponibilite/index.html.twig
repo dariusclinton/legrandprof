@@ -40,7 +40,8 @@
                           <th>Début</th>
                           <th>Fin</th>
                           <th>Motif</th>
-                          <th>Action</th>
+                          <th></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -50,11 +51,13 @@
                             <td>{{ indispo.dateFin|date('d/m/Y') }}</td>
                             <td>{{ indispo.motif }}</td>
                             <td>
-                              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="bt btn-danger btn-sm delete_confirm">
-                                Supprimer
+                              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="">
+                                  <i class='fa fa-edit'></i>
                               </a>
-                              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="bt btn-info btn-sm">
-                                Modifier
+                            </td>
+                            <td>
+                              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class="delete_confirm">
+                                  <i class='fa fa-remove'></i>
                               </a>
                             </td>
                           </tr>

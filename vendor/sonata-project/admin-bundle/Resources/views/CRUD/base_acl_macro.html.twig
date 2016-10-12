@@ -16,8 +16,11 @@ file that was distributed with this source code.
           method="POST"
             {% if not admin_pool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
             >
-
-        {{ include('SonataAdminBundle:Helper:render_form_dismissable_errors.html.twig') }}
+        {% if form.vars.errors|length > 0 %}
+            <div class="sonata-ba-form-error">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
 
         <div class="box box-success">
             <div class="body table-responsive no-padding">

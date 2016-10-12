@@ -4,7 +4,7 @@
 <div class='row'>
     <div class='col-md-3'>{{ form_label(form.note, 'Note /5', {'label_attr': {}}) }} : </div>
     <div class='col-md-4'>
-        {{ form_widget(form.note, {'attr': {}}) }}
+        {{ form_widget(form.note, {'attr': {'class':'form-control'}}) }}
         {{ form_errors(form.note) }}
     </div>
 </div>
@@ -12,7 +12,7 @@
 <div class='row'>
     <div class='col-md-3'>{{ form_label(form.commentaire, 'Commentaire', {'label_attr': {}}) }}</div>
     <div class='col-md-4'>
-        {{ form_widget(form.commentaire, {'attr': {}}) }}
+        {{ form_widget(form.commentaire, {'attr': {'class':'form-control'}}) }}
         {{ form_errors(form.commentaire) }}
     </div>
 </div>
@@ -21,7 +21,7 @@
 {% if form.prof is defined %}
     <div class='col-md-3'>{{ form_label(form.prof, 'Veuillez choisir le prof', {'label_attr': {}}) }}</div>
     <div class='col-md-4'>
-        {{ form_widget(form.prof, {'attr': {}}) }}
+        {{ form_widget(form.prof, {'attr': {'class':'form-control'}}) }}
         {{ form_errors(form.prof) }}
     </div>
 {% endif %}

@@ -169,8 +169,8 @@ class Pool
             return $admins;
         }
 
-        foreach ($this->adminGroups[$group]['items'] as $item) {
-            $admins[] = $this->getInstance($item['admin']);
+        foreach ($this->adminGroups[$group]['items'] as $id) {
+            $admins[] = $this->getInstance($id);
         }
 
         return $admins;

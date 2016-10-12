@@ -213,8 +213,9 @@ class HelperController
                 'object' => $object,
                 'link_parameters' => $linkParameters,
             )));
+        } else {
+            throw new \RuntimeException('Invalid format');
         }
-        throw new \RuntimeException('Invalid format');
     }
 
     /**

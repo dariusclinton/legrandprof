@@ -74,7 +74,7 @@ class AddDependencyCallsCompilerPass implements CompilerPassInterface
 
                 $classes[$arguments[1]][] = $id;
 
-                $showInDashboard = (bool) (isset($attributes['show_in_dashboard']) ? $parameterBag->resolveValue($attributes['show_in_dashboard']) : true);
+                $showInDashboard = (bool) (isset($attributes['show_in_dashboard']) ?  $parameterBag->resolveValue($attributes['show_in_dashboard']) : true);
                 if (!$showInDashboard) {
                     continue;
                 }
@@ -105,8 +105,9 @@ class AddDependencyCallsCompilerPass implements CompilerPassInterface
                 if (isset($groupDefaults[$resolvedGroupName]['on_top']) && $groupDefaults[$resolvedGroupName]['on_top']
                     || $onTop && (count($groupDefaults[$resolvedGroupName]['items']) > 1)) {
                     throw new \RuntimeException('You can\'t use "on_top" option with multiple same name groups.');
+                } else {
+                    $groupDefaults[$resolvedGroupName]['on_top'] = $onTop;
                 }
-                $groupDefaults[$resolvedGroupName]['on_top'] = $onTop;
             }
         }
 
@@ -152,9 +153,10 @@ class AddDependencyCallsCompilerPass implements CompilerPassInterface
                 if (isset($groups[$resolvedGroupName]['on_top']) && !empty($group['on_top']) && $group['on_top']
                     && (count($groups[$resolvedGroupName]['items']) > 1)) {
                     throw new \RuntimeException('You can\'t use "on_top" option with multiple same name groups.');
-                }
-                if (empty($group['on_top'])) {
-                    $groups[$resolvedGroupName]['on_top'] = $groupDefaults[$resolvedGroupName]['on_top'];
+                } else {
+                    if (empty($group['on_top'])) {
+                        $groups[$resolvedGroupName]['on_top'] = $groupDefaults[$resolvedGroupName]['on_top'];
+                    }
                 }
             }
         } elseif ($container->getParameter('sonata.admin.configuration.sort_admins')) {
@@ -306,16 +308,6 @@ class AddDependencyCallsCompilerPass implements CompilerPassInterface
         }
 
         $definition->addMethodCall('setPersistFilters', array($persistFilters));
-
-        if (isset($overwriteAdminConfiguration['show_mosaic_button'])) {
-            $showMosaicButton = $overwriteAdminConfiguration['show_mosaic_button'];
-        } elseif (isset($attributes['show_mosaic_button'])) {
-            $showMosaicButton = $attributes['show_mosaic_button'];
-        } else {
-            $showMosaicButton = $container->getParameter('sonata.admin.configuration.show.mosaic.button');
-        }
-
-        $definition->addMethodCall('showMosaicButton', array($showMosaicButton));
 
         $this->fixTemplates($container, $definition, isset($overwriteAdminConfiguration['templates']) ? $overwriteAdminConfiguration['templates'] : array('view' => array()));
 

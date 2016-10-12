@@ -46,17 +46,11 @@ class CoreController extends Controller
             $blocks[$block['position']][] = $block;
         }
 
-        $parameters = array(
+        return $this->render($this->getAdminPool()->getTemplate('dashboard'), array(
             'base_template' => $this->getBaseTemplate(),
             'admin_pool' => $this->container->get('sonata.admin.pool'),
             'blocks' => $blocks,
-        );
-
-        if (!$this->getRequest()->isXmlHttpRequest()) {
-            $parameters['breadcrumbs_builder'] = $this->get('sonata.admin.breadcrumbs_builder');
-        }
-
-        return $this->render($this->getAdminPool()->getTemplate('dashboard'), $parameters);
+        ));
     }
 
     /**
@@ -108,7 +102,6 @@ class CoreController extends Controller
 
         return $this->render($this->container->get('sonata.admin.pool')->getTemplate('search'), array(
             'base_template' => $this->getBaseTemplate(),
-            'breadcrumbs_builder' => $this->get('sonata.admin.breadcrumbs_builder'),
             'admin_pool' => $this->container->get('sonata.admin.pool'),
             'query' => $request->get('q'),
             'groups' => $this->getAdminPool()->getDashboardGroups(),
@@ -121,7 +114,7 @@ class CoreController extends Controller
      * This method is compatible with both Symfony 2.3 and Symfony 3
      *
      * @deprecated Use the Request action argument. This method will be removed
-     *             in SonataAdminBundle 4.0 and the action methods adjusted
+     *             in SonataAdminBundle 4.0 and the action methods adjusted.
      *
      * @return Request
      */
