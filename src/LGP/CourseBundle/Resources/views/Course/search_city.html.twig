@@ -6,16 +6,16 @@
 
 {% block body %}
 
-    {% if params.matieres_profs | length != 0 %}
-        <!-- start end Page title -->
-        <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-            <div class="container">
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-                <div class="row">
+        <div class="container">
 
-                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+            <div class="row">
 
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    {% if params.matieres_profs | length != 0 %}
                         <h1 class="hero-title">Grands Profs dans la ville de {{ params.ville }} </h1>
 
                         <ol class="breadcrumb-list">
@@ -25,15 +25,18 @@
                                 <li><span> {{ params.ville }} </span></li>
                             {% endif %}
                         </ol>
-                    </div>
-
+                    {% else %}
+                        <h1 class="hero-title"> Resultat de la recherche </h1>
+                    {% endif %}
                 </div>
 
             </div>
 
         </div>
-        <!-- end Page title -->
-    {% endif %}
+
+    </div>
+    <!-- end Page title -->
+
 
     <div class="content-wrapper">
 

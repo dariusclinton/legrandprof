@@ -9,16 +9,16 @@
 {% endblock %}
 
 {% block body %}
-    {% if params.courseFound is defined and params.courseFound != null %}
-        <!-- start end Page title -->
-        <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-            <div class="container">
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
 
-                <div class="row">
+        <div class="container">
 
-                    <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+            <div class="row">
 
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    {% if params.courseFound is defined and params.courseFound != null %}
                         <h1 class="hero-title">Grands Profs en {{ params.courseFound.intitule }} </h1>
 
                         <ol class="breadcrumb-list">
@@ -26,21 +26,32 @@
                             {#  <li><a href="#">Profs</a></li> #}
                             {% if params.quartier is defined %}
                                 <li>
-                                    <a href=" {{ path('lgp_course_find_prof_city', {'slugVille' : params.quartier.slugVille}) }} "> {{ params.quartier.ville }} </a>
+                                    {% if app.request.attributes.get("_route") == "lgp_course_find_prof_refine_quarter" %}
+                                        <a href=" {{ path('lgp_course_find_prof_city_quarter', {'slug_ville' : params.quartier.slugVille, 'slug_quartier' : params.quartier.intitule}) }} ">
+                                            {{ params.quartier.ville }} - {{ params.quartier.intitule }}
+                                        </a>
+                                    {% else %}
+                                        <a href=" {{ path('lgp_course_find_prof_city', {'slugVille' : params.quartier.slugVille}) }} ">
+                                            {{ params.quartier.ville }}
+                                        </a>
+                                    {% endif %}
                                 </li>
                             {% endif %}
                             <li><span>{{ params.courseFound.intitule }}</span></li>
                         </ol>
 
-                    </div>
-
+                    {% else %}
+                        <h1 class="hero-title"> Resultat de la recherche </h1>
+                    {% endif %}
                 </div>
 
             </div>
 
         </div>
-        <!-- end Page title -->
-    {% endif %}
+
+    </div>
+    <!-- end Page title -->
+
 
     <div class="content-wrapper">
 
@@ -230,7 +241,7 @@
                                     {% if enseigne.prof.image is null %}
                                         <img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package"/>
                                     {% else %}
-                                        <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof " />
+                                        <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof "/>
                                     {% endif %}
                                 </div>
 
