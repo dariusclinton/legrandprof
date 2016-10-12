@@ -18,6 +18,8 @@
             <div class="profile-block">
               {% if app.user.image is not null %}
                 <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
+              {% else %}
+                <img src="{{ asset('uploads/profils/default.png') }}" alt="image utilisateur" class="img-responsive"/>
               {% endif %}
             </div>
             <div class="infos-block">

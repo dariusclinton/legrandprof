@@ -20,7 +20,7 @@
                              class="profile-img"/>
                     {% else %}
                         <i class="fa fa-user fa-5x profile-img" style="color:#fff"></i>
-                        {#<img src="{{ asset('uploads/profils/default.jpg') }}" alt="Tour Package"/>#}
+                        {#<img src="{{ asset('uploads/profils/default.png') }}" alt="Tour Package"/>#}
                     {% endif %}
                 </div>
                 <div class="flex-column flex-md-6 flex-align-bottom flex-sm-12">
@@ -293,7 +293,7 @@
                                                     <div class="image img-circle">
                                                         {% if user.image is null %}
                                                             <img class="img-circle"
-                                                                 src="{{ asset('uploads/profils/default.jpg') }}"
+                                                                 src="{{ asset('uploads/profils/default.png') }}"
                                                                  alt="Tour Package"/>
                                                         {% else %}
                                                             <img class="img-circle"
@@ -373,7 +373,7 @@
                                                                 ) }}"
                                                                      alt=" image prof "/>
                                                             {% else %}
-                                                                <img src="{{ asset('uploads/profils/default.jpg') }}"
+                                                                <img src="{{ asset('uploads/profils/default.png') }}"
                                                                      alt="Tour Package"/>
                                                             {% endif %}
                                                             {% if enseignement.prof.isRecommande %}
