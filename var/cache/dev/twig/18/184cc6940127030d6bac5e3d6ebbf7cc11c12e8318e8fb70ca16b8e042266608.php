@@ -11,6 +11,7 @@ class __TwigTemplate_441dc54e3edf3c254a14e708c88678c33b58742741d6c45f5f56afb80f4
         $this->parent = $this->loadTemplate("LGPCoreBundle::layout.html.twig", "LGPUserBundle:Avis:update.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'header_submenu' => array($this, 'block_header_submenu'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -22,20 +23,20 @@ class __TwigTemplate_441dc54e3edf3c254a14e708c88678c33b58742741d6c45f5f56afb80f4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9b562133a54e8b1cfc86e293d7a6e2b66f27caab44faaa4c94e65466c4d4779d = $this->env->getExtension("native_profiler");
-        $__internal_9b562133a54e8b1cfc86e293d7a6e2b66f27caab44faaa4c94e65466c4d4779d->enter($__internal_9b562133a54e8b1cfc86e293d7a6e2b66f27caab44faaa4c94e65466c4d4779d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Avis:update.html.twig"));
+        $__internal_f87d4fee4a62489f1c6ac890c32b6b9f414a485f96043a54fa226f46c3924e92 = $this->env->getExtension("native_profiler");
+        $__internal_f87d4fee4a62489f1c6ac890c32b6b9f414a485f96043a54fa226f46c3924e92->enter($__internal_f87d4fee4a62489f1c6ac890c32b6b9f414a485f96043a54fa226f46c3924e92_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Avis:update.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9b562133a54e8b1cfc86e293d7a6e2b66f27caab44faaa4c94e65466c4d4779d->leave($__internal_9b562133a54e8b1cfc86e293d7a6e2b66f27caab44faaa4c94e65466c4d4779d_prof);
+        $__internal_f87d4fee4a62489f1c6ac890c32b6b9f414a485f96043a54fa226f46c3924e92->leave($__internal_f87d4fee4a62489f1c6ac890c32b6b9f414a485f96043a54fa226f46c3924e92_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_24552d0936ff808e932cf9a7e30550e70f4986822720aca9163ce69516b74537 = $this->env->getExtension("native_profiler");
-        $__internal_24552d0936ff808e932cf9a7e30550e70f4986822720aca9163ce69516b74537->enter($__internal_24552d0936ff808e932cf9a7e30550e70f4986822720aca9163ce69516b74537_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a78f08f5657768cce7b1fa16ad5e0fbd805cd9fafa15b8527779b1abed1cd2d9 = $this->env->getExtension("native_profiler");
+        $__internal_a78f08f5657768cce7b1fa16ad5e0fbd805cd9fafa15b8527779b1abed1cd2d9->enter($__internal_a78f08f5657768cce7b1fa16ad5e0fbd805cd9fafa15b8527779b1abed1cd2d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Modification d'un avis - ";
@@ -43,27 +44,72 @@ class __TwigTemplate_441dc54e3edf3c254a14e708c88678c33b58742741d6c45f5f56afb80f4
         echo "
 ";
         
-        $__internal_24552d0936ff808e932cf9a7e30550e70f4986822720aca9163ce69516b74537->leave($__internal_24552d0936ff808e932cf9a7e30550e70f4986822720aca9163ce69516b74537_prof);
+        $__internal_a78f08f5657768cce7b1fa16ad5e0fbd805cd9fafa15b8527779b1abed1cd2d9->leave($__internal_a78f08f5657768cce7b1fa16ad5e0fbd805cd9fafa15b8527779b1abed1cd2d9_prof);
 
     }
 
     // line 7
-    public function block_body($context, array $blocks = array())
+    public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_5220f7aa8f6afa4ea2eb7cf4a52526f94f68d8bb7939b66c703055f3b949e682 = $this->env->getExtension("native_profiler");
-        $__internal_5220f7aa8f6afa4ea2eb7cf4a52526f94f68d8bb7939b66c703055f3b949e682->enter($__internal_5220f7aa8f6afa4ea2eb7cf4a52526f94f68d8bb7939b66c703055f3b949e682_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_22e231316f309af0b5e60ef5170bd68ab40f82b10f6056a73d18b4453b8cf9cd = $this->env->getExtension("native_profiler");
+        $__internal_22e231316f309af0b5e60ef5170bd68ab40f82b10f6056a73d18b4453b8cf9cd->enter($__internal_22e231316f309af0b5e60ef5170bd68ab40f82b10f6056a73d18b4453b8cf9cd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
-        // line 8
-        echo "  <h1>Modification d'un avis</h1>
-
+        echo " 
   ";
-        // line 10
-        $this->loadTemplate("LGPUserBundle:Avis:formulaire.html.twig", "LGPUserBundle:Avis:update.html.twig", 10)->display($context);
-        // line 11
-        echo "  
+        // line 8
+        echo twig_include($this->env, $context, "LGPCoreBundle::header-submenu.html.twig");
+        echo "
 ";
         
-        $__internal_5220f7aa8f6afa4ea2eb7cf4a52526f94f68d8bb7939b66c703055f3b949e682->leave($__internal_5220f7aa8f6afa4ea2eb7cf4a52526f94f68d8bb7939b66c703055f3b949e682_prof);
+        $__internal_22e231316f309af0b5e60ef5170bd68ab40f82b10f6056a73d18b4453b8cf9cd->leave($__internal_22e231316f309af0b5e60ef5170bd68ab40f82b10f6056a73d18b4453b8cf9cd_prof);
+
+    }
+
+    // line 11
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_662bd295fb8cdb464587c65a6eba44b1c50d56ad086fc3bce4585eb494b35769 = $this->env->getExtension("native_profiler");
+        $__internal_662bd295fb8cdb464587c65a6eba44b1c50d56ad086fc3bce4585eb494b35769->enter($__internal_662bd295fb8cdb464587c65a6eba44b1c50d56ad086fc3bce4585eb494b35769_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 12
+        echo "    
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Gérer mes avis</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"";
+        // line 20
+        echo $this->env->getExtension('routing')->getPath("lgp_user_avis");
+        echo "\">Mes avis</a></li>
+              <li><a href=\"";
+        // line 21
+        echo $this->env->getExtension('routing')->getPath("lgp_user_avis_add");
+        echo "\">Donner un avis</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Modifier un avis</div>
+                <div class=\"notifications-content\">
+                    ";
+        // line 28
+        $this->loadTemplate("LGPUserBundle:Avis:formulaire.html.twig", "LGPUserBundle:Avis:update.html.twig", 28)->display($context);
+        // line 29
+        echo "                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+";
+        
+        $__internal_662bd295fb8cdb464587c65a6eba44b1c50d56ad086fc3bce4585eb494b35769->leave($__internal_662bd295fb8cdb464587c65a6eba44b1c50d56ad086fc3bce4585eb494b35769_prof);
 
     }
 
@@ -79,7 +125,7 @@ class __TwigTemplate_441dc54e3edf3c254a14e708c88678c33b58742741d6c45f5f56afb80f4
 
     public function getDebugInfo()
     {
-        return array (  63 => 11,  61 => 10,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  101 => 29,  99 => 28,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -90,10 +136,36 @@ class __TwigTemplate_441dc54e3edf3c254a14e708c88678c33b58742741d6c45f5f56afb80f4
   Modification d'un avis - {{ parent() }}
 {% endblock %}
 
-{% block body %}
-  <h1>Modification d'un avis</h1>
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
 
-  {% include 'LGPUserBundle:Avis:formulaire.html.twig'%}
+{% block body %}
+    
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Gérer mes avis</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"{{ path('lgp_user_avis') }}\">Mes avis</a></li>
+              <li><a href=\"{{ path('lgp_user_avis_add') }}\">Donner un avis</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Modifier un avis</div>
+                <div class=\"notifications-content\">
+                    {% include 'LGPUserBundle:Avis:formulaire.html.twig'%}
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
 {% endblock %}";
     }

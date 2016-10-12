@@ -15,8 +15,8 @@ class __TwigTemplate_670cab18b622b4bb9a5f6bcc85633d918d316bc9c113509bdc03c9ed3bd
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ec6f96e9d6418adca0243c7de2542d6df069f250ef4373b2c97bca25525aec11 = $this->env->getExtension("native_profiler");
-        $__internal_ec6f96e9d6418adca0243c7de2542d6df069f250ef4373b2c97bca25525aec11->enter($__internal_ec6f96e9d6418adca0243c7de2542d6df069f250ef4373b2c97bca25525aec11_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:show_content.html.twig"));
+        $__internal_d8effb2205b3fda18461564adaa25e8f359dbf35194827d62604e5f2ea7c57f8 = $this->env->getExtension("native_profiler");
+        $__internal_d8effb2205b3fda18461564adaa25e8f359dbf35194827d62604e5f2ea7c57f8->enter($__internal_d8effb2205b3fda18461564adaa25e8f359dbf35194827d62604e5f2ea7c57f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:show_content.html.twig"));
 
         // line 2
         echo "
@@ -322,66 +322,12 @@ class __TwigTemplate_670cab18b622b4bb9a5f6bcc85633d918d316bc9c113509bdc03c9ed3bd
             </div>
         </div>
         <div>
-            <a href='";
-            // line 145
-            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_cours");
-            echo "' class=\"btn btn-primary\">Mes cours</a>
-            <a href='";
-            // line 146
-            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_evaluation");
-            echo "' class=\"btn btn-primary\">Mes Evaluations</a>
-            <a href='";
-            // line 147
-            echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite");
-            echo "' class=\"btn btn-primary\">Mes indisponibilités</a>
-            <a href='";
-            // line 148
-            echo $this->env->getExtension('routing')->getPath("lgp_user_anomalies");
-            echo "' class=\"btn btn-primary\">Anomalies du système</a>
           ";
         }
-        // line 150
+        // line 146
         echo "          
-          <a href='";
-        // line 151
-        echo $this->env->getExtension('routing')->getPath("lgp_user_avis");
-        echo "' class=\"btn btn-primary\">
-            Avis
-            ";
-        // line 153
-        if ($this->env->getExtension('security')->isGranted("ROLE_PROF")) {
-            // line 154
-            echo "              <span class=\"badge avis-link\">";
-            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("LGPUserBundle:Avis:index", array("is_read" => "false")));
-            echo "</span>
-            ";
-        }
-        // line 156
-        echo "          </a>
-          <a href='";
-        // line 157
-        echo $this->env->getExtension('routing')->getPath("lgp_user_message_receive");
-        echo "' class=\"btn btn-primary message-link\">
-            Messages <span class=\"badge\">";
-        // line 158
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("LGPUserBundle:Message:receive", array("is_read" => "false")));
-        echo "</span>
-          </a>
-          <a href='";
-        // line 160
-        echo $this->env->getExtension('routing')->getPath("lgp_user_nouvelles_categories_cours");
-        echo "' class=\"btn btn-primary\">
-              Proposer une catégorie de cours
-          </a>
-          
-          <a href='";
-        // line 164
-        echo $this->env->getExtension('routing')->getPath("lgp_user_mes_reservations");
-        echo "' class=\"btn btn-primary\">Mes réservations</a>
-          
-          
 ";
-        // line 168
+        // line 148
         echo "        </div>
 
 
@@ -391,7 +337,7 @@ class __TwigTemplate_670cab18b622b4bb9a5f6bcc85633d918d316bc9c113509bdc03c9ed3bd
   </div>
 </div>";
         
-        $__internal_ec6f96e9d6418adca0243c7de2542d6df069f250ef4373b2c97bca25525aec11->leave($__internal_ec6f96e9d6418adca0243c7de2542d6df069f250ef4373b2c97bca25525aec11_prof);
+        $__internal_d8effb2205b3fda18461564adaa25e8f359dbf35194827d62604e5f2ea7c57f8->leave($__internal_d8effb2205b3fda18461564adaa25e8f359dbf35194827d62604e5f2ea7c57f8_prof);
 
     }
 
@@ -407,7 +353,7 @@ class __TwigTemplate_670cab18b622b4bb9a5f6bcc85633d918d316bc9c113509bdc03c9ed3bd
 
     public function getDebugInfo()
     {
-        return array (  385 => 168,  379 => 164,  372 => 160,  367 => 158,  363 => 157,  360 => 156,  354 => 154,  352 => 153,  347 => 151,  344 => 150,  339 => 148,  335 => 147,  331 => 146,  327 => 145,  319 => 140,  313 => 136,  310 => 135,  304 => 133,  301 => 132,  299 => 131,  291 => 125,  284 => 123,  278 => 121,  276 => 120,  272 => 119,  269 => 118,  265 => 117,  256 => 110,  247 => 107,  243 => 106,  238 => 104,  233 => 102,  228 => 100,  225 => 99,  221 => 98,  212 => 91,  203 => 88,  200 => 87,  196 => 86,  186 => 79,  182 => 78,  178 => 77,  174 => 76,  170 => 75,  166 => 74,  161 => 73,  158 => 72,  153 => 69,  149 => 68,  146 => 67,  142 => 65,  138 => 63,  136 => 62,  130 => 59,  126 => 58,  122 => 57,  118 => 56,  106 => 46,  100 => 44,  94 => 42,  92 => 41,  86 => 37,  80 => 35,  74 => 33,  72 => 32,  58 => 21,  53 => 19,  42 => 13,  38 => 11,  32 => 9,  30 => 8,  22 => 2,);
+        return array (  331 => 148,  328 => 146,  319 => 140,  313 => 136,  310 => 135,  304 => 133,  301 => 132,  299 => 131,  291 => 125,  284 => 123,  278 => 121,  276 => 120,  272 => 119,  269 => 118,  265 => 117,  256 => 110,  247 => 107,  243 => 106,  238 => 104,  233 => 102,  228 => 100,  225 => 99,  221 => 98,  212 => 91,  203 => 88,  200 => 87,  196 => 86,  186 => 79,  182 => 78,  178 => 77,  174 => 76,  170 => 75,  166 => 74,  161 => 73,  158 => 72,  153 => 69,  149 => 68,  146 => 67,  142 => 65,  138 => 63,  136 => 62,  130 => 59,  126 => 58,  122 => 57,  118 => 56,  106 => 46,  100 => 44,  94 => 42,  92 => 41,  86 => 37,  80 => 35,  74 => 33,  72 => 32,  58 => 21,  53 => 19,  42 => 13,  38 => 11,  32 => 9,  30 => 8,  22 => 2,);
     }
 
     public function getSource()
@@ -556,27 +502,7 @@ class __TwigTemplate_670cab18b622b4bb9a5f6bcc85633d918d316bc9c113509bdc03c9ed3bd
             </div>
         </div>
         <div>
-            <a href='{{ path('lgp_user_prof_cours') }}' class=\"btn btn-primary\">Mes cours</a>
-            <a href='{{ path('lgp_user_prof_evaluation') }}' class=\"btn btn-primary\">Mes Evaluations</a>
-            <a href='{{ path('lgp_user_prof_indisponibilite') }}' class=\"btn btn-primary\">Mes indisponibilités</a>
-            <a href='{{ path('lgp_user_anomalies') }}' class=\"btn btn-primary\">Anomalies du système</a>
           {% endif %}
-          
-          <a href='{{ path('lgp_user_avis') }}' class=\"btn btn-primary\">
-            Avis
-            {% if is_granted('ROLE_PROF') %}
-              <span class=\"badge avis-link\">{{ render (controller('LGPUserBundle:Avis:index', {'is_read': 'false'})) }}</span>
-            {% endif %}
-          </a>
-          <a href='{{ path('lgp_user_message_receive') }}' class=\"btn btn-primary message-link\">
-            Messages <span class=\"badge\">{{ render (controller('LGPUserBundle:Message:receive', {'is_read': 'false'})) }}</span>
-          </a>
-          <a href='{{ path('lgp_user_nouvelles_categories_cours') }}' class=\"btn btn-primary\">
-              Proposer une catégorie de cours
-          </a>
-          
-          <a href='{{ path('lgp_user_mes_reservations') }}' class=\"btn btn-primary\">Mes réservations</a>
-          
           
 {#          {{ dump(app.user)}}#}
         </div>

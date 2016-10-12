@@ -15,8 +15,8 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fceec6fab9d691c3ac9a204e6a95ee61450d92c3bd332331e86d9f53f8961401 = $this->env->getExtension("native_profiler");
-        $__internal_fceec6fab9d691c3ac9a204e6a95ee61450d92c3bd332331e86d9f53f8961401->enter($__internal_fceec6fab9d691c3ac9a204e6a95ee61450d92c3bd332331e86d9f53f8961401_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
+        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab = $this->env->getExtension("native_profiler");
+        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab->enter($__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
 
         // line 1
         echo "<h4>De: ";
@@ -36,7 +36,7 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "contenu", array()), "html", null, true);
         echo "</p>";
         
-        $__internal_fceec6fab9d691c3ac9a204e6a95ee61450d92c3bd332331e86d9f53f8961401->leave($__internal_fceec6fab9d691c3ac9a204e6a95ee61450d92c3bd332331e86d9f53f8961401_prof);
+        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab->leave($__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab_prof);
 
     }
 

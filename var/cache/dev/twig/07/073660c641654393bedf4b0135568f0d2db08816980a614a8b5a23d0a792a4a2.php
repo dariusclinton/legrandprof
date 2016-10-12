@@ -22,20 +22,20 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_dc7fd0cec19793427388961a11a5b125a88aa74d5d5e7fdba8f3a3d8cd2c741c = $this->env->getExtension("native_profiler");
-        $__internal_dc7fd0cec19793427388961a11a5b125a88aa74d5d5e7fdba8f3a3d8cd2c741c->enter($__internal_dc7fd0cec19793427388961a11a5b125a88aa74d5d5e7fdba8f3a3d8cd2c741c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Registration:parent.form.html.twig"));
+        $__internal_b60a99adcbb870d8c78dfea63f7d13957e74827762da81c2a546a8ea70dfcad7 = $this->env->getExtension("native_profiler");
+        $__internal_b60a99adcbb870d8c78dfea63f7d13957e74827762da81c2a546a8ea70dfcad7->enter($__internal_b60a99adcbb870d8c78dfea63f7d13957e74827762da81c2a546a8ea70dfcad7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Registration:parent.form.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_dc7fd0cec19793427388961a11a5b125a88aa74d5d5e7fdba8f3a3d8cd2c741c->leave($__internal_dc7fd0cec19793427388961a11a5b125a88aa74d5d5e7fdba8f3a3d8cd2c741c_prof);
+        $__internal_b60a99adcbb870d8c78dfea63f7d13957e74827762da81c2a546a8ea70dfcad7->leave($__internal_b60a99adcbb870d8c78dfea63f7d13957e74827762da81c2a546a8ea70dfcad7_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_b6f266830cc2e49753d36225b6f4372c2dc546cedf1649e947fcc401e7300f29 = $this->env->getExtension("native_profiler");
-        $__internal_b6f266830cc2e49753d36225b6f4372c2dc546cedf1649e947fcc401e7300f29->enter($__internal_b6f266830cc2e49753d36225b6f4372c2dc546cedf1649e947fcc401e7300f29_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_da5f91b45ebaa29441eecc265a7c523c25476d38d7fcb411547ff9296a3b5388 = $this->env->getExtension("native_profiler");
+        $__internal_da5f91b45ebaa29441eecc265a7c523c25476d38d7fcb411547ff9296a3b5388->enter($__internal_da5f91b45ebaa29441eecc265a7c523c25476d38d7fcb411547ff9296a3b5388_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    Création de compte parent - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
         echo "
 ";
         
-        $__internal_b6f266830cc2e49753d36225b6f4372c2dc546cedf1649e947fcc401e7300f29->leave($__internal_b6f266830cc2e49753d36225b6f4372c2dc546cedf1649e947fcc401e7300f29_prof);
+        $__internal_da5f91b45ebaa29441eecc265a7c523c25476d38d7fcb411547ff9296a3b5388->leave($__internal_da5f91b45ebaa29441eecc265a7c523c25476d38d7fcb411547ff9296a3b5388_prof);
 
     }
 
     // line 7
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_e76ad5aaed083dba63c82eb617e138784596e2d692303e7f1d0d2df0aca4f7d4 = $this->env->getExtension("native_profiler");
-        $__internal_e76ad5aaed083dba63c82eb617e138784596e2d692303e7f1d0d2df0aca4f7d4->enter($__internal_e76ad5aaed083dba63c82eb617e138784596e2d692303e7f1d0d2df0aca4f7d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_f1570868083c815997512481668c4ad132d43a86af1a3749d62c1fec4fe41e9e = $this->env->getExtension("native_profiler");
+        $__internal_f1570868083c815997512481668c4ad132d43a86af1a3749d62c1fec4fe41e9e->enter($__internal_f1570868083c815997512481668c4ad132d43a86af1a3749d62c1fec4fe41e9e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 8
         echo "    ";
@@ -89,7 +89,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 31
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'widget', array("attr" => array("placeholder" => "Nom")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nom", array()), 'widget', array("attr" => array("placeholder" => "Nom", "class" => "form-control")));
         echo "
                                   ";
         // line 32
@@ -100,7 +100,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 36
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "prenoms", array()), 'widget', array("attr" => array("placeholder" => "Prénoms")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "prenoms", array()), 'widget', array("attr" => array("placeholder" => "Prénoms", "class" => "form-control")));
         echo "
                                   ";
         // line 37
@@ -114,7 +114,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 47
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "sexe", array()), 'widget', array("attr" => array()));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "sexe", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
                                   ";
         // line 48
@@ -128,7 +128,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 58
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pays", array()), 'widget', array("attr" => array()));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "pays", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
                                   ";
         // line 59
@@ -139,7 +139,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 63
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'widget', array("attr" => array("placeholder" => "Adresse email")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'widget', array("attr" => array("placeholder" => "Adresse email", "class" => "form-control")));
         echo "
                                   ";
         // line 64
@@ -150,21 +150,32 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 <div class=\"form-group\">
                                   ";
         // line 68
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), 'widget', array("attr" => array()));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "children", array()), "first", array(), "array"), 'widget', array("attr" => array("placeholder" => "Mot de passe", "class" => "form-control")));
         echo "
                                   ";
         // line 69
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), 'errors');
         echo "
                                 </div>
+                                
+                                <div class=\"form-group\">
+                                  ";
+        // line 73
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), "children", array()), "second", array(), "array"), 'widget', array("attr" => array("placeholder" => "Confirmation Mot de passe", "class" => "form-control")));
+        echo "
+                                  ";
+        // line 74
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plainPassword", array()), 'errors');
+        echo "
+                                </div>
 
                                 ";
-        // line 72
+        // line 77
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
         echo "
                                 <div>
                                     <input type=\"submit\" value=\"";
-        // line 74
+        // line 79
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" class=\"btn btn-primary\"/>
                                 </div>
@@ -180,7 +191,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
     
 ";
         
-        $__internal_e76ad5aaed083dba63c82eb617e138784596e2d692303e7f1d0d2df0aca4f7d4->leave($__internal_e76ad5aaed083dba63c82eb617e138784596e2d692303e7f1d0d2df0aca4f7d4_prof);
+        $__internal_f1570868083c815997512481668c4ad132d43a86af1a3749d62c1fec4fe41e9e->leave($__internal_f1570868083c815997512481668c4ad132d43a86af1a3749d62c1fec4fe41e9e_prof);
 
     }
 
@@ -196,7 +207,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
 
     public function getDebugInfo()
     {
-        return array (  168 => 74,  163 => 72,  157 => 69,  153 => 68,  146 => 64,  142 => 63,  135 => 59,  131 => 58,  127 => 56,  121 => 48,  117 => 47,  113 => 45,  107 => 37,  103 => 36,  96 => 32,  92 => 31,  86 => 28,  82 => 27,  62 => 10,  59 => 9,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  179 => 79,  174 => 77,  168 => 74,  164 => 73,  157 => 69,  153 => 68,  146 => 64,  142 => 63,  135 => 59,  131 => 58,  127 => 56,  121 => 48,  117 => 47,  113 => 45,  107 => 37,  103 => 36,  96 => 32,  92 => 31,  86 => 28,  82 => 27,  62 => 10,  59 => 9,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -231,12 +242,12 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 {{ form_errors(form) }}
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.nom, {'attr': {'placeholder':'Nom'}}) }}
+                                  {{ form_widget(form.nom, {'attr': {'placeholder':'Nom','class':'form-control'}}) }}
                                   {{ form_errors(form.nom) }}
                                 </div>
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms'}}) }}
+                                  {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms','class':'form-control'}}) }}
                                   {{ form_errors(form.prenoms) }}
                                 </div>
 
@@ -247,7 +258,7 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 </div>#}
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.sexe, {'attr': {}}) }}
+                                  {{ form_widget(form.sexe, {'attr': {'class':'form-control'}}) }}
                                   {{ form_errors(form.sexe) }}
                                 </div>
 
@@ -258,17 +269,22 @@ class __TwigTemplate_17c407842ce18c3b3ea2ac7d5c4121e75f4e478e9208d81f297f00dbb29
                                 </div>#}
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.pays, {'attr': {}}) }}
+                                  {{ form_widget(form.pays, {'attr': {'class':'form-control'}}) }}
                                   {{ form_errors(form.pays) }}
                                 </div>
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email'}}) }}
+                                  {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email','class':'form-control'}}) }}
                                   {{ form_errors(form.email) }}
                                 </div>
 
                                 <div class=\"form-group\">
-                                  {{ form_widget(form.plainPassword, {'attr': {}}) }}
+                                  {{ form_widget(form.plainPassword.children['first'], {'attr': {'placeholder':'Mot de passe','class':'form-control'}}) }}
+                                  {{ form_errors(form.plainPassword) }}
+                                </div>
+                                
+                                <div class=\"form-group\">
+                                  {{ form_widget(form.plainPassword.children['second'], {'attr': {'placeholder':'Confirmation Mot de passe','class':'form-control'}}) }}
                                   {{ form_errors(form.plainPassword) }}
                                 </div>
 

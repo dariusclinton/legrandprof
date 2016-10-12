@@ -11,6 +11,7 @@ class __TwigTemplate_a93338cbd748ce6f4688999482470fc650fc1880887c7e4e364f085839f
         $this->parent = $this->loadTemplate("LGPCoreBundle::layout.html.twig", "LGPUserBundle:Indisponibilite:update.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'header_submenu' => array($this, 'block_header_submenu'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -22,20 +23,20 @@ class __TwigTemplate_a93338cbd748ce6f4688999482470fc650fc1880887c7e4e364f085839f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_17f95511d726da51143fa839461057ff956519477ceab64ef6e530e941eddc8e = $this->env->getExtension("native_profiler");
-        $__internal_17f95511d726da51143fa839461057ff956519477ceab64ef6e530e941eddc8e->enter($__internal_17f95511d726da51143fa839461057ff956519477ceab64ef6e530e941eddc8e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Indisponibilite:update.html.twig"));
+        $__internal_a8aca662c9763734eed3b5470a9b2f28da1b1e30b56d60d508f2514f106326ae = $this->env->getExtension("native_profiler");
+        $__internal_a8aca662c9763734eed3b5470a9b2f28da1b1e30b56d60d508f2514f106326ae->enter($__internal_a8aca662c9763734eed3b5470a9b2f28da1b1e30b56d60d508f2514f106326ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Indisponibilite:update.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_17f95511d726da51143fa839461057ff956519477ceab64ef6e530e941eddc8e->leave($__internal_17f95511d726da51143fa839461057ff956519477ceab64ef6e530e941eddc8e_prof);
+        $__internal_a8aca662c9763734eed3b5470a9b2f28da1b1e30b56d60d508f2514f106326ae->leave($__internal_a8aca662c9763734eed3b5470a9b2f28da1b1e30b56d60d508f2514f106326ae_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_8011e388f4d30fbdf0cf90d374ef9c8ea8dd6e8181a2faa5c2e7792772825dc9 = $this->env->getExtension("native_profiler");
-        $__internal_8011e388f4d30fbdf0cf90d374ef9c8ea8dd6e8181a2faa5c2e7792772825dc9->enter($__internal_8011e388f4d30fbdf0cf90d374ef9c8ea8dd6e8181a2faa5c2e7792772825dc9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_f33c3bf07d344284999cd437f1bd0e985816a7e66281a2535d283b02b193f922 = $this->env->getExtension("native_profiler");
+        $__internal_f33c3bf07d344284999cd437f1bd0e985816a7e66281a2535d283b02b193f922->enter($__internal_f33c3bf07d344284999cd437f1bd0e985816a7e66281a2535d283b02b193f922_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Mise à jour d'une indisponibilité - ";
@@ -43,27 +44,74 @@ class __TwigTemplate_a93338cbd748ce6f4688999482470fc650fc1880887c7e4e364f085839f
         echo "
 ";
         
-        $__internal_8011e388f4d30fbdf0cf90d374ef9c8ea8dd6e8181a2faa5c2e7792772825dc9->leave($__internal_8011e388f4d30fbdf0cf90d374ef9c8ea8dd6e8181a2faa5c2e7792772825dc9_prof);
+        $__internal_f33c3bf07d344284999cd437f1bd0e985816a7e66281a2535d283b02b193f922->leave($__internal_f33c3bf07d344284999cd437f1bd0e985816a7e66281a2535d283b02b193f922_prof);
 
     }
 
     // line 7
-    public function block_body($context, array $blocks = array())
+    public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_b41bad3734c8ba281cbeec4b37d1adfe609b020ae4149b7182df1648f74776c1 = $this->env->getExtension("native_profiler");
-        $__internal_b41bad3734c8ba281cbeec4b37d1adfe609b020ae4149b7182df1648f74776c1->enter($__internal_b41bad3734c8ba281cbeec4b37d1adfe609b020ae4149b7182df1648f74776c1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_30b1a0ef6692f38f7768d794921ea58658e8e8dba3ed5115fee74cf3f25edbff = $this->env->getExtension("native_profiler");
+        $__internal_30b1a0ef6692f38f7768d794921ea58658e8e8dba3ed5115fee74cf3f25edbff->enter($__internal_30b1a0ef6692f38f7768d794921ea58658e8e8dba3ed5115fee74cf3f25edbff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
-        // line 8
-        echo "  <h1>Mise à d'une indiponibilité</h1>
-  
+        echo " 
   ";
-        // line 10
-        $this->loadTemplate("LGPUserBundle:Indisponibilite:formulaire.html.twig", "LGPUserBundle:Indisponibilite:update.html.twig", 10)->display($context);
-        // line 11
-        echo "  
+        // line 8
+        echo twig_include($this->env, $context, "LGPCoreBundle::header-submenu.html.twig");
+        echo "
 ";
         
-        $__internal_b41bad3734c8ba281cbeec4b37d1adfe609b020ae4149b7182df1648f74776c1->leave($__internal_b41bad3734c8ba281cbeec4b37d1adfe609b020ae4149b7182df1648f74776c1_prof);
+        $__internal_30b1a0ef6692f38f7768d794921ea58658e8e8dba3ed5115fee74cf3f25edbff->leave($__internal_30b1a0ef6692f38f7768d794921ea58658e8e8dba3ed5115fee74cf3f25edbff_prof);
+
+    }
+
+    // line 11
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_8dbe6fdea69a91ea12031f70155eb555c8c143becaa039007c85da9ebae00a4a = $this->env->getExtension("native_profiler");
+        $__internal_8dbe6fdea69a91ea12031f70155eb555c8c143becaa039007c85da9ebae00a4a->enter($__internal_8dbe6fdea69a91ea12031f70155eb555c8c143becaa039007c85da9ebae00a4a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 12
+        echo "    
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Gérer mes indisponibilités</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"";
+        // line 20
+        echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite");
+        echo "\">Mes indisponibilités</a></li>
+              <li><a href=\"";
+        // line 21
+        echo $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite_add");
+        echo "\">Signaler une indisponibilité</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Mise à jour d'une indisponibilité</div>
+                <div class=\"notifications-content\">
+                    
+                    ";
+        // line 29
+        $this->loadTemplate("LGPUserBundle:Indisponibilite:formulaire.html.twig", "LGPUserBundle:Indisponibilite:update.html.twig", 29)->display($context);
+        // line 30
+        echo "                </div>
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+";
+        
+        $__internal_8dbe6fdea69a91ea12031f70155eb555c8c143becaa039007c85da9ebae00a4a->leave($__internal_8dbe6fdea69a91ea12031f70155eb555c8c143becaa039007c85da9ebae00a4a_prof);
 
     }
 
@@ -79,7 +127,7 @@ class __TwigTemplate_a93338cbd748ce6f4688999482470fc650fc1880887c7e4e364f085839f
 
     public function getDebugInfo()
     {
-        return array (  63 => 11,  61 => 10,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  102 => 30,  100 => 29,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -90,10 +138,38 @@ class __TwigTemplate_a93338cbd748ce6f4688999482470fc650fc1880887c7e4e364f085839f
   Mise à jour d'une indisponibilité - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
-  <h1>Mise à d'une indiponibilité</h1>
-  
-  {% include 'LGPUserBundle:Indisponibilite:formulaire.html.twig' %}
+    
+  <div class=\"bg-grey dashboard\">
+    <div class=\"content-wrapper\">
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-3\">
+            <h3 class=\"title-block-dash\">Gérer mes indisponibilités</h3>
+            <ul class=\"menu-dash\">
+              <li><a href=\"{{ path('lgp_user_prof_indisponibilite') }}\">Mes indisponibilités</a></li>
+              <li><a href=\"{{ path('lgp_user_prof_indisponibilite_add') }}\">Signaler une indisponibilité</a></li>
+            </ul>
+          </div>
+          <div class=\"col-md-9\">
+              <div class=\"notifications-block\">
+                <div class=\"notifications-header\">Mise à jour d'une indisponibilité</div>
+                <div class=\"notifications-content\">
+                    
+                    {% include 'LGPUserBundle:Indisponibilite:formulaire.html.twig' %}
+                </div>
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
 {% endblock %}";
     }

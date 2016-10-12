@@ -3,15 +3,19 @@
 {{ form_errors(form) }}
 
 <div class="form-group">
-  {{ form_label(form.objet, "Objet de l'anomalie", {'label_attr': {'class': 'control-label'}}) }}
-  {{ form_widget(form.objet, {'attr': {'class': 'form-control'}}) }}
-  {{ form_errors(form.objet) }}
+    <div class='row'>
+        <div class='col-md-3'>{{ form_label(form.objet, "Objet de l'anomalie", {'label_attr': {'class': 'control-label'}}) }}</div>
+        <div class='col-md-4'>{{ form_widget(form.objet, {'attr': {'class': 'form-control'}}) }}</div>
+        {{ form_errors(form.objet) }}
+    </div>
 </div>
 
 <div class="form-group">
-  {{ form_label(form.contenu, "Contenu", {'label_attr': {'class': 'control-label'}}) }}
-  {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
-  {{ form_errors(form.contenu) }}
+    <div class='row'>
+        <div class='col-md-3'>{{ form_label(form.contenu, "Contenu", {'label_attr': {'class': 'control-label'}}) }}</div>
+        <div class='col-md-4'>{{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}</div>
+        {{ form_errors(form.contenu) }}
+    </div>
 </div>
 
 {{ form_rest(form) }}

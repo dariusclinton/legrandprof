@@ -15,8 +15,8 @@ class __TwigTemplate_10969b212104792fe7d8eb7cb291f1641169866a85d3900c7140b6de5b6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c405ebec510fb1d6c2e59ca4014578f52d4a41759c11bf4e1eda88952a7da530 = $this->env->getExtension("native_profiler");
-        $__internal_c405ebec510fb1d6c2e59ca4014578f52d4a41759c11bf4e1eda88952a7da530->enter($__internal_c405ebec510fb1d6c2e59ca4014578f52d4a41759c11bf4e1eda88952a7da530_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Button:edit_button.html.twig"));
+        $__internal_ca4b3024c4a1cdeaa465dc83cb2e03a4bf90538b8737bb597e94840f260fa278 = $this->env->getExtension("native_profiler");
+        $__internal_ca4b3024c4a1cdeaa465dc83cb2e03a4bf90538b8737bb597e94840f260fa278->enter($__internal_ca4b3024c4a1cdeaa465dc83cb2e03a4bf90538b8737bb597e94840f260fa278_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Button:edit_button.html.twig"));
 
         // line 11
         echo "
@@ -35,7 +35,7 @@ class __TwigTemplate_10969b212104792fe7d8eb7cb291f1641169866a85d3900c7140b6de5b6
 ";
         }
         
-        $__internal_c405ebec510fb1d6c2e59ca4014578f52d4a41759c11bf4e1eda88952a7da530->leave($__internal_c405ebec510fb1d6c2e59ca4014578f52d4a41759c11bf4e1eda88952a7da530_prof);
+        $__internal_ca4b3024c4a1cdeaa465dc83cb2e03a4bf90538b8737bb597e94840f260fa278->leave($__internal_ca4b3024c4a1cdeaa465dc83cb2e03a4bf90538b8737bb597e94840f260fa278_prof);
 
     }
 

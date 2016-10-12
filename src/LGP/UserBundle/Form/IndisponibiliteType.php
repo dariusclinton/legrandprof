@@ -21,13 +21,13 @@ class IndisponibiliteType extends AbstractType
             ->add('dateDebut', DateType::class, array(
               'years'       => range(2016, 2020),
               'placeholder' => array(
-                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'
               ),
             ))
             ->add('dateFin', DateType::class, array(
               'years'       => range(2016, 2020),
               'placeholder' => array(
-                'year' => 'Year', 'month' => 'Month', 'day' => 'Day'
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'
               ),
             ))
             ->add('motif', TextareaType::class, array(

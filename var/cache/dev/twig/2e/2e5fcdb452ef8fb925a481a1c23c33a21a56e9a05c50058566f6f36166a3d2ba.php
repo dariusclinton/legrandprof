@@ -23,20 +23,20 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_64e7135a8b983054f157f4d5686494699c6bcd87706ce62a1a9bac5745d5d783 = $this->env->getExtension("native_profiler");
-        $__internal_64e7135a8b983054f157f4d5686494699c6bcd87706ce62a1a9bac5745d5d783->enter($__internal_64e7135a8b983054f157f4d5686494699c6bcd87706ce62a1a9bac5745d5d783_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Indisponibilite:index.html.twig"));
+        $__internal_b4c5ad2fd733068514ba623955cadf229e108e47e0d1c8a648ae7b43fa276d26 = $this->env->getExtension("native_profiler");
+        $__internal_b4c5ad2fd733068514ba623955cadf229e108e47e0d1c8a648ae7b43fa276d26->enter($__internal_b4c5ad2fd733068514ba623955cadf229e108e47e0d1c8a648ae7b43fa276d26_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Indisponibilite:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_64e7135a8b983054f157f4d5686494699c6bcd87706ce62a1a9bac5745d5d783->leave($__internal_64e7135a8b983054f157f4d5686494699c6bcd87706ce62a1a9bac5745d5d783_prof);
+        $__internal_b4c5ad2fd733068514ba623955cadf229e108e47e0d1c8a648ae7b43fa276d26->leave($__internal_b4c5ad2fd733068514ba623955cadf229e108e47e0d1c8a648ae7b43fa276d26_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1ea0b945e2c3ae5623003f7500092d329771018c4d9a28b3d207e793558bf258 = $this->env->getExtension("native_profiler");
-        $__internal_1ea0b945e2c3ae5623003f7500092d329771018c4d9a28b3d207e793558bf258->enter($__internal_1ea0b945e2c3ae5623003f7500092d329771018c4d9a28b3d207e793558bf258_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_6c61897e04bf8c5b3555ae6139a14fc84d4201889cff4b9228cf1ce9ae6ecb61 = $this->env->getExtension("native_profiler");
+        $__internal_6c61897e04bf8c5b3555ae6139a14fc84d4201889cff4b9228cf1ce9ae6ecb61->enter($__internal_6c61897e04bf8c5b3555ae6139a14fc84d4201889cff4b9228cf1ce9ae6ecb61_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Indisponibilités - ";
@@ -44,15 +44,15 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
         echo "
 ";
         
-        $__internal_1ea0b945e2c3ae5623003f7500092d329771018c4d9a28b3d207e793558bf258->leave($__internal_1ea0b945e2c3ae5623003f7500092d329771018c4d9a28b3d207e793558bf258_prof);
+        $__internal_6c61897e04bf8c5b3555ae6139a14fc84d4201889cff4b9228cf1ce9ae6ecb61->leave($__internal_6c61897e04bf8c5b3555ae6139a14fc84d4201889cff4b9228cf1ce9ae6ecb61_prof);
 
     }
 
     // line 7
     public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_81cf909194314c96bf589313fa54c21b06cc11a0a45e26d7b8323c3251c7c18f = $this->env->getExtension("native_profiler");
-        $__internal_81cf909194314c96bf589313fa54c21b06cc11a0a45e26d7b8323c3251c7c18f->enter($__internal_81cf909194314c96bf589313fa54c21b06cc11a0a45e26d7b8323c3251c7c18f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
+        $__internal_df81d5b29420144fae7b112bb82df203e95d3e25103b749651b6533f7371df79 = $this->env->getExtension("native_profiler");
+        $__internal_df81d5b29420144fae7b112bb82df203e95d3e25103b749651b6533f7371df79->enter($__internal_df81d5b29420144fae7b112bb82df203e95d3e25103b749651b6533f7371df79_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
         echo " 
   ";
@@ -61,15 +61,15 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
         echo "
 ";
         
-        $__internal_81cf909194314c96bf589313fa54c21b06cc11a0a45e26d7b8323c3251c7c18f->leave($__internal_81cf909194314c96bf589313fa54c21b06cc11a0a45e26d7b8323c3251c7c18f_prof);
+        $__internal_df81d5b29420144fae7b112bb82df203e95d3e25103b749651b6533f7371df79->leave($__internal_df81d5b29420144fae7b112bb82df203e95d3e25103b749651b6533f7371df79_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ade839934c878c578d7cf92031550da9302c53c266d7667817d760cd5de448c4 = $this->env->getExtension("native_profiler");
-        $__internal_ade839934c878c578d7cf92031550da9302c53c266d7667817d760cd5de448c4->enter($__internal_ade839934c878c578d7cf92031550da9302c53c266d7667817d760cd5de448c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_2b3d8b69fa0f64edefa49de68f77410f5b2336899b3e3a2a8975d2a2b1c01e32 = $this->env->getExtension("native_profiler");
+        $__internal_2b3d8b69fa0f64edefa49de68f77410f5b2336899b3e3a2a8975d2a2b1c01e32->enter($__internal_2b3d8b69fa0f64edefa49de68f77410f5b2336899b3e3a2a8975d2a2b1c01e32_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
         echo "    
@@ -114,41 +114,44 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
                           <th>Début</th>
                           <th>Fin</th>
                           <th>Motif</th>
-                          <th>Action</th>
+                          <th></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         ";
-            // line 47
+            // line 48
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["indisponibilites"]) ? $context["indisponibilites"] : $this->getContext($context, "indisponibilites")));
             foreach ($context['_seq'] as $context["_key"] => $context["indispo"]) {
-                // line 48
+                // line 49
                 echo "                          <tr>
                             <td>";
-                // line 49
+                // line 50
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["indispo"], "dateDebut", array()), "d/m/Y"), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 50
+                // line 51
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["indispo"], "dateFin", array()), "d/m/Y"), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 51
+                // line 52
                 echo twig_escape_filter($this->env, $this->getAttribute($context["indispo"], "motif", array()), "html", null, true);
                 echo "</td>
                             <td>
                               <a href='";
-                // line 53
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite_delete", array("id" => $this->getAttribute($context["indispo"], "id", array()))), "html", null, true);
-                echo "' class=\"bt btn-danger btn-sm delete_confirm\">
-                                Supprimer
-                              </a>
-                              <a href='";
-                // line 56
+                // line 54
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite_update", array("id" => $this->getAttribute($context["indispo"], "id", array()))), "html", null, true);
-                echo "' class=\"bt btn-info btn-sm\">
-                                Modifier
+                echo "' class=\"\">
+                                  <i class='fa fa-edit'></i>
+                              </a>
+                            </td>
+                            <td>
+                              <a href='";
+                // line 59
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_user_prof_indisponibilite_delete", array("id" => $this->getAttribute($context["indispo"], "id", array()))), "html", null, true);
+                echo "' class=\"delete_confirm\">
+                                  <i class='fa fa-remove'></i>
                               </a>
                             </td>
                           </tr>
@@ -157,7 +160,7 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['indispo'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 62
+            // line 65
             echo "                      </tbody>
 
                     </table>
@@ -166,7 +169,7 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
 
             ";
         }
-        // line 69
+        // line 72
         echo "
           </div>
         </div>
@@ -176,7 +179,7 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
   
 ";
         
-        $__internal_ade839934c878c578d7cf92031550da9302c53c266d7667817d760cd5de448c4->leave($__internal_ade839934c878c578d7cf92031550da9302c53c266d7667817d760cd5de448c4_prof);
+        $__internal_2b3d8b69fa0f64edefa49de68f77410f5b2336899b3e3a2a8975d2a2b1c01e32->leave($__internal_2b3d8b69fa0f64edefa49de68f77410f5b2336899b3e3a2a8975d2a2b1c01e32_prof);
 
     }
 
@@ -192,7 +195,7 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
 
     public function getDebugInfo()
     {
-        return array (  170 => 69,  161 => 62,  149 => 56,  143 => 53,  138 => 51,  134 => 50,  130 => 49,  127 => 48,  123 => 47,  107 => 33,  98 => 26,  96 => 25,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  173 => 72,  164 => 65,  152 => 59,  144 => 54,  139 => 52,  135 => 51,  131 => 50,  128 => 49,  124 => 48,  107 => 33,  98 => 26,  96 => 25,  89 => 21,  85 => 20,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -239,7 +242,8 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
                           <th>Début</th>
                           <th>Fin</th>
                           <th>Motif</th>
-                          <th>Action</th>
+                          <th></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -249,11 +253,13 @@ class __TwigTemplate_7674ac9d963f6ffdcdfd1d9220d31e106b8c68435956490818960a72639
                             <td>{{ indispo.dateFin|date('d/m/Y') }}</td>
                             <td>{{ indispo.motif }}</td>
                             <td>
-                              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class=\"bt btn-danger btn-sm delete_confirm\">
-                                Supprimer
+                              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class=\"\">
+                                  <i class='fa fa-edit'></i>
                               </a>
-                              <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class=\"bt btn-info btn-sm\">
-                                Modifier
+                            </td>
+                            <td>
+                              <a href='{{ path('lgp_user_prof_indisponibilite_delete',  {'id': indispo.id }) }}' class=\"delete_confirm\">
+                                  <i class='fa fa-remove'></i>
                               </a>
                             </td>
                           </tr>
