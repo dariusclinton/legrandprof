@@ -28,7 +28,6 @@ use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Translation\Loader\XliffFileLoader;
 use Symfony\Component\Translation\MessageSelector;
 use Symfony\Component\Translation\Translator;
-use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Test for SonataAdminExtension.
@@ -82,11 +81,6 @@ class SonataAdminExtensionTest extends \PHPUnit_Framework_TestCase
      */
     private $xEditableTypeMapping;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
     public function setUp()
     {
         date_default_timezone_set('Europe/London');
@@ -115,19 +109,7 @@ class SonataAdminExtensionTest extends \PHPUnit_Framework_TestCase
             'url' => 'url',
         );
 
-        // translation extension
-        $translator = new Translator('en', new MessageSelector());
-        $translator->addLoader('xlf', new XliffFileLoader());
-        $translator->addResource(
-            'xlf',
-            __DIR__.'/../../../Resources/translations/SonataAdminBundle.en.xliff',
-            'en',
-            'SonataAdminBundle'
-        );
-
-        $this->translator = $translator;
-
-        $this->twigExtension = new SonataAdminExtension($this->pool, $this->logger, $this->translator);
+        $this->twigExtension = new SonataAdminExtension($this->pool, $this->logger);
         $this->twigExtension->setXEditableTypeMapping($this->xEditableTypeMapping);
 
         $loader = new StubFilesystemLoader(array(
@@ -141,6 +123,16 @@ class SonataAdminExtensionTest extends \PHPUnit_Framework_TestCase
             'optimizations' => 0,
         ));
         $this->environment->addExtension($this->twigExtension);
+
+        // translation extension
+        $translator = new Translator('en', new MessageSelector());
+        $translator->addLoader('xlf', new XliffFileLoader());
+        $translator->addResource(
+            'xlf',
+            __DIR__.'/../../../Resources/translations/SonataAdminBundle.en.xliff',
+            'en',
+            'SonataAdminBundle'
+        );
         $this->environment->addExtension(new TranslationExtension($translator));
 
         // routing extension
@@ -273,8 +265,6 @@ class SonataAdminExtensionTest extends \PHPUnit_Framework_TestCase
                         return 'SonataAdminBundle:CRUD:list_currency.html.twig';
                     case 'percent':
                         return 'SonataAdminBundle:CRUD:list_percent.html.twig';
-                    case 'email':
-                        return 'SonataAdminBundle:CRUD:list_email.html.twig';
                     case 'choice':
                         return 'SonataAdminBundle:CRUD:list_choice.html.twig';
                     case 'array':
@@ -549,70 +539,6 @@ class SonataAdminExtensionTest extends \PHPUnit_Framework_TestCase
                 'currency',
                 null,
                 array('currency' => 'GBP'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> &nbsp; </td>',
-                'email',
-                null,
-                array(),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> <a href="mailto:admin@admin.com">admin@admin.com</a> </td>',
-                'email',
-                'admin@admin.com',
-                array(),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> 
-                    <a href="mailto:admin@admin.com">admin@admin.com</a> </td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => false),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> admin@admin.com </td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345">  
-                    <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('subject' => 'Main Theme', 'body' => 'Message Body')).'">admin@admin.com</a>  </td>',
-                'email',
-                'admin@admin.com',
-                array('subject' => 'Main Theme', 'body' => 'Message Body'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345">  
-                    <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('subject' => 'Main Theme')).'">admin@admin.com</a>  </td>',
-                'email',
-                'admin@admin.com',
-                array('subject' => 'Main Theme'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345">  
-                    <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('body' => 'Message Body')).'">admin@admin.com</a>  </td>',
-                'email',
-                'admin@admin.com',
-                array('body' => 'Message Body'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> admin@admin.com </td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'subject' => 'Main Theme', 'body' => 'Message Body'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> admin@admin.com </td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'body' => 'Message Body'),
-            ),
-            array(
-                '<td class="sonata-ba-list-field sonata-ba-list-field-email" objectId="12345"> admin@admin.com </td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'subject' => 'Main Theme'),
             ),
             array(
                 '<td class="sonata-ba-list-field sonata-ba-list-field-array" objectId="12345">
@@ -971,7 +897,7 @@ EOT
         data-title="Data"
         data-pk="12345"
         data-url="/core/set-object-field-value?context=list&amp;field=fd_name&amp;objectId=12345&amp;code=xyz"
-        data-source="[{&quot;value&quot;:&quot;Foo&quot;,&quot;text&quot;:&quot;action_delete&quot;},{&quot;value&quot;:&quot;Status2&quot;,&quot;text&quot;:&quot;Alias2&quot;},{&quot;value&quot;:&quot;Status3&quot;,&quot;text&quot;:&quot;Alias3&quot;}]" >
+        data-source="[{&quot;value&quot;:&quot;Foo&quot;,&quot;text&quot;:&quot;Delete&quot;},{&quot;value&quot;:&quot;Status2&quot;,&quot;text&quot;:&quot;Alias2&quot;},{&quot;value&quot;:&quot;Status3&quot;,&quot;text&quot;:&quot;Alias3&quot;}]" >
          Delete
     </span>
 </td>
@@ -1319,8 +1245,6 @@ EOT
                         return 'SonataAdminBundle:CRUD:show_currency.html.twig';
                     case 'percent':
                         return 'SonataAdminBundle:CRUD:show_percent.html.twig';
-                    case 'email':
-                        return 'SonataAdminBundle:CRUD:show_email.html.twig';
                     case 'choice':
                         return 'SonataAdminBundle:CRUD:show_choice.html.twig';
                     case 'array':
@@ -1652,66 +1576,6 @@ EOT
                     ),
                     'identifier_parameter_name' => 'barId',
                 )),
-            ),
-            array(
-                '<th>Data</th> <td> &nbsp;</td>',
-                'email',
-                null,
-                array(),
-            ),
-            array(
-                '<th>Data</th> <td> <a href="mailto:admin@admin.com">admin@admin.com</a></td>',
-                'email',
-                'admin@admin.com',
-                array(),
-            ),
-            array(
-                '<th>Data</th> <td> <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('subject' => 'Main Theme', 'body' => 'Message Body')).'">admin@admin.com</a></td>',
-                'email',
-                'admin@admin.com',
-                array('subject' => 'Main Theme', 'body' => 'Message Body'),
-            ),
-            array(
-                '<th>Data</th> <td> <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('subject' => 'Main Theme')).'">admin@admin.com</a></td>',
-                'email',
-                'admin@admin.com',
-                array('subject' => 'Main Theme'),
-            ),
-            array(
-                '<th>Data</th> <td> <a href="mailto:admin@admin.com?'.$this->buildTwigLikeUrl(array('body' => 'Message Body')).'">admin@admin.com</a></td>',
-                'email',
-                'admin@admin.com',
-                array('body' => 'Message Body'),
-            ),
-            array(
-                '<th>Data</th> <td> admin@admin.com</td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'subject' => 'Main Theme', 'body' => 'Message Body'),
-            ),
-            array(
-                '<th>Data</th> <td> admin@admin.com</td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'subject' => 'Main Theme'),
-            ),
-            array(
-                '<th>Data</th> <td> admin@admin.com</td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true, 'body' => 'Message Body'),
-            ),
-            array(
-                '<th>Data</th> <td> <a href="mailto:admin@admin.com">admin@admin.com</a></td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => false),
-            ),
-            array(
-                '<th>Data</th> <td> admin@admin.com</td>',
-                'email',
-                'admin@admin.com',
-                array('as_string' => true),
             ),
             array(
                 '<th>Data</th> <td><p><strong>Creating a Template for the Field</strong> and form</p> </td>',
@@ -2136,25 +2000,6 @@ EOT
             ->will($this->returnValue(1234567));
 
         $this->assertSame(1234567, $this->twigExtension->getUrlsafeIdentifier($entity, $this->adminBar));
-    }
-
-    /**
-     * This method generates url part for Twig layout. Allows to keep BC for PHP 5.3.
-     *
-     * Remove this method for next major release only if PHP 5.3 support will be dropped.
-     *
-     * @param array $url
-     *
-     * @return string
-     */
-    private function buildTwigLikeUrl($url)
-    {
-        if (defined('PHP_QUERY_RFC3986')) {
-            // add htmlspecialchars because twig add it auto
-            return htmlspecialchars(http_build_query($url, '', '&', PHP_QUERY_RFC3986));
-        }
-
-        return htmlspecialchars(http_build_query($url, '', '&'));
     }
 
     private function removeExtraWhitespace($string)

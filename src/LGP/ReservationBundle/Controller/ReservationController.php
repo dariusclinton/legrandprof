@@ -3,30 +3,31 @@
 namespace LGP\ReservationBundle\Controller;
 
 use DateTime;
+use LGP\CourseBundle\Entity\ProgrammeDeCours;
 use LGP\CourseBundle\Form\CoursSearchType;
 use LGP\ReservationBundle\Entity\Facture;
 use LGP\ReservationBundle\Entity\Reservation;
 use LGP\ReservationBundle\Entity\ReservationEnseignement;
+use LGP\UserBundle\Entity\Prof;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class ReservationController extends Controller {
+class ReservationController extends Controller
+{
 
-    public function detailAction($id) {
+    public function detailAction(Prof $prof)
+    {
         $em = $this->getDoctrine()->getManager();
-        $profRep = $em->getRepository("LGPUserBundle:Prof");
         $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
-        $prof = $profRep->find($id);
-        if ($prof) {
-            $cours = $ensRep->getCoursByProf($prof);
-        }
+        $cours = $ensRep->getCoursByProf($prof);
 
         $params = array('prof' => $prof, 'cours' => $cours);
 
         return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('params' => $params));
     }
 
-    public function confirmReservationAction($userId, Request $request) {
+    public function confirmReservationAction($userId, Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $userRep = $em->getRepository("LGPUserBundle:User");
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -62,6 +63,9 @@ class ReservationController extends Controller {
                     $reservationEns->setReservation($reservation);
                     $reservationEns->setEnseignement($enseignement);
 
+                    $programme = new ProgrammeDeCours();
+                    $reservationEns->setProgrammeDeCours($programme);
+
 //                    foreach ($booker->getJours() as $jour => $heure) {
 //                        $jourDeCours = new JourDeCours();
 //                        $jourDeCours->setIntitule($jour);
@@ -81,23 +85,51 @@ class ReservationController extends Controller {
                 $em->persist($facture);
                 $em->flush();
                 $session->remove('panier');
+                $session->remove('step');
 
                 $session = $request->getSession();
-                $session->getFlashBag()->add('info','Votre reservation a bien été prise en compte! Nous vous contacterons le plus tot pour le debut des cours');
+                $session->getFlashBag()->add('info', 'Votre reservation a bien été prise en compte! Nous vous contacterons le plus tot pour le debut des cours');
                 return $this->redirectToRoute("lgp_reservation_cart");
             } else {
                 $session = $request->getSession();
-                $session->getFlashBag()->add('warning','Une error est survenue !!! Veillez nous contacter svp!!!');
+                $session->getFlashBag()->add('warning', 'Une error est survenue !!! Veillez nous contacter svp!!!');
                 return $this->redirectToRoute("lgp_reservation_cart");
             }
         }
     }
-    
-    public function paiementModeAction(Request $request){
+
+    public function paiementModeAction(Request $request)
+    {
+        $session = $request->getSession();
+        $step = $session->get('step');
+        if (!$step)
+        {
+//            $session->getFlashBag()->add('info', 'vous de')
+            return $this->redirectToRoute('lgp_reservation_cart');
+        }
+        if ($step != 'step1')
+            return $this->redirectToRoute('lgp_reservation_cart');
+
+        $step = 'step2';
+        $session->set('step', $step);
         return $this->render('LGPReservationBundle:Reservation:paiement.html.twig');
     }
-    
-    public function confirmviewReservationAction(){
+
+    public function confirmviewReservationAction(Request $request)
+    {
+        $session = $request->getSession();
+        $step = $session->get('step');
+        if (!$step)
+        {
+//            $session->getFlashBag()->add('info', 'vous de')
+            return $this->redirectToRoute('lgp_reservation_cart');
+        }
+
+        if ($step != 'step2')
+            return $this->redirectToRoute('lgp_reservation_paiement');
+
+        $step = 'step3';
+        $session->set('step', $step);
         return $this->render('LGPReservationBundle:Reservation:confirm_reservation.html.twig');
     }
 

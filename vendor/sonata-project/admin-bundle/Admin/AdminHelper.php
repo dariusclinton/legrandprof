@@ -225,7 +225,7 @@ class AdminHelper
      *
      * @return string
      *
-     * @deprecated Deprecated since version 3.1. Use \Doctrine\Common\Inflector\Inflector::classify() instead
+     * @deprecated Deprecated since version 3.1. Use \Doctrine\Common\Inflector\Inflector::classify() instead.
      */
     public function camelize($property)
     {
@@ -293,9 +293,9 @@ class AdminHelper
         $associationAdmin = $admin->getFormFieldDescription($element)->getAssociationAdmin();
         if (count($elements) == 0) {
             return $associationAdmin->getClass();
+        } else {
+            return $this->getEntityClassName($associationAdmin, $elements);
         }
-
-        return $this->getEntityClassName($associationAdmin, $elements);
     }
 
     /**

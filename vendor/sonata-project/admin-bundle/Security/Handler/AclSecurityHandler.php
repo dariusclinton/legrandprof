@@ -68,13 +68,13 @@ class AclSecurityHandler implements AclSecurityHandlerInterface
     protected $maskBuilderClass;
 
     /**
-     * NEXT_MAJOR: Go back to signature class check when bumping requirements to SF 2.6+.
-     *
      * @param TokenStorageInterface|SecurityContextInterface $tokenStorage
      * @param TokenStorageInterface|SecurityContextInterface $authorizationChecker
      * @param MutableAclProviderInterface                    $aclProvider
      * @param string                                         $maskBuilderClass
      * @param array                                          $superAdminRoles
+     *
+     * @todo Go back to signature class check when bumping requirements to SF 2.6+
      */
     public function __construct($tokenStorage, $authorizationChecker, MutableAclProviderInterface $aclProvider, $maskBuilderClass, array $superAdminRoles)
     {
@@ -137,6 +137,8 @@ class AclSecurityHandler implements AclSecurityHandlerInterface
             return $this->authorizationChecker->isGranted($this->superAdminRoles) || $this->authorizationChecker->isGranted($attributes, $object);
         } catch (AuthenticationCredentialsNotFoundException $e) {
             return false;
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 
@@ -214,10 +216,15 @@ class AclSecurityHandler implements AclSecurityHandlerInterface
     {
         try {
             $acls = $this->aclProvider->findAcls(iterator_to_array($oids), $sids);
-        } catch (NotAllAclsFoundException $e) {
-            $acls = $e->getPartialResult();
-        } catch (AclNotFoundException $e) { // if only one oid, this error is thrown
-            $acls = new \SplObjectStorage();
+        } catch (\Exception $e) {
+            if ($e instanceof NotAllAclsFoundException) {
+                $acls = $e->getPartialResult();
+            } elseif ($e instanceof AclNotFoundException) {
+                // if only one oid, this error is thrown
+                $acls = new \SplObjectStorage();
+            } else {
+                throw $e;
+            }
         }
 
         return $acls;

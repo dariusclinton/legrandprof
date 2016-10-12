@@ -172,15 +172,11 @@ class AdminObjectAclData
      *
      * @return AdminObjectAclData
      *
-     * @deprecated Deprecated since version 3.0. Use setAclUsersForm() instead
+     * @deprecated Deprecated since version 3.0. Use setAclUsersForm() instead.
      */
     public function setForm(Form $form)
     {
-        @trigger_error(
-            'setForm() is deprecated since version 3.0 and will be removed in 4.0. '
-            .'Use setAclUsersForm() instead.',
-            E_USER_DEPRECATED
-        );
+        trigger_error('setForm() is deprecated since version 3.0. Use setAclUsersForm() instead.', E_USER_DEPRECATED);
 
         return $this->setAclUsersForm($form);
     }
@@ -190,15 +186,11 @@ class AdminObjectAclData
      *
      * @return Form
      *
-     * @deprecated Deprecated since version 3.0. Use getAclUsersForm() instead
+     * @deprecated Deprecated since version 3.0. Use getAclUsersForm() instead.
      */
     public function getForm()
     {
-        @trigger_error(
-            'getForm() is deprecated since version 3.0 and will be removed in 4.0. '
-            .'Use getAclUsersForm() instead.',
-            E_USER_DEPRECATED
-        );
+        trigger_error('getForm() is deprecated since version 3.0. Use getAclUsersForm() instead.', E_USER_DEPRECATED);
 
         return $this->getAclUsersForm();
     }
@@ -283,7 +275,7 @@ class AdminObjectAclData
     }
 
     /**
-     * Tests if the current user has the OWNER right.
+     * Tests if the current user as the OWNER right.
      *
      * @return bool
      */

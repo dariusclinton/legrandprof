@@ -14,13 +14,20 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  */
 class Parents extends User
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  protected $id;
+
+  /**
+   * @ORM\PrePersist
+   */
+  public function prePersist()
+  {
+    $this->roles[] = 'ROLE_PARENT';
+  }
 }

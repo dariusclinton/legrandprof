@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DashboardController extends Controller {
  
@@ -10,10 +11,23 @@ class DashboardController extends Controller {
    * 
    * @return type
    * @throws type
+   *
+   * @Security("has_role('ROLE_PROF')")
    */
-  public function indexAction() {
+  public function profAction() {
     
-    return $this->redirectToRoute('fos_user_profile_show');
+    return $this->render('LGPUserBundle:Dashboard:prof.html.twig');
+  }
+
+  /**
+   *
+   * @return type
+   * @throws type
+   * @Security("has_role('ROLE_PARENT')")
+   */
+  public function parentAction() {
+
+    return $this->render('LGPUserBundle:Dashboard:parent.html.twig');
   }
   
   

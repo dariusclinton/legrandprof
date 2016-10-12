@@ -31,17 +31,12 @@ class AddFilterTypeCompilerPass implements CompilerPassInterface
         $types = array();
 
         foreach ($container->findTaggedServiceIds('sonata.admin.filter.type') as $id => $attributes) {
-            $serviceDefinition = $container->getDefinition($id);
-
             if (method_exists($definition, 'setShared')) { // Symfony 2.8+
-                $serviceDefinition->setShared(false);
+                $container->getDefinition($id)->setShared(false);
             } else { // For Symfony <2.8 compatibility
-                $serviceDefinition->setScope(ContainerInterface::SCOPE_PROTOTYPE);
+                $container->getDefinition($id)->setScope(ContainerInterface::SCOPE_PROTOTYPE);
             }
 
-            $types[$serviceDefinition->getClass()] = $id;
-
-            // NEXT_MAJOR: Remove the alias when dropping support for symfony 2.x
             foreach ($attributes as $eachTag) {
                 $types[$eachTag['alias']] = $id;
             }

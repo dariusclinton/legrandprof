@@ -82,7 +82,7 @@ Here is an example:
             ->add('image.name')
 
             // You may also specify the actions you want to be displayed in the list
-            ->add('_action', null, array(
+            ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
@@ -147,12 +147,6 @@ Available types and associated options
 | date      | format         | A format understandable by Twig's ``date`` function.                  |
 +-----------+----------------+-----------------------------------------------------------------------+
 | datetime  | format         | A format understandable by Twig's ``date`` function.                  |
-+-----------+----------------+-----------------------------------------------------------------------+
-| email     | as_string      | Renders the email as string, without any link.                        |
-+           +----------------+-----------------------------------------------------------------------+
-|           | subject        | Add subject parameter to email link.                                  |
-+           +----------------+-----------------------------------------------------------------------+
-|           | body           | Add body parameter to email link.                                     |
 +-----------+----------------+-----------------------------------------------------------------------+
 | percent   |                | Renders value as a percentage.                                        |
 +-----------+----------------+-----------------------------------------------------------------------+
@@ -329,18 +323,19 @@ If you don't need the advanced filters, or all your ``operator_type`` are hidden
 Default filters
 ^^^^^^^^^^^^^^^
 
-Default filters can be added to the datagrid values by using the ``configureDefaultFilterValues`` method.
+Default filters can be added to the datagrid values by overriding the ``$datagridValues`` property which is also used for default sorting.
 A filter has a ``value`` and an optional ``type``. If no ``type`` is given the default type ``is equal`` is used.
 
 .. code-block:: php
 
-    public function configureDefaultFilterValues(array &$filterValues)
-    {
-        $filterValues['foo'] = array(
-            'type'  => ChoiceFilter::TYPE_CONTAINS,
-            'value' => 'bar',
-        );
-    }
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'id',
+        'foo' => array(
+            'value' => 'bar'
+        )
+    );
 
 Available types are represented through classes which can be found here:
 https://github.com/sonata-project/SonataCoreBundle/tree/master/Form/Type
@@ -459,7 +454,7 @@ If you have the **SonataDoctrineORMAdminBundle** installed you can use the ``doc
         protected function configureDatagridFilters(DatagridMapper $datagridMapper)
         {
             $datagridMapper
-                ->add('full_text', CallbackFilter::class, array(
+                ->add('full_text', 'doctrine_orm_callback', array(
                     'callback' => array($this, 'getFullTextFilter'),
                     'field_type' => 'text'
                 ))
@@ -551,31 +546,3 @@ You can :
     }
 
 .. _`issues on GitHub`: https://github.com/sonata-project/SonataAdminBundle/issues/1519
-
-Mosaic view button
-------------------
-
-You have the possibility to show/hide mosaic view button.
-
-.. code-block:: yaml
-
-    sonata_admin:
-        # for hide mosaic view button on all screen using `false`
-        show_mosaic_button:   true
-
-You can show/hide mosaic view button using admin service configuration. You need to add option ``show_mosaic_button``
-in your admin services:
-
-.. code-block:: yaml
-
-    sonata_admin.admin.post:
-        class: Sonata\AdminBundle\Admin\PostAdmin
-        arguments: [~, Sonata\AdminBundle\Entity\Post, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Post, show_mosaic_button: true }
-
-    sonata_admin.admin.news:
-        class: Sonata\AdminBundle\Admin\NewsAdmin
-        arguments: [~, Sonata\AdminBundle\Entity\News, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: News, show_mosaic_button: false }

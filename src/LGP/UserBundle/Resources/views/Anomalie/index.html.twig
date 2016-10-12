@@ -4,42 +4,71 @@
   Anomalies signalées - {{ parent() }}
 {% endblock %}
 
+{% block header_submenu %} 
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
 {% block body %}
   
-  <h1>Anomalies signalées</h1>
-    
-  <a href="{{ path('lgp_user_anomalie_add') }}" class="btn btn-primary">Signaler une anomalie</a>
- 
-  {% if anomalies|length <= 0 %}
-    
-    <h4 class="text-muted">Aucune anomalie trouvee</h4>
-  
-  {% else %}
-  
-    <table class="table table-bordered table-stripped">
-      <thead>
-        <tr>
-          <th>Objet</th>
-          <th>Contenu</th>
-          <th>Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for anomalie in anomalies %}
-          <tr>
-            <td>{{anomalie.objet}}</td>
-            <td>{{anomalie.contenu}}</td>
-            <td>{{anomalie.datePublication | date('d/m/Y')}}</td>
-            <td>
-              <a href="{{ path('lgp_user_anomalie_update', {'id': anomalie.id}) }}" class="btn btn-sm btn-info">Modifier</a> 
-              <a href="{{ path('lgp_user_anomalie_delete', {'id': anomalie.id}) }}" class="btn btn-sm btn-danger delete_confirm">Supprimer</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    
-  {% endif %}
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 class="title-block-dash">Gérer mes cours</h3>
+            <ul class="menu-dash">
+              <li><a href="{{ path('lgp_user_anomalies') }}">Anomalies signalées</a></li>
+              <li><a href="{{ path('lgp_user_anomalie_add') }}">Signaler une anomalie</a></li>
+            </ul>
+          </div>
+          <div class="col-md-9">
+            {% if anomalies|length <= 0 %}
+              <div class="notifications-block">
+                <div class="notifications-header">Anomalies</div>
+                <div class="notifications-content">
+                  Aucune anomalie signalée !
+                </div>
+              </div>
+            {% else %}
+              <div class="notifications-block">
+                <div class="notifications-header">Anomalies</div>
+                <div class="notifications-content">
+                    
+                    <table class="table table-stripped">
+                      <thead>
+                        <tr>
+                          <th>Objet</th>
+                          <th>Contenu</th>
+                          <th>Date</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for anomalie in anomalies %}
+                          <tr>
+                            <td>{{anomalie.objet}}</td>
+                            <td>{{anomalie.contenu}}</td>
+                            <td>{{anomalie.datePublication | date('d/m/Y')}}</td>
+                            <td>
+                                <a href="{{ path('lgp_user_anomalie_update', {'id': anomalie.id}) }}" class=""><i class='fa fa-edit'></i></a> 
+                            </td>
+                            <td>
+                                <a href="{{ path('lgp_user_anomalie_delete', {'id': anomalie.id}) }}" class="delete_confirm"><i class='fa fa-remove'></i></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
 {% endblock %}

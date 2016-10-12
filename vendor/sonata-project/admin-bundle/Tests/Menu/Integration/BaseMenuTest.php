@@ -29,13 +29,10 @@ abstract class BaseMenuTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        // Adapt to both bundle and project-wide test strategy
-        $twigPaths = array_filter(array(
-            __DIR__.'/../../../../../../vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views',
+        $twigPaths = array(
             __DIR__.'/../../../vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views',
             __DIR__.'/../../../Resources/views',
-        ), 'is_dir');
-
+        );
         $loader = new StubFilesystemLoader($twigPaths);
         $this->environment = new \Twig_Environment($loader, array('strict_variables' => true));
     }

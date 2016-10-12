@@ -43,11 +43,6 @@ class AdminExtractorTest extends \PHPUnit_Framework_TestCase
      */
     private $barAdmin;
 
-    /**
-     * @var BreadcrumbsBuilderInterface
-     */
-    private $breadcrumbsBuilder;
-
     public function setUp()
     {
         if (!interface_exists('JMS\TranslationBundle\Translation\ExtractorInterface')) {
@@ -75,16 +70,13 @@ class AdminExtractorTest extends \PHPUnit_Framework_TestCase
                 return;
             }));
 
-        $logger = $this->getMock('Psr\Log\LoggerInterface');
+        $logger = $this->getMock('Symfony\Component\HttpKernel\Log\LoggerInterface');
 
         $this->pool = new Pool($container, '', '');
         $this->pool->setAdminServiceIds(array('foo_admin', 'bar_admin'));
 
         $this->adminExtractor = new AdminExtractor($this->pool, $logger);
         $this->adminExtractor->setLogger($logger);
-
-        $this->breadcrumbsBuilder = $this->getMock('Sonata\AdminBundle\Admin\BreadcrumbsBuilderInterface');
-        $this->adminExtractor->setBreadcrumbsBuilder($this->breadcrumbsBuilder);
     }
 
     public function testExtractEmpty()
@@ -132,13 +124,6 @@ class AdminExtractorTest extends \PHPUnit_Framework_TestCase
                 throw new \RuntimeException('Foo throws exception');
             }));
 
-        $this->adminExtractor->extract();
-    }
-
-    public function testExtractCallsBreadcrumbs()
-    {
-        $this->breadcrumbsBuilder->expects($this->exactly(2 * 6))
-            ->method('getBreadcrumbs');
-        $this->adminExtractor->extract();
+        $catalogue = $this->adminExtractor->extract();
     }
 }

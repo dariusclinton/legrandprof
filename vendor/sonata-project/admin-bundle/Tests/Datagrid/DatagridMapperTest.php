@@ -104,9 +104,7 @@ class DatagridMapperTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Sonata\AdminBundle\Filter\FilterInterface', $filter);
         $this->assertSame('foo.name', $filter->getName());
         $this->assertSame('foo__name', $filter->getFormName());
-        $this->assertSame(method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\TextType'
-            : 'text', $filter->getFieldType());
+        $this->assertSame('text', $filter->getFieldType());
         $this->assertSame('fooLabel', $filter->getLabel());
         $this->assertSame(array('required' => false), $filter->getFieldOptions());
         $this->assertSame(array(
@@ -214,7 +212,7 @@ class DatagridMapperTest extends \PHPUnit_Framework_TestCase
                 $tmpNames[$name] = $name;
 
                 return false;
-            }));
+        }));
 
         try {
             $this->datagridMapper->add('fooName');

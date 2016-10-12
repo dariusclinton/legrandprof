@@ -41,12 +41,7 @@ class ModelAutocompleteType extends AbstractType
         $builder->setAttribute('minimum_input_length', $options['minimum_input_length']);
         $builder->setAttribute('items_per_page', $options['items_per_page']);
         $builder->setAttribute('req_param_name_page_number', $options['req_param_name_page_number']);
-        $builder->setAttribute(
-            'disabled',
-            $options['disabled']
-            // NEXT_MAJOR: Remove this when bumping Symfony constraint to 2.8+
-            || (array_key_exists('read_only', $options) && $options['read_only'])
-        );
+        $builder->setAttribute('disabled', $options['disabled'] || $options['read_only']);
         $builder->setAttribute('to_string_callback', $options['to_string_callback']);
 
         if ($options['multiple']) {
@@ -70,6 +65,7 @@ class ModelAutocompleteType extends AbstractType
         $view->vars['minimum_input_length'] = $options['minimum_input_length'];
         $view->vars['items_per_page'] = $options['items_per_page'];
         $view->vars['width'] = $options['width'];
+        $view->vars['read_only'] = $options['read_only'];
 
         // ajax parameters
         $view->vars['url'] = $options['url'];
@@ -95,9 +91,9 @@ class ModelAutocompleteType extends AbstractType
     }
 
     /**
-     * NEXT_MAJOR: Remove method, when bumping requirements to SF 2.7+.
-     *
      * {@inheritdoc}
+     *
+     * @todo Remove it when bumping requirements to SF 2.7+
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -123,6 +119,7 @@ class ModelAutocompleteType extends AbstractType
             'multiple' => false,
             'width' => '',
             'context' => '',
+            'read_only' => false,
 
             'placeholder' => '',
             'minimum_input_length' => 3, //minimum 3 chars should be typed to load ajax data
@@ -151,6 +148,14 @@ class ModelAutocompleteType extends AbstractType
         ));
 
         $resolver->setRequired(array('property'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return 'form';
     }
 
     /**

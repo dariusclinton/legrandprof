@@ -28,12 +28,12 @@
                                 {{ form_errors(form) }}
 
                                 <div class="form-group">
-                                  {{ form_widget(form.nom, {'attr': {'placeholder':'Nom'}}) }}
+                                  {{ form_widget(form.nom, {'attr': {'placeholder':'Nom','class':'form-control'}}) }}
                                   {{ form_errors(form.nom) }}
                                 </div>
 
                                 <div class="form-group">
-                                  {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms'}}) }}
+                                  {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms','class':'form-control'}}) }}
                                   {{ form_errors(form.prenoms) }}
                                 </div>
 
@@ -44,7 +44,7 @@
                                 </div>#}
 
                                 <div class="form-group">
-                                  {{ form_widget(form.sexe, {'attr': {}}) }}
+                                  {{ form_widget(form.sexe, {'attr': {'class':'form-control'}}) }}
                                   {{ form_errors(form.sexe) }}
                                 </div>
 
@@ -55,17 +55,22 @@
                                 </div>#}
 
                                 <div class="form-group">
-                                  {{ form_widget(form.pays, {'attr': {}}) }}
+                                  {{ form_widget(form.pays, {'attr': {'class':'form-control'}}) }}
                                   {{ form_errors(form.pays) }}
                                 </div>
 
                                 <div class="form-group">
-                                  {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email'}}) }}
+                                  {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email','class':'form-control'}}) }}
                                   {{ form_errors(form.email) }}
                                 </div>
 
                                 <div class="form-group">
-                                  {{ form_widget(form.plainPassword, {'attr': {}}) }}
+                                  {{ form_widget(form.plainPassword.children['first'], {'attr': {'placeholder':'Mot de passe','class':'form-control'}}) }}
+                                  {{ form_errors(form.plainPassword) }}
+                                </div>
+                                
+                                <div class="form-group">
+                                  {{ form_widget(form.plainPassword.children['second'], {'attr': {'placeholder':'Confirmation Mot de passe','class':'form-control'}}) }}
                                   {{ form_errors(form.plainPassword) }}
                                 </div>
 

@@ -71,7 +71,5 @@ lgp_course_update_classe:
         
 # enseignement
 lgp_course_profile_prof:
-    path:     /profile/{profId}
+    path:     /profile/{slug}
     defaults: { _controller: LGPCourseBundle:Enseignement:profile}
-    requirements:
-        profId: \d+

@@ -254,7 +254,6 @@ class AddDependencyCallsCompilerPassTest extends \PHPUnit_Framework_TestCase
                 case 'setTemplates':
                     $this->assertSame('foobar.twig.html', $parameters[0]['user_block']);
                     $this->assertSame('SonataAdminBundle:Pager:results.html.twig', $parameters[0]['pager_results']);
-                    $this->assertSame('SonataAdminBundle:Button:create_button.html.twig', $parameters[0]['button_create']);
                     break;
 
                 case 'setLabel':
@@ -285,36 +284,6 @@ class AddDependencyCallsCompilerPassTest extends \PHPUnit_Framework_TestCase
                 case 'setPagerType':
                     $this->assertSame('simple', $parameters[0]);
                     break;
-            }
-        }
-    }
-
-    public function testApplyShowMosaicButtonConfiguration()
-    {
-        $container = $this->getContainer();
-
-        $this->extension->load(array($this->getConfig()), $container);
-
-        $compilerPass = new AddDependencyCallsCompilerPass();
-        $compilerPass->process($container);
-
-        $callsReportOneAdmin = $container->getDefinition('sonata_report_one_admin')->getMethodCalls();
-
-        foreach ($callsReportOneAdmin as $call) {
-            list($name, $parameters) = $call;
-
-            if ($name == 'showMosaicButton') {
-                $this->assertSame(false, $parameters[0]);
-            }
-        }
-
-        $callsReportTwoAdmin = $container->getDefinition('sonata_report_two_admin')->getMethodCalls();
-
-        foreach ($callsReportTwoAdmin as $call) {
-            list($name, $parameters) = $call;
-
-            if ($name == 'showMosaicButton') {
-                $this->assertSame(true, $parameters[0]);
             }
         }
     }
@@ -643,16 +612,6 @@ class AddDependencyCallsCompilerPassTest extends \PHPUnit_Framework_TestCase
             ->setClass('Sonata\AdminBundle\Tests\DependencyInjection\MockAdmin')
             ->setArguments(array('', 'Sonata\AdminBundle\Tests\DependencyInjection\Report', 'SonataAdminBundle:CRUD'))
             ->addTag('sonata.admin', array('group' => 'sonata_report_group', 'manager_type' => 'orm', 'on_top' => true));
-        $container
-            ->register('sonata_report_one_admin')
-            ->setClass('Sonata\AdminBundle\Tests\DependencyInjection\MockAdmin')
-            ->setArguments(array('', 'Sonata\AdminBundle\Tests\DependencyInjection\ReportOne', 'SonataAdminBundle:CRUD'))
-            ->addTag('sonata.admin', array('group' => 'sonata_report_one_group', 'manager_type' => 'orm', 'show_mosaic_button' => false));
-        $container
-            ->register('sonata_report_two_admin')
-            ->setClass('Sonata\AdminBundle\Tests\DependencyInjection\MockAdmin')
-            ->setArguments(array('', 'Sonata\AdminBundle\Tests\DependencyInjection\ReportTwo', 'SonataAdminBundle:CRUD'))
-            ->addTag('sonata.admin', array('group' => 'sonata_report_two_group', 'manager_type' => 'orm', 'show_mosaic_button' => true));
 
         // translator
         $container

@@ -14,6 +14,7 @@ namespace Sonata\AdminBundle\Tests\Admin\Extension;
 use Sonata\AdminBundle\Admin\Extension\LockExtension;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -31,175 +32,106 @@ class LockExtensionTest extends \PHPUnit_Framework_TestCase
      */
     private $eventDispatcher;
 
-    /**
-     * @var AdminInterface
-     */
     private $admin;
 
-    /**
-     * @var LockInterface
-     */
     private $modelManager;
 
-    /**
-     * @var stdClass
-     */
+    private $form;
+
     private $object;
 
-    /**
-     * @var Request
-     */
     private $request;
 
-    protected function setUp()
+    public function setUp()
     {
-        $this->modelManager = $this->prophesize('Sonata\AdminBundle\Model\LockInterface');
-        $this->admin = $this->prophesize('Sonata\AdminBundle\Admin\AbstractAdmin');
+        $contractor = $this->getMock('Sonata\AdminBundle\Builder\FormContractorInterface');
 
+        $formFactory = $this->getMock('Symfony\Component\Form\FormFactoryInterface');
         $this->eventDispatcher = new EventDispatcher();
+
+        $formBuilder = new FormBuilder('form', null, $this->eventDispatcher, $formFactory);
+
+        $this->modelManager = $this->getMock('Sonata\AdminBundle\Model\LockInterface');
+
+        $this->admin = $this->getMockBuilder('Sonata\AdminBundle\Admin\AbstractAdmin')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->admin->expects($this->any())
+            ->method('getModelManager')
+            ->will($this->returnValue($this->modelManager));
+
         $this->request = new Request();
-        $this->object = new \stdClass();
+
+        $this->admin->expects($this->any())
+            ->method('getRequest')
+            ->will($this->returnValue($this->request));
+
+        $this->admin->expects($this->any())
+            ->method('hasRequest')
+            ->will($this->returnValue(true));
+
+        $formMapper = new FormMapper(
+            $contractor,
+            $formBuilder,
+            $this->admin
+        );
+
+        $this->object = new \StdClass();
+
+        $this->form = $this->getMock('Symfony\Component\Form\FormInterface');
+
+        $this->form->expects($this->any())
+            ->method('getData')
+            ->will($this->returnValue($this->object));
+
         $this->lockExtension = new LockExtension();
+        $this->lockExtension->configureFormFields($formMapper);
     }
 
     public function testConfigureFormFields()
     {
-        $formMapper = $this->configureFormMapper();
-        $form = $this->configureForm();
-        $this->configureAdmin(null, null, $this->modelManager->reveal());
-        $event = new FormEvent($form->reveal(), array());
+        $this->modelManager->expects($this->any())
+            ->method('getLockVersion')
+            ->will($this->returnValue(1));
 
-        $this->modelManager->getLockVersion(array())->willReturn(1);
-        $form->add('_lock_version', 'hidden', array('mapped' => false, 'data' => 1))->shouldBeCalled();
+        $this->form->expects($this->once())
+            ->method('add')
+            ->with(
+                $this->equalTo('_lock_version'),
+                $this->equalTo('hidden'),
+                $this->equalTo(array(
+                    'mapped' => false,
+                    'data' => 1,
+                ))
+            );
 
-        $this->lockExtension->configureFormFields($formMapper);
+        $event = new FormEvent($this->form, array());
         $this->eventDispatcher->dispatch(FormEvents::PRE_SET_DATA, $event);
-    }
-
-    public function testConfigureFormFieldsWhenModelManagerIsNotImplementingLockerInterface()
-    {
-        $modelManager = $this->prophesize('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $formMapper = $this->configureFormMapper();
-        $form = $this->configureForm();
-        $this->configureAdmin(null, null, $modelManager->reveal());
-        $event = new FormEvent($form->reveal(), array());
-
-        $form->add()->shouldNotBeCalled();
-
-        $this->lockExtension->configureFormFields($formMapper);
-        $this->eventDispatcher->dispatch(FormEvents::PRE_SET_DATA, $event);
-    }
-
-    public function testConfigureFormFieldsWhenFormEventHasNoData()
-    {
-        $formMapper = $this->configureFormMapper();
-        $form = $this->configureForm();
-        $event = new FormEvent($form->reveal(), null);
-
-        $form->add()->shouldNotBeCalled();
-
-        $this->lockExtension->configureFormFields($formMapper);
-        $this->eventDispatcher->dispatch(FormEvents::PRE_SET_DATA, $event);
-    }
-
-    public function testConfigureFormFieldsWhenFormHasParent()
-    {
-        $formMapper = $this->configureFormMapper();
-        $form = $this->configureForm();
-        $event = new FormEvent($form->reveal(), array());
-
-        $form->getParent()->willReturn('parent');
-        $form->add()->shouldNotBeCalled();
-
-        $this->lockExtension->configureFormFields($formMapper);
-        $this->eventDispatcher->dispatch(FormEvents::PRE_SET_DATA, $event);
-    }
-
-    public function testConfigureFormFieldsWhenModelManagerHasNoLockedVersion()
-    {
-        $formMapper = $this->configureFormMapper();
-        $form = $this->configureForm();
-        $this->configureAdmin(null, null, $this->modelManager->reveal());
-        $event = new FormEvent($form->reveal(), array());
-
-        $this->modelManager->getLockVersion(array())->willReturn(null);
-        $form->add()->shouldNotBeCalled();
-
-        $this->lockExtension->configureFormFields($formMapper);
-        $this->eventDispatcher->dispatch(FormEvents::PRE_SET_DATA, $event);
-    }
-
-    public function testPreUpdateIfAdminHasNoRequest()
-    {
-        $this->modelManager->lock()->shouldNotBeCalled();
-
-        $this->lockExtension->preUpdate($this->admin->reveal(), $this->object);
     }
 
     public function testPreUpdateIfObjectIsNotVersioned()
     {
-        $this->configureAdmin();
-        $this->modelManager->lock()->shouldNotBeCalled();
+        $this->modelManager->expects($this->never())
+            ->method('lock');
 
-        $this->lockExtension->preUpdate($this->admin->reveal(), $this->object);
-    }
-
-    public function testPreUpdateIfRequestDoesNotHaveLockVersion()
-    {
-        $uniqid = 'admin123';
-        $this->configureAdmin($uniqid, $this->request);
-
-        $this->modelManager->lock()->shouldNotBeCalled();
-
-        $this->request->request->set($uniqid, array('something'));
-        $this->lockExtension->preUpdate($this->admin->reveal(), $this->object);
-    }
-
-    public function testPreUpdateIfModelManagerIsNotImplementingLockerInterface()
-    {
-        $modelManager = $this->prophesize('Sonata\AdminBundle\Model\ModelManagerInterface');
-        $uniqid = 'admin123';
-        $this->configureAdmin($uniqid, $this->request, $modelManager->reveal());
-
-        $this->request->request->set($uniqid, array('_lock_version' => 1));
-        $this->lockExtension->preUpdate($this->admin->reveal(), $this->object);
+        $this->lockExtension->preUpdate($this->admin, $this->object);
     }
 
     public function testPreUpdateIfObjectIsVersioned()
     {
         $uniqid = 'admin123';
-        $this->configureAdmin($uniqid, $this->request, $this->modelManager->reveal());
 
-        $this->modelManager->lock($this->object, 1)->shouldBeCalled();
+        $this->modelManager->expects($this->once())
+            ->method('lock')
+            ->with($this->object, 1);
 
         $this->request->request->set($uniqid, array('_lock_version' => 1));
-        $this->lockExtension->preUpdate($this->admin->reveal(), $this->object);
-    }
 
-    private function configureForm()
-    {
-        $form = $this->prophesize('Symfony\Component\Form\FormInterface');
+        $this->admin->expects($this->any())
+            ->method('getUniqId')
+            ->will($this->returnValue($uniqid));
 
-        $form->getData()->willReturn($this->object);
-        $form->getParent()->willReturn(null);
-
-        return $form;
-    }
-
-    private function configureFormMapper()
-    {
-        $contractor = $this->prophesize('Sonata\AdminBundle\Builder\FormContractorInterface');
-        $formFactory = $this->prophesize('Symfony\Component\Form\FormFactoryInterface');
-        $formBuilder = new FormBuilder('form', null, $this->eventDispatcher, $formFactory->reveal());
-
-        return new FormMapper($contractor->reveal(), $formBuilder, $this->admin->reveal());
-    }
-
-    private function configureAdmin($uniqid = null, $request = null, $modelManager = null)
-    {
-        $this->admin->getUniqid()->willReturn($uniqid);
-        $this->admin->getRequest()->willReturn($request);
-        $this->admin->hasRequest()->willReturn($request !== null);
-        $this->admin->getModelManager()->willReturn($modelManager);
+        $this->lockExtension->preUpdate($this->admin, $this->object);
     }
 }

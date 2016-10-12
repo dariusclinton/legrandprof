@@ -12,7 +12,7 @@ file that was distributed with this source code.
 {% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
 
 {% block show_title %}
-    {{ name|trans({}, admin.translationdomain) }}
+    {{ admin.trans(name) }}
 {% endblock %}
 
 {% block show_field %}
