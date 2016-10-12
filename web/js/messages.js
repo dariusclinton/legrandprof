@@ -1,6 +1,5 @@
 $(function() {
-  
-  $('.messages-table tbody tr a').click(function (e) {
+  $('.message_read').click(function (e) {
     $('.messages-details').html('<img src="{{ asset(\'images / ajax - loader.gif\') }}" width="2" height="2">');
 
     var url = $(this).attr('href');
