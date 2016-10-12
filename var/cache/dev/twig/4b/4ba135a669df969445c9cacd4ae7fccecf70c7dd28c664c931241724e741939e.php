@@ -15,28 +15,29 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab = $this->env->getExtension("native_profiler");
-        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab->enter($__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
+        $__internal_6617b7c86a9437633787a410aff61f690aee311aba6cfc95945f3c562df59053 = $this->env->getExtension("native_profiler");
+        $__internal_6617b7c86a9437633787a410aff61f690aee311aba6cfc95945f3c562df59053->enter($__internal_6617b7c86a9437633787a410aff61f690aee311aba6cfc95945f3c562df59053_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Message:voir.html.twig"));
 
         // line 1
-        echo "<h4>De: ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "expediteur", array()), "html", null, true);
-        echo "</h4>
-<h4>A: ";
-        // line 2
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "recepteur", array()), "html", null, true);
-        echo "</h4>
-<h1>Objet: ";
+        echo "
+<div class=\"message-title\">
+    <h4><i>";
         // line 3
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "objet", array()), "html", null, true);
-        echo "</h1>
-<h1>Contenu</h1>
-<p>";
-        // line 5
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "expediteur", array()), "prenoms", array()), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "expediteur", array()), "nom", array()), "html", null, true);
+        echo "</i></h4>
+</div>
+<div class=\"message-content\">
+    <p>";
+        // line 6
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "contenu", array()), "html", null, true);
-        echo "</p>";
+        echo "</p>
+</div>
+
+";
         
-        $__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab->leave($__internal_93067fe37a188a2e0c1c49b7f2cb9bda6fbeff8bede47b54de294717a430c7ab_prof);
+        $__internal_6617b7c86a9437633787a410aff61f690aee311aba6cfc95945f3c562df59053->leave($__internal_6617b7c86a9437633787a410aff61f690aee311aba6cfc95945f3c562df59053_prof);
 
     }
 
@@ -52,15 +53,19 @@ class __TwigTemplate_08bfc3cd1a826c9627fd6663b632da6fe7b8f7c5537ecbade3f4e8e484a
 
     public function getDebugInfo()
     {
-        return array (  36 => 5,  31 => 3,  27 => 2,  22 => 1,);
+        return array (  34 => 6,  26 => 3,  22 => 1,);
     }
 
     public function getSource()
     {
-        return "<h4>De: {{ message.expediteur }}</h4>
-<h4>A: {{ message.recepteur }}</h4>
-<h1>Objet: {{ message.objet }}</h1>
-<h1>Contenu</h1>
-<p>{{ message.contenu }}</p>";
+        return "
+<div class=\"message-title\">
+    <h4><i>{{ message.expediteur.prenoms }} {{ message.expediteur.nom }}</i></h4>
+</div>
+<div class=\"message-content\">
+    <p>{{ message.contenu }}</p>
+</div>
+
+";
     }
 }

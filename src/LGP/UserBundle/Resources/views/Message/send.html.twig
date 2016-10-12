@@ -9,6 +9,60 @@
 {% endblock %}
 
 {% block body %}
+    
+    <div class="dashboard">
+        <div class="content-wrapper">
+            <div class="container">
+                {% if messages|length <= 0 %}
+                    <h5 class="text-muted">Aucun message reçu !</h5>
+                {% else %}
+                <div class="row">
+                    <div class="col-md-4 no-padding">
+                        <div class="actions">
+                            <ul>
+                                <li><a href="{{ path('lgp_user_message_new') }}">Nouveau</a></li>
+                                <li><a href="{{ path('lgp_user_message_receive') }}">Recus</a></li>
+                                <li><a href="{{ path('lgp_user_message_send') }}">Envoyes</a></li>
+                            </ul>
+                        </div>
+                        <div class="messages-users">
+                            <ul class="review-list">
+                                
+                                {% for message in messages %}
+                                <li class="clearfix">
+                                    <a href="{{ path('lgp_user_message_voir', {'id': message.id}) }}" style="display: block" class="message_read">
+                                        <div class="image img-circle">
+                                            {% if message.recepteur.image is null %}
+                                                <img class="img-circle"
+                                                     src="{{ asset('uploads/profils/default.jpg') }}"
+                                                     alt="Tour Package"/>
+                                            {% else %}
+                                            <img class="img-circle" src="{{ asset(message.recepteur.image.webPath) }}" alt="Man" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="content">
+                                            <div class="row gap-20 mb-0 over-y">
+                                                <p><b>{{ message.recepteur.prenoms }} {{ message.recepteur.nom }}  </b>: {{ message.contenu }}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>	
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="message messages-details">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                   
+                {% endif %}                                         
+            </div>
+        </div>
+    </div>
   <h1>Les messages envoyés</h1>
   
   <a href="{{ path('lgp_user_message_new') }}" class="btn btn-primary">Nouveau</a>

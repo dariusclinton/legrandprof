@@ -15,8 +15,8 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_37f344fb658cd2293d3c81cf5ed5d77c383bc885f67bd3bfea43a3c460c31ba5 = $this->env->getExtension("native_profiler");
-        $__internal_37f344fb658cd2293d3c81cf5ed5d77c383bc885f67bd3bfea43a3c460c31ba5->enter($__internal_37f344fb658cd2293d3c81cf5ed5d77c383bc885f67bd3bfea43a3c460c31ba5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
+        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928 = $this->env->getExtension("native_profiler");
+        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928->enter($__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
 
         // line 1
         echo "<div class=\"header-dashboard-submenu hidden-xs\">
@@ -74,7 +74,7 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
   </div>
 </div>";
         
-        $__internal_37f344fb658cd2293d3c81cf5ed5d77c383bc885f67bd3bfea43a3c460c31ba5->leave($__internal_37f344fb658cd2293d3c81cf5ed5d77c383bc885f67bd3bfea43a3c460c31ba5_prof);
+        $__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928->leave($__internal_58617ba3c04f6000fcd7913bf0230030c5e9780fdf48e19f76b84962bd173928_prof);
 
     }
 
