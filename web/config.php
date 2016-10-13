@@ -11,23 +11,24 @@
  */
 
 if (!isset($_SERVER['HTTP_HOST'])) {
-    exit('This script cannot be run from the CLI. Run it from a browser.');
+	exit('This script cannot be run from the CLI. Run it from a browser.');
 }
 
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
-    '127.0.0.1',
-    '::1',
-))) {
-    header('HTTP/1.0 403 Forbidden');
-    exit('This script is only accessible from localhost.');
+			'127.0.0.1',
+			'::1',
+			'41.202.219.65',
+		))) {
+	header('HTTP/1.0 403 Forbidden');
+	exit('This script is only accessible from localhost.');
 }
 
 require_once dirname(__FILE__).'/../var/SymfonyRequirements.php';
 
 $symfonyRequirements = new SymfonyRequirements();
 
-$majorProblems = $symfonyRequirements->getFailedRequirements();
-$minorProblems = $symfonyRequirements->getFailedRecommendations();
+$majorProblems    = $symfonyRequirements->getFailedRequirements();
+$minorProblems    = $symfonyRequirements->getFailedRecommendations();
 $hasMajorProblems = (bool) count($majorProblems);
 $hasMinorProblems = (bool) count($minorProblems);
 
@@ -160,52 +161,51 @@ $hasMinorProblems = (bool) count($minorProblems);
                             ready to run Symfony applications.
                         </p>
 
-                        <?php if ($hasMajorProblems): ?>
-                            <h2 class="ko">Major problems</h2>
+<?php if ($hasMajorProblems):?>
+<h2 class="ko">Major problems</h2>
                             <p>Major problems have been detected and <strong>must</strong> be fixed before continuing:</p>
                             <ol>
-                                <?php foreach ($majorProblems as $problem): ?>
-                                    <li><?php echo $problem->getTestMessage() ?>
-                                        <p class="help"><em><?php echo $problem->getHelpHtml() ?></em></p>
+<?php foreach ($majorProblems as $problem):?>
+                                    <li><?php echo $problem->getTestMessage()?>
+                                        <p class="help"><em><?php echo $problem->getHelpHtml()?></em></p>
                                     </li>
-                                <?php endforeach; ?>
-                            </ol>
-                        <?php endif; ?>
+<?php endforeach;?>
+</ol>
+<?php endif;?>
 
-                        <?php if ($hasMinorProblems): ?>
-                            <h2>Recommendations</h2>
+<?php if ($hasMinorProblems):?>
+<h2>Recommendations</h2>
                             <p>
-                                <?php if ($hasMajorProblems): ?>Additionally, to<?php else: ?>To<?php endif; ?> enhance your Symfony experience,
+<?php if ($hasMajorProblems):?>Additionally, to<?php  else :?>To<?php endif;?>enhance your Symfony experience,
                                 it’s recommended that you fix the following:
                             </p>
                             <ol>
-                                <?php foreach ($minorProblems as $problem): ?>
-                                    <li><?php echo $problem->getTestMessage() ?>
-                                        <p class="help"><em><?php echo $problem->getHelpHtml() ?></em></p>
+<?php foreach ($minorProblems as $problem):?>
+                                    <li><?php echo $problem->getTestMessage()?>
+                                        <p class="help"><em><?php echo $problem->getHelpHtml()?></em></p>
                                     </li>
-                                <?php endforeach; ?>
-                            </ol>
-                        <?php endif; ?>
+<?php endforeach;?>
+</ol>
+<?php endif;?>
 
-                        <?php if ($symfonyRequirements->hasPhpIniConfigIssue()): ?>
-                            <p id="phpini">*
-                                <?php if ($symfonyRequirements->getPhpIniConfigPath()): ?>
-                                    Changes to the <strong>php.ini</strong> file must be done in "<strong><?php echo $symfonyRequirements->getPhpIniConfigPath() ?></strong>".
-                                <?php else: ?>
-                                    To change settings, create a "<strong>php.ini</strong>".
-                                <?php endif; ?>
-                            </p>
-                        <?php endif; ?>
+<?php if ($symfonyRequirements->hasPhpIniConfigIssue()):?>
+<p id="phpini">*
+<?php if ($symfonyRequirements->getPhpIniConfigPath()):?>
+                                    Changes to the <strong>php.ini</strong> file must be done in "<strong><?php echo $symfonyRequirements->getPhpIniConfigPath()?></strong>".
+<?php  else :?>
+To change settings, create a "<strong>php.ini</strong>".
+<?php endif;?>
+</p>
+<?php endif;?>
 
-                        <?php if (!$hasMajorProblems && !$hasMinorProblems): ?>
-                            <p class="ok">All checks passed successfully. Your system is ready to run Symfony applications.</p>
-                        <?php endif; ?>
-
-                        <ul class="symfony-install-continue">
-                            <?php if ($hasMajorProblems || $hasMinorProblems): ?>
-                                <li><a href="config.php">Re-check configuration</a></li>
-                            <?php endif; ?>
-                        </ul>
+<?php if (!$hasMajorProblems && !$hasMinorProblems):?>
+<p class="ok">All checks passed successfully. Your system is ready to run Symfony applications.</p>
+<?php endif;?>
+<ul class="symfony-install-continue">
+<?php if ($hasMajorProblems || $hasMinorProblems):?>
+<li><a href="config.php">Re-check configuration</a></li>
+<?php endif;?>
+</ul>
                     </div>
                 </div>
             </div>

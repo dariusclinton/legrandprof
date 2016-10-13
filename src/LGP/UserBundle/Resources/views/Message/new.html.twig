@@ -9,31 +9,46 @@
 {% endblock %}
 
 {% block body %}
+    
   {{ form_start(form) }}
 
   {{ form_errors(form) }}
+    <div class="dashboard">
+            <div class="content-wrapper">
+                    <div class="container">
+                            <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                            <div class="message-new">
+                                                    <div class="title">Un titre</div>
+                                                    
+                                                    <div class="form-group">
+                                                      {{ form_widget(form.objet, {'attr': {'class':'form-control border-none','placeholder':'Objet du message'}}) }}
+                                                      {{ form_errors(form.objet)}}
+                                                    </div>
 
-  <div class="form-group">
-    {{ form_label(form.objet, 'Objet du message', {'label_attr': {}}) }}
-    {{ form_widget(form.objet, {'attr': {}}) }}
-    {{ form_errors(form.objet)}}
-  </div>
+                                                    <div class="form-group">
+                                                      {{ form_widget(form.recepteur, {'attr': {'class':'form-control border-none'}}) }}
+                                                      {{ form_errors(form.recepteur)}}
+                                                    </div>
 
-  <div class="form-group">
-    {{ form_label(form.recepteur, 'Récepteur', {'label_attr': {}}) }}
-    {{ form_widget(form.recepteur, {'attr': {}}) }}
-    {{ form_errors(form.recepteur)}}
-  </div>
+                                                    <div class="form-group">
+                                                      {{ form_widget(form.contenu, {'attr': {'class':'form-control border-none','placeholder':'Entrez votre message'}}) }}
+                                                      {{ form_errors(form.contenu)}}
+                                                    </div>
 
-  <div class="form-group">
-    {{ form_label(form.contenu, 'Message', {'label_attr': {}}) }}
-    {{ form_widget(form.contenu, {'attr': {}}) }}
-    {{ form_errors(form.contenu)}}
-  </div>
+                                                      {{ form_rest(form) }}
+                                                
+                                                  
+                                            </div>
+                                                      <br><br>
+                                            <input type="submit" value="Envoyer" class="btn btn-primary">
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div>
 
-    {{ form_rest(form) }}
 
-    <input type="submit" value="Envoyer" class="btn btn-primary">
 
     {{ form_end(form) }}
   {% endblock %}

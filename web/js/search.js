@@ -1,5 +1,5 @@
 $(function () {
-
+/*
     function updateQuarters(ville) {
         $.ajax({
             method: "POST",
@@ -26,6 +26,6 @@ $(function () {
         var ville = $("#cours_search_refine_quartier option:selected").val();
         // alert(ville);
         updateQuarters(ville);
-    });
+    });*/
 
 });

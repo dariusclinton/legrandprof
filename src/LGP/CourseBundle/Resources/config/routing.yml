@@ -41,7 +41,7 @@ lgp_course_find_prof_refine:
         page:   \d+
 
 lgp_course_find_prof_refine_quarter:
-    path:     /search/profs/{slugVille}/{slugQuartier}/{slug}/{page}
+    path:     /search/profs/{slug_ville}/{slug_quartier}/{slug}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchRefineAll, page: 1 }
     requirements:
         page:   \d+
@@ -56,6 +56,12 @@ lgp_course_find_prof_update_quarter:
 lgp_course_find_prof_city:
     path:     search/ville/{slugVille}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCity, page: 1 }
+    requirements:
+        page:   \d+
+
+lgp_course_find_prof_city_quarter:
+    path:     search/ville/{slug_ville}/quartier/{slug_quartier}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCityQuarter, page: 1 }
     requirements:
         page:   \d+
 

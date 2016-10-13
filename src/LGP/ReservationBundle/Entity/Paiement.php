@@ -3,6 +3,7 @@
 namespace LGP\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Paiement
@@ -25,6 +26,13 @@ class Paiement {
      * @var string
      *
      * @ORM\Column(name="mode", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $mode;
 
@@ -32,26 +40,26 @@ class Paiement {
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date", nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\DateTime(message="Vous devez entrer une date valide")
      */
     private $date;
 
     /**
-     * @var \LGPReservationBundle\Entity\Facture
+     * @var \LGP\ReservationBundle\Entity\Facture
      * 
      * @ORM\OneToOne(targetEntity="LGP\ReservationBundle\Entity\Facture", inversedBy="paiement")
-     * @ORM\JoinColumn(name="facture_id", referencedColumnName="id")
      */
     private $facture;
 
     /**
-     * @var \LGPUserBundle\Entity\User
+     * @var \LGP\UserBundle\Entity\User
      * 
      * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\User", inversedBy="paiements")
      */
     private $user;
 
-
-  
+    
 
     /**
      * Get id
@@ -73,7 +81,7 @@ class Paiement {
     public function setMode($mode)
     {
         $this->mode = $mode;
-    
+
         return $this;
     }
 
@@ -97,7 +105,7 @@ class Paiement {
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -121,7 +129,7 @@ class Paiement {
     public function setFacture(\LGP\ReservationBundle\Entity\Facture $facture = null)
     {
         $this->facture = $facture;
-    
+
         return $this;
     }
 
@@ -145,7 +153,7 @@ class Paiement {
     public function setUser(\LGP\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 

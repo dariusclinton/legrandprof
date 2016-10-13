@@ -6,6 +6,7 @@ use Doctrine\ORM\NoResultException;
 use LGP\CourseBundle\Entity\Cours;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
 use LGP\UserBundle\Entity\Quartier;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,19 +18,7 @@ class CourseController extends Controller
 
     public function searchAction($page, Request $request)
     {
-
-
         $em = $this->getDoctrine()->getManager();
-
-
-       /* $quartier = new Quartier();
-        $quartier->setIntitule("Abbo Boutila")
-            ->setVille("Garoua Garoua");
-        $em->persist($quartier);
-        $em->flush();
-        die("insertion reussie");*/
-
-
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
@@ -59,25 +48,17 @@ class CourseController extends Controller
 
         $course_form_refine = $this->createForm(CoursSearchRefineType::class);
         $course_form_refine->handleRequest($request);
+
         if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
             $data = $course_form_refine->getData();
 
             if (isset($data['intitule'])) {
 
                 if (isset($data['quartier'])) {
-
-                    if (isset($data['quartier1'])) {
-                        $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                        if ($courseFound == null)
-                            throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                        return $this->redirectToRoute('lgp_course_find_prof_refine_quarter',
-                            array('slugVille' => $data['quartier']->getSlugVille(), 'slugQuartier' => $data['quartier1']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
-                    }
-
                     $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                     if ($courseFound == null)
                         throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                    return $this->redirectToRoute('lgp_course_find_prof_refine', array('slugVille' => $data['quartier']->getSlugVille(), 'slug' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
                 }
 
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
@@ -88,10 +69,10 @@ class CourseController extends Controller
             }
 
             if ((isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['quartier']->getSlugVille()));
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
             }
 
-            return $this->redirectToRoute($request->get("_route"), $request->get("_route_params"));
+            return $this->redirectToRoute('lgp_course_find');
         }
 
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
@@ -100,15 +81,6 @@ class CourseController extends Controller
     public function searchCourseAction(Cours $course, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-//        
-//        $course = new \LGP\CourseBundle\Entity\Cours();
-//        $course->setDescription("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
-//        $course->setIntitule("reseaux et service distribués");
-//        $course->setCategorie($em->getRepository("LGPCourseBundle:Categorie")->find(7));
-//        $em->persist($course);
-//        $em->flush();
-//        die('insertion reussie');
-
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
@@ -116,7 +88,6 @@ class CourseController extends Controller
         $max_per_page = 10;
 
         $profsByCours = $enseignementRep->getProfsByCours($course, $page, $max_per_page);
-//                $coursCount = $enseigneRep->countProfsByCours($coursFound);
         $profsCount = count($profsByCours);
         $pageCount = ceil($profsCount / $max_per_page);
 
@@ -148,19 +119,10 @@ class CourseController extends Controller
             if (isset($data['intitule'])) {
 
                 if (isset($data['quartier'])) {
-
-                    if (isset($data['quartier1'])) {
-                        $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                        if ($courseFound == null)
-                            throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                        return $this->redirectToRoute('lgp_course_find_prof_refine_quarter',
-                            array('slugVille' => $data['quartier']->getSlugVille(), 'slugQuartier' => $data['quartier1']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
-                    }
-
                     $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                     if ($courseFound == null)
                         throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                    return $this->redirectToRoute('lgp_course_find_prof_refine', array('slugVille' => $data['quartier']->getSlugVille(), 'slug' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
                 }
 
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
@@ -171,11 +133,12 @@ class CourseController extends Controller
             }
 
             if ((isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['quartier']->getSlugVille()));
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
             }
 
-            return $this->redirectToRoute($request->get("_route"), $request->get("_route_params"));
+            return $this->redirectToRoute('lgp_course_find');
         }
+
 //        $request->request->set("intitule_cours", $coursFound->getIntitule());
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
@@ -224,19 +187,10 @@ class CourseController extends Controller
             if (isset($data['intitule'])) {
 
                 if (isset($data['quartier'])) {
-
-                    if (isset($data['quartier1'])) {
-                        $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                        if ($courseFound == null)
-                            throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                        return $this->redirectToRoute('lgp_course_find_prof_refine_quarter',
-                            array('slugVille' => $data['quartier']->getSlugVille(), 'slugQuartier' => $data['quartier1']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
-                    }
-
                     $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                     if ($courseFound == null)
                         throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                    return $this->redirectToRoute('lgp_course_find_prof_refine', array('slugVille' => $data['quartier']->getSlugVille(), 'slug' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
                 }
 
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
@@ -247,18 +201,29 @@ class CourseController extends Controller
             }
 
             if ((isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['quartier']->getSlugVille()));
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
             }
 
-            return $this->redirectToRoute($request->get("_route"), $request->get("_route_params"));
+            return $this->redirectToRoute('lgp_course_find');
         }
+
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
+    /**
+     * @param Quartier $quartier
+     * @param Quartier $quartier1
+     * @param Cours $course
+     * @param $page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @ParamConverter("quartier", options={"mapping" : {"slug_ville":"slugVille"}})
+     * @ParamConverter("quartier1", options={"mapping" : {"slug_quartier":"slugQuartier"}})
+     * @ParamConverter("course", options={"mapping" : {"slug":"slug"}})
+     */
+
     public function searchRefineAllAction(Quartier $quartier, Quartier $quartier1, Cours $course, $page, Request $request)
     {
-        die(var_dump($quartier->getId()));
-
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $quartierRep = $em->getRepository("LGPUserBundle:Quartier");
@@ -302,19 +267,10 @@ class CourseController extends Controller
             if (isset($data['intitule'])) {
 
                 if (isset($data['quartier'])) {
-
-                    if (isset($data['quartier1'])) {
-                        $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                        if ($courseFound == null)
-                            throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                        return $this->redirectToRoute('lgp_course_find_prof_refine_quarter',
-                            array('slugVille' => $data['quartier']->getSlugVille(), 'slugQuartier' => $data['quartier1']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
-                    }
-
                     $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                     if ($courseFound == null)
                         throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                    return $this->redirectToRoute('lgp_course_find_prof_refine', array('slugVille' => $data['quartier']->getSlugVille(), 'slug' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
                 }
 
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
@@ -325,11 +281,12 @@ class CourseController extends Controller
             }
 
             if ((isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['quartier']->getSlugVille()));
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
             }
 
-            return $this->redirectToRoute($request->get("_route"), $request->get("_route_params"));
+            return $this->redirectToRoute('lgp_course_find');
         }
+
         return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
     }
 
@@ -372,19 +329,10 @@ class CourseController extends Controller
             if (isset($data['intitule'])) {
 
                 if (isset($data['quartier'])) {
-
-                    if (isset($data['quartier1'])) {
-                        $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                        if ($courseFound == null)
-                            throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                        return $this->redirectToRoute('lgp_course_find_prof_refine_quarter',
-                            array('slugVille' => $data['quartier']->getSlugVille(), 'slugQuartier' => $data['quartier1']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
-                    }
-
                     $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                     if ($courseFound == null)
                         throw new NotFoundHttpException("pas de cours " . $data['intitule']);
-                    return $this->redirectToRoute('lgp_course_find_prof_refine', array('slugVille' => $data['quartier']->getSlugVille(), 'slug' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
                 }
 
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
@@ -395,10 +343,81 @@ class CourseController extends Controller
             }
 
             if ((isset($data['quartier']))) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['quartier']->getSlugVille()));
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
             }
 
-            return $this->redirectToRoute($request->get("_route"), $request->get("_route_params"));
+            return $this->redirectToRoute('lgp_course_find');
+        }
+
+        return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));
+    }
+
+    /**
+     * @param Quartier $quartier
+     * @param Quartier $quartier1
+     * @param $page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @ParamConverter("quartier", options={"mapping" : {"slug_ville":"slugVille"}})
+     * @ParamConverter("quartier1", options={"mapping" : {"slug_quartier":"slugQuartier"}})
+     */
+    public function searchCityQuarterAction(Quartier $quartier, Quartier $quartier1, $page, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
+        $courses = $coursRep->findAll();
+        $max_per_page = 10;
+
+        $profsByCity = $enseignementRep->getProfsByCityAndQuarter($quartier->getVille(), $quartier1->getIntitule(), $page, $max_per_page);
+        $profsCount = count($profsByCity);
+        $pageCount = ceil($profsCount / $max_per_page);
+        if ($pageCount < $page && $pageCount != 0) {
+            throw new NotFoundHttpException('404: Oups!!! La page demandée n\'existe pas.'); // page 404, sauf pour la première page
+        }
+        $params = array(
+            'ville' => $quartier->getVille(),
+            'courses' => $courses,
+            'matieres_profs' => $profsByCity,
+            'enseignementRep' => $enseignementRep,
+            'avisRep' => $avisRep,
+            'pagination' => array(
+                'route' => 'lgp_course_find_prof_city',
+                'pages_count' => $pageCount,
+                'profs_count' => $profsCount,
+                'max_per_page' => $max_per_page,
+                'page' => $page,
+                'route_params' => array('slug' => $quartier->getVille())
+            ),
+        );
+
+        $course_form_refine = $this->createForm(CoursSearchRefineType::class);
+        $course_form_refine->handleRequest($request);
+        if ($course_form_refine->isSubmitted() && $course_form_refine->isValid()) {
+            $data = $course_form_refine->getData();
+
+            if (isset($data['intitule'])) {
+
+                if (isset($data['quartier'])) {
+                    $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                    if ($courseFound == null)
+                        throw new NotFoundHttpException("pas de cours " . $data['intitule']);
+                    return $this->redirectToRoute('lgp_course_find_prof_refine_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug' => $courseFound->getSlug()));
+                }
+
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound == null)
+                    throw new NotFoundHttpException("pas de cours " . $data['intitule']);
+
+                return $this->redirectToRoute('lgp_course_find_prof', array('slug' => $courseFound->getSlug()));
+            }
+
+            if ((isset($data['quartier']))) {
+                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getIntitule()));
+            }
+
+            return $this->redirectToRoute('lgp_course_find');
         }
 
         return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form' => $course_form_refine->createView()));

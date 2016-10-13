@@ -17,22 +17,30 @@ class CoursSearchRefineType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       /* $builder
-            ->add('quartier1', EntityType::class, array(
+        /* $builder
+             ->add('quartier1', EntityType::class, array(
+                     'class' => 'LGPUserBundle:Quartier',
+                     'choice_label' => function ($quartier) {
+                         return $quartier->getIntitule();
+                     },
+                     'choice_value' => 'id',
+                     'required' => false,
+                     'placeholder' => 'Sélectionnez un quartier'
+                 )
+             );*/
+        $builder
+            ->add('intitule', TextType::class, array('required' => false,
+                'attr' => array('placeholder' => 'Cours')))
+            ->add('quartier', EntityType::class, array(
                     'class' => 'LGPUserBundle:Quartier',
                     'choice_label' => function ($quartier) {
-                        return $quartier->getIntitule();
+                        return $quartier->getIntitule()."-".$quartier->getVille();
                     },
                     'choice_value' => 'id',
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
                 )
-            );*/
-    }
-
-    public function getParent()
-    {
-        return "LGP\CourseBundle\Form\CoursSearchType";
+            );
     }
 
 }
