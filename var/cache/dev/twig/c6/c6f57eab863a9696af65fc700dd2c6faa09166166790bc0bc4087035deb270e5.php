@@ -15,8 +15,8 @@ class __TwigTemplate_43dc7d83982359e28b193d6492738d9610a3e8227a3528a21c48753f7a5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_614334dbd54c03cdd540e2ce2cab30e8cc12ca142da3d262215949ba3aaf2a4e = $this->env->getExtension("native_profiler");
-        $__internal_614334dbd54c03cdd540e2ce2cab30e8cc12ca142da3d262215949ba3aaf2a4e->enter($__internal_614334dbd54c03cdd540e2ce2cab30e8cc12ca142da3d262215949ba3aaf2a4e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Pagination:pagination.html.twig"));
+        $__internal_470b6c9097be354485a823eba1f9eca402173a5373d38d24d9e1ba976f095dfb = $this->env->getExtension("native_profiler");
+        $__internal_470b6c9097be354485a823eba1f9eca402173a5373d38d24d9e1ba976f095dfb->enter($__internal_470b6c9097be354485a823eba1f9eca402173a5373d38d24d9e1ba976f095dfb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Pagination:pagination.html.twig"));
 
         // line 1
         if (($this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "pagination", array()), "pages_count", array()) > 1)) {
@@ -130,7 +130,7 @@ class __TwigTemplate_43dc7d83982359e28b193d6492738d9610a3e8227a3528a21c48753f7a5
 ";
         }
         
-        $__internal_614334dbd54c03cdd540e2ce2cab30e8cc12ca142da3d262215949ba3aaf2a4e->leave($__internal_614334dbd54c03cdd540e2ce2cab30e8cc12ca142da3d262215949ba3aaf2a4e_prof);
+        $__internal_470b6c9097be354485a823eba1f9eca402173a5373d38d24d9e1ba976f095dfb->leave($__internal_470b6c9097be354485a823eba1f9eca402173a5373d38d24d9e1ba976f095dfb_prof);
 
     }
 
