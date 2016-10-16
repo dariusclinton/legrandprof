@@ -16,7 +16,7 @@ fos_user:
             email:
                 template: email/password_resetting.email.twig
     from_email:
-            address:     info@unadresse.com
+            address:     info@legrandprof.com
             sender_name: LeGrandProf
     service:
             mailer: fos_user.mailer.twig_swift

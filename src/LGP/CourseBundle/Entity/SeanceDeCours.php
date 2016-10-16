@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * SeanceDeCours
@@ -26,6 +27,12 @@ class SeanceDeCours
    * @var string
    *
    * @ORM\Column(name="resume", type="string", length=255, nullable=true)
+   * @Assert\Length(
+   *     min=3,
+   *     max=255,
+   *     minMessage ="La longueur doit être au moins de 3 caractères",
+   *     maxMessage="La longueur doit être au plus de 255 caractères"
+   * )
    */
   private $resume;
 
@@ -33,6 +40,8 @@ class SeanceDeCours
    * @var \DateTime
    *
    * @ORM\Column(name="date", type="date", nullable=false)
+   * @Assert\NotBlank(message="Ce champs est obligatoire")
+   * @Assert\DateTime(message="Vous devez entrer une date valide")
    */
   private $date;
 
@@ -40,12 +49,14 @@ class SeanceDeCours
    *
    * @var int
    *
-   * @ORM\Column(name="duree", type="integer")
+   * @ORM\Column(name="duree", type="integer", nullable=false)
+   * @Assert\NotBlank(message="Ce champs est obligatoire")
+   * @Assert\Range(min=0, minMessage="Vous devez entrer un nombre positif", invalidMessage="vous devez entrer un nombre")
    */
   private $duree;
 
   /**
-   * @var \LGPReservationBundle\Entity\ReservationEnseignement
+   * @var \LGP\ReservationBundle\Entity\ReservationEnseignement
    *
    * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", inversedBy="seancesDeCours")
    * @ORM\JoinColumn(nullable=false)
@@ -53,7 +64,7 @@ class SeanceDeCours
   private $reservationEnseignement;
 
   /**
-   * @var \LGPUserBundle\Entity\Prof
+   * @var \LGP\UserBundle\Entity\Prof
    *
    * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="seancesDeCours")
    * @ORM\JoinColumn(nullable=false)

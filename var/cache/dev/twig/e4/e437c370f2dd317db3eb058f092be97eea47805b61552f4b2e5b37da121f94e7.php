@@ -22,20 +22,20 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_333d19028c8c40f4a90b2820adf76a840aea2b808a118789f9e2dafd1c4ef7ad = $this->env->getExtension("native_profiler");
-        $__internal_333d19028c8c40f4a90b2820adf76a840aea2b808a118789f9e2dafd1c4ef7ad->enter($__internal_333d19028c8c40f4a90b2820adf76a840aea2b808a118789f9e2dafd1c4ef7ad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
+        $__internal_7f838905e8822dd8621a1be6c4642bcd70d38a68ee6150c85569a57e1a834255 = $this->env->getExtension("native_profiler");
+        $__internal_7f838905e8822dd8621a1be6c4642bcd70d38a68ee6150c85569a57e1a834255->enter($__internal_7f838905e8822dd8621a1be6c4642bcd70d38a68ee6150c85569a57e1a834255_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_333d19028c8c40f4a90b2820adf76a840aea2b808a118789f9e2dafd1c4ef7ad->leave($__internal_333d19028c8c40f4a90b2820adf76a840aea2b808a118789f9e2dafd1c4ef7ad_prof);
+        $__internal_7f838905e8822dd8621a1be6c4642bcd70d38a68ee6150c85569a57e1a834255->leave($__internal_7f838905e8822dd8621a1be6c4642bcd70d38a68ee6150c85569a57e1a834255_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_9b9b98f9aee66ca5f22f4aca3c0e35fe2f964f83650760494746200bd58d41ca = $this->env->getExtension("native_profiler");
-        $__internal_9b9b98f9aee66ca5f22f4aca3c0e35fe2f964f83650760494746200bd58d41ca->enter($__internal_9b9b98f9aee66ca5f22f4aca3c0e35fe2f964f83650760494746200bd58d41ca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_200bdf3a09c538d8a21d6a7d4b70c41f5d6499350a22f409533a0fa7c0994c69 = $this->env->getExtension("native_profiler");
+        $__internal_200bdf3a09c538d8a21d6a7d4b70c41f5d6499350a22f409533a0fa7c0994c69->enter($__internal_200bdf3a09c538d8a21d6a7d4b70c41f5d6499350a22f409533a0fa7c0994c69_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    ";
@@ -55,34 +55,34 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     ";
         }
         
-        $__internal_9b9b98f9aee66ca5f22f4aca3c0e35fe2f964f83650760494746200bd58d41ca->leave($__internal_9b9b98f9aee66ca5f22f4aca3c0e35fe2f964f83650760494746200bd58d41ca_prof);
+        $__internal_200bdf3a09c538d8a21d6a7d4b70c41f5d6499350a22f409533a0fa7c0994c69->leave($__internal_200bdf3a09c538d8a21d6a7d4b70c41f5d6499350a22f409533a0fa7c0994c69_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e1a5a4eaaac0e976332ca4e391eee4678d69cb23c5605f1b9c4971f3029e9761 = $this->env->getExtension("native_profiler");
-        $__internal_e1a5a4eaaac0e976332ca4e391eee4678d69cb23c5605f1b9c4971f3029e9761->enter($__internal_e1a5a4eaaac0e976332ca4e391eee4678d69cb23c5605f1b9c4971f3029e9761_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_454c238b07463b5f4b594aa18f2a2ef4e3249464e99dcb7b69d0aa017548e4bd = $this->env->getExtension("native_profiler");
+        $__internal_454c238b07463b5f4b594aa18f2a2ef4e3249464e99dcb7b69d0aa017548e4bd->enter($__internal_454c238b07463b5f4b594aa18f2a2ef4e3249464e99dcb7b69d0aa017548e4bd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
-        echo "    ";
+        echo "
+    <!-- start end Page title -->
+    <div class=\"page-title\" style=\"background-image:url('";
+        // line 14
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/hero-header/breadcrumb.jpg"), "html", null, true);
+        echo "');\">
+
+        <div class=\"container\">
+
+            <div class=\"row\">
+
+                <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
+                    ";
+        // line 21
         if (($this->getAttribute((isset($context["params"]) ? $context["params"] : null), "courseFound", array(), "any", true, true) && ($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()) != null))) {
-            // line 13
-            echo "        <!-- start end Page title -->
-        <div class=\"page-title\" style=\"background-image:url('";
-            // line 14
-            echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/hero-header/breadcrumb.jpg"), "html", null, true);
-            echo "');\">
-
-            <div class=\"container\">
-
-                <div class=\"row\">
-
-                    <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
-
-                        <h1 class=\"hero-title\">Grands Profs en ";
             // line 22
+            echo "                        <h1 class=\"hero-title\">Grands Profs en ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
             echo " </h1>
 
@@ -97,33 +97,60 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
             if ($this->getAttribute((isset($context["params"]) ? $context["params"] : null), "quartier", array(), "any", true, true)) {
                 // line 28
                 echo "                                <li>
-                                    <a href=\" ";
+                                    ";
                 // line 29
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("slugVille" => $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "slugVille", array()))), "html", null, true);
-                echo " \"> ";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "ville", array()), "html", null, true);
-                echo " </a>
-                                </li>
+                if (($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method") == "lgp_course_find_prof_refine_quarter")) {
+                    // line 30
+                    echo "                                        <a href=\" ";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city_quarter", array("slug_ville" => $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "slugVille", array()), "slug_quartier" => $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "intitule", array()))), "html", null, true);
+                    echo " \">
+                                            ";
+                    // line 31
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "ville", array()), "html", null, true);
+                    echo " - ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "intitule", array()), "html", null, true);
+                    echo "
+                                        </a>
+                                    ";
+                } else {
+                    // line 34
+                    echo "                                        <a href=\" ";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof_city", array("slugVille" => $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "slugVille", array()))), "html", null, true);
+                    echo " \">
+                                            ";
+                    // line 35
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "quartier", array()), "ville", array()), "html", null, true);
+                    echo "
+                                        </a>
+                                    ";
+                }
+                // line 38
+                echo "                                </li>
                             ";
             }
-            // line 32
+            // line 40
             echo "                            <li><span>";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
             echo "</span></li>
                         </ol>
 
-                    </div>
-
-                </div>
+                    ";
+        } else {
+            // line 44
+            echo "                        <h1 class=\"hero-title\"> Resultat de la recherche </h1>
+                    ";
+        }
+        // line 46
+        echo "                </div>
 
             </div>
 
         </div>
-        <!-- end Page title -->
-    ";
-        }
-        // line 44
-        echo "
+
+    </div>
+    <!-- end Page title -->
+
+
     <div class=\"content-wrapper\">
 
         <div class=\"container\">
@@ -142,17 +169,17 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
                             <div class=\"sidebar-search-content\">
                                 ";
-        // line 62
-        $this->loadTemplate("LGPCourseBundle:Form:course_form_search.html.twig", "LGPCourseBundle:Course:search.html.twig", 62)->display($context);
-        // line 63
+        // line 73
+        $this->loadTemplate("LGPCourseBundle:Form:course_form_search.html.twig", "LGPCourseBundle:Course:search.html.twig", 73)->display($context);
+        // line 74
         echo "                            </div>
                         </div>
 
                         ";
-        // line 72
+        // line 83
         echo "
                         ";
-        // line 175
+        // line 186
         echo "
                     </aside>
 
@@ -162,68 +189,68 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                 <div class=\"col-sm-8 col-md-9\">
 
                     ";
-        // line 183
+        // line 194
         if ($this->getAttribute((isset($context["params"]) ? $context["params"] : null), "courseFound", array(), "any", true, true)) {
-            // line 184
+            // line 195
             echo "                        <div class=\"sorting-wrappper\">
 
                             <div class=\"sorting-header\">
 
                                 <h3 class=\"sorting-title uppercase\">Des Grands profs
                                     en ";
-            // line 189
+            // line 200
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "courseFound", array()), "intitule", array()), "html", null, true);
             echo "</h3>
                                 <p class=\"sorting-lead\">";
-            // line 190
+            // line 201
             echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "matieres_profs", array())), "html", null, true);
             echo " Grands profs trouvés</p>
                             </div>
 
                             ";
-            // line 219
+            // line 230
             echo "
                         </div>
                     ";
         }
-        // line 222
+        // line 233
         echo "
                     <div class=\"package-list-item-wrapper on-page-result-page\">
 
                         ";
-        // line 225
+        // line 236
         if ((twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "matieres_profs", array())) != 0)) {
-            // line 226
+            // line 237
             echo "
                         ";
-            // line 227
+            // line 238
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "matieres_profs", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["enseigne"]) {
-                // line 228
+                // line 239
                 echo "                            <div class=\"package-list-item clearfix\">
                                 <div class=\"image\">
                                     ";
-                // line 230
+                // line 241
                 if ((null === $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "image", array()))) {
-                    // line 231
+                    // line 242
                     echo "                                        <img src=\"";
-                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.png"), "html", null, true);
                     echo "\" alt=\"Tour Package\"/>
                                     ";
                 } else {
-                    // line 233
+                    // line 244
                     echo "                                        <img src=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "image", array()), "webPath", array())), "html", null, true);
-                    echo "\" alt=\" image prof \" />
+                    echo "\" alt=\" image prof \"/>
                                     ";
                 }
-                // line 235
+                // line 246
                 echo "                                </div>
 
                                 <div class=\"content\">
                                     <h5>";
-                // line 238
+                // line 249
                 echo twig_escape_filter($this->env, (($this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "prenoms", array()) . "  ") . twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "nom", array()))), "html", null, true);
                 echo "
                                         <button class=\"btn\"><i class=\"fa fa-heart-o\"></i></button>
@@ -232,7 +259,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                                         <div class=\"col-sm-12 col-md-9\">
 
                                             <p class=\"line18\"> ";
-                // line 244
+                // line 255
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "presentation", array()), "html", null, true);
                 echo " </p>
                                             <br>
@@ -240,25 +267,25 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                                                 <li><span class=\"icon\"><i class=\"fa fa-map-marker\"></i></span> <span
                                                             class=\"font600\">Position: </span>
                                                     ";
-                // line 249
+                // line 260
                 if ( !(null === $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "ville", array()))) {
-                    // line 250
+                    // line 261
                     echo "                                                        ";
                     echo twig_escape_filter($this->env, twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "ville", array())), "html", null, true);
                     echo "
                                                     ";
                 } else {
-                    // line 252
+                    // line 263
                     echo "                                                        NON DEFINIE
                                                     ";
                 }
-                // line 254
+                // line 265
                 echo "                                                </li>
 
                                                 <li><span class=\"icon\"><i class=\"fa fa-book\"></i></span> <span
                                                             class=\"font600\">Cours :</span>
                                                     ";
-                // line 258
+                // line 269
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "enseignementRep", array()), "getCoursByProf", array(0 => $this->getAttribute($context["enseigne"], "prof", array())), "method"));
                 $context['loop'] = array(
@@ -275,30 +302,30 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                     $context['loop']['last'] = 1 === $length;
                 }
                 foreach ($context['_seq'] as $context["_key"] => $context["ens_cours"]) {
-                    // line 259
+                    // line 270
                     echo "                                                        ";
                     if (($this->getAttribute($context["loop"], "index", array()) != $this->getAttribute($context["loop"], "last", array()))) {
-                        // line 260
+                        // line 271
                         echo "                                                            <a href=\" ";
                         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
                         echo " \"
                                                                title=\"\">";
-                        // line 261
+                        // line 272
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a> -
                                                         ";
                     } else {
-                        // line 263
+                        // line 274
                         echo "                                                            <a href=\" ";
                         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
                         echo " \"
                                                                title=\"\">";
-                        // line 264
+                        // line 275
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "intitule", array()), "html", null, true);
                         echo "</a>
                                                         ";
                     }
-                    // line 266
+                    // line 277
                     echo "                                                    ";
                     ++$context['loop']['index0'];
                     ++$context['loop']['index'];
@@ -312,114 +339,114 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ens_cours'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 267
+                // line 278
                 echo "                                                </li>
                                             </ul>
 
                                         </div>
                                         <div class=\"col-sm-12 col-md-3 text-right text-left-sm\">
                                             ";
-                // line 272
+                // line 283
                 $context["avisSum"] = 0;
-                // line 273
+                // line 284
                 echo "                                            ";
                 $context["allAvis"] = $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "avisRep", array()), "findBy", array(0 => array("prof" => $this->getAttribute($context["enseigne"], "prof", array()))), "method");
-                // line 274
+                // line 285
                 echo "                                            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable((isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis")));
                 foreach ($context['_seq'] as $context["_key"] => $context["avis"]) {
-                    // line 275
+                    // line 286
                     echo "                                                ";
                     $context["avisSum"] = ((isset($context["avisSum"]) ? $context["avisSum"] : $this->getContext($context, "avisSum")) + $this->getAttribute($context["avis"], "note", array()));
-                    // line 276
+                    // line 287
                     echo "                                            ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['avis'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 277
+                // line 288
                 echo "                                            ";
                 if ((twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))) != 0)) {
-                    // line 278
+                    // line 289
                     echo "                                                ";
                     $context["avisRange"] = ((isset($context["avisSum"]) ? $context["avisSum"] : $this->getContext($context, "avisSum")) / twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))));
-                    // line 279
+                    // line 290
                     echo "                                            ";
                 } else {
-                    // line 280
+                    // line 291
                     echo "                                                ";
                     $context["avisRange"] = 0;
-                    // line 281
+                    // line 292
                     echo "                                            ";
                 }
-                // line 282
+                // line 293
                 echo "                                            <div class=\"rating-wrapper\">
                                                 <div class=\"raty-wrapper\">
                                                     <div>
                                                         ";
-                // line 285
+                // line 296
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(range(1, 5));
                 foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                    // line 286
+                    // line 297
                     echo "                                                            ";
                     if ((twig_round((isset($context["avisRange"]) ? $context["avisRange"] : $this->getContext($context, "avisRange"))) >= $context["i"])) {
-                        // line 287
+                        // line 298
                         echo "                                                                <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                      src=\"";
-                        // line 288
+                        // line 299
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
                         echo "\">
                                                             ";
                     } else {
-                        // line 290
+                        // line 301
                         echo "                                                                <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                      src=\"";
-                        // line 291
+                        // line 302
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
                         echo "\"
                                                                      title=\"\">
                                                             ";
                     }
-                    // line 294
+                    // line 305
                     echo "                                                        ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 295
+                // line 306
                 echo "                                                    </div>
                                                     <span> / ";
-                // line 296
+                // line 307
                 echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))), "html", null, true);
                 echo " avis</span>
                                                 </div>
                                             </div>
                                             ";
-                // line 299
+                // line 310
                 ob_start();
-                // line 300
+                // line 311
                 echo "                                                ";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "enseignementRep", array()), "getPrixProf", array(0 => $this->getAttribute($context["enseigne"], "prof", array())), "method"), "html", null, true);
                 echo "
                                             ";
                 $context["minPrice"] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
-                // line 302
+                // line 313
                 echo "                                            <div class=\"price\">";
                 echo twig_escape_filter($this->env, (isset($context["minPrice"]) ? $context["minPrice"] : $this->getContext($context, "minPrice")), "html", null, true);
                 echo " Fcfa / Mois <br> Prix minimal</div>
                                             <a href=\" ";
-                // line 303
+                // line 314
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_profile_prof", array("slug" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "slug", array()))), "html", null, true);
                 echo " \"
                                                class=\"btn btn-primary btn-sm\">Voir Profil</a>
                                             <a href=\" ";
-                // line 305
+                // line 316
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_reservation_detail", array("slug" => $this->getAttribute($this->getAttribute($context["enseigne"], "prof", array()), "slug", array()))), "html", null, true);
                 echo " \"
                                                class=\"anchor btn btn-primary btn-sm\" style=\"margin-top: 10px;\">Réserver
@@ -434,18 +461,18 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['enseigne'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 314
+            // line 325
             echo "
                     </div>
 
                     ";
-            // line 317
-            $this->loadTemplate("LGPCourseBundle:Pagination:pagination.html.twig", "LGPCourseBundle:Course:search.html.twig", 317)->display($context);
-            // line 318
+            // line 328
+            $this->loadTemplate("LGPCourseBundle:Pagination:pagination.html.twig", "LGPCourseBundle:Course:search.html.twig", 328)->display($context);
+            // line 329
             echo "
                     ";
         }
-        // line 320
+        // line 331
         echo "
                 </div>
 
@@ -456,7 +483,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
     </div>
 ";
         
-        $__internal_e1a5a4eaaac0e976332ca4e391eee4678d69cb23c5605f1b9c4971f3029e9761->leave($__internal_e1a5a4eaaac0e976332ca4e391eee4678d69cb23c5605f1b9c4971f3029e9761_prof);
+        $__internal_454c238b07463b5f4b594aa18f2a2ef4e3249464e99dcb7b69d0aa017548e4bd->leave($__internal_454c238b07463b5f4b594aa18f2a2ef4e3249464e99dcb7b69d0aa017548e4bd_prof);
 
     }
 
@@ -472,7 +499,7 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 
     public function getDebugInfo()
     {
-        return array (  449 => 320,  445 => 318,  443 => 317,  438 => 314,  423 => 305,  418 => 303,  413 => 302,  407 => 300,  405 => 299,  399 => 296,  396 => 295,  390 => 294,  384 => 291,  379 => 290,  374 => 288,  369 => 287,  366 => 286,  362 => 285,  357 => 282,  354 => 281,  351 => 280,  348 => 279,  345 => 278,  342 => 277,  336 => 276,  333 => 275,  328 => 274,  325 => 273,  323 => 272,  316 => 267,  302 => 266,  297 => 264,  292 => 263,  287 => 261,  282 => 260,  279 => 259,  262 => 258,  256 => 254,  252 => 252,  246 => 250,  244 => 249,  236 => 244,  227 => 238,  222 => 235,  216 => 233,  210 => 231,  208 => 230,  204 => 228,  200 => 227,  197 => 226,  195 => 225,  190 => 222,  185 => 219,  179 => 190,  175 => 189,  168 => 184,  166 => 183,  156 => 175,  153 => 72,  148 => 63,  146 => 62,  126 => 44,  110 => 32,  102 => 29,  99 => 28,  96 => 27,  92 => 25,  86 => 22,  75 => 14,  72 => 13,  69 => 12,  63 => 11,  52 => 7,  44 => 5,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  476 => 331,  472 => 329,  470 => 328,  465 => 325,  450 => 316,  445 => 314,  440 => 313,  434 => 311,  432 => 310,  426 => 307,  423 => 306,  417 => 305,  411 => 302,  406 => 301,  401 => 299,  396 => 298,  393 => 297,  389 => 296,  384 => 293,  381 => 292,  378 => 291,  375 => 290,  372 => 289,  369 => 288,  363 => 287,  360 => 286,  355 => 285,  352 => 284,  350 => 283,  343 => 278,  329 => 277,  324 => 275,  319 => 274,  314 => 272,  309 => 271,  306 => 270,  289 => 269,  283 => 265,  279 => 263,  273 => 261,  271 => 260,  263 => 255,  254 => 249,  249 => 246,  243 => 244,  237 => 242,  235 => 241,  231 => 239,  227 => 238,  224 => 237,  222 => 236,  217 => 233,  212 => 230,  206 => 201,  202 => 200,  195 => 195,  193 => 194,  183 => 186,  180 => 83,  175 => 74,  173 => 73,  144 => 46,  140 => 44,  132 => 40,  128 => 38,  122 => 35,  117 => 34,  109 => 31,  104 => 30,  102 => 29,  99 => 28,  96 => 27,  92 => 25,  85 => 22,  83 => 21,  73 => 14,  69 => 12,  63 => 11,  52 => 7,  44 => 5,  41 => 4,  35 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -488,16 +515,16 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
 {% endblock %}
 
 {% block body %}
-    {% if params.courseFound is defined and params.courseFound != null %}
-        <!-- start end Page title -->
-        <div class=\"page-title\" style=\"background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');\">
 
-            <div class=\"container\">
+    <!-- start end Page title -->
+    <div class=\"page-title\" style=\"background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');\">
 
-                <div class=\"row\">
+        <div class=\"container\">
 
-                    <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
+            <div class=\"row\">
 
+                <div class=\"col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3\">
+                    {% if params.courseFound is defined and params.courseFound != null %}
                         <h1 class=\"hero-title\">Grands Profs en {{ params.courseFound.intitule }} </h1>
 
                         <ol class=\"breadcrumb-list\">
@@ -505,21 +532,32 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                             {#  <li><a href=\"#\">Profs</a></li> #}
                             {% if params.quartier is defined %}
                                 <li>
-                                    <a href=\" {{ path('lgp_course_find_prof_city', {'slugVille' : params.quartier.slugVille}) }} \"> {{ params.quartier.ville }} </a>
+                                    {% if app.request.attributes.get(\"_route\") == \"lgp_course_find_prof_refine_quarter\" %}
+                                        <a href=\" {{ path('lgp_course_find_prof_city_quarter', {'slug_ville' : params.quartier.slugVille, 'slug_quartier' : params.quartier.intitule}) }} \">
+                                            {{ params.quartier.ville }} - {{ params.quartier.intitule }}
+                                        </a>
+                                    {% else %}
+                                        <a href=\" {{ path('lgp_course_find_prof_city', {'slugVille' : params.quartier.slugVille}) }} \">
+                                            {{ params.quartier.ville }}
+                                        </a>
+                                    {% endif %}
                                 </li>
                             {% endif %}
                             <li><span>{{ params.courseFound.intitule }}</span></li>
                         </ol>
 
-                    </div>
-
+                    {% else %}
+                        <h1 class=\"hero-title\"> Resultat de la recherche </h1>
+                    {% endif %}
                 </div>
 
             </div>
 
         </div>
-        <!-- end Page title -->
-    {% endif %}
+
+    </div>
+    <!-- end Page title -->
+
 
     <div class=\"content-wrapper\">
 
@@ -707,9 +745,9 @@ class __TwigTemplate_939b0f71d5a41e75740998fff652716b4788f79023b9dc9c62a12238484
                             <div class=\"package-list-item clearfix\">
                                 <div class=\"image\">
                                     {% if enseigne.prof.image is null %}
-                                        <img src=\"{{ asset('uploads/profils/default.jpg') }}\" alt=\"Tour Package\"/>
+                                        <img src=\"{{ asset('uploads/profils/default.png') }}\" alt=\"Tour Package\"/>
                                     {% else %}
-                                        <img src=\"{{ asset(enseigne.prof.image.webPath) }}\" alt=\" image prof \" />
+                                        <img src=\"{{ asset(enseigne.prof.image.webPath) }}\" alt=\" image prof \"/>
                                     {% endif %}
                                 </div>
 

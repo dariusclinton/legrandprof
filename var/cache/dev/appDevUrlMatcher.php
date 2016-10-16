@@ -346,6 +346,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // lgp_user_mes_paiements
+            if ($pathinfo === '/user/mes-paiements') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\PaiementController::indexAction',  '_route' => 'lgp_user_mes_paiements',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/reservation')) {
@@ -440,7 +445,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     // lgp_course_find_prof_refine_quarter
-                    if (preg_match('#^/course/search/profs/(?P<slugVille>[^/]++)/(?P<slugQuartier>[^/]++)/(?P<slug>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    if (preg_match('#^/course/search/profs/(?P<slug_ville>[^/]++)/(?P<slug_quartier>[^/]++)/(?P<slug>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
                         return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_refine_quarter')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchRefineAllAction',  'page' => 1,));
                     }
 
@@ -457,9 +462,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_lgp_course_find_prof_update_quarter:
 
-                // lgp_course_find_prof_city
-                if (0 === strpos($pathinfo, '/course/search/ville') && preg_match('#^/course/search/ville/(?P<slugVille>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
+                if (0 === strpos($pathinfo, '/course/search/ville')) {
+                    // lgp_course_find_prof_city
+                    if (preg_match('#^/course/search/ville/(?P<slugVille>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityAction',  'page' => 1,));
+                    }
+
+                    // lgp_course_find_prof_city_quarter
+                    if (preg_match('#^/course/search/ville/(?P<slug_ville>[^/]++)/quartier/(?P<slug_quartier>[^/]++)(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_course_find_prof_city_quarter')), array (  '_controller' => 'LGP\\CourseBundle\\Controller\\CourseController::searchCityQuarterAction',  'page' => 1,));
+                    }
+
                 }
 
             }
@@ -535,155 +548,152 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/user')) {
-            if (0 === strpos($pathinfo, '/user/profile')) {
-                // fos_user_profile_show
-                if (rtrim($pathinfo, '/') === '/user/profile') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_fos_user_profile_show;
+        if (0 === strpos($pathinfo, '/profile')) {
+            // fos_user_profile_show
+            if (rtrim($pathinfo, '/') === '/profile') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_fos_user_profile_show;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
+                }
+
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+            }
+            not_fos_user_profile_show:
+
+            // fos_user_profile_edit
+            if ($pathinfo === '/profile/edit') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_fos_user_profile_edit;
+                }
+
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
+            }
+            not_fos_user_profile_edit:
+
+        }
+
+        if (0 === strpos($pathinfo, '/re')) {
+            if (0 === strpos($pathinfo, '/register')) {
+                // fos_user_registration_register
+                if (rtrim($pathinfo, '/') === '/register') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fos_user_registration_register;
                     }
 
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
+                        return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                     }
 
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
                 }
-                not_fos_user_profile_show:
+                not_fos_user_registration_register:
 
-                // fos_user_profile_edit
-                if ($pathinfo === '/user/profile/edit') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                        goto not_fos_user_profile_edit;
-                    }
-
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
-                }
-                not_fos_user_profile_edit:
-
-            }
-
-            if (0 === strpos($pathinfo, '/user/re')) {
-                if (0 === strpos($pathinfo, '/user/register')) {
-                    // fos_user_registration_register
-                    if (rtrim($pathinfo, '/') === '/user/register') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_fos_user_registration_register;
+                if (0 === strpos($pathinfo, '/register/c')) {
+                    // fos_user_registration_check_email
+                    if ($pathinfo === '/register/check-email') {
+                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                            $allow = array_merge($allow, array('GET', 'HEAD'));
+                            goto not_fos_user_registration_check_email;
                         }
 
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
-                        }
-
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
+                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
                     }
-                    not_fos_user_registration_register:
+                    not_fos_user_registration_check_email:
 
-                    if (0 === strpos($pathinfo, '/user/register/c')) {
-                        // fos_user_registration_check_email
-                        if ($pathinfo === '/user/register/check-email') {
+                    if (0 === strpos($pathinfo, '/register/confirm')) {
+                        // fos_user_registration_confirm
+                        if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
                             if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                                 $allow = array_merge($allow, array('GET', 'HEAD'));
-                                goto not_fos_user_registration_check_email;
+                                goto not_fos_user_registration_confirm;
                             }
 
-                            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',));
                         }
-                        not_fos_user_registration_check_email:
+                        not_fos_user_registration_confirm:
 
-                        if (0 === strpos($pathinfo, '/user/register/confirm')) {
-                            // fos_user_registration_confirm
-                            if (preg_match('#^/user/register/confirm/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
-                                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                                    goto not_fos_user_registration_confirm;
-                                }
-
-                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',));
+                        // fos_user_registration_confirmed
+                        if ($pathinfo === '/register/confirmed') {
+                            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                                $allow = array_merge($allow, array('GET', 'HEAD'));
+                                goto not_fos_user_registration_confirmed;
                             }
-                            not_fos_user_registration_confirm:
 
-                            // fos_user_registration_confirmed
-                            if ($pathinfo === '/user/register/confirmed') {
-                                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                                    goto not_fos_user_registration_confirmed;
-                                }
-
-                                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
-                            }
-                            not_fos_user_registration_confirmed:
-
+                            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
                         }
+                        not_fos_user_registration_confirmed:
 
                     }
-
-                }
-
-                if (0 === strpos($pathinfo, '/user/resetting')) {
-                    // fos_user_resetting_request
-                    if ($pathinfo === '/user/resetting/request') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_fos_user_resetting_request;
-                        }
-
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::requestAction',  '_route' => 'fos_user_resetting_request',);
-                    }
-                    not_fos_user_resetting_request:
-
-                    // fos_user_resetting_send_email
-                    if ($pathinfo === '/user/resetting/send-email') {
-                        if ($this->context->getMethod() != 'POST') {
-                            $allow[] = 'POST';
-                            goto not_fos_user_resetting_send_email;
-                        }
-
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
-                    }
-                    not_fos_user_resetting_send_email:
-
-                    // fos_user_resetting_check_email
-                    if ($pathinfo === '/user/resetting/check-email') {
-                        if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'HEAD'));
-                            goto not_fos_user_resetting_check_email;
-                        }
-
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
-                    }
-                    not_fos_user_resetting_check_email:
-
-                    // fos_user_resetting_reset
-                    if (0 === strpos($pathinfo, '/user/resetting/reset') && preg_match('#^/user/resetting/reset/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
-                        if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                            $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                            goto not_fos_user_resetting_reset;
-                        }
-
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::resetAction',));
-                    }
-                    not_fos_user_resetting_reset:
 
                 }
 
             }
 
-            // fos_user_change_password
-            if ($pathinfo === '/user/profile/change-password') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_fos_user_change_password;
-                }
+            if (0 === strpos($pathinfo, '/resetting')) {
+                // fos_user_resetting_request
+                if ($pathinfo === '/resetting/request') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fos_user_resetting_request;
+                    }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::requestAction',  '_route' => 'fos_user_resetting_request',);
+                }
+                not_fos_user_resetting_request:
+
+                // fos_user_resetting_send_email
+                if ($pathinfo === '/resetting/send-email') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_fos_user_resetting_send_email;
+                    }
+
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
+                }
+                not_fos_user_resetting_send_email:
+
+                // fos_user_resetting_check_email
+                if ($pathinfo === '/resetting/check-email') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_fos_user_resetting_check_email;
+                    }
+
+                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
+                }
+                not_fos_user_resetting_check_email:
+
+                // fos_user_resetting_reset
+                if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_fos_user_resetting_reset;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::resetAction',));
+                }
+                not_fos_user_resetting_reset:
+
             }
-            not_fos_user_change_password:
 
         }
+
+        // fos_user_change_password
+        if ($pathinfo === '/profile/change-password') {
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                goto not_fos_user_change_password;
+            }
+
+            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
+        }
+        not_fos_user_change_password:
 
         // fos_js_routing_js
         if (0 === strpos($pathinfo, '/js/routing') && preg_match('#^/js/routing(?:\\.(?P<_format>js|json))?$#s', $pathinfo, $matches)) {

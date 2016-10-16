@@ -2,13 +2,13 @@
 
 {% block subject %}
   {% autoescape false %}
-  {{ 'registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+  {{ 'registration.email.subject'|trans({'%username%': user.prenoms, '%confirmationUrl%': confirmationUrl}) }}
   {% endautoescape %}
 {% endblock %}
 
 {% block body_text %}
   {% autoescape false %}
-  {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+  {{ 'registration.email.message'|trans({'%username%': user.prenoms | upper, '%confirmationUrl%': confirmationUrl}) }}
   {% endautoescape %}
 {% endblock %}
 

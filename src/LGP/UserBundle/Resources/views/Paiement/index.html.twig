@@ -1,0 +1,76 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Mes paiements - {{ parent() }}
+{% endblock %}
+
+{% block header_submenu %}
+    {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="bg-grey dashboard">
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        {% if paiements|length <= 0 %}
+                            <div class="notifications-block">
+                                <div class="notifications-header">Mes paiements</div>
+                                <div class="notifications-content">
+                                    Aucun paiement trouvé !
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="notifications-block">
+                                <div class="notifications-header">Mes réservations</div>
+                                <div class="notifications-content">
+
+                                    <table class="table table-bordered table-stripped">
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Mode</th>
+                                            <th>Montant</th>
+                                            <th>Facture</th>
+                                            <th>Reservation</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for paiement in paiements %}
+                                            <td>{{ paiement.date | date("d/m/Y") }}</td>
+                                            <td>{{ paiement.mode }}</td>
+                                            <td>
+                                                {% if paiement.facture is not null %}
+                                                    {{ paiement.facture.montant }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if paiement.facture is not null %}
+                                                    <a href="{{ paiement.facture.fileName }}">
+                                                        <i class="fa fa-file-pdf-o"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if paiement.facture is not null %}
+                                                    {{ paiement.facture.reservation.id }}
+                                                {% endif %}
+                                            </td>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

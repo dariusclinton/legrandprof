@@ -15,8 +15,8 @@ class __TwigTemplate_f17da733bd7ba47fef836983e6a778666da6c4c3ec552ec026e2ee7cf00
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_84df4bd2e7b17a3e690b327ca6f0230066d990a6ba49829506058e7bfdb9e9e9 = $this->env->getExtension("native_profiler");
-        $__internal_84df4bd2e7b17a3e690b327ca6f0230066d990a6ba49829506058e7bfdb9e9e9->enter($__internal_84df4bd2e7b17a3e690b327ca6f0230066d990a6ba49829506058e7bfdb9e9e9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Avis:voir.html.twig"));
+        $__internal_c7790cb78f55cd86b0304adda37820e07657adfe9ba9419b0cb4c0f16c031731 = $this->env->getExtension("native_profiler");
+        $__internal_c7790cb78f55cd86b0304adda37820e07657adfe9ba9419b0cb4c0f16c031731->enter($__internal_c7790cb78f55cd86b0304adda37820e07657adfe9ba9419b0cb4c0f16c031731_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Avis:voir.html.twig"));
 
         // line 1
         echo "<h3>Note: </h3>";
@@ -28,7 +28,7 @@ class __TwigTemplate_f17da733bd7ba47fef836983e6a778666da6c4c3ec552ec026e2ee7cf00
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["avis"]) ? $context["avis"] : $this->getContext($context, "avis")), "commentaire", array()), "html", null, true);
         echo "</p>";
         
-        $__internal_84df4bd2e7b17a3e690b327ca6f0230066d990a6ba49829506058e7bfdb9e9e9->leave($__internal_84df4bd2e7b17a3e690b327ca6f0230066d990a6ba49829506058e7bfdb9e9e9_prof);
+        $__internal_c7790cb78f55cd86b0304adda37820e07657adfe9ba9419b0cb4c0f16c031731->leave($__internal_c7790cb78f55cd86b0304adda37820e07657adfe9ba9419b0cb4c0f16c031731_prof);
 
     }
 

@@ -15,8 +15,8 @@ class __TwigTemplate_1bcd9d9b86865e3fbdedfc0899cad7c516413df41e1cf11b8d2ef94f709
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_154bbc6789a4340c08c2bf84f716002ea23477e5121f8ccd0a5be8fccb4ec482 = $this->env->getExtension("native_profiler");
-        $__internal_154bbc6789a4340c08c2bf84f716002ea23477e5121f8ccd0a5be8fccb4ec482->enter($__internal_154bbc6789a4340c08c2bf84f716002ea23477e5121f8ccd0a5be8fccb4ec482_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_sortable_script_tabs.html.twig"));
+        $__internal_c1dbaf7f9e62e6594e0d00f8b3d3c4daab294fc9352f040671dbceba42e11bc8 = $this->env->getExtension("native_profiler");
+        $__internal_c1dbaf7f9e62e6594e0d00f8b3d3c4daab294fc9352f040671dbceba42e11bc8->enter($__internal_c1dbaf7f9e62e6594e0d00f8b3d3c4daab294fc9352f040671dbceba42e11bc8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_sortable_script_tabs.html.twig"));
 
         // line 11
         echo "<script type=\"text/javascript\">
@@ -90,7 +90,7 @@ class __TwigTemplate_1bcd9d9b86865e3fbdedfc0899cad7c516413df41e1cf11b8d2ef94f709
 </script>
 ";
         
-        $__internal_154bbc6789a4340c08c2bf84f716002ea23477e5121f8ccd0a5be8fccb4ec482->leave($__internal_154bbc6789a4340c08c2bf84f716002ea23477e5121f8ccd0a5be8fccb4ec482_prof);
+        $__internal_c1dbaf7f9e62e6594e0d00f8b3d3c4daab294fc9352f040671dbceba42e11bc8->leave($__internal_c1dbaf7f9e62e6594e0d00f8b3d3c4daab294fc9352f040671dbceba42e11bc8_prof);
 
     }
 

@@ -21,20 +21,20 @@ class __TwigTemplate_e030efdafac41105b712ef7ffd04555c408e6efe99a8b1ecffc0c67e50c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f8cf83b864b30e796e632ac4898f63693660822074b0e8f3df25b65991719ab8 = $this->env->getExtension("native_profiler");
-        $__internal_f8cf83b864b30e796e632ac4898f63693660822074b0e8f3df25b65991719ab8->enter($__internal_f8cf83b864b30e796e632ac4898f63693660822074b0e8f3df25b65991719ab8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Collector:memory.html.twig"));
+        $__internal_3c7e5f75239c1ace64841af03aaa388ec59e9c2c4448b29419d4b65d621a912e = $this->env->getExtension("native_profiler");
+        $__internal_3c7e5f75239c1ace64841af03aaa388ec59e9c2c4448b29419d4b65d621a912e->enter($__internal_3c7e5f75239c1ace64841af03aaa388ec59e9c2c4448b29419d4b65d621a912e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Collector:memory.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f8cf83b864b30e796e632ac4898f63693660822074b0e8f3df25b65991719ab8->leave($__internal_f8cf83b864b30e796e632ac4898f63693660822074b0e8f3df25b65991719ab8_prof);
+        $__internal_3c7e5f75239c1ace64841af03aaa388ec59e9c2c4448b29419d4b65d621a912e->leave($__internal_3c7e5f75239c1ace64841af03aaa388ec59e9c2c4448b29419d4b65d621a912e_prof);
 
     }
 
     // line 3
     public function block_toolbar($context, array $blocks = array())
     {
-        $__internal_4e890192f16036437e0f7f7ba0f6576eefa1d94205e08c04ae6cd5f512aab780 = $this->env->getExtension("native_profiler");
-        $__internal_4e890192f16036437e0f7f7ba0f6576eefa1d94205e08c04ae6cd5f512aab780->enter($__internal_4e890192f16036437e0f7f7ba0f6576eefa1d94205e08c04ae6cd5f512aab780_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "toolbar"));
+        $__internal_01c9a97429a6f53e50ca87a18e9513b50d9cc23580adb734063e1a68fdd053fa = $this->env->getExtension("native_profiler");
+        $__internal_01c9a97429a6f53e50ca87a18e9513b50d9cc23580adb734063e1a68fdd053fa->enter($__internal_01c9a97429a6f53e50ca87a18e9513b50d9cc23580adb734063e1a68fdd053fa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "toolbar"));
 
         // line 4
         echo "    ";
@@ -84,7 +84,7 @@ class __TwigTemplate_e030efdafac41105b712ef7ffd04555c408e6efe99a8b1ecffc0c67e50c
         echo "
 ";
         
-        $__internal_4e890192f16036437e0f7f7ba0f6576eefa1d94205e08c04ae6cd5f512aab780->leave($__internal_4e890192f16036437e0f7f7ba0f6576eefa1d94205e08c04ae6cd5f512aab780_prof);
+        $__internal_01c9a97429a6f53e50ca87a18e9513b50d9cc23580adb734063e1a68fdd053fa->leave($__internal_01c9a97429a6f53e50ca87a18e9513b50d9cc23580adb734063e1a68fdd053fa_prof);
 
     }
 

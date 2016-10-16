@@ -15,8 +15,8 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_319f347ba80c9fd897a8fe8be3a2c933cc94e7fd67c9eed4c71bd1fcc3793df8 = $this->env->getExtension("native_profiler");
-        $__internal_319f347ba80c9fd897a8fe8be3a2c933cc94e7fd67c9eed4c71bd1fcc3793df8->enter($__internal_319f347ba80c9fd897a8fe8be3a2c933cc94e7fd67c9eed4c71bd1fcc3793df8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
+        $__internal_223b259231c9eb1524e0aeeac8b028b06c9f425d1a13c760a9ea3cf91c75b9b0 = $this->env->getExtension("native_profiler");
+        $__internal_223b259231c9eb1524e0aeeac8b028b06c9f425d1a13c760a9ea3cf91c75b9b0->enter($__internal_223b259231c9eb1524e0aeeac8b028b06c9f425d1a13c760a9ea3cf91c75b9b0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
 
         // line 1
         echo "<div class=\"header-dashboard-submenu hidden-xs\">
@@ -82,7 +82,7 @@ class __TwigTemplate_b5565afaa1f611349c9ded3701f378b9719ac2f327cda3831865fa7024a
   </div>
 </div>";
         
-        $__internal_319f347ba80c9fd897a8fe8be3a2c933cc94e7fd67c9eed4c71bd1fcc3793df8->leave($__internal_319f347ba80c9fd897a8fe8be3a2c933cc94e7fd67c9eed4c71bd1fcc3793df8_prof);
+        $__internal_223b259231c9eb1524e0aeeac8b028b06c9f425d1a13c760a9ea3cf91c75b9b0->leave($__internal_223b259231c9eb1524e0aeeac8b028b06c9f425d1a13c760a9ea3cf91c75b9b0_prof);
 
     }
 

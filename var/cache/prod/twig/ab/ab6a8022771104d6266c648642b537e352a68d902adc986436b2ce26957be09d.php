@@ -1,6 +1,6 @@
 <?php
 
-/* @Twig/Exception/error.html.twig */
+/* TwigBundle:Exception:error.html.twig */
 class __TwigTemplate_5cb76b93155e409f6cfffcd38ba8b6884313c10114002f656cd0088e29b9f3cb extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -48,7 +48,7 @@ class __TwigTemplate_5cb76b93155e409f6cfffcd38ba8b6884313c10114002f656cd0088e29b
 
     public function getTemplateName()
     {
-        return "@Twig/Exception/error.html.twig";
+        return "TwigBundle:Exception:error.html.twig";
     }
 
     public function isTraitable()

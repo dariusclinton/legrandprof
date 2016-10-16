@@ -3,6 +3,7 @@
 namespace LGP\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ReservationEnseignement
@@ -25,6 +26,12 @@ class ReservationEnseignement
    * @var string
    *
    * @ORM\Column(name="lieu_de_cours", type="string", length=255)
+   * @Assert\Length(
+   *     min=3,
+   *     max=255,
+   *     minMessage ="La longueur doit être au moins de 3 caractères",
+   *     maxMessage="La longueur doit être au plus de 255 caractères"
+   * )
    */
   private $lieuDeCours;
 
@@ -32,6 +39,7 @@ class ReservationEnseignement
    * @var \DateTime
    *
    * @ORM\Column(name="date_debut", type="date")
+   * @Assert\Date(message="Vous devez entrer une date valide")
    */
   private $dateDebut;
 
@@ -39,6 +47,7 @@ class ReservationEnseignement
    * @var int
    *
    * @ORM\Column(name="nb_apprenants", type="integer")
+   * @Assert\Range(min=1, minMessage="Vous devez entrer un nombre positif superieur a 0", invalidMessage="vous devez entrer un nombre")
    */
   private $nbApprenants;
 
@@ -46,6 +55,12 @@ class ReservationEnseignement
    * @var string
    *
    * @ORM\Column(name="ville", type="string", length=255)
+   * @Assert\Length(
+   *     min=3,
+   *     max=255,
+   *     minMessage ="La longueur doit être au moins de 3 caractères",
+   *     maxMessage="La longueur doit être au plus de 255 caractères"
+   * )
    */
   private $ville;
 
@@ -53,6 +68,12 @@ class ReservationEnseignement
    * @var string
    *
    * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
+   * @Assert\Length(
+   *     min=3,
+   *     max=255,
+   *     minMessage ="La longueur doit être au moins de 3 caractères",
+   *     maxMessage="La longueur doit être au plus de 255 caractères"
+   * )
    */
   private $quartier;
 
@@ -64,7 +85,7 @@ class ReservationEnseignement
   private $isFinish = false;
 
   /**
-   * @var \LGPReservationBundle\Entity\JourDeCours
+   * @var \LGP\ReservationBundle\Entity\JourDeCours
    *
    * @ORM\ManyToMany(targetEntity="LGP\ReservationBundle\Entity\JourDeCours", inversedBy="reservationEnseignements", cascade={"persist", "remove"})
    * @ORM\JoinTable(name="lgp_reservation_enseignement_jours_de_cours")
@@ -80,21 +101,21 @@ class ReservationEnseignement
   private $programmeDeCours;
 
   /**
-   * @var \LGPReservationBundle\Entity\Reservation
+   * @var \LGP\ReservationBundle\Entity\Reservation
    *
    * @ORM\ManyToOne(targetEntity="LGP\ReservationBundle\Entity\Reservation", inversedBy="reservationEnseignements")
    */
   private $reservation;
 
   /**
-   * @var \LGPCourseBundle\Entity\Enseignement
+   * @var \LGP\CourseBundle\Entity\Enseignement
    *
    * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Enseignement", inversedBy="reservationEnseignements",  cascade={"persist", "remove"})
    */
   private $enseignement;
 
   /**
-   * @var \LGPCourseBundle\Entity\Evaluation
+   * @var \LGP\CourseBundle\Entity\Evaluation
    *
    * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Evaluation", mappedBy="reservationEnseignement",  cascade={"persist", "remove"})
    *
@@ -102,7 +123,7 @@ class ReservationEnseignement
   private $evaluations;
 
   /**
-   * @var \LGPCourseBundle\Entity\SeanceDeCours
+   * @var \LGP\CourseBundle\Entity\SeanceDeCours
    *
    * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\SeanceDeCours", mappedBy="reservationEnseignement",  cascade={"persist", "remove"})
    *

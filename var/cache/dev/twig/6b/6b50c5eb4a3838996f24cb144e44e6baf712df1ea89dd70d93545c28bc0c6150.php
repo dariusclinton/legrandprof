@@ -22,20 +22,20 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9fa84ee2cdfca9bf25976942a2268539e3c277ac11d5fcdc23605f7b2f8d1e5a = $this->env->getExtension("native_profiler");
-        $__internal_9fa84ee2cdfca9bf25976942a2268539e3c277ac11d5fcdc23605f7b2f8d1e5a->enter($__internal_9fa84ee2cdfca9bf25976942a2268539e3c277ac11d5fcdc23605f7b2f8d1e5a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Enseignement:profile.html.twig"));
+        $__internal_b948a05e72d0ec0c39f43a58f55f71376c356349fa1fbb08a9fc30722891e8bf = $this->env->getExtension("native_profiler");
+        $__internal_b948a05e72d0ec0c39f43a58f55f71376c356349fa1fbb08a9fc30722891e8bf->enter($__internal_b948a05e72d0ec0c39f43a58f55f71376c356349fa1fbb08a9fc30722891e8bf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Enseignement:profile.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9fa84ee2cdfca9bf25976942a2268539e3c277ac11d5fcdc23605f7b2f8d1e5a->leave($__internal_9fa84ee2cdfca9bf25976942a2268539e3c277ac11d5fcdc23605f7b2f8d1e5a_prof);
+        $__internal_b948a05e72d0ec0c39f43a58f55f71376c356349fa1fbb08a9fc30722891e8bf->leave($__internal_b948a05e72d0ec0c39f43a58f55f71376c356349fa1fbb08a9fc30722891e8bf_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_df7069057a2ea32afe7b81a05cf055d86805a659d935af09e229f9f8a2b12cb6 = $this->env->getExtension("native_profiler");
-        $__internal_df7069057a2ea32afe7b81a05cf055d86805a659d935af09e229f9f8a2b12cb6->enter($__internal_df7069057a2ea32afe7b81a05cf055d86805a659d935af09e229f9f8a2b12cb6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_1e7c366c47b89a9d1fc4aee850d17cdaf1cce8a5b0b61d63eb1094f2d9c967e5 = $this->env->getExtension("native_profiler");
+        $__internal_1e7c366c47b89a9d1fc4aee850d17cdaf1cce8a5b0b61d63eb1094f2d9c967e5->enter($__internal_1e7c366c47b89a9d1fc4aee850d17cdaf1cce8a5b0b61d63eb1094f2d9c967e5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    Profil prof - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
         echo "
 ";
         
-        $__internal_df7069057a2ea32afe7b81a05cf055d86805a659d935af09e229f9f8a2b12cb6->leave($__internal_df7069057a2ea32afe7b81a05cf055d86805a659d935af09e229f9f8a2b12cb6_prof);
+        $__internal_1e7c366c47b89a9d1fc4aee850d17cdaf1cce8a5b0b61d63eb1094f2d9c967e5->leave($__internal_1e7c366c47b89a9d1fc4aee850d17cdaf1cce8a5b0b61d63eb1094f2d9c967e5_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ee755be67bc0a21f5c1c4ced9c36a0d4631ab5bf4afbb400265da22613502ca0 = $this->env->getExtension("native_profiler");
-        $__internal_ee755be67bc0a21f5c1c4ced9c36a0d4631ab5bf4afbb400265da22613502ca0->enter($__internal_ee755be67bc0a21f5c1c4ced9c36a0d4631ab5bf4afbb400265da22613502ca0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_03e7044f6f5164744f2866b7f12753a0575fcafaee05048c89c13d42c328ce51 = $this->env->getExtension("native_profiler");
+        $__internal_03e7044f6f5164744f2866b7f12753a0575fcafaee05048c89c13d42c328ce51->enter($__internal_03e7044f6f5164744f2866b7f12753a0575fcafaee05048c89c13d42c328ce51_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- start end Page title -->
@@ -534,11 +534,24 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                         </div>
 
                                         <div class=\"col-md-12 col-sm-12 test\" id=\"leave-avis\" style=\"display:none\">
-                                            <div class=\"col-md-12\">
+                                            ";
+        // line 272
+        if ((null === $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()))) {
+            // line 273
+            echo "                                                <div class=\"col-md-12\" style=\"margin-top: 10px;\">
+                                                    <div class=\"alert alert-info\">
+                                                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+                                                        <strong><i class=\"fa fa-info-circle fa-2x\"></i></strong> &nbsp;&nbsp;&nbsp; Vous devez vous connecter pour que votre avis soit envoyé.
+                                                    </div>
+                                                </div>
+                                            ";
+        }
+        // line 280
+        echo "                                            <div class=\"col-md-12\">
                                                 ";
-        // line 273
-        $this->loadTemplate("LGPUserBundle:Avis:formulaire.html.twig", "LGPCourseBundle:Enseignement:profile.html.twig", 273)->display($context);
-        // line 274
+        // line 281
+        $this->loadTemplate("LGPUserBundle:Avis:formulaire.html.twig", "LGPCourseBundle:Enseignement:profile.html.twig", 281)->display($context);
+        // line 282
         echo "                                            </div>
 
                                         </div>
@@ -546,56 +559,56 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                     </div>
 
                                     ";
-        // line 280
+        // line 288
         if (twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "avis", array()))) {
-            // line 281
+            // line 289
             echo "                                        <ul class=\"review-list\">
                                             ";
-            // line 282
+            // line 290
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "avis", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["avis"]) {
-                // line 283
+                // line 291
                 echo "                                                ";
                 $context["user"] = $this->getAttribute($context["avis"], "user", array());
-                // line 284
+                // line 292
                 echo "                                                <li class=\"clearfix\">
                                                     <div class=\"image img-circle\">
                                                         ";
-                // line 286
+                // line 294
                 if ((null === $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "image", array()))) {
-                    // line 287
+                    // line 295
                     echo "                                                            <img class=\"img-circle\"
                                                                  src=\"";
-                    // line 288
-                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
+                    // line 296
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.png"), "html", null, true);
                     echo "\"
                                                                  alt=\"Tour Package\"/>
                                                         ";
                 } else {
-                    // line 291
+                    // line 299
                     echo "                                                            <img class=\"img-circle\"
                                                                  src=\"";
-                    // line 292
+                    // line 300
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "image", array()), "webPath", array())), "html", null, true);
                     echo "\"
                                                                  alt=\" image utilisateur \"/>
                                                         ";
                 }
-                // line 295
+                // line 303
                 echo "                                                    </div>
                                                     <div class=\"content\">
                                                         <div class=\"row gap-20 mb-0\">
                                                             <div class=\"col-sm-9\">
                                                                 <h6> ";
-                // line 299
+                // line 307
                 echo twig_escape_filter($this->env, twig_upper_filter($this->env, (($this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "prenoms", array()) . "  ") . $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "nom", array()))), "html", null, true);
                 echo " ";
                 echo "</h6>
                                                             </div>
                                                             <div class=\"col-sm-3\">
                                                                 <p class=\"review-date\"> ";
-                // line 302
+                // line 310
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["avis"], "dateAvis", array()), "d/m/Y"), "html", null, true);
                 echo " </p>
                                                             </div>
@@ -604,45 +617,45 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                                         <div class=\"rating-wrapper\">
                                                             <div class=\"raty-wrapper\">
                                                                 ";
-                // line 309
+                // line 317
                 echo "                                                                ";
                 $context["avisNote"] = $this->getAttribute($context["avis"], "note", array());
-                // line 310
+                // line 318
                 echo "                                                                ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(range(1, 5));
                 foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                    // line 311
+                    // line 319
                     echo "                                                                    ";
                     if ((twig_round((isset($context["avisNote"]) ? $context["avisNote"] : $this->getContext($context, "avisNote"))) >= $context["i"])) {
-                        // line 312
+                        // line 320
                         echo "                                                                        <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                              src=\"";
-                        // line 313
+                        // line 321
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
                         echo "\">
                                                                     ";
                     } else {
-                        // line 315
+                        // line 323
                         echo "                                                                        <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                              src=\"";
-                        // line 316
+                        // line 324
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
                         echo "\"
                                                                              title=\"\">
                                                                     ";
                     }
-                    // line 319
+                    // line 327
                     echo "                                                                ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 320
+                // line 328
                 echo "                                                            </div>
                                                         </div>
 
@@ -650,7 +663,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
 
                                                             <p>
                                                                 ";
-                // line 326
+                // line 334
                 echo twig_escape_filter($this->env, $this->getAttribute($context["avis"], "commentaire", array()), "html", null, true);
                 echo "
                                                             </p>
@@ -665,7 +678,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['avis'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 335
+            // line 343
             echo "
 
                                         </ul>
@@ -674,7 +687,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                         </div>
                                     ";
         }
-        // line 342
+        // line 350
         echo "
                                 </div>
 
@@ -691,43 +704,43 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
 
                                 <div class=\"GridLex-grid-noGutter-equalHeight\">
                                     ";
-        // line 357
+        // line 365
         if ( !twig_test_empty($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "similarProfs", array()))) {
-            // line 358
+            // line 366
             echo "                                        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "similarProfs", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["enseignement"]) {
-                // line 359
+                // line 367
                 echo "                                            <div class=\"GridLex-col-4_sm-4_xs-12 mb-20\">
                                                 <div class=\"package-grid-item\">
                                                     <a href=\" ";
-                // line 361
+                // line 369
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("lgp_course_profile_prof", array("profId" => $this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "id", array()))), "html", null, true);
                 echo " \">
                                                         <div class=\"image similar\">
                                                             ";
-                // line 363
+                // line 371
                 if ( !(null === $this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "image", array()))) {
-                    // line 364
+                    // line 372
                     echo "                                                                <img src=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "image", array()), "webPath", array())), "html", null, true);
-                    // line 365
+                    // line 373
                     echo "\"
                                                                      alt=\" image prof \"/>
                                                             ";
                 } else {
-                    // line 368
+                    // line 376
                     echo "                                                                <img src=\"";
-                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.jpg"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("uploads/profils/default.png"), "html", null, true);
                     echo "\"
                                                                      alt=\"Tour Package\"/>
                                                             ";
                 }
-                // line 371
+                // line 379
                 echo "                                                            ";
                 if ($this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "isRecommande", array())) {
-                    // line 372
+                    // line 380
                     echo "                                                                <div class=\"absolute-in-image\">
                                                                     <div class=\"duration\">
                                                                         <span>
@@ -737,107 +750,107 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                                                 </div>
                                                             ";
                 }
-                // line 380
+                // line 388
                 echo "                                                        </div>
                                                         <div class=\"content clearfix\">
                                                             <h6>
                                                                 ";
-                // line 383
+                // line 391
                 echo twig_escape_filter($this->env, ((twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "prenoms", array())) . "  ") . twig_upper_filter($this->env, $this->getAttribute($this->getAttribute($context["enseignement"], "prof", array()), "nom", array()))), "html", null, true);
                 echo "
                                                             </h6>
                                                             ";
-                // line 385
+                // line 393
                 $context["avisSum"] = 0;
-                // line 386
+                // line 394
                 echo "                                                            ";
                 $context["allAvis"] = $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "avisRep", array()), "findBy", array(0 => array("prof" => $this->getAttribute($context["enseignement"], "prof", array()))), "method");
-                // line 387
+                // line 395
                 echo "                                                            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable((isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis")));
                 foreach ($context['_seq'] as $context["_key"] => $context["avis"]) {
-                    // line 388
+                    // line 396
                     echo "                                                                ";
                     $context["avisSum"] = ((isset($context["avisSum"]) ? $context["avisSum"] : $this->getContext($context, "avisSum")) + $this->getAttribute($context["avis"], "note", array()));
-                    // line 389
+                    // line 397
                     echo "                                                            ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['avis'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 390
+                // line 398
                 echo "                                                            ";
                 if ((twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))) != 0)) {
-                    // line 391
+                    // line 399
                     echo "                                                                ";
                     $context["avisRange"] = ((isset($context["avisSum"]) ? $context["avisSum"] : $this->getContext($context, "avisSum")) / twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))));
-                    // line 392
+                    // line 400
                     echo "                                                            ";
                 } else {
-                    // line 393
+                    // line 401
                     echo "                                                                ";
                     $context["avisRange"] = 0;
-                    // line 394
+                    // line 402
                     echo "                                                            ";
                 }
-                // line 395
+                // line 403
                 echo "                                                            <div class=\"rating-wrapper\">
                                                                 <div class=\"raty-wrapper\">
                                                                     <div>
                                                                         ";
-                // line 398
+                // line 406
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(range(1, 5));
                 foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                    // line 399
+                    // line 407
                     echo "                                                                            ";
                     if ((twig_round((isset($context["avisRange"]) ? $context["avisRange"] : $this->getContext($context, "avisRange"))) >= $context["i"])) {
-                        // line 400
+                        // line 408
                         echo "                                                                                <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                                      src=\"";
-                        // line 401
+                        // line 409
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-on-sm.png"), "html", null, true);
                         echo "\">
                                                                             ";
                     } else {
-                        // line 403
+                        // line 411
                         echo "                                                                                <img alt=\" ";
                         echo twig_escape_filter($this->env, $context["i"], "html", null, true);
                         echo " \"
                                                                                      src=\"";
-                        // line 404
+                        // line 412
                         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/raty/star-off-sm.png"), "html", null, true);
                         echo "\"
                                                                                      title=\"\">
                                                                             ";
                     }
-                    // line 407
+                    // line 415
                     echo "                                                                        ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 408
+                // line 416
                 echo "                                                                    </div>
                                                                     <br>
                                                                     <span> / ";
-                // line 410
+                // line 418
                 echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["allAvis"]) ? $context["allAvis"] : $this->getContext($context, "allAvis"))), "html", null, true);
                 echo " avis</span>
                                                                 </div>
                                                             </div>
                                                             <div class=\"absolute-in-content\">
                                                                 ";
-                // line 414
+                // line 422
                 $context["minPrice"] = $this->getAttribute($this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "enseignementRep", array()), "getPrixProf", array(0 => $this->getAttribute($context["enseignement"], "prof", array())), "method");
-                // line 415
+                // line 423
                 echo "                                                                <span class=\"btn\">
                                                                     <i class=\"fa fa-heart text-primary\"></i></span>
                                                                 <div class=\"price\">";
-                // line 417
+                // line 425
                 echo twig_escape_filter($this->env, (isset($context["minPrice"]) ? $context["minPrice"] : $this->getContext($context, "minPrice")), "html", null, true);
                 echo " F/Mois <br> Prix
                                                                     minimal
@@ -852,14 +865,14 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['enseignement'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 426
+            // line 434
             echo "                                    ";
         } else {
-            // line 427
+            // line 435
             echo "                                        <b>- Aucun prof similaire</b>
                                     ";
         }
-        // line 429
+        // line 437
         echo "
                                 </div>
 
@@ -888,7 +901,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                             </li>
                         </ul>
                         <a href=\" ";
-        // line 456
+        // line 464
         echo $this->env->getExtension('routing')->getPath("lgp_course_find");
         echo " \" class=\"btn btn-primary\">
                             Faire une autre recherche
@@ -903,7 +916,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
 
 ";
         
-        $__internal_ee755be67bc0a21f5c1c4ced9c36a0d4631ab5bf4afbb400265da22613502ca0->leave($__internal_ee755be67bc0a21f5c1c4ced9c36a0d4631ab5bf4afbb400265da22613502ca0_prof);
+        $__internal_03e7044f6f5164744f2866b7f12753a0575fcafaee05048c89c13d42c328ce51->leave($__internal_03e7044f6f5164744f2866b7f12753a0575fcafaee05048c89c13d42c328ce51_prof);
 
     }
 
@@ -919,7 +932,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
 
     public function getDebugInfo()
     {
-        return array (  892 => 456,  863 => 429,  859 => 427,  856 => 426,  841 => 417,  837 => 415,  835 => 414,  828 => 410,  824 => 408,  818 => 407,  812 => 404,  807 => 403,  802 => 401,  797 => 400,  794 => 399,  790 => 398,  785 => 395,  782 => 394,  779 => 393,  776 => 392,  773 => 391,  770 => 390,  764 => 389,  761 => 388,  756 => 387,  753 => 386,  751 => 385,  746 => 383,  741 => 380,  731 => 372,  728 => 371,  721 => 368,  716 => 365,  713 => 364,  711 => 363,  706 => 361,  702 => 359,  697 => 358,  695 => 357,  678 => 342,  669 => 335,  654 => 326,  646 => 320,  640 => 319,  634 => 316,  629 => 315,  624 => 313,  619 => 312,  616 => 311,  611 => 310,  608 => 309,  599 => 302,  592 => 299,  586 => 295,  580 => 292,  577 => 291,  571 => 288,  568 => 287,  566 => 286,  562 => 284,  559 => 283,  555 => 282,  552 => 281,  550 => 280,  542 => 274,  540 => 273,  525 => 261,  496 => 234,  487 => 230,  485 => 229,  478 => 227,  472 => 223,  467 => 222,  464 => 221,  460 => 219,  458 => 218,  432 => 195,  420 => 185,  408 => 179,  404 => 178,  400 => 177,  393 => 173,  390 => 172,  386 => 171,  375 => 162,  367 => 159,  355 => 153,  349 => 150,  345 => 148,  340 => 147,  338 => 146,  330 => 141,  325 => 139,  321 => 137,  317 => 136,  305 => 126,  296 => 123,  291 => 120,  286 => 119,  277 => 116,  272 => 113,  268 => 112,  254 => 102,  250 => 99,  246 => 98,  231 => 86,  215 => 74,  209 => 72,  207 => 71,  201 => 67,  198 => 66,  194 => 64,  190 => 62,  187 => 61,  185 => 60,  173 => 52,  167 => 51,  158 => 48,  150 => 46,  147 => 45,  142 => 44,  139 => 43,  136 => 42,  133 => 41,  130 => 40,  127 => 39,  121 => 38,  118 => 37,  113 => 36,  111 => 35,  102 => 29,  98 => 28,  93 => 25,  90 => 24,  87 => 22,  80 => 19,  78 => 18,  68 => 12,  65 => 11,  62 => 10,  60 => 9,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  905 => 464,  876 => 437,  872 => 435,  869 => 434,  854 => 425,  850 => 423,  848 => 422,  841 => 418,  837 => 416,  831 => 415,  825 => 412,  820 => 411,  815 => 409,  810 => 408,  807 => 407,  803 => 406,  798 => 403,  795 => 402,  792 => 401,  789 => 400,  786 => 399,  783 => 398,  777 => 397,  774 => 396,  769 => 395,  766 => 394,  764 => 393,  759 => 391,  754 => 388,  744 => 380,  741 => 379,  734 => 376,  729 => 373,  726 => 372,  724 => 371,  719 => 369,  715 => 367,  710 => 366,  708 => 365,  691 => 350,  682 => 343,  667 => 334,  659 => 328,  653 => 327,  647 => 324,  642 => 323,  637 => 321,  632 => 320,  629 => 319,  624 => 318,  621 => 317,  612 => 310,  605 => 307,  599 => 303,  593 => 300,  590 => 299,  584 => 296,  581 => 295,  579 => 294,  575 => 292,  572 => 291,  568 => 290,  565 => 289,  563 => 288,  555 => 282,  553 => 281,  550 => 280,  541 => 273,  539 => 272,  525 => 261,  496 => 234,  487 => 230,  485 => 229,  478 => 227,  472 => 223,  467 => 222,  464 => 221,  460 => 219,  458 => 218,  432 => 195,  420 => 185,  408 => 179,  404 => 178,  400 => 177,  393 => 173,  390 => 172,  386 => 171,  375 => 162,  367 => 159,  355 => 153,  349 => 150,  345 => 148,  340 => 147,  338 => 146,  330 => 141,  325 => 139,  321 => 137,  317 => 136,  305 => 126,  296 => 123,  291 => 120,  286 => 119,  277 => 116,  272 => 113,  268 => 112,  254 => 102,  250 => 99,  246 => 98,  231 => 86,  215 => 74,  209 => 72,  207 => 71,  201 => 67,  198 => 66,  194 => 64,  190 => 62,  187 => 61,  185 => 60,  173 => 52,  167 => 51,  158 => 48,  150 => 46,  147 => 45,  142 => 44,  139 => 43,  136 => 42,  133 => 41,  130 => 40,  127 => 39,  121 => 38,  118 => 37,  113 => 36,  111 => 35,  102 => 29,  98 => 28,  93 => 25,  90 => 24,  87 => 22,  80 => 19,  78 => 18,  68 => 12,  65 => 11,  62 => 10,  60 => 9,  57 => 8,  51 => 7,  41 => 4,  35 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -946,7 +959,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                              class=\"profile-img\"/>
                     {% else %}
                         <i class=\"fa fa-user fa-5x profile-img\" style=\"color:#fff\"></i>
-                        {#<img src=\"{{ asset('uploads/profils/default.jpg') }}\" alt=\"Tour Package\"/>#}
+                        {#<img src=\"{{ asset('uploads/profils/default.png') }}\" alt=\"Tour Package\"/>#}
                     {% endif %}
                 </div>
                 <div class=\"flex-column flex-md-6 flex-align-bottom flex-sm-12\">
@@ -1195,6 +1208,14 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                         </div>
 
                                         <div class=\"col-md-12 col-sm-12 test\" id=\"leave-avis\" style=\"display:none\">
+                                            {% if app.user is null %}
+                                                <div class=\"col-md-12\" style=\"margin-top: 10px;\">
+                                                    <div class=\"alert alert-info\">
+                                                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+                                                        <strong><i class=\"fa fa-info-circle fa-2x\"></i></strong> &nbsp;&nbsp;&nbsp; Vous devez vous connecter pour que votre avis soit envoyé.
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                             <div class=\"col-md-12\">
                                                 {% include 'LGPUserBundle:Avis:formulaire.html.twig' %}
                                             </div>
@@ -1211,7 +1232,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                                     <div class=\"image img-circle\">
                                                         {% if user.image is null %}
                                                             <img class=\"img-circle\"
-                                                                 src=\"{{ asset('uploads/profils/default.jpg') }}\"
+                                                                 src=\"{{ asset('uploads/profils/default.png') }}\"
                                                                  alt=\"Tour Package\"/>
                                                         {% else %}
                                                             <img class=\"img-circle\"
@@ -1291,7 +1312,7 @@ class __TwigTemplate_a5e80ba1600f1299160e8941aecff4294bf921b81ac9129f71f06101fee
                                                                 ) }}\"
                                                                      alt=\" image prof \"/>
                                                             {% else %}
-                                                                <img src=\"{{ asset('uploads/profils/default.jpg') }}\"
+                                                                <img src=\"{{ asset('uploads/profils/default.png') }}\"
                                                                      alt=\"Tour Package\"/>
                                                             {% endif %}
                                                             {% if enseignement.prof.isRecommande %}

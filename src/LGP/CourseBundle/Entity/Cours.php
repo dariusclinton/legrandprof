@@ -4,6 +4,7 @@ namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cours
@@ -11,7 +12,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="lgp_cours")
  * @ORM\Entity(repositoryClass="LGP\CourseBundle\Repository\CoursRepository")
  */
-class Cours {
+class Cours
+{
 
     /**
      * @var int
@@ -26,6 +28,13 @@ class Cours {
      * @var string
      *
      * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $intitule;
 
@@ -33,6 +42,12 @@ class Cours {
      * @var string
      *
      * @ORM\Column(name="description", type="text", length=1000, nullable=true)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
      */
     private $description;
 
@@ -44,7 +59,7 @@ class Cours {
 
     /**
      * @var \LGP\CourseBundle\Entity\ImageCourse
-     * 
+     *
      * @ORM\OneToOne(targetEntity="LGP\CourseBundle\Entity\ImageCourse", cascade={ "persist", "remove" })
      * @ORM\JoinColumn(nullable=true)
      */
@@ -59,7 +74,7 @@ class Cours {
 
     /**
      * @var \LGP\CourseBundle\Entity\Enseigne
-     * 
+     *
      * @ORM\OneToMany(targetEntity="LGP\CourseBundle\Entity\Enseignement", mappedBy="cours", cascade={"persist","remove"})
      */
     private $enseignements;
@@ -67,7 +82,8 @@ class Cours {
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->evaluations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->enseignements = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -77,7 +93,8 @@ class Cours {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -88,7 +105,8 @@ class Cours {
      *
      * @return Cours
      */
-    public function setIntitule($intitule) {
+    public function setIntitule($intitule)
+    {
         $this->intitule = $intitule;
 
         return $this;
@@ -99,7 +117,8 @@ class Cours {
      *
      * @return string
      */
-    public function getIntitule() {
+    public function getIntitule()
+    {
         return $this->intitule;
     }
 
@@ -110,7 +129,8 @@ class Cours {
      *
      * @return Cours
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -121,7 +141,8 @@ class Cours {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -132,7 +153,8 @@ class Cours {
      *
      * @return Cours
      */
-    public function setImage(\LGP\CourseBundle\Entity\ImageCourse $image = null) {
+    public function setImage(\LGP\CourseBundle\Entity\ImageCourse $image = null)
+    {
         $this->image = $image;
 
         return $this;
@@ -143,7 +165,8 @@ class Cours {
      *
      * @return \LGP\CourseBundle\Entity\ImageCourse
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
@@ -154,7 +177,8 @@ class Cours {
      *
      * @return Cours
      */
-    public function setCategorie(\LGP\CourseBundle\Entity\Categorie $categorie = null) {
+    public function setCategorie(\LGP\CourseBundle\Entity\Categorie $categorie = null)
+    {
         $this->categorie = $categorie;
 
         return $this;
@@ -165,7 +189,8 @@ class Cours {
      *
      * @return \LGP\CourseBundle\Entity\Categorie
      */
-    public function getCategorie() {
+    public function getCategorie()
+    {
         return $this->categorie;
     }
 
@@ -176,7 +201,8 @@ class Cours {
      *
      * @return Cours
      */
-    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
+    public function addEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
+    {
         $this->enseignements[] = $enseignement;
 
         return $this;
@@ -187,7 +213,8 @@ class Cours {
      *
      * @param \LGP\CourseBundle\Entity\Enseignement $enseignement
      */
-    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement) {
+    public function removeEnseignement(\LGP\CourseBundle\Entity\Enseignement $enseignement)
+    {
         $this->enseignements->removeElement($enseignement);
     }
 
@@ -196,7 +223,8 @@ class Cours {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEnseignements() {
+    public function getEnseignements()
+    {
         return $this->enseignements;
     }
 

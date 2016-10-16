@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Enseignement
@@ -24,33 +25,42 @@ class Enseignement
      /**
      * @var string
      *
-     * @ORM\Column(name="classe", type="string", length=255)
-     */
+     * @ORM\Column(name="classe", type="string", length=255, nullable=false)
+      * @Assert\NotBlank(message="Ce champs est obligatoire")
+      * @Assert\Length(
+      *     min=2,
+      *     max=255,
+      *     minMessage ="La longueur doit être au moins de 2 caractère",
+      *     maxMessage="La longueur doit être au plus de 255 caractères"
+      * )
+      */
     private $classe;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="prix", type="integer")
+     * @ORM\Column(name="prix", type="integer", nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Range(min=0, minMessage="Vous devez entrer un nombre positif", invalidMessage="vous devez entrer un nombre")
      */
     private $prix;
     
     /**
-     * @var \LGPCourseBundle\Entity\Cours
+     * @var \LGP\CourseBundle\Entity\Cours
      * 
      * @ORM\ManyToOne(targetEntity="LGP\CourseBundle\Entity\Cours", inversedBy="enseignements")
      */
     private $cours;
     
     /**
-     * @var \LGPUserBundle\Entity\Prof
+     * @var \LGP\UserBundle\Entity\Prof
      * 
      * @ORM\ManyToOne(targetEntity="LGP\UserBundle\Entity\Prof", inversedBy="enseignements")
      */
     private $prof;
     
     /**
-     * @var \LGPReservationBundle\Entity\ReservationEnseignement
+     * @var \LGP\ReservationBundle\Entity\ReservationEnseignement
      * 
      * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\ReservationEnseignement", mappedBy="enseignement",  cascade={"persist", "remove"})
      */

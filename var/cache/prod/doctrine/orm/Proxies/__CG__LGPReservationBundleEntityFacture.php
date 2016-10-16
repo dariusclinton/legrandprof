@@ -64,10 +64,10 @@ class Facture extends \LGP\ReservationBundle\Entity\Facture implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'montant', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'reservation', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'paiement'];
+            return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'montant', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'fileName', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'reservation', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'paiement'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'montant', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'reservation', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'paiement'];
+        return ['__isInitialized__', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'id', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'montant', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'fileName', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'reservation', '' . "\0" . 'LGP\\ReservationBundle\\Entity\\Facture' . "\0" . 'paiement'];
     }
 
     /**
@@ -208,6 +208,28 @@ class Facture extends \LGP\ReservationBundle\Entity\Facture implements \Doctrine
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMontant', []);
 
         return parent::getMontant();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFileName($fileName)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFileName', [$fileName]);
+
+        return parent::setFileName($fileName);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFileName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFileName', []);
+
+        return parent::getFileName();
     }
 
     /**

@@ -22,13 +22,13 @@
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
 
-# Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
+## Parameters
+#/app/config/parameters.yml
+#/app/config/parameters.ini
 
 # Managed by Composer
-/app/bootstrap.php.cache
-/var/bootstrap.php.cache
+!/app/bootstrap.php.cache
+!/var/bootstrap.php.cache
 /bin/*
 !bin/console
 !bin/symfony_requirements
@@ -38,6 +38,7 @@
 # Assets and user uploads
 /web/uploads/
 !/web/uploads/profils/default.jpg
+!/web/uploads/profils/default.png
 
 # PHPUnit
 /app/phpunit.xml
