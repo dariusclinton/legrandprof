@@ -8,9 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class CartController extends Controller {
+class CartController extends Controller
+{
 
-    public function cartAction(Request $request) {
+    public function cartAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $profRep = $em->getRepository("LGPUserBundle:Prof");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
@@ -18,7 +20,7 @@ class CartController extends Controller {
         $session = $request->getSession();
         $panier = $session->get('panier');
         $step = $session->get('step');
-        if(!$step)
+        if (!$step)
             $session->set('step', 'step1');
         $step = 'step1';
         $session->set('step', $step);
@@ -27,7 +29,8 @@ class CartController extends Controller {
         return $this->render('LGPReservationBundle:Cart:cart.html.twig', array('params' => $params));
     }
 
-    public function addCartAction($profId, Request $request) {
+    public function addCartAction($profId, Request $request)
+    {
         if ($request->isXmlHttpRequest()) {
             //recuperation des params de la requete
             $coursId = $request->query->get('coursId');
@@ -52,18 +55,21 @@ class CartController extends Controller {
             $p = $profRep->find($profId);
 
             if ($p) {
-                $image = $p->getImage()->getWebPath();
+                if ($p->getImage() != null)
+                    $image = $p->getImage()->getWebPath();
+                else
+                    $image = 'uploads/profils/default.png';
 
                 $booker1 = new Booker();
                 $booker1->setProfId($p->getId());
                 $booker1->setProfNom($p->getNom());
                 $booker1->setProfPrenoms($p->getPrenoms());
                 $booker1->setProfImage($image);
-                $booker1->setCoursId((int) $coursId);
+                $booker1->setCoursId((int)$coursId);
                 $booker1->setDateDebut($dateDebut);
                 $booker1->setLieu($lieuDeCours);
                 $booker1->setNombreApprenants($nbApprenants);
-                $booker1->setPrixTotal((double) $prixTotal);
+                $booker1->setPrixTotal((double)$prixTotal);
                 $booker1->setVille($ville);
                 $booker1->setQuartier($quartier);
                 $booker1->setClasse($classe);
@@ -81,9 +87,11 @@ class CartController extends Controller {
             return new JsonResponse('success');
 //         return $this->forward('LGPCoreBundle:Lgp:index');
         }
+        return new JsonResponse('error');
     }
 
-    public function removeCartAction($key, Request $request) {
+    public function removeCartAction($key, Request $request)
+    {
         $session = $request->getSession();
         $panier = $session->get('panier');
 
@@ -95,7 +103,8 @@ class CartController extends Controller {
 //        return $this->forward('LGPCoreBundle:Lgp:index');
     }
 
-    public function cartUpdatePaiementAction(Request $request) {
+    public function cartUpdatePaiementAction(Request $request)
+    {
         if ($request->isXmlHttpRequest()) {
             //recuperation des params de la requete
             $paiement = $request->query->get('frequence_paiement');

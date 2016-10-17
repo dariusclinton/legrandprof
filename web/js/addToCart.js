@@ -11,19 +11,16 @@ $(function () {
         }).success(function (answer, status) {
             window.classes = [];
             window.prix = [];
-            for (i = 0; i < answer.length; i++)
-            {
+            for (i = 0; i < answer.length; i++) {
                 classes.push(answer[i].classe);
                 prix.push(answer[i].prix);
             }
             $('#classes option').each(function () {
-                if ($(this).val() != '' && !$(this).attr('disabled'))
-                {
+                if ($(this).val() != '' && !$(this).attr('disabled')) {
                     $(this).remove();
                 }
             });
-            for (i = 0; i < classes.length; i++)
-            {
+            for (i = 0; i < classes.length; i++) {
                 $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
             }
 
@@ -199,45 +196,38 @@ $(function () {
             method: "GET",
             url: Routing.generate('lgp_reservation_cart_add', {'profId': profId}),
             data: dataString,
-        }).success(function (answer) {
-            if (answer === "success") {
+            success: function (answer) {
                 console.log(answer);
                 $("#loading").css("display", "none");
                 $("#success").css("display", "block");
                 $("#modal-footer").css("display", "block");
-            }
-
-//            setTimeout(function() {
-//                window.location.reload(true);
-//            }, 2000);
-        }).error(function (answer) {
-            if (answer == "error") {
+            },
+            error: function (answer) {
                 console.log(answer);
-                $("#loading").css("display", "none");
-                $("#success").css("display", "block");
-                $("#modal-footer").css("display", "block");
+                $("#myModal").css("display", "none");
                 alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!')
             }
-        });
+        })
     });
-    
-    $("#paiementForm").submit(function(event){
+
+    $("#paiementForm").submit(function (event) {
         event.preventDefault();
         var paiement = $("#paiement-frequence option:selected").val();
-        
+
         $.ajax({
             method: "GET",
             url: Routing.generate('lgp_reservation_cart_update_paiement'),
-            data: "frequence_paiement="+paiement,
-            success: function(answer){
+            data: "frequence_paiement=" + paiement,
+            success: function (answer) {
                 console.log(answer);
-                if(answer == "success"){
-                    window.location.href = Routing.generate('lgp_reservation_confirm_page') ;
+                if (answer == "success") {
+                    window.location.href = Routing.generate('lgp_reservation_confirm_page');
                 }
             },
-            error: function(answer){
+            error: function (answer) {
                 console.log(answer);
             }
         })
     });
-});
+})
+;
