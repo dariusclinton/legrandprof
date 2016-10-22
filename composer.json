@@ -28,14 +28,16 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "symfony/assetic-bundle": "^2.8",
+        "leafo/scssphp": "~0.6",
+        "patchwork/jsqueeze": "~1.0",
+        "friendsofsymfony/user-bundle": "dev-master#49e3117888f8ed79a10afe5f0cb7a404c13b616c",
         "pugx/multi-user-bundle": "3.0.*@dev",
         "vich/uploader-bundle": "^1.3",
-        "sonata-project/admin-bundle": "3.1.*",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "sonata-project/doctrine-orm-admin-bundle": "3.1.*",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "sonata-project/user-bundle": "^3.0"
+        "sonata-project/admin-bundle": "3.1.*",
+        "sonata-project/doctrine-orm-admin-bundle": "3.1.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
