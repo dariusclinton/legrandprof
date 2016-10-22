@@ -41,7 +41,7 @@
         {#<link href="{{ asset('css/style.css') }}" rel="stylesheet">#}
 
 
-        {% stylesheets filter='cssrewrite,scssphp'
+        {% stylesheets filter='cssrewrite, ?scssphp'
         'bootstrap/css/bootstrap.min.css'
         'bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'
         'css/animate.css'
@@ -117,7 +117,9 @@
     'js/addToCart.js'
     'js/search.js'
     'js/loadData.js'
-    'bundles/fosjsrouting/js/router.js' %}
+    'bundles/fosjsrouting/js/router.js'
+    'js/avis.js'
+    'js/messages.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
@@ -154,16 +156,16 @@
 
     <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
 
-    {% if is_granted('ROLE_USER') %}
+    {#{% if is_granted('ROLE_USER') %}
         {% javascripts filter='?jsqueeze'
         'js/avis.js'
         'js/messages.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
 
-        {#<script type="text/javascript" src="{{ asset('js/avis.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>#}
-    {% endif %}
+        #}{#<script type="text/javascript" src="{{ asset('js/avis.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>#}{#
+    {% endif %}#}
 {% endblock %}
 </body>
 </html>

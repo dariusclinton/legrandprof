@@ -103,6 +103,7 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         ),
         'C' => 
         array (
+            'CoreSphere\\ConsoleBundle\\' => 25,
             'Cocur\\Slugify\\' => 14,
         ),
     );
@@ -287,6 +288,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+        ),
+        'CoreSphere\\ConsoleBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coresphere/console-bundle',
         ),
         'Cocur\\Slugify\\' => 
         array (
