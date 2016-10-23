@@ -196,9 +196,15 @@
 
                             <div class="sorting-header">
 
-                                <h3 class="sorting-title uppercase">Des Grands profs
-                                    en {{ params.courseFound.intitule }}</h3>
-                                <p class="sorting-lead">{{ params.matieres_profs | length }} Grands profs trouvés</p>
+                                <h3 class="sorting-title uppercase">
+                                    Des Grands profs en
+                                    {% if params.courseFound is not null %}
+                                        <span style="color: orangered;">{{ params.courseFound.intitule }}</span>
+                                    {% else %}
+                                        <span style="color: orangered;">{{ params.intitule }}</span>
+                                    {% endif %}
+                                </h3>
+                                <p class="sorting-lead"><strong>{{ params.matieres_profs | length }}</strong> Grands profs trouvés</p>
                             </div>
 
                             {#   <div class="sorting-content">

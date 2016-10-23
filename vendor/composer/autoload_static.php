@@ -15,6 +15,7 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
     );
 
@@ -42,6 +43,7 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
             'Symfony\\Component\\' => 18,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
+            'Symfony\\Bundle\\AsseticBundle\\' => 29,
             'Symfony\\Bundle\\' => 15,
             'Symfony\\Bridge\\Twig\\' => 20,
             'Symfony\\Bridge\\Swiftmailer\\' => 27,
@@ -68,6 +70,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'L' => 
+        array (
+            'Leafo\\ScssPhp\\' => 14,
         ),
         'K' => 
         array (
@@ -97,6 +103,7 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         ),
         'C' => 
         array (
+            'CoreSphere\\ConsoleBundle\\' => 25,
             'Cocur\\Slugify\\' => 14,
         ),
     );
@@ -149,6 +156,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         'Symfony\\Bundle\\MonologBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/monolog-bundle',
+        ),
+        'Symfony\\Bundle\\AsseticBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/assetic-bundle',
         ),
         'Symfony\\Bundle\\' => 
         array (
@@ -230,6 +241,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Leafo\\ScssPhp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/leafo/scssphp/src',
+        ),
         'Knp\\Menu\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
@@ -273,6 +288,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+        ),
+        'CoreSphere\\ConsoleBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coresphere/console-bundle',
         ),
         'Cocur\\Slugify\\' => 
         array (
@@ -327,6 +346,10 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
             array (
                 0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
             ),
+            'JSqueeze' => 
+            array (
+                0 => __DIR__ . '/..' . '/patchwork/jsqueeze/class',
+            ),
         ),
         'G' => 
         array (
@@ -367,6 +390,13 @@ class ComposerStaticInit3c2be86a1929a0be7fb7476dddab715d
             'Behat\\Transliterator' => 
             array (
                 0 => __DIR__ . '/..' . '/behat/transliterator/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
             ),
         ),
     );

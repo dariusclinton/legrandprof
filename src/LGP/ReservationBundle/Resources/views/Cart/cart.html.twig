@@ -49,10 +49,10 @@
                                             {% set prof = params.profRep.find(booker.profId) %}
                                             <tr>
                                                 <td> 
-                                                    {% if prof.image is defined %}
+                                                    {% if prof.image is not null %}
                                                         <img src="{{ asset(prof.image.webPath) }}" width="50px">
                                                     {% else %}
-                                                        <img src="{{ asset('uploads/profils/default.jpg') }}"> 
+                                                        <img src="{{ asset('uploads/profils/default.png') }}">
                                                     {% endif %}
                                                 </td>
                                                 <td>

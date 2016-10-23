@@ -12,3 +12,9 @@ _errors:
 
 _main:
     resource: routing.yml
+
+# corephere console bundle config
+coresphere_console:
+    resource: .
+    type: extra
+

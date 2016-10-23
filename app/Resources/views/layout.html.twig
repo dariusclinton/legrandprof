@@ -15,7 +15,7 @@
 
     {% block stylesheets %}
         <!-- CSS Plugins -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" media="screen">
+        {#<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" media="screen">
         <link rel="stylesheet" type="text/css"
               href="{{ asset('bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" media="screen">
         <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
@@ -27,7 +27,8 @@
         <link rel="stylesheet" href="{{ asset('icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
         <link rel="stylesheet" href="{{ asset('icons/simple-line-icons/css/simple-line-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('icons/themify-icons/themify-icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('icons/rivolicons/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('icons/rivolicons/style.css') }}">#}
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <!-- Google Fonts -->
@@ -37,19 +38,31 @@
               rel='stylesheet' type='text/css'>
 
         <!-- CSS Custom -->
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        {#<link href="{{ asset('css/style.css') }}" rel="stylesheet">#}
 
 
-       {# {% stylesheets
-        'css/style.css' %}
+        {% stylesheets filter='cssrewrite, ?scssphp'
+        'bootstrap/css/bootstrap.min.css'
+        'bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'
+        'css/animate.css'
+        'css/main.css'
+        'css/component.css'
+        'icons/ionicons/css/ionicons.css'
+        'icons/font-awesome-4.6.3/css/font-awesome.min.css'
+        'icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css'
+        'icons/simple-line-icons/css/simple-line-icons.css'
+        'icons/themify-icons/themify-icons.css'
+        'icons/rivolicons/style.css'
+        'css/style.css'
+        'jquery-ui-1.12.0/jquery-ui.min.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-        {% endstylesheets %}#}
+        {% endstylesheets %}
 
         {# icon #}
         <link rel="icon" type="image/png" href="{{ asset('ico.png') }}"/>
 
         <!-- jquery-ui css -->
-        <link href="{{ asset('jquery-ui-1.12.0/jquery-ui.min.css') }}" rel="stylesheet"/>
+        {#<link href="{{ asset('jquery-ui-1.12.0/jquery-ui.min.css') }}" rel="stylesheet"/>#}
     {% endblock %}
 </head>
 <body>
@@ -78,7 +91,39 @@
 
 <!-- JS -->
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
+    {% javascripts filter='?jsqueeze'
+    'js/jquery-1.11.3.min.js'
+    'jquery-ui-1.12.0/jquery-ui.min.js'
+    'js/jquery-migrate-1.2.1.min.js'
+    'bootstrap-datetimepicker/moment/moment-with-locales.min.js'
+    'bootstrap/js/bootstrap.min.js'
+    'bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js'
+    'js/jquery.waypoints.min.js'
+    'js/jquery.easing.1.3.js'
+    'js/SmoothScroll.min.js'
+    'js/jquery.slicknav.min.js'
+    'js/jquery.placeholder.min.js'
+    'js/spin.min.js'
+    'js/jquery.introLoader.min.js'
+    'js/select2.full.js'
+    'js/jquery.responsivegrid.js'
+    'js/ion.rangeSlider.min.js'
+    'js/readmore.min.js'
+    'js/slick.min.js'
+    'js/validator.min.js'
+    'js/jquery.raty.js'
+    'js/customs.js'
+    'js/user.js'
+    'js/addToCart.js'
+    'js/search.js'
+    'js/loadData.js'
+    'bundles/fosjsrouting/js/router.js'
+    'js/avis.js'
+    'js/messages.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {#<script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('jquery-ui-1.12.0/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
     <script type="text/javascript"
@@ -107,13 +152,20 @@
     <script type="text/javascript" src="{{ asset('js/addToCart.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/search.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/loadData.js') }}"></script>
-    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+
     <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
 
-    {% if is_granted('ROLE_USER') %}
-    <script type="text/javascript" src="{{ asset('js/avis.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>
-    {% endif %}
+    {#{% if is_granted('ROLE_USER') %}
+        {% javascripts filter='?jsqueeze'
+        'js/avis.js'
+        'js/messages.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        #}{#<script type="text/javascript" src="{{ asset('js/avis.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/messages.js') }}"></script>#}{#
+    {% endif %}#}
 {% endblock %}
 </body>
 </html>
