@@ -366,7 +366,7 @@
                                         {% for enseignement in params.similarProfs %}
                                             <div class="GridLex-col-4_sm-4_xs-12 mb-20">
                                                 <div class="package-grid-item">
-                                                    <a href=" {{ path('lgp_course_profile_prof',{'profId':enseignement.prof.id}) }} ">
+                                                    <a href=" {{ path('lgp_course_profile_prof',{'slug':enseignement.prof.slug}) }} ">
                                                         <div class="image similar">
                                                             {% if enseignement.prof.image is not null %}
                                                                 <img src="{{ asset(enseignement.prof.image.webPath
