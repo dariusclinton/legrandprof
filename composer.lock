@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "507fd8fc5aa75c8bcf1b2d1c9cc69f52",
-    "content-hash": "4d8b672cf206d565d2ffe2b0a6faf06c",
+    "hash": "985ab0f7ee82f2dadee6e9a1c9fb1b3d",
+    "content-hash": "713edae491a5df316659fe308212a549",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -110,6 +110,62 @@
                 "slugify"
             ],
             "time": "2016-08-09 20:10:17"
+        },
+        {
+            "name": "coresphere/console-bundle",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CoreSphere/ConsoleBundle.git",
+                "reference": "79107b90cd713e15dd2b4326910a1b18e34ec2a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CoreSphere/ConsoleBundle/zipball/79107b90cd713e15dd2b4326910a1b18e34ec2a6",
+                "reference": "79107b90cd713e15dd2b4326910a1b18e34ec2a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "symfony/console": "~2.7|~3.0",
+                "symfony/dependency-injection": "~2.7|~3.0",
+                "symfony/event-dispatcher": "~2.7|~3.0",
+                "symfony/framework-bundle": "~2.7|~3.0",
+                "symfony/http-kernel": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-fixtures-bundle": "^2.2",
+                "doctrine/doctrine-migrations-bundle": "^1.0",
+                "phpunit/phpunit": "^4.8",
+                "symfony/finder": "^2.7"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CoreSphere\\ConsoleBundle\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laszlo Korte",
+                    "email": "coresphere@laszlokorte.de"
+                },
+                {
+                    "name": "Marmus Ullman",
+                    "email": "mail@markus-ullmann.de"
+                }
+            ],
+            "description": "This bundle allows you accessing the symfony2 console via your browser",
+            "keywords": [
+                "console",
+                "javascript",
+                "symfony"
+            ],
+            "time": "2015-11-27 21:56:07"
         },
         {
             "name": "doctrine/annotations",
@@ -943,32 +999,34 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "4cb7a29869e4a9bef4f51986d48b1a3af76d3f48"
+                "reference": "49e3117888f8ed79a10afe5f0cb7a404c13b616c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/4cb7a29869e4a9bef4f51986d48b1a3af76d3f48",
-                "reference": "4cb7a29869e4a9bef4f51986d48b1a3af76d3f48",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/49e3117888f8ed79a10afe5f0cb7a404c13b616c",
+                "reference": "49e3117888f8ed79a10afe5f0cb7a404c13b616c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
-                "symfony/form": "~2.3|~3.0",
-                "symfony/framework-bundle": "~2.3|~3.0",
-                "symfony/security-bundle": "~2.3|~3.0",
-                "symfony/twig-bundle": "~2.3|~3.0"
+                "php": "^5.5.9 || ^7.0",
+                "symfony/form": "^2.7 || ^3.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0",
+                "symfony/security-bundle": "^2.7 || ^3.0",
+                "symfony/twig-bundle": "^2.7 || ^3.0"
             },
             "conflict": {
-                "symfony/doctrine-bridge": "<2.3"
+                "symfony/doctrine-bridge": "<2.7"
             },
             "require-dev": {
-                "doctrine/doctrine-bundle": "~1.3",
-                "swiftmailer/swiftmailer": "~4.3|~5",
-                "symfony/console": "~2.3|~3.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "symfony/validator": "~2.3|~3.0",
-                "symfony/yaml": "~2.3|~3.0",
-                "willdurand/propel-typehintable-behavior": "~1.0"
+                "doctrine/doctrine-bundle": "^1.3",
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "swiftmailer/swiftmailer": "^4.3 || ^5.0",
+                "symfony/console": "^2.7 || ^3.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0",
+                "symfony/validator": "^2.7 || ^3.0",
+                "symfony/yaml": "^2.7 || ^3.0",
+                "willdurand/propel-typehintable-behavior": "^1.0"
             },
             "suggest": {
                 "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
@@ -982,7 +1040,10 @@
             "autoload": {
                 "psr-4": {
                     "FOS\\UserBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1007,20 +1068,20 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-09-12 15:04:02"
+            "time": "2016-10-17 15:07:10"
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.22",
+            "version": "v2.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "b8188801bafc420b86908ee5229a5e92143ce514"
+                "reference": "a7f7243a19f79a99ac83a3570444d8795f665eef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/b8188801bafc420b86908ee5229a5e92143ce514",
-                "reference": "b8188801bafc420b86908ee5229a5e92143ce514",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/a7f7243a19f79a99ac83a3570444d8795f665eef",
+                "reference": "a7f7243a19f79a99ac83a3570444d8795f665eef",
                 "shasum": ""
             },
             "require": {
@@ -1086,7 +1147,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2016-08-30 18:42:36"
+            "time": "2016-10-11 18:03:37"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1309,20 +1370,20 @@
         },
         {
             "name": "knplabs/knp-menu-bundle",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
-                "reference": "42ff1953c3a79d0b31aba2ece8c03fbd70e7f1ca"
+                "reference": "0e4af7209dc03e39c51ec70b68ab2ba3177c25de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/42ff1953c3a79d0b31aba2ece8c03fbd70e7f1ca",
-                "reference": "42ff1953c3a79d0b31aba2ece8c03fbd70e7f1ca",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/0e4af7209dc03e39c51ec70b68ab2ba3177c25de",
+                "reference": "0e4af7209dc03e39c51ec70b68ab2ba3177c25de",
                 "shasum": ""
             },
             "require": {
-                "knplabs/knp-menu": "~2.1",
+                "knplabs/knp-menu": "~2.2",
                 "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
@@ -1332,7 +1393,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -1350,7 +1411,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -1362,7 +1423,137 @@
             "keywords": [
                 "menu"
             ],
-            "time": "2016-06-21 06:53:03"
+            "time": "2016-09-22 12:24:40"
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "v1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/assetic.git",
+                "reference": "9928f7c4ad98b234e3559d1049abd13387f86db5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/9928f7c4ad98b234e3559d1049abd13387f86db5",
+                "reference": "9928f7c4ad98b234e3559d1049abd13387f86db5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "symfony/process": "~2.1|~3.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.23"
+            },
+            "require-dev": {
+                "cssmin/cssmin": "3.0.1",
+                "joliclic/javascript-packer": "1.1",
+                "kamicane/packager": "1.0",
+                "leafo/lessphp": "^0.3.7",
+                "leafo/scssphp": "~0.1",
+                "mrclay/minify": "~2.2",
+                "patchwork/jsqueeze": "~1.0|~2.0",
+                "phpunit/phpunit": "~4.8",
+                "psr/log": "~1.0",
+                "ptachoire/cssembed": "~1.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "twig/twig": "~1.8|~2.0"
+            },
+            "suggest": {
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
+                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "time": "2015-11-12 13:51:40"
+        },
+        {
+            "name": "leafo/scssphp",
+            "version": "v0.6.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafo/scssphp.git",
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "kherge/box": "~2.5",
+                "phpunit/phpunit": "~3.7",
+                "squizlabs/php_codesniffer": "~2.5"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Leafo\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://leafo.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2016-09-11 01:34:11"
         },
         {
             "name": "monolog/monolog",
@@ -1507,16 +1698,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
                 "shasum": ""
             },
             "require": {
@@ -1551,7 +1742,49 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-04-03 06:00:07"
+            "time": "2016-10-17 15:23:22"
+        },
+        {
+            "name": "patchwork/jsqueeze",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tchwork/jsqueeze.git",
+                "reference": "f90a933213534b93e4ff3c2c3026ff7458f7721b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tchwork/jsqueeze/zipball/f90a933213534b93e4ff3c2c3026ff7458f7721b",
+                "reference": "f90a933213534b93e4ff3c2c3026ff7458f7721b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JSqueeze": "class/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "(Apache-2.0 or GPL-2.0)"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                }
+            ],
+            "description": "Efficient JavaScript minification in PHP",
+            "homepage": "https://github.com/tchwork/jsqueeze",
+            "keywords": [
+                "compression",
+                "javascript",
+                "minification"
+            ],
+            "time": "2015-03-25 10:11:08"
         },
         {
             "name": "psr/cache",
@@ -1601,16 +1834,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -1644,7 +1877,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "pugx/multi-user-bundle",
@@ -1653,12 +1886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PUGX/PUGXMultiUserBundle.git",
-                "reference": "3b4abe5cf7626add185a66c22452cb74ec2b1921"
+                "reference": "eeaef007807cf1bbe8d2d0433b26570c5d7dac23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/3b4abe5cf7626add185a66c22452cb74ec2b1921",
-                "reference": "3b4abe5cf7626add185a66c22452cb74ec2b1921",
+                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/eeaef007807cf1bbe8d2d0433b26570c5d7dac23",
+                "reference": "eeaef007807cf1bbe8d2d0433b26570c5d7dac23",
                 "shasum": ""
             },
             "require": {
@@ -1700,25 +1933,25 @@
             "keywords": [
                 "user management multi user management"
             ],
-            "time": "2016-04-20 11:08:03"
+            "time": "2016-10-07 19:22:12"
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.12",
+            "version": "v5.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "b6dcd04595e4db95ead22ddea58c397864e00c32"
+                "reference": "7bc47dcfdbde6d567e1a834577d1c04ddb970281"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/b6dcd04595e4db95ead22ddea58c397864e00c32",
-                "reference": "b6dcd04595e4db95ead22ddea58c397864e00c32",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/7bc47dcfdbde6d567e1a834577d1c04ddb970281",
+                "reference": "7bc47dcfdbde6d567e1a834577d1c04ddb970281",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9",
-                "sensiolabs/security-checker": "~3.0",
+                "sensiolabs/security-checker": "~3.0|~4.0",
                 "symfony/class-loader": "~2.3|~3.0",
                 "symfony/config": "~2.3|~3.0",
                 "symfony/dependency-injection": "~2.3|~3.0",
@@ -1752,7 +1985,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-09-14 20:25:12"
+            "time": "2016-10-08 18:50:33"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1818,20 +2051,20 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v3.0.2",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "21696b0daa731064c23cfb694c60a2584a7b6e93"
+                "reference": "116027b57b568ed61b7b1c80eeb4f6ee9e8c599c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/21696b0daa731064c23cfb694c60a2584a7b6e93",
-                "reference": "21696b0daa731064c23cfb694c60a2584a7b6e93",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/116027b57b568ed61b7b1c80eeb4f6ee9e8c599c",
+                "reference": "116027b57b568ed61b7b1c80eeb4f6ee9e8c599c",
                 "shasum": ""
             },
             "require": {
-                "symfony/console": "~2.0|~3.0"
+                "symfony/console": "~2.7|~3.0"
             },
             "bin": [
                 "security-checker"
@@ -1839,7 +2072,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -1858,7 +2091,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-11-07 08:07:40"
+            "time": "2016-09-23 18:09:57"
         },
         {
             "name": "sonata-project/admin-bundle",
@@ -2165,16 +2398,16 @@
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "5a6819928f947cb7e5a8d288ad83f8131bab4875"
+                "reference": "64caa9e72f11f532c5fe7c69b14884a0951a0a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/5a6819928f947cb7e5a8d288ad83f8131bab4875",
-                "reference": "5a6819928f947cb7e5a8d288ad83f8131bab4875",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/64caa9e72f11f532c5fe7c69b14884a0951a0a56",
+                "reference": "64caa9e72f11f532c5fe7c69b14884a0951a0a56",
                 "shasum": ""
             },
             "require": {
@@ -2240,7 +2473,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2016-09-12 11:55:27"
+            "time": "2016-10-04 12:09:21"
         },
         {
             "name": "sonata-project/exporter",
@@ -2424,6 +2657,76 @@
                 "mailer"
             ],
             "time": "2016-07-08 11:51:25"
+        },
+        {
+            "name": "symfony/assetic-bundle",
+            "version": "v2.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/assetic-bundle.git",
+                "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/aa5b4f8b712f38745928fa845ddb73300bb2af6d",
+                "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/assetic": "~1.3",
+                "php": ">=5.3.0",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0"
+            },
+            "conflict": {
+                "kriswallsmith/spork": "<=0.2",
+                "twig/twig": "<1.20"
+            },
+            "require-dev": {
+                "kriswallsmith/spork": "~0.3",
+                "patchwork/jsqueeze": "~1.0",
+                "symfony/class-loader": "~2.3|~3.0",
+                "symfony/css-selector": "~2.3|~3.0",
+                "symfony/dom-crawler": "~2.3|~3.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0"
+            },
+            "suggest": {
+                "kriswallsmith/spork": "to be able to dump assets in parallel",
+                "symfony/twig-bundle": "to use the Twig integration"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\AsseticBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Integrates Assetic into Symfony2",
+            "homepage": "https://github.com/symfony/AsseticBundle",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "time": "2015-12-28 13:12:39"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2942,16 +3245,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "65ca9e4fbdb34f6d463ef77898ca583b101a4162"
+                "reference": "e7e1d01fe103de78bca6fbf7f6f4acf64482d63c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/65ca9e4fbdb34f6d463ef77898ca583b101a4162",
-                "reference": "65ca9e4fbdb34f6d463ef77898ca583b101a4162",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e7e1d01fe103de78bca6fbf7f6f4acf64482d63c",
+                "reference": "e7e1d01fe103de78bca6fbf7f6f4acf64482d63c",
                 "shasum": ""
             },
             "require": {
@@ -2964,7 +3267,7 @@
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.0",
                 "symfony/polyfill-util": "~1.0",
-                "twig/twig": "~1.23|~2.0"
+                "twig/twig": "~1.26|~2.0"
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0",
@@ -3033,6 +3336,7 @@
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection-docblock": "^3.0",
                 "predis/predis": "~1.0",
+                "symfony/phpunit-bridge": "~3.2",
                 "symfony/polyfill-apcu": "~1.1",
                 "symfony/security-acl": "~2.8|~3.0"
             },
@@ -3078,20 +3382,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-09-03 15:28:43"
+            "time": "2016-10-03 19:01:14"
         },
         {
             "name": "twig/extensions",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig-extensions.git",
-                "reference": "449e3c8a9ffad7c2479c7864557275a32b037499"
+                "reference": "531eaf4b9ab778b1d7cdd10d40fc6aa74729dfee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/449e3c8a9ffad7c2479c7864557275a32b037499",
-                "reference": "449e3c8a9ffad7c2479c7864557275a32b037499",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/531eaf4b9ab778b1d7cdd10d40fc6aa74729dfee",
+                "reference": "531eaf4b9ab778b1d7cdd10d40fc6aa74729dfee",
                 "shasum": ""
             },
             "require": {
@@ -3106,7 +3410,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -3130,20 +3434,20 @@
                 "i18n",
                 "text"
             ],
-            "time": "2015-08-22 16:38:35"
+            "time": "2016-09-22 16:50:57"
         },
         {
             "name": "twig/twig",
-            "version": "v1.25.0",
+            "version": "v1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
-                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
                 "shasum": ""
             },
             "require": {
@@ -3156,7 +3460,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.25-dev"
+                    "dev-master": "1.26-dev"
                 }
             },
             "autoload": {
@@ -3191,7 +3495,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-09-21 23:05:12"
+            "time": "2016-10-05 18:57:41"
         },
         {
             "name": "vich/uploader-bundle",
@@ -3424,16 +3728,16 @@
     "packages-dev": [
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.0.8",
+            "version": "v3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "3c20d16512f37d2be159eca0411b99a141b90fa4"
+                "reference": "b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/3c20d16512f37d2be159eca0411b99a141b90fa4",
-                "reference": "3c20d16512f37d2be159eca0411b99a141b90fa4",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c",
+                "reference": "b9be7f1b3b2e8bcfc1debefc901b71da923a5e5c",
                 "shasum": ""
             },
             "require": {
@@ -3472,11 +3776,11 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2016-09-06 01:30:19"
+            "time": "2016-10-10 14:17:42"
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",

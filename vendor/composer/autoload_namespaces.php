@@ -13,6 +13,7 @@ return array(
     'PUGX\\MultiUserBundle' => array($vendorDir . '/pugx/multi-user-bundle'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
+    'JSqueeze' => array($vendorDir . '/patchwork/jsqueeze/class'),
     'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/lib'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
@@ -21,4 +22,5 @@ return array(
     'Doctrine\\Common\\Collections\\' => array($vendorDir . '/doctrine/collections/lib'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Behat\\Transliterator' => array($vendorDir . '/behat/transliterator/src'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

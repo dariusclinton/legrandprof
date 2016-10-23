@@ -214,7 +214,7 @@
                                     {% if prof.image is not null %}
                                         <img src="{{ asset(prof.image.webPath) }}">
                                     {% else %}
-                                        <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                        <img src="{{ asset('uploads/profils/default.png') }}">
                                     {% endif %}
                                 </li>
                                 <li class="divider"></li>
@@ -273,7 +273,7 @@
                                 {% if prof.image is not null %}
                                     <img src="{{ asset(prof.image.webPath) }}">
                                 {% else %}
-                                    <img src="{{ asset('uploads/profils/default.jpg') }}">
+                                    <img src="{{ asset('uploads/profils/default.png') }}">
                                 {% endif %}
                                 <div class="caption">
                                     <h4 class="heading mt-0 text-primary uppercase">{{ prof.prenoms ~ " "~ prof.nom | upper }}</h4>

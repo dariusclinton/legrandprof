@@ -18,6 +18,7 @@ return array(
     'Symfony\\Component\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Component'),
     'Symfony\\Bundle\\SwiftmailerBundle\\' => array($vendorDir . '/symfony/swiftmailer-bundle'),
     'Symfony\\Bundle\\MonologBundle\\' => array($vendorDir . '/symfony/monolog-bundle'),
+    'Symfony\\Bundle\\AsseticBundle\\' => array($vendorDir . '/symfony/assetic-bundle'),
     'Symfony\\Bundle\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bundle'),
     'Symfony\\Bridge\\Twig\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Twig'),
     'Symfony\\Bridge\\Swiftmailer\\' => array($vendorDir . '/symfony/symfony/src/Symfony/Bridge/Swiftmailer'),
@@ -38,6 +39,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Leafo\\ScssPhp\\' => array($vendorDir . '/leafo/scssphp/src'),
     'Knp\\Menu\\' => array($vendorDir . '/knplabs/knp-menu/src/Knp/Menu'),
     'Knp\\Bundle\\MenuBundle\\' => array($vendorDir . '/knplabs/knp-menu-bundle'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
@@ -49,6 +51,7 @@ return array(
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
     'Doctrine\\Bundle\\DoctrineCacheBundle\\' => array($vendorDir . '/doctrine/doctrine-cache-bundle'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
+    'CoreSphere\\ConsoleBundle\\' => array($vendorDir . '/coresphere/console-bundle'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
     '' => array($baseDir . '/src'),
 );

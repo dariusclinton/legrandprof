@@ -77,12 +77,12 @@ class ReservationController extends Controller
 //                    }
                     $em->persist($reservationEns);
                 }
-                $facture = new Facture();
-                $facture->setMontant($prixReservation);
-                $facture->setReservation($reservation);
-                $reservation->addFacture($facture);
+//                $facture = new Facture();
+//                $facture->setMontant($prixReservation);
+//                $facture->setReservation($reservation);
+//                $reservation->addFacture($facture);
                 $em->persist($reservation);
-                $em->persist($facture);
+//                $em->persist($facture);
                 $em->flush();
                 $session->remove('panier');
                 $session->remove('step');
