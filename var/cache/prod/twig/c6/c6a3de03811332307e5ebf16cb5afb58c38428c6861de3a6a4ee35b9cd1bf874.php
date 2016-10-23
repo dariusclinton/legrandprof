@@ -59,7 +59,7 @@ class __TwigTemplate_313c4460d703d5e99a9c4994ef83120af41b23dffc12071ad245e28ebaf
         echo "</div>
     <div class=\"col-md-4\">";
         // line 17
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "cours", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "cours", array()), 'widget', array("attr" => array("class" => "select2-multi form-control ")));
         echo "</div>
     ";
         // line 18
@@ -114,7 +114,7 @@ class __TwigTemplate_313c4460d703d5e99a9c4994ef83120af41b23dffc12071ad245e28ebaf
 </div><br>
 <div class=\"row\">
     <div class=\"col-md-2\">{{ form_label(form.cours, 'Intitulé du cours :', {'label_attr': {}}) }}</div>
-    <div class=\"col-md-4\">{{ form_widget(form.cours, {'attr': {'class':'form-control'}}) }}</div>
+    <div class=\"col-md-4\">{{ form_widget(form.cours, {'attr': {'class':'select2-multi form-control '}}) }}</div>
     {{ form_errors(form.cours) }}
 </div>
 

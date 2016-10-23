@@ -44,12 +44,14 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
     <div class=\"container\">
 
       <ol class=\"breadcrumb-list booking-step\">
-        <li><a href=\"#\">Accueil</a></li>
+        <li><a href=\"";
+        // line 15
+        echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
+        echo "\">Accueil</a></li>
         <li><span>Connexion</span></li>
       </ol>
 
     </div>
-
   </div>
 
   <div class=\"content-wrapper\">
@@ -58,24 +60,24 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
       <div class=\"row\">
         <div class=\"col-md-4 col-md-offset-4\">
           ";
-        // line 28
+        // line 27
         if ((isset($context["error"]) ? $context["error"] : null)) {
-            // line 29
+            // line 28
             echo "            <div class=\"alert alert-danger\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute((isset($context["error"]) ? $context["error"] : null), "messageKey", array()), $this->getAttribute((isset($context["error"]) ? $context["error"] : null), "messageData", array()), "security"), "html", null, true);
             echo "</div>
           ";
         }
-        // line 31
+        // line 30
         echo "
           <!-- Begin # Login Form -->
           <form  action=\"";
-        // line 33
+        // line 32
         echo $this->env->getExtension('routing')->getPath("fos_user_security_check");
         echo "\" method=\"post\" style=\"margin-top:-30px;\">
 
             <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 35
+        // line 34
         echo twig_escape_filter($this->env, (isset($context["csrf_token"]) ? $context["csrf_token"] : null), "html", null, true);
         echo "\" />
 
@@ -88,12 +90,12 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
 
               <div class=\"form-group\"> 
                 <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 45
+        // line 44
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : null), "html", null, true);
-        echo "\" required=\"required\" class=\"form-control\"/>
+        echo "\" required=\"required\" class=\"form-control\" placeholder=\"Entrez votre Email\"/>
               </div>
               <div class=\"form-group\"> 
-                <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" class=\"form-control\"/>
+                <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" class=\"form-control\" placeholder=\"Entrez votre mot de passe\"/>
               </div>
 
               <div class=\"form-group\">
@@ -102,14 +104,14 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
                     <div class=\"checkbox-block fa-checkbox\"> 
                       <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" class=\"checkbox\"/>
                       <label for=\"remember_me\">";
-        // line 56
+        // line 55
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
                     </div>
                   </div>
                   <div class=\"col-xs-6 col-sm-6 col-md-6 text-right\"> 
                     <a href=\"";
-        // line 60
+        // line 59
         echo $this->env->getExtension('routing')->getPath("fos_user_resetting_request");
         echo "\" class=\"btn btn-link\">Mot de passe oublié ?</a>
                   </div>
@@ -123,13 +125,13 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
               <div class=\"row gap-10\">
                 <div class=\"col-xs-6 col-sm-6 mb-10\">
                   <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"";
-        // line 71
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "\" class=\"btn btn-primary btn-block\"/>
                 </div>
                 <div class=\"col-xs-6 col-sm-6 mb-10\">
                   <a href=\"";
-        // line 74
+        // line 73
         echo $this->env->getExtension('routing')->getPath("lgp_core_homepage");
         echo "\" class=\"btn btn-primary btn-block btn-inverse\">Annuler</a>
                 </div>
@@ -137,11 +139,11 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
               <div class=\"text-center\">
                 Pas de compte ? Inscription <br>
                 <a href=\"";
-        // line 79
+        // line 78
         echo $this->env->getExtension('routing')->getPath("lgp_parent_registration");
         echo "\" class=\"btn btn-link\">Je suis Parent/Apprenant</a> ou
                 <a href=\"";
-        // line 80
+        // line 79
         echo $this->env->getExtension('routing')->getPath("lgp_prof_registration");
         echo "\" class=\"btn btn-link\">Je suis Prof</a>
               </div>
@@ -171,7 +173,7 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
 
     public function getDebugInfo()
     {
-        return array (  145 => 80,  141 => 79,  133 => 74,  127 => 71,  113 => 60,  106 => 56,  92 => 45,  79 => 35,  74 => 33,  70 => 31,  64 => 29,  62 => 28,  42 => 10,  39 => 9,  32 => 4,  29 => 3,  11 => 1,);
+        return array (  147 => 79,  143 => 78,  135 => 73,  129 => 70,  115 => 59,  108 => 55,  94 => 44,  81 => 34,  76 => 32,  72 => 30,  66 => 28,  64 => 27,  49 => 15,  42 => 10,  39 => 9,  32 => 4,  29 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -190,12 +192,11 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
     <div class=\"container\">
 
       <ol class=\"breadcrumb-list booking-step\">
-        <li><a href=\"#\">Accueil</a></li>
+        <li><a href=\"{{ path('lgp_core_homepage') }}\">Accueil</a></li>
         <li><span>Connexion</span></li>
       </ol>
 
     </div>
-
   </div>
 
   <div class=\"content-wrapper\">
@@ -220,10 +221,10 @@ class __TwigTemplate_6829c49ec8c980e5f734d9497915db6244be652064ef6839ee132e28910
               </div>
 
               <div class=\"form-group\"> 
-                <input type=\"text\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" required=\"required\" class=\"form-control\"/>
+                <input type=\"text\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" required=\"required\" class=\"form-control\" placeholder=\"Entrez votre Email\"/>
               </div>
               <div class=\"form-group\"> 
-                <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" class=\"form-control\"/>
+                <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" class=\"form-control\" placeholder=\"Entrez votre mot de passe\"/>
               </div>
 
               <div class=\"form-group\">

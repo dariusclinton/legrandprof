@@ -165,14 +165,14 @@ class __TwigTemplate_60fb8dbe470506bdd326b98db7f0d28a8b67310816001e29000b0883d26
                     <div class=\"sorting-wrappper\">
 
                         <div class=\"sorting-header\">
-                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de ";
+                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de <span style=\"color:orangered;\">";
         // line 194
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : null), "ville", array()), "html", null, true);
-        echo "</h3>
-                            <p class=\"sorting-lead\">";
+        echo "</span></h3>
+                            <p class=\"sorting-lead\"><strong>";
         // line 195
         echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : null), "matieres_profs", array())), "html", null, true);
-        echo " Grands profs trouvés</p>
+        echo "</strong> Grand (s) profs trouvés</p>
                         </div>
 
                         ";
@@ -657,8 +657,8 @@ class __TwigTemplate_60fb8dbe470506bdd326b98db7f0d28a8b67310816001e29000b0883d26
                     <div class=\"sorting-wrappper\">
 
                         <div class=\"sorting-header\">
-                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de {{ params.ville }}</h3>
-                            <p class=\"sorting-lead\">{{ params.matieres_profs | length }} Grands profs trouvés</p>
+                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de <span style=\"color:orangered;\">{{ params.ville }}</span></h3>
+                            <p class=\"sorting-lead\"><strong>{{ params.matieres_profs | length }}</strong> Grand (s) profs trouvés</p>
                         </div>
 
                         {#   <div class=\"sorting-content\">

@@ -87,7 +87,7 @@ class __TwigTemplate_d18df7d18504c630bb8990b6b8e6ecaf8cf4471dd84e515bded03e19049
 ";
         // line 80
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 112
+        // line 113
         echo "</body>
 </html>";
     }
@@ -237,63 +237,67 @@ class __TwigTemplate_d18df7d18504c630bb8990b6b8e6ecaf8cf4471dd84e515bded03e19049
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 93
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/jquery.responsivegrid.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/select2.full.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 94
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/ion.rangeSlider.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/jquery.responsivegrid.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 95
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/slick.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/ion.rangeSlider.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 96
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/validator.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/slick.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 97
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/jquery.raty.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/validator.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 98
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/customs.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/jquery.raty.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
         // line 99
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/customs.js"), "html", null, true);
+        echo "\"></script>
+    <script type=\"text/javascript\" src=\"";
+        // line 100
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/user.js"), "html", null, true);
         echo "\"></script>
 
     <script type=\"text/javascript\" src=\"";
-        // line 101
+        // line 102
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/addToCart.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 102
+        // line 103
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/search.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 103
+        // line 104
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/loadData.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 104
+        // line 105
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fosjsrouting/js/router.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 105
+        // line 106
         echo $this->env->getExtension('routing')->getPath("fos_js_routing_js", array("callback" => "fos.Router.setData"));
         echo "\"></script>
 
     ";
-        // line 107
+        // line 108
         if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
-            // line 108
+            // line 109
             echo "    <script type=\"text/javascript\" src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/avis.js"), "html", null, true);
             echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-            // line 109
+            // line 110
             echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/messages.js"), "html", null, true);
             echo "\"></script>
     ";
@@ -312,7 +316,7 @@ class __TwigTemplate_d18df7d18504c630bb8990b6b8e6ecaf8cf4471dd84e515bded03e19049
 
     public function getDebugInfo()
     {
-        return array (  297 => 109,  292 => 108,  290 => 107,  285 => 105,  281 => 104,  277 => 103,  273 => 102,  269 => 101,  264 => 99,  260 => 98,  256 => 97,  252 => 96,  248 => 95,  244 => 94,  240 => 93,  236 => 92,  232 => 91,  228 => 90,  223 => 88,  218 => 86,  214 => 85,  209 => 83,  205 => 82,  200 => 81,  197 => 80,  191 => 67,  185 => 62,  179 => 52,  172 => 49,  169 => 47,  163 => 40,  150 => 30,  146 => 29,  142 => 28,  138 => 27,  134 => 26,  130 => 25,  125 => 23,  121 => 22,  117 => 21,  113 => 20,  108 => 18,  105 => 17,  102 => 16,  96 => 8,  91 => 112,  89 => 80,  76 => 70,  72 => 68,  70 => 67,  64 => 63,  62 => 62,  57 => 60,  50 => 56,  46 => 54,  44 => 16,  33 => 8,  24 => 1,);
+        return array (  301 => 110,  296 => 109,  294 => 108,  289 => 106,  285 => 105,  281 => 104,  277 => 103,  273 => 102,  268 => 100,  264 => 99,  260 => 98,  256 => 97,  252 => 96,  248 => 95,  244 => 94,  240 => 93,  236 => 92,  232 => 91,  228 => 90,  223 => 88,  218 => 86,  214 => 85,  209 => 83,  205 => 82,  200 => 81,  197 => 80,  191 => 67,  185 => 62,  179 => 52,  172 => 49,  169 => 47,  163 => 40,  150 => 30,  146 => 29,  142 => 28,  138 => 27,  134 => 26,  130 => 25,  125 => 23,  121 => 22,  117 => 21,  113 => 20,  108 => 18,  105 => 17,  102 => 16,  96 => 8,  91 => 113,  89 => 80,  76 => 70,  72 => 68,  70 => 67,  64 => 63,  62 => 62,  57 => 60,  50 => 56,  46 => 54,  44 => 16,  33 => 8,  24 => 1,);
     }
 
     public function getSource()
@@ -409,6 +413,7 @@ class __TwigTemplate_d18df7d18504c630bb8990b6b8e6ecaf8cf4471dd84e515bded03e19049
     <script type=\"text/javascript\" src=\"{{ asset('js/SmoothScroll.min.js') }}\"></script>
     <script type=\"text/javascript\" src=\"{{ asset('js/jquery.slicknav.min.js') }}\"></script>
     <script type=\"text/javascript\" src=\"{{ asset('js/jquery.placeholder.min.js') }}\"></script>
+    <script type=\"text/javascript\" src=\"{{ asset('js/select2.full.js') }}\"></script>
     <script type=\"text/javascript\" src=\"{{ asset('js/jquery.responsivegrid.js') }}\"></script>
     <script type=\"text/javascript\" src=\"{{ asset('js/ion.rangeSlider.min.js') }}\"></script>
     <script type=\"text/javascript\" src=\"{{ asset('js/slick.min.js') }}\"></script>

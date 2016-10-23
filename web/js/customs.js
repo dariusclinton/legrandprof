@@ -13,7 +13,7 @@ $(function () {
     /**
      * introLoader - Preloader
      */
-    $("#introLoader").introLoader({
+    /*$("#introLoader").introLoader({
         animation: {
             name: 'gifLoader',
             options: {
@@ -25,12 +25,12 @@ $(function () {
             }
         }
     });
-
+    */
 
 
     /**
      * Sticky Header
-     */
+     
     $(".container-wrapper").waypoint(function () {
         $(".navbar").toggleClass("navbar-sticky-function");
         $(".navbar").toggleClass("navbar-sticky");
@@ -167,7 +167,7 @@ $(function () {
 
     /**
      * select2 - custom select
-     */
+     
     $(".select2-single").select2({allowClear: true});
     $(".select2-no-search").select2({dropdownCssClass: 'select2-no-search', allowClear: true});
     $(".select2-multi").select2({});
@@ -321,7 +321,7 @@ $(function () {
 
     /**
      * readmore - read more/less
-     */
+    
     $('.read-more-div').readmore({
         speed: 220,
         moreLink: '<a href="#" class="read-more-div-open">Read More</a>',

@@ -145,6 +145,8 @@ class __TwigTemplate_6379f9b2d32e2054b2da70ae7a0e3341703b38b43447741e56f0480b000
         </div>
     </div>
   
-{% endblock %}";
+{% endblock %}
+
+";
     }
 }

@@ -22,20 +22,20 @@ class __TwigTemplate_31765102fcf3c4990c59ad7cb00b08fcab22586ae654c50c8a221f5b060
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cca3228d93f8d26942165ded9b61ae5320d8a22fbbeb6940acff7434e9125269 = $this->env->getExtension("native_profiler");
-        $__internal_cca3228d93f8d26942165ded9b61ae5320d8a22fbbeb6940acff7434e9125269->enter($__internal_cca3228d93f8d26942165ded9b61ae5320d8a22fbbeb6940acff7434e9125269_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search_city.html.twig"));
+        $__internal_23a73062e25bd38cd0b907c50f142f08e9862868fcedb265808e4912eca68505 = $this->env->getExtension("native_profiler");
+        $__internal_23a73062e25bd38cd0b907c50f142f08e9862868fcedb265808e4912eca68505->enter($__internal_23a73062e25bd38cd0b907c50f142f08e9862868fcedb265808e4912eca68505_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:search_city.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_cca3228d93f8d26942165ded9b61ae5320d8a22fbbeb6940acff7434e9125269->leave($__internal_cca3228d93f8d26942165ded9b61ae5320d8a22fbbeb6940acff7434e9125269_prof);
+        $__internal_23a73062e25bd38cd0b907c50f142f08e9862868fcedb265808e4912eca68505->leave($__internal_23a73062e25bd38cd0b907c50f142f08e9862868fcedb265808e4912eca68505_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_97c65efda7f6a745405b47374d839181fb6107f177809fca32ea47c1a9bd488f = $this->env->getExtension("native_profiler");
-        $__internal_97c65efda7f6a745405b47374d839181fb6107f177809fca32ea47c1a9bd488f->enter($__internal_97c65efda7f6a745405b47374d839181fb6107f177809fca32ea47c1a9bd488f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_1d1006adfe8304da6dfaea69d5d295be5848a246051aee21d5286b3f92ed3475 = $this->env->getExtension("native_profiler");
+        $__internal_1d1006adfe8304da6dfaea69d5d295be5848a246051aee21d5286b3f92ed3475->enter($__internal_1d1006adfe8304da6dfaea69d5d295be5848a246051aee21d5286b3f92ed3475_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    ";
@@ -45,15 +45,15 @@ class __TwigTemplate_31765102fcf3c4990c59ad7cb00b08fcab22586ae654c50c8a221f5b060
         echo "
 ";
         
-        $__internal_97c65efda7f6a745405b47374d839181fb6107f177809fca32ea47c1a9bd488f->leave($__internal_97c65efda7f6a745405b47374d839181fb6107f177809fca32ea47c1a9bd488f_prof);
+        $__internal_1d1006adfe8304da6dfaea69d5d295be5848a246051aee21d5286b3f92ed3475->leave($__internal_1d1006adfe8304da6dfaea69d5d295be5848a246051aee21d5286b3f92ed3475_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_62a03e323431c8a03aec5fcdf86f4aea7126296839cdf966c18a1e27f01c33f5 = $this->env->getExtension("native_profiler");
-        $__internal_62a03e323431c8a03aec5fcdf86f4aea7126296839cdf966c18a1e27f01c33f5->enter($__internal_62a03e323431c8a03aec5fcdf86f4aea7126296839cdf966c18a1e27f01c33f5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6ad7110d9568656e7114cb6670bc746133d5a9ee72b67bbad4d21a1169d062a6 = $this->env->getExtension("native_profiler");
+        $__internal_6ad7110d9568656e7114cb6670bc746133d5a9ee72b67bbad4d21a1169d062a6->enter($__internal_6ad7110d9568656e7114cb6670bc746133d5a9ee72b67bbad4d21a1169d062a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "
@@ -180,14 +180,14 @@ class __TwigTemplate_31765102fcf3c4990c59ad7cb00b08fcab22586ae654c50c8a221f5b060
                     <div class=\"sorting-wrappper\">
 
                         <div class=\"sorting-header\">
-                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de ";
+                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de <span style=\"color:orangered;\">";
         // line 194
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "ville", array()), "html", null, true);
-        echo "</h3>
-                            <p class=\"sorting-lead\">";
+        echo "</span></h3>
+                            <p class=\"sorting-lead\"><strong>";
         // line 195
         echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "matieres_profs", array())), "html", null, true);
-        echo " Grands profs trouvés</p>
+        echo "</strong> Grand (s) profs trouvés</p>
                         </div>
 
                         ";
@@ -461,7 +461,7 @@ class __TwigTemplate_31765102fcf3c4990c59ad7cb00b08fcab22586ae654c50c8a221f5b060
     </div>
 ";
         
-        $__internal_62a03e323431c8a03aec5fcdf86f4aea7126296839cdf966c18a1e27f01c33f5->leave($__internal_62a03e323431c8a03aec5fcdf86f4aea7126296839cdf966c18a1e27f01c33f5_prof);
+        $__internal_6ad7110d9568656e7114cb6670bc746133d5a9ee72b67bbad4d21a1169d062a6->leave($__internal_6ad7110d9568656e7114cb6670bc746133d5a9ee72b67bbad4d21a1169d062a6_prof);
 
     }
 
@@ -675,8 +675,8 @@ class __TwigTemplate_31765102fcf3c4990c59ad7cb00b08fcab22586ae654c50c8a221f5b060
                     <div class=\"sorting-wrappper\">
 
                         <div class=\"sorting-header\">
-                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de {{ params.ville }}</h3>
-                            <p class=\"sorting-lead\">{{ params.matieres_profs | length }} Grands profs trouvés</p>
+                            <h3 class=\"sorting-title uppercase\">Des Grands dans la ville de <span style=\"color:orangered;\">{{ params.ville }}</span></h3>
+                            <p class=\"sorting-lead\"><strong>{{ params.matieres_profs | length }}</strong> Grand (s) profs trouvés</p>
                         </div>
 
                         {#   <div class=\"sorting-content\">

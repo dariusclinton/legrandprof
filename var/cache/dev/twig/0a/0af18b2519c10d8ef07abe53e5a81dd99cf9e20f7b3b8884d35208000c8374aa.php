@@ -15,8 +15,8 @@ class __TwigTemplate_f08931f2d57aeef9f478048c163460d0205a8a65169a5c0356336dd475a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fa3ddf93e9bfb9f9d5e21a07e488147954b4d84d936d24721c7d58ad7dd3daf4 = $this->env->getExtension("native_profiler");
-        $__internal_fa3ddf93e9bfb9f9d5e21a07e488147954b4d84d936d24721c7d58ad7dd3daf4->enter($__internal_fa3ddf93e9bfb9f9d5e21a07e488147954b4d84d936d24721c7d58ad7dd3daf4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Cours:formulaire.html.twig"));
+        $__internal_4347c1c9718c37bb1af2a8471cda9f0ad7ff557690de7a2153163ffa9201684c = $this->env->getExtension("native_profiler");
+        $__internal_4347c1c9718c37bb1af2a8471cda9f0ad7ff557690de7a2153163ffa9201684c->enter($__internal_4347c1c9718c37bb1af2a8471cda9f0ad7ff557690de7a2153163ffa9201684c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Cours:formulaire.html.twig"));
 
         // line 1
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
@@ -62,7 +62,7 @@ class __TwigTemplate_f08931f2d57aeef9f478048c163460d0205a8a65169a5c0356336dd475a
         echo "</div>
     <div class=\"col-md-4\">";
         // line 17
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "cours", array()), 'widget', array("attr" => array("class" => "form-control")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "cours", array()), 'widget', array("attr" => array("class" => "select2-multi form-control ")));
         echo "</div>
     ";
         // line 18
@@ -83,7 +83,7 @@ class __TwigTemplate_f08931f2d57aeef9f478048c163460d0205a8a65169a5c0356336dd475a
         // line 27
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         
-        $__internal_fa3ddf93e9bfb9f9d5e21a07e488147954b4d84d936d24721c7d58ad7dd3daf4->leave($__internal_fa3ddf93e9bfb9f9d5e21a07e488147954b4d84d936d24721c7d58ad7dd3daf4_prof);
+        $__internal_4347c1c9718c37bb1af2a8471cda9f0ad7ff557690de7a2153163ffa9201684c->leave($__internal_4347c1c9718c37bb1af2a8471cda9f0ad7ff557690de7a2153163ffa9201684c_prof);
 
     }
 
@@ -120,7 +120,7 @@ class __TwigTemplate_f08931f2d57aeef9f478048c163460d0205a8a65169a5c0356336dd475a
 </div><br>
 <div class=\"row\">
     <div class=\"col-md-2\">{{ form_label(form.cours, 'Intitulé du cours :', {'label_attr': {}}) }}</div>
-    <div class=\"col-md-4\">{{ form_widget(form.cours, {'attr': {'class':'form-control'}}) }}</div>
+    <div class=\"col-md-4\">{{ form_widget(form.cours, {'attr': {'class':'select2-multi form-control '}}) }}</div>
     {{ form_errors(form.cours) }}
 </div>
 

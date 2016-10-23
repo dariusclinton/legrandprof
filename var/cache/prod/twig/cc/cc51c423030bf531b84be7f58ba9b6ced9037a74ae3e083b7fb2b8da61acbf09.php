@@ -1,6 +1,6 @@
 <?php
 
-/* FOSUserBundle:ChangePassword:change_password_content.html.twig */
+/* @FOSUser/ChangePassword/change_password_content.html.twig */
 class __TwigTemplate_40854820f07c4db65d4ca543a5daa4e5ef2f782870fb628510cb71a98db587c6 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -40,7 +40,7 @@ class __TwigTemplate_40854820f07c4db65d4ca543a5daa4e5ef2f782870fb628510cb71a98db
 
     public function getTemplateName()
     {
-        return "FOSUserBundle:ChangePassword:change_password_content.html.twig";
+        return "@FOSUser/ChangePassword/change_password_content.html.twig";
     }
 
     public function isTraitable()
