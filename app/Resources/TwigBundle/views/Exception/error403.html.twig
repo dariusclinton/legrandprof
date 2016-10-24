@@ -1,0 +1,24 @@
+{% extends 'LGPUserBundle::layout.html.twig' %}
+
+{% block title %}
+    403 - {{ parent() }}
+{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="content-wrapper">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1>Oups erreur 403 !!! <small>Vous n'avez pas les droits d'accès à cette ressource !!!</small></h1>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock fos_user_content %}
