@@ -7,28 +7,30 @@ $(function () {
         $.ajax({
             method: "POST",
             url: Routing.generate('lgp_course_update_classe', {'profId': profId, 'coursId': coursId}),
-            data: {}
-        }).success(function (answer, status) {
-            window.classes = [];
-            window.prix = [];
-            for (i = 0; i < answer.length; i++) {
-                classes.push(answer[i].classe);
-                prix.push(answer[i].prix);
-            }
-            $('#classes option').each(function () {
-                if ($(this).val() != '' && !$(this).attr('disabled')) {
-                    $(this).remove();
+            data: {},
+            success: function (answer, status) {
+                window.classes = [];
+                window.prix = [];
+                for (i = 0; i < answer.length; i++) {
+                    classes.push(answer[i].classe);
+                    prix.push(answer[i].prix);
                 }
-            });
-            for (i = 0; i < classes.length; i++) {
-                $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
-            }
+                $('#classes option').each(function () {
+                    if ($(this).val() != '' && !$(this).attr('disabled')) {
+                        $(this).remove();
+                    }
+                });
+                for (i = 0; i < classes.length; i++) {
+                    $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
+                }
 
-            updatePrix();
-            updatePrixTotal();
-            $("#loading-classe").css({'display': 'none'});
-        }).error(function (answer, status) {
-            console.log(answer + "   " + status);
+                updatePrix();
+                updatePrixTotal();
+                $("#loading-classe").css({'display': 'none'});
+            },
+            error: function (answer, status) {
+                console.log(answer + "   " + status);
+            }
         });
     }
 
@@ -205,7 +207,7 @@ $(function () {
             error: function (answer) {
                 console.log(answer);
                 $("#myModal").css("display", "none");
-                alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!')
+                alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!');
             }
         })
     });

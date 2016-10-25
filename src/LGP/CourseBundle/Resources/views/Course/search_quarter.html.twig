@@ -1,0 +1,394 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ params.quartier_name ~"-"~ params.ville }} - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <h1 class="hero-title">Grands Profs dans le quartier {{ params.quartier_name }} </h1>
+                    <ol class="breadcrumb-list">
+                        <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
+                        <li><a href="{{ path('lgp_course_find') }}">Profs</a></li>
+                        <li><span> {{ params.quartier_name }} - {{ params.ville }}</span></li>
+                    </ol>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-3">
+
+                    <aside class="sidebar with-filter">
+
+                        <div class="sidebar-search-wrapper bg-light-2">
+
+                            <div class="">
+                                <h4>Affinez votre recherche </h4>
+                            </div>
+
+                            <div class="sidebar-search-content">
+                            </div>
+                            <div id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse1">Par cours et quartier</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:course_quarter_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse2">Par nom du prof</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:prof_name_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse3">Par ville</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:city_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse4">Par categorie de cours</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:category_form.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse5">Par quartier</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:quarter_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse6">Par cours et ville</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse6" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:course_city_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {#
+                             BLOCK  AFFINEZ RECHERCHE
+                          <div class="sidebar-header clearfix">
+                             <h4>Affinez</h4>
+                             <a href="#" class="sidebar-reset-filter"><i class="fa fa-times"></i> Annuler</a>
+                         </div> #}
+
+                        {#  <div class="sidebar-inner">
+
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Entrez un nom</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="sidebar-mini-search">
+                                         <div class="input-group">
+                                             <input type="text" class="form-control" placeholder="Qui ?...">
+                                             <span class="input-group-btn">
+                                                 <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                             </span>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+
+
+                             <div class="clear"></div>
+
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Affinez par note</h6>
+                                 <div class="sidebar-module-inner">
+                                     <input id="star_range" />
+                                 </div>
+                             </div>
+
+                             <div class="clear"></div>
+
+                             <div class="sidebar-module">
+
+                                 <h6 class="sidebar-title">Affinez par quartier</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="checkbox-block">
+                                         <input id="ville-1" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-1">Akwa <span class="checkbox-count">(90)</span></label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="ville-2" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-2">Bonapriso <span class="checkbox-count">(25)</span></label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="ville-3" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="ville-3">Logpom <span class="checkbox-count">(15)</span></label>
+                                     </div>
+                                     <div class="ville-block">
+                                         <input id="property_type-4" name="ville" type="checkbox" class="checkbox"/>
+                                         <label class="" for="property_type-4">Bonamoussadi<span class="checkbox-count">(20)</span></label>
+                                     </div>
+                                     <div class="more-less-wrapper">
+
+                                         <div id="property_type_more_less" class="collapse">
+                                             <div class="more-less-inner">
+
+                                                 <div class="checkbox-block">
+                                                     <input id="ville-6" name="ville" type="checkbox" class="checkbox"/>
+                                                     <label class="" for="ville-6">Bonaberi <span class="checkbox-count">(25)</span></label>
+                                                 </div>
+
+                                             </div>
+                                         </div>
+                                         <button class="btn btn-more-less collapsed" data-toggle="collapse" data-target="#property_type_more_less">Montrer plus</button>
+
+                                     </div>
+
+                                 </div>
+                             </div>
+
+                             <div class="clear"></div>
+
+                             <div class="sidebar-module">
+                                 <h6 class="sidebar-title">Affinez par niveau</h6>
+                                 <div class="sidebar-module-inner">
+                                     <div class="checkbox-block">
+                                         <input id="niveau-1" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-1">Primaire</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-2" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-2">Collège</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-3" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-3">Seconde</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-4" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-4">Première</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-5" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-5">Terminale</label>
+                                     </div>
+                                     <div class="checkbox-block">
+                                         <input id="niveau-6" name="niveau" type="checkbox" class="checkbox"/>
+                                         <label class="" for="niveau-6">Supérieur</label>
+                                     </div>
+
+                                 </div>
+                             </div>
+
+
+                         </div> #}
+
+                    </aside>
+
+
+                </div>
+
+                <div class="col-sm-8 col-md-9">
+
+                    <div class="sorting-wrappper">
+
+                        <div class="sorting-header">
+                            <h3 class="sorting-title uppercase">
+                                Des Grands profs dans le quartier <span
+                                        style="color:orangered;">{{ params.quartier_name }} - {{ params.ville }}</span>
+                            </h3>
+                            <p class="sorting-lead"><strong>{{ params.matieres_profs | length }}</strong> Grand (s)
+                                profs trouvés</p>
+                        </div>
+
+                        {#   <div class="sorting-content">
+
+                              <div class="row">
+
+                                  <div class="col-sm-12 col-md-8">
+                                      <div class="sort-by-wrapper">
+                                          <label class="sorting-label">Sort by: </label>
+                                          <div class="sorting-middle-holder">
+                                              <ul class="sort-by">
+                                                  <li class="active up"><a href="#">Note <i class="fa fa-long-arrow-down"></i></a></li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="col-sm-12 col-md-4">
+                                      <div class="sort-by-wrapper mt pull-right pull-left-sm mt-10-sm">
+                                          <label class="sorting-label">Voir : </label>
+                                          <div class="sorting-middle-holder">
+                                              <a href="#" class="btn btn-sorting active"><i class="fa fa-th-list"></i></a>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                              </div>
+
+                          </div> #}
+
+                    </div>
+
+                    <div class="package-list-item-wrapper on-page-result-page">
+
+                        {% if params.matieres_profs | length != 0 %}
+
+                            {% for enseigne in params.matieres_profs %}
+                                <div class="package-list-item clearfix">
+                                    <div class="image">
+                                        {% if not enseigne.prof.image %}
+                                            <img src="{{ asset('uploads/profils/default.png') }}" alt="Tour Package"/>
+
+                                        {% else %}
+                                            <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof "/>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="content">
+                                        <h5>{{ (enseigne.prof.prenoms ~"  "~ enseigne.prof.nom) | upper }}
+                                            <button class="btn"><i class="fa fa-heart-o"></i></button>
+                                        </h5>
+                                        <div class="row gap-10">
+                                            <div class="col-sm-12 col-md-9">
+
+                                                <p class="line18"> {{ enseigne.prof.presentation }} </p>
+                                                <br>
+                                                <ul class="list-info">
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span
+                                                                class="font600">Position: </span>
+                                                        {% if enseigne.prof.ville is not null %}
+                                                            {{ enseigne.prof.ville | upper }}
+                                                        {% else %}
+                                                            NON DEFINIE
+                                                        {% endif %}
+                                                    </li>
+
+                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span
+                                                                class="font600">Cours :</span>
+                                                        {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
+                                                            {% if loop.index != loop.last %}
+                                                                <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                                                   title="">{{ ens_cours.cours.intitule }}</a> -
+                                                            {% else %}
+                                                                <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                                                   title="">{{ ens_cours.cours.intitule }}</a>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 text-right text-left-sm">
+                                                {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
+                                                {% for avis in  allAvis %}
+                                                    {% set avisSum = avisSum + avis.note %}
+                                                {% endfor %}
+                                                {% if allAvis | length != 0 %}
+                                                    {% set avisRange = avisSum / allAvis | length %}
+                                                {% else %}
+                                                    {% set avisRange = 0 %}
+                                                {% endif %}
+                                                <div class="rating-wrapper">
+                                                    <div class="raty-wrapper">
+                                                        <div>
+                                                            {% for i in range(1,5) %}
+                                                                {% if (avisRange | round) >= i %}
+                                                                    <img alt=" {{ i }} "
+                                                                         src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                {% else %}
+                                                                    <img alt=" {{ i }} "
+                                                                         src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                                         title="">
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        <span> / {{ allAvis | length }} avis</span>
+                                                    </div>
+                                                </div>
+                                                {% set minPrice %}
+                                                    {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
+                                                {% endset %}
+                                                <div class="price">{{ minPrice }} Fcfa / Mois <br> Prix minimal</div>
+                                                <a href=" {{ path('lgp_course_profile_prof', {'slug':enseigne.prof.slug}) }} "
+                                                   class="btn btn-primary btn-sm">Voir Profil</a>
+                                                <a href=" {{ path('lgp_reservation_detail',{'slug': enseigne.prof.slug}) }} "
+                                                   class="anchor btn btn-primary btn-sm" style="margin-top: 10px;">Réserver
+                                                    un cours</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    {% include('LGPCourseBundle:Pagination:pagination.html.twig') %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -9257,28 +9257,30 @@ $(function () {
         $.ajax({
             method: "POST",
             url: Routing.generate('lgp_course_update_classe', {'profId': profId, 'coursId': coursId}),
-            data: {}
-        }).success(function (answer, status) {
-            window.classes = [];
-            window.prix = [];
-            for (i = 0; i < answer.length; i++) {
-                classes.push(answer[i].classe);
-                prix.push(answer[i].prix);
-            }
-            $('#classes option').each(function () {
-                if ($(this).val() != '' && !$(this).attr('disabled')) {
-                    $(this).remove();
+            data: {},
+            success: function (answer, status) {
+                window.classes = [];
+                window.prix = [];
+                for (i = 0; i < answer.length; i++) {
+                    classes.push(answer[i].classe);
+                    prix.push(answer[i].prix);
                 }
-            });
-            for (i = 0; i < classes.length; i++) {
-                $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
-            }
+                $('#classes option').each(function () {
+                    if ($(this).val() != '' && !$(this).attr('disabled')) {
+                        $(this).remove();
+                    }
+                });
+                for (i = 0; i < classes.length; i++) {
+                    $('#classes').append('<option value="' + i + '">' + classes[i] + '</option>');
+                }
 
-            updatePrix();
-            updatePrixTotal();
-            $("#loading-classe").css({'display': 'none'});
-        }).error(function (answer, status) {
-            console.log(answer + "   " + status);
+                updatePrix();
+                updatePrixTotal();
+                $("#loading-classe").css({'display': 'none'});
+            },
+            error: function (answer, status) {
+                console.log(answer + "   " + status);
+            }
         });
     }
 
@@ -9455,7 +9457,7 @@ $(function () {
             error: function (answer) {
                 console.log(answer);
                 $("#myModal").css("display", "none");
-                alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!')
+                alert('une erreur est survenu sur le serveur! veillez nous contacter svp !!!');
             }
         })
     });
@@ -9512,57 +9514,93 @@ $(function () {
     });*/
 
 });
-$(function() {
+$(function () {
 
-    window.learn = [];
-    
-    $('[data-onload]').each(function() {
-        eval($(this).data('onload'));
-    });
+        window.learn = [];
+        window.profsName = [];
+        window.catNames = [];
 
-    function loadCourses() {
-        learn.splice(0, learn.length);
-        $.ajax({
-            method: "GET",
-            url: Routing.generate('lgp_course_all_intitule'),
-            data: {}
-        }).success(function(answer, status) {
-            for (i = 0; i < answer.length; i++)
-            {
-                learn.push(answer[i].intitule);
-            }
-        }).error(function(answer, status) {
-            alert('error');
-            console.log(answer + "   " + status);
+        $('[data-onload]').each(function () {
+            eval($(this).data('onload'));
         });
+
+        function loadCourses() {
+            learn.splice(0, learn.length);
+            $.ajax({
+                method: "GET",
+                url: Routing.generate('lgp_course_all_intitule'),
+                data: {},
+                success: function (answer, status) {
+                    for (i = 0; i < answer.length; i++) {
+                        learn.push(answer[i].intitule);
+                    }
+                },
+                error: function (answer, status) {
+                    alert('error');
+                    console.log(answer + "   " + status);
+                }
+            });
+        }
+
+        function loadCategoriesNames() {
+            catNames.splice(0, catNames.length);
+            $.ajax({
+                method: "GET",
+                url: Routing.generate('lgp_course_all_categories'),
+                data: {},
+                success: function (answer, status) {
+                    for (i = 0; i < answer.length; i++) {
+                        catNames.push(answer[i].intitule);
+                    }
+                },
+                error: function (answer, status) {
+                    alert('error');
+                    console.log(answer + "   " + status);
+                }
+            });
+        }
+
+        function loadProfsName() {
+            profsName.splice(0, profsName.length);
+            $.ajax({
+                method: "GET",
+                url: Routing.generate('lgp_prof_all_names'),
+                data: {},
+                success: function (answer, status) {
+                    for (i = 0; i < answer.length; i++) {
+                        profsName.push(answer[i].prenoms + " " + answer[i].nom);
+                    }
+                },
+                error: function (answer, status) {
+                    alert('error');
+                    console.log(answer + "   " + status);
+                }
+            });
+        }
+
+        $("#cours_search_course_city_intitule").autocomplete({
+            autoFocus: false,
+            maxResults: 10,
+            source: learn
+        });
+        $("#cours_search_course_quarter_intitule").autocomplete({
+            autoFocus: true,
+            maxResults: 10,
+            source: learn
+        });
+        $("#prof_name").autocomplete({
+            autoFocus: true,
+            maxResults: 10,
+            source: profsName
+        });
+        $("#cours_search_categorie_category_name").autocomplete({
+            autoFocus: true,
+            maxResults: 10,
+            source: catNames
+        })
     }
-    /*$("#cours_search_intitule").click(function() {
-     learn.splice(0, learn.length);
-     $.ajax({
-     method: "GET",
-     url: Routing.generate('lgp_course_all_intitule'),
-     data: {}
-     }).success(function(answer, status) {
-     for (i = 0; i < answer.length; i++)
-     {
-     learn.push(answer[i].intitule);
-     }
-     }).error(function(answer, status) {
-     alert('error');
-     console.log(answer + "   " + status);
-     });
-     });*/
-    $("#cours_search_intitule").autocomplete({
-        autoFocus: false,
-        maxResults: 10,
-        source: learn
-    });
-    $("#cours_search_refine_intitule").autocomplete({
-        autoFocus: true,
-        maxResults: 10,
-        source: learn
-    });
-});
+)
+;
 /**
  * Portions of this code are from the Google Closure Library,
  * received from the Closure Authors under the Apache 2.0 license.

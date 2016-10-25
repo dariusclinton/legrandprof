@@ -15,19 +15,12 @@
             <div class="row">
 
                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
-                    {% if params.matieres_profs | length != 0 %}
-                        <h1 class="hero-title">Grands Profs dans la ville de {{ params.ville }} </h1>
-
-                        <ol class="breadcrumb-list">
-                            <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
-                            {#  <li><a href="#">Profs</a></li> #}
-                            {% if params.ville is defined %}
-                                <li><span> {{ params.ville }} </span></li>
-                            {% endif %}
-                        </ol>
-                    {% else %}
-                        <h1 class="hero-title"> Resultat de la recherche </h1>
-                    {% endif %}
+                    <h1 class="hero-title">Profs dans la ville de {{ params.ville }} </h1>
+                    <ol class="breadcrumb-list">
+                        <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
+                        <li><a href="{{ path('lgp_course_find') }}">Profs</a></li>
+                        <li><span> {{ params.ville }} </span></li>
+                    </ol>
                 </div>
 
             </div>
@@ -36,7 +29,6 @@
 
     </div>
     <!-- end Page title -->
-
 
     <div class="content-wrapper">
 
@@ -55,20 +47,87 @@
                             </div>
 
                             <div class="sidebar-search-content">
-
-                                <div class="form-group">
-                                    {% if params.courses %}
-                                        <datalist id="cours">
-                                            {% for course in params.courses %}
-                                                <option> {{ course.intitule }} </option>}
-                                            {% endfor %}
-                                        </datalist>
-                                    {% endif %}
-                                </div>
-
-                                {% include 'LGPCourseBundle:Form:course_form_search.html.twig' %}
                             </div>
-
+                            <div id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse1">Par cours et quartier</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:course_quarter_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse2">Par nom du prof</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:prof_name_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse3">Par ville</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:city_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse4">Par categorie de cours</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:category_form.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse5">Par quartier</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:quarter_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapse6">Par cours et ville</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse6" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            {% include 'LGPCourseBundle:Form:course_city_form_search.html.twig' %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {#
@@ -191,8 +250,11 @@
                     <div class="sorting-wrappper">
 
                         <div class="sorting-header">
-                            <h3 class="sorting-title uppercase">Des Grands dans la ville de <span style="color:orangered;">{{ params.ville }}</span></h3>
-                            <p class="sorting-lead"><strong>{{ params.matieres_profs | length }}</strong> Grand (s) profs trouvés</p>
+                            <h3 class="sorting-title uppercase">
+                                Profs dans la ville de <span style="color:orangered;">{{ params.ville }}</span>
+                            </h3>
+                            <p class="sorting-lead"><strong>{{ params.matieres_profs | length }}</strong> Grand (s)
+                                profs trouvés</p>
                         </div>
 
                         {#   <div class="sorting-content">
@@ -229,98 +291,98 @@
 
                         {% if params.matieres_profs | length != 0 %}
 
-                        {% for enseigne in params.matieres_profs %}
-                            <div class="package-list-item clearfix">
-                                <div class="image">
-                                    {% if not enseigne.prof.image %}
-                                        <img src="{{ asset('uploads/profils/default.png') }}" alt="Tour Package"/>
+                            {% for enseigne in params.matieres_profs %}
+                                <div class="package-list-item clearfix">
+                                    <div class="image">
+                                        {% if not enseigne.prof.image %}
+                                            <img src="{{ asset('uploads/profils/default.png') }}" alt="Tour Package"/>
 
-                                    {% else %}
-                                        <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof "/>
-                                    {% endif %}
-                                </div>
+                                        {% else %}
+                                            <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof "/>
+                                        {% endif %}
+                                    </div>
 
-                                <div class="content">
-                                    <h5>{{ (enseigne.prof.prenoms ~"  "~ enseigne.prof.nom) | upper }}
-                                        <button class="btn"><i class="fa fa-heart-o"></i></button>
-                                    </h5>
-                                    <div class="row gap-10">
-                                        <div class="col-sm-12 col-md-9">
+                                    <div class="content">
+                                        <h5>{{ (enseigne.prof.prenoms ~"  "~ enseigne.prof.nom) | upper }}
+                                            <button class="btn"><i class="fa fa-heart-o"></i></button>
+                                        </h5>
+                                        <div class="row gap-10">
+                                            <div class="col-sm-12 col-md-9">
 
-                                            <p class="line18"> {{ enseigne.prof.presentation }} </p>
-                                            <br>
-                                            <ul class="list-info">
-                                                <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span
-                                                            class="font600">Position: </span>
-                                                    {% if enseigne.prof.ville is not null %}
-                                                        {{ enseigne.prof.ville | upper }}
-                                                    {% else %}
-                                                        NON DEFINIE
-                                                    {% endif %}
-                                                </li>
-
-                                                <li><span class="icon"><i class="fa fa-book"></i></span> <span
-                                                            class="font600">Cours :</span>
-                                                    {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
-                                                        {% if loop.index != loop.last %}
-                                                            <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
-                                                               title="">{{ ens_cours.cours.intitule }}</a> -
+                                                <p class="line18"> {{ enseigne.prof.presentation }} </p>
+                                                <br>
+                                                <ul class="list-info">
+                                                    <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span
+                                                                class="font600">Position: </span>
+                                                        {% if enseigne.prof.ville is not null %}
+                                                            {{ enseigne.prof.ville | upper }}
                                                         {% else %}
-                                                            <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
-                                                               title="">{{ ens_cours.cours.intitule }}</a>
+                                                            NON DEFINIE
                                                         {% endif %}
-                                                    {% endfor %}
-                                                </li>
-                                            </ul>
+                                                    </li>
 
-                                        </div>
-                                        <div class="col-sm-12 col-md-3 text-right text-left-sm">
-                                            {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
-                                            {% for avis in  allAvis %}
-                                                {% set avisSum = avisSum + avis.note %}
-                                            {% endfor %}
-                                            {% if allAvis | length != 0 %}
-                                                {% set avisRange = avisSum / allAvis | length %}
-                                            {% else %}
-                                                {% set avisRange = 0 %}
-                                            {% endif %}
-                                            <div class="rating-wrapper">
-                                                <div class="raty-wrapper">
-                                                    <div>
-                                                        {% for i in range(1,5) %}
-                                                            {% if (avisRange | round) >= i %}
-                                                                <img alt=" {{ i }} "
-                                                                     src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                    <li><span class="icon"><i class="fa fa-book"></i></span> <span
+                                                                class="font600">Cours :</span>
+                                                        {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
+                                                            {% if loop.index != loop.last %}
+                                                                <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                                                   title="">{{ ens_cours.cours.intitule }}</a> -
                                                             {% else %}
-                                                                <img alt=" {{ i }} "
-                                                                     src="{{ asset('images/raty/star-off-sm.png') }}"
-                                                                     title="">
+                                                                <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                                                   title="">{{ ens_cours.cours.intitule }}</a>
                                                             {% endif %}
                                                         {% endfor %}
-                                                    </div>
-                                                    <span> / {{ allAvis | length }} avis</span>
-                                                </div>
+                                                    </li>
+                                                </ul>
+
                                             </div>
-                                            {% set minPrice %}
-                                                {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
-                                            {% endset %}
-                                            <div class="price">{{ minPrice }} Fcfa / Mois <br> Prix minimal</div>
-                                            <a href=" {{ path('lgp_course_profile_prof', {'slug':enseigne.prof.slug}) }} "
-                                               class="btn btn-primary btn-sm">Voir Profil</a>
-                                            <a href=" {{ path('lgp_reservation_detail',{'slug': enseigne.prof.slug}) }} "
-                                               class="anchor btn btn-primary btn-sm" style="margin-top: 10px;">Réserver
-                                                un cours</a>
+                                            <div class="col-sm-12 col-md-3 text-right text-left-sm">
+                                                {% set avisSum = 0 %}{% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
+                                                {% for avis in  allAvis %}
+                                                    {% set avisSum = avisSum + avis.note %}
+                                                {% endfor %}
+                                                {% if allAvis | length != 0 %}
+                                                    {% set avisRange = avisSum / allAvis | length %}
+                                                {% else %}
+                                                    {% set avisRange = 0 %}
+                                                {% endif %}
+                                                <div class="rating-wrapper">
+                                                    <div class="raty-wrapper">
+                                                        <div>
+                                                            {% for i in range(1,5) %}
+                                                                {% if (avisRange | round) >= i %}
+                                                                    <img alt=" {{ i }} "
+                                                                         src="{{ asset('images/raty/star-on-sm.png') }}">
+                                                                {% else %}
+                                                                    <img alt=" {{ i }} "
+                                                                         src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                                         title="">
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        <span> / {{ allAvis | length }} avis</span>
+                                                    </div>
+                                                </div>
+                                                {% set minPrice %}
+                                                    {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
+                                                {% endset %}
+                                                <div class="price">{{ minPrice }} Fcfa / Mois <br> Prix minimal</div>
+                                                <a href=" {{ path('lgp_course_profile_prof', {'slug':enseigne.prof.slug}) }} "
+                                                   class="btn btn-primary btn-sm">Voir Profil</a>
+                                                <a href=" {{ path('lgp_reservation_detail',{'slug': enseigne.prof.slug}) }} "
+                                                   class="anchor btn btn-primary btn-sm" style="margin-top: 10px;">Réserver
+                                                    un cours</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        {% endfor %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
 
                     {% include('LGPCourseBundle:Pagination:pagination.html.twig') %}
 
-                    {% endif %}
 
                 </div>
 

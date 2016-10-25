@@ -1,0 +1,19 @@
+{{ form_start(form_course_quarter) }}
+
+<div class="column-item-medium">
+    <div class="form-group">
+        {{ form_widget(form_course_quarter.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+    </div>
+</div>
+<div class="column-item-medium">
+    <div class="form-group">
+        {{ form_widget(form_course_quarter.quartier, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+    </div>
+</div>
+{{ form_rest(form_course_quarter) }}
+<div class="column-item for-btn">
+    <div class="form-group">
+        <input type="submit" name="" value="Rechercher" class="btn btn-primary btn-block">
+    </div>
+</div>
+{{ form_end(form_course_quarter) }}

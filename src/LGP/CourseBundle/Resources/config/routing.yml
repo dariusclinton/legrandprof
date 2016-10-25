@@ -1,9 +1,3 @@
-lgp_course_all_intitule:
-    path:     /all/intitule
-    defaults: { _controller: LGPCourseBundle:Course:updateCourseData}
-    options: 
-        expose: true
-
 # categories
 lgp_course_categories:
     path:     /categories/{page}
@@ -18,8 +12,15 @@ lgp_course_find_category:
     requirements:
         page:   \d+
 
+lgp_course_all_categories:
+    path:     all/categories
+    defaults: { _controller: LGPCourseBundle:Categorie:getAllCategories, page: 1 }
+    requirements:
+        page:   \d+
+    options:
+        expose: true
 
-# course
+# course search
 lgp_course_find:
     path:     /search/profs/{page}
     defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
@@ -33,25 +34,31 @@ lgp_course_find_prof:
     requirements:
         page:   \d+
 
-
-lgp_course_find_prof_refine:
-    path:     /search/profs/{slugVille}/{slug}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:searchRefine, page: 1 }
+lgp_course_find_prof_name:
+    path:     /search/profs-name/{prof_name}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchProfName, page: 1 }
     requirements:
         page:   \d+
 
-lgp_course_find_prof_refine_quarter:
-    path:     /search/profs/{slug_ville}/{slug_quartier}/{slug}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:searchRefineAll, page: 1 }
+
+lgp_course_find_prof_category:
+    path:     /search/category/{category_name}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCategorieName, page: 1 }
     requirements:
         page:   \d+
 
-lgp_course_find_prof_update_quarter:
-    path:     /search/update/{ville}
-    defaults: { _controller: LGPCourseBundle:Course:updateQuarter}
-    options:
-        expose: true
-    methods: [POST]
+
+lgp_course_find_prof_course_city:
+    path:     /search/profs/{slug_ville}/{slug_cours}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCourseCity, page: 1 }
+    requirements:
+        page:   \d+
+
+lgp_course_find_prof_course_quarter:
+    path:     /search/profs/{slug_ville}/{slug_quartier}/{slug_cours}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCourseQuarter, page: 1 }
+    requirements:
+        page:   \d+
 
 lgp_course_find_prof_city:
     path:     search/ville/{slugVille}/{page}
@@ -61,7 +68,7 @@ lgp_course_find_prof_city:
 
 lgp_course_find_prof_city_quarter:
     path:     search/ville/{slug_ville}/quartier/{slug_quartier}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:searchCityQuarter, page: 1 }
+    defaults: { _controller: LGPCourseBundle:Course:searchQuarter, page: 1 }
     requirements:
         page:   \d+
 
@@ -72,6 +79,18 @@ lgp_course_update_classe:
         profId:   \d+
         coursId: \d+
     methods: [POST]
+    options:
+        expose: true
+
+lgp_course_all_intitule:
+    path:     /all/intitule
+    defaults: { _controller: LGPCourseBundle:Course:updateCourseData}
+    options:
+        expose: true
+
+lgp_prof_all_names:
+    path:     /profs/names
+    defaults: { _controller: LGPCourseBundle:Course:updateProfsNamesData}
     options:
         expose: true
         

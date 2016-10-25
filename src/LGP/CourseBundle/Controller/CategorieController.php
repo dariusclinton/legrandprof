@@ -4,6 +4,8 @@ namespace LGP\CourseBundle\Controller;
 
 use LGP\CourseBundle\Entity\Categorie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategorieController extends Controller
@@ -66,5 +68,14 @@ class CategorieController extends Controller
             ),
         );
         return $this->render('LGPCourseBundle:Categorie:course_list.html.twig', array('params' => $params));
+    }
+
+    public function getAllCategoriesAction(Request $request){
+        if ($request->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getManager();
+            $categorieRep = $em->getRepository("LGPCourseBundle:Categorie");
+            $categories = $categorieRep->getCategoriesNames();
+            return new JsonResponse($categories);
+        }
     }
 }
