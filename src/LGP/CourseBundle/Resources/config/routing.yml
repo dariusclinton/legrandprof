@@ -12,14 +12,6 @@ lgp_course_find_category:
     requirements:
         page:   \d+
 
-lgp_course_all_categories:
-    path:     all/categories
-    defaults: { _controller: LGPCourseBundle:Categorie:getAllCategories, page: 1 }
-    requirements:
-        page:   \d+
-    options:
-        expose: true
-
 # course search
 lgp_course_find:
     path:     /search/profs/{page}
@@ -28,8 +20,8 @@ lgp_course_find:
         page:   \d+
 
     
-lgp_course_find_prof:
-    path:     /search/profs/{slug}/{page}
+lgp_course_find_prof_course:
+    path:     /search/course/{slug_course}/{page}
     defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
     requirements:
         page:   \d+
@@ -72,9 +64,10 @@ lgp_course_find_prof_city_quarter:
     requirements:
         page:   \d+
 
+# update data for jquery autocompletion
 lgp_course_update_classe:
     path:     update/{profId}/{coursId}
-    defaults: { _controller: LGPCourseBundle:Course:updateClasse }
+    defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateClasse }
     requirements:
         profId:   \d+
         coursId: \d+
@@ -84,16 +77,23 @@ lgp_course_update_classe:
 
 lgp_course_all_intitule:
     path:     /all/intitule
-    defaults: { _controller: LGPCourseBundle:Course:updateCourseData}
+    defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateCourseData}
     options:
         expose: true
 
 lgp_prof_all_names:
     path:     /profs/names
-    defaults: { _controller: LGPCourseBundle:Course:updateProfsNamesData}
+    defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateProfsNamesData}
     options:
         expose: true
-        
+lgp_course_all_categories:
+    path:     all/categories
+    defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateCategoriesNames, page: 1 }
+    requirements:
+        page:   \d+
+    options:
+        expose: true
+
 # enseignement
 lgp_course_profile_prof:
     path:     /profile/{slug}

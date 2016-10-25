@@ -8,6 +8,7 @@ use LGP\CourseBundle\Form\CoursSearchCategorieType;
 use LGP\CourseBundle\Form\CoursSearchCityType;
 use LGP\CourseBundle\Form\CoursSearchCourseCityType;
 use LGP\CourseBundle\Form\CoursSearchCourseQuarterType;
+use LGP\CourseBundle\Form\CoursSearchCourseType;
 use LGP\CourseBundle\Form\CoursSearchProfsNameType;
 use LGP\CourseBundle\Form\CoursSearchQuarterType;
 use LGP\CourseBundle\Form\CoursSearchRefineType;
@@ -29,7 +30,7 @@ class CourseController extends Controller
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 10;
+        $max_per_page = 1;
         $profs = $enseignementRep->getAllProfsEnseignants($page, $max_per_page);
 //                $coursCount = $enseigneRep->countProfsByCours($coursFound);
         $profsCount = count($profs);
@@ -59,6 +60,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -66,6 +68,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -77,6 +80,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -97,7 +111,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -109,29 +123,27 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-
-        return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form_course' => $course_form->createView(),'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
-    public
-    function searchCourseAction($slug, $page, Request $request)
+    public function searchCourseAction($slug_course, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
-        $course = $coursRep->findOneBy(array('slug' => $slug));
+        $course = $coursRep->findOneBy(array('slug' => $slug_course));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
         $max_per_page = 10;
         $profsByCours = array();
-        $intitule = $slug;
+        $intitule = $slug_course;
 
         if ($course != null) {
             $profsByCours = $enseignementRep->getProfsByCours($course, $page, $max_per_page);
@@ -158,7 +170,7 @@ class CourseController extends Controller
                 'profs_count' => $profsCount,
                 'max_per_page' => $max_per_page,
                 'page' => $page,
-                'route_params' => array('slug' => $slug)
+                'route_params' => array('slug' => $slug_course)
             ),
         );
 
@@ -168,6 +180,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -175,6 +188,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -186,6 +200,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -206,7 +231,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -218,15 +243,14 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-//        $request->request->set("intitule_cours", $coursFound->getIntitule());
-        return $this->render('LGPCourseBundle:Course:search.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_course.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
     public function searchCourseCityAction($slug_ville, $slug_cours, $page, Request $request)
@@ -281,6 +305,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -288,6 +313,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -299,6 +325,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -319,7 +356,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -331,16 +368,15 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_course_city.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_course_city.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
-
 
     public function searchCourseQuarterAction($slug_ville, $slug_quartier, $slug_cours, $page, Request $request)
     {
@@ -396,6 +432,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -403,6 +440,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -414,6 +452,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -434,7 +483,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -446,14 +495,14 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_course_quarter.html.twig', array('params' => $params,'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_course_quarter.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
     public function searchCityAction($slugVille, $page, Request $request)
@@ -501,6 +550,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -508,6 +558,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -519,6 +570,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -539,7 +601,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -551,16 +613,15 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_city.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
-
 
     public function searchQuarterAction($slug_ville, $slug_quartier, $page, Request $request)
     {
@@ -610,6 +671,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -617,6 +679,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -628,6 +691,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -648,7 +722,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -660,14 +734,14 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_quarter.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_quarter.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
     public function searchProfNameAction($prof_name, $page, Request $request)
@@ -708,6 +782,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -715,6 +790,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -726,6 +802,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -746,7 +833,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -758,14 +845,14 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_prof_name.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_prof_name.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
     public function searchCategorieNameAction($category_name, $page, Request $request)
@@ -806,6 +893,7 @@ class CourseController extends Controller
         $category_form = $this->createForm(CoursSearchCategorieType::class);
         $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_form = $this->createForm(CoursSearchCourseType::class);
 
         $course_quarter_form->handleRequest($request);
         $city_form->handleRequest($request);
@@ -813,6 +901,7 @@ class CourseController extends Controller
         $category_form->handleRequest($request);
         $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
+        $course_form->handleRequest($request);
 
         if ($city_form->isSubmitted() && $city_form->isValid()) {
             $data = $city_form->getData();
@@ -824,6 +913,17 @@ class CourseController extends Controller
             $data = $prof_name_form->getData();
             if (isset($data['prof_name']))
                 return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
+        }
+
+        if ($course_form->isSubmitted() && $course_form->isValid()) {
+            $data = $course_form->getData();
+            if (isset($data['intitule'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
+            }
         }
 
         if ($category_form->isSubmitted() && $category_form->isValid()) {
@@ -844,7 +944,7 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
+                if ($courseFound != null)
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
@@ -856,45 +956,15 @@ class CourseController extends Controller
 
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(),'slug_cours' => $courseFound->getSlug()));
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
                 else
                     return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_category.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_category.html.twig', array('params' => $params, 'form_course', $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
 
     }
-
-    public function updateClasseAction($profId, $coursId, Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
-            $ens = $ensRep->getClasseByCoursAndProf($profId, $coursId);
-            return new JsonResponse($ens);
-        }
-    }
-
-    public function updateCourseDataAction(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            $courseRep = $em->getRepository("LGPCourseBundle:Cours");
-            $courses = $courseRep->getIntituleCourse();
-            return new JsonResponse($courses);
-        }
-    }
-
-    public function updateProfsNamesDataAction(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getManager();
-            $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
-            $profs = $ensRep->getProfsNames();
-            return new JsonResponse($profs);
-        }
-    }
-
+    
 }

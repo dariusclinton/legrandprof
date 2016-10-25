@@ -9578,6 +9578,12 @@ $(function () {
             });
         }
 
+        $("#cours_search_course_intitule").autocomplete({
+            autoFocus: true,
+            maxResults: 10,
+            source: learn
+        });
+
         $("#cours_search_course_city_intitule").autocomplete({
             autoFocus: false,
             maxResults: 10,
@@ -9593,6 +9599,7 @@ $(function () {
             maxResults: 10,
             source: profsName
         });
+
         $("#cours_search_categorie_category_name").autocomplete({
             autoFocus: true,
             maxResults: 10,
