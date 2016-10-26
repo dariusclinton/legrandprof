@@ -1,6 +1,10 @@
+lgp_core:
+    resource: "@LGPCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lgp_user:
     resource: "@LGPUserBundle/Resources/config/routing.yml"
-    prefix:   /user
+    prefix:   /
     
 lgp_reservation:
     resource: "@LGPReservationBundle/Resources/config/routing.yml"
@@ -9,10 +13,6 @@ lgp_reservation:
 lgp_course:
     resource: "@LGPCourseBundle/Resources/config/routing.yml"
     prefix:   /course
-
-lgp_core:
-    resource: "@LGPCoreBundle/Resources/config/routing.yml"
-    prefix:   /
 
 # FOSUserBundle
 fos_user_security:

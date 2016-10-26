@@ -40,36 +40,30 @@
                           <th>Ville</th>
                           <th>Quartier</th>
                           <th>Fréquence de paiement</th>
-                          <th>Status</th>
                         </tr>
                       </thead> 
                       <tbody>
                         {% for res_enseigns in reservation_enseignements %}
                           {% for res_ens in res_enseigns %}
-                            <tr>
-                              <td>
-                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
-                              </td>
-                              <td>
-                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.cours.intitule }}</a>
-                              </td>
-                              <td>
-                                <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.classe }}</a>
-                              </td>
-                              <td>{{ res_ens.nbApprenants }}</td>
-                              <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
-                              <td>{{ res_ens.lieuDeCours }}</td>
-                              <td>{{ res_ens.ville }}</td>
-                              <td>{{ res_ens.quartier }}</td>
-                              <td>{{ res_ens.reservation.frequencePaiement }}</td>
-                              <td>
-                                {% if res_ens.reservation.isValidee %}
-                                  <span class="label label-success">Validée</span>
-                                {% else %}
-                                  <span class="label label-danger">En attente</span>
-                                {% endif %}
-                              </td>
-                            </tr>
+                            {% if res_ens.reservation.isValidee %}
+                              <tr>
+                                <td>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
+                                </td>
+                                <td>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.cours.intitule }}</a>
+                                </td>
+                                <td>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.classe }}</a>
+                                </td>
+                                <td>{{ res_ens.nbApprenants }}</td>
+                                <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
+                                <td>{{ res_ens.lieuDeCours }}</td>
+                                <td>{{ res_ens.ville }}</td>
+                                <td>{{ res_ens.quartier }}</td>
+                                <td>{{ res_ens.reservation.frequencePaiement }}</td>
+                              </tr>
+                            {% endif %}
                           {% endfor %}
                         {% endfor %}
                       </tbody>

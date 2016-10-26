@@ -164,9 +164,11 @@ sonata_admin:
             lgp_admin.group.user:
                 label: Utilisateurs
                 items:
+                    - lgp.admin.user
                     - lgp.admin.prof
                     - lgp.admin.parent
                     - lgp.admin.quartier_cible
+                    - lgp.admin.message
             lgp_admin.group.cours:
                 label: Cours
                 items:

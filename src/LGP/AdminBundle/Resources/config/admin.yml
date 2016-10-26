@@ -2,6 +2,14 @@ services:
 # Admin
 
 #    User
+    lgp.admin.user:
+        class: LGP\AdminBundle\Admin\User\UserAdmin
+        arguments: [~, LGP\UserBundle\Entity\User, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Utilisateurs
+
     lgp.admin.prof:
         class: LGP\AdminBundle\Admin\User\ProfAdmin
         arguments: [~, LGP\UserBundle\Entity\Prof, ~]
@@ -25,6 +33,14 @@ services:
                 - name: sonata.admin
                   manager_type: orm
                   label: Quartiers cibles
+
+    lgp.admin.message:
+            class: LGP\AdminBundle\Admin\User\MessageAdmin
+            arguments: [~, LGP\UserBundle\Entity\Message, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Messages
 
 # Reservation
     lgp.admin.reservation:

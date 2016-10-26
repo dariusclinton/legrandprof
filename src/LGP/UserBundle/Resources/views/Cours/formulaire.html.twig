@@ -3,13 +3,13 @@
 {{ form_errors(form) }}
 
 <div class="row">
-    <div class="col-md-2">{{ form_label(form.classe, 'Classe :', {'label_attr': {}}) }}</div>
-    <div class="col-md-4">{{ form_widget(form.classe, {'attr': {'class':'form-control', 'placeholder':'Entrez une classe'}}) }}</div>
+    <div class="col-md-2">{{ form_label(form.classe, 'Niveau :', {'label_attr': {}}) }}</div>
+    <div class="col-md-4">{{ form_widget(form.classe, {'attr': {'class':'form-control', 'placeholder':'Entrez un niveau'}}) }}</div>
     {{ form_errors(form.classe) }}
 </div><br>
 <div class="row">
-    <div class="col-md-2">{{ form_label(form.prix, 'Prix /heure :', {'label_attr': {}}) }}</div>
-    <div class="col-md-4">{{ form_widget(form.prix, {'attr': {'class':'form-control', "placeholder":"Entrez le prix d'une heure"}}) }}</div>
+    <div class="col-md-2">{{ form_label(form.prix, 'Prix /mois :', {'label_attr': {}}) }}</div>
+    <div class="col-md-4">{{ form_widget(form.prix, {'attr': {'class':'form-control', "placeholder":"Entrez le prix d'un mois"}}) }}</div>
     {{ form_errors(form.prix) }}
 </div><br>
 <div class="row">
