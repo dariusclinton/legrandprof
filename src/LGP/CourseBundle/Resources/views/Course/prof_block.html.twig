@@ -1,0 +1,90 @@
+{% if params.matieres_profs | length != 0 %}
+
+    {% for enseigne in params.matieres_profs %}
+        <div class="package-list-item clearfix">
+            <div class="image">
+                {% if enseigne.prof.image is null %}
+                    <img src="{{ asset('uploads/profils/default.png') }}" alt="Tour Package"/>
+                {% else %}
+                    <img src="{{ asset(enseigne.prof.image.webPath) }}" alt=" image prof "/>
+                {% endif %}
+            </div>
+
+            <div class="content">
+                <h5>{{ enseigne.prof.prenoms ~"  "~ enseigne.prof.nom | upper }}
+                    <button class="btn"><i class="fa fa-heart-o"></i></button>
+                </h5>
+                <div class="row gap-10">
+                    <div class="col-sm-12 col-md-9">
+
+                        <p class="line18"> {{ enseigne.prof.presentation }} </p>
+                        <br>
+                        <ul class="list-info">
+                            <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span
+                                        class="font600">Position: </span>
+                                {% if enseigne.prof.ville is not null %}
+                                    {{ enseigne.prof.ville | upper }}
+                                {% else %}
+                                    NON DEFINIE
+                                {% endif %}
+                            </li>
+
+                            <li><span class="icon"><i class="fa fa-book"></i></span> <span
+                                        class="font600">Cours :</span>
+                                {% for ens_cours in params.enseignementRep.getCoursByProf(enseigne.prof) %}
+                                    {% if loop.index != loop.last %}
+                                        <a href=" {{ path('lgp_course_find_prof_course',{'slug_course':ens_cours.cours.slug,}) }} "
+                                           title="">{{ ens_cours.cours.intitule }}</a> -
+                                    {% else %}
+                                        <a href=" {{ path('lgp_course_find_prof_course',{'slug_course':ens_cours.cours.slug}) }} "
+                                           title="">{{ ens_cours.cours.intitule }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-sm-12 col-md-3 text-right text-left-sm">
+                        {% set avisSum = 0 %}
+                        {% set allAvis = params.avisRep.findBy({'prof':enseigne.prof}) %}
+                        {% for avis in  allAvis %}
+                            {% set avisSum = avisSum + avis.note %}
+                        {% endfor %}
+                        {% if allAvis | length != 0 %}
+                            {% set avisRange = avisSum / allAvis | length %}
+                        {% else %}
+                            {% set avisRange = 0 %}
+                        {% endif %}
+                        <div class="rating-wrapper">
+                            <div class="raty-wrapper">
+                                <div>
+                                    {% for i in range(1,5) %}
+                                        {% if (avisRange | round) >= i %}
+                                            <img alt=" {{ i }} "
+                                                 src="{{ asset('images/raty/star-on-sm.png') }}">
+                                        {% else %}
+                                            <img alt=" {{ i }} "
+                                                 src="{{ asset('images/raty/star-off-sm.png') }}"
+                                                 title="">
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <span> / {{ allAvis | length }} avis</span>
+                            </div>
+                        </div>
+                        {% set minPrice %}
+                            {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
+                        {% endset %}
+                        <div class="price">{{ minPrice }} Fcfa / Mois <br> Prix minimal</div>
+                        <a href=" {{ path('lgp_course_profile_prof',{'slug' : enseigne.prof.slug}) }} "
+                           class="btn btn-primary btn-sm">Voir Profil</a>
+                        <a href=" {{ path('lgp_reservation_detail',{'slug': enseigne.prof.slug}) }} "
+                           class="anchor btn btn-primary btn-sm" style="margin-top: 10px;">Réserver
+                            un cours</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+{% endif %}

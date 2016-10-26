@@ -1,0 +1,13 @@
+{{ form_start(form_category) }}
+<div class="column-item-medium">
+    <div class="form-group" data-onload="loadCategoriesNames()">
+        {{ form_widget(form_category.category_name, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+    </div>
+</div>
+{{ form_rest(form_category) }}
+<div class="column-item for-btn">
+    <div class="form-group">
+        <input type="submit" name="" value="Rechercher" class="btn btn-primary btn-block">
+    </div>
+</div>
+{{ form_end(form_category) }}

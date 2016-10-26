@@ -1,26 +1,14 @@
-{{ form_start(form) }}
+{{ form_start(form_course) }}
 
 <div class="column-item-medium">
     <div class="form-group" data-onload="loadCourses()">
-        {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+        {{ form_widget(form_course.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
     </div>
 </div>
-<div class="column-item-medium">
-    <div class="form-group">
-        {{ form_widget(form.quartier, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
-    </div>
-</div>
-{% if form.quartier1 is defined %}
-    <div class="column-item-medium">
-        <div class="form-group">
-            {{ form_widget(form.quartier1, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
-        </div>
-    </div>
-{% endif %}
-    {{ form_rest(form) }}
+{{ form_rest(form_course) }}
 <div class="column-item for-btn">
     <div class="form-group">
         <input type="submit" name="" value="Rechercher" class="btn btn-primary btn-block">
     </div>
 </div>
-{{ form_end(form) }}
+{{ form_end(form_course) }}

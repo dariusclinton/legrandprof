@@ -16,12 +16,10 @@ class EnseignementRepository extends EntityRepository
 {
 
     /**
-     *
-     * @param type $cours
-     * @param type $page
-     * @param type $max
+     * @param $cours
+     * @param int $page
+     * @param int $max
      * @return Paginator
-     * @throws InvalidArgumentException
      */
     public function getProfsByCours($cours, $page = 1, $max = 10)
     {
@@ -37,14 +35,40 @@ class EnseignementRepository extends EntityRepository
         return $paginator;
     }
 
+    public function getProfsByName($name, $page = 1, $max = 10)
+    {
+        if (!is_numeric($max)) {
+            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
+        }
+
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.nom LIKE :nom OR p.prenoms LIKE :nom GROUP BY p.id");
+        $query->setParameter("nom", "%" . $name . "%")
+            ->setFirstResult(($page - 1) * $max)
+            ->setMaxResults($max);
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
+
+    public function getProfsByCategory($category_name, $page = 1, $max = 10)
+    {
+        if (!is_numeric($max)) {
+            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
+        }
+
+        $query = $this->_em->createQuery("SELECT e, p FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE c.id IN (SELECT c1.id FROM LGPCourseBundle:Cours c1 JOIN c1.categorie cat WHERE cat.intitule LIKE :intitule ) GROUP BY p.id");
+        $query->setParameter("intitule", "%" . $category_name . "%")
+            ->setFirstResult(($page - 1) * $max)
+            ->setMaxResults($max);
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
+
     /**
-     *
-     * @param type $cours
-     * @param type $ville
-     * @param type $page
-     * @param type $max
+     * @param $cours
+     * @param $quartier
+     * @param int $page
+     * @param int $max
      * @return Paginator
-     * @throws InvalidArgumentException
      */
     public function getProfsByCoursAndCity($cours, $quartier, $page = 1, $max = 10)
     {
@@ -168,6 +192,12 @@ class EnseignementRepository extends EntityRepository
         $query = $this->_em->createQuery("SELECT e, p FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE c.id IN (SELECT c1.id FROM LGPCourseBundle:Enseignement e1 JOIN e1.cours c1 JOIN e1.prof p1 WHERE p1.id = :profId GROUP BY c1.id) AND p.id <> :profId GROUP BY p.id");
         $query->setParameter('profId', $profId)
             ->setMaxResults(3);
+        return $query->getResult();
+    }
+
+    public function getProfsNames()
+    {
+        $query = $this->_em->createQuery("SELECT p.nom, p.prenoms FROM LGPCourseBundle:Enseignement e JOIN e.prof p GROUP BY p.id");
         return $query->getResult();
     }
 
