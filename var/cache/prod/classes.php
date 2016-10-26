@@ -455,9 +455,11 @@ use Symfony\Component\HttpFoundation\Request;
 class ControllerResolver implements ArgumentResolverInterface, ControllerResolverInterface
 {
 private $logger;
+private $supportsVariadic;
 public function __construct(LoggerInterface $logger = null)
 {
 $this->logger = $logger;
+$this->supportsVariadic = method_exists('ReflectionParameter','isVariadic');
 }
 public function getController(Request $request)
 {
@@ -509,7 +511,7 @@ $attributes = $request->attributes->all();
 $arguments = array();
 foreach ($parameters as $param) {
 if (array_key_exists($param->name, $attributes)) {
-if (PHP_VERSION_ID >= 50600 && $param->isVariadic() && is_array($attributes[$param->name])) {
+if ($this->supportsVariadic && $param->isVariadic() && is_array($attributes[$param->name])) {
 $arguments = array_merge($arguments, array_values($attributes[$param->name]));
 } else {
 $arguments[] = $attributes[$param->name];
@@ -518,6 +520,8 @@ $arguments[] = $attributes[$param->name];
 $arguments[] = $request;
 } elseif ($param->isDefaultValueAvailable()) {
 $arguments[] = $param->getDefaultValue();
+} elseif ($param->allowsNull()) {
+$arguments[] = null;
 } else {
 if (is_array($controller)) {
 $repr = sprintf('%s::%s()', get_class($controller[0]), $controller[1]);
@@ -638,7 +642,7 @@ $representative = sprintf('%s::%s()', get_class($representative[0]), $representa
 } elseif (is_object($representative)) {
 $representative = get_class($representative);
 }
-throw new \RuntimeException(sprintf('Controller "%s" requires that you provide a value for the "$%s" argument (because there is no default value or because there is a non optional argument after this one).', $representative, $metadata->getName()));
+throw new \RuntimeException(sprintf('Controller "%s" requires that you provide a value for the "$%s" argument. Either the argument is nullable and no null value has been provided, no default value has been provided or because there is a non optional argument after this one.', $representative, $metadata->getName()));
 }
 return $arguments;
 }
@@ -653,13 +657,15 @@ private $type;
 private $isVariadic;
 private $hasDefaultValue;
 private $defaultValue;
-public function __construct($name, $type, $isVariadic, $hasDefaultValue, $defaultValue)
+private $isNullable;
+public function __construct($name, $type, $isVariadic, $hasDefaultValue, $defaultValue, $isNullable = false)
 {
 $this->name = $name;
 $this->type = $type;
 $this->isVariadic = $isVariadic;
 $this->hasDefaultValue = $hasDefaultValue;
 $this->defaultValue = $defaultValue;
+$this->isNullable = (bool) $isNullable;
 }
 public function getName()
 {
@@ -676,6 +682,10 @@ return $this->isVariadic;
 public function hasDefaultValue()
 {
 return $this->hasDefaultValue;
+}
+public function isNullable()
+{
+return $this->isNullable;
 }
 public function getDefaultValue()
 {
@@ -697,6 +707,13 @@ namespace Symfony\Component\HttpKernel\ControllerMetadata
 {
 final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
 {
+private $supportsVariadic;
+private $supportsParameterType;
+public function __construct()
+{
+$this->supportsVariadic = method_exists('ReflectionParameter','isVariadic');
+$this->supportsParameterType = method_exists('ReflectionParameter','getType');
+}
 public function createArgumentMetadata($controller)
 {
 $arguments = array();
@@ -708,17 +725,24 @@ $reflection = (new \ReflectionObject($controller))->getMethod('__invoke');
 $reflection = new \ReflectionFunction($controller);
 }
 foreach ($reflection->getParameters() as $param) {
-$arguments[] = new ArgumentMetadata($param->getName(), $this->getType($param), $this->isVariadic($param), $this->hasDefaultValue($param), $this->getDefaultValue($param));
+$arguments[] = new ArgumentMetadata($param->getName(), $this->getType($param), $this->isVariadic($param), $this->hasDefaultValue($param), $this->getDefaultValue($param), $this->isNullable($param));
 }
 return $arguments;
 }
 private function isVariadic(\ReflectionParameter $parameter)
 {
-return PHP_VERSION_ID >= 50600 && $parameter->isVariadic();
+return $this->supportsVariadic && $parameter->isVariadic();
 }
 private function hasDefaultValue(\ReflectionParameter $parameter)
 {
 return $parameter->isDefaultValueAvailable();
+}
+private function isNullable(\ReflectionParameter $parameter)
+{
+if ($this->supportsParameterType) {
+return null !== ($type = $parameter->getType()) && $type->allowsNull();
+}
+return $this->hasDefaultValue($parameter) && null === $this->getDefaultValue($parameter);
 }
 private function getDefaultValue(\ReflectionParameter $parameter)
 {
@@ -726,7 +750,7 @@ return $this->hasDefaultValue($parameter) ? $parameter->getDefaultValue() : null
 }
 private function getType(\ReflectionParameter $parameter)
 {
-if (PHP_VERSION_ID >= 70000) {
+if ($this->supportsParameterType) {
 return $parameter->hasType() ? (string) $parameter->getType() : null;
 }
 if ($parameter->isArray()) {
@@ -1196,641 +1220,6 @@ return $this->content;
 public function count()
 {
 return function_exists('mb_get_info') ? mb_strlen($this->content, $this->charset) : strlen($this->content);
-}
-}
-}
-namespace
-{
-interface Twig_TemplateInterface
-{
-const ANY_CALL ='any';
-const ARRAY_CALL ='array';
-const METHOD_CALL ='method';
-public function render(array $context);
-public function display(array $context, array $blocks = array());
-public function getEnvironment();
-}
-}
-namespace
-{
-abstract class Twig_Template implements Twig_TemplateInterface
-{
-protected static $cache = array();
-protected $parent;
-protected $parents = array();
-protected $env;
-protected $blocks = array();
-protected $traits = array();
-public function __construct(Twig_Environment $env)
-{
-$this->env = $env;
-}
-abstract public function getTemplateName();
-abstract public function getDebugInfo();
-public function getSource()
-{
-return'';
-}
-public function getEnvironment()
-{
-@trigger_error('The '.__METHOD__.' method is deprecated since version 1.20 and will be removed in 2.0.', E_USER_DEPRECATED);
-return $this->env;
-}
-public function getParent(array $context)
-{
-if (null !== $this->parent) {
-return $this->parent;
-}
-try {
-$parent = $this->doGetParent($context);
-if (false === $parent) {
-return false;
-}
-if ($parent instanceof self) {
-return $this->parents[$parent->getTemplateName()] = $parent;
-}
-if (!isset($this->parents[$parent])) {
-$this->parents[$parent] = $this->loadTemplate($parent);
-}
-} catch (Twig_Error_Loader $e) {
-$e->setTemplateFile(null);
-$e->guess();
-throw $e;
-}
-return $this->parents[$parent];
-}
-protected function doGetParent(array $context)
-{
-return false;
-}
-public function isTraitable()
-{
-return true;
-}
-public function displayParentBlock($name, array $context, array $blocks = array())
-{
-$name = (string) $name;
-if (isset($this->traits[$name])) {
-$this->traits[$name][0]->displayBlock($name, $context, $blocks, false);
-} elseif (false !== $parent = $this->getParent($context)) {
-$parent->displayBlock($name, $context, $blocks, false);
-} else {
-throw new Twig_Error_Runtime(sprintf('The template has no parent and no traits defining the "%s" block', $name), -1, $this->getTemplateName());
-}
-}
-public function displayBlock($name, array $context, array $blocks = array(), $useBlocks = true)
-{
-$name = (string) $name;
-if ($useBlocks && isset($blocks[$name])) {
-$template = $blocks[$name][0];
-$block = $blocks[$name][1];
-} elseif (isset($this->blocks[$name])) {
-$template = $this->blocks[$name][0];
-$block = $this->blocks[$name][1];
-} else {
-$template = null;
-$block = null;
-}
-if (null !== $template) {
-if (!$template instanceof self) {
-throw new LogicException('A block must be a method on a Twig_Template instance.');
-}
-try {
-$template->$block($context, $blocks);
-} catch (Twig_Error $e) {
-if (!$e->getTemplateFile()) {
-$e->setTemplateFile($template->getTemplateName());
-}
-if (false === $e->getTemplateLine()) {
-$e->setTemplateLine(-1);
-$e->guess();
-}
-throw $e;
-} catch (Exception $e) {
-throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $template->getTemplateName(), $e);
-}
-} elseif (false !== $parent = $this->getParent($context)) {
-$parent->displayBlock($name, $context, array_merge($this->blocks, $blocks), false);
-}
-}
-public function renderParentBlock($name, array $context, array $blocks = array())
-{
-ob_start();
-$this->displayParentBlock($name, $context, $blocks);
-return ob_get_clean();
-}
-public function renderBlock($name, array $context, array $blocks = array(), $useBlocks = true)
-{
-ob_start();
-$this->displayBlock($name, $context, $blocks, $useBlocks);
-return ob_get_clean();
-}
-public function hasBlock($name)
-{
-return isset($this->blocks[(string) $name]);
-}
-public function getBlockNames()
-{
-return array_keys($this->blocks);
-}
-protected function loadTemplate($template, $templateName = null, $line = null, $index = null)
-{
-try {
-if (is_array($template)) {
-return $this->env->resolveTemplate($template);
-}
-if ($template instanceof self) {
-return $template;
-}
-return $this->env->loadTemplate($template, $index);
-} catch (Twig_Error $e) {
-if (!$e->getTemplateFile()) {
-$e->setTemplateFile($templateName ? $templateName : $this->getTemplateName());
-}
-if ($e->getTemplateLine()) {
-throw $e;
-}
-if (!$line) {
-$e->guess();
-} else {
-$e->setTemplateLine($line);
-}
-throw $e;
-}
-}
-public function getBlocks()
-{
-return $this->blocks;
-}
-public function display(array $context, array $blocks = array())
-{
-$this->displayWithErrorHandling($this->env->mergeGlobals($context), array_merge($this->blocks, $blocks));
-}
-public function render(array $context)
-{
-$level = ob_get_level();
-ob_start();
-try {
-$this->display($context);
-} catch (Exception $e) {
-while (ob_get_level() > $level) {
-ob_end_clean();
-}
-throw $e;
-} catch (Throwable $e) {
-while (ob_get_level() > $level) {
-ob_end_clean();
-}
-throw $e;
-}
-return ob_get_clean();
-}
-protected function displayWithErrorHandling(array $context, array $blocks = array())
-{
-try {
-$this->doDisplay($context, $blocks);
-} catch (Twig_Error $e) {
-if (!$e->getTemplateFile()) {
-$e->setTemplateFile($this->getTemplateName());
-}
-if (false === $e->getTemplateLine()) {
-$e->setTemplateLine(-1);
-$e->guess();
-}
-throw $e;
-} catch (Exception $e) {
-throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $this->getTemplateName(), $e);
-}
-}
-abstract protected function doDisplay(array $context, array $blocks = array());
-final protected function getContext($context, $item, $ignoreStrictCheck = false)
-{
-if (!array_key_exists($item, $context)) {
-if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
-return;
-}
-throw new Twig_Error_Runtime(sprintf('Variable "%s" does not exist', $item), -1, $this->getTemplateName());
-}
-return $context[$item];
-}
-protected function getAttribute($object, $item, array $arguments = array(), $type = self::ANY_CALL, $isDefinedTest = false, $ignoreStrictCheck = false)
-{
-if (self::METHOD_CALL !== $type) {
-$arrayItem = is_bool($item) || is_float($item) ? (int) $item : $item;
-if ((is_array($object) && array_key_exists($arrayItem, $object))
-|| ($object instanceof ArrayAccess && isset($object[$arrayItem]))
-) {
-if ($isDefinedTest) {
-return true;
-}
-return $object[$arrayItem];
-}
-if (self::ARRAY_CALL === $type || !is_object($object)) {
-if ($isDefinedTest) {
-return false;
-}
-if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
-return;
-}
-if ($object instanceof ArrayAccess) {
-$message = sprintf('Key "%s" in object with ArrayAccess of class "%s" does not exist', $arrayItem, get_class($object));
-} elseif (is_object($object)) {
-$message = sprintf('Impossible to access a key "%s" on an object of class "%s" that does not implement ArrayAccess interface', $item, get_class($object));
-} elseif (is_array($object)) {
-if (empty($object)) {
-$message = sprintf('Key "%s" does not exist as the array is empty', $arrayItem);
-} else {
-$message = sprintf('Key "%s" for array with keys "%s" does not exist', $arrayItem, implode(', ', array_keys($object)));
-}
-} elseif (self::ARRAY_CALL === $type) {
-if (null === $object) {
-$message = sprintf('Impossible to access a key ("%s") on a null variable', $item);
-} else {
-$message = sprintf('Impossible to access a key ("%s") on a %s variable ("%s")', $item, gettype($object), $object);
-}
-} elseif (null === $object) {
-$message = sprintf('Impossible to access an attribute ("%s") on a null variable', $item);
-} else {
-$message = sprintf('Impossible to access an attribute ("%s") on a %s variable ("%s")', $item, gettype($object), $object);
-}
-throw new Twig_Error_Runtime($message, -1, $this->getTemplateName());
-}
-}
-if (!is_object($object)) {
-if ($isDefinedTest) {
-return false;
-}
-if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
-return;
-}
-if (null === $object) {
-$message = sprintf('Impossible to invoke a method ("%s") on a null variable', $item);
-} else {
-$message = sprintf('Impossible to invoke a method ("%s") on a %s variable ("%s")', $item, gettype($object), $object);
-}
-throw new Twig_Error_Runtime($message, -1, $this->getTemplateName());
-}
-if (self::METHOD_CALL !== $type && !$object instanceof self) { if (isset($object->$item) || array_key_exists((string) $item, $object)) {
-if ($isDefinedTest) {
-return true;
-}
-if ($this->env->hasExtension('sandbox')) {
-$this->env->getExtension('sandbox')->checkPropertyAllowed($object, $item);
-}
-return $object->$item;
-}
-}
-$class = get_class($object);
-if (!isset(self::$cache[$class]['methods'])) {
-if ($object instanceof self) {
-$ref = new ReflectionClass($class);
-$methods = array();
-foreach ($ref->getMethods(ReflectionMethod::IS_PUBLIC) as $refMethod) {
-$methodName = strtolower($refMethod->name);
-if ('getenvironment'!== $methodName) {
-$methods[$methodName] = true;
-}
-}
-self::$cache[$class]['methods'] = $methods;
-} else {
-self::$cache[$class]['methods'] = array_change_key_case(array_flip(get_class_methods($object)));
-}
-}
-$call = false;
-$lcItem = strtolower($item);
-if (isset(self::$cache[$class]['methods'][$lcItem])) {
-$method = (string) $item;
-} elseif (isset(self::$cache[$class]['methods']['get'.$lcItem])) {
-$method ='get'.$item;
-} elseif (isset(self::$cache[$class]['methods']['is'.$lcItem])) {
-$method ='is'.$item;
-} elseif (isset(self::$cache[$class]['methods']['__call'])) {
-$method = (string) $item;
-$call = true;
-} else {
-if ($isDefinedTest) {
-return false;
-}
-if ($ignoreStrictCheck || !$this->env->isStrictVariables()) {
-return;
-}
-throw new Twig_Error_Runtime(sprintf('Neither the property "%1$s" nor one of the methods "%1$s()", "get%1$s()"/"is%1$s()" or "__call()" exist and have public access in class "%2$s"', $item, get_class($object)), -1, $this->getTemplateName());
-}
-if ($isDefinedTest) {
-return true;
-}
-if ($this->env->hasExtension('sandbox')) {
-$this->env->getExtension('sandbox')->checkMethodAllowed($object, $method);
-}
-try {
-$ret = call_user_func_array(array($object, $method), $arguments);
-} catch (BadMethodCallException $e) {
-if ($call && ($ignoreStrictCheck || !$this->env->isStrictVariables())) {
-return;
-}
-throw $e;
-}
-if ($object instanceof Twig_TemplateInterface) {
-return $ret ===''?'': new Twig_Markup($ret, $this->env->getCharset());
-}
-return $ret;
-}
-}
-}
-namespace Monolog\Formatter
-{
-interface FormatterInterface
-{
-public function format(array $record);
-public function formatBatch(array $records);
-}
-}
-namespace Monolog\Formatter
-{
-use Exception;
-class NormalizerFormatter implements FormatterInterface
-{
-const SIMPLE_DATE ="Y-m-d H:i:s";
-protected $dateFormat;
-public function __construct($dateFormat = null)
-{
-$this->dateFormat = $dateFormat ?: static::SIMPLE_DATE;
-if (!function_exists('json_encode')) {
-throw new \RuntimeException('PHP\'s json extension is required to use Monolog\'s NormalizerFormatter');
-}
-}
-public function format(array $record)
-{
-return $this->normalize($record);
-}
-public function formatBatch(array $records)
-{
-foreach ($records as $key => $record) {
-$records[$key] = $this->format($record);
-}
-return $records;
-}
-protected function normalize($data)
-{
-if (null === $data || is_scalar($data)) {
-if (is_float($data)) {
-if (is_infinite($data)) {
-return ($data > 0 ?'':'-') .'INF';
-}
-if (is_nan($data)) {
-return'NaN';
-}
-}
-return $data;
-}
-if (is_array($data) || $data instanceof \Traversable) {
-$normalized = array();
-$count = 1;
-foreach ($data as $key => $value) {
-if ($count++ >= 1000) {
-$normalized['...'] ='Over 1000 items, aborting normalization';
-break;
-}
-$normalized[$key] = $this->normalize($value);
-}
-return $normalized;
-}
-if ($data instanceof \DateTime) {
-return $data->format($this->dateFormat);
-}
-if (is_object($data)) {
-if ($data instanceof Exception || (PHP_VERSION_ID > 70000 && $data instanceof \Throwable)) {
-return $this->normalizeException($data);
-}
-if (method_exists($data,'__toString') && !$data instanceof \JsonSerializable) {
-$value = $data->__toString();
-} else {
-$value = $this->toJson($data, true);
-}
-return sprintf("[object] (%s: %s)", get_class($data), $value);
-}
-if (is_resource($data)) {
-return sprintf('[resource] (%s)', get_resource_type($data));
-}
-return'[unknown('.gettype($data).')]';
-}
-protected function normalizeException($e)
-{
-if (!$e instanceof Exception && !$e instanceof \Throwable) {
-throw new \InvalidArgumentException('Exception/Throwable expected, got '.gettype($e).' / '.get_class($e));
-}
-$data = array('class'=> get_class($e),'message'=> $e->getMessage(),'code'=> $e->getCode(),'file'=> $e->getFile().':'.$e->getLine(),
-);
-if ($e instanceof \SoapFault) {
-if (isset($e->faultcode)) {
-$data['faultcode'] = $e->faultcode;
-}
-if (isset($e->faultactor)) {
-$data['faultactor'] = $e->faultactor;
-}
-if (isset($e->detail)) {
-$data['detail'] = $e->detail;
-}
-}
-$trace = $e->getTrace();
-foreach ($trace as $frame) {
-if (isset($frame['file'])) {
-$data['trace'][] = $frame['file'].':'.$frame['line'];
-} elseif (isset($frame['function']) && $frame['function'] ==='{closure}') {
-$data['trace'][] = $frame['function'];
-} else {
-$data['trace'][] = $this->toJson($this->normalize($frame), true);
-}
-}
-if ($previous = $e->getPrevious()) {
-$data['previous'] = $this->normalizeException($previous);
-}
-return $data;
-}
-protected function toJson($data, $ignoreErrors = false)
-{
-if ($ignoreErrors) {
-return @$this->jsonEncode($data);
-}
-$json = $this->jsonEncode($data);
-if ($json === false) {
-$json = $this->handleJsonError(json_last_error(), $data);
-}
-return $json;
-}
-private function jsonEncode($data)
-{
-if (version_compare(PHP_VERSION,'5.4.0','>=')) {
-return json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-}
-return json_encode($data);
-}
-private function handleJsonError($code, $data)
-{
-if ($code !== JSON_ERROR_UTF8) {
-$this->throwEncodeError($code, $data);
-}
-if (is_string($data)) {
-$this->detectAndCleanUtf8($data);
-} elseif (is_array($data)) {
-array_walk_recursive($data, array($this,'detectAndCleanUtf8'));
-} else {
-$this->throwEncodeError($code, $data);
-}
-$json = $this->jsonEncode($data);
-if ($json === false) {
-$this->throwEncodeError(json_last_error(), $data);
-}
-return $json;
-}
-private function throwEncodeError($code, $data)
-{
-switch ($code) {
-case JSON_ERROR_DEPTH:
-$msg ='Maximum stack depth exceeded';
-break;
-case JSON_ERROR_STATE_MISMATCH:
-$msg ='Underflow or the modes mismatch';
-break;
-case JSON_ERROR_CTRL_CHAR:
-$msg ='Unexpected control character found';
-break;
-case JSON_ERROR_UTF8:
-$msg ='Malformed UTF-8 characters, possibly incorrectly encoded';
-break;
-default:
-$msg ='Unknown error';
-}
-throw new \RuntimeException('JSON encoding failed: '.$msg.'. Encoding: '.var_export($data, true));
-}
-public function detectAndCleanUtf8(&$data)
-{
-if (is_string($data) && !preg_match('//u', $data)) {
-$data = preg_replace_callback('/[\x80-\xFF]+/',
-function ($m) { return utf8_encode($m[0]); },
-$data
-);
-$data = str_replace(
-array('¤','¦','¨','´','¸','¼','½','¾'),
-array('€','Š','š','Ž','ž','Œ','œ','Ÿ'),
-$data
-);
-}
-}
-}
-}
-namespace Monolog\Formatter
-{
-class LineFormatter extends NormalizerFormatter
-{
-const SIMPLE_FORMAT ="[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n";
-protected $format;
-protected $allowInlineLineBreaks;
-protected $ignoreEmptyContextAndExtra;
-protected $includeStacktraces;
-public function __construct($format = null, $dateFormat = null, $allowInlineLineBreaks = false, $ignoreEmptyContextAndExtra = false)
-{
-$this->format = $format ?: static::SIMPLE_FORMAT;
-$this->allowInlineLineBreaks = $allowInlineLineBreaks;
-$this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
-parent::__construct($dateFormat);
-}
-public function includeStacktraces($include = true)
-{
-$this->includeStacktraces = $include;
-if ($this->includeStacktraces) {
-$this->allowInlineLineBreaks = true;
-}
-}
-public function allowInlineLineBreaks($allow = true)
-{
-$this->allowInlineLineBreaks = $allow;
-}
-public function ignoreEmptyContextAndExtra($ignore = true)
-{
-$this->ignoreEmptyContextAndExtra = $ignore;
-}
-public function format(array $record)
-{
-$vars = parent::format($record);
-$output = $this->format;
-foreach ($vars['extra'] as $var => $val) {
-if (false !== strpos($output,'%extra.'.$var.'%')) {
-$output = str_replace('%extra.'.$var.'%', $this->stringify($val), $output);
-unset($vars['extra'][$var]);
-}
-}
-foreach ($vars['context'] as $var => $val) {
-if (false !== strpos($output,'%context.'.$var.'%')) {
-$output = str_replace('%context.'.$var.'%', $this->stringify($val), $output);
-unset($vars['context'][$var]);
-}
-}
-if ($this->ignoreEmptyContextAndExtra) {
-if (empty($vars['context'])) {
-unset($vars['context']);
-$output = str_replace('%context%','', $output);
-}
-if (empty($vars['extra'])) {
-unset($vars['extra']);
-$output = str_replace('%extra%','', $output);
-}
-}
-foreach ($vars as $var => $val) {
-if (false !== strpos($output,'%'.$var.'%')) {
-$output = str_replace('%'.$var.'%', $this->stringify($val), $output);
-}
-}
-return $output;
-}
-public function formatBatch(array $records)
-{
-$message ='';
-foreach ($records as $record) {
-$message .= $this->format($record);
-}
-return $message;
-}
-public function stringify($value)
-{
-return $this->replaceNewlines($this->convertToString($value));
-}
-protected function normalizeException($e)
-{
-if (!$e instanceof \Exception && !$e instanceof \Throwable) {
-throw new \InvalidArgumentException('Exception/Throwable expected, got '.gettype($e).' / '.get_class($e));
-}
-$previousText ='';
-if ($previous = $e->getPrevious()) {
-do {
-$previousText .=', '.get_class($previous).'(code: '.$previous->getCode().'): '.$previous->getMessage().' at '.$previous->getFile().':'.$previous->getLine();
-} while ($previous = $previous->getPrevious());
-}
-$str ='[object] ('.get_class($e).'(code: '.$e->getCode().'): '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine().$previousText.')';
-if ($this->includeStacktraces) {
-$str .="\n[stacktrace]\n".$e->getTraceAsString();
-}
-return $str;
-}
-protected function convertToString($data)
-{
-if (null === $data || is_bool($data)) {
-return var_export($data, true);
-}
-if (is_scalar($data)) {
-return (string) $data;
-}
-if (version_compare(PHP_VERSION,'5.4.0','>=')) {
-return $this->toJson($data, true);
-}
-return str_replace('\\/','/', @json_encode($data));
-}
-protected function replaceNewlines($str)
-{
-if ($this->allowInlineLineBreaks) {
-return $str;
-}
-return str_replace(array("\r\n","\r","\n"),' ', $str);
 }
 }
 }

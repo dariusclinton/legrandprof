@@ -50,11 +50,10 @@
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Registration/email.txt.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Resetting/passwordAlreadyRequested.html.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/CourseBundle/Resources/config/routing.yml</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Cours/add.html.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Resetting/email.txt.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Security/login.html.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Resetting/request_content.html.twig</file>
-            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Registration/checkEmail.html.twig</file>
+            <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/views/Cours/add.html.twig</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Controller/RegistrationProfController.php</file>
             <file>file:/opt/lampp/htdocs/legrandprof/src/LGP/UserBundle/Resources/routing/profile.xml</file>
             <file>file:/opt/lampp/htdocs/legrandprof/vendor/friendsofsymfony/user-bundle/Resources/views/ChangePassword/change_password.html.twig</file>

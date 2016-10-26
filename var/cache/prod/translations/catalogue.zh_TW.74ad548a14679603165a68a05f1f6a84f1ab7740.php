@@ -166,22 +166,22 @@ $catalogueFr = new MessageCatalogue('fr', array (
     'The CSRF token is invalid. Please try to resubmit the form.' => 'Le jeton CSRF est invalide. Veuillez renvoyer le formulaire.',
     'fos_user.username.already_used' => 'Le nom d\'utilisateur est déjà utilisé',
     'fos_user.username.blank' => 'Entrez un nom d\'utilisateur s\'il vous plait',
-    'fos_user.username.short' => '[-Inf,Inf]Le nom d\'utilisateur est trop court',
-    'fos_user.username.long' => '[-Inf,Inf]Le nom d\'utilisateur est trop long',
+    'fos_user.username.short' => 'Le nom d\'utilisateur est trop court',
+    'fos_user.username.long' => 'Le nom d\'utilisateur est trop long',
     'fos_user.email.already_used' => 'L\'adresse e-mail est déjà utilisée',
     'fos_user.email.blank' => 'Entrez une adresse e-mail s\'il vous plait',
-    'fos_user.email.short' => '[-Inf,Inf]L\'adresse e-mail est trop courte',
-    'fos_user.email.long' => '[-Inf,Inf]L\'adresse e-mail est trop longue',
+    'fos_user.email.short' => 'L\'adresse e-mail est trop courte',
+    'fos_user.email.long' => 'L\'adresse e-mail est trop longue',
     'fos_user.email.invalid' => 'L\'adresse e-mail est invalide',
     'fos_user.password.blank' => 'Entrez un mot de passe s\'il vous plait',
-    'fos_user.password.short' => '[-Inf,Inf]Le mot de passe est trop court',
+    'fos_user.password.short' => 'Le mot de passe est trop court',
     'fos_user.password.mismatch' => 'Les deux mots de passe ne sont pas identiques',
     'fos_user.new_password.blank' => 'Entrez un nouveau mot de passe s\'il vous plait',
-    'fos_user.new_password.short' => '[-Inf,Inf]Le nouveau mot de passe est trop court',
+    'fos_user.new_password.short' => 'Le nouveau mot de passe est trop court',
     'fos_user.current_password.invalid' => 'Le mot de passe est invalide',
     'fos_user.group.blank' => 'Entrez un nom s\'il vous plait',
-    'fos_user.group.short' => '[-Inf,Inf]Le nom est trop court',
-    'fos_user.group.long' => '[-Inf,Inf]Le nom est trop long',
+    'fos_user.group.short' => 'Le nom est trop court',
+    'fos_user.group.long' => 'Le nom est trop long',
     'fos_group.name.already_used' => 'Le nom est déjà utilisé',
   ),
   'security' => 
@@ -240,7 +240,6 @@ Remarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %token
 
 Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.
 ',
-    'resetting.request.invalid_username' => 'Le nom d\'utilisateur ou l\'adresse e-mail "%username%" n\'existe pas.',
     'resetting.request.username' => 'Nom d\'utilisateur ou adresse e-mail',
     'resetting.request.submit' => 'Réinitialiser le mot de passe',
     'resetting.reset.submit' => 'Modifier le mot de passe',
@@ -251,7 +250,8 @@ Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouv
 Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
 
 Cordialement,
-L\'équipe',
+L\'équipe
+',
     'layout.logout' => 'Déconnexion',
     'layout.login' => 'Connexion',
     'layout.register' => 'Inscription',

@@ -88,22 +88,22 @@ $catalogue = new MessageCatalogue('en', array (
     'The CSRF token is invalid. Please try to resubmit the form.' => 'The CSRF token is invalid. Please try to resubmit the form.',
     'fos_user.username.already_used' => 'The username is already used',
     'fos_user.username.blank' => 'Please enter a username',
-    'fos_user.username.short' => '[-Inf,Inf]The username is too short',
-    'fos_user.username.long' => '[-Inf,Inf]The username is too long',
+    'fos_user.username.short' => 'The username is too short',
+    'fos_user.username.long' => 'The username is too long',
     'fos_user.email.already_used' => 'The email is already used',
     'fos_user.email.blank' => 'Please enter an email',
-    'fos_user.email.short' => '[-Inf,Inf]The email is too short',
-    'fos_user.email.long' => '[-Inf,Inf]The email is too long',
+    'fos_user.email.short' => 'The email is too short',
+    'fos_user.email.long' => 'The email is too long',
     'fos_user.email.invalid' => 'The email is not valid',
     'fos_user.password.blank' => 'Please enter a password',
-    'fos_user.password.short' => '[-Inf,Inf]The password is too short',
+    'fos_user.password.short' => 'The password is too short',
     'fos_user.password.mismatch' => 'The entered passwords don\'t match',
     'fos_user.new_password.blank' => 'Please enter a new password',
-    'fos_user.new_password.short' => '[-Inf,Inf]The new password is too short',
+    'fos_user.new_password.short' => 'The new password is too short',
     'fos_user.current_password.invalid' => 'The entered password is invalid',
     'fos_user.group.blank' => 'Please enter a name',
-    'fos_user.group.short' => '[-Inf,Inf]The name is too short',
-    'fos_user.group.long' => '[-Inf,Inf]The name is too long',
+    'fos_user.group.short' => 'The name is too short',
+    'fos_user.group.long' => 'The name is too long',
     'fos_group.name.already_used' => 'The name is already used',
   ),
   'security' => 
@@ -157,8 +157,11 @@ Regards,
 the Team.
 ',
     'resetting.password_already_requested' => 'The password for this user has already been requested within the last 24 hours.',
-    'resetting.check_email' => 'An email has been sent to %email%. It contains a link you must click to reset your password.',
-    'resetting.request.invalid_username' => 'The username or email address "%username%" does not exist.',
+    'resetting.check_email' => 'An email has been sent. It contains a link you must click to reset your password.
+Note: You can only request a new password within %tokenLifetime% hours.
+
+If you don\'t get an email check your spam folder or try again.
+',
     'resetting.request.username' => 'Username or email address',
     'resetting.request.submit' => 'Reset password',
     'resetting.reset.submit' => 'Change password',
@@ -468,6 +471,16 @@ the Team.
     'no_subclass_available' => 'No object types available',
     'label_unknown_user' => 'unknown',
   ),
+  'messages' => 
+  array (
+    'coresphere_console.headline.index' => 'Console',
+    'coresphere_console.working_directory' => 'Working directory',
+    'coresphere_console.environment' => 'Environment',
+    'coresphere_console.welcome_message' => 'Type %command% to get a list of all commands.',
+    'coresphere_console.loading' => 'Loading...',
+    'coresphere_console.suggestion_head' => 'Did you mean:',
+    'coresphere_console.empty_response' => 'Complete!',
+  ),
 ));
 
 $catalogueFr = new MessageCatalogue('fr', array (
@@ -556,22 +569,22 @@ $catalogueFr = new MessageCatalogue('fr', array (
     'The CSRF token is invalid. Please try to resubmit the form.' => 'Le jeton CSRF est invalide. Veuillez renvoyer le formulaire.',
     'fos_user.username.already_used' => 'Le nom d\'utilisateur est déjà utilisé',
     'fos_user.username.blank' => 'Entrez un nom d\'utilisateur s\'il vous plait',
-    'fos_user.username.short' => '[-Inf,Inf]Le nom d\'utilisateur est trop court',
-    'fos_user.username.long' => '[-Inf,Inf]Le nom d\'utilisateur est trop long',
+    'fos_user.username.short' => 'Le nom d\'utilisateur est trop court',
+    'fos_user.username.long' => 'Le nom d\'utilisateur est trop long',
     'fos_user.email.already_used' => 'L\'adresse e-mail est déjà utilisée',
     'fos_user.email.blank' => 'Entrez une adresse e-mail s\'il vous plait',
-    'fos_user.email.short' => '[-Inf,Inf]L\'adresse e-mail est trop courte',
-    'fos_user.email.long' => '[-Inf,Inf]L\'adresse e-mail est trop longue',
+    'fos_user.email.short' => 'L\'adresse e-mail est trop courte',
+    'fos_user.email.long' => 'L\'adresse e-mail est trop longue',
     'fos_user.email.invalid' => 'L\'adresse e-mail est invalide',
     'fos_user.password.blank' => 'Entrez un mot de passe s\'il vous plait',
-    'fos_user.password.short' => '[-Inf,Inf]Le mot de passe est trop court',
+    'fos_user.password.short' => 'Le mot de passe est trop court',
     'fos_user.password.mismatch' => 'Les deux mots de passe ne sont pas identiques',
     'fos_user.new_password.blank' => 'Entrez un nouveau mot de passe s\'il vous plait',
-    'fos_user.new_password.short' => '[-Inf,Inf]Le nouveau mot de passe est trop court',
+    'fos_user.new_password.short' => 'Le nouveau mot de passe est trop court',
     'fos_user.current_password.invalid' => 'Le mot de passe est invalide',
     'fos_user.group.blank' => 'Entrez un nom s\'il vous plait',
-    'fos_user.group.short' => '[-Inf,Inf]Le nom est trop court',
-    'fos_user.group.long' => '[-Inf,Inf]Le nom est trop long',
+    'fos_user.group.short' => 'Le nom est trop court',
+    'fos_user.group.long' => 'Le nom est trop long',
     'fos_group.name.already_used' => 'Le nom est déjà utilisé',
   ),
   'security' => 
@@ -630,7 +643,6 @@ Remarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %token
 
 Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.
 ',
-    'resetting.request.invalid_username' => 'Le nom d\'utilisateur ou l\'adresse e-mail "%username%" n\'existe pas.',
     'resetting.request.username' => 'Nom d\'utilisateur ou adresse e-mail',
     'resetting.request.submit' => 'Réinitialiser le mot de passe',
     'resetting.reset.submit' => 'Modifier le mot de passe',
@@ -641,7 +653,8 @@ Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouv
 Pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
 
 Cordialement,
-L\'équipe',
+L\'équipe
+',
     'layout.logout' => 'Déconnexion',
     'layout.login' => 'Connexion',
     'layout.register' => 'Inscription',
@@ -938,6 +951,16 @@ L\'équipe',
     'title_select_subclass' => 'title_select_subclass',
     'no_subclass_available' => 'no_subclass_available',
     'label_unknown_user' => 'label_unknown_user',
+  ),
+  'messages' => 
+  array (
+    'coresphere_console.headline.index' => 'Console',
+    'coresphere_console.working_directory' => 'Répertoire de travail',
+    'coresphere_console.environment' => 'Environnement',
+    'coresphere_console.welcome_message' => 'Tapez %command% pour obtenir la liste de toutes les commandes.',
+    'coresphere_console.loading' => 'Chargement en cours...',
+    'coresphere_console.suggestion_head' => 'Essayez plutôt :',
+    'coresphere_console.empty_response' => 'Commande exécutée ! (Mais réponse vide)',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueFr);
