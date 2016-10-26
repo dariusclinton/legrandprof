@@ -22,20 +22,20 @@ class __TwigTemplate_9d8c58a3a3dc9171c89258ffbe2f071b9b8bebc70a79b6faa494041924b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ca85f8b344ee1ae465999cac1ef9d844cdfa9b62cda49db45efa976296f75c40 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ca85f8b344ee1ae465999cac1ef9d844cdfa9b62cda49db45efa976296f75c40->enter($__internal_ca85f8b344ee1ae465999cac1ef9d844cdfa9b62cda49db45efa976296f75c40_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Enseignement:profile.html.twig"));
+        $__internal_13adade17862aef5df3d17c3546d1ac899849d8d3714db0271fadded27a5f790 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_13adade17862aef5df3d17c3546d1ac899849d8d3714db0271fadded27a5f790->enter($__internal_13adade17862aef5df3d17c3546d1ac899849d8d3714db0271fadded27a5f790_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Enseignement:profile.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ca85f8b344ee1ae465999cac1ef9d844cdfa9b62cda49db45efa976296f75c40->leave($__internal_ca85f8b344ee1ae465999cac1ef9d844cdfa9b62cda49db45efa976296f75c40_prof);
+        $__internal_13adade17862aef5df3d17c3546d1ac899849d8d3714db0271fadded27a5f790->leave($__internal_13adade17862aef5df3d17c3546d1ac899849d8d3714db0271fadded27a5f790_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_e2b131abd072e49a69055f18e52fc6e82a80af854f944c61c671f4411b39ef32 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e2b131abd072e49a69055f18e52fc6e82a80af854f944c61c671f4411b39ef32->enter($__internal_e2b131abd072e49a69055f18e52fc6e82a80af854f944c61c671f4411b39ef32_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_0a138259f8da55bb0cc4bfecbfabadd213ea2c6d7b38fe45ac8c16cb90acf5cd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0a138259f8da55bb0cc4bfecbfabadd213ea2c6d7b38fe45ac8c16cb90acf5cd->enter($__internal_0a138259f8da55bb0cc4bfecbfabadd213ea2c6d7b38fe45ac8c16cb90acf5cd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    Profil prof - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_9d8c58a3a3dc9171c89258ffbe2f071b9b8bebc70a79b6faa494041924b
         echo "
 ";
         
-        $__internal_e2b131abd072e49a69055f18e52fc6e82a80af854f944c61c671f4411b39ef32->leave($__internal_e2b131abd072e49a69055f18e52fc6e82a80af854f944c61c671f4411b39ef32_prof);
+        $__internal_0a138259f8da55bb0cc4bfecbfabadd213ea2c6d7b38fe45ac8c16cb90acf5cd->leave($__internal_0a138259f8da55bb0cc4bfecbfabadd213ea2c6d7b38fe45ac8c16cb90acf5cd_prof);
 
     }
 
     // line 7
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0301dd8694ba418c9f790f57f088b387b4102eaf06292734e814d7e9acc26fe1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0301dd8694ba418c9f790f57f088b387b4102eaf06292734e814d7e9acc26fe1->enter($__internal_0301dd8694ba418c9f790f57f088b387b4102eaf06292734e814d7e9acc26fe1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_97fe8c2e52c7224d11babde54625631dd6ee7981d5f81e95444af5fcafde8729 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_97fe8c2e52c7224d11babde54625631dd6ee7981d5f81e95444af5fcafde8729->enter($__internal_97fe8c2e52c7224d11babde54625631dd6ee7981d5f81e95444af5fcafde8729_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 8
         echo "    <!-- start end Page title -->
@@ -324,7 +324,7 @@ class __TwigTemplate_9d8c58a3a3dc9171c89258ffbe2f071b9b8bebc70a79b6faa494041924b
                                         <b>
                                             <a href=\" ";
             // line 139
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof_course", array("slug_course" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
             echo " \"
                                                title=\"\">
                                                 ";
@@ -918,7 +918,7 @@ class __TwigTemplate_9d8c58a3a3dc9171c89258ffbe2f071b9b8bebc70a79b6faa494041924b
 
 ";
         
-        $__internal_0301dd8694ba418c9f790f57f088b387b4102eaf06292734e814d7e9acc26fe1->leave($__internal_0301dd8694ba418c9f790f57f088b387b4102eaf06292734e814d7e9acc26fe1_prof);
+        $__internal_97fe8c2e52c7224d11babde54625631dd6ee7981d5f81e95444af5fcafde8729->leave($__internal_97fe8c2e52c7224d11babde54625631dd6ee7981d5f81e95444af5fcafde8729_prof);
 
     }
 
@@ -1077,7 +1077,7 @@ class __TwigTemplate_9d8c58a3a3dc9171c89258ffbe2f071b9b8bebc70a79b6faa494041924b
                                 {% for ens_cours in params.enseignementRep.getCoursByProf(prof) %}
                                     <li class=\"list-group-item\">
                                         <b>
-                                            <a href=\" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} \"
+                                            <a href=\" {{ path('lgp_course_find_prof_course',{'slug_course':ens_cours.cours.slug}) }} \"
                                                title=\"\">
                                                 {{ ens_cours.cours.intitule }}
                                             </a>

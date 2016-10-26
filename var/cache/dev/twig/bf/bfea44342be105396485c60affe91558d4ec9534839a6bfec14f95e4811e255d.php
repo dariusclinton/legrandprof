@@ -15,8 +15,8 @@ class __TwigTemplate_23c7a8efe10bb668ffaba9e621710de60c318dbdcd6ac01fa51b0195dcd
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_49d2c36d9ae1cfecaf5108fb14d3117caffd4104a9f65786e2269ed5db754b5f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_49d2c36d9ae1cfecaf5108fb14d3117caffd4104a9f65786e2269ed5db754b5f->enter($__internal_49d2c36d9ae1cfecaf5108fb14d3117caffd4104a9f65786e2269ed5db754b5f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataCoreBundle:FlashMessage:render.html.twig"));
+        $__internal_970253dcbfa7fd70d54ae9ed4335db370ee4b2cade889de8ba39f4b30e24d5af = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_970253dcbfa7fd70d54ae9ed4335db370ee4b2cade889de8ba39f4b30e24d5af->enter($__internal_970253dcbfa7fd70d54ae9ed4335db370ee4b2cade889de8ba39f4b30e24d5af_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataCoreBundle:FlashMessage:render.html.twig"));
 
         // line 11
         $context['_parent'] = $context;
@@ -50,7 +50,7 @@ class __TwigTemplate_23c7a8efe10bb668ffaba9e621710de60c318dbdcd6ac01fa51b0195dcd
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['type'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_49d2c36d9ae1cfecaf5108fb14d3117caffd4104a9f65786e2269ed5db754b5f->leave($__internal_49d2c36d9ae1cfecaf5108fb14d3117caffd4104a9f65786e2269ed5db754b5f_prof);
+        $__internal_970253dcbfa7fd70d54ae9ed4335db370ee4b2cade889de8ba39f4b30e24d5af->leave($__internal_970253dcbfa7fd70d54ae9ed4335db370ee4b2cade889de8ba39f4b30e24d5af_prof);
 
     }
 

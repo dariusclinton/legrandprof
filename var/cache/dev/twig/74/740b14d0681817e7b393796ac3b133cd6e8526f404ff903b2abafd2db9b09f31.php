@@ -20,20 +20,20 @@ class __TwigTemplate_b6fa21a7f6e78868bf700cfc4ce011bab3ddd8b5f0b7e55778eb1849280
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_1ee1ae41e51a8255886e569600232284cd4014bc49ffd3ee4a204bf2ef19b075 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1ee1ae41e51a8255886e569600232284cd4014bc49ffd3ee4a204bf2ef19b075->enter($__internal_1ee1ae41e51a8255886e569600232284cd4014bc49ffd3ee4a204bf2ef19b075_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_percent.html.twig"));
+        $__internal_03e71dec0f7c79e24e1dad6507aead75e479abb700281b2e1328a8a9466668c4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_03e71dec0f7c79e24e1dad6507aead75e479abb700281b2e1328a8a9466668c4->enter($__internal_03e71dec0f7c79e24e1dad6507aead75e479abb700281b2e1328a8a9466668c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_percent.html.twig"));
 
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_1ee1ae41e51a8255886e569600232284cd4014bc49ffd3ee4a204bf2ef19b075->leave($__internal_1ee1ae41e51a8255886e569600232284cd4014bc49ffd3ee4a204bf2ef19b075_prof);
+        $__internal_03e71dec0f7c79e24e1dad6507aead75e479abb700281b2e1328a8a9466668c4->leave($__internal_03e71dec0f7c79e24e1dad6507aead75e479abb700281b2e1328a8a9466668c4_prof);
 
     }
 
     // line 14
     public function block_field($context, array $blocks = array())
     {
-        $__internal_375759a88cba524d7ae2568849e5ef8561a791a63d60e69fd96d35d76433831c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_375759a88cba524d7ae2568849e5ef8561a791a63d60e69fd96d35d76433831c->enter($__internal_375759a88cba524d7ae2568849e5ef8561a791a63d60e69fd96d35d76433831c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "field"));
+        $__internal_5787ba624e5b9073511f5c968c05fd6da5cdb8cb5bebf603edfde6de47c357f8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5787ba624e5b9073511f5c968c05fd6da5cdb8cb5bebf603edfde6de47c357f8->enter($__internal_5787ba624e5b9073511f5c968c05fd6da5cdb8cb5bebf603edfde6de47c357f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "field"));
 
         // line 15
         echo "    ";
@@ -44,7 +44,7 @@ class __TwigTemplate_b6fa21a7f6e78868bf700cfc4ce011bab3ddd8b5f0b7e55778eb1849280
         echo " %
 ";
         
-        $__internal_375759a88cba524d7ae2568849e5ef8561a791a63d60e69fd96d35d76433831c->leave($__internal_375759a88cba524d7ae2568849e5ef8561a791a63d60e69fd96d35d76433831c_prof);
+        $__internal_5787ba624e5b9073511f5c968c05fd6da5cdb8cb5bebf603edfde6de47c357f8->leave($__internal_5787ba624e5b9073511f5c968c05fd6da5cdb8cb5bebf603edfde6de47c357f8_prof);
 
     }
 

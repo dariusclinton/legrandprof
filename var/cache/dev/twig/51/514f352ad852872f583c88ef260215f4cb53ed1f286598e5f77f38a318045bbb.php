@@ -20,24 +20,24 @@ class __TwigTemplate_f0bcd327255393b66addfa6da19d791205055a9d042dfd9f809e32cbeef
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6f867ab9215c0b201b27a1313d54f3f25833f491e9aff25f8442c0cf76bc726b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6f867ab9215c0b201b27a1313d54f3f25833f491e9aff25f8442c0cf76bc726b->enter($__internal_6f867ab9215c0b201b27a1313d54f3f25833f491e9aff25f8442c0cf76bc726b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:edit_string.html.twig"));
+        $__internal_b31badb7f8ec2932b703b5ee3b266549a83a788456a2ce90282272682418eee6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b31badb7f8ec2932b703b5ee3b266549a83a788456a2ce90282272682418eee6->enter($__internal_b31badb7f8ec2932b703b5ee3b266549a83a788456a2ce90282272682418eee6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:edit_string.html.twig"));
 
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6f867ab9215c0b201b27a1313d54f3f25833f491e9aff25f8442c0cf76bc726b->leave($__internal_6f867ab9215c0b201b27a1313d54f3f25833f491e9aff25f8442c0cf76bc726b_prof);
+        $__internal_b31badb7f8ec2932b703b5ee3b266549a83a788456a2ce90282272682418eee6->leave($__internal_b31badb7f8ec2932b703b5ee3b266549a83a788456a2ce90282272682418eee6_prof);
 
     }
 
     // line 14
     public function block_field($context, array $blocks = array())
     {
-        $__internal_f9a261243ee10e69094fe9441a19727d4d31b74681a59b416f41fe06183bba8e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f9a261243ee10e69094fe9441a19727d4d31b74681a59b416f41fe06183bba8e->enter($__internal_f9a261243ee10e69094fe9441a19727d4d31b74681a59b416f41fe06183bba8e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "field"));
+        $__internal_20bc02e5a404c79e4f02b4efb5d9c9429985737e2033b70e3402dd25d44387b6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_20bc02e5a404c79e4f02b4efb5d9c9429985737e2033b70e3402dd25d44387b6->enter($__internal_20bc02e5a404c79e4f02b4efb5d9c9429985737e2033b70e3402dd25d44387b6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "field"));
 
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["field_element"]) ? $context["field_element"] : $this->getContext($context, "field_element")), 'widget', array("attr" => array("class" => "title")));
         
-        $__internal_f9a261243ee10e69094fe9441a19727d4d31b74681a59b416f41fe06183bba8e->leave($__internal_f9a261243ee10e69094fe9441a19727d4d31b74681a59b416f41fe06183bba8e_prof);
+        $__internal_20bc02e5a404c79e4f02b4efb5d9c9429985737e2033b70e3402dd25d44387b6->leave($__internal_20bc02e5a404c79e4f02b4efb5d9c9429985737e2033b70e3402dd25d44387b6_prof);
 
     }
 

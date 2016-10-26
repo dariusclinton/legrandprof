@@ -174,7 +174,7 @@ class __TwigTemplate_792ccd9f8d91bd99b560014d43a29a6abbedc5075ee5ba780e081327e61
                                     <div class=\"package-grid-item\"> 
                                         <a href=\" ";
             // line 92
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($context["course"], "slug", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof_course", array("slug_course" => $this->getAttribute($context["course"], "slug", array()))), "html", null, true);
             echo " \">
                                             <div class=\"image\">
                                                 ";

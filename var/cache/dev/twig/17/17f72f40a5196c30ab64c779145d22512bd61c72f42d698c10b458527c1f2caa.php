@@ -15,8 +15,8 @@ class __TwigTemplate_a8a1d3987d69ac6b72d4cc809cf3721131e9485fe776562165521182e45
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_55d0154be904e09829643dd117a2999da9ad852ab2b3486f891b8b21046836a3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_55d0154be904e09829643dd117a2999da9ad852ab2b3486f891b8b21046836a3->enter($__internal_55d0154be904e09829643dd117a2999da9ad852ab2b3486f891b8b21046836a3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::dialog.html.twig"));
+        $__internal_6852ae7ac2394a91bc6308004bafe736152ef2b401ecd0783477c7b7c2afcc84 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6852ae7ac2394a91bc6308004bafe736152ef2b401ecd0783477c7b7c2afcc84->enter($__internal_6852ae7ac2394a91bc6308004bafe736152ef2b401ecd0783477c7b7c2afcc84_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::dialog.html.twig"));
 
         // line 1
         echo "<!-- BEGIN # MODAL LOGIN -->
@@ -187,7 +187,7 @@ class __TwigTemplate_a8a1d3987d69ac6b72d4cc809cf3721131e9485fe776562165521182e45
 <!-- END # MODAL LOGIN -->
 ";
         
-        $__internal_55d0154be904e09829643dd117a2999da9ad852ab2b3486f891b8b21046836a3->leave($__internal_55d0154be904e09829643dd117a2999da9ad852ab2b3486f891b8b21046836a3_prof);
+        $__internal_6852ae7ac2394a91bc6308004bafe736152ef2b401ecd0783477c7b7c2afcc84->leave($__internal_6852ae7ac2394a91bc6308004bafe736152ef2b401ecd0783477c7b7c2afcc84_prof);
 
     }
 

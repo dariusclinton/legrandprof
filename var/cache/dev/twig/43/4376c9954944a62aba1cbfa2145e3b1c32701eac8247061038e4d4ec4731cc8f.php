@@ -15,8 +15,8 @@ class __TwigTemplate_665351b769f9ac7ad6e46730b5bb8199ebf902ab5d52bc805a26b54aaa4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c1a9c5b485becbe237614069e959a57246bf7c34cbf2fb2010d85c0a0305abe5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c1a9c5b485becbe237614069e959a57246bf7c34cbf2fb2010d85c0a0305abe5->enter($__internal_c1a9c5b485becbe237614069e959a57246bf7c34cbf2fb2010d85c0a0305abe5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_sortable_script_table.html.twig"));
+        $__internal_aca26b685c035b20affae2c4d8183f61e49681bac1256630abaa57c94a692988 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_aca26b685c035b20affae2c4d8183f61e49681bac1256630abaa57c94a692988->enter($__internal_aca26b685c035b20affae2c4d8183f61e49681bac1256630abaa57c94a692988_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_sortable_script_table.html.twig"));
 
         // line 11
         echo "<script type=\"text/javascript\">
@@ -86,7 +86,7 @@ class __TwigTemplate_665351b769f9ac7ad6e46730b5bb8199ebf902ab5d52bc805a26b54aaa4
 </script>
 ";
         
-        $__internal_c1a9c5b485becbe237614069e959a57246bf7c34cbf2fb2010d85c0a0305abe5->leave($__internal_c1a9c5b485becbe237614069e959a57246bf7c34cbf2fb2010d85c0a0305abe5_prof);
+        $__internal_aca26b685c035b20affae2c4d8183f61e49681bac1256630abaa57c94a692988->leave($__internal_aca26b685c035b20affae2c4d8183f61e49681bac1256630abaa57c94a692988_prof);
 
     }
 

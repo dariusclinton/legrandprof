@@ -66,7 +66,7 @@ class __TwigTemplate_b4794af32448a47c15061b7bd875dd821f0fff7561ce959a5c88131f0f9
         echo "
                     ";
         // line 34
-        echo twig_include($this->env, $context, "LGPCourseBundle:Form:course_form_search.html.twig");
+        echo twig_include($this->env, $context, "LGPCourseBundle:Form:course_city_form_search.html.twig");
         echo "
 
                 </div>

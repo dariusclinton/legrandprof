@@ -15,8 +15,8 @@ class __TwigTemplate_e0d730a08618defa42185ebdc4a61e2427f5677c67bc0dee208ec804895
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6916b82c1faa4ce082e4c1cbe9212a2cdcbc8720a986aff00b67202635365ac3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6916b82c1faa4ce082e4c1cbe9212a2cdcbc8720a986aff00b67202635365ac3->enter($__internal_6916b82c1faa4ce082e4c1cbe9212a2cdcbc8720a986aff00b67202635365ac3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
+        $__internal_70fddaf02ed1a0a995bd87761939b28009537d19e2d4a9aa6ee446b598bc8103 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_70fddaf02ed1a0a995bd87761939b28009537d19e2d4a9aa6ee446b598bc8103->enter($__internal_70fddaf02ed1a0a995bd87761939b28009537d19e2d4a9aa6ee446b598bc8103_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCoreBundle::header-submenu.html.twig"));
 
         // line 1
         echo "<div class=\"header-dashboard-submenu hidden-xs\">
@@ -82,7 +82,7 @@ class __TwigTemplate_e0d730a08618defa42185ebdc4a61e2427f5677c67bc0dee208ec804895
   </div>
 </div>";
         
-        $__internal_6916b82c1faa4ce082e4c1cbe9212a2cdcbc8720a986aff00b67202635365ac3->leave($__internal_6916b82c1faa4ce082e4c1cbe9212a2cdcbc8720a986aff00b67202635365ac3_prof);
+        $__internal_70fddaf02ed1a0a995bd87761939b28009537d19e2d4a9aa6ee446b598bc8103->leave($__internal_70fddaf02ed1a0a995bd87761939b28009537d19e2d4a9aa6ee446b598bc8103_prof);
 
     }
 

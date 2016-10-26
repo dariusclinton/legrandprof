@@ -15,8 +15,8 @@ class __TwigTemplate_5432c662c59937a64c297a9e23dae629affdf7cca71d966b1804d021869
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b9f96134f2970375a2513441d26ce7095754e6b4a79199053833cf48976a10a5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b9f96134f2970375a2513441d26ce7095754e6b4a79199053833cf48976a10a5->enter($__internal_b9f96134f2970375a2513441d26ce7095754e6b4a79199053833cf48976a10a5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:profiler.css.twig"));
+        $__internal_3931a6d92d98561d8883fd41c071100c200900ccd617134274da537f6a46e208 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3931a6d92d98561d8883fd41c071100c200900ccd617134274da537f6a46e208->enter($__internal_3931a6d92d98561d8883fd41c071100c200900ccd617134274da537f6a46e208_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:profiler.css.twig"));
 
         // line 3
         $context["mixins"] = array("break_long_words" => "-ms-word-break: break-all; word-break: break-all; word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;", "monospace_font" => "font-family: monospace; font-size: 13px; font-size-adjust: 0.5;", "sans_serif_font" => "font-family: Helvetica, Arial, sans-serif;", "subtle_border_and_shadow" => "background: #FFF; border: 1px solid #E0E0E0; box-shadow: 0px 0px 1px rgba(128, 128, 128, .2);");
@@ -1078,7 +1078,7 @@ table.logs .sf-call-stack abbr {
 }
 ";
         
-        $__internal_b9f96134f2970375a2513441d26ce7095754e6b4a79199053833cf48976a10a5->leave($__internal_b9f96134f2970375a2513441d26ce7095754e6b4a79199053833cf48976a10a5_prof);
+        $__internal_3931a6d92d98561d8883fd41c071100c200900ccd617134274da537f6a46e208->leave($__internal_3931a6d92d98561d8883fd41c071100c200900ccd617134274da537f6a46e208_prof);
 
     }
 

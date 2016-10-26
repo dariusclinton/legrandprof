@@ -16,42 +16,20 @@ class __TwigTemplate_c21a6ab2719644c47dd0ff3c5c7ed9e56d11e73eac3298340a6ea6be324
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : null), 'form_start');
+        echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form_course"]) ? $context["form_course"] : null), 'form_start');
         echo "
 
 <div class=\"column-item-medium\">
     <div class=\"form-group\" data-onload=\"loadCourses()\">
         ";
         // line 5
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "intitule", array()), 'widget', array("attr" => array("class" => "form-control", "autocomplete" => "off", "spellcheck" => "off")));
-        echo "
-    </div>
-</div>
-<div class=\"column-item-medium\">
-    <div class=\"form-group\">
-        ";
-        // line 10
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "quartier", array()), 'widget', array("attr" => array("class" => "form-control", "autocomplete" => "off", "spellcheck" => "off")));
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form_course"]) ? $context["form_course"] : null), "intitule", array()), 'widget', array("attr" => array("class" => "form-control", "autocomplete" => "off", "spellcheck" => "off")));
         echo "
     </div>
 </div>
 ";
-        // line 13
-        if ($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "quartier1", array(), "any", true, true)) {
-            // line 14
-            echo "    <div class=\"column-item-medium\">
-        <div class=\"form-group\">
-            ";
-            // line 16
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "quartier1", array()), 'widget', array("attr" => array("class" => "form-control", "autocomplete" => "off", "spellcheck" => "off")));
-            echo "
-        </div>
-    </div>
-";
-        }
-        // line 20
-        echo "    ";
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : null), 'rest');
+        // line 8
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form_course"]) ? $context["form_course"] : null), 'rest');
         echo "
 <div class=\"column-item for-btn\">
     <div class=\"form-group\">
@@ -59,8 +37,8 @@ class __TwigTemplate_c21a6ab2719644c47dd0ff3c5c7ed9e56d11e73eac3298340a6ea6be324
     </div>
 </div>
 ";
-        // line 26
-        echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : null), 'form_end');
+        // line 14
+        echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form_course"]) ? $context["form_course"] : null), 'form_end');
     }
 
     public function getTemplateName()
@@ -75,7 +53,7 @@ class __TwigTemplate_c21a6ab2719644c47dd0ff3c5c7ed9e56d11e73eac3298340a6ea6be324
 
     public function getDebugInfo()
     {
-        return array (  63 => 26,  53 => 20,  46 => 16,  42 => 14,  40 => 13,  34 => 10,  26 => 5,  19 => 1,);
+        return array (  41 => 14,  32 => 8,  26 => 5,  19 => 1,);
     }
 
     public function getSource()

@@ -309,7 +309,7 @@ class __TwigTemplate_8dd76d0c1341f478ea7794bcd5e6b39b79c16db1e3d8ef0dcdbf12713b9
                                         <b>
                                             <a href=\" ";
             // line 139
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof_course", array("slug_course" => $this->getAttribute($this->getAttribute($context["ens_cours"], "cours", array()), "slug", array()))), "html", null, true);
             echo " \"
                                                title=\"\">
                                                 ";

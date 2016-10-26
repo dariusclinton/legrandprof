@@ -22,20 +22,20 @@ class __TwigTemplate_0568a6b96c3a9810e5f763848dafeb987ef648d64c064c64c772fac5c30
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bfa847e1d6f3576cca460389c34a748d1015d05ec7c8629960daf864373ba5d4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_bfa847e1d6f3576cca460389c34a748d1015d05ec7c8629960daf864373ba5d4->enter($__internal_bfa847e1d6f3576cca460389c34a748d1015d05ec7c8629960daf864373ba5d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Categorie:course_list.html.twig"));
+        $__internal_ab56e2a369d656a4cf4cea31eb71dc054c3e5c9ca50a9f5b55e185c07d894a91 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ab56e2a369d656a4cf4cea31eb71dc054c3e5c9ca50a9f5b55e185c07d894a91->enter($__internal_ab56e2a369d656a4cf4cea31eb71dc054c3e5c9ca50a9f5b55e185c07d894a91_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Categorie:course_list.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_bfa847e1d6f3576cca460389c34a748d1015d05ec7c8629960daf864373ba5d4->leave($__internal_bfa847e1d6f3576cca460389c34a748d1015d05ec7c8629960daf864373ba5d4_prof);
+        $__internal_ab56e2a369d656a4cf4cea31eb71dc054c3e5c9ca50a9f5b55e185c07d894a91->leave($__internal_ab56e2a369d656a4cf4cea31eb71dc054c3e5c9ca50a9f5b55e185c07d894a91_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_f7ef77c1a67220f06c6602939600d82aa5b205122ba7ef44a839f969891b2125 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f7ef77c1a67220f06c6602939600d82aa5b205122ba7ef44a839f969891b2125->enter($__internal_f7ef77c1a67220f06c6602939600d82aa5b205122ba7ef44a839f969891b2125_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_ac776a89f676555c5dd4cfa57817e78f3f280d7c839a8d36f2dba054dd308d4a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ac776a89f676555c5dd4cfa57817e78f3f280d7c839a8d36f2dba054dd308d4a->enter($__internal_ac776a89f676555c5dd4cfa57817e78f3f280d7c839a8d36f2dba054dd308d4a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Categorie-";
@@ -45,15 +45,15 @@ class __TwigTemplate_0568a6b96c3a9810e5f763848dafeb987ef648d64c064c64c772fac5c30
         echo "
 ";
         
-        $__internal_f7ef77c1a67220f06c6602939600d82aa5b205122ba7ef44a839f969891b2125->leave($__internal_f7ef77c1a67220f06c6602939600d82aa5b205122ba7ef44a839f969891b2125_prof);
+        $__internal_ac776a89f676555c5dd4cfa57817e78f3f280d7c839a8d36f2dba054dd308d4a->leave($__internal_ac776a89f676555c5dd4cfa57817e78f3f280d7c839a8d36f2dba054dd308d4a_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_88d2c6b11dc1606502e42170faa0a3883cbdf0363c424da72c21f5752fd806e0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_88d2c6b11dc1606502e42170faa0a3883cbdf0363c424da72c21f5752fd806e0->enter($__internal_88d2c6b11dc1606502e42170faa0a3883cbdf0363c424da72c21f5752fd806e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_123ba64bbadecb277e132d530d481d417d13a3499c73a8152e103e0126bc6254 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_123ba64bbadecb277e132d530d481d417d13a3499c73a8152e103e0126bc6254->enter($__internal_123ba64bbadecb277e132d530d481d417d13a3499c73a8152e103e0126bc6254_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -189,7 +189,7 @@ class __TwigTemplate_0568a6b96c3a9810e5f763848dafeb987ef648d64c064c64c772fac5c30
                                     <div class=\"package-grid-item\"> 
                                         <a href=\" ";
             // line 92
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof", array("slug" => $this->getAttribute($context["course"], "slug", array()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_course_find_prof_course", array("slug_course" => $this->getAttribute($context["course"], "slug", array()))), "html", null, true);
             echo " \">
                                             <div class=\"image\">
                                                 ";
@@ -247,7 +247,7 @@ class __TwigTemplate_0568a6b96c3a9810e5f763848dafeb987ef648d64c064c64c772fac5c30
 
 ";
         
-        $__internal_88d2c6b11dc1606502e42170faa0a3883cbdf0363c424da72c21f5752fd806e0->leave($__internal_88d2c6b11dc1606502e42170faa0a3883cbdf0363c424da72c21f5752fd806e0_prof);
+        $__internal_123ba64bbadecb277e132d530d481d417d13a3499c73a8152e103e0126bc6254->leave($__internal_123ba64bbadecb277e132d530d481d417d13a3499c73a8152e103e0126bc6254_prof);
 
     }
 
@@ -359,7 +359,7 @@ class __TwigTemplate_0568a6b96c3a9810e5f763848dafeb987ef648d64c064c64c772fac5c30
                             {% for course in params.courses %}
                                 <div class=\"GridLex-col-4_sm-6_xs-12 mb-20\">
                                     <div class=\"package-grid-item\"> 
-                                        <a href=\" {{path('lgp_course_find_prof',{'slug' : course.slug})}} \">
+                                        <a href=\" {{path('lgp_course_find_prof_course',{'slug_course' : course.slug})}} \">
                                             <div class=\"image\">
                                                 {% if course.image is not null %}
                                                     <img src=\"{{ asset(course.image.webPath) }}\" alt=\" image cours \" />
