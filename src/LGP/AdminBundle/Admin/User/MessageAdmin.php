@@ -19,21 +19,41 @@ class MessageAdmin extends Admin
 
   protected function configureFormFields(FormMapper $formMapper) {
     $formMapper
-      ->add()
+      ->add('expediteur', 'sonata_type_model', array(
+        'class' => 'LGPUserBundle:User',
+        'property' => 'affichage',
+      ))
+      ->add('recepteur', 'sonata_type_model', array(
+        'class' => 'LGPUserBundle:User',
+        'property' => 'affichage',
+      ))
+      ->add('objet', 'text')
+      ->add('contenu', 'textarea')
+      ->add('dateEnvoi', 'date')
     ;
   }
 
   protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
     $datagridMapper
-      ->add('intitule')
-      ->add('ville')
+      ->add('expediteur.nom')
+      ->add('recepteur.nom')
+      ->add('dateEnvoi')
     ;
   }
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('intitule')
-      ->add('ville')
+      ->addIdentifier('objet')
+      ->add('expediteur', null, array(
+        'label' => 'Expéditeur',
+        'associated_property' => 'affichage'
+      ))
+      ->add('recepteur', null, array(
+        'label' => 'Récepteur',
+        'associated_property' => 'affichage'
+      ))
+      ->add('contenu')
+      ->add('dateEnvoi')
     ;
   }
 

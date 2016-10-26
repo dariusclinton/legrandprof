@@ -19,8 +19,15 @@ class ProfileProfFormType extends AbstractType {
   
   public function buildForm(FormBuilderInterface $builder, array $options) {
     $builder
-        ->add('ville', TextType::class, array(
-          'required' => false
+        ->add('ville', ChoiceType::class, array(
+          'choices' => array(
+            'Douala' => 'Douala',
+            'Yaoundé' => 'Yaoundé',
+            'Bafoussam' => 'Bafoussam',
+            'Dschang' => 'Dschang',
+          ),
+          'required' => false,
+          'placeholder' => '--'
         ))
         ->add('boitePostale', TextType::class, array(
           'required' => false

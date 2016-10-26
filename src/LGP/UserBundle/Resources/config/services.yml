@@ -2,3 +2,10 @@ services:
 #    lgp_user.example:
 #        class: LGP\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+services:
+    lgp_user.message:
+        class: LGP\UserBundle\Form\MessageType
+        arguments: ['@security.token_storage']
+        tags:
+            - { name: form.type }

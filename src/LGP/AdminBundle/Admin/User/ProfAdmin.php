@@ -102,7 +102,13 @@ class ProfAdmin extends Admin
   {
     $datagridMapper
       ->add('nom')
-      ->add('prenoms');
+      ->add('prenoms')
+      ->add('dateNaissance')
+      ->add('sexe')
+      ->add('pays')
+      ->add('dateInscription')
+      ->add('ville')
+    ;
   }
 
   protected function configureListFields(ListMapper $listMapper)

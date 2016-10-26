@@ -1,159 +1,162 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="content-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="profile-block">
-                    {% if app.user.image is not null %}
-                        <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
-                    {% else %}
-                        <img src="{{ asset('uploads/profils/default.png') }}"
-                             alt="Tour Package"/>
-                    {% endif %}
-                </div>
-                <div class="infos-block">
-                    <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
-                    <p>
-                        <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
-                        <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
-                    </p>
-                    <center>
-                        <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
-                        <br><br>
-                        <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
-                            de passe</a>
-                    </center>
-
-                </div>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="notifications-block">
-                    <div class="notifications-header">
-                        Hello
-                        {% if app.user.prenoms is not null %}
-                            {{ app.user.prenoms }}
-                        {% else %}
-                            {{ app.user.nom }}
-                        {% endif %}
-                    </div>
-                    <div class="notifications-content">
-                        <h1>
-                            Hello
-                            {% if app.user.prenoms is not null %}
-                                {{ app.user.prenoms }}
-                            {% else %}
-                                {{ app.user.nom }}
-                            {% endif %}
-                        </h1>
-                    </div>
-                </div>
-
-                <div class="notifications-block">
-
-                    <div class="notifications-header">
-                        Qui suis je ?
-                    </div>
-                    <div class="notifications-content">
-                        <p>Email: {{ app.user.email }}</p>
-                        <p>Nom: {{ app.user.nom }}</p>
-                        <p>Prenoms: {{ app.user.prenoms }}</p>
-                        <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
-                        <p>
-                            Sexe:
-                            {% if app.user.sexe=='m' %}
-                                Masculin
-                            {% else %}
-                                Féminin
-                            {% endif %}
-                        </p>
-                        <p>Telephone: {{ app.user.telephone }}</p>
-                        <p>Pays: {{ app.user.pays }}</p>
-
-                        {#Si profil prof#}
-                        {% if is_granted('ROLE_PROF') %}
-                        <p>Ville: {{ app.user.ville }}</p>
-                        <p>boite Postale: {{ app.user.boitePostale }}</p>
-                        <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
-                        <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
-                        <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
-                        <p>Presentation: {{ app.user.presentation }}</p>
-                        <p>Profession: {{ app.user.profession }}</p>
-                    </div>
-                </div>
-                <div class="notifications-block">
-                    <div class="notifications-header">Quartiers cibles</div>
-                    <div class="notifications-content">
-                        <ul>
-                            {% for quartier in app.user.quartierCibles %}
-                                <li>
-                                    {{ quartier.affichage }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="notifications-block">
-                    <div class="notifications-header">Expérience professionnelle</div>
-                    <div class="notifications-content">
-                        <ul>
-                            {% for experience in app.user.experiencePros %}
-                                <li>
-                                    {{ experience.poste }}
-                                    à
-                                    {{ experience.etablissement }}
-                                    de
-                                    {{ experience.dateDebut | date('d/m/y') }}
-                                    à
-                                    {{ experience.dateFin | date('d/m/y') }}
-                                    {{ experience.description }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="notifications-block">
-                    <div class="notifications-header">Diplomes</div>
-                    <div class="notifications-content">
-                        <ul>
-                            {% for diplome in app.user.diplomes %}
-                                <li>
-                                    {{ diplome.intitule }}
-                                    {% if diplome.fileName is not null %}
-                                        (<a href="{{ asset(diplome.webPath) }}" target="blank">voir</a>)
-                                    {% endif %}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="notifications-block">
-                    <div class="notifications-header">CV</div>
-                    <div class="notifications-content">
-                        {% if app.user.CVFile is not null %}
-                            {% if app.user.CVFile.fileName is not null %}
-                                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="blank">Voir le CV</a>)
-                            {% endif %}
-                        {% endif %}
-                        <br/>
-                    </div>
-                </div>
-                <div class="notifications-block">
-                    <div class="notifications-header">Rémunérations LeGrandProf <span
-                                class="badge">{{ app.user.remunerations|length }}</span></div>
-                    <div class="notifications-content">
-                    </div>
-                </div>
-                <div>
-                    {% endif %}
-
-                    {#          {{ dump(app.user)}}#}
-                </div>
-
-
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="profile-block">
+          {% if app.user.image is not null %}
+            <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
+          {% else %}
+            <img src="{{ asset('uploads/profils/default.png') }}"
+                 alt="Tour Package"/>
+          {% endif %}
         </div>
+        <div class="infos-block">
+          <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
+          <p>
+            <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
+            <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
+          </p>
+          <center>
+            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
+            <br><br>
+            <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
+              de passe</a>
+          </center>
+
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="alert alert-warning">
+          <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
+          <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">
+            Hello
+            {% if app.user.prenoms is not null %}
+              {{ app.user.prenoms }}
+            {% else %}
+              {{ app.user.nom }}
+            {% endif %}
+          </div>
+          <div class="notifications-content">
+            <h1>
+              Hello
+              {% if app.user.prenoms is not null %}
+                {{ app.user.prenoms }}
+              {% else %}
+                {{ app.user.nom }}
+              {% endif %}
+            </h1>
+          </div>
+        </div>
+
+        <div class="notifications-block">
+
+          <div class="notifications-header">
+            Qui suis je ?
+          </div>
+          <div class="notifications-content">
+            <p>Email: {{ app.user.email }}</p>
+            <p>Nom: {{ app.user.nom }}</p>
+            <p>Prenoms: {{ app.user.prenoms }}</p>
+            <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
+            <p>
+              Sexe:
+              {% if app.user.sexe=='m' %}
+                Masculin
+              {% else %}
+                Féminin
+              {% endif %}
+            </p>
+            <p>Telephone: {{ app.user.telephone }}</p>
+            <p>Pays: {{ app.user.pays }}</p>
+
+            {#Si profil prof#}
+            {% if is_granted('ROLE_PROF') %}
+            <p>Ville: {{ app.user.ville }}</p>
+            <p>boite Postale: {{ app.user.boitePostale }}</p>
+            <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
+            <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
+            <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
+            <p>Presentation: {{ app.user.presentation }}</p>
+            <p>Profession: {{ app.user.profession }}</p>
+          </div>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">Quartiers dans lesquels je suis disposé à donner cours</div>
+          <div class="notifications-content">
+            <ul>
+              {% for quartier in app.user.quartierCibles %}
+                <li>
+                  {{ quartier.affichage }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">Expérience professionnelle</div>
+          <div class="notifications-content">
+            <ul>
+              {% for experience in app.user.experiencePros %}
+                <li>
+                  {{ experience.poste }}
+                  à
+                  {{ experience.etablissement }}
+                  de
+                  {{ experience.dateDebut | date('d/m/y') }}
+                  à
+                  {{ experience.dateFin | date('d/m/y') }}
+                  {{ experience.description }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">Diplômes</div>
+          <div class="notifications-content">
+            <ul>
+              {% for diplome in app.user.diplomes %}
+                <li>
+                  {{ diplome.intitule }}
+                  {% if diplome.fileName is not null %}
+                    (<a href="{{ asset(diplome.webPath) }}" target="blank">voir</a>)
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">CV</div>
+          <div class="notifications-content">
+            {% if app.user.CVFile is not null %}
+              {% if app.user.CVFile.fileName is not null %}
+                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="blank">Voir le CV</a>)
+              {% endif %}
+            {% endif %}
+            <br/>
+          </div>
+        </div>
+        <div class="notifications-block">
+          <div class="notifications-header">Rémunérations LeGrandProf <span
+                class="badge">{{ app.user.remunerations|length }}</span></div>
+          <div class="notifications-content">
+          </div>
+        </div>
+        <div>
+          {% endif %}
+
+          {#          {{ dump(app.user)}}#}
+        </div>
+
+
+      </div>
     </div>
+  </div>
 </div>
