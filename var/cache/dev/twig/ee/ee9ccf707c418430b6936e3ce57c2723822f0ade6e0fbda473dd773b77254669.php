@@ -1,6 +1,6 @@
 <?php
 
-/* LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig */
+/* FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig */
 class __TwigTemplate_22d593bbd3a7de26256811524b99e85ce8079625504ae9539789b5b61a8f3417 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_22d593bbd3a7de26256811524b99e85ce8079625504ae9539789b5b61a8
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -21,20 +21,20 @@ class __TwigTemplate_22d593bbd3a7de26256811524b99e85ce8079625504ae9539789b5b61a8
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_48c1b14479ea2fd83f6d37d573d9876a5be07f106fec4eb80f9430a2913f1a65 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_48c1b14479ea2fd83f6d37d573d9876a5be07f106fec4eb80f9430a2913f1a65->enter($__internal_48c1b14479ea2fd83f6d37d573d9876a5be07f106fec4eb80f9430a2913f1a65_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig"));
+        $__internal_724c522aed318c1f56de57a7905ccafc1218518e67fb25de6692204e300343e2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_724c522aed318c1f56de57a7905ccafc1218518e67fb25de6692204e300343e2->enter($__internal_724c522aed318c1f56de57a7905ccafc1218518e67fb25de6692204e300343e2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_48c1b14479ea2fd83f6d37d573d9876a5be07f106fec4eb80f9430a2913f1a65->leave($__internal_48c1b14479ea2fd83f6d37d573d9876a5be07f106fec4eb80f9430a2913f1a65_prof);
+        $__internal_724c522aed318c1f56de57a7905ccafc1218518e67fb25de6692204e300343e2->leave($__internal_724c522aed318c1f56de57a7905ccafc1218518e67fb25de6692204e300343e2_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_a1ed74c8d4316791385cc35d8bb53382d4855fa6fa3daa9aeb33cab57b6e363f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a1ed74c8d4316791385cc35d8bb53382d4855fa6fa3daa9aeb33cab57b6e363f->enter($__internal_a1ed74c8d4316791385cc35d8bb53382d4855fa6fa3daa9aeb33cab57b6e363f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_968a1a37dcfd20875550f13e95cb0dc0d7c473613c399c77c54d936e2fe80a39 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_968a1a37dcfd20875550f13e95cb0dc0d7c473613c399c77c54d936e2fe80a39->enter($__internal_968a1a37dcfd20875550f13e95cb0dc0d7c473613c399c77c54d936e2fe80a39_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "<p>";
@@ -42,13 +42,13 @@ class __TwigTemplate_22d593bbd3a7de26256811524b99e85ce8079625504ae9539789b5b61a8
         echo "</p>
 ";
         
-        $__internal_a1ed74c8d4316791385cc35d8bb53382d4855fa6fa3daa9aeb33cab57b6e363f->leave($__internal_a1ed74c8d4316791385cc35d8bb53382d4855fa6fa3daa9aeb33cab57b6e363f_prof);
+        $__internal_968a1a37dcfd20875550f13e95cb0dc0d7c473613c399c77c54d936e2fe80a39->leave($__internal_968a1a37dcfd20875550f13e95cb0dc0d7c473613c399c77c54d936e2fe80a39_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig";
+        return "FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig";
     }
 
     public function isTraitable()

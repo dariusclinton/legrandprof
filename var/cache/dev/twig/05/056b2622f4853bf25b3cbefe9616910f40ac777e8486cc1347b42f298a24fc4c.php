@@ -15,8 +15,8 @@ class __TwigTemplate_24bf1554e78599ad90cbf9b1f2bc48fbec9cd9ed7a7cbbb8c64950e6eca
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_503f467a5f54884a9d4df7ef407ce9e020ba44d2ac1c7c0025bf89c4c4162319 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_503f467a5f54884a9d4df7ef407ce9e020ba44d2ac1c7c0025bf89c4c4162319->enter($__internal_503f467a5f54884a9d4df7ef407ce9e020ba44d2ac1c7c0025bf89c4c4162319_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:edit_content.html.twig"));
+        $__internal_37a7d095ad36c14c63608e5927bc58a41a9897843355b24d83e9c6cb96788abd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_37a7d095ad36c14c63608e5927bc58a41a9897843355b24d83e9c6cb96788abd->enter($__internal_37a7d095ad36c14c63608e5927bc58a41a9897843355b24d83e9c6cb96788abd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Profile:edit_content.html.twig"));
 
         // line 2
         echo "
@@ -253,7 +253,7 @@ class __TwigTemplate_24bf1554e78599ad90cbf9b1f2bc48fbec9cd9ed7a7cbbb8c64950e6eca
               <div class=\"row\">
                 <div class=\"col-md-2\">";
             // line 99
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "quartierCibles", array()), 'label', array("label_attr" => array(), "label" => "Quartiers cibles pour les répétitions"));
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "quartierCibles", array()), 'label', array("label_attr" => array(), "label" => "Quartiers dans lesquels je suis disposé à donner cours"));
             echo "</div>
                 <div class=\"col-md-4\">";
             // line 100
@@ -359,7 +359,7 @@ class __TwigTemplate_24bf1554e78599ad90cbf9b1f2bc48fbec9cd9ed7a7cbbb8c64950e6eca
         echo "
 ";
         
-        $__internal_503f467a5f54884a9d4df7ef407ce9e020ba44d2ac1c7c0025bf89c4c4162319->leave($__internal_503f467a5f54884a9d4df7ef407ce9e020ba44d2ac1c7c0025bf89c4c4162319_prof);
+        $__internal_37a7d095ad36c14c63608e5927bc58a41a9897843355b24d83e9c6cb96788abd->leave($__internal_37a7d095ad36c14c63608e5927bc58a41a9897843355b24d83e9c6cb96788abd_prof);
 
     }
 
@@ -478,7 +478,7 @@ class __TwigTemplate_24bf1554e78599ad90cbf9b1f2bc48fbec9cd9ed7a7cbbb8c64950e6eca
               </div><br>
               
               <div class=\"row\">
-                <div class=\"col-md-2\">{{ form_label(form.quartierCibles, \"Quartiers cibles pour les répétitions\", {'label_attr': {}}) }}</div>
+                <div class=\"col-md-2\">{{ form_label(form.quartierCibles, \"Quartiers dans lesquels je suis disposé à donner cours\", {'label_attr': {}}) }}</div>
                 <div class=\"col-md-4\">{{ form_widget(form.quartierCibles) }}</div>
                 {{ form_errors(form.quartierCibles) }}
 {#                <a href=\"#\" class=\"btn btn-primary btn-sm\" id=\"add_quartier\">Ajouter un quartier</a>#}

@@ -174,6 +174,7 @@ class appDevDebugProjectContainer extends Container
             'lgp.admin.cours' => 'getLgp_Admin_CoursService',
             'lgp.admin.enseignement' => 'getLgp_Admin_EnseignementService',
             'lgp.admin.jourdecours' => 'getLgp_Admin_JourdecoursService',
+            'lgp.admin.message' => 'getLgp_Admin_MessageService',
             'lgp.admin.parent' => 'getLgp_Admin_ParentService',
             'lgp.admin.prof' => 'getLgp_Admin_ProfService',
             'lgp.admin.programmedecours' => 'getLgp_Admin_ProgrammedecoursService',
@@ -181,7 +182,9 @@ class appDevDebugProjectContainer extends Container
             'lgp.admin.remuneration' => 'getLgp_Admin_RemunerationService',
             'lgp.admin.reservation' => 'getLgp_Admin_ReservationService',
             'lgp.admin.reservationenseignement' => 'getLgp_Admin_ReservationenseignementService',
+            'lgp.admin.user' => 'getLgp_Admin_UserService',
             'lgp.form.registration' => 'getLgp_Form_RegistrationService',
+            'lgp_user.message' => 'getLgpUser_MessageService',
             'locale_listener' => 'getLocaleListenerService',
             'logger' => 'getLoggerService',
             'monolog.handler.console' => 'getMonolog_Handler_ConsoleService',
@@ -220,7 +223,6 @@ class appDevDebugProjectContainer extends Container
             'routing.loader.yml' => 'getRouting_Loader_YmlService',
             'security.authentication.guard_handler' => 'getSecurity_Authentication_GuardHandlerService',
             'security.authentication.manager' => 'getSecurity_Authentication_ManagerService',
-            'security.authentication.rememberme.services.simplehash.main' => 'getSecurity_Authentication_Rememberme_Services_Simplehash_MainService',
             'security.authentication.session_strategy' => 'getSecurity_Authentication_SessionStrategyService',
             'security.authentication.trust_resolver' => 'getSecurity_Authentication_TrustResolverService',
             'security.authentication_utils' => 'getSecurity_AuthenticationUtilsService',
@@ -722,7 +724,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getCache_SystemService()
     {
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('jcE3Z980jC', 0, '7sV64NU03CMp07zuM9jRhg', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('jcE3Z980jC', 0, 'u+VTfPY2gz4taqU0f93oOA', (__DIR__.'/pools'), $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -740,8 +742,8 @@ class appDevDebugProjectContainer extends Container
         $b = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer();
         $b->addPool($this->get('cache.app'));
         $b->addPool($this->get('cache.system'));
-        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('yI6AlT0I-R', 0, '7sV64NU03CMp07zuM9jRhg', (__DIR__.'/pools'), $a));
-        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('E-lP8KGXpO', 0, '7sV64NU03CMp07zuM9jRhg', (__DIR__.'/pools'), $a));
+        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('yI6AlT0I-R', 0, 'u+VTfPY2gz4taqU0f93oOA', (__DIR__.'/pools'), $a));
+        $b->addPool(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('E-lP8KGXpO', 0, 'u+VTfPY2gz4taqU0f93oOA', (__DIR__.'/pools'), $a));
 
         return $this->services['cache_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer(array(0 => $b));
     }
@@ -1149,7 +1151,7 @@ class appDevDebugProjectContainer extends Container
     {
         if ($lazyLoad) {
 
-            return $this->services['doctrine.orm.default_entity_manager'] = new DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f59284f4ef1e039c0(
+            return $this->services['doctrine.orm.default_entity_manager'] = new DoctrineORMEntityManager_000000007a331e21000000005001ace29139e133ec8e531f59284f4ef1e039c0(
                 function (&$wrappedInstance, \ProxyManager\Proxy\LazyLoadingInterface $proxy) {
                     $wrappedInstance = $this->getDoctrine_Orm_DefaultEntityManagerService(false);
 
@@ -1344,7 +1346,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getForm_ExtensionService()
     {
-        return $this->services['form.extension'] = new \Sonata\CoreBundle\Form\Extension\DependencyInjectionExtension($this, array('LGPUserBundle\\Form\\RegistrationType' => 'lgp.form.registration', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity', 'FOS\\UserBundle\\Form\\Type\\UsernameFormType' => 'fos_user.username_form_type', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType' => 'fos_user.profile.form.type', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType' => 'fos_user.registration.form.type', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType' => 'fos_user.change_password.form.type', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType' => 'fos_user.resetting.form.type', 'Vich\\UploaderBundle\\Form\\Type\\VichFileType' => 'vich_uploader.form.type.file', 'Vich\\UploaderBundle\\Form\\Type\\VichImageType' => 'vich_uploader.form.type.image', 'Sonata\\CoreBundle\\Form\\Type\\ImmutableArrayType' => 'sonata.core.form.type.array', 'Sonata\\CoreBundle\\Form\\Type\\BooleanType' => 'sonata.core.form.type.boolean', 'Sonata\\CoreBundle\\Form\\Type\\CollectionType' => 'sonata.core.form.type.collection', 'Sonata\\CoreBundle\\Form\\Type\\TranslatableChoiceType' => 'sonata.core.form.type.translatable_choice', 'Sonata\\CoreBundle\\Form\\Type\\DateRangeType' => 'sonata.core.form.type.date_range', 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangeType' => 'sonata.core.form.type.datetime_range', 'Sonata\\CoreBundle\\Form\\Type\\DatePickerType' => 'sonata.core.form.type.date_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateTimePickerType' => 'sonata.core.form.type.datetime_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateRangePickerType' => 'sonata.core.form.type.date_range_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangePickerType' => 'sonata.core.form.type.datetime_range_picker', 'Sonata\\CoreBundle\\Form\\Type\\EqualType' => 'sonata.core.form.type.equal', 'Sonata\\CoreBundle\\Form\\Type\\ColorSelectorType' => 'sonata.core.form.type.color_selector', 'Sonata\\BlockBundle\\Form\\Type\\ServiceListType' => 'sonata.block.form.type.block', 'Sonata\\BlockBundle\\Form\\Type\\ContainerTemplateType' => 'sonata.block.form.type.container_template', 'Sonata\\AdminBundle\\Form\\Type\\AdminType' => 'sonata.admin.form.type.admin', 'Sonata\\AdminBundle\\Form\\Type\\ModelType' => 'sonata.admin.form.type.model_choice', 'Sonata\\AdminBundle\\Form\\Type\\ModelTypeList' => 'sonata.admin.form.type.model_list', 'Sonata\\AdminBundle\\Form\\Type\\ModelReferenceType' => 'sonata.admin.form.type.model_reference', 'Sonata\\AdminBundle\\Form\\Type\\ModelHiddenType' => 'sonata.admin.form.type.model_hidden', 'Sonata\\AdminBundle\\Form\\Type\\ModelAutocompleteType' => 'sonata.admin.form.type.model_autocomplete', 'Sonata\\AdminBundle\\Form\\Type\\CollectionType' => 'sonata.admin.form.type.collection', 'Sonata\\AdminBundle\\Form\\Type\\ChoiceFieldMaskType' => 'sonata.admin.doctrine_orm.form.type.choice_field_mask', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\NumberType' => 'sonata.admin.form.filter.type.number', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\ChoiceType' => 'sonata.admin.form.filter.type.choice', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DefaultType' => 'sonata.admin.form.filter.type.default', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateType' => 'sonata.admin.form.filter.type.date', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateRangeType' => 'sonata.admin.form.filter.type.daterange', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeType' => 'sonata.admin.form.filter.type.datetime', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeRangeType' => 'sonata.admin.form.filter.type.datetime_range'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.upload.validator', 3 => 'form.type_extension.csrf', 4 => 'form.type_extension.form.data_collector', 5 => 'sonata.admin.form.extension.field', 6 => 'sonata.admin.form.extension.field.mopa'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => array(0 => 'sonata.admin.form.extension.choice')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'), array('form' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 'birthday' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\BirthdayType', 'checkbox' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType', 'choice' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 'collection' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType', 'country' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CountryType', 'date' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType', 'datetime' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateTimeType', 'email' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType', 'file' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 'hidden' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType', 'integer' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType', 'language' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LanguageType', 'locale' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LocaleType', 'money' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType', 'number' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType', 'password' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType', 'percent' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PercentType', 'radio' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RadioType', 'repeated' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType', 'search' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SearchType', 'textarea' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType', 'text' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType', 'time' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType', 'timezone' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimezoneType', 'url' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\UrlType', 'button' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType', 'submit' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType', 'reset' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ResetType', 'currency' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CurrencyType', 'entity' => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType', 'sonata_type_immutable_array' => 'Sonata\\CoreBundle\\Form\\Type\\ImmutableArrayType', 'sonata_type_boolean' => 'Sonata\\CoreBundle\\Form\\Type\\BooleanType', 'sonata_type_collection' => 'Sonata\\CoreBundle\\Form\\Type\\CollectionType', 'sonata_type_translatable_choice' => 'Sonata\\CoreBundle\\Form\\Type\\TranslatableChoiceType', 'sonata_type_date_range' => 'Sonata\\CoreBundle\\Form\\Type\\DateRangeType', 'sonata_type_datetime_range' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangeType', 'sonata_type_date_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DatePickerType', 'sonata_type_datetime_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimePickerType', 'sonata_type_date_range_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateRangePickerType', 'sonata_type_datetime_range_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangePickerType', 'sonata_type_equal' => 'Sonata\\CoreBundle\\Form\\Type\\EqualType', 'sonata_type_color_selector' => 'Sonata\\CoreBundle\\Form\\Type\\ColorSelectorType', 'sonata_block_service_choice' => 'Sonata\\BlockBundle\\Form\\Type\\ServiceListType', 'sonata_type_container_template_choice' => 'Sonata\\BlockBundle\\Form\\Type\\ContainerTemplateType', 'sonata_type_admin' => 'Sonata\\AdminBundle\\Form\\Type\\AdminType', 'sonata_type_model' => 'Sonata\\AdminBundle\\Form\\Type\\ModelType', 'sonata_type_model_list' => 'Sonata\\AdminBundle\\Form\\Type\\ModelTypeList', 'sonata_type_model_reference' => 'Sonata\\AdminBundle\\Form\\Type\\ModelReferenceType', 'sonata_type_model_hidden' => 'Sonata\\AdminBundle\\Form\\Type\\ModelHiddenType', 'sonata_type_model_autocomplete' => 'Sonata\\AdminBundle\\Form\\Type\\ModelAutocompleteType', 'sonata_type_native_collection' => 'Sonata\\AdminBundle\\Form\\Type\\CollectionType', 'sonata_type_choice_field_mask' => 'Sonata\\AdminBundle\\Form\\Type\\ChoiceFieldMaskType', 'sonata_type_filter_number' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\NumberType', 'sonata_type_filter_choice' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\ChoiceType', 'sonata_type_filter_default' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DefaultType', 'sonata_type_filter_date' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateType', 'sonata_type_filter_date_range' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateRangeType', 'sonata_type_filter_datetime' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeType', 'sonata_type_filter_datetime_range' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeRangeType', 'tab' => 'Mopa\\Bundle\\BootstrapBundle\\Form\\Type\\TabType'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector', 4 => 'sonata.admin.form.extension.field', 5 => 'mopa_bootstrap.form.type_extension.help', 6 => 'mopa_bootstrap.form.type_extension.legend', 7 => 'mopa_bootstrap.form.type_extension.error', 8 => 'mopa_bootstrap.form.type_extension.widget', 9 => 'mopa_bootstrap.form.type_extension.horizontal', 10 => 'mopa_bootstrap.form.type_extension.widget_collection', 11 => 'mopa_bootstrap.form.type_extension.tabbed', 12 => 'form.type_extension.form.http_foundation', 13 => 'form.type_extension.form.validator', 14 => 'form.type_extension.csrf', 15 => 'form.type_extension.form.data_collector', 16 => 'sonata.admin.form.extension.field', 17 => 'mopa_bootstrap.form.type_extension.help', 18 => 'mopa_bootstrap.form.type_extension.legend', 19 => 'mopa_bootstrap.form.type_extension.error', 20 => 'mopa_bootstrap.form.type_extension.widget', 21 => 'mopa_bootstrap.form.type_extension.horizontal', 22 => 'mopa_bootstrap.form.type_extension.widget_collection', 23 => 'mopa_bootstrap.form.type_extension.tabbed'), 'repeated' => array(0 => 'form.type_extension.repeated.validator', 1 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator', 1 => 'form.type_extension.submit.validator'), 'choice' => array(0 => 'sonata.admin.form.extension.choice', 1 => 'sonata.admin.form.extension.choice'), 'button' => array(0 => 'mopa_bootstrap.form.type_extension.button', 1 => 'mopa_bootstrap.form.type_extension.button'), 'date' => array(0 => 'mopa_bootstrap.form.type_extension.date', 1 => 'mopa_bootstrap.form.type_extension.date')), array());
+        return $this->services['form.extension'] = new \Sonata\CoreBundle\Form\Extension\DependencyInjectionExtension($this, array('LGPUserBundle\\Form\\RegistrationType' => 'lgp.form.registration', 'LGP\\UserBundle\\Form\\MessageType' => 'lgp_user.message', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => 'form.type.form', 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => 'form.type.choice', 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => 'form.type.entity', 'FOS\\UserBundle\\Form\\Type\\UsernameFormType' => 'fos_user.username_form_type', 'FOS\\UserBundle\\Form\\Type\\ProfileFormType' => 'fos_user.profile.form.type', 'FOS\\UserBundle\\Form\\Type\\RegistrationFormType' => 'fos_user.registration.form.type', 'FOS\\UserBundle\\Form\\Type\\ChangePasswordFormType' => 'fos_user.change_password.form.type', 'FOS\\UserBundle\\Form\\Type\\ResettingFormType' => 'fos_user.resetting.form.type', 'Vich\\UploaderBundle\\Form\\Type\\VichFileType' => 'vich_uploader.form.type.file', 'Vich\\UploaderBundle\\Form\\Type\\VichImageType' => 'vich_uploader.form.type.image', 'Sonata\\CoreBundle\\Form\\Type\\ImmutableArrayType' => 'sonata.core.form.type.array', 'Sonata\\CoreBundle\\Form\\Type\\BooleanType' => 'sonata.core.form.type.boolean', 'Sonata\\CoreBundle\\Form\\Type\\CollectionType' => 'sonata.core.form.type.collection', 'Sonata\\CoreBundle\\Form\\Type\\TranslatableChoiceType' => 'sonata.core.form.type.translatable_choice', 'Sonata\\CoreBundle\\Form\\Type\\DateRangeType' => 'sonata.core.form.type.date_range', 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangeType' => 'sonata.core.form.type.datetime_range', 'Sonata\\CoreBundle\\Form\\Type\\DatePickerType' => 'sonata.core.form.type.date_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateTimePickerType' => 'sonata.core.form.type.datetime_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateRangePickerType' => 'sonata.core.form.type.date_range_picker', 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangePickerType' => 'sonata.core.form.type.datetime_range_picker', 'Sonata\\CoreBundle\\Form\\Type\\EqualType' => 'sonata.core.form.type.equal', 'Sonata\\CoreBundle\\Form\\Type\\ColorSelectorType' => 'sonata.core.form.type.color_selector', 'Sonata\\BlockBundle\\Form\\Type\\ServiceListType' => 'sonata.block.form.type.block', 'Sonata\\BlockBundle\\Form\\Type\\ContainerTemplateType' => 'sonata.block.form.type.container_template', 'Sonata\\AdminBundle\\Form\\Type\\AdminType' => 'sonata.admin.form.type.admin', 'Sonata\\AdminBundle\\Form\\Type\\ModelType' => 'sonata.admin.form.type.model_choice', 'Sonata\\AdminBundle\\Form\\Type\\ModelTypeList' => 'sonata.admin.form.type.model_list', 'Sonata\\AdminBundle\\Form\\Type\\ModelReferenceType' => 'sonata.admin.form.type.model_reference', 'Sonata\\AdminBundle\\Form\\Type\\ModelHiddenType' => 'sonata.admin.form.type.model_hidden', 'Sonata\\AdminBundle\\Form\\Type\\ModelAutocompleteType' => 'sonata.admin.form.type.model_autocomplete', 'Sonata\\AdminBundle\\Form\\Type\\CollectionType' => 'sonata.admin.form.type.collection', 'Sonata\\AdminBundle\\Form\\Type\\ChoiceFieldMaskType' => 'sonata.admin.doctrine_orm.form.type.choice_field_mask', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\NumberType' => 'sonata.admin.form.filter.type.number', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\ChoiceType' => 'sonata.admin.form.filter.type.choice', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DefaultType' => 'sonata.admin.form.filter.type.default', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateType' => 'sonata.admin.form.filter.type.date', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateRangeType' => 'sonata.admin.form.filter.type.daterange', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeType' => 'sonata.admin.form.filter.type.datetime', 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeRangeType' => 'sonata.admin.form.filter.type.datetime_range'), array('Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.upload.validator', 3 => 'form.type_extension.csrf', 4 => 'form.type_extension.form.data_collector', 5 => 'sonata.admin.form.extension.field', 6 => 'sonata.admin.form.extension.field.mopa'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => array(0 => 'form.type_extension.repeated.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => array(0 => 'form.type_extension.submit.validator'), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => array(0 => 'sonata.admin.form.extension.choice')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'), array('form' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 'birthday' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\BirthdayType', 'checkbox' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CheckboxType', 'choice' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 'collection' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CollectionType', 'country' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CountryType', 'date' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType', 'datetime' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\DateTimeType', 'email' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\EmailType', 'file' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 'hidden' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\HiddenType', 'integer' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType', 'language' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LanguageType', 'locale' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\LocaleType', 'money' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\MoneyType', 'number' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType', 'password' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PasswordType', 'percent' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\PercentType', 'radio' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RadioType', 'repeated' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType', 'search' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SearchType', 'textarea' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType', 'text' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType', 'time' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType', 'timezone' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TimezoneType', 'url' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\UrlType', 'button' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ButtonType', 'submit' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType', 'reset' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ResetType', 'currency' => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\CurrencyType', 'entity' => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType', 'sonata_type_immutable_array' => 'Sonata\\CoreBundle\\Form\\Type\\ImmutableArrayType', 'sonata_type_boolean' => 'Sonata\\CoreBundle\\Form\\Type\\BooleanType', 'sonata_type_collection' => 'Sonata\\CoreBundle\\Form\\Type\\CollectionType', 'sonata_type_translatable_choice' => 'Sonata\\CoreBundle\\Form\\Type\\TranslatableChoiceType', 'sonata_type_date_range' => 'Sonata\\CoreBundle\\Form\\Type\\DateRangeType', 'sonata_type_datetime_range' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangeType', 'sonata_type_date_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DatePickerType', 'sonata_type_datetime_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimePickerType', 'sonata_type_date_range_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateRangePickerType', 'sonata_type_datetime_range_picker' => 'Sonata\\CoreBundle\\Form\\Type\\DateTimeRangePickerType', 'sonata_type_equal' => 'Sonata\\CoreBundle\\Form\\Type\\EqualType', 'sonata_type_color_selector' => 'Sonata\\CoreBundle\\Form\\Type\\ColorSelectorType', 'sonata_block_service_choice' => 'Sonata\\BlockBundle\\Form\\Type\\ServiceListType', 'sonata_type_container_template_choice' => 'Sonata\\BlockBundle\\Form\\Type\\ContainerTemplateType', 'sonata_type_admin' => 'Sonata\\AdminBundle\\Form\\Type\\AdminType', 'sonata_type_model' => 'Sonata\\AdminBundle\\Form\\Type\\ModelType', 'sonata_type_model_list' => 'Sonata\\AdminBundle\\Form\\Type\\ModelTypeList', 'sonata_type_model_reference' => 'Sonata\\AdminBundle\\Form\\Type\\ModelReferenceType', 'sonata_type_model_hidden' => 'Sonata\\AdminBundle\\Form\\Type\\ModelHiddenType', 'sonata_type_model_autocomplete' => 'Sonata\\AdminBundle\\Form\\Type\\ModelAutocompleteType', 'sonata_type_native_collection' => 'Sonata\\AdminBundle\\Form\\Type\\CollectionType', 'sonata_type_choice_field_mask' => 'Sonata\\AdminBundle\\Form\\Type\\ChoiceFieldMaskType', 'sonata_type_filter_number' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\NumberType', 'sonata_type_filter_choice' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\ChoiceType', 'sonata_type_filter_default' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DefaultType', 'sonata_type_filter_date' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateType', 'sonata_type_filter_date_range' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateRangeType', 'sonata_type_filter_datetime' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeType', 'sonata_type_filter_datetime_range' => 'Sonata\\AdminBundle\\Form\\Type\\Filter\\DateTimeRangeType', 'tab' => 'Mopa\\Bundle\\BootstrapBundle\\Form\\Type\\TabType'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector', 4 => 'sonata.admin.form.extension.field', 5 => 'mopa_bootstrap.form.type_extension.help', 6 => 'mopa_bootstrap.form.type_extension.legend', 7 => 'mopa_bootstrap.form.type_extension.error', 8 => 'mopa_bootstrap.form.type_extension.widget', 9 => 'mopa_bootstrap.form.type_extension.horizontal', 10 => 'mopa_bootstrap.form.type_extension.widget_collection', 11 => 'mopa_bootstrap.form.type_extension.tabbed', 12 => 'form.type_extension.form.http_foundation', 13 => 'form.type_extension.form.validator', 14 => 'form.type_extension.csrf', 15 => 'form.type_extension.form.data_collector', 16 => 'sonata.admin.form.extension.field', 17 => 'mopa_bootstrap.form.type_extension.help', 18 => 'mopa_bootstrap.form.type_extension.legend', 19 => 'mopa_bootstrap.form.type_extension.error', 20 => 'mopa_bootstrap.form.type_extension.widget', 21 => 'mopa_bootstrap.form.type_extension.horizontal', 22 => 'mopa_bootstrap.form.type_extension.widget_collection', 23 => 'mopa_bootstrap.form.type_extension.tabbed'), 'repeated' => array(0 => 'form.type_extension.repeated.validator', 1 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator', 1 => 'form.type_extension.submit.validator'), 'choice' => array(0 => 'sonata.admin.form.extension.choice', 1 => 'sonata.admin.form.extension.choice'), 'button' => array(0 => 'mopa_bootstrap.form.type_extension.button', 1 => 'mopa_bootstrap.form.type_extension.button'), 'date' => array(0 => 'mopa_bootstrap.form.type_extension.date', 1 => 'mopa_bootstrap.form.type_extension.date')), array());
     }
 
     /**
@@ -2266,7 +2268,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Security_LoginManagerService()
     {
-        return $this->services['fos_user.security.login_manager'] = new \FOS\UserBundle\Security\LoginManager($this->get('security.token_storage'), $this->get('security.user_checker.main'), $this->get('security.authentication.session_strategy'), $this->get('request_stack'), $this->get('security.authentication.rememberme.services.simplehash.main'));
+        return $this->services['fos_user.security.login_manager'] = new \FOS\UserBundle\Security\LoginManager($this->get('security.token_storage'), $this->get('security.user_checker.main'), $this->get('security.authentication.session_strategy'), $this);
     }
 
     /**
@@ -2318,7 +2320,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Util_UserManipulatorService()
     {
-        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('pugx_user.manager.orm_user_manager'), $this->get('debug.event_dispatcher'), $this->get('request_stack'));
+        return $this->services['fos_user.util.user_manipulator'] = new \FOS\UserBundle\Util\UserManipulator($this->get('pugx_user.manager.orm_user_manager'));
     }
 
     /**
@@ -2729,6 +2731,42 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'lgp.admin.message' service.
+     *
+     * @return \LGP\AdminBundle\Admin\User\MessageAdmin A LGP\AdminBundle\Admin\User\MessageAdmin instance
+     */
+    protected function getLgp_Admin_MessageService()
+    {
+        $instance = new \LGP\AdminBundle\Admin\User\MessageAdmin('lgp.admin.message', 'LGP\\UserBundle\\Entity\\Message', 'SonataAdminBundle:CRUD');
+
+        $instance->setFormTheme(array(0 => 'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig'));
+        $instance->setFilterTheme(array(0 => 'SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig'));
+        $instance->setManagerType('orm');
+        $instance->setModelManager($this->get('sonata.admin.manager.orm'));
+        $instance->setFormContractor($this->get('sonata.admin.builder.orm_form'));
+        $instance->setShowBuilder($this->get('sonata.admin.builder.orm_show'));
+        $instance->setListBuilder($this->get('sonata.admin.builder.orm_list'));
+        $instance->setDatagridBuilder($this->get('sonata.admin.builder.orm_datagrid'));
+        $instance->setTranslator($this->get('translator'));
+        $instance->setConfigurationPool($this->get('sonata.admin.pool'));
+        $instance->setRouteGenerator($this->get('sonata.admin.route.default_generator'));
+        $instance->setValidator($this->get('validator'));
+        $instance->setSecurityHandler($this->get('sonata.admin.security.handler'));
+        $instance->setMenuFactory($this->get('knp_menu.factory'));
+        $instance->setRouteBuilder($this->get('sonata.admin.route.path_info'));
+        $instance->setLabelTranslatorStrategy($this->get('sonata.admin.label.strategy.native'));
+        $instance->setPagerType('default');
+        $instance->setLabel('Messages');
+        $instance->setPersistFilters(false);
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
+        $instance->setSecurityInformation(array());
+        $instance->initialize();
+        $instance->addExtension($this->get('sonata.admin.event.extension'));
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'lgp.admin.parent' service.
      *
      * @return \LGP\AdminBundle\Admin\User\ParentsAdmin A LGP\AdminBundle\Admin\User\ParentsAdmin instance
@@ -2981,6 +3019,42 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'lgp.admin.user' service.
+     *
+     * @return \LGP\AdminBundle\Admin\User\UserAdmin A LGP\AdminBundle\Admin\User\UserAdmin instance
+     */
+    protected function getLgp_Admin_UserService()
+    {
+        $instance = new \LGP\AdminBundle\Admin\User\UserAdmin('lgp.admin.user', 'LGP\\UserBundle\\Entity\\User', 'SonataAdminBundle:CRUD');
+
+        $instance->setFormTheme(array(0 => 'SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig'));
+        $instance->setFilterTheme(array(0 => 'SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig'));
+        $instance->setManagerType('orm');
+        $instance->setModelManager($this->get('sonata.admin.manager.orm'));
+        $instance->setFormContractor($this->get('sonata.admin.builder.orm_form'));
+        $instance->setShowBuilder($this->get('sonata.admin.builder.orm_show'));
+        $instance->setListBuilder($this->get('sonata.admin.builder.orm_list'));
+        $instance->setDatagridBuilder($this->get('sonata.admin.builder.orm_datagrid'));
+        $instance->setTranslator($this->get('translator'));
+        $instance->setConfigurationPool($this->get('sonata.admin.pool'));
+        $instance->setRouteGenerator($this->get('sonata.admin.route.default_generator'));
+        $instance->setValidator($this->get('validator'));
+        $instance->setSecurityHandler($this->get('sonata.admin.security.handler'));
+        $instance->setMenuFactory($this->get('knp_menu.factory'));
+        $instance->setRouteBuilder($this->get('sonata.admin.route.path_info'));
+        $instance->setLabelTranslatorStrategy($this->get('sonata.admin.label.strategy.native'));
+        $instance->setPagerType('default');
+        $instance->setLabel('Utilisateurs');
+        $instance->setPersistFilters(false);
+        $instance->setTemplates(array('user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'layout' => 'LGPAdminBundle::standard_layout.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig'));
+        $instance->setSecurityInformation(array());
+        $instance->initialize();
+        $instance->addExtension($this->get('sonata.admin.event.extension'));
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'lgp.form.registration' service.
      *
      * This service is shared.
@@ -2991,6 +3065,19 @@ class appDevDebugProjectContainer extends Container
     protected function getLgp_Form_RegistrationService()
     {
         return $this->services['lgp.form.registration'] = new \LGPUserBundle\Form\RegistrationType();
+    }
+
+    /**
+     * Gets the 'lgp_user.message' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \LGP\UserBundle\Form\MessageType A LGP\UserBundle\Form\MessageType instance
+     */
+    protected function getLgpUser_MessageService()
+    {
+        return $this->services['lgp_user.message'] = new \LGP\UserBundle\Form\MessageType($this->get('security.token_storage'));
     }
 
     /**
@@ -3664,25 +3751,25 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $b = $this->get('security.token_storage');
-        $c = $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE);
-        $d = $this->get('security.authentication.trust_resolver');
-        $e = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
-        $f = $this->get('security.authentication.rememberme.services.simplehash.main');
+        $c = $this->get('fos_user.user_provider.username_email');
+        $d = $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE);
+        $e = $this->get('security.authentication.trust_resolver');
+        $f = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $g = $this->get('http_kernel');
         $h = $this->get('security.authentication.manager');
         $i = $this->get('security.authentication.session_strategy');
 
         $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login$');
 
-        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/register');
+        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/register');
 
         $l = new \Symfony\Component\HttpFoundation\RequestMatcher('^/resetting');
 
         $m = new \Symfony\Component\HttpFoundation\RequestMatcher('^/admin/');
 
-        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/parent/');
+        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/parent/');
 
-        $o = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/prof/');
+        $o = new \Symfony\Component\HttpFoundation\RequestMatcher('^/prof/');
 
         $p = new \Symfony\Component\HttpFoundation\RequestMatcher('^/reservation/paiement');
 
@@ -3695,23 +3782,25 @@ class appDevDebugProjectContainer extends Container
         $q->add($o, array(0 => 'ROLE_PROF'), NULL);
         $q->add($p, array(0 => 'ROLE_USER'), NULL);
 
-        $r = new \Symfony\Component\Security\Http\HttpUtils($e, $e);
+        $r = new \Symfony\Component\Security\Http\HttpUtils($f, $f);
 
-        $s = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $r, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($r, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => '/logout'));
-        $s->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        $s->addHandler($f);
+        $s = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $c), 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $a);
 
-        $t = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($r, array());
-        $t->setOptions(array('always_use_default_target_path' => false, 'default_target_path' => '/', 'login_path' => '/login', 'target_path_parameter' => '_target_path', 'use_referer' => false));
-        $t->setProviderKey('main');
+        $t = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $r, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($r, '/'), array('csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'logout', 'logout_path' => '/logout'));
+        $t->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $t->addHandler($s);
 
-        $u = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($g, $r, array(), $a);
-        $u->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+        $u = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($r, array());
+        $u->setOptions(array('always_use_default_target_path' => false, 'default_target_path' => '/', 'login_path' => '/login', 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $u->setProviderKey('main');
 
-        $v = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $h, $i, $r, 'main', $t, $u, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager'));
-        $v->setRememberMeServices($f);
+        $v = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($g, $r, array(), $a);
+        $v->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username_email')), 'main', $a, $c, $d), 2 => $s, 3 => $v, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $f, $h, $a, $c, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5810f31067b6e2.27436163', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('debug.security.access.decision_manager'), $q, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $r, '/login', false), NULL, NULL, $a, false));
+        $w = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $h, $i, $r, 'main', $u, $v, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $d, $this->get('security.csrf.token_manager'));
+        $w->setRememberMeServices($s);
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($q, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d, $e), 2 => $t, 3 => $w, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $s, $h, $a, $d, true, $i), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '58131e56e2ec08.49871165', $a, $h), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('debug.security.access.decision_manager'), $q, $h)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $e, $r, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($g, $r, '/login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -4824,9 +4913,9 @@ class appDevDebugProjectContainer extends Container
         $this->services['sonata.admin.pool'] = $instance = new \Sonata\AdminBundle\Admin\Pool($this, 'LeGrandProf Admin', 'images/Logo.png', array('html5_validate' => true, 'sort_admins' => false, 'confirm_exit' => true, 'use_select2' => true, 'use_icheck' => true, 'use_bootlint' => false, 'use_stickyforms' => true, 'pager_links' => NULL, 'form_type' => 'standard', 'dropdown_number_groups_per_colums' => 2, 'title_mode' => 'both', 'lock_protection' => false, 'javascripts' => array(0 => 'bundles/sonatacore/vendor/jquery/dist/jquery.min.js', 1 => 'bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js', 2 => 'bundles/sonatacore/vendor/moment/min/moment.min.js', 3 => 'bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js', 4 => 'bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js', 5 => 'bundles/sonatacore/vendor/bootstrap/dist/js/bootstrap.min.js', 6 => 'bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js', 7 => 'bundles/sonataadmin/vendor/jquery-form/jquery.form.js', 8 => 'bundles/sonataadmin/jquery/jquery.confirmExit.js', 9 => 'bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js', 10 => 'bundles/sonatacore/vendor/select2/select2.min.js', 11 => 'bundles/sonataadmin/vendor/admin-lte/dist/js/app.min.js', 12 => 'bundles/sonataadmin/vendor/iCheck/icheck.min.js', 13 => 'bundles/sonataadmin/vendor/slimScroll/jquery.slimscroll.min.js', 14 => 'bundles/sonataadmin/vendor/waypoints/lib/jquery.waypoints.min.js', 15 => 'bundles/sonataadmin/vendor/waypoints/lib/shortcuts/sticky.min.js', 16 => 'bundles/sonataadmin/Admin.js', 17 => 'bundles/sonataadmin/treeview.js'), 'stylesheets' => array(0 => 'bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css', 1 => 'bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css', 2 => 'bundles/sonatacore/vendor/ionicons/css/ionicons.min.css', 3 => 'bundles/sonataadmin/vendor/admin-lte/dist/css/AdminLTE.min.css', 4 => 'bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css', 5 => 'bundles/sonataadmin/vendor/iCheck/skins/square/blue.css', 6 => 'bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css', 7 => 'bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css', 8 => 'bundles/sonatacore/vendor/select2/select2.css', 9 => 'bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css', 10 => 'bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css', 11 => 'bundles/sonataadmin/css/styles.css', 12 => 'bundles/sonataadmin/css/layout.css', 13 => 'bundles/sonataadmin/css/tree.css')), $this->get('property_accessor'));
 
         $instance->setTemplates(array('layout' => 'LGPAdminBundle::standard_layout.html.twig', 'user_block' => 'SonataAdminBundle:Core:user_block.html.twig', 'add_block' => 'SonataAdminBundle:Core:add_block.html.twig', 'ajax' => 'SonataAdminBundle::ajax_layout.html.twig', 'dashboard' => 'SonataAdminBundle:Core:dashboard.html.twig', 'search' => 'SonataAdminBundle:Core:search.html.twig', 'list' => 'SonataAdminBundle:CRUD:list.html.twig', 'filter' => 'SonataAdminBundle:Form:filter_admin_fields.html.twig', 'show' => 'SonataAdminBundle:CRUD:show.html.twig', 'show_compare' => 'SonataAdminBundle:CRUD:show_compare.html.twig', 'edit' => 'SonataAdminBundle:CRUD:edit.html.twig', 'preview' => 'SonataAdminBundle:CRUD:preview.html.twig', 'history' => 'SonataAdminBundle:CRUD:history.html.twig', 'acl' => 'SonataAdminBundle:CRUD:acl.html.twig', 'history_revision_timestamp' => 'SonataAdminBundle:CRUD:history_revision_timestamp.html.twig', 'action' => 'SonataAdminBundle:CRUD:action.html.twig', 'select' => 'SonataAdminBundle:CRUD:list__select.html.twig', 'list_block' => 'SonataAdminBundle:Block:block_admin_list.html.twig', 'search_result_block' => 'SonataAdminBundle:Block:block_search_result.html.twig', 'short_object_description' => 'SonataAdminBundle:Helper:short-object-description.html.twig', 'delete' => 'SonataAdminBundle:CRUD:delete.html.twig', 'batch' => 'SonataAdminBundle:CRUD:list__batch.html.twig', 'batch_confirmation' => 'SonataAdminBundle:CRUD:batch_confirmation.html.twig', 'inner_list_row' => 'SonataAdminBundle:CRUD:list_inner_row.html.twig', 'outer_list_rows_mosaic' => 'SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig', 'outer_list_rows_list' => 'SonataAdminBundle:CRUD:list_outer_rows_list.html.twig', 'outer_list_rows_tree' => 'SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig', 'base_list_field' => 'SonataAdminBundle:CRUD:base_list_field.html.twig', 'pager_links' => 'SonataAdminBundle:Pager:links.html.twig', 'pager_results' => 'SonataAdminBundle:Pager:results.html.twig', 'tab_menu_template' => 'SonataAdminBundle:Core:tab_menu_template.html.twig', 'knp_menu_template' => 'SonataAdminBundle:Menu:sonata_menu.html.twig'));
-        $instance->setAdminServiceIds(array(0 => 'lgp.admin.prof', 1 => 'lgp.admin.parent', 2 => 'lgp.admin.quartier_cible', 3 => 'lgp.admin.reservation', 4 => 'lgp.admin.remuneration', 5 => 'lgp.admin.jourdecours', 6 => 'lgp.admin.reservationenseignement', 7 => 'lgp.admin.categorie_cours', 8 => 'lgp.admin.cours', 9 => 'lgp.admin.enseignement', 10 => 'lgp.admin.programmedecours'));
-        $instance->setAdminGroups(array('lgp_admin.group.user' => array('label' => 'Utilisateurs', 'items' => array(0 => array('admin' => 'lgp.admin.prof', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.parent', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.quartier_cible', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.cours' => array('label' => 'Cours', 'items' => array(0 => array('admin' => 'lgp.admin.categorie_cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.enseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.programmedecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.reservation' => array('label' => 'Réservations', 'items' => array(0 => array('admin' => 'lgp.admin.reservation', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.remuneration', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.jourdecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.reservationenseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle')));
-        $instance->setAdminClasses(array('LGP\\UserBundle\\Entity\\Prof' => array(0 => 'lgp.admin.prof'), 'LGP\\UserBundle\\Entity\\Parents' => array(0 => 'lgp.admin.parent'), 'LGP\\UserBundle\\Entity\\Quartier' => array(0 => 'lgp.admin.quartier_cible'), 'LGP\\ReservationBundle\\Entity\\Reservation' => array(0 => 'lgp.admin.reservation'), 'LGP\\UserBundle\\Entity\\Remuneration' => array(0 => 'lgp.admin.remuneration'), 'LGP\\ReservationBundle\\Entity\\JourDeCours' => array(0 => 'lgp.admin.jourdecours'), 'LGP\\ReservationBundle\\Entity\\ReservationEnseignement' => array(0 => 'lgp.admin.reservationenseignement'), 'LGP\\CourseBundle\\Entity\\Categorie' => array(0 => 'lgp.admin.categorie_cours'), 'LGP\\CourseBundle\\Entity\\Cours' => array(0 => 'lgp.admin.cours'), 'LGP\\CourseBundle\\Entity\\Enseignement' => array(0 => 'lgp.admin.enseignement'), 'LGP\\CourseBundle\\Entity\\ProgrammeDeCours' => array(0 => 'lgp.admin.programmedecours')));
+        $instance->setAdminServiceIds(array(0 => 'lgp.admin.user', 1 => 'lgp.admin.prof', 2 => 'lgp.admin.parent', 3 => 'lgp.admin.quartier_cible', 4 => 'lgp.admin.message', 5 => 'lgp.admin.reservation', 6 => 'lgp.admin.remuneration', 7 => 'lgp.admin.jourdecours', 8 => 'lgp.admin.reservationenseignement', 9 => 'lgp.admin.categorie_cours', 10 => 'lgp.admin.cours', 11 => 'lgp.admin.enseignement', 12 => 'lgp.admin.programmedecours'));
+        $instance->setAdminGroups(array('lgp_admin.group.user' => array('label' => 'Utilisateurs', 'items' => array(0 => array('admin' => 'lgp.admin.user', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.prof', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.parent', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.quartier_cible', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 4 => array('admin' => 'lgp.admin.message', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.cours' => array('label' => 'Cours', 'items' => array(0 => array('admin' => 'lgp.admin.categorie_cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.cours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.enseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.programmedecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle'), 'lgp_admin.group.reservation' => array('label' => 'Réservations', 'items' => array(0 => array('admin' => 'lgp.admin.reservation', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 1 => array('admin' => 'lgp.admin.remuneration', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 2 => array('admin' => 'lgp.admin.jourdecours', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true), 3 => array('admin' => 'lgp.admin.reservationenseignement', 'label' => '', 'route' => '', 'route_params' => array(), 'route_absolute' => true)), 'icon' => '<i class="fa fa-folder"></i>', 'on_top' => false, 'item_adds' => array(), 'roles' => array(), 'label_catalogue' => 'SonataAdminBundle')));
+        $instance->setAdminClasses(array('LGP\\UserBundle\\Entity\\User' => array(0 => 'lgp.admin.user'), 'LGP\\UserBundle\\Entity\\Prof' => array(0 => 'lgp.admin.prof'), 'LGP\\UserBundle\\Entity\\Parents' => array(0 => 'lgp.admin.parent'), 'LGP\\UserBundle\\Entity\\Quartier' => array(0 => 'lgp.admin.quartier_cible'), 'LGP\\UserBundle\\Entity\\Message' => array(0 => 'lgp.admin.message'), 'LGP\\ReservationBundle\\Entity\\Reservation' => array(0 => 'lgp.admin.reservation'), 'LGP\\UserBundle\\Entity\\Remuneration' => array(0 => 'lgp.admin.remuneration'), 'LGP\\ReservationBundle\\Entity\\JourDeCours' => array(0 => 'lgp.admin.jourdecours'), 'LGP\\ReservationBundle\\Entity\\ReservationEnseignement' => array(0 => 'lgp.admin.reservationenseignement'), 'LGP\\CourseBundle\\Entity\\Categorie' => array(0 => 'lgp.admin.categorie_cours'), 'LGP\\CourseBundle\\Entity\\Cours' => array(0 => 'lgp.admin.cours'), 'LGP\\CourseBundle\\Entity\\Enseignement' => array(0 => 'lgp.admin.enseignement'), 'LGP\\CourseBundle\\Entity\\ProgrammeDeCours' => array(0 => 'lgp.admin.programmedecours')));
 
         return $instance;
     }
@@ -4906,7 +4995,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSonata_Admin_RouteLoaderService()
     {
-        return $this->services['sonata.admin.route_loader'] = new \Sonata\AdminBundle\Route\AdminPoolLoader($this->get('sonata.admin.pool'), array(0 => 'lgp.admin.prof', 1 => 'lgp.admin.parent', 2 => 'lgp.admin.quartier_cible', 3 => 'lgp.admin.reservation', 4 => 'lgp.admin.remuneration', 5 => 'lgp.admin.jourdecours', 6 => 'lgp.admin.reservationenseignement', 7 => 'lgp.admin.categorie_cours', 8 => 'lgp.admin.cours', 9 => 'lgp.admin.enseignement', 10 => 'lgp.admin.programmedecours'), $this);
+        return $this->services['sonata.admin.route_loader'] = new \Sonata\AdminBundle\Route\AdminPoolLoader($this->get('sonata.admin.pool'), array(0 => 'lgp.admin.user', 1 => 'lgp.admin.prof', 2 => 'lgp.admin.parent', 3 => 'lgp.admin.quartier_cible', 4 => 'lgp.admin.message', 5 => 'lgp.admin.reservation', 6 => 'lgp.admin.remuneration', 7 => 'lgp.admin.jourdecours', 8 => 'lgp.admin.reservationenseignement', 9 => 'lgp.admin.categorie_cours', 10 => 'lgp.admin.cours', 11 => 'lgp.admin.enseignement', 12 => 'lgp.admin.programmedecours'), $this);
     }
 
     /**
@@ -6917,28 +7006,11 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker.main');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5810f31067b6e2.27436163')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('58131e56e2ec08.49871165')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
         return $instance;
-    }
-
-    /**
-     * Gets the 'security.authentication.rememberme.services.simplehash.main' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * This service is private.
-     * If you want to be able to request this service from the container directly,
-     * make it public, otherwise you might end up with broken code.
-     *
-     * @return \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices A Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices instance
-     */
-    protected function getSecurity_Authentication_Rememberme_Services_Simplehash_MainService()
-    {
-        return $this->services['security.authentication.rememberme.services.simplehash.main'] = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $this->get('fos_user.user_provider.username_email')), 'bbb4d84eca91276135d1441544d61d7c58a37f6c', 'main', array('name' => 'REMEMBERME', 'lifetime' => 31536000, 'path' => '/', 'domain' => NULL, 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -8001,7 +8073,7 @@ class appDevDebugProjectContainer extends Container
                     'label' => 'Utilisateurs',
                     'items' => array(
                         0 => array(
-                            'admin' => 'lgp.admin.prof',
+                            'admin' => 'lgp.admin.user',
                             'label' => '',
                             'route' => '',
                             'route_params' => array(
@@ -8010,7 +8082,7 @@ class appDevDebugProjectContainer extends Container
                             'route_absolute' => true,
                         ),
                         1 => array(
-                            'admin' => 'lgp.admin.parent',
+                            'admin' => 'lgp.admin.prof',
                             'label' => '',
                             'route' => '',
                             'route_params' => array(
@@ -8019,7 +8091,25 @@ class appDevDebugProjectContainer extends Container
                             'route_absolute' => true,
                         ),
                         2 => array(
+                            'admin' => 'lgp.admin.parent',
+                            'label' => '',
+                            'route' => '',
+                            'route_params' => array(
+
+                            ),
+                            'route_absolute' => true,
+                        ),
+                        3 => array(
                             'admin' => 'lgp.admin.quartier_cible',
+                            'label' => '',
+                            'route' => '',
+                            'route_params' => array(
+
+                            ),
+                            'route_absolute' => true,
+                        ),
+                        4 => array(
+                            'admin' => 'lgp.admin.message',
                             'label' => '',
                             'route' => '',
                             'route_params' => array(
@@ -8319,45 +8409,46 @@ class appDevDebugProjectContainer extends Container
             ),
             'sonata.core.form.types' => array(
                 0 => 'lgp.form.registration',
-                1 => 'form.type.form',
-                2 => 'form.type.choice',
-                3 => 'form.type.entity',
-                4 => 'fos_user.username_form_type',
-                5 => 'fos_user.profile.form.type',
-                6 => 'fos_user.registration.form.type',
-                7 => 'fos_user.change_password.form.type',
-                8 => 'fos_user.resetting.form.type',
-                9 => 'vich_uploader.form.type.file',
-                10 => 'vich_uploader.form.type.image',
-                11 => 'sonata.core.form.type.array',
-                12 => 'sonata.core.form.type.boolean',
-                13 => 'sonata.core.form.type.collection',
-                14 => 'sonata.core.form.type.translatable_choice',
-                15 => 'sonata.core.form.type.date_range',
-                16 => 'sonata.core.form.type.datetime_range',
-                17 => 'sonata.core.form.type.date_picker',
-                18 => 'sonata.core.form.type.datetime_picker',
-                19 => 'sonata.core.form.type.date_range_picker',
-                20 => 'sonata.core.form.type.datetime_range_picker',
-                21 => 'sonata.core.form.type.equal',
-                22 => 'sonata.core.form.type.color_selector',
-                23 => 'sonata.block.form.type.block',
-                24 => 'sonata.block.form.type.container_template',
-                25 => 'sonata.admin.form.type.admin',
-                26 => 'sonata.admin.form.type.model_choice',
-                27 => 'sonata.admin.form.type.model_list',
-                28 => 'sonata.admin.form.type.model_reference',
-                29 => 'sonata.admin.form.type.model_hidden',
-                30 => 'sonata.admin.form.type.model_autocomplete',
-                31 => 'sonata.admin.form.type.collection',
-                32 => 'sonata.admin.doctrine_orm.form.type.choice_field_mask',
-                33 => 'sonata.admin.form.filter.type.number',
-                34 => 'sonata.admin.form.filter.type.choice',
-                35 => 'sonata.admin.form.filter.type.default',
-                36 => 'sonata.admin.form.filter.type.date',
-                37 => 'sonata.admin.form.filter.type.daterange',
-                38 => 'sonata.admin.form.filter.type.datetime',
-                39 => 'sonata.admin.form.filter.type.datetime_range',
+                1 => 'lgp_user.message',
+                2 => 'form.type.form',
+                3 => 'form.type.choice',
+                4 => 'form.type.entity',
+                5 => 'fos_user.username_form_type',
+                6 => 'fos_user.profile.form.type',
+                7 => 'fos_user.registration.form.type',
+                8 => 'fos_user.change_password.form.type',
+                9 => 'fos_user.resetting.form.type',
+                10 => 'vich_uploader.form.type.file',
+                11 => 'vich_uploader.form.type.image',
+                12 => 'sonata.core.form.type.array',
+                13 => 'sonata.core.form.type.boolean',
+                14 => 'sonata.core.form.type.collection',
+                15 => 'sonata.core.form.type.translatable_choice',
+                16 => 'sonata.core.form.type.date_range',
+                17 => 'sonata.core.form.type.datetime_range',
+                18 => 'sonata.core.form.type.date_picker',
+                19 => 'sonata.core.form.type.datetime_picker',
+                20 => 'sonata.core.form.type.date_range_picker',
+                21 => 'sonata.core.form.type.datetime_range_picker',
+                22 => 'sonata.core.form.type.equal',
+                23 => 'sonata.core.form.type.color_selector',
+                24 => 'sonata.block.form.type.block',
+                25 => 'sonata.block.form.type.container_template',
+                26 => 'sonata.admin.form.type.admin',
+                27 => 'sonata.admin.form.type.model_choice',
+                28 => 'sonata.admin.form.type.model_list',
+                29 => 'sonata.admin.form.type.model_reference',
+                30 => 'sonata.admin.form.type.model_hidden',
+                31 => 'sonata.admin.form.type.model_autocomplete',
+                32 => 'sonata.admin.form.type.collection',
+                33 => 'sonata.admin.doctrine_orm.form.type.choice_field_mask',
+                34 => 'sonata.admin.form.filter.type.number',
+                35 => 'sonata.admin.form.filter.type.choice',
+                36 => 'sonata.admin.form.filter.type.default',
+                37 => 'sonata.admin.form.filter.type.date',
+                38 => 'sonata.admin.form.filter.type.daterange',
+                39 => 'sonata.admin.form.filter.type.datetime',
+                40 => 'sonata.admin.form.filter.type.datetime_range',
             ),
             'sonata.core.form.type_extensions' => array(
                 0 => 'form.type_extension.form.http_foundation',
@@ -8375,23 +8466,23 @@ class appDevDebugProjectContainer extends Container
     }
 }
 
-class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f59284f4ef1e039c0 extends \Doctrine\ORM\EntityManager implements \ProxyManager\Proxy\VirtualProxyInterface
+class DoctrineORMEntityManager_000000007a331e21000000005001ace29139e133ec8e531f59284f4ef1e039c0 extends \Doctrine\ORM\EntityManager implements \ProxyManager\Proxy\VirtualProxyInterface
 {
 
     /**
      * @var \Closure|null initializer responsible for generating the wrapped object
      */
-    private $valueHolder5810f312d3c7c830661483 = null;
+    private $valueHolder58131e59ecf3d892586362 = null;
 
     /**
      * @var \Closure|null initializer responsible for generating the wrapped object
      */
-    private $initializer5810f312d3c9b829070830 = null;
+    private $initializer58131e59ecf87876293995 = null;
 
     /**
      * @var bool[] map of public properties of the parent class
      */
-    private static $publicProperties5810f312d3c48964026408 = array(
+    private static $publicProperties58131e59ece77833932814 = array(
         
     );
 
@@ -8400,9 +8491,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getConnection()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getConnection', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getConnection', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getConnection();
+        return $this->valueHolder58131e59ecf3d892586362->getConnection();
     }
 
     /**
@@ -8410,9 +8501,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getMetadataFactory()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getMetadataFactory', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getMetadataFactory', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getMetadataFactory();
+        return $this->valueHolder58131e59ecf3d892586362->getMetadataFactory();
     }
 
     /**
@@ -8420,9 +8511,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getExpressionBuilder()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getExpressionBuilder', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getExpressionBuilder', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getExpressionBuilder();
+        return $this->valueHolder58131e59ecf3d892586362->getExpressionBuilder();
     }
 
     /**
@@ -8430,9 +8521,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function beginTransaction()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'beginTransaction', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'beginTransaction', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->beginTransaction();
+        return $this->valueHolder58131e59ecf3d892586362->beginTransaction();
     }
 
     /**
@@ -8440,9 +8531,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getCache()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getCache', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getCache', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getCache();
+        return $this->valueHolder58131e59ecf3d892586362->getCache();
     }
 
     /**
@@ -8450,9 +8541,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function transactional($func)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'transactional', array('func' => $func), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'transactional', array('func' => $func), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->transactional($func);
+        return $this->valueHolder58131e59ecf3d892586362->transactional($func);
     }
 
     /**
@@ -8460,9 +8551,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function commit()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'commit', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'commit', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->commit();
+        return $this->valueHolder58131e59ecf3d892586362->commit();
     }
 
     /**
@@ -8470,9 +8561,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function rollback()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'rollback', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'rollback', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->rollback();
+        return $this->valueHolder58131e59ecf3d892586362->rollback();
     }
 
     /**
@@ -8480,9 +8571,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getClassMetadata($className)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getClassMetadata', array('className' => $className), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getClassMetadata', array('className' => $className), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getClassMetadata($className);
+        return $this->valueHolder58131e59ecf3d892586362->getClassMetadata($className);
     }
 
     /**
@@ -8490,9 +8581,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function createQuery($dql = '')
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'createQuery', array('dql' => $dql), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'createQuery', array('dql' => $dql), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->createQuery($dql);
+        return $this->valueHolder58131e59ecf3d892586362->createQuery($dql);
     }
 
     /**
@@ -8500,9 +8591,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function createNamedQuery($name)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'createNamedQuery', array('name' => $name), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'createNamedQuery', array('name' => $name), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->createNamedQuery($name);
+        return $this->valueHolder58131e59ecf3d892586362->createNamedQuery($name);
     }
 
     /**
@@ -8510,9 +8601,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function createNativeQuery($sql, \Doctrine\ORM\Query\ResultSetMapping $rsm)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'createNativeQuery', array('sql' => $sql, 'rsm' => $rsm), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'createNativeQuery', array('sql' => $sql, 'rsm' => $rsm), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->createNativeQuery($sql, $rsm);
+        return $this->valueHolder58131e59ecf3d892586362->createNativeQuery($sql, $rsm);
     }
 
     /**
@@ -8520,9 +8611,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function createNamedNativeQuery($name)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'createNamedNativeQuery', array('name' => $name), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'createNamedNativeQuery', array('name' => $name), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->createNamedNativeQuery($name);
+        return $this->valueHolder58131e59ecf3d892586362->createNamedNativeQuery($name);
     }
 
     /**
@@ -8530,9 +8621,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function createQueryBuilder()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'createQueryBuilder', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'createQueryBuilder', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->createQueryBuilder();
+        return $this->valueHolder58131e59ecf3d892586362->createQueryBuilder();
     }
 
     /**
@@ -8540,9 +8631,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function flush($entity = null)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'flush', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'flush', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->flush($entity);
+        return $this->valueHolder58131e59ecf3d892586362->flush($entity);
     }
 
     /**
@@ -8550,9 +8641,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function find($entityName, $id, $lockMode = null, $lockVersion = null)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'find', array('entityName' => $entityName, 'id' => $id, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'find', array('entityName' => $entityName, 'id' => $id, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->find($entityName, $id, $lockMode, $lockVersion);
+        return $this->valueHolder58131e59ecf3d892586362->find($entityName, $id, $lockMode, $lockVersion);
     }
 
     /**
@@ -8560,9 +8651,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getReference($entityName, $id)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getReference', array('entityName' => $entityName, 'id' => $id), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getReference', array('entityName' => $entityName, 'id' => $id), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getReference($entityName, $id);
+        return $this->valueHolder58131e59ecf3d892586362->getReference($entityName, $id);
     }
 
     /**
@@ -8570,9 +8661,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getPartialReference($entityName, $identifier)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getPartialReference', array('entityName' => $entityName, 'identifier' => $identifier), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getPartialReference', array('entityName' => $entityName, 'identifier' => $identifier), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getPartialReference($entityName, $identifier);
+        return $this->valueHolder58131e59ecf3d892586362->getPartialReference($entityName, $identifier);
     }
 
     /**
@@ -8580,9 +8671,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function clear($entityName = null)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'clear', array('entityName' => $entityName), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'clear', array('entityName' => $entityName), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->clear($entityName);
+        return $this->valueHolder58131e59ecf3d892586362->clear($entityName);
     }
 
     /**
@@ -8590,9 +8681,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function close()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'close', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'close', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->close();
+        return $this->valueHolder58131e59ecf3d892586362->close();
     }
 
     /**
@@ -8600,9 +8691,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function persist($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'persist', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'persist', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->persist($entity);
+        return $this->valueHolder58131e59ecf3d892586362->persist($entity);
     }
 
     /**
@@ -8610,9 +8701,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function remove($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'remove', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'remove', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->remove($entity);
+        return $this->valueHolder58131e59ecf3d892586362->remove($entity);
     }
 
     /**
@@ -8620,9 +8711,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function refresh($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'refresh', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'refresh', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->refresh($entity);
+        return $this->valueHolder58131e59ecf3d892586362->refresh($entity);
     }
 
     /**
@@ -8630,9 +8721,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function detach($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'detach', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'detach', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->detach($entity);
+        return $this->valueHolder58131e59ecf3d892586362->detach($entity);
     }
 
     /**
@@ -8640,9 +8731,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function merge($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'merge', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'merge', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->merge($entity);
+        return $this->valueHolder58131e59ecf3d892586362->merge($entity);
     }
 
     /**
@@ -8650,9 +8741,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function copy($entity, $deep = false)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'copy', array('entity' => $entity, 'deep' => $deep), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'copy', array('entity' => $entity, 'deep' => $deep), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->copy($entity, $deep);
+        return $this->valueHolder58131e59ecf3d892586362->copy($entity, $deep);
     }
 
     /**
@@ -8660,9 +8751,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function lock($entity, $lockMode, $lockVersion = null)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'lock', array('entity' => $entity, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'lock', array('entity' => $entity, 'lockMode' => $lockMode, 'lockVersion' => $lockVersion), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->lock($entity, $lockMode, $lockVersion);
+        return $this->valueHolder58131e59ecf3d892586362->lock($entity, $lockMode, $lockVersion);
     }
 
     /**
@@ -8670,9 +8761,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getRepository($entityName)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getRepository', array('entityName' => $entityName), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getRepository', array('entityName' => $entityName), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getRepository($entityName);
+        return $this->valueHolder58131e59ecf3d892586362->getRepository($entityName);
     }
 
     /**
@@ -8680,9 +8771,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function contains($entity)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'contains', array('entity' => $entity), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'contains', array('entity' => $entity), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->contains($entity);
+        return $this->valueHolder58131e59ecf3d892586362->contains($entity);
     }
 
     /**
@@ -8690,9 +8781,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getEventManager()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getEventManager', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getEventManager', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getEventManager();
+        return $this->valueHolder58131e59ecf3d892586362->getEventManager();
     }
 
     /**
@@ -8700,9 +8791,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getConfiguration()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getConfiguration', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getConfiguration', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getConfiguration();
+        return $this->valueHolder58131e59ecf3d892586362->getConfiguration();
     }
 
     /**
@@ -8710,9 +8801,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function isOpen()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'isOpen', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'isOpen', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->isOpen();
+        return $this->valueHolder58131e59ecf3d892586362->isOpen();
     }
 
     /**
@@ -8720,9 +8811,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getUnitOfWork()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getUnitOfWork', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getUnitOfWork', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getUnitOfWork();
+        return $this->valueHolder58131e59ecf3d892586362->getUnitOfWork();
     }
 
     /**
@@ -8730,9 +8821,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getHydrator($hydrationMode)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getHydrator', array('hydrationMode' => $hydrationMode), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getHydrator', array('hydrationMode' => $hydrationMode), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getHydrator($hydrationMode);
+        return $this->valueHolder58131e59ecf3d892586362->getHydrator($hydrationMode);
     }
 
     /**
@@ -8740,9 +8831,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function newHydrator($hydrationMode)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'newHydrator', array('hydrationMode' => $hydrationMode), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'newHydrator', array('hydrationMode' => $hydrationMode), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->newHydrator($hydrationMode);
+        return $this->valueHolder58131e59ecf3d892586362->newHydrator($hydrationMode);
     }
 
     /**
@@ -8750,9 +8841,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getProxyFactory()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getProxyFactory', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getProxyFactory', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getProxyFactory();
+        return $this->valueHolder58131e59ecf3d892586362->getProxyFactory();
     }
 
     /**
@@ -8760,9 +8851,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function initializeObject($obj)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'initializeObject', array('obj' => $obj), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'initializeObject', array('obj' => $obj), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->initializeObject($obj);
+        return $this->valueHolder58131e59ecf3d892586362->initializeObject($obj);
     }
 
     /**
@@ -8770,9 +8861,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getFilters()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'getFilters', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'getFilters', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->getFilters();
+        return $this->valueHolder58131e59ecf3d892586362->getFilters();
     }
 
     /**
@@ -8780,9 +8871,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function isFiltersStateClean()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'isFiltersStateClean', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'isFiltersStateClean', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->isFiltersStateClean();
+        return $this->valueHolder58131e59ecf3d892586362->isFiltersStateClean();
     }
 
     /**
@@ -8790,9 +8881,9 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function hasFilters()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'hasFilters', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'hasFilters', array(), $this->initializer58131e59ecf87876293995);
 
-        return $this->valueHolder5810f312d3c7c830661483->hasFilters();
+        return $this->valueHolder58131e59ecf3d892586362->hasFilters();
     }
 
     /**
@@ -8802,7 +8893,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function __construct($initializer)
     {
-        $this->initializer5810f312d3c9b829070830 = $initializer;
+        $this->initializer58131e59ecf87876293995 = $initializer;
     }
 
     /**
@@ -8810,16 +8901,16 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function & __get($name)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__get', array('name' => $name), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__get', array('name' => $name), $this->initializer58131e59ecf87876293995);
 
-        if (isset(self::$publicProperties5810f312d3c48964026408[$name])) {
-            return $this->valueHolder5810f312d3c7c830661483->$name;
+        if (isset(self::$publicProperties58131e59ece77833932814[$name])) {
+            return $this->valueHolder58131e59ecf3d892586362->$name;
         }
 
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
 
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder5810f312d3c7c830661483;
+            $targetObject = $this->valueHolder58131e59ecf3d892586362;
 
             $backtrace = debug_backtrace(false);
             trigger_error('Undefined property: ' . get_parent_class($this) . '::$' . $name . ' in ' . $backtrace[0]['file'] . ' on line ' . $backtrace[0]['line'], \E_USER_NOTICE);
@@ -8827,7 +8918,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
             return;
         }
 
-        $targetObject = $this->valueHolder5810f312d3c7c830661483;
+        $targetObject = $this->valueHolder58131e59ecf3d892586362;
         $accessor = function & () use ($targetObject, $name) {
             return $targetObject->$name;
         };
@@ -8845,18 +8936,18 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function __set($name, $value)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__set', array('name' => $name, 'value' => $value), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__set', array('name' => $name, 'value' => $value), $this->initializer58131e59ecf87876293995);
 
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
 
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder5810f312d3c7c830661483;
+            $targetObject = $this->valueHolder58131e59ecf3d892586362;
 
             return $targetObject->$name = $value;;
             return;
         }
 
-        $targetObject = $this->valueHolder5810f312d3c7c830661483;
+        $targetObject = $this->valueHolder58131e59ecf3d892586362;
         $accessor = function & () use ($targetObject, $name, $value) {
             return $targetObject->$name = $value;
         };
@@ -8873,18 +8964,18 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function __isset($name)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__isset', array('name' => $name), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__isset', array('name' => $name), $this->initializer58131e59ecf87876293995);
 
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
 
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder5810f312d3c7c830661483;
+            $targetObject = $this->valueHolder58131e59ecf3d892586362;
 
             return isset($targetObject->$name);;
             return;
         }
 
-        $targetObject = $this->valueHolder5810f312d3c7c830661483;
+        $targetObject = $this->valueHolder58131e59ecf3d892586362;
         $accessor = function () use ($targetObject, $name) {
             return isset($targetObject->$name);
         };
@@ -8901,18 +8992,18 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function __unset($name)
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__unset', array('name' => $name), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__unset', array('name' => $name), $this->initializer58131e59ecf87876293995);
 
         $realInstanceReflection = new \ReflectionClass(get_parent_class($this));
 
         if (! $realInstanceReflection->hasProperty($name)) {
-            $targetObject = $this->valueHolder5810f312d3c7c830661483;
+            $targetObject = $this->valueHolder58131e59ecf3d892586362;
 
             unset($targetObject->$name);;
             return;
         }
 
-        $targetObject = $this->valueHolder5810f312d3c7c830661483;
+        $targetObject = $this->valueHolder58131e59ecf3d892586362;
         $accessor = function () use ($targetObject, $name) {
             unset($targetObject->$name);
         };
@@ -8926,16 +9017,16 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
 
     public function __clone()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__clone', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__clone', array(), $this->initializer58131e59ecf87876293995);
 
-        $this->valueHolder5810f312d3c7c830661483 = clone $this->valueHolder5810f312d3c7c830661483;
+        $this->valueHolder58131e59ecf3d892586362 = clone $this->valueHolder58131e59ecf3d892586362;
     }
 
     public function __sleep()
     {
-        $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, '__sleep', array(), $this->initializer5810f312d3c9b829070830);
+        $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, '__sleep', array(), $this->initializer58131e59ecf87876293995);
 
-        return array('valueHolder5810f312d3c7c830661483');
+        return array('valueHolder58131e59ecf3d892586362');
     }
 
     public function __wakeup()
@@ -8947,7 +9038,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function setProxyInitializer(\Closure $initializer = null)
     {
-        $this->initializer5810f312d3c9b829070830 = $initializer;
+        $this->initializer58131e59ecf87876293995 = $initializer;
     }
 
     /**
@@ -8955,7 +9046,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getProxyInitializer()
     {
-        return $this->initializer5810f312d3c9b829070830;
+        return $this->initializer58131e59ecf87876293995;
     }
 
     /**
@@ -8963,7 +9054,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function initializeProxy()
     {
-        return $this->initializer5810f312d3c9b829070830 && $this->initializer5810f312d3c9b829070830->__invoke($this->valueHolder5810f312d3c7c830661483, $this, 'initializeProxy', array(), $this->initializer5810f312d3c9b829070830);
+        return $this->initializer58131e59ecf87876293995 && $this->initializer58131e59ecf87876293995->__invoke($this->valueHolder58131e59ecf3d892586362, $this, 'initializeProxy', array(), $this->initializer58131e59ecf87876293995);
     }
 
     /**
@@ -8971,7 +9062,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function isProxyInitialized()
     {
-        return null !== $this->valueHolder5810f312d3c7c830661483;
+        return null !== $this->valueHolder58131e59ecf3d892586362;
     }
 
     /**
@@ -8979,7 +9070,7 @@ class DoctrineORMEntityManager_00000000102f13480000000032694c6d9139e133ec8e531f5
      */
     public function getWrappedValueHolderValue()
     {
-        return $this->valueHolder5810f312d3c7c830661483;
+        return $this->valueHolder58131e59ecf3d892586362;
     }
 
 

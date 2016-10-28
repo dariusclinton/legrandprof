@@ -15,48 +15,32 @@ class __TwigTemplate_adf58caf2faa3ecd77c2870ab26923cb74084390351474d5e7bca72ff74
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_23fbedb60c01d503a26da2e1cdaea518887712e9d79a584f7dee8f6640b207a1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_23fbedb60c01d503a26da2e1cdaea518887712e9d79a584f7dee8f6640b207a1->enter($__internal_23fbedb60c01d503a26da2e1cdaea518887712e9d79a584f7dee8f6640b207a1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
+        $__internal_48af03c7455b14013992996f20e4d9b145ec7b10eae2512ab1df133e58acfb08 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_48af03c7455b14013992996f20e4d9b145ec7b10eae2512ab1df133e58acfb08->enter($__internal_48af03c7455b14013992996f20e4d9b145ec7b10eae2512ab1df133e58acfb08_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Registration:register_content.html.twig"));
 
         // line 2
         echo "
-<div class=\"row\">
-  <div class=\"col-md-6 col-md-offset-3\">
-    ";
-        // line 5
+";
+        // line 3
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register"), "attr" => array("class" => "fos_user_registration_register")));
         echo "
-
-          ";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
-        echo "
-
-          ";
-        // line 9
+    ";
+        // line 4
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
         echo "
-          
-        <div class=\"form-group\">
-            <input type=\"submit\" value=\"";
-        // line 12
+    <div>
+        <input type=\"submit\" value=\"";
+        // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
-        echo "\" class=\"btn btn-default\"/>
-        </div>
-
-        ";
-        // line 15
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'rest');
-        echo "
-    ";
-        // line 16
+        echo "\" />
+    </div>
+";
+        // line 8
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
-  </div>
-</div>
 ";
         
-        $__internal_23fbedb60c01d503a26da2e1cdaea518887712e9d79a584f7dee8f6640b207a1->leave($__internal_23fbedb60c01d503a26da2e1cdaea518887712e9d79a584f7dee8f6640b207a1_prof);
+        $__internal_48af03c7455b14013992996f20e4d9b145ec7b10eae2512ab1df133e58acfb08->leave($__internal_48af03c7455b14013992996f20e4d9b145ec7b10eae2512ab1df133e58acfb08_prof);
 
     }
 
@@ -72,29 +56,19 @@ class __TwigTemplate_adf58caf2faa3ecd77c2870ab26923cb74084390351474d5e7bca72ff74
 
     public function getDebugInfo()
     {
-        return array (  53 => 16,  49 => 15,  43 => 12,  37 => 9,  32 => 7,  27 => 5,  22 => 2,);
+        return array (  39 => 8,  34 => 6,  29 => 4,  25 => 3,  22 => 2,);
     }
 
     public function getSource()
     {
         return "{% trans_default_domain 'FOSUserBundle' %}
 
-<div class=\"row\">
-  <div class=\"col-md-6 col-md-offset-3\">
-    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-
-          {{ form_errors(form) }}
-
-          {{ form_widget(form) }}
-          
-        <div class=\"form-group\">
-            <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" class=\"btn btn-default\"/>
-        </div>
-
-        {{ form_rest(form) }}
-    {{ form_end(form) }}
-  </div>
-</div>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" />
+    </div>
+{{ form_end(form) }}
 ";
     }
 }

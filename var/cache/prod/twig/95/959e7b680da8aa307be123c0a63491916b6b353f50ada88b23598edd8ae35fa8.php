@@ -1,6 +1,6 @@
 <?php
 
-/* LGPUserBundle:Resetting:checkEmail.html.twig */
+/* FOSUserBundle:Resetting:checkEmail.html.twig */
 class __TwigTemplate_612ea8335f3bc5dfd52d9be914c8bbd586f3ec48530bee47bcb0ed535c9030da extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_612ea8335f3bc5dfd52d9be914c8bbd586f3ec48530bee47bcb0ed535c9
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "LGPUserBundle:Resetting:checkEmail.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "FOSUserBundle:Resetting:checkEmail.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -39,7 +39,7 @@ class __TwigTemplate_612ea8335f3bc5dfd52d9be914c8bbd586f3ec48530bee47bcb0ed535c9
 
     public function getTemplateName()
     {
-        return "LGPUserBundle:Resetting:checkEmail.html.twig";
+        return "FOSUserBundle:Resetting:checkEmail.html.twig";
     }
 
     public function isTraitable()

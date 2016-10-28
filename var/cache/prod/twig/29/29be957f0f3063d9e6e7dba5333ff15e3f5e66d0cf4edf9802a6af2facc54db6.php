@@ -17,40 +17,24 @@ class __TwigTemplate_9f5a7337ff439c973d8b7d6bd5f6d77ba96aae718c1785c102d1bccc7bb
     {
         // line 2
         echo "
-<div class=\"row\">
-  <div class=\"col-md-6 col-md-offset-3\">
-    ";
-        // line 5
+";
+        // line 3
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : null), 'form_start', array("method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register"), "attr" => array("class" => "fos_user_registration_register")));
         echo "
-
-          ";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : null), 'errors');
-        echo "
-
-          ";
-        // line 9
+    ";
+        // line 4
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : null), 'widget');
         echo "
-          
-        <div class=\"form-group\">
-            <input type=\"submit\" value=\"";
-        // line 12
+    <div>
+        <input type=\"submit\" value=\"";
+        // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
-        echo "\" class=\"btn btn-default\"/>
-        </div>
-
-        ";
-        // line 15
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : null), 'rest');
-        echo "
-    ";
-        // line 16
+        echo "\" />
+    </div>
+";
+        // line 8
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : null), 'form_end');
         echo "
-  </div>
-</div>
 ";
     }
 
@@ -66,7 +50,7 @@ class __TwigTemplate_9f5a7337ff439c973d8b7d6bd5f6d77ba96aae718c1785c102d1bccc7bb
 
     public function getDebugInfo()
     {
-        return array (  50 => 16,  46 => 15,  40 => 12,  34 => 9,  29 => 7,  24 => 5,  19 => 2,);
+        return array (  36 => 8,  31 => 6,  26 => 4,  22 => 3,  19 => 2,);
     }
 
     public function getSource()

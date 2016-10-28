@@ -18,328 +18,334 @@ class __TwigTemplate_f5c10544f0ce907bfc0b3980be9c0a25d07b9d9b16be3646c3c3ae162ed
         // line 2
         echo "
 <div class=\"content-wrapper\">
-    <div class=\"container\">
-        <div class=\"row\">
-            <div class=\"col-md-3\">
-                <div class=\"profile-block\">
-                    ";
+  <div class=\"container\">
+    <div class=\"row\">
+      <div class=\"col-md-3\">
+        <div class=\"profile-block\">
+          ";
         // line 8
         if ( !(null === $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "image", array()))) {
             // line 9
-            echo "                        <img src=\"";
+            echo "            <img src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "image", array()), "webPath", array())), "html", null, true);
             echo "\" class=\"img-responsive\">
-                    ";
+          ";
         } else {
             // line 11
-            echo "                        <img src=\"";
+            echo "            <img src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("uploads/profils/default.png"), "html", null, true);
             echo "\"
-                             alt=\"Tour Package\"/>
-                    ";
+                 alt=\"Tour Package\"/>
+          ";
         }
         // line 14
-        echo "                </div>
-                <div class=\"infos-block\">
-                    <h2>";
+        echo "        </div>
+        <div class=\"infos-block\">
+          <h2>";
         // line 16
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()), "html", null, true);
         echo " ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "nom", array()), "html", null, true);
         echo "</h2>
-                    <p>
-                        <span class=\"on\"><i class=\"fa fa-check\"></i></span>&nbsp;&nbsp;Profil complet<br>
-                        <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
-                    </p>
-                    <center>
-                        <a href=\"";
+          <p>
+            <span class=\"on\"><i class=\"fa fa-check\"></i></span>&nbsp;&nbsp;Profil complet<br>
+            <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
+          </p>
+          <center>
+            <a href=\"";
         // line 22
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\" class=\"btn btn-primary\">Compléter profil</a>
-                        <br><br>
-                        <a href=\"";
+            <br><br>
+            <a href=\"";
         // line 24
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
         echo "\" class=\"btn btn-primary btn-sm\">Modifier le mot
-                            de passe</a>
-                    </center>
+              de passe</a>
+          </center>
 
-                </div>
-            </div>
+        </div>
+      </div>
 
-            <div class=\"col-md-9\">
-
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">
-                        Hello
-                        ";
-        // line 36
+      <div class=\"col-md-9\">
+        <div class=\"alert alert-warning\">
+          <b>";
+        // line 33
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "avanceeProfil", array()), "html", null, true);
+        echo "% de remplissage du profil</b><br>
+          <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">
+            Hello
+            ";
+        // line 39
         if ( !(null === $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()))) {
-            // line 37
-            echo "                            ";
+            // line 40
+            echo "              ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()), "html", null, true);
             echo "
-                        ";
+            ";
         } else {
-            // line 39
-            echo "                            ";
+            // line 42
+            echo "              ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "nom", array()), "html", null, true);
             echo "
-                        ";
+            ";
         }
-        // line 41
-        echo "                    </div>
-                    <div class=\"notifications-content\">
-                        <h1>
-                            Hello
-                            ";
-        // line 45
+        // line 44
+        echo "          </div>
+          <div class=\"notifications-content\">
+            <h1>
+              Hello
+              ";
+        // line 48
         if ( !(null === $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()))) {
-            // line 46
-            echo "                                ";
+            // line 49
+            echo "                ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()), "html", null, true);
             echo "
-                            ";
+              ";
         } else {
-            // line 48
-            echo "                                ";
+            // line 51
+            echo "                ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "nom", array()), "html", null, true);
             echo "
-                            ";
+              ";
         }
-        // line 50
-        echo "                        </h1>
-                    </div>
-                </div>
+        // line 53
+        echo "            </h1>
+          </div>
+        </div>
 
-                <div class=\"notifications-block\">
+        <div class=\"notifications-block\">
 
-                    <div class=\"notifications-header\">
-                        Qui suis je ?
-                    </div>
-                    <div class=\"notifications-content\">
-                        <p>Email: ";
-        // line 60
+          <div class=\"notifications-header\">
+            Qui suis je ?
+          </div>
+          <div class=\"notifications-content\">
+            <p>Email: ";
+        // line 63
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "email", array()), "html", null, true);
         echo "</p>
-                        <p>Nom: ";
-        // line 61
+            <p>Nom: ";
+        // line 64
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "nom", array()), "html", null, true);
         echo "</p>
-                        <p>Prenoms: ";
-        // line 62
+            <p>Prenoms: ";
+        // line 65
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "prenoms", array()), "html", null, true);
         echo "</p>
-                        <p>Date de naissance: ";
-        // line 63
+            <p>Date de naissance: ";
+        // line 66
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "dateNaissance", array()), "d/m/y"), "html", null, true);
         echo "</p>
-                        <p>
-                            Sexe:
-                            ";
-        // line 66
+            <p>
+              Sexe:
+              ";
+        // line 69
         if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "sexe", array()) == "m")) {
-            // line 67
-            echo "                                Masculin
-                            ";
+            // line 70
+            echo "                Masculin
+              ";
         } else {
-            // line 69
-            echo "                                Féminin
-                            ";
+            // line 72
+            echo "                Féminin
+              ";
         }
-        // line 71
-        echo "                        </p>
-                        <p>Telephone: ";
-        // line 72
+        // line 74
+        echo "            </p>
+            <p>Telephone: ";
+        // line 75
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "telephone", array()), "html", null, true);
         echo "</p>
-                        <p>Pays: ";
-        // line 73
+            <p>Pays: ";
+        // line 76
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "pays", array()), "html", null, true);
         echo "</p>
 
-                        ";
-        // line 76
-        echo "                        ";
+            ";
+        // line 79
+        echo "            ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_PROF")) {
-            // line 77
-            echo "                        <p>Ville: ";
+            // line 80
+            echo "            <p>Ville: ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "ville", array()), "html", null, true);
             echo "</p>
-                        <p>boite Postale: ";
-            // line 78
+            <p>boite Postale: ";
+            // line 81
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "boitePostale", array()), "html", null, true);
             echo "</p>
-                        <p>Situation matrimoniale: ";
-            // line 79
+            <p>Situation matrimoniale: ";
+            // line 82
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "situationMatrimoniale", array()), "html", null, true);
             echo "</p>
-                        <p>Niveau scolaire: ";
-            // line 80
+            <p>Niveau scolaire: ";
+            // line 83
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "niveauScolaire", array()), "html", null, true);
             echo "</p>
-                        <p>Nombre d'enfants: ";
-            // line 81
+            <p>Nombre d'enfants: ";
+            // line 84
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "nombreEnfants", array()), "html", null, true);
             echo "</p>
-                        <p>Presentation: ";
-            // line 82
+            <p>Presentation: ";
+            // line 85
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "presentation", array()), "html", null, true);
             echo "</p>
-                        <p>Profession: ";
-            // line 83
+            <p>Profession: ";
+            // line 86
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "profession", array()), "html", null, true);
             echo "</p>
-                    </div>
-                </div>
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">Quartiers cibles</div>
-                    <div class=\"notifications-content\">
-                        <ul>
-                            ";
-            // line 90
+          </div>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">Quartiers dans lesquels je suis disposé à donner cours</div>
+          <div class=\"notifications-content\">
+            <ul>
+              ";
+            // line 93
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "quartierCibles", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["quartier"]) {
-                // line 91
-                echo "                                <li>
-                                    ";
-                // line 92
+                // line 94
+                echo "                <li>
+                  ";
+                // line 95
                 echo twig_escape_filter($this->env, $this->getAttribute($context["quartier"], "affichage", array()), "html", null, true);
                 echo "
-                                </li>
-                            ";
+                </li>
+              ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['quartier'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 95
-            echo "                        </ul>
-                    </div>
-                </div>
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">Expérience professionnelle</div>
-                    <div class=\"notifications-content\">
-                        <ul>
-                            ";
-            // line 102
+            // line 98
+            echo "            </ul>
+          </div>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">Expérience professionnelle</div>
+          <div class=\"notifications-content\">
+            <ul>
+              ";
+            // line 105
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "experiencePros", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["experience"]) {
-                // line 103
-                echo "                                <li>
-                                    ";
-                // line 104
+                // line 106
+                echo "                <li>
+                  ";
+                // line 107
                 echo twig_escape_filter($this->env, $this->getAttribute($context["experience"], "poste", array()), "html", null, true);
                 echo "
-                                    à
-                                    ";
-                // line 106
+                  à
+                  ";
+                // line 109
                 echo twig_escape_filter($this->env, $this->getAttribute($context["experience"], "etablissement", array()), "html", null, true);
                 echo "
-                                    de
-                                    ";
-                // line 108
+                  de
+                  ";
+                // line 111
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["experience"], "dateDebut", array()), "d/m/y"), "html", null, true);
                 echo "
-                                    à
-                                    ";
-                // line 110
+                  à
+                  ";
+                // line 113
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["experience"], "dateFin", array()), "d/m/y"), "html", null, true);
                 echo "
-                                    ";
-                // line 111
+                  ";
+                // line 114
                 echo twig_escape_filter($this->env, $this->getAttribute($context["experience"], "description", array()), "html", null, true);
                 echo "
-                                </li>
-                            ";
+                </li>
+              ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['experience'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 114
-            echo "                        </ul>
-                    </div>
-                </div>
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">Diplomes</div>
-                    <div class=\"notifications-content\">
-                        <ul>
-                            ";
-            // line 121
+            // line 117
+            echo "            </ul>
+          </div>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">Diplômes</div>
+          <div class=\"notifications-content\">
+            <ul>
+              ";
+            // line 124
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "diplomes", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["diplome"]) {
-                // line 122
-                echo "                                <li>
-                                    ";
-                // line 123
+                // line 125
+                echo "                <li>
+                  ";
+                // line 126
                 echo twig_escape_filter($this->env, $this->getAttribute($context["diplome"], "intitule", array()), "html", null, true);
                 echo "
-                                    ";
-                // line 124
+                  ";
+                // line 127
                 if ( !(null === $this->getAttribute($context["diplome"], "fileName", array()))) {
-                    // line 125
-                    echo "                                        (<a href=\"";
+                    // line 128
+                    echo "                    (<a href=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($context["diplome"], "webPath", array())), "html", null, true);
                     echo "\" target=\"blank\">voir</a>)
-                                    ";
+                  ";
                 }
-                // line 127
-                echo "                                </li>
-                            ";
+                // line 130
+                echo "                </li>
+              ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['diplome'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 129
-            echo "                        </ul>
-                    </div>
-                </div>
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">CV</div>
-                    <div class=\"notifications-content\">
-                        ";
-            // line 135
+            // line 132
+            echo "            </ul>
+          </div>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">CV</div>
+          <div class=\"notifications-content\">
+            ";
+            // line 138
             if ( !(null === $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "CVFile", array()))) {
-                // line 136
-                echo "                            ";
+                // line 139
+                echo "              ";
                 if ( !(null === $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "CVFile", array()), "fileName", array()))) {
-                    // line 137
-                    echo "                                (<a href=\"";
+                    // line 140
+                    echo "                (<a href=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "CVFile", array()), "webPath", array())), "html", null, true);
                     echo "\" target=\"blank\">Voir le CV</a>)
-                            ";
+              ";
                 }
-                // line 139
-                echo "                        ";
+                // line 142
+                echo "            ";
             }
-            // line 140
-            echo "                        <br/>
-                    </div>
-                </div>
-                <div class=\"notifications-block\">
-                    <div class=\"notifications-header\">Rémunérations LeGrandProf <span
-                                class=\"badge\">";
-            // line 145
+            // line 143
+            echo "            <br/>
+          </div>
+        </div>
+        <div class=\"notifications-block\">
+          <div class=\"notifications-header\">Rémunérations LeGrandProf <span
+                class=\"badge\">";
+            // line 148
             echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "remunerations", array())), "html", null, true);
             echo "</span></div>
-                    <div class=\"notifications-content\">
-                    </div>
-                </div>
-                <div>
-                    ";
-        }
-        // line 151
-        echo "
-                    ";
-        // line 153
-        echo "                </div>
-
-
-            </div>
+          <div class=\"notifications-content\">
+          </div>
         </div>
+        <div>
+          ";
+        }
+        // line 154
+        echo "
+          ";
+        // line 156
+        echo "        </div>
+
+
+      </div>
     </div>
+  </div>
 </div>";
     }
 
@@ -355,7 +361,7 @@ class __TwigTemplate_f5c10544f0ce907bfc0b3980be9c0a25d07b9d9b16be3646c3c3ae162ed
 
     public function getDebugInfo()
     {
-        return array (  337 => 153,  334 => 151,  325 => 145,  318 => 140,  315 => 139,  309 => 137,  306 => 136,  304 => 135,  296 => 129,  289 => 127,  283 => 125,  281 => 124,  277 => 123,  274 => 122,  270 => 121,  261 => 114,  252 => 111,  248 => 110,  243 => 108,  238 => 106,  233 => 104,  230 => 103,  226 => 102,  217 => 95,  208 => 92,  205 => 91,  201 => 90,  191 => 83,  187 => 82,  183 => 81,  179 => 80,  175 => 79,  171 => 78,  166 => 77,  163 => 76,  158 => 73,  154 => 72,  151 => 71,  147 => 69,  143 => 67,  141 => 66,  135 => 63,  131 => 62,  127 => 61,  123 => 60,  111 => 50,  105 => 48,  99 => 46,  97 => 45,  91 => 41,  85 => 39,  79 => 37,  77 => 36,  62 => 24,  57 => 22,  46 => 16,  42 => 14,  35 => 11,  29 => 9,  27 => 8,  19 => 2,);
+        return array (  343 => 156,  340 => 154,  331 => 148,  324 => 143,  321 => 142,  315 => 140,  312 => 139,  310 => 138,  302 => 132,  295 => 130,  289 => 128,  287 => 127,  283 => 126,  280 => 125,  276 => 124,  267 => 117,  258 => 114,  254 => 113,  249 => 111,  244 => 109,  239 => 107,  236 => 106,  232 => 105,  223 => 98,  214 => 95,  211 => 94,  207 => 93,  197 => 86,  193 => 85,  189 => 84,  185 => 83,  181 => 82,  177 => 81,  172 => 80,  169 => 79,  164 => 76,  160 => 75,  157 => 74,  153 => 72,  149 => 70,  147 => 69,  141 => 66,  137 => 65,  133 => 64,  129 => 63,  117 => 53,  111 => 51,  105 => 49,  103 => 48,  97 => 44,  91 => 42,  85 => 40,  83 => 39,  74 => 33,  62 => 24,  57 => 22,  46 => 16,  42 => 14,  35 => 11,  29 => 9,  27 => 8,  19 => 2,);
     }
 
     public function getSource()

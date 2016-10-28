@@ -345,257 +345,268 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/user')) {
-            // lgp_user_homepage
-            if (rtrim($pathinfo, '/') === '/user') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'lgp_user_homepage');
-                }
-
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MainController::indexAction',  '_route' => 'lgp_user_homepage',);
+        // lgp_core_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'lgp_core_homepage');
             }
 
-            if (0 === strpos($pathinfo, '/user/register/p')) {
-                // lgp_parent_registration
-                if ($pathinfo === '/user/register/parent') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\RegistrationParentController::registerAction',  '_route' => 'lgp_parent_registration',);
-                }
+            return array (  '_controller' => 'LGP\\CoreBundle\\Controller\\LgpController::indexAction',  '_route' => 'lgp_core_homepage',);
+        }
 
-                // lgp_prof_registration
-                if ($pathinfo === '/user/register/prof') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\RegistrationProfController::registerAction',  '_route' => 'lgp_prof_registration',);
-                }
+        // lgp_core_how_it_works
+        if ($pathinfo === '/how-it-works') {
+            return array (  '_controller' => 'LGP\\CoreBundle\\Controller\\LgpController::howAction',  '_route' => 'lgp_core_how_it_works',);
+        }
 
+        // lgp_user_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'lgp_user_homepage');
             }
 
-            if (0 === strpos($pathinfo, '/user/p')) {
-                // lgp_user_prof_dashboard
-                if ($pathinfo === '/user/prof/dashboard') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::profAction',  '_route' => 'lgp_user_prof_dashboard',);
-                }
+            return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MainController::indexAction',  '_route' => 'lgp_user_homepage',);
+        }
 
-                // lgp_user_parent_dashboard
-                if ($pathinfo === '/user/parent/dashboard') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::parentAction',  '_route' => 'lgp_user_parent_dashboard',);
-                }
-
+        if (0 === strpos($pathinfo, '/register/p')) {
+            // lgp_parent_registration
+            if ($pathinfo === '/register/parent') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\RegistrationParentController::registerAction',  '_route' => 'lgp_parent_registration',);
             }
 
-            if (0 === strpos($pathinfo, '/user/avis')) {
-                // lgp_user_avis_add
-                if ($pathinfo === '/user/avis/add') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::addAction',  '_route' => 'lgp_user_avis_add',);
-                }
-
-                // lgp_user_avis_voir
-                if (0 === strpos($pathinfo, '/user/avis/voir') && preg_match('#^/user/avis/voir/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::voirAction',));
-                }
-
-                // lgp_user_avis_delete
-                if (0 === strpos($pathinfo, '/user/avis/delete') && preg_match('#^/user/avis/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::deleteAction',));
-                }
-
-                // lgp_user_avis_update
-                if (0 === strpos($pathinfo, '/user/avis/update') && preg_match('#^/user/avis/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::updateAction',));
-                }
-
-                // lgp_user_avis
-                if ($pathinfo === '/user/avis') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::indexAction',  '_route' => 'lgp_user_avis',);
-                }
-
+            // lgp_prof_registration
+            if ($pathinfo === '/register/prof') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\RegistrationProfController::registerAction',  '_route' => 'lgp_prof_registration',);
             }
 
-            if (0 === strpos($pathinfo, '/user/prof/indisponibilite')) {
-                // lgp_user_prof_indisponibilite
-                if ($pathinfo === '/user/prof/indisponibilite') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::indexAction',  '_route' => 'lgp_user_prof_indisponibilite',);
-                }
+        }
 
-                // lgp_user_prof_indisponibilite_add
-                if ($pathinfo === '/user/prof/indisponibilite/add') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::addAction',  '_route' => 'lgp_user_prof_indisponibilite_add',);
-                }
-
-                // lgp_user_prof_indisponibilite_update
-                if (0 === strpos($pathinfo, '/user/prof/indisponibilite/update') && preg_match('#^/user/prof/indisponibilite/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::updateAction',));
-                }
-
-                // lgp_user_prof_indisponibilite_delete
-                if (0 === strpos($pathinfo, '/user/prof/indisponibilite/delete') && preg_match('#^/user/prof/indisponibilite/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::deleteAction',));
-                }
-
+        if (0 === strpos($pathinfo, '/p')) {
+            // lgp_user_prof_dashboard
+            if ($pathinfo === '/prof/dashboard') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::profAction',  '_route' => 'lgp_user_prof_dashboard',);
             }
 
-            if (0 === strpos($pathinfo, '/user/message')) {
-                if (0 === strpos($pathinfo, '/user/messages')) {
-                    // lgp_user_message_send
-                    if ($pathinfo === '/user/messages/send') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::sendAction',  '_route' => 'lgp_user_message_send',);
-                    }
+            // lgp_user_parent_dashboard
+            if ($pathinfo === '/parent/dashboard') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\DashboardController::parentAction',  '_route' => 'lgp_user_parent_dashboard',);
+            }
 
-                    // lgp_user_message_receive
-                    if ($pathinfo === '/user/messages/receive') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::receiveAction',  '_route' => 'lgp_user_message_receive',);
-                    }
+        }
 
+        if (0 === strpos($pathinfo, '/avis')) {
+            // lgp_user_avis_add
+            if ($pathinfo === '/avis/add') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::addAction',  '_route' => 'lgp_user_avis_add',);
+            }
+
+            // lgp_user_avis_voir
+            if (0 === strpos($pathinfo, '/avis/voir') && preg_match('#^/avis/voir/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::voirAction',));
+            }
+
+            // lgp_user_avis_delete
+            if (0 === strpos($pathinfo, '/avis/delete') && preg_match('#^/avis/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::deleteAction',));
+            }
+
+            // lgp_user_avis_update
+            if (0 === strpos($pathinfo, '/avis/update') && preg_match('#^/avis/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_avis_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::updateAction',));
+            }
+
+            // lgp_user_avis
+            if ($pathinfo === '/avis') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AvisController::indexAction',  '_route' => 'lgp_user_avis',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/prof/indisponibilite')) {
+            // lgp_user_prof_indisponibilite
+            if ($pathinfo === '/prof/indisponibilite') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::indexAction',  '_route' => 'lgp_user_prof_indisponibilite',);
+            }
+
+            // lgp_user_prof_indisponibilite_add
+            if ($pathinfo === '/prof/indisponibilite/add') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::addAction',  '_route' => 'lgp_user_prof_indisponibilite_add',);
+            }
+
+            // lgp_user_prof_indisponibilite_update
+            if (0 === strpos($pathinfo, '/prof/indisponibilite/update') && preg_match('#^/prof/indisponibilite/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::updateAction',));
+            }
+
+            // lgp_user_prof_indisponibilite_delete
+            if (0 === strpos($pathinfo, '/prof/indisponibilite/delete') && preg_match('#^/prof/indisponibilite/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_indisponibilite_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\IndisponibiliteController::deleteAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/message')) {
+            if (0 === strpos($pathinfo, '/messages')) {
+                // lgp_user_message_send
+                if ($pathinfo === '/messages/send') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::sendAction',  '_route' => 'lgp_user_message_send',);
                 }
 
-                // lgp_user_message_new
-                if ($pathinfo === '/user/message/new') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::newAction',  '_route' => 'lgp_user_message_new',);
-                }
-
-                // lgp_user_message_delete
-                if (0 === strpos($pathinfo, '/user/message/delete') && preg_match('#^/user/message/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_message_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::deleteAction',));
-                }
-
-                // lgp_user_message_voir
-                if (preg_match('#^/user/message/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_message_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::voirAction',));
+                // lgp_user_message_receive
+                if ($pathinfo === '/messages/receive') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::receiveAction',  '_route' => 'lgp_user_message_receive',);
                 }
 
             }
 
-            if (0 === strpos($pathinfo, '/user/prof')) {
-                if (0 === strpos($pathinfo, '/user/prof/cours')) {
-                    // lgp_user_prof_cours
-                    if ($pathinfo === '/user/prof/cours') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::indexAction',  '_route' => 'lgp_user_prof_cours',);
-                    }
+            // lgp_user_message_new
+            if ($pathinfo === '/message/new') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::newAction',  '_route' => 'lgp_user_message_new',);
+            }
 
-                    // lgp_user_prof_cours_add
-                    if ($pathinfo === '/user/prof/cours/add') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::addAction',  '_route' => 'lgp_user_prof_cours_add',);
-                    }
+            // lgp_user_message_delete
+            if (0 === strpos($pathinfo, '/message/delete') && preg_match('#^/message/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_message_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::deleteAction',));
+            }
 
-                    // lgp_user_prof_cours_update
-                    if (0 === strpos($pathinfo, '/user/prof/cours/update') && preg_match('#^/user/prof/cours/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_cours_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::updateAction',));
-                    }
+            // lgp_user_message_voir
+            if (preg_match('#^/message/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_message_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MessageController::voirAction',));
+            }
 
-                    // lgp_user_prof_cours_delete
-                    if (0 === strpos($pathinfo, '/user/prof/cours/delete') && preg_match('#^/user/prof/cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::deleteAction',));
-                    }
+        }
 
+        if (0 === strpos($pathinfo, '/prof')) {
+            if (0 === strpos($pathinfo, '/prof/cours')) {
+                // lgp_user_prof_cours
+                if ($pathinfo === '/prof/cours') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::indexAction',  '_route' => 'lgp_user_prof_cours',);
                 }
 
-                if (0 === strpos($pathinfo, '/user/prof/evaluations')) {
-                    // lgp_user_prof_evaluation
-                    if ($pathinfo === '/user/prof/evaluations') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\EvaluationController::indexAction',  '_route' => 'lgp_user_prof_evaluation',);
-                    }
-
-                    // lgp_user_prof_evaluation_delete
-                    if (0 === strpos($pathinfo, '/user/prof/evaluations/delete') && preg_match('#^/user/prof/evaluations/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_evaluation_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\EvaluationController::deleteAction',));
-                    }
-
+                // lgp_user_prof_cours_add
+                if ($pathinfo === '/prof/cours/add') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::addAction',  '_route' => 'lgp_user_prof_cours_add',);
                 }
 
-                if (0 === strpos($pathinfo, '/user/prof/seance-de-cours')) {
-                    // lgp_user_prof_seance_de_cours
-                    if (rtrim($pathinfo, '/') === '/user/prof/seance-de-cours') {
-                        if (substr($pathinfo, -1) !== '/') {
-                            return $this->redirect($pathinfo.'/', 'lgp_user_prof_seance_de_cours');
-                        }
+                // lgp_user_prof_cours_update
+                if (0 === strpos($pathinfo, '/prof/cours/update') && preg_match('#^/prof/cours/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_cours_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::updateAction',));
+                }
 
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\SeanceDeCoursController::indexAction',  '_route' => 'lgp_user_prof_seance_de_cours',);
-                    }
-
-                    // lgp_user_prof_seance_de_cours_delete
-                    if (0 === strpos($pathinfo, '/user/prof/seance-de-cours/delete') && preg_match('#^/user/prof/seance\\-de\\-cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_seance_de_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\SeanceDeCoursController::deleteAction',));
-                    }
-
+                // lgp_user_prof_cours_delete
+                if (0 === strpos($pathinfo, '/prof/cours/delete') && preg_match('#^/prof/cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\CoursController::deleteAction',));
                 }
 
             }
 
-            if (0 === strpos($pathinfo, '/user/anomalie')) {
-                // lgp_user_anomalies
-                if ($pathinfo === '/user/anomalies') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::indexAction',  '_route' => 'lgp_user_anomalies',);
+            if (0 === strpos($pathinfo, '/prof/evaluations')) {
+                // lgp_user_prof_evaluation
+                if ($pathinfo === '/prof/evaluations') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\EvaluationController::indexAction',  '_route' => 'lgp_user_prof_evaluation',);
                 }
 
-                // lgp_user_anomalie_add
-                if ($pathinfo === '/user/anomalie/add') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::addAction',  '_route' => 'lgp_user_anomalie_add',);
-                }
-
-                // lgp_user_anomalie_update
-                if (0 === strpos($pathinfo, '/user/anomalie/update') && preg_match('#^/user/anomalie/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_anomalie_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::updateAction',));
-                }
-
-                // lgp_user_anomalie_delete
-                if (0 === strpos($pathinfo, '/user/anomalie/delete') && preg_match('#^/user/anomalie/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_anomalie_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::deleteAction',));
+                // lgp_user_prof_evaluation_delete
+                if (0 === strpos($pathinfo, '/prof/evaluations/delete') && preg_match('#^/prof/evaluations/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_evaluation_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\EvaluationController::deleteAction',));
                 }
 
             }
 
-            if (0 === strpos($pathinfo, '/user/nouvelle')) {
-                // lgp_user_nouvelles_categories_cours
-                if ($pathinfo === '/user/nouvelles-categories-cours') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::indexAction',  '_route' => 'lgp_user_nouvelles_categories_cours',);
-                }
-
-                if (0 === strpos($pathinfo, '/user/nouvelle-categorie-cours')) {
-                    // lgp_user_nouvelle_categorie_cours_add
-                    if ($pathinfo === '/user/nouvelle-categorie-cours/add') {
-                        return array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::addAction',  '_route' => 'lgp_user_nouvelle_categorie_cours_add',);
+            if (0 === strpos($pathinfo, '/prof/seance-de-cours')) {
+                // lgp_user_prof_seance_de_cours
+                if (rtrim($pathinfo, '/') === '/prof/seance-de-cours') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'lgp_user_prof_seance_de_cours');
                     }
 
-                    // lgp_user_nouvelle_categorie_cours_update
-                    if (0 === strpos($pathinfo, '/user/nouvelle-categorie-cours/update') && preg_match('#^/user/nouvelle\\-categorie\\-cours/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_nouvelle_categorie_cours_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::updateAction',));
-                    }
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\SeanceDeCoursController::indexAction',  '_route' => 'lgp_user_prof_seance_de_cours',);
+                }
 
-                    // lgp_user_nouvelle_categorie_cours_delete
-                    if (0 === strpos($pathinfo, '/user/nouvelle-categorie-cours/delete') && preg_match('#^/user/nouvelle\\-categorie\\-cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_nouvelle_categorie_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::deleteAction',));
-                    }
-
+                // lgp_user_prof_seance_de_cours_delete
+                if (0 === strpos($pathinfo, '/prof/seance-de-cours/delete') && preg_match('#^/prof/seance\\-de\\-cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_seance_de_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\SeanceDeCoursController::deleteAction',));
                 }
 
             }
 
-            // lgp_user_mes_reservations
-            if ($pathinfo === '/user/mes-reservations') {
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ReservationController::indexAction',  '_route' => 'lgp_user_mes_reservations',);
+        }
+
+        if (0 === strpos($pathinfo, '/anomalie')) {
+            // lgp_user_anomalies
+            if ($pathinfo === '/anomalies') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::indexAction',  '_route' => 'lgp_user_anomalies',);
             }
 
-            // lgp_user_programme_et_jours_de_cours_voir
-            if (0 === strpos($pathinfo, '/user/reservation-enseignement') && preg_match('#^/user/reservation\\-enseignement/(?P<id>\\d+)/programme\\-et\\-jours\\-de\\-cours$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_programme_et_jours_de_cours_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\ReservationController::showProgrammeAndJoursDeCoursAction',));
+            // lgp_user_anomalie_add
+            if ($pathinfo === '/anomalie/add') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::addAction',  '_route' => 'lgp_user_anomalie_add',);
             }
 
-            if (0 === strpos($pathinfo, '/user/prof')) {
-                // lgp_user_prof_demandes_de_cours
-                if ($pathinfo === '/user/prof/mes-demandes-de-cours') {
-                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MesDemandesDeCoursController::indexAction',  '_route' => 'lgp_user_prof_demandes_de_cours',);
+            // lgp_user_anomalie_update
+            if (0 === strpos($pathinfo, '/anomalie/update') && preg_match('#^/anomalie/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_anomalie_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::updateAction',));
+            }
+
+            // lgp_user_anomalie_delete
+            if (0 === strpos($pathinfo, '/anomalie/delete') && preg_match('#^/anomalie/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_anomalie_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\AnomalieController::deleteAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/nouvelle')) {
+            // lgp_user_nouvelles_categories_cours
+            if ($pathinfo === '/nouvelles-categories-cours') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::indexAction',  '_route' => 'lgp_user_nouvelles_categories_cours',);
+            }
+
+            if (0 === strpos($pathinfo, '/nouvelle-categorie-cours')) {
+                // lgp_user_nouvelle_categorie_cours_add
+                if ($pathinfo === '/nouvelle-categorie-cours/add') {
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::addAction',  '_route' => 'lgp_user_nouvelle_categorie_cours_add',);
                 }
 
-                // lgp_user_prof_demande_de_cours_edit
-                if (0 === strpos($pathinfo, '/user/prof/demande-de-cours/edit') && preg_match('#^/user/prof/demande\\-de\\-cours/edit/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_demande_de_cours_edit')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MesDemandesDeCoursController::editAction',));
+                // lgp_user_nouvelle_categorie_cours_update
+                if (0 === strpos($pathinfo, '/nouvelle-categorie-cours/update') && preg_match('#^/nouvelle\\-categorie\\-cours/update/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_nouvelle_categorie_cours_update')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::updateAction',));
+                }
+
+                // lgp_user_nouvelle_categorie_cours_delete
+                if (0 === strpos($pathinfo, '/nouvelle-categorie-cours/delete') && preg_match('#^/nouvelle\\-categorie\\-cours/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_nouvelle_categorie_cours_delete')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\NouvelleCategorieCoursController::deleteAction',));
                 }
 
             }
 
-            // lgp_user_mes_paiements
-            if ($pathinfo === '/user/mes-paiements') {
-                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\PaiementController::indexAction',  '_route' => 'lgp_user_mes_paiements',);
+        }
+
+        // lgp_user_mes_reservations
+        if ($pathinfo === '/mes-reservations') {
+            return array (  '_controller' => 'LGP\\UserBundle\\Controller\\ReservationController::indexAction',  '_route' => 'lgp_user_mes_reservations',);
+        }
+
+        // lgp_user_programme_et_jours_de_cours_voir
+        if (0 === strpos($pathinfo, '/reservation-enseignement') && preg_match('#^/reservation\\-enseignement/(?P<id>\\d+)/programme\\-et\\-jours\\-de\\-cours$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_programme_et_jours_de_cours_voir')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\ReservationController::showProgrammeAndJoursDeCoursAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/prof')) {
+            // lgp_user_prof_demandes_de_cours
+            if ($pathinfo === '/prof/mes-demandes-de-cours') {
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\MesDemandesDeCoursController::indexAction',  '_route' => 'lgp_user_prof_demandes_de_cours',);
             }
 
+            // lgp_user_prof_demande_de_cours_edit
+            if (0 === strpos($pathinfo, '/prof/demande-de-cours/edit') && preg_match('#^/prof/demande\\-de\\-cours/edit/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'lgp_user_prof_demande_de_cours_edit')), array (  '_controller' => 'LGP\\UserBundle\\Controller\\MesDemandesDeCoursController::editAction',));
+            }
+
+        }
+
+        // lgp_user_mes_paiements
+        if ($pathinfo === '/mes-paiements') {
+            return array (  '_controller' => 'LGP\\UserBundle\\Controller\\PaiementController::indexAction',  '_route' => 'lgp_user_mes_paiements',);
         }
 
         if (0 === strpos($pathinfo, '/reservation')) {
@@ -749,20 +760,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // lgp_core_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'lgp_core_homepage');
-            }
-
-            return array (  '_controller' => 'LGP\\CoreBundle\\Controller\\LgpController::indexAction',  '_route' => 'lgp_core_homepage',);
-        }
-
-        // lgp_core_how_it_works
-        if ($pathinfo === '/how-it-works') {
-            return array (  '_controller' => 'LGP\\CoreBundle\\Controller\\LgpController::howAction',  '_route' => 'lgp_core_how_it_works',);
-        }
-
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
@@ -772,7 +769,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         goto not_fos_user_security_login;
                     }
 
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
                 }
                 not_fos_user_security_login:
 
@@ -783,7 +780,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         goto not_fos_user_security_check;
                     }
 
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+                    return array (  '_controller' => 'LGP\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
                 }
                 not_fos_user_security_check:
 
@@ -791,12 +788,12 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // fos_user_security_logout
             if ($pathinfo === '/logout') {
-                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_security_logout;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+                return array (  '_controller' => 'LGP\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
             }
             not_fos_user_security_logout:
 
@@ -1002,79 +999,120 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'sonata.admin.controller.admin:retrieveAutocompleteItemsAction',  '_route' => 'sonata_admin_retrieve_autocomplete_items',);
             }
 
-            if (0 === strpos($pathinfo, '/admin/user/p')) {
-                if (0 === strpos($pathinfo, '/admin/user/prof')) {
-                    // admin_lgp_user_prof_list
-                    if ($pathinfo === '/admin/user/prof/list') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_list',  '_route' => 'admin_lgp_user_prof_list',);
+            if (0 === strpos($pathinfo, '/admin/u')) {
+                if (0 === strpos($pathinfo, '/admin/utilisateur')) {
+                    // admin_lgp_user_user_list
+                    if ($pathinfo === '/admin/utilisateur/list') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_list',  '_route' => 'admin_lgp_user_user_list',);
                     }
 
-                    // admin_lgp_user_prof_create
-                    if ($pathinfo === '/admin/user/prof/create') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_create',  '_route' => 'admin_lgp_user_prof_create',);
+                    // admin_lgp_user_user_create
+                    if ($pathinfo === '/admin/utilisateur/create') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_create',  '_route' => 'admin_lgp_user_user_create',);
                     }
 
-                    // admin_lgp_user_prof_batch
-                    if ($pathinfo === '/admin/user/prof/batch') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_batch',  '_route' => 'admin_lgp_user_prof_batch',);
+                    // admin_lgp_user_user_batch
+                    if ($pathinfo === '/admin/utilisateur/batch') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_batch',  '_route' => 'admin_lgp_user_user_batch',);
                     }
 
-                    // admin_lgp_user_prof_edit
-                    if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_edit',));
+                    // admin_lgp_user_user_edit
+                    if (preg_match('#^/admin/utilisateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_user_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_edit',));
                     }
 
-                    // admin_lgp_user_prof_delete
-                    if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_delete',));
+                    // admin_lgp_user_user_delete
+                    if (preg_match('#^/admin/utilisateur/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_user_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_delete',));
                     }
 
-                    // admin_lgp_user_prof_show
-                    if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_show',));
+                    // admin_lgp_user_user_show
+                    if (preg_match('#^/admin/utilisateur/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_user_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_show',));
                     }
 
-                    // admin_lgp_user_prof_export
-                    if ($pathinfo === '/admin/user/prof/export') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_export',  '_route' => 'admin_lgp_user_prof_export',);
+                    // admin_lgp_user_user_export
+                    if ($pathinfo === '/admin/utilisateur/export') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.user',  '_sonata_name' => 'admin_lgp_user_user_export',  '_route' => 'admin_lgp_user_user_export',);
                     }
 
                 }
 
-                if (0 === strpos($pathinfo, '/admin/user/parent')) {
-                    // admin_lgp_user_parents_list
-                    if ($pathinfo === '/admin/user/parent/list') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_list',  '_route' => 'admin_lgp_user_parents_list',);
+                if (0 === strpos($pathinfo, '/admin/user/p')) {
+                    if (0 === strpos($pathinfo, '/admin/user/prof')) {
+                        // admin_lgp_user_prof_list
+                        if ($pathinfo === '/admin/user/prof/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_list',  '_route' => 'admin_lgp_user_prof_list',);
+                        }
+
+                        // admin_lgp_user_prof_create
+                        if ($pathinfo === '/admin/user/prof/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_create',  '_route' => 'admin_lgp_user_prof_create',);
+                        }
+
+                        // admin_lgp_user_prof_batch
+                        if ($pathinfo === '/admin/user/prof/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_batch',  '_route' => 'admin_lgp_user_prof_batch',);
+                        }
+
+                        // admin_lgp_user_prof_edit
+                        if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_edit',));
+                        }
+
+                        // admin_lgp_user_prof_delete
+                        if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_delete',));
+                        }
+
+                        // admin_lgp_user_prof_show
+                        if (preg_match('#^/admin/user/prof/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_prof_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_show',));
+                        }
+
+                        // admin_lgp_user_prof_export
+                        if ($pathinfo === '/admin/user/prof/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.prof',  '_sonata_name' => 'admin_lgp_user_prof_export',  '_route' => 'admin_lgp_user_prof_export',);
+                        }
+
                     }
 
-                    // admin_lgp_user_parents_create
-                    if ($pathinfo === '/admin/user/parent/create') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_create',  '_route' => 'admin_lgp_user_parents_create',);
-                    }
+                    if (0 === strpos($pathinfo, '/admin/user/parent')) {
+                        // admin_lgp_user_parents_list
+                        if ($pathinfo === '/admin/user/parent/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_list',  '_route' => 'admin_lgp_user_parents_list',);
+                        }
 
-                    // admin_lgp_user_parents_batch
-                    if ($pathinfo === '/admin/user/parent/batch') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_batch',  '_route' => 'admin_lgp_user_parents_batch',);
-                    }
+                        // admin_lgp_user_parents_create
+                        if ($pathinfo === '/admin/user/parent/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_create',  '_route' => 'admin_lgp_user_parents_create',);
+                        }
 
-                    // admin_lgp_user_parents_edit
-                    if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_edit',));
-                    }
+                        // admin_lgp_user_parents_batch
+                        if ($pathinfo === '/admin/user/parent/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_batch',  '_route' => 'admin_lgp_user_parents_batch',);
+                        }
 
-                    // admin_lgp_user_parents_delete
-                    if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_delete',));
-                    }
+                        // admin_lgp_user_parents_edit
+                        if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_edit',));
+                        }
 
-                    // admin_lgp_user_parents_show
-                    if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_show',));
-                    }
+                        // admin_lgp_user_parents_delete
+                        if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_delete',));
+                        }
 
-                    // admin_lgp_user_parents_export
-                    if ($pathinfo === '/admin/user/parent/export') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_export',  '_route' => 'admin_lgp_user_parents_export',);
+                        // admin_lgp_user_parents_show
+                        if (preg_match('#^/admin/user/parent/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_parents_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_show',));
+                        }
+
+                        // admin_lgp_user_parents_export
+                        if ($pathinfo === '/admin/user/parent/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.parent',  '_sonata_name' => 'admin_lgp_user_parents_export',  '_route' => 'admin_lgp_user_parents_export',);
+                        }
+
                     }
 
                 }
@@ -1115,6 +1153,44 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // admin_lgp_user_quartier_export
                 if ($pathinfo === '/admin/quartiers-cibles/export') {
                     return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.quartier_cible',  '_sonata_name' => 'admin_lgp_user_quartier_export',  '_route' => 'admin_lgp_user_quartier_export',);
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/admin/message')) {
+                // admin_lgp_user_message_list
+                if ($pathinfo === '/admin/message/list') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_list',  '_route' => 'admin_lgp_user_message_list',);
+                }
+
+                // admin_lgp_user_message_create
+                if ($pathinfo === '/admin/message/create') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_create',  '_route' => 'admin_lgp_user_message_create',);
+                }
+
+                // admin_lgp_user_message_batch
+                if ($pathinfo === '/admin/message/batch') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_batch',  '_route' => 'admin_lgp_user_message_batch',);
+                }
+
+                // admin_lgp_user_message_edit
+                if (preg_match('#^/admin/message/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_message_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_edit',));
+                }
+
+                // admin_lgp_user_message_delete
+                if (preg_match('#^/admin/message/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_message_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_delete',));
+                }
+
+                // admin_lgp_user_message_show
+                if (preg_match('#^/admin/message/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_lgp_user_message_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_show',));
+                }
+
+                // admin_lgp_user_message_export
+                if ($pathinfo === '/admin/message/export') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'lgp.admin.message',  '_sonata_name' => 'admin_lgp_user_message_export',  '_route' => 'admin_lgp_user_message_export',);
                 }
 
             }

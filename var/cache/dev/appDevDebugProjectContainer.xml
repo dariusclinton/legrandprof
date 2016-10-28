@@ -753,6 +753,13 @@
         <parameter key="label">Utilisateurs</parameter>
         <parameter key="items" type="collection">
           <parameter type="collection">
+            <parameter key="admin">lgp.admin.user</parameter>
+            <parameter key="label"></parameter>
+            <parameter key="route"></parameter>
+            <parameter key="route_params" type="collection"/>
+            <parameter key="route_absolute">true</parameter>
+          </parameter>
+          <parameter type="collection">
             <parameter key="admin">lgp.admin.prof</parameter>
             <parameter key="label"></parameter>
             <parameter key="route"></parameter>
@@ -768,6 +775,13 @@
           </parameter>
           <parameter type="collection">
             <parameter key="admin">lgp.admin.quartier_cible</parameter>
+            <parameter key="label"></parameter>
+            <parameter key="route"></parameter>
+            <parameter key="route_params" type="collection"/>
+            <parameter key="route_absolute">true</parameter>
+          </parameter>
+          <parameter type="collection">
+            <parameter key="admin">lgp.admin.message</parameter>
             <parameter key="label"></parameter>
             <parameter key="route"></parameter>
             <parameter key="route_params" type="collection"/>
@@ -1019,6 +1033,7 @@
     </parameter>
     <parameter key="sonata.core.form.types" type="collection">
       <parameter>lgp.form.registration</parameter>
+      <parameter>lgp_user.message</parameter>
       <parameter>form.type.form</parameter>
       <parameter>form.type.choice</parameter>
       <parameter>form.type.entity</parameter>
@@ -1075,6 +1090,120 @@
   <services>
     <service id="lgp.form.registration" class="LGPUserBundle\Form\RegistrationType">
       <tag name="form.type" alias="lgp_user_registration"/>
+    </service>
+    <service id="lgp_user.message" class="LGP\UserBundle\Form\MessageType">
+      <tag name="form.type"/>
+      <argument type="service" id="security.token_storage"/>
+    </service>
+    <service id="lgp.admin.user" class="LGP\AdminBundle\Admin\User\UserAdmin" shared="false">
+      <tag name="sonata.admin" manager_type="orm" label="Utilisateurs"/>
+      <argument>lgp.admin.user</argument>
+      <argument>LGP\UserBundle\Entity\User</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Utilisateurs</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">LGPAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="knp_menu_template">SonataAdminBundle:Menu:sonata_menu.html.twig</argument>
+          <argument key="outer_list_rows_mosaic">SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig</argument>
+          <argument key="outer_list_rows_list">SonataAdminBundle:CRUD:list_outer_rows_list.html.twig</argument>
+          <argument key="outer_list_rows_tree">SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
     </service>
     <service id="lgp.admin.prof" class="LGP\AdminBundle\Admin\User\ProfAdmin" shared="false">
       <tag name="sonata.admin" manager_type="orm" label="Profs"/>
@@ -1358,6 +1487,116 @@
       </call>
       <call method="setLabel">
         <argument>Quartiers cibles</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">LGPAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="knp_menu_template">SonataAdminBundle:Menu:sonata_menu.html.twig</argument>
+          <argument key="outer_list_rows_mosaic">SonataAdminBundle:CRUD:list_outer_rows_mosaic.html.twig</argument>
+          <argument key="outer_list_rows_list">SonataAdminBundle:CRUD:list_outer_rows_list.html.twig</argument>
+          <argument key="outer_list_rows_tree">SonataAdminBundle:CRUD:list_outer_rows_tree.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="lgp.admin.message" class="LGP\AdminBundle\Admin\User\MessageAdmin" shared="false">
+      <tag name="sonata.admin" manager_type="orm" label="Messages"/>
+      <argument>lgp.admin.message</argument>
+      <argument>LGP\UserBundle\Entity\Message</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setPagerType">
+        <argument>default</argument>
+      </call>
+      <call method="setLabel">
+        <argument>Messages</argument>
       </call>
       <call method="setPersistFilters">
         <argument>false</argument>
@@ -2408,7 +2647,7 @@
                   <tag name="cache.pool"/>
                   <argument>yI6AlT0I-R</argument>
                   <argument>0</argument>
-                  <argument>7sV64NU03CMp07zuM9jRhg</argument>
+                  <argument>u+VTfPY2gz4taqU0f93oOA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2421,7 +2660,7 @@
                   <tag name="cache.pool"/>
                   <argument>E-lP8KGXpO</argument>
                   <argument>0</argument>
-                  <argument>7sV64NU03CMp07zuM9jRhg</argument>
+                  <argument>u+VTfPY2gz4taqU0f93oOA</argument>
                   <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3155,7 +3394,7 @@
       <tag name="cache.pool"/>
       <argument>jcE3Z980jC</argument>
       <argument>0</argument>
-      <argument>7sV64NU03CMp07zuM9jRhg</argument>
+      <argument>u+VTfPY2gz4taqU0f93oOA</argument>
       <argument>/opt/lampp/htdocs/legrandprof/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3980,7 +4219,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5810f31067b6e2.27436163</argument>
+            <argument>58131e56e2ec08.49871165</argument>
           </service>
         </argument>
       </argument>
@@ -4108,24 +4347,6 @@
       <argument type="collection"/>
       <argument>null</argument>
     </service>
-    <service id="security.authentication.rememberme.services.simplehash.main" class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
-      <argument type="collection">
-        <argument type="service" id="fos_user.user_provider.username_email"/>
-      </argument>
-      <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
-      <argument>main</argument>
-      <argument type="collection">
-        <argument key="name">REMEMBERME</argument>
-        <argument key="lifetime">31536000</argument>
-        <argument key="path">/</argument>
-        <argument key="domain">null</argument>
-        <argument key="secure">false</argument>
-        <argument key="httponly">true</argument>
-        <argument key="always_remember_me">false</argument>
-        <argument key="remember_me_parameter">_remember_me</argument>
-      </argument>
-      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-    </service>
     <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
       <argument type="collection">
         <argument type="service">
@@ -4147,7 +4368,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/register</argument>
+                      <argument>^/register</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4180,7 +4401,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/parent/</argument>
+                      <argument>^/parent/</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4191,7 +4412,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/prof/</argument>
+                      <argument>^/prof/</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4264,7 +4485,26 @@
               </argument>
             </call>
             <call method="addHandler">
-              <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="fos_user.user_provider.username_email"/>
+                  </argument>
+                  <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
+                  <argument>main</argument>
+                  <argument type="collection">
+                    <argument key="name">REMEMBERME</argument>
+                    <argument key="lifetime">31536000</argument>
+                    <argument key="path">/</argument>
+                    <argument key="domain">null</argument>
+                    <argument key="secure">false</argument>
+                    <argument key="httponly">true</argument>
+                    <argument key="always_remember_me">false</argument>
+                    <argument key="remember_me_parameter">_remember_me</argument>
+                  </argument>
+                  <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+                </service>
+              </argument>
             </call>
           </service>
         </argument>
@@ -4339,14 +4579,52 @@
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
             <argument type="service" id="security.csrf.token_manager"/>
             <call method="setRememberMeServices">
-              <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+              <argument type="service">
+                <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                  <argument type="collection">
+                    <argument type="service" id="fos_user.user_provider.username_email"/>
+                  </argument>
+                  <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
+                  <argument>main</argument>
+                  <argument type="collection">
+                    <argument key="name">REMEMBERME</argument>
+                    <argument key="lifetime">31536000</argument>
+                    <argument key="path">/</argument>
+                    <argument key="domain">null</argument>
+                    <argument key="secure">false</argument>
+                    <argument key="httponly">true</argument>
+                    <argument key="always_remember_me">false</argument>
+                    <argument key="remember_me_parameter">_remember_me</argument>
+                  </argument>
+                  <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+                </service>
+              </argument>
             </call>
           </service>
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\RememberMeListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+            <argument type="service">
+              <service class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+                <argument type="collection">
+                  <argument type="service" id="fos_user.user_provider.username_email"/>
+                </argument>
+                <argument>bbb4d84eca91276135d1441544d61d7c58a37f6c</argument>
+                <argument>main</argument>
+                <argument type="collection">
+                  <argument key="name">REMEMBERME</argument>
+                  <argument key="lifetime">31536000</argument>
+                  <argument key="path">/</argument>
+                  <argument key="domain">null</argument>
+                  <argument key="secure">false</argument>
+                  <argument key="httponly">true</argument>
+                  <argument key="always_remember_me">false</argument>
+                  <argument key="remember_me_parameter">_remember_me</argument>
+                </argument>
+                <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+              </service>
+            </argument>
             <argument type="service" id="security.authentication.manager"/>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
@@ -4357,7 +4635,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5810f31067b6e2.27436163</argument>
+            <argument>58131e56e2ec08.49871165</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4383,7 +4661,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/register</argument>
+                      <argument>^/register</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4416,7 +4694,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/parent/</argument>
+                      <argument>^/parent/</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4427,7 +4705,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/user/prof/</argument>
+                      <argument>^/prof/</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -6300,16 +6578,13 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="security.user_checker.main"/>
       <argument type="service" id="security.authentication.session_strategy"/>
-      <argument type="service" id="request_stack"/>
-      <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+      <argument type="service" id="service_container"/>
     </service>
     <service id="fos_user.user_provider.username_email" class="FOS\UserBundle\Security\EmailUserProvider" public="false">
       <argument type="service" id="pugx_user.manager.orm_user_manager"/>
     </service>
     <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
       <argument type="service" id="pugx_user.manager.orm_user_manager"/>
-      <argument type="service" id="debug.event_dispatcher"/>
-      <argument type="service" id="request_stack"/>
     </service>
     <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
       <tag name="kernel.event_subscriber"/>
@@ -7209,9 +7484,11 @@
       </call>
       <call method="setAdminServiceIds">
         <argument type="collection">
+          <argument>lgp.admin.user</argument>
           <argument>lgp.admin.prof</argument>
           <argument>lgp.admin.parent</argument>
           <argument>lgp.admin.quartier_cible</argument>
+          <argument>lgp.admin.message</argument>
           <argument>lgp.admin.reservation</argument>
           <argument>lgp.admin.remuneration</argument>
           <argument>lgp.admin.jourdecours</argument>
@@ -7228,6 +7505,13 @@
             <argument key="label">Utilisateurs</argument>
             <argument key="items" type="collection">
               <argument type="collection">
+                <argument key="admin">lgp.admin.user</argument>
+                <argument key="label"></argument>
+                <argument key="route"></argument>
+                <argument key="route_params" type="collection"/>
+                <argument key="route_absolute">true</argument>
+              </argument>
+              <argument type="collection">
                 <argument key="admin">lgp.admin.prof</argument>
                 <argument key="label"></argument>
                 <argument key="route"></argument>
@@ -7243,6 +7527,13 @@
               </argument>
               <argument type="collection">
                 <argument key="admin">lgp.admin.quartier_cible</argument>
+                <argument key="label"></argument>
+                <argument key="route"></argument>
+                <argument key="route_params" type="collection"/>
+                <argument key="route_absolute">true</argument>
+              </argument>
+              <argument type="collection">
+                <argument key="admin">lgp.admin.message</argument>
                 <argument key="label"></argument>
                 <argument key="route"></argument>
                 <argument key="route_params" type="collection"/>
@@ -7335,6 +7626,9 @@
       </call>
       <call method="setAdminClasses">
         <argument type="collection">
+          <argument key="LGP\UserBundle\Entity\User" type="collection">
+            <argument>lgp.admin.user</argument>
+          </argument>
           <argument key="LGP\UserBundle\Entity\Prof" type="collection">
             <argument>lgp.admin.prof</argument>
           </argument>
@@ -7343,6 +7637,9 @@
           </argument>
           <argument key="LGP\UserBundle\Entity\Quartier" type="collection">
             <argument>lgp.admin.quartier_cible</argument>
+          </argument>
+          <argument key="LGP\UserBundle\Entity\Message" type="collection">
+            <argument>lgp.admin.message</argument>
           </argument>
           <argument key="LGP\ReservationBundle\Entity\Reservation" type="collection">
             <argument>lgp.admin.reservation</argument>
@@ -7375,9 +7672,11 @@
       <tag name="routing.loader"/>
       <argument type="service" id="sonata.admin.pool"/>
       <argument type="collection">
+        <argument>lgp.admin.user</argument>
         <argument>lgp.admin.prof</argument>
         <argument>lgp.admin.parent</argument>
         <argument>lgp.admin.quartier_cible</argument>
+        <argument>lgp.admin.message</argument>
         <argument>lgp.admin.reservation</argument>
         <argument>lgp.admin.remuneration</argument>
         <argument>lgp.admin.jourdecours</argument>
@@ -7939,6 +8238,7 @@
       <argument type="service" id="service_container"/>
       <argument type="collection">
         <argument key="LGPUserBundle\Form\RegistrationType">lgp.form.registration</argument>
+        <argument key="LGP\UserBundle\Form\MessageType">lgp_user.message</argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType">form.type.form</argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType">form.type.choice</argument>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>

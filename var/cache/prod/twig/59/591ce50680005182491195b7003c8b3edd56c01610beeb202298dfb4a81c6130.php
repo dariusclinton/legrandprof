@@ -28,7 +28,6 @@ class __TwigTemplate_235d6ead293b03406ef46987b8dbe4d9f40b4638cbd1eac68e824d38adf
     public function block_fos_user_content($context, array $blocks = array())
     {
         // line 4
-        echo "  ";
         $this->loadTemplate("FOSUserBundle:Registration:register_content.html.twig", "FOSUserBundle:Registration:register.html.twig", 4)->display($context);
     }
 

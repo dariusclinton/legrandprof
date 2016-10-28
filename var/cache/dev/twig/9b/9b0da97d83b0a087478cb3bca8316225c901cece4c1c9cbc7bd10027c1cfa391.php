@@ -15,8 +15,8 @@ class __TwigTemplate_547a737783c79fc0e8e1050266ab8558f380b5884fd0b2804f96e76052f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b3351ac416db937ab6cde6b7f7e47547b2077d1d73f49e51d592264857ee92a9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b3351ac416db937ab6cde6b7f7e47547b2077d1d73f49e51d592264857ee92a9->enter($__internal_b3351ac416db937ab6cde6b7f7e47547b2077d1d73f49e51d592264857ee92a9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_inline_table.html.twig"));
+        $__internal_415a72b947a88f1a8c566b539fec5380cf774b5c8fb1e82d07c8d588c7769e0e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_415a72b947a88f1a8c566b539fec5380cf774b5c8fb1e82d07c8d588c7769e0e->enter($__internal_415a72b947a88f1a8c566b539fec5380cf774b5c8fb1e82d07c8d588c7769e0e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_inline_table.html.twig"));
 
         // line 11
         echo "<table class=\"table table-bordered\">
@@ -174,7 +174,7 @@ $context["nested_field"], "vars", array()), "translation_domain", array())), "me
 </table>
 ";
         
-        $__internal_b3351ac416db937ab6cde6b7f7e47547b2077d1d73f49e51d592264857ee92a9->leave($__internal_b3351ac416db937ab6cde6b7f7e47547b2077d1d73f49e51d592264857ee92a9_prof);
+        $__internal_415a72b947a88f1a8c566b539fec5380cf774b5c8fb1e82d07c8d588c7769e0e->leave($__internal_415a72b947a88f1a8c566b539fec5380cf774b5c8fb1e82d07c8d588c7769e0e_prof);
 
     }
 

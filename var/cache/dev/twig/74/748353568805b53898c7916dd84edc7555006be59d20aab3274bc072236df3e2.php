@@ -22,20 +22,20 @@ class __TwigTemplate_a082c2aed04bb3f99c404954174640cfb9503a848821829466e1ab44881
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a9d49947eea7519dcf37827980a93e02acbb99e9ccc01819b9a1c524e4f319d0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a9d49947eea7519dcf37827980a93e02acbb99e9ccc01819b9a1c524e4f319d0->enter($__internal_a9d49947eea7519dcf37827980a93e02acbb99e9ccc01819b9a1c524e4f319d0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:confirm_reservation.html.twig"));
+        $__internal_953c1f7b21c2b6e5a303ec1dd911ecf6d1bf63da81739fd22b107c051dd3552d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_953c1f7b21c2b6e5a303ec1dd911ecf6d1bf63da81739fd22b107c051dd3552d->enter($__internal_953c1f7b21c2b6e5a303ec1dd911ecf6d1bf63da81739fd22b107c051dd3552d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:confirm_reservation.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_a9d49947eea7519dcf37827980a93e02acbb99e9ccc01819b9a1c524e4f319d0->leave($__internal_a9d49947eea7519dcf37827980a93e02acbb99e9ccc01819b9a1c524e4f319d0_prof);
+        $__internal_953c1f7b21c2b6e5a303ec1dd911ecf6d1bf63da81739fd22b107c051dd3552d->leave($__internal_953c1f7b21c2b6e5a303ec1dd911ecf6d1bf63da81739fd22b107c051dd3552d_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_a2806893b841a847b3657440a7b07d3fd52035ca815f3c23b63eb70915ee178c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a2806893b841a847b3657440a7b07d3fd52035ca815f3c23b63eb70915ee178c->enter($__internal_a2806893b841a847b3657440a7b07d3fd52035ca815f3c23b63eb70915ee178c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_6169d02c5b29b673dcc3a214507244fafcceafe67d8b24846656b79df4e23275 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6169d02c5b29b673dcc3a214507244fafcceafe67d8b24846656b79df4e23275->enter($__internal_6169d02c5b29b673dcc3a214507244fafcceafe67d8b24846656b79df4e23275_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    mode de paiment  - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_a082c2aed04bb3f99c404954174640cfb9503a848821829466e1ab44881
         echo "
 ";
         
-        $__internal_a2806893b841a847b3657440a7b07d3fd52035ca815f3c23b63eb70915ee178c->leave($__internal_a2806893b841a847b3657440a7b07d3fd52035ca815f3c23b63eb70915ee178c_prof);
+        $__internal_6169d02c5b29b673dcc3a214507244fafcceafe67d8b24846656b79df4e23275->leave($__internal_6169d02c5b29b673dcc3a214507244fafcceafe67d8b24846656b79df4e23275_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_36b81e1bc7b92c85a0aa9bc622d1a2de0b13a49ff037e3be46bfadf94dbb7b40 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_36b81e1bc7b92c85a0aa9bc622d1a2de0b13a49ff037e3be46bfadf94dbb7b40->enter($__internal_36b81e1bc7b92c85a0aa9bc622d1a2de0b13a49ff037e3be46bfadf94dbb7b40_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5b30a887726031dbf226d609db9a8f715669729a2ddca0fad9b5d881efc8dada = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5b30a887726031dbf226d609db9a8f715669729a2ddca0fad9b5d881efc8dada->enter($__internal_5b30a887726031dbf226d609db9a8f715669729a2ddca0fad9b5d881efc8dada_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <div class=\"bg-grey\">
@@ -83,7 +83,7 @@ class __TwigTemplate_a082c2aed04bb3f99c404954174640cfb9503a848821829466e1ab44881
     </div>
 ";
         
-        $__internal_36b81e1bc7b92c85a0aa9bc622d1a2de0b13a49ff037e3be46bfadf94dbb7b40->leave($__internal_36b81e1bc7b92c85a0aa9bc622d1a2de0b13a49ff037e3be46bfadf94dbb7b40_prof);
+        $__internal_5b30a887726031dbf226d609db9a8f715669729a2ddca0fad9b5d881efc8dada->leave($__internal_5b30a887726031dbf226d609db9a8f715669729a2ddca0fad9b5d881efc8dada_prof);
 
     }
 

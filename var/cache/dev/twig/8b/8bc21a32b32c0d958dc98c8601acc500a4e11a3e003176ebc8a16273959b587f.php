@@ -1,6 +1,6 @@
 <?php
 
-/* LGPUserBundle:Resetting:checkEmail.html.twig */
+/* FOSUserBundle:Resetting:checkEmail.html.twig */
 class __TwigTemplate_2dbc892f83c6fe05caae3b3ec23c0d8e214874fcc371171030cbb740b6ea8b96 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_2dbc892f83c6fe05caae3b3ec23c0d8e214874fcc371171030cbb740b6e
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "LGPUserBundle:Resetting:checkEmail.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "FOSUserBundle:Resetting:checkEmail.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -21,20 +21,20 @@ class __TwigTemplate_2dbc892f83c6fe05caae3b3ec23c0d8e214874fcc371171030cbb740b6e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_895f5db823654fdcef43f0e75fcc18d327238714b8cec0966c9cfdac2d0acf02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_895f5db823654fdcef43f0e75fcc18d327238714b8cec0966c9cfdac2d0acf02->enter($__internal_895f5db823654fdcef43f0e75fcc18d327238714b8cec0966c9cfdac2d0acf02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Resetting:checkEmail.html.twig"));
+        $__internal_8e820b97fbdb5b2e2f2a683af806205f5ec9c5cd2483714cdfd3cc3559e1382b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8e820b97fbdb5b2e2f2a683af806205f5ec9c5cd2483714cdfd3cc3559e1382b->enter($__internal_8e820b97fbdb5b2e2f2a683af806205f5ec9c5cd2483714cdfd3cc3559e1382b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Resetting:checkEmail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_895f5db823654fdcef43f0e75fcc18d327238714b8cec0966c9cfdac2d0acf02->leave($__internal_895f5db823654fdcef43f0e75fcc18d327238714b8cec0966c9cfdac2d0acf02_prof);
+        $__internal_8e820b97fbdb5b2e2f2a683af806205f5ec9c5cd2483714cdfd3cc3559e1382b->leave($__internal_8e820b97fbdb5b2e2f2a683af806205f5ec9c5cd2483714cdfd3cc3559e1382b_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_843f2041f65719112c8d6d79c2548c188e148fe6005b58b4ecfee3c852ecbca8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_843f2041f65719112c8d6d79c2548c188e148fe6005b58b4ecfee3c852ecbca8->enter($__internal_843f2041f65719112c8d6d79c2548c188e148fe6005b58b4ecfee3c852ecbca8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_b6fe5d1d896c6dbc05ac7a457f9047d28354b262d9734a5df3115dd95804ba29 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b6fe5d1d896c6dbc05ac7a457f9047d28354b262d9734a5df3115dd95804ba29->enter($__internal_b6fe5d1d896c6dbc05ac7a457f9047d28354b262d9734a5df3115dd95804ba29_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "<p>
@@ -45,13 +45,13 @@ class __TwigTemplate_2dbc892f83c6fe05caae3b3ec23c0d8e214874fcc371171030cbb740b6e
 </p>
 ";
         
-        $__internal_843f2041f65719112c8d6d79c2548c188e148fe6005b58b4ecfee3c852ecbca8->leave($__internal_843f2041f65719112c8d6d79c2548c188e148fe6005b58b4ecfee3c852ecbca8_prof);
+        $__internal_b6fe5d1d896c6dbc05ac7a457f9047d28354b262d9734a5df3115dd95804ba29->leave($__internal_b6fe5d1d896c6dbc05ac7a457f9047d28354b262d9734a5df3115dd95804ba29_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "LGPUserBundle:Resetting:checkEmail.html.twig";
+        return "FOSUserBundle:Resetting:checkEmail.html.twig";
     }
 
     public function isTraitable()

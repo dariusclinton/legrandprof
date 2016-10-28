@@ -15,8 +15,8 @@ class __TwigTemplate_1c7b476cf71aebeb8cbc981a0000d5ee43337fd2d3810e5172fc8d08585
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f1558a6b81a6a203ee1f50ab23cf77091a1b262180bc1c73f3cd35f06927c237 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f1558a6b81a6a203ee1f50ab23cf77091a1b262180bc1c73f3cd35f06927c237->enter($__internal_f1558a6b81a6a203ee1f50ab23cf77091a1b262180bc1c73f3cd35f06927c237_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:User:index.html.twig"));
+        $__internal_91e49d80ff3c5b2f67cb2402f9d2189e978e5fa4671d4d3e1305a59888729256 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_91e49d80ff3c5b2f67cb2402f9d2189e978e5fa4671d4d3e1305a59888729256->enter($__internal_91e49d80ff3c5b2f67cb2402f9d2189e978e5fa4671d4d3e1305a59888729256_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:User:index.html.twig"));
 
         // line 1
         echo "<ul class=\"nav nav-pills\">
@@ -40,7 +40,7 @@ class __TwigTemplate_1c7b476cf71aebeb8cbc981a0000d5ee43337fd2d3810e5172fc8d08585
         echo "</span>Cours</a> </li>
 </ul>";
         
-        $__internal_f1558a6b81a6a203ee1f50ab23cf77091a1b262180bc1c73f3cd35f06927c237->leave($__internal_f1558a6b81a6a203ee1f50ab23cf77091a1b262180bc1c73f3cd35f06927c237_prof);
+        $__internal_91e49d80ff3c5b2f67cb2402f9d2189e978e5fa4671d4d3e1305a59888729256->leave($__internal_91e49d80ff3c5b2f67cb2402f9d2189e978e5fa4671d4d3e1305a59888729256_prof);
 
     }
 

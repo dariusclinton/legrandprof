@@ -23,20 +23,20 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_946f1847674187f8e44be96d3dc0c37a8b357d43c5cc6600bc831fb85941daff = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_946f1847674187f8e44be96d3dc0c37a8b357d43c5cc6600bc831fb85941daff->enter($__internal_946f1847674187f8e44be96d3dc0c37a8b357d43c5cc6600bc831fb85941daff_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:MesDemandesDeCours:index.html.twig"));
+        $__internal_b55e7ac556ced7d7a6fd8e5d9654c9076fc32a513354b0d645453affcec707e4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b55e7ac556ced7d7a6fd8e5d9654c9076fc32a513354b0d645453affcec707e4->enter($__internal_b55e7ac556ced7d7a6fd8e5d9654c9076fc32a513354b0d645453affcec707e4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:MesDemandesDeCours:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_946f1847674187f8e44be96d3dc0c37a8b357d43c5cc6600bc831fb85941daff->leave($__internal_946f1847674187f8e44be96d3dc0c37a8b357d43c5cc6600bc831fb85941daff_prof);
+        $__internal_b55e7ac556ced7d7a6fd8e5d9654c9076fc32a513354b0d645453affcec707e4->leave($__internal_b55e7ac556ced7d7a6fd8e5d9654c9076fc32a513354b0d645453affcec707e4_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_201a01fa95e62e6ab27cbd9b0300a777609a7f7ca4e39d38fd802a03de56ea50 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_201a01fa95e62e6ab27cbd9b0300a777609a7f7ca4e39d38fd802a03de56ea50->enter($__internal_201a01fa95e62e6ab27cbd9b0300a777609a7f7ca4e39d38fd802a03de56ea50_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_ef2dd92262e787a07e01b87b1a1759960f495077b887e3910159e2d6489c3a78 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ef2dd92262e787a07e01b87b1a1759960f495077b887e3910159e2d6489c3a78->enter($__internal_ef2dd92262e787a07e01b87b1a1759960f495077b887e3910159e2d6489c3a78_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Mes demandes de cous - ";
@@ -44,15 +44,15 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
         echo "
 ";
         
-        $__internal_201a01fa95e62e6ab27cbd9b0300a777609a7f7ca4e39d38fd802a03de56ea50->leave($__internal_201a01fa95e62e6ab27cbd9b0300a777609a7f7ca4e39d38fd802a03de56ea50_prof);
+        $__internal_ef2dd92262e787a07e01b87b1a1759960f495077b887e3910159e2d6489c3a78->leave($__internal_ef2dd92262e787a07e01b87b1a1759960f495077b887e3910159e2d6489c3a78_prof);
 
     }
 
     // line 7
     public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_53956e2cadada8415e92cd1af8c3d3c59dd78d4dd80e3c5f5f366dc380bb52f1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_53956e2cadada8415e92cd1af8c3d3c59dd78d4dd80e3c5f5f366dc380bb52f1->enter($__internal_53956e2cadada8415e92cd1af8c3d3c59dd78d4dd80e3c5f5f366dc380bb52f1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
+        $__internal_250fcd4f545cadb06e29d6c1814d7c7ca9d6a1bf9bef691eb74d72f7899af55d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_250fcd4f545cadb06e29d6c1814d7c7ca9d6a1bf9bef691eb74d72f7899af55d->enter($__internal_250fcd4f545cadb06e29d6c1814d7c7ca9d6a1bf9bef691eb74d72f7899af55d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
         echo " 
   ";
@@ -61,15 +61,15 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
         echo "
 ";
         
-        $__internal_53956e2cadada8415e92cd1af8c3d3c59dd78d4dd80e3c5f5f366dc380bb52f1->leave($__internal_53956e2cadada8415e92cd1af8c3d3c59dd78d4dd80e3c5f5f366dc380bb52f1_prof);
+        $__internal_250fcd4f545cadb06e29d6c1814d7c7ca9d6a1bf9bef691eb74d72f7899af55d->leave($__internal_250fcd4f545cadb06e29d6c1814d7c7ca9d6a1bf9bef691eb74d72f7899af55d_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_4860e1b18ae027495e3d167aaf12cab3e6fd343ecc14c95271548fa646e9c1d6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4860e1b18ae027495e3d167aaf12cab3e6fd343ecc14c95271548fa646e9c1d6->enter($__internal_4860e1b18ae027495e3d167aaf12cab3e6fd343ecc14c95271548fa646e9c1d6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e5e20e9f4f05f670c62e5027b1ce0d0f98fde794a5a3f73f11d05d43cf1e7d50 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e5e20e9f4f05f670c62e5027b1ce0d0f98fde794a5a3f73f11d05d43cf1e7d50->enter($__internal_e5e20e9f4f05f670c62e5027b1ce0d0f98fde794a5a3f73f11d05d43cf1e7d50_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
         echo "    
@@ -108,97 +108,88 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
                           <th>Ville</th>
                           <th>Quartier</th>
                           <th>Fréquence de paiement</th>
-                          <th>Status</th>
                         </tr>
                       </thead> 
                       <tbody>
                         ";
-            // line 47
+            // line 46
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["reservation_enseignements"]) ? $context["reservation_enseignements"] : $this->getContext($context, "reservation_enseignements")));
             foreach ($context['_seq'] as $context["_key"] => $context["res_enseigns"]) {
-                // line 48
+                // line 47
                 echo "                          ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($context["res_enseigns"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["res_ens"]) {
-                    // line 49
-                    echo "                            <tr>
-                              <td>
-                                <a href=\"";
-                    // line 51
-                    echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
-                    echo "\">";
-                    echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "reservation", array()), "dateReservation", array()), "d/m/Y"), "html", null, true);
-                    echo "</a>
-                              </td>
-                              <td>
-                                <a href=\"";
-                    // line 54
-                    echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
-                    echo "\">";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["res_ens"], "enseignement", array()), "cours", array()), "intitule", array()), "html", null, true);
-                    echo "</a>
-                              </td>
-                              <td>
-                                <a href=\"";
-                    // line 57
-                    echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
-                    echo "\">";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "enseignement", array()), "classe", array()), "html", null, true);
-                    echo "</a>
-                              </td>
-                              <td>";
-                    // line 59
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "nbApprenants", array()), "html", null, true);
-                    echo "</td>
-                              <td>";
-                    // line 60
-                    echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["res_ens"], "dateDebut", array()), "d/m/Y"), "html", null, true);
-                    echo "</td>
-                              <td>";
-                    // line 61
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "lieuDeCours", array()), "html", null, true);
-                    echo "</td>
-                              <td>";
-                    // line 62
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "ville", array()), "html", null, true);
-                    echo "</td>
-                              <td>";
-                    // line 63
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "quartier", array()), "html", null, true);
-                    echo "</td>
-                              <td>";
-                    // line 64
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "reservation", array()), "frequencePaiement", array()), "html", null, true);
-                    echo "</td>
-                              <td>
-                                ";
-                    // line 66
+                    // line 48
+                    echo "                            ";
                     if ($this->getAttribute($this->getAttribute($context["res_ens"], "reservation", array()), "isValidee", array())) {
-                        // line 67
-                        echo "                                  <span class=\"label label-success\">Validée</span>
-                                ";
-                    } else {
-                        // line 69
-                        echo "                                  <span class=\"label label-danger\">En attente</span>
-                                ";
+                        // line 49
+                        echo "                              <tr>
+                                <td>
+                                  <a href=\"";
+                        // line 51
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
+                        echo "\">";
+                        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "reservation", array()), "dateReservation", array()), "d/m/Y"), "html", null, true);
+                        echo "</a>
+                                </td>
+                                <td>
+                                  <a href=\"";
+                        // line 54
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
+                        echo "\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["res_ens"], "enseignement", array()), "cours", array()), "intitule", array()), "html", null, true);
+                        echo "</a>
+                                </td>
+                                <td>
+                                  <a href=\"";
+                        // line 57
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("lgp_user_prof_demande_de_cours_edit", array("id" => $this->getAttribute($context["res_ens"], "id", array()))), "html", null, true);
+                        echo "\">";
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "enseignement", array()), "classe", array()), "html", null, true);
+                        echo "</a>
+                                </td>
+                                <td>";
+                        // line 59
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "nbApprenants", array()), "html", null, true);
+                        echo "</td>
+                                <td>";
+                        // line 60
+                        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["res_ens"], "dateDebut", array()), "d/m/Y"), "html", null, true);
+                        echo "</td>
+                                <td>";
+                        // line 61
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "lieuDeCours", array()), "html", null, true);
+                        echo "</td>
+                                <td>";
+                        // line 62
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "ville", array()), "html", null, true);
+                        echo "</td>
+                                <td>";
+                        // line 63
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["res_ens"], "quartier", array()), "html", null, true);
+                        echo "</td>
+                                <td>";
+                        // line 64
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["res_ens"], "reservation", array()), "frequencePaiement", array()), "html", null, true);
+                        echo "</td>
+                              </tr>
+                            ";
                     }
-                    // line 71
-                    echo "                              </td>
-                            </tr>
-                          ";
+                    // line 67
+                    echo "                          ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['res_ens'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 74
+                // line 68
                 echo "                        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['res_enseigns'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 75
+            // line 69
             echo "                      </tbody>
                     </table>
                 </div>
@@ -206,7 +197,7 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
 
             ";
         }
-        // line 81
+        // line 75
         echo "
           </div>
         </div>
@@ -216,7 +207,7 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
 
 ";
         
-        $__internal_4860e1b18ae027495e3d167aaf12cab3e6fd343ecc14c95271548fa646e9c1d6->leave($__internal_4860e1b18ae027495e3d167aaf12cab3e6fd343ecc14c95271548fa646e9c1d6_prof);
+        $__internal_e5e20e9f4f05f670c62e5027b1ce0d0f98fde794a5a3f73f11d05d43cf1e7d50->leave($__internal_e5e20e9f4f05f670c62e5027b1ce0d0f98fde794a5a3f73f11d05d43cf1e7d50_prof);
 
     }
 
@@ -232,7 +223,7 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
 
     public function getDebugInfo()
     {
-        return array (  210 => 81,  202 => 75,  196 => 74,  188 => 71,  184 => 69,  180 => 67,  178 => 66,  173 => 64,  169 => 63,  165 => 62,  161 => 61,  157 => 60,  153 => 59,  146 => 57,  138 => 54,  130 => 51,  126 => 49,  121 => 48,  117 => 47,  95 => 27,  86 => 20,  84 => 19,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  201 => 75,  193 => 69,  187 => 68,  181 => 67,  175 => 64,  171 => 63,  167 => 62,  163 => 61,  159 => 60,  155 => 59,  148 => 57,  140 => 54,  132 => 51,  128 => 49,  125 => 48,  120 => 47,  116 => 46,  95 => 27,  86 => 20,  84 => 19,  75 => 12,  69 => 11,  60 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -279,36 +270,30 @@ class __TwigTemplate_f0aa239eabe732f4ddd29a3fb8d5cc1ef70c5e993516c30923c98523d37
                           <th>Ville</th>
                           <th>Quartier</th>
                           <th>Fréquence de paiement</th>
-                          <th>Status</th>
                         </tr>
                       </thead> 
                       <tbody>
                         {% for res_enseigns in reservation_enseignements %}
                           {% for res_ens in res_enseigns %}
-                            <tr>
-                              <td>
-                                <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
-                              </td>
-                              <td>
-                                <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.enseignement.cours.intitule }}</a>
-                              </td>
-                              <td>
-                                <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.enseignement.classe }}</a>
-                              </td>
-                              <td>{{ res_ens.nbApprenants }}</td>
-                              <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
-                              <td>{{ res_ens.lieuDeCours }}</td>
-                              <td>{{ res_ens.ville }}</td>
-                              <td>{{ res_ens.quartier }}</td>
-                              <td>{{ res_ens.reservation.frequencePaiement }}</td>
-                              <td>
-                                {% if res_ens.reservation.isValidee %}
-                                  <span class=\"label label-success\">Validée</span>
-                                {% else %}
-                                  <span class=\"label label-danger\">En attente</span>
-                                {% endif %}
-                              </td>
-                            </tr>
+                            {% if res_ens.reservation.isValidee %}
+                              <tr>
+                                <td>
+                                  <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
+                                </td>
+                                <td>
+                                  <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.enseignement.cours.intitule }}</a>
+                                </td>
+                                <td>
+                                  <a href=\"{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}\">{{ res_ens.enseignement.classe }}</a>
+                                </td>
+                                <td>{{ res_ens.nbApprenants }}</td>
+                                <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
+                                <td>{{ res_ens.lieuDeCours }}</td>
+                                <td>{{ res_ens.ville }}</td>
+                                <td>{{ res_ens.quartier }}</td>
+                                <td>{{ res_ens.reservation.frequencePaiement }}</td>
+                              </tr>
+                            {% endif %}
                           {% endfor %}
                         {% endfor %}
                       </tbody>

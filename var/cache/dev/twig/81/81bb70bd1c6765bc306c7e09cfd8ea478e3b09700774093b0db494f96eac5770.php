@@ -1,6 +1,6 @@
 <?php
 
-/* FOSUserBundle:ChangePassword:change_password_content.html.twig */
+/* LGPUserBundle:ChangePassword:change_password_content.html.twig */
 class __TwigTemplate_ba7f04a5e86e1c46d3cab5aca211bbe8233b0cf74c4b460c0294561be3a9f88a extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,8 +15,8 @@ class __TwigTemplate_ba7f04a5e86e1c46d3cab5aca211bbe8233b0cf74c4b460c0294561be3a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bc7f151d22931794bfb3640b91e9141f52f40f02e6ec16fc0e36f1bcf064fb09 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_bc7f151d22931794bfb3640b91e9141f52f40f02e6ec16fc0e36f1bcf064fb09->enter($__internal_bc7f151d22931794bfb3640b91e9141f52f40f02e6ec16fc0e36f1bcf064fb09_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:ChangePassword:change_password_content.html.twig"));
+        $__internal_a24266aaf3efa8ce69d1600a1c1b7f97982e26da16c1e645d67314a772251c20 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a24266aaf3efa8ce69d1600a1c1b7f97982e26da16c1e645d67314a772251c20->enter($__internal_a24266aaf3efa8ce69d1600a1c1b7f97982e26da16c1e645d67314a772251c20_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:ChangePassword:change_password_content.html.twig"));
 
         // line 2
         echo "
@@ -40,13 +40,13 @@ class __TwigTemplate_ba7f04a5e86e1c46d3cab5aca211bbe8233b0cf74c4b460c0294561be3a
         echo "
 ";
         
-        $__internal_bc7f151d22931794bfb3640b91e9141f52f40f02e6ec16fc0e36f1bcf064fb09->leave($__internal_bc7f151d22931794bfb3640b91e9141f52f40f02e6ec16fc0e36f1bcf064fb09_prof);
+        $__internal_a24266aaf3efa8ce69d1600a1c1b7f97982e26da16c1e645d67314a772251c20->leave($__internal_a24266aaf3efa8ce69d1600a1c1b7f97982e26da16c1e645d67314a772251c20_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "FOSUserBundle:ChangePassword:change_password_content.html.twig";
+        return "LGPUserBundle:ChangePassword:change_password_content.html.twig";
     }
 
     public function isTraitable()

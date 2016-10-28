@@ -15,8 +15,8 @@ class __TwigTemplate_3d59d5ecb5b346ed4f343d306ac29dce3d0be62cb58dacd4d67240f691f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_50fdfeb7205ad8147151a27a1d29a7b2d442b71b4f21d4b679e486f81c5db7d1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_50fdfeb7205ad8147151a27a1d29a7b2d442b71b4f21d4b679e486f81c5db7d1->enter($__internal_50fdfeb7205ad8147151a27a1d29a7b2d442b71b4f21d4b679e486f81c5db7d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_inline_tabs.html.twig"));
+        $__internal_c36099a8e9eea06d459751a2c8aeaac629d5dc9bffd86cb9925ffda2b35419b4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c36099a8e9eea06d459751a2c8aeaac629d5dc9bffd86cb9925ffda2b35419b4->enter($__internal_c36099a8e9eea06d459751a2c8aeaac629d5dc9bffd86cb9925ffda2b35419b4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataDoctrineORMAdminBundle:CRUD:edit_orm_one_to_many_inline_tabs.html.twig"));
 
         // line 11
         echo "<div class=\"sonata-ba-tabs\">
@@ -230,7 +230,7 @@ $context["nested_group_field"], "_delete", array(), "array"), 'row', array("labe
         echo "</div>
 ";
         
-        $__internal_50fdfeb7205ad8147151a27a1d29a7b2d442b71b4f21d4b679e486f81c5db7d1->leave($__internal_50fdfeb7205ad8147151a27a1d29a7b2d442b71b4f21d4b679e486f81c5db7d1_prof);
+        $__internal_c36099a8e9eea06d459751a2c8aeaac629d5dc9bffd86cb9925ffda2b35419b4->leave($__internal_c36099a8e9eea06d459751a2c8aeaac629d5dc9bffd86cb9925ffda2b35419b4_prof);
 
     }
 

@@ -23,20 +23,20 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f6cdef62f92c36c0584b1ab07f100159ef54d2a1181d0206c7ef00fac4ddd872 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f6cdef62f92c36c0584b1ab07f100159ef54d2a1181d0206c7ef00fac4ddd872->enter($__internal_f6cdef62f92c36c0584b1ab07f100159ef54d2a1181d0206c7ef00fac4ddd872_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Dashboard:parent.html.twig"));
+        $__internal_76272405abae3b48a0a545b882dfa8fd25ba5be71583d3378ae7cf285c0276b3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_76272405abae3b48a0a545b882dfa8fd25ba5be71583d3378ae7cf285c0276b3->enter($__internal_76272405abae3b48a0a545b882dfa8fd25ba5be71583d3378ae7cf285c0276b3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Dashboard:parent.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_f6cdef62f92c36c0584b1ab07f100159ef54d2a1181d0206c7ef00fac4ddd872->leave($__internal_f6cdef62f92c36c0584b1ab07f100159ef54d2a1181d0206c7ef00fac4ddd872_prof);
+        $__internal_76272405abae3b48a0a545b882dfa8fd25ba5be71583d3378ae7cf285c0276b3->leave($__internal_76272405abae3b48a0a545b882dfa8fd25ba5be71583d3378ae7cf285c0276b3_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_c3a8f01aca268cae0996dfb002393bff52c028f3f7fd48671965fee4cd78304e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c3a8f01aca268cae0996dfb002393bff52c028f3f7fd48671965fee4cd78304e->enter($__internal_c3a8f01aca268cae0996dfb002393bff52c028f3f7fd48671965fee4cd78304e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_77b4fa9271898fa8922d70a9c869f04538df97af46cd5e21f4af8d0668a1af38 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_77b4fa9271898fa8922d70a9c869f04538df97af46cd5e21f4af8d0668a1af38->enter($__internal_77b4fa9271898fa8922d70a9c869f04538df97af46cd5e21f4af8d0668a1af38_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "  Mon Tableau de bord - ";
@@ -44,15 +44,15 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
         echo "
 ";
         
-        $__internal_c3a8f01aca268cae0996dfb002393bff52c028f3f7fd48671965fee4cd78304e->leave($__internal_c3a8f01aca268cae0996dfb002393bff52c028f3f7fd48671965fee4cd78304e_prof);
+        $__internal_77b4fa9271898fa8922d70a9c869f04538df97af46cd5e21f4af8d0668a1af38->leave($__internal_77b4fa9271898fa8922d70a9c869f04538df97af46cd5e21f4af8d0668a1af38_prof);
 
     }
 
     // line 7
     public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_56172b3d9b24bc6a0ebb9f25d37e3fdebe239211afe521cfabe7c2581edf3797 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_56172b3d9b24bc6a0ebb9f25d37e3fdebe239211afe521cfabe7c2581edf3797->enter($__internal_56172b3d9b24bc6a0ebb9f25d37e3fdebe239211afe521cfabe7c2581edf3797_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
+        $__internal_7ea5dd7cd515bf98e010390fd06e4d265ba58e027a1ffdb35e29259c8fbf9dce = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7ea5dd7cd515bf98e010390fd06e4d265ba58e027a1ffdb35e29259c8fbf9dce->enter($__internal_7ea5dd7cd515bf98e010390fd06e4d265ba58e027a1ffdb35e29259c8fbf9dce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
         // line 8
         echo "  ";
@@ -60,15 +60,15 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
         echo "
 ";
         
-        $__internal_56172b3d9b24bc6a0ebb9f25d37e3fdebe239211afe521cfabe7c2581edf3797->leave($__internal_56172b3d9b24bc6a0ebb9f25d37e3fdebe239211afe521cfabe7c2581edf3797_prof);
+        $__internal_7ea5dd7cd515bf98e010390fd06e4d265ba58e027a1ffdb35e29259c8fbf9dce->leave($__internal_7ea5dd7cd515bf98e010390fd06e4d265ba58e027a1ffdb35e29259c8fbf9dce_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_f15f3b5c74eb1bb5b416883450a193133968d53fa7216b6808cb677bbf31f8e4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f15f3b5c74eb1bb5b416883450a193133968d53fa7216b6808cb677bbf31f8e4->enter($__internal_f15f3b5c74eb1bb5b416883450a193133968d53fa7216b6808cb677bbf31f8e4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_26edd992bd640d164f2be597eb9884e6cc600a2d58edb8563f4f50f6b398569e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_26edd992bd640d164f2be597eb9884e6cc600a2d58edb8563f4f50f6b398569e->enter($__internal_26edd992bd640d164f2be597eb9884e6cc600a2d58edb8563f4f50f6b398569e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
         echo "
@@ -106,11 +106,18 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
                 <span class=\"on\"><i class=\"fa fa-check\"></i></span>&nbsp;&nbsp;Profil complet<br>
                 <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
               </p>
-              <center><a href=\"";
-        // line 31
+              <center>
+                <a href=\"";
+        // line 32
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\" class=\"btn btn-primary\">Compléter profil</a>
-
+                <br><br>
+                <a href=\"";
+        // line 34
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\" class=\"btn btn-primary\">Modifier le mot
+                  de passe</a>
+              </center>
             </div>
           </div>
 
@@ -131,7 +138,7 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
               <div class=\"notifications-header\">Votre profil</div>
               <div class=\"notifications-content\">Votre profil est incomplet, veuillez <a
                     href=\"";
-        // line 52
+        // line 56
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\">Compléter votre profil</a></div>
             </div>
@@ -145,7 +152,7 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
 
 ";
         
-        $__internal_f15f3b5c74eb1bb5b416883450a193133968d53fa7216b6808cb677bbf31f8e4->leave($__internal_f15f3b5c74eb1bb5b416883450a193133968d53fa7216b6808cb677bbf31f8e4_prof);
+        $__internal_26edd992bd640d164f2be597eb9884e6cc600a2d58edb8563f4f50f6b398569e->leave($__internal_26edd992bd640d164f2be597eb9884e6cc600a2d58edb8563f4f50f6b398569e_prof);
 
     }
 
@@ -161,7 +168,7 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
 
     public function getDebugInfo()
     {
-        return array (  135 => 52,  111 => 31,  101 => 26,  97 => 24,  91 => 22,  85 => 20,  83 => 19,  74 => 12,  68 => 11,  58 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  142 => 56,  117 => 34,  112 => 32,  101 => 26,  97 => 24,  91 => 22,  85 => 20,  83 => 19,  74 => 12,  68 => 11,  58 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -196,8 +203,12 @@ class __TwigTemplate_820cf8bca249fb4ae79fb0990030f5686078777e5c9b5172b1534c99a6b
                 <span class=\"on\"><i class=\"fa fa-check\"></i></span>&nbsp;&nbsp;Profil complet<br>
                 <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
               </p>
-              <center><a href=\"{{ path('fos_user_profile_edit') }}\" class=\"btn btn-primary\">Compléter profil</a>
-
+              <center>
+                <a href=\"{{ path('fos_user_profile_edit') }}\" class=\"btn btn-primary\">Compléter profil</a>
+                <br><br>
+                <a href=\"{{ path('fos_user_change_password') }}\" class=\"btn btn-primary\">Modifier le mot
+                  de passe</a>
+              </center>
             </div>
           </div>
 

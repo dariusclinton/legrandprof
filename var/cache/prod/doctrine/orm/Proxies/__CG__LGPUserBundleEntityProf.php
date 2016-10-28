@@ -682,6 +682,17 @@ class Prof extends \LGP\UserBundle\Entity\Prof implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
+    public function getAvanceeProfil()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAvanceeProfil', []);
+
+        return parent::getAvanceeProfil();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setEmail($email)
     {
 

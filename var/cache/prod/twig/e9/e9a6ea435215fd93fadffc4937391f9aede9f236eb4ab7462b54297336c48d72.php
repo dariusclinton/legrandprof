@@ -18,48 +18,55 @@ class __TwigTemplate_1b3b9586e742bc4892fb1ae5e50c46a76bbe815407dc9815e95e2eed8dc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 2
-        echo "
-";
-        // line 3
+        // line 1
+        echo "<div style=\"background-color: #e58664; width:90%; height:500px;padding:20px;\">
+\t<div style=\"background-color:white;height:100%;\">
+            ";
+        // line 4
+        echo "            ";
         $this->displayBlock('subject', $context, $blocks);
-        // line 8
-        echo "
-";
         // line 9
+        echo "            ";
         $this->displayBlock('body_text', $context, $blocks);
         // line 14
-        echo "
-";
-        // line 15
+        echo "            ";
         $this->displayBlock('body_html', $context, $blocks);
+        // line 15
+        echo "\t</div>
+</div>
+
+";
     }
 
-    // line 3
+    // line 4
     public function block_subject($context, array $blocks = array())
     {
-        // line 4
-        echo "  ";
         // line 5
-        echo "  ";
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.email.subject", array("%username%" => $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "prenoms", array()), "%confirmationUrl%" => (isset($context["confirmationUrl"]) ? $context["confirmationUrl"] : null)), "FOSUserBundle");
+        echo "            ";
+        // line 6
+        echo "            ";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.email.subject", array("%username%" => $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "username", array()), "%confirmationUrl%" => (isset($context["confirmationUrl"]) ? $context["confirmationUrl"] : null)), "FOSUserBundle");
         echo "
-  ";
+            ";
+        // line 8
+        echo "            ";
     }
 
     // line 9
     public function block_body_text($context, array $blocks = array())
     {
         // line 10
-        echo "  ";
+        echo "            ";
         // line 11
-        echo "  ";
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.email.message", array("%username%" => twig_upper_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "prenoms", array())), "%confirmationUrl%" => (isset($context["confirmationUrl"]) ? $context["confirmationUrl"] : null)), "FOSUserBundle");
+        echo "            ";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.email.message", array("%username%" => $this->getAttribute((isset($context["user"]) ? $context["user"] : null), "username", array()), "%confirmationUrl%" => (isset($context["confirmationUrl"]) ? $context["confirmationUrl"] : null)), "FOSUserBundle");
         echo "
-  ";
+            ";
+        // line 13
+        echo "            ";
     }
 
-    // line 15
+    // line 14
     public function block_body_html($context, array $blocks = array())
     {
     }
@@ -71,7 +78,7 @@ class __TwigTemplate_1b3b9586e742bc4892fb1ae5e50c46a76bbe815407dc9815e95e2eed8dc
 
     public function getDebugInfo()
     {
-        return array (  63 => 15,  56 => 11,  54 => 10,  51 => 9,  44 => 5,  42 => 4,  39 => 3,  35 => 15,  32 => 14,  30 => 9,  27 => 8,  25 => 3,  22 => 2,);
+        return array (  70 => 14,  66 => 13,  61 => 11,  59 => 10,  56 => 9,  52 => 8,  47 => 6,  45 => 5,  42 => 4,  35 => 15,  32 => 14,  29 => 9,  26 => 4,  22 => 1,);
     }
 
     public function getSource()

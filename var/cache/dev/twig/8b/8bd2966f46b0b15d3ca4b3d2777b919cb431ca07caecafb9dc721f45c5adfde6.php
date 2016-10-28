@@ -15,8 +15,8 @@ class __TwigTemplate_2b1a860f7322f1e9449be6ef09b4b34e39b5da36edffd54d5281d66fde5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b6cc508d209eb7c40cc3e86da2d90d859c7d7f3be59fffec1abb7a12c1643fb7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b6cc508d209eb7c40cc3e86da2d90d859c7d7f3be59fffec1abb7a12c1643fb7->enter($__internal_b6cc508d209eb7c40cc3e86da2d90d859c7d7f3be59fffec1abb7a12c1643fb7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:prof_block.html.twig"));
+        $__internal_e9da2dbea77305685707d598f875cc827b5467c47f7b268c9e282a609d5835f7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e9da2dbea77305685707d598f875cc827b5467c47f7b268c9e282a609d5835f7->enter($__internal_e9da2dbea77305685707d598f875cc827b5467c47f7b268c9e282a609d5835f7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Course:prof_block.html.twig"));
 
         // line 1
         if ((twig_length_filter($this->env, $this->getAttribute((isset($context["params"]) ? $context["params"] : $this->getContext($context, "params")), "matieres_profs", array())) != 0)) {
@@ -263,7 +263,7 @@ class __TwigTemplate_2b1a860f7322f1e9449be6ef09b4b34e39b5da36edffd54d5281d66fde5
             $context = array_intersect_key($context, $_parent) + $_parent;
         }
         
-        $__internal_b6cc508d209eb7c40cc3e86da2d90d859c7d7f3be59fffec1abb7a12c1643fb7->leave($__internal_b6cc508d209eb7c40cc3e86da2d90d859c7d7f3be59fffec1abb7a12c1643fb7_prof);
+        $__internal_e9da2dbea77305685707d598f875cc827b5467c47f7b268c9e282a609d5835f7->leave($__internal_e9da2dbea77305685707d598f875cc827b5467c47f7b268c9e282a609d5835f7_prof);
 
     }
 

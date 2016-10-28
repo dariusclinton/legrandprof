@@ -23,20 +23,20 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_397d8665429f3f2b2ab2fd1eadff7fa226803ed15d1c4eea44dfda373eaa93d5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_397d8665429f3f2b2ab2fd1eadff7fa226803ed15d1c4eea44dfda373eaa93d5->enter($__internal_397d8665429f3f2b2ab2fd1eadff7fa226803ed15d1c4eea44dfda373eaa93d5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Dashboard:prof.html.twig"));
+        $__internal_23a598758a4bcd14b52728f0cdbde98274fb3f6e768b85eaa98727fbcf6ee668 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_23a598758a4bcd14b52728f0cdbde98274fb3f6e768b85eaa98727fbcf6ee668->enter($__internal_23a598758a4bcd14b52728f0cdbde98274fb3f6e768b85eaa98727fbcf6ee668_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPUserBundle:Dashboard:prof.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_397d8665429f3f2b2ab2fd1eadff7fa226803ed15d1c4eea44dfda373eaa93d5->leave($__internal_397d8665429f3f2b2ab2fd1eadff7fa226803ed15d1c4eea44dfda373eaa93d5_prof);
+        $__internal_23a598758a4bcd14b52728f0cdbde98274fb3f6e768b85eaa98727fbcf6ee668->leave($__internal_23a598758a4bcd14b52728f0cdbde98274fb3f6e768b85eaa98727fbcf6ee668_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_48c44e788f726cb7fa7a1b0a0b04e0c459d81878361a1097c50fbbce2fba3f07 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_48c44e788f726cb7fa7a1b0a0b04e0c459d81878361a1097c50fbbce2fba3f07->enter($__internal_48c44e788f726cb7fa7a1b0a0b04e0c459d81878361a1097c50fbbce2fba3f07_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_228b875d9b0504c35c350d8be42e61e675a0107c70760593146008a760e72296 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_228b875d9b0504c35c350d8be42e61e675a0107c70760593146008a760e72296->enter($__internal_228b875d9b0504c35c350d8be42e61e675a0107c70760593146008a760e72296_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 4
         echo "    Mon Tableau de bord - ";
@@ -44,15 +44,15 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
         echo "
 ";
         
-        $__internal_48c44e788f726cb7fa7a1b0a0b04e0c459d81878361a1097c50fbbce2fba3f07->leave($__internal_48c44e788f726cb7fa7a1b0a0b04e0c459d81878361a1097c50fbbce2fba3f07_prof);
+        $__internal_228b875d9b0504c35c350d8be42e61e675a0107c70760593146008a760e72296->leave($__internal_228b875d9b0504c35c350d8be42e61e675a0107c70760593146008a760e72296_prof);
 
     }
 
     // line 7
     public function block_header_submenu($context, array $blocks = array())
     {
-        $__internal_41a84f0f1378410568b5fad2c654ba68dabb93f077a836679750545b3b01b826 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_41a84f0f1378410568b5fad2c654ba68dabb93f077a836679750545b3b01b826->enter($__internal_41a84f0f1378410568b5fad2c654ba68dabb93f077a836679750545b3b01b826_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
+        $__internal_e6d956968d72683f7d94ba8e59c8b94e21ec107c2c651c3a1b034e57043220e9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e6d956968d72683f7d94ba8e59c8b94e21ec107c2c651c3a1b034e57043220e9->enter($__internal_e6d956968d72683f7d94ba8e59c8b94e21ec107c2c651c3a1b034e57043220e9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header_submenu"));
 
         // line 8
         echo "    ";
@@ -60,15 +60,15 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
         echo "
 ";
         
-        $__internal_41a84f0f1378410568b5fad2c654ba68dabb93f077a836679750545b3b01b826->leave($__internal_41a84f0f1378410568b5fad2c654ba68dabb93f077a836679750545b3b01b826_prof);
+        $__internal_e6d956968d72683f7d94ba8e59c8b94e21ec107c2c651c3a1b034e57043220e9->leave($__internal_e6d956968d72683f7d94ba8e59c8b94e21ec107c2c651c3a1b034e57043220e9_prof);
 
     }
 
     // line 11
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a9c1a4b99b12140f6048e6b541247e697e7c2375e8a785b34174272b09700a45 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a9c1a4b99b12140f6048e6b541247e697e7c2375e8a785b34174272b09700a45->enter($__internal_a9c1a4b99b12140f6048e6b541247e697e7c2375e8a785b34174272b09700a45_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_1a0c84be87ca52dda926cfed27689b92793d27aa058e638c74e9d276d01e7d83 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1a0c84be87ca52dda926cfed27689b92793d27aa058e638c74e9d276d01e7d83->enter($__internal_1a0c84be87ca52dda926cfed27689b92793d27aa058e638c74e9d276d01e7d83_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
         echo "
@@ -111,13 +111,25 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
         // line 32
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\" class=\"btn btn-primary\">Compléter
-                                    profil</a>
+                                    profil</a><br><br>
+                                <a href=\"";
+        // line 34
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\" class=\"btn btn-primary btn-sm\">Modifier le mot
+                                    de passe</a>
+                                </center>
 
                         </div>
                     </div>
 
                     <div class=\"col-md-9\">
-
+                        <div class=\"alert alert-warning\">
+                            <b>";
+        // line 43
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "avanceeProfil", array()), "html", null, true);
+        echo "% de remplissage du profil</b><br>
+                            <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
+                        </div>
                         <div class=\"notifications-block\">
                             <div class=\"notifications-header\">
                                 Hello Prof !
@@ -134,7 +146,7 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
                             <div class=\"notifications-header\">Votre profil</div>
                             <div class=\"notifications-content\">Votre profil est incomplet, veuillez <a
                                         href=\"";
-        // line 55
+        // line 61
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\">Compléter votre profil</a></div>
                         </div>
@@ -148,7 +160,7 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
 
 ";
         
-        $__internal_a9c1a4b99b12140f6048e6b541247e697e7c2375e8a785b34174272b09700a45->leave($__internal_a9c1a4b99b12140f6048e6b541247e697e7c2375e8a785b34174272b09700a45_prof);
+        $__internal_1a0c84be87ca52dda926cfed27689b92793d27aa058e638c74e9d276d01e7d83->leave($__internal_1a0c84be87ca52dda926cfed27689b92793d27aa058e638c74e9d276d01e7d83_prof);
 
     }
 
@@ -164,7 +176,7 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
 
     public function getDebugInfo()
     {
-        return array (  138 => 55,  112 => 32,  102 => 27,  98 => 25,  91 => 22,  85 => 20,  83 => 19,  74 => 12,  68 => 11,  58 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  150 => 61,  129 => 43,  117 => 34,  112 => 32,  102 => 27,  98 => 25,  91 => 22,  85 => 20,  83 => 19,  74 => 12,  68 => 11,  58 => 8,  52 => 7,  42 => 4,  36 => 3,  11 => 1,);
     }
 
     public function getSource()
@@ -201,13 +213,19 @@ class __TwigTemplate_234b80c02273b8b6cc30b53913500bb5266b453031760026452a9a98670
                                 <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
                             </p>
                             <center><a href=\"{{ path('fos_user_profile_edit') }}\" class=\"btn btn-primary\">Compléter
-                                    profil</a>
+                                    profil</a><br><br>
+                                <a href=\"{{ path('fos_user_change_password') }}\" class=\"btn btn-primary btn-sm\">Modifier le mot
+                                    de passe</a>
+                                </center>
 
                         </div>
                     </div>
 
                     <div class=\"col-md-9\">
-
+                        <div class=\"alert alert-warning\">
+                            <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
+                            <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
+                        </div>
                         <div class=\"notifications-block\">
                             <div class=\"notifications-header\">
                                 Hello Prof !

@@ -1,6 +1,6 @@
 <?php
 
-/* LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig */
+/* FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig */
 class __TwigTemplate_6dd9ae48d747664b9786df3d22fb5227149f7b8db1e94acb1163e34a29e9f304 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_6dd9ae48d747664b9786df3d22fb5227149f7b8db1e94acb1163e34a29e
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -36,7 +36,7 @@ class __TwigTemplate_6dd9ae48d747664b9786df3d22fb5227149f7b8db1e94acb1163e34a29e
 
     public function getTemplateName()
     {
-        return "LGPUserBundle:Resetting:passwordAlreadyRequested.html.twig";
+        return "FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig";
     }
 
     public function isTraitable()

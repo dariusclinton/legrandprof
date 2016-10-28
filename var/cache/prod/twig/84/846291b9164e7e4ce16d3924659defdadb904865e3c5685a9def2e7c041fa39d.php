@@ -90,13 +90,25 @@ class __TwigTemplate_ef3f34bcfef7bd19242eb091eb510cc51528919b8f651d9da6a56c701d7
         // line 32
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\" class=\"btn btn-primary\">Compléter
-                                    profil</a>
+                                    profil</a><br><br>
+                                <a href=\"";
+        // line 34
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\" class=\"btn btn-primary btn-sm\">Modifier le mot
+                                    de passe</a>
+                                </center>
 
                         </div>
                     </div>
 
                     <div class=\"col-md-9\">
-
+                        <div class=\"alert alert-warning\">
+                            <b>";
+        // line 43
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array()), "avanceeProfil", array()), "html", null, true);
+        echo "% de remplissage du profil</b><br>
+                            <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
+                        </div>
                         <div class=\"notifications-block\">
                             <div class=\"notifications-header\">
                                 Hello Prof !
@@ -113,7 +125,7 @@ class __TwigTemplate_ef3f34bcfef7bd19242eb091eb510cc51528919b8f651d9da6a56c701d7
                             <div class=\"notifications-header\">Votre profil</div>
                             <div class=\"notifications-content\">Votre profil est incomplet, veuillez <a
                                         href=\"";
-        // line 55
+        // line 61
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\">Compléter votre profil</a></div>
                         </div>
@@ -140,7 +152,7 @@ class __TwigTemplate_ef3f34bcfef7bd19242eb091eb510cc51528919b8f651d9da6a56c701d7
 
     public function getDebugInfo()
     {
-        return array (  117 => 55,  91 => 32,  81 => 27,  77 => 25,  70 => 22,  64 => 20,  62 => 19,  53 => 12,  50 => 11,  43 => 8,  40 => 7,  33 => 4,  30 => 3,  11 => 1,);
+        return array (  129 => 61,  108 => 43,  96 => 34,  91 => 32,  81 => 27,  77 => 25,  70 => 22,  64 => 20,  62 => 19,  53 => 12,  50 => 11,  43 => 8,  40 => 7,  33 => 4,  30 => 3,  11 => 1,);
     }
 
     public function getSource()

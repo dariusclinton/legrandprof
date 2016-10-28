@@ -1,6 +1,6 @@
 <?php
 
-/* FOSUserBundle:ChangePassword:change_password.html.twig */
+/* LGPUserBundle:ChangePassword:change_password.html.twig */
 class __TwigTemplate_9076c083b51388cdc07b38925911cb1ca43ff832ff3cf4ae544e4eada34faed1 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -8,7 +8,7 @@ class __TwigTemplate_9076c083b51388cdc07b38925911cb1ca43ff832ff3cf4ae544e4eada34
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "FOSUserBundle:ChangePassword:change_password.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "LGPUserBundle:ChangePassword:change_password.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -28,12 +28,12 @@ class __TwigTemplate_9076c083b51388cdc07b38925911cb1ca43ff832ff3cf4ae544e4eada34
     public function block_fos_user_content($context, array $blocks = array())
     {
         // line 4
-        $this->loadTemplate("FOSUserBundle:ChangePassword:change_password_content.html.twig", "FOSUserBundle:ChangePassword:change_password.html.twig", 4)->display($context);
+        $this->loadTemplate("FOSUserBundle:ChangePassword:change_password_content.html.twig", "LGPUserBundle:ChangePassword:change_password.html.twig", 4)->display($context);
     }
 
     public function getTemplateName()
     {
-        return "FOSUserBundle:ChangePassword:change_password.html.twig";
+        return "LGPUserBundle:ChangePassword:change_password.html.twig";
     }
 
     public function isTraitable()

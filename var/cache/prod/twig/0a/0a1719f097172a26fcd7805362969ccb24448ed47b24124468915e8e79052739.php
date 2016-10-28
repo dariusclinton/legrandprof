@@ -27,11 +27,11 @@ class __TwigTemplate_c22210196c31ba6992f58332a9380a0013d488305f421348b91132db92e
 <div class=\"row\">
     <div class=\"col-md-2\">";
         // line 6
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "classe", array()), 'label', array("label_attr" => array(), "label" => "Classe :"));
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "classe", array()), 'label', array("label_attr" => array(), "label" => "Niveau :"));
         echo "</div>
     <div class=\"col-md-4\">";
         // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "classe", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Entrez une classe")));
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "classe", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Entrez un niveau")));
         echo "</div>
     ";
         // line 8
@@ -41,11 +41,11 @@ class __TwigTemplate_c22210196c31ba6992f58332a9380a0013d488305f421348b91132db92e
 <div class=\"row\">
     <div class=\"col-md-2\">";
         // line 11
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "prix", array()), 'label', array("label_attr" => array(), "label" => "Prix /heure :"));
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "prix", array()), 'label', array("label_attr" => array(), "label" => "Prix /mois :"));
         echo "</div>
     <div class=\"col-md-4\">";
         // line 12
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "prix", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Entrez le prix d'une heure")));
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "prix", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Entrez le prix d'un mois")));
         echo "</div>
     ";
         // line 13

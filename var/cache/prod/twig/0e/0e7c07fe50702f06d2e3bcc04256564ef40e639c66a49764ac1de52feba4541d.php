@@ -85,11 +85,18 @@ class __TwigTemplate_a530f28f8a9a655f143caac2a7a85ce65e90bfc6250ce7f3110671ca89f
                 <span class=\"on\"><i class=\"fa fa-check\"></i></span>&nbsp;&nbsp;Profil complet<br>
                 <span class=\"off\"><i class=\"fa fa-remove\"></i></span> &nbsp;&nbsp;Profil recommandé
               </p>
-              <center><a href=\"";
-        // line 31
+              <center>
+                <a href=\"";
+        // line 32
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\" class=\"btn btn-primary\">Compléter profil</a>
-
+                <br><br>
+                <a href=\"";
+        // line 34
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\" class=\"btn btn-primary\">Modifier le mot
+                  de passe</a>
+              </center>
             </div>
           </div>
 
@@ -110,7 +117,7 @@ class __TwigTemplate_a530f28f8a9a655f143caac2a7a85ce65e90bfc6250ce7f3110671ca89f
               <div class=\"notifications-header\">Votre profil</div>
               <div class=\"notifications-content\">Votre profil est incomplet, veuillez <a
                     href=\"";
-        // line 52
+        // line 56
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
         echo "\">Compléter votre profil</a></div>
             </div>
@@ -137,7 +144,7 @@ class __TwigTemplate_a530f28f8a9a655f143caac2a7a85ce65e90bfc6250ce7f3110671ca89f
 
     public function getDebugInfo()
     {
-        return array (  114 => 52,  90 => 31,  80 => 26,  76 => 24,  70 => 22,  64 => 20,  62 => 19,  53 => 12,  50 => 11,  43 => 8,  40 => 7,  33 => 4,  30 => 3,  11 => 1,);
+        return array (  121 => 56,  96 => 34,  91 => 32,  80 => 26,  76 => 24,  70 => 22,  64 => 20,  62 => 19,  53 => 12,  50 => 11,  43 => 8,  40 => 7,  33 => 4,  30 => 3,  11 => 1,);
     }
 
     public function getSource()

@@ -15,8 +15,8 @@ class __TwigTemplate_5c7be11f86d3ad7ad1dc8ef71a5296df780f013d006fe653bfbda6f0f0d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f09d766bec350ca46f1162a2080fce58d1c39bf6649aa89ae5fed741cf65f2fb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f09d766bec350ca46f1162a2080fce58d1c39bf6649aa89ae5fed741cf65f2fb->enter($__internal_f09d766bec350ca46f1162a2080fce58d1c39bf6649aa89ae5fed741cf65f2fb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Form:category_form_search.html.twig"));
+        $__internal_cb4e1788ee25d2698a0d8fe3ef64e77d922b034a9a54b4b77f10e2337d5ac5c8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_cb4e1788ee25d2698a0d8fe3ef64e77d922b034a9a54b4b77f10e2337d5ac5c8->enter($__internal_cb4e1788ee25d2698a0d8fe3ef64e77d922b034a9a54b4b77f10e2337d5ac5c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPCourseBundle:Form:category_form_search.html.twig"));
 
         // line 1
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form_category"]) ? $context["form_category"] : $this->getContext($context, "form_category")), 'form_start');
@@ -42,7 +42,7 @@ class __TwigTemplate_5c7be11f86d3ad7ad1dc8ef71a5296df780f013d006fe653bfbda6f0f0d
         // line 13
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form_category"]) ? $context["form_category"] : $this->getContext($context, "form_category")), 'form_end');
         
-        $__internal_f09d766bec350ca46f1162a2080fce58d1c39bf6649aa89ae5fed741cf65f2fb->leave($__internal_f09d766bec350ca46f1162a2080fce58d1c39bf6649aa89ae5fed741cf65f2fb_prof);
+        $__internal_cb4e1788ee25d2698a0d8fe3ef64e77d922b034a9a54b4b77f10e2337d5ac5c8->leave($__internal_cb4e1788ee25d2698a0d8fe3ef64e77d922b034a9a54b4b77f10e2337d5ac5c8_prof);
 
     }
 

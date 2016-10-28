@@ -22,20 +22,20 @@ class __TwigTemplate_81b0b001e643f2cc79dd2749eb28786525202f4623ae1d511762b081b48
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b394afe6c872d59130456511e16d0020ad7df0bf8ce4e8036124751a34f7b3e9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b394afe6c872d59130456511e16d0020ad7df0bf8ce4e8036124751a34f7b3e9->enter($__internal_b394afe6c872d59130456511e16d0020ad7df0bf8ce4e8036124751a34f7b3e9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:detail.html.twig"));
+        $__internal_0c57c9f000c9dabe26d4d966212d384effd678ba4337456da617051b133bc2ce = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0c57c9f000c9dabe26d4d966212d384effd678ba4337456da617051b133bc2ce->enter($__internal_0c57c9f000c9dabe26d4d966212d384effd678ba4337456da617051b133bc2ce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "LGPReservationBundle:Reservation:detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_b394afe6c872d59130456511e16d0020ad7df0bf8ce4e8036124751a34f7b3e9->leave($__internal_b394afe6c872d59130456511e16d0020ad7df0bf8ce4e8036124751a34f7b3e9_prof);
+        $__internal_0c57c9f000c9dabe26d4d966212d384effd678ba4337456da617051b133bc2ce->leave($__internal_0c57c9f000c9dabe26d4d966212d384effd678ba4337456da617051b133bc2ce_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_cbc2492531095821e083b0acf7e67610b42bb672c3bcff2bbe223964f92bbc85 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_cbc2492531095821e083b0acf7e67610b42bb672c3bcff2bbe223964f92bbc85->enter($__internal_cbc2492531095821e083b0acf7e67610b42bb672c3bcff2bbe223964f92bbc85_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_6418c6d0e254aa771854d1538d646f9c43ac023b8d7fdebb14157395810f50f6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6418c6d0e254aa771854d1538d646f9c43ac023b8d7fdebb14157395810f50f6->enter($__internal_6418c6d0e254aa771854d1538d646f9c43ac023b8d7fdebb14157395810f50f6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         // line 5
         echo "    Detail Reservation  - ";
@@ -43,15 +43,15 @@ class __TwigTemplate_81b0b001e643f2cc79dd2749eb28786525202f4623ae1d511762b081b48
         echo "
 ";
         
-        $__internal_cbc2492531095821e083b0acf7e67610b42bb672c3bcff2bbe223964f92bbc85->leave($__internal_cbc2492531095821e083b0acf7e67610b42bb672c3bcff2bbe223964f92bbc85_prof);
+        $__internal_6418c6d0e254aa771854d1538d646f9c43ac023b8d7fdebb14157395810f50f6->leave($__internal_6418c6d0e254aa771854d1538d646f9c43ac023b8d7fdebb14157395810f50f6_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e9f87067fb48f12bd9f287ae13f451867c15b6038b2a59ba7042cb1a6d8c1087 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e9f87067fb48f12bd9f287ae13f451867c15b6038b2a59ba7042cb1a6d8c1087->enter($__internal_e9f87067fb48f12bd9f287ae13f451867c15b6038b2a59ba7042cb1a6d8c1087_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_77064b4bf335f4fb6e967adbbd361568519b716d50ca72207e721ee699ba068c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_77064b4bf335f4fb6e967adbbd361568519b716d50ca72207e721ee699ba068c->enter($__internal_77064b4bf335f4fb6e967adbbd361568519b716d50ca72207e721ee699ba068c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "
@@ -430,7 +430,7 @@ class __TwigTemplate_81b0b001e643f2cc79dd2749eb28786525202f4623ae1d511762b081b48
 </div><!-- /.modal -->
 ";
         
-        $__internal_e9f87067fb48f12bd9f287ae13f451867c15b6038b2a59ba7042cb1a6d8c1087->leave($__internal_e9f87067fb48f12bd9f287ae13f451867c15b6038b2a59ba7042cb1a6d8c1087_prof);
+        $__internal_77064b4bf335f4fb6e967adbbd361568519b716d50ca72207e721ee699ba068c->leave($__internal_77064b4bf335f4fb6e967adbbd361568519b716d50ca72207e721ee699ba068c_prof);
 
     }
 
