@@ -149,6 +149,21 @@
           <div class="notifications-content">
           </div>
         </div>
+        <div class="notifications-block">
+          <div class="notifications-header">
+            Emploi de temps de disponibilité
+            {#<button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#disponibilite">#}
+              {#Editer#}
+            {#</button>#}
+          </div>
+          <div class="notifications-content">
+            {% if app.user.programmeDeDispo is not null %}
+              {% for jour in app.user.programmeDeDispo %}
+                <p>{{ jour }}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
         <div>
           {% endif %}
 

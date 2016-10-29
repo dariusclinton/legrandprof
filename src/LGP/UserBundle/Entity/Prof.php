@@ -138,6 +138,13 @@ class Prof extends User
    */
   private $remunerations;
 
+
+  /**
+   * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\ProgrammeDeDispo", inversedBy="prof")
+   * @ORM\JoinColumn(nullable=true)
+   */
+  private $programmeDeDispo;
+
   /**
    * @var slug
    *
@@ -747,4 +754,28 @@ class Prof extends User
 
     return round($percent / $total, 1) * 100;
   }
+
+    /**
+     * Set programmeDeDispo
+     *
+     * @param \LGP\UserBundle\Entity\ProgrammeDeDispo $programmeDeDispo
+     *
+     * @return Prof
+     */
+    public function setProgrammeDeDispo(\LGP\UserBundle\Entity\ProgrammeDeDispo $programmeDeDispo = null)
+    {
+        $this->programmeDeDispo = $programmeDeDispo;
+
+        return $this;
+    }
+
+    /**
+     * Get programmeDeDispo
+     *
+     * @return \LGP\UserBundle\Entity\ProgrammeDeDispo
+     */
+    public function getProgrammeDeDispo()
+    {
+        return $this->programmeDeDispo;
+    }
 }
