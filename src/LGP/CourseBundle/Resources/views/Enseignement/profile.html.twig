@@ -136,7 +136,7 @@
                                 {% for ens_cours in params.enseignementRep.getCoursByProf(prof) %}
                                     <li class="list-group-item">
                                         <b>
-                                            <a href=" {{ path('lgp_course_find_prof',{'slug':ens_cours.cours.slug}) }} "
+                                            <a href=" {{ path('lgp_course_find_prof_course',{'slug_course':ens_cours.cours.slug}) }} "
                                                title="">
                                                 {{ ens_cours.cours.intitule }}
                                             </a>

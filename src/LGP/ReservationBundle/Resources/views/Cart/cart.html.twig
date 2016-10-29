@@ -9,17 +9,18 @@
     {% set panier = params.panier %}
     {% set prixReservation = 0 %}
     <div class="bg-grey">
+        {% include 'LGPReservationBundle:Reservation:etapes.html.twig' %}
         <div class="content-wrapper">
 
             <div class="container">
-                {% include 'LGPReservationBundle:Reservation:etapes.html.twig' %}
                 <br><br>
                 <h1 class="panier-title">
                     VOTRE PANIER 
-                    {% if panier is not null and not panier.items is empty %}
-                        : {{panier.items | length}} Profs 
-                    {% endif %}
+                    
                 </h1>
+                <h3 class="panier-subtitle">Recapitulatif de la commande - <i>Votre panier contient {% if panier is not null and not panier.items is empty %}
+                        : {{panier.items | length}} Profs 
+                    {% endif %} </i></h3>
                 <div class="row">
                     <div class="col-md-12">
                         {% for message in app.session.flashBag.get('warning') %}
@@ -35,9 +36,9 @@
                     </div>
                     <div class="col-md-12">
                         {% if panier is not null and panier.items | length != 0 %}
-                            <table class="table table-hover table-striped">
+                            <table class="table table-hover table-bordered">
                                 <thead>
-                                <th style="width:25%"></th>
+                                <th style="width:15%"></th>
                                 <th style="width:40%; text-align:center;">Cours</th>
                                 <th style="width:20%; text-align:center;">Sous-Total</th>
                                 <th style="width:5%"></th>
