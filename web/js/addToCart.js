@@ -155,8 +155,8 @@ $(function () {
         var dateDebut = $("#reservation-startdate").val();
         var nbApprenants = $("#nbApprenants option:selected").val();
         var lieuDeCours = $("#lieuDeCours option:selected").val();
-        var ville = $("#ville").val();
-        var quartier = $("#quartier").val();
+        var ville = $("#ville_detail option:selected").val();
+        var quartier = $("#quartier_detail option:selected").val();
         var prixTotal = $("#prixTotal").text();
 //        var joursDeCoursSelectionnes = {};
 //        nbJours = 0;
@@ -214,12 +214,14 @@ $(function () {
 
     $("#paiementForm").submit(function (event) {
         event.preventDefault();
-        var paiement = $("#paiement-frequence option:selected").val();
+        var paiementFrequence = $("#paiement-frequence option:selected").val();
+        var paiementMode = $("#paiement-mode option:selected").val();
+        var paiementPeriod = $("#paiement-period option:selected").val();
 
         $.ajax({
             method: "GET",
             url: Routing.generate('lgp_reservation_cart_update_paiement'),
-            data: "frequence_paiement=" + paiement,
+            data: "frequence_paiement=" + paiementFrequence +"&mode_paiement="+paiementMode+"&period_paiement="+ paiementPeriod,
             success: function (answer) {
                 console.log(answer);
                 if (answer == "success") {

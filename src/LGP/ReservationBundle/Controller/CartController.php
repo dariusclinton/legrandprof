@@ -107,7 +107,9 @@ class CartController extends Controller
     {
         if ($request->isXmlHttpRequest()) {
             //recuperation des params de la requete
-            $paiement = $request->query->get('frequence_paiement');
+            $paiementFrequence = $request->query->get('frequence_paiement');
+            $paiementMode = $request->query->get('mode_paiement');
+            $paiementPeriod = $request->query->get('period_paiement');
 
             $session = $request->getSession();
             if (!$session->has('panier')) {
@@ -118,7 +120,9 @@ class CartController extends Controller
                 $session->set('panier', new Cart());
             }
 
-            $panier->setPaiementFrequence($paiement);
+            $panier->setPaiementFrequence($paiementFrequence);
+            $panier->setPaiementMode($paiementMode);
+            $panier->setPaiementPeriod($paiementPeriod);
             $session->set('panier', $panier);
 
             return new JsonResponse('success');

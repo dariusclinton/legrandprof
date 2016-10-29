@@ -41,6 +41,46 @@ class Reservation {
      * )
      */
     private $frequencePaiement;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mode_paiement", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
+     */
+    private $modePaiement;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="periode_paiement", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage ="La longueur doit être au moins de 3 caractères",
+     *     maxMessage="La longueur doit être au plus de 255 caractères"
+     * )
+     */
+    private $periodePaiement;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer", nullable=false)
+     * @Assert\NotBlank(message="Ce champs est obligatoire")
+     * @Assert\Range(min=0, minMessage="Vous devez entrer un nombre positif", invalidMessage="vous devez entrer un nombre")
+     */
+    private $montant;
+
+
     
     /**
      * @var \Datetime
@@ -254,5 +294,77 @@ class Reservation {
     public function getReservationEnseignements()
     {
         return $this->reservationEnseignements;
+    }
+
+    /**
+     * Set modePaiement
+     *
+     * @param string $modePaiement
+     *
+     * @return Reservation
+     */
+    public function setModePaiement($modePaiement)
+    {
+        $this->modePaiement = $modePaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get modePaiement
+     *
+     * @return string
+     */
+    public function getModePaiement()
+    {
+        return $this->modePaiement;
+    }
+
+    /**
+     * Set periodePaiement
+     *
+     * @param string $periodePaiement
+     *
+     * @return Reservation
+     */
+    public function setPeriodePaiement($periodePaiement)
+    {
+        $this->periodePaiement = $periodePaiement;
+
+        return $this;
+    }
+
+    /**
+     * Get periodePaiement
+     *
+     * @return string
+     */
+    public function getPeriodePaiement()
+    {
+        return $this->periodePaiement;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     *
+     * @return Reservation
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer
+     */
+    public function getMontant()
+    {
+        return $this->montant;
     }
 }

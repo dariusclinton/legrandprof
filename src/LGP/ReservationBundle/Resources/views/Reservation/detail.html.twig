@@ -166,8 +166,12 @@
                                         <div class="col-md-3">
                                             <b>Ville</b>
                                         </div>
+                                        <input id="prof_id" type="hidden" value="{{ params.prof.id }}">
+                                        <input id="prof_ville" type="hidden" value="{{ params.prof.ville }}">
                                         <div class="col-md-3 input-group">
-                                            <input type="text" id="ville" name="" class="form-control" placeholder="ville" required>
+                                            <select id="ville_detail" name="ville" class="form-control" autocomplete="off" spellcheck="off" data-onload="updateCity()" required>
+                                                <option value="" disabled selected>Sélectionnez une ville</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -175,7 +179,9 @@
                                             <b>Quartier</b>
                                         </div>
                                         <div class="col-md-3 input-group">
-                                            <input type="text" id="quartier" name="" class="form-control" placeholder="quartier" required>
+                                            <select id="quartier_detail" name="quartier" class="form-control" autocomplete="off" spellcheck="off" required>
+                                                <option value="" disabled selected>Sélectionnez un quartier</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
