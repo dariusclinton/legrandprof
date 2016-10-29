@@ -2,6 +2,7 @@
 
 namespace LGP\CourseBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,9 +20,11 @@ class CoursSearchCityType extends AbstractType
         $builder
             ->add('ville', EntityType::class, array(
                     'class' => 'LGPUserBundle:Quartier',
-                    'choice_label' => function ($quartier) {
-                        return $quartier->getVille();
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('q')
+                            ->groupBy('q.ville');
                     },
+                    'choice_label' => 'ville',
                     'choice_value' => 'ville',
                     'required' => true,
                     'placeholder' => 'Sélectionnez une ville'
