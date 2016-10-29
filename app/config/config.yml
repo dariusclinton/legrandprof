@@ -169,6 +169,8 @@ sonata_admin:
                     - lgp.admin.parent
                     - lgp.admin.quartier_cible
                     - lgp.admin.message
+                    - lgp.admin.jour_dispo
+                    - lgp.admin.horaire
             lgp_admin.group.cours:
                 label: Cours
                 items:

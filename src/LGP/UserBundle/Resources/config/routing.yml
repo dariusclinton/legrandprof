@@ -1,5 +1,5 @@
 lgp_user_homepage:
-    path:     /
+    path:     /users
     defaults: { _controller: LGPUserBundle:Main:index }
     options:
         expose: true
@@ -217,3 +217,15 @@ lgp_user_programme_et_jours_de_cours_voir:
     requirements:
         id: \d+
 
+# Heures de disponibilites
+lpg_user_prof_disponibilite:
+    path: /disponibilites
+    defaults: { _controller: LGPUserBundle:Disponibilite:index }
+
+lpg_user_prof_disponibilite_edit:
+    path: /disponibilites/edit
+    defaults: { _controller: LGPUserBundle:Disponibilite:edit }
+
+lpg_user_prof_disponibilite_add:
+    path: /disponibilites/add
+    defaults: { _controller: LGPUserBundle:Disponibilite:add }
