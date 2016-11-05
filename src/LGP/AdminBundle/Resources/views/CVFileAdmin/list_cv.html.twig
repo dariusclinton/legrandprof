@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% if object.webPath is not null %}
+        (<a href="{{ asset(object.webPath) }}" target="_blank">Voir le CV</a>)
+    {% endif %}
+{% endblock %}

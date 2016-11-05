@@ -16,7 +16,7 @@
         <div class="row">
           
           <div class="col-md-12">
-            {% if reservation_enseignements|length <= 0 %}
+            {% if all_reservations_enseignements|length <= 0 %}
               <div class="notifications-block">
                 <div class="notifications-header">Mes demandes de cours</div>
                 <div class="notifications-content">
@@ -43,25 +43,25 @@
                         </tr>
                       </thead> 
                       <tbody>
-                        {% for res_enseigns in reservation_enseignements %}
-                          {% for res_ens in res_enseigns %}
-                            {% if res_ens.reservation.isValidee %}
+                        {% for reservation_enseignements in all_reservations_enseignements %}
+                          {% for entree in reservation_enseignements %}
+                            {% if entree.reservation.isValidee %}
                               <tr>
                                 <td>
-                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.reservation.dateReservation|date('d/m/Y') }}</a>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': entree.id}) }}">{{ entree.reservation.dateReservation|date('d/m/Y') }}</a>
                                 </td>
                                 <td>
-                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.cours.intitule }}</a>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': entree.id}) }}">{{ entree.enseignement.cours.intitule }}</a>
                                 </td>
                                 <td>
-                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': res_ens.id}) }}">{{ res_ens.enseignement.classe }}</a>
+                                  <a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': entree.id}) }}">{{ entree.enseignement.classe }}</a>
                                 </td>
-                                <td>{{ res_ens.nbApprenants }}</td>
-                                <td>{{ res_ens.dateDebut|date('d/m/Y') }}</td>
-                                <td>{{ res_ens.lieuDeCours }}</td>
-                                <td>{{ res_ens.ville }}</td>
-                                <td>{{ res_ens.quartier }}</td>
-                                <td>{{ res_ens.reservation.frequencePaiement }}</td>
+                                <td>{{ entree.nbApprenants }}</td>
+                                <td>{{ entree.dateDebut|date('d/m/Y') }}</td>
+                                <td>{{ entree.lieuDeCours }}</td>
+                                <td>{{ entree.ville }}</td>
+                                <td>{{ entree.quartier }}</td>
+                                <td>{{ entree.reservation.frequencePaiement }}</td>
                               </tr>
                             {% endif %}
                           {% endfor %}

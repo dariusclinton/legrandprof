@@ -40,7 +40,7 @@ class AvisType extends AbstractType
             ))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

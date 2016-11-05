@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Message
@@ -37,6 +38,7 @@ class Message
      * @var string
      *
      * @ORM\Column(name="objet", type="string", length=255)
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $objet;
 
@@ -44,6 +46,7 @@ class Message
      * @var string
      *
      * @ORM\Column(name="contenu", type="text", nullable=true)
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $contenu;
 

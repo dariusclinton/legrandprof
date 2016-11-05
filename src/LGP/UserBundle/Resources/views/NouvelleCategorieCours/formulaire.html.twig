@@ -6,7 +6,7 @@
     <div class='row'>
         <div class='col-md-3'>{{ form_label(form.intitule, "Intitulé de la catégorie", {'label_attr': {'class': 'control-label'}}) }}</div>
         <div class='col-md-4'>
-            {{ form_widget(form.intitule, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.intitule, {'attr': {'class': 'form-control', 'maxlength': 300}}) }}
             {{ form_errors(form.intitule) }}
         </div>
     </div>
@@ -16,7 +16,7 @@
     <div class='row'>
         <div class='col-md-3'>{{ form_label(form.description, "Description", {'label_attr': {'class': 'control-label'}}) }}</div>
         <div class='col-md-4'>
-            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control',  'maxlength': 500}}) }}
             {{ form_errors(form.description) }}
         </div>
     </div>
@@ -24,6 +24,6 @@
 
 {{ form_rest(form) }}
 
-<input type="submit" class="btn btn-primary" value='Soumettre'/>
+<input type="submit" class="btn btn-primary" value='Enregistrer'/>
 
 {{ form_end(form) }}

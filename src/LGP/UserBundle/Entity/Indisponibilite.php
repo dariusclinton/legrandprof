@@ -47,6 +47,7 @@ class Indisponibilite
      * @var string
      *
      * @ORM\Column(name="motif", type="text", nullable=true)
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $motif;
 

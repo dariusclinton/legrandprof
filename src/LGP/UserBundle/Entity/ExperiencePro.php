@@ -33,6 +33,7 @@ class ExperiencePro
      * @var string
      *
      * @ORM\Column(name="etablissement", type="string", length=255)
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $etablissement;
 
@@ -40,6 +41,7 @@ class ExperiencePro
      * @var string
      *
      * @ORM\Column(name="poste", type="string", length=255)
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $poste;
 
@@ -47,6 +49,7 @@ class ExperiencePro
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="datetime")
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $dateDebut;
 
@@ -54,6 +57,7 @@ class ExperiencePro
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin", type="datetime")
+     * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
      */
     private $dateFin;
 

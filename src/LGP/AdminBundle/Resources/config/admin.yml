@@ -26,13 +26,21 @@ services:
               manager_type: orm
               label: Parents
 
+    lgp.admin.remuneration:
+        class: LGP\AdminBundle\Admin\User\RemunerationAdmin
+        arguments: [~, LGP\UserBundle\Entity\Remuneration, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Rémunérations
+
     lgp.admin.quartier_cible:
             class: LGP\AdminBundle\Admin\User\QuartierAdmin
             arguments: [~, LGP\UserBundle\Entity\Quartier, ~]
             tags:
                 - name: sonata.admin
                   manager_type: orm
-                  label: Quartiers cibles
+                  label: Quartiers dans lesquels les profs peuvent donner cours
 
     lgp.admin.message:
             class: LGP\AdminBundle\Admin\User\MessageAdmin
@@ -58,6 +66,70 @@ services:
                   manager_type: orm
                   label: Horaires
 
+    lgp.admin.indisponibilite:
+            class: LGP\AdminBundle\Admin\User\IndisponibiliteAdmin
+            arguments: [~, LGP\UserBundle\Entity\Indisponibilite, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Indisponibilités
+
+    lgp.admin.anomalie:
+            class: LGP\AdminBundle\Admin\User\AnomalieAdmin
+            arguments: [~, LGP\UserBundle\Entity\Anomalie, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Anomalies du système
+
+    lgp.admin.avis:
+            class: LGP\AdminBundle\Admin\User\AvisAdmin
+            arguments: [~, LGP\UserBundle\Entity\Avis, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Avis des utilisateurs
+
+    lgp.admin.cvfile:
+            class: LGP\AdminBundle\Admin\User\CVFileAdmin
+            arguments: [~, LGP\UserBundle\Entity\CVFile, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: CV des profs
+
+    lgp.admin.diplome:
+            class: LGP\AdminBundle\Admin\User\DiplomeAdmin
+            arguments: [~, LGP\UserBundle\Entity\Diplome, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Diplômes des profs
+
+    lgp.admin.experiencepro:
+            class: LGP\AdminBundle\Admin\User\ExperienceProAdmin
+            arguments: [~, LGP\UserBundle\Entity\ExperiencePro, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Expériences professionnelles des profs
+
+    lgp.admin.imageprofil:
+            class: LGP\AdminBundle\Admin\User\ImageAdmin
+            arguments: [~, LGP\UserBundle\Entity\Image, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Images de profil des utilisateurs
+
+    lgp.admin.nouvellecategoriecours:
+            class: LGP\AdminBundle\Admin\User\NouvelleCategorieCoursAdmin
+            arguments: [~, LGP\UserBundle\Entity\NouvelleCategorieCours, ~]
+            tags:
+                - name: sonata.admin
+                  manager_type: orm
+                  label: Catégories de cours proposées
+
 # Reservation
     lgp.admin.reservation:
         class: LGP\AdminBundle\Admin\Reservation\ReservationAdmin
@@ -67,13 +139,6 @@ services:
               manager_type: orm
               label: Réservations
 
-    lgp.admin.remuneration:
-        class: LGP\AdminBundle\Admin\Reservation\RemunerationAdmin
-        arguments: [~, LGP\UserBundle\Entity\Remuneration, ~]
-        tags:
-            - name: sonata.admin
-              manager_type: orm
-              label: Rémunérations
 
     lgp.admin.jourdecours:
         class: LGP\AdminBundle\Admin\Reservation\JourDeCoursAdmin
@@ -90,6 +155,22 @@ services:
             - name: sonata.admin
               manager_type: orm
               label: Réservation enseignement
+
+    lgp.admin.paiement:
+        class: LGP\AdminBundle\Admin\Reservation\PaiementAdmin
+        arguments: [~, LGP\ReservationBundle\Entity\Paiement, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Paiements de factures
+
+    lgp.admin.facture:
+        class: LGP\AdminBundle\Admin\Reservation\FactureAdmin
+        arguments: [~, LGP\ReservationBundle\Entity\Facture, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Factures
 
 
 # Cours
@@ -124,3 +205,27 @@ services:
             - name: sonata.admin
               manager_type: orm
               label: Programmes de cours
+
+    lgp.admin.entreeprogramme:
+        class: LGP\AdminBundle\Admin\Course\EntreeProgrammeAdmin
+        arguments: [~, LGP\CourseBundle\Entity\EntreeProgramme, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Entrées des programmes de cours
+
+    lgp.admin.evaluation:
+        class: LGP\AdminBundle\Admin\Course\EvaluationAdmin
+        arguments: [~, LGP\CourseBundle\Entity\Evaluation, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Evaluation
+
+    lgp.admin.seancedecours:
+        class: LGP\AdminBundle\Admin\Course\SeanceDeCoursAdmin
+        arguments: [~, LGP\CourseBundle\Entity\SeanceDeCours, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              label: Séance de cours

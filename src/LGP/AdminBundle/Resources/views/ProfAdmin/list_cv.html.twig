@@ -2,6 +2,6 @@
 
 {% block field %}
     {% if object.CVFile is not null %}
-        (<a href="{{ asset(object.CVFile.webPath) }}" target="blank">Voir le CV</a>)
+        (<a href="{{ asset(object.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
     {% endif %}
 {% endblock %}

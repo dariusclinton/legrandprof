@@ -20,7 +20,9 @@ class ProfileType extends AbstractType {
         ))
         ->add('dateNaissance', BirthdayType::class, array(
           'years'  => range(1950, 2010),
-          'placeholder' => '--',
+          'placeholder' => array(
+            'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'
+          ),
         ))
         ->add('sexe', ChoiceType::class, array(
           'choices'     => array(

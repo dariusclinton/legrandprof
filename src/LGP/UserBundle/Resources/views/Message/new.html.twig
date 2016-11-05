@@ -1,7 +1,7 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-  Envoi de message - {{ parent() }}
+  Envoi d'un nouveau message - {{ parent() }}
 {% endblock %}
 
 {% block header_submenu %}
@@ -22,7 +22,7 @@
                                                     <div class="title">Un titre</div>
                                                     
                                                     <div class="form-group">
-                                                      {{ form_widget(form.objet, {'attr': {'class':'form-control border-none','placeholder':'Objet du message'}}) }}
+                                                      {{ form_widget(form.objet, {'attr': {'class':'form-control border-none','placeholder':'Objet du message', 'maxlength': 200}}) }}
                                                       {{ form_errors(form.objet)}}
                                                     </div>
 
@@ -32,7 +32,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                      {{ form_widget(form.contenu, {'attr': {'class':'form-control border-none','placeholder':'Entrez votre message'}}) }}
+                                                      {{ form_widget(form.contenu, {'attr': {'class':'form-control border-none','placeholder':'Entrez votre message', 'maxlength': 999}}) }}
                                                       {{ form_errors(form.contenu)}}
                                                     </div>
 

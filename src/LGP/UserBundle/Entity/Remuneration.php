@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Remuneration
@@ -12,152 +13,155 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Remuneration
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="montant", type="integer")
-     */
-    private $montant;
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="montant", type="integer")
+   * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
+   */
+  private $montant;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mode_paiement", type="string", length=255)
-     */
-    private $modePaiement;
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="mode_paiement", type="string", length=255)
+   * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
+   */
+  private $modePaiement;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_remuneration", type="datetime")
-     */
-    private $dateRemuneration;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Prof", inversedBy="remunerations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $prof;
-    
-    /**
-     * Constructeur
-     */
-    public function __construct() {
-      $this->dateRemuneration = new \DateTime();
-    }
+  /**
+   * @var \DateTime
+   *
+   * @ORM\Column(name="date_remuneration", type="datetime")
+   */
+  private $dateRemuneration;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * @ORM\ManyToOne(targetEntity="Prof", inversedBy="remunerations")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $prof;
 
-    /**
-     * Set montant
-     *
-     * @param integer $montant
-     *
-     * @return Remuneration
-     */
-    public function setMontant($montant)
-    {
-        $this->montant = $montant;
-    
-        return $this;
-    }
+  /**
+   * Constructeur
+   */
+  public function __construct()
+  {
+    $this->dateRemuneration = new \DateTime();
+  }
 
-    /**
-     * Get montant
-     *
-     * @return integer
-     */
-    public function getMontant()
-    {
-        return $this->montant;
-    }
+  /**
+   * Get id
+   *
+   * @return integer
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Set modePaiement
-     *
-     * @param string $modePaiement
-     *
-     * @return Remuneration
-     */
-    public function setModePaiement($modePaiement)
-    {
-        $this->modePaiement = $modePaiement;
-    
-        return $this;
-    }
+  /**
+   * Set montant
+   *
+   * @param integer $montant
+   *
+   * @return Remuneration
+   */
+  public function setMontant($montant)
+  {
+    $this->montant = $montant;
 
-    /**
-     * Get modePaiement
-     *
-     * @return string
-     */
-    public function getModePaiement()
-    {
-        return $this->modePaiement;
-    }
+    return $this;
+  }
 
-    /**
-     * Set dateRemuneration
-     *
-     * @param \DateTime $dateRemuneration
-     *
-     * @return Remuneration
-     */
-    public function setDateRemuneration($dateRemuneration)
-    {
-        $this->dateRemuneration = $dateRemuneration;
-    
-        return $this;
-    }
+  /**
+   * Get montant
+   *
+   * @return integer
+   */
+  public function getMontant()
+  {
+    return $this->montant;
+  }
 
-    /**
-     * Get dateRemuneration
-     *
-     * @return \DateTime
-     */
-    public function getDateRemuneration()
-    {
-        return $this->dateRemuneration;
-    }
+  /**
+   * Set modePaiement
+   *
+   * @param string $modePaiement
+   *
+   * @return Remuneration
+   */
+  public function setModePaiement($modePaiement)
+  {
+    $this->modePaiement = $modePaiement;
 
-    /**
-     * Set prof
-     *
-     * @param \LGP\UserBundle\Entity\Prof $prof
-     *
-     * @return Remuneration
-     */
-    public function setProf(\LGP\UserBundle\Entity\Prof $prof)
-    {
-        $this->prof = $prof;
-    
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get prof
-     *
-     * @return \LGP\UserBundle\Entity\Prof
-     */
-    public function getProf()
-    {
-        return $this->prof;
-    }
+  /**
+   * Get modePaiement
+   *
+   * @return string
+   */
+  public function getModePaiement()
+  {
+    return $this->modePaiement;
+  }
+
+  /**
+   * Set dateRemuneration
+   *
+   * @param \DateTime $dateRemuneration
+   *
+   * @return Remuneration
+   */
+  public function setDateRemuneration($dateRemuneration)
+  {
+    $this->dateRemuneration = $dateRemuneration;
+
+    return $this;
+  }
+
+  /**
+   * Get dateRemuneration
+   *
+   * @return \DateTime
+   */
+  public function getDateRemuneration()
+  {
+    return $this->dateRemuneration;
+  }
+
+  /**
+   * Set prof
+   *
+   * @param \LGP\UserBundle\Entity\Prof $prof
+   *
+   * @return Remuneration
+   */
+  public function setProf(\LGP\UserBundle\Entity\Prof $prof)
+  {
+    $this->prof = $prof;
+
+    return $this;
+  }
+
+  /**
+   * Get prof
+   *
+   * @return \LGP\UserBundle\Entity\Prof
+   */
+  public function getProf()
+  {
+    return $this->prof;
+  }
 }

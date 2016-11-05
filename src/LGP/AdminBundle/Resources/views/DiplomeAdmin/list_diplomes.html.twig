@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+  (<a href="{{ asset(object.webPath) }}" target="_blank">{{ object.intitule }}</a>)
+{% endblock %}

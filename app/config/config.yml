@@ -167,10 +167,20 @@ sonata_admin:
                     - lgp.admin.user
                     - lgp.admin.prof
                     - lgp.admin.parent
+                    - lgp.admin.remuneration
                     - lgp.admin.quartier_cible
                     - lgp.admin.message
                     - lgp.admin.jour_dispo
                     - lgp.admin.horaire
+                    - lgp.admin.indisponibilite
+                    - lgp.admin.anomalie
+                    - lgp.admin.avis
+                    - lgp.admin.cvfile
+                    - lgp.admin.diplome
+                    - lgp.admin.experiencepro
+                    - lgp.admin.imageprofil
+                    - lgp.admin.nouvellecategoriecours
+
             lgp_admin.group.cours:
                 label: Cours
                 items:
@@ -178,13 +188,19 @@ sonata_admin:
                     - lgp.admin.cours
                     - lgp.admin.enseignement
                     - lgp.admin.programmedecours
+                    - lgp.admin.entreeprogramme
+                    - lgp.admin.evaluation
+                    - lgp.admin.seancedecours
+
+
             lgp_admin.group.reservation:
                 label: Réservations
                 items:
                     - lgp.admin.reservation
-                    - lgp.admin.remuneration
                     - lgp.admin.jourdecours
                     - lgp.admin.reservationenseignement
+                    - lgp.admin.paiement
+                    - lgp.admin.facture
 
 stof_doctrine_extensions:
     orm:

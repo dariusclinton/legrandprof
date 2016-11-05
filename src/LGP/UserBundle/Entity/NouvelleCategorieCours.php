@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * NouvelleCategorieCours
@@ -12,151 +13,154 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class NouvelleCategorieCours
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="intitule", type="string", length=255)
-     */
-    private $intitule;
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="intitule", type="string", length=255)
+   * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
+   */
+  private $intitule;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
-    
-    /**
-     * @var datetime
-     *
-     * @ORM\Column(name="dateProposition", type="datetime")
-     */
-    private $dateProposition;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="User")
-     */
-    private $user;
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="description", type="text", nullable=true)
+   * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
+   */
+  private $description;
 
-    /**
-     * Constructeur
-     */
-    public function __construct() {
-      $this->dateProposition = new \DateTime();
-    }
+  /**
+   * @var datetime
+   *
+   * @ORM\Column(name="dateProposition", type="datetime")
+   */
+  private $dateProposition;
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * @ORM\ManyToOne(targetEntity="User")
+   */
+  private $user;
 
-    /**
-     * Set intitule
-     *
-     * @param string $intitule
-     *
-     * @return NouvelleCategorieCours
-     */
-    public function setIntitule($intitule)
-    {
-        $this->intitule = $intitule;
+  /**
+   * Constructeur
+   */
+  public function __construct()
+  {
+    $this->dateProposition = new \DateTime();
+  }
 
-        return $this;
-    }
+  /**
+   * Get id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * Get intitule
-     *
-     * @return string
-     */
-    public function getIntitule()
-    {
-        return $this->intitule;
-    }
+  /**
+   * Set intitule
+   *
+   * @param string $intitule
+   *
+   * @return NouvelleCategorieCours
+   */
+  public function setIntitule($intitule)
+  {
+    $this->intitule = $intitule;
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return NouvelleCategorieCours
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+    return $this;
+  }
 
-        return $this;
-    }
+  /**
+   * Get intitule
+   *
+   * @return string
+   */
+  public function getIntitule()
+  {
+    return $this->intitule;
+  }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+  /**
+   * Set description
+   *
+   * @param string $description
+   *
+   * @return NouvelleCategorieCours
+   */
+  public function setDescription($description)
+  {
+    $this->description = $description;
 
-    /**
-     * Set prof
-     *
-     * @param \LGP\UserBundle\Entity\User $user
-     *
-     * @return NouvelleCategorieCours
-     */
-    public function setUser(\LGP\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
+    return $this;
+  }
 
-        return $this;
-    }
+  /**
+   * Get description
+   *
+   * @return string
+   */
+  public function getDescription()
+  {
+    return $this->description;
+  }
 
-    /**
-     * Get prof
-     *
-     * @return \LGP\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+  /**
+   * Set prof
+   *
+   * @param \LGP\UserBundle\Entity\User $user
+   *
+   * @return NouvelleCategorieCours
+   */
+  public function setUser(\LGP\UserBundle\Entity\User $user = null)
+  {
+    $this->user = $user;
 
-    /**
-     * Set dateProposition
-     *
-     * @param \DateTime $dateProposition
-     *
-     * @return NouvelleCategorieCours
-     */
-    public function setDateProposition($dateProposition)
-    {
-        $this->dateProposition = $dateProposition;
-    
-        return $this;
-    }
+    return $this;
+  }
 
-    /**
-     * Get dateProposition
-     *
-     * @return \DateTime
-     */
-    public function getDateProposition()
-    {
-        return $this->dateProposition;
-    }
+  /**
+   * Get prof
+   *
+   * @return \LGP\UserBundle\Entity\User
+   */
+  public function getUser()
+  {
+    return $this->user;
+  }
+
+  /**
+   * Set dateProposition
+   *
+   * @param \DateTime $dateProposition
+   *
+   * @return NouvelleCategorieCours
+   */
+  public function setDateProposition($dateProposition)
+  {
+    $this->dateProposition = $dateProposition;
+
+    return $this;
+  }
+
+  /**
+   * Get dateProposition
+   *
+   * @return \DateTime
+   */
+  public function getDateProposition()
+  {
+    return $this->dateProposition;
+  }
 }

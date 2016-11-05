@@ -3,7 +3,7 @@
 {% block field %}
     {% for diplome in object.diplomes %}
         {% if diplome.fileName is not null %}
-            (<a href="{{ asset(diplome.webPath) }}" target="blank">{{ diplome.intitule }}</a>)
+            (<a href="{{ asset(diplome.webPath) }}" target="_blank">{{ diplome.intitule }}</a>)
         {% endif %}
     {% endfor %}
 {% endblock %}

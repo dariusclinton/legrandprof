@@ -38,7 +38,8 @@ class ProfileProfFormType extends AbstractType {
             'Marié(e)'    => 'Marié(e)',
             'Divorcé(e)'  => 'Divorcé(e)'
           ),
-          'placeholder' => '--'
+          'placeholder' => '--',
+          'required' => false
         ))
         ->add('niveauScolaire', ChoiceType::class, array(
           'choices'     => array(

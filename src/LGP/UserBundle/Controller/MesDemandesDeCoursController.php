@@ -29,15 +29,15 @@ class MesDemandesDeCoursController extends Controller {
     // On recupere tous les enseignements du prof
     $enseignements = $prof->getEnseignements();
     
-    $reservation_enseignements = array();
+    $all_reservations_enseignements = array();
     
     // On recupere toutes les reservations qui concerne les enseignements du prof
     foreach ($enseignements as $enseignement) {
-      $reservation_enseignements[] = $enseignement->getReservationEnseignements();
+      $all_reservations_enseignements[] = $enseignement->getReservationEnseignements();
     }
 
     return $this->render('LGPUserBundle:MesDemandesDeCours:index.html.twig', array(
-      'reservation_enseignements' => $reservation_enseignements
+      'all_reservations_enseignements' => $all_reservations_enseignements
     ));
   }
 

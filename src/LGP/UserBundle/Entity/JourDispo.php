@@ -3,6 +3,7 @@
 namespace LGP\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * JourDispo
@@ -25,6 +26,7 @@ class JourDispo
    * @var string
    *
    * @ORM\Column(name="intitule", type="string", length=255, unique=true)
+   * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
    */
   private $intitule;
 

@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-md-3">{{ form_label(form.motif, 'Motif', {'label_attr': {}}) }} : </div>
         <div class="col-md-4">
-            {{ form_widget(form.motif, {'attr': {'class':'form-control'}}) }}
+            {{ form_widget(form.motif, {'attr': {'class':'form-control', 'maxlength': 500}}) }}
             {{ form_errors(form.motif) }}
         </div>
     </div>
