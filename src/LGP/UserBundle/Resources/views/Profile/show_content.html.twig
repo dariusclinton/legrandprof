@@ -29,66 +29,65 @@
       </div>
 
       <div class="col-md-9">
-        {% if is_granted('ROLE_PROF') %}
-        <div class="alert alert-info">
-          <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-          </button>
-          <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
-          <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
-        </div>
+        {% if is_granted('ROLE_PROF') and app.user.avanceeProfil < 100 %}
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
+            <p>{{ ga_remplissage_profil }}  <a href="{{ path('fos_user_profile_edit') }}">Complétez votre profil</a></p>
+          </div>
         {% endif %}
-        <div class="notifications-block">
-          <div class="notifications-header">
-            Hello
-            {% if app.user.prenoms is not null %}
-              {{ app.user.prenoms }}
-            {% else %}
-              {{ app.user.nom }}
-            {% endif %}
-          </div>
-          <div class="notifications-content">
-            <h1>
-              Hello
-              {% if app.user.prenoms is not null %}
-                {{ app.user.prenoms }}
-              {% else %}
-                {{ app.user.nom }}
-              {% endif %}
-            </h1>
-          </div>
-        </div>
-
+        {#<div class="notifications-block">#}
+          {#<div class="notifications-header">#}
+            {#Hello#}
+            {#{% if app.user.prenoms is not null %}#}
+              {#{{ app.user.prenoms }}#}
+            {#{% else %}#}
+              {#{{ app.user.nom }}#}
+            {#{% endif %} !#}
+          {#</div>#}
+          {#<div class="notifications-content">#}
+            {#<h1>#}
+              {#Hello#}
+              {#{% if app.user.prenoms is not null %}#}
+                {#{{ app.user.prenoms }}#}
+              {#{% else %}#}
+                {#{{ app.user.nom }}#}
+              {#{% endif %}#}
+            {#</h1>#}
+          {#</div>#}
+        {#</div>#}
         <div class="notifications-block">
 
           <div class="notifications-header">
             Qui suis je ?
           </div>
           <div class="notifications-content">
-            <p>Email: {{ app.user.email }}</p>
-            <p>Nom: {{ app.user.nom }}</p>
-            <p>Prenoms: {{ app.user.prenoms }}</p>
-            <p>Date de naissance: {{ app.user.dateNaissance | date('d/m/y') }}</p>
+            <p><b>Email</b>: {{ app.user.email }}</p>
+            <p><b>Nom</b>: {{ app.user.nom }}</p>
+            <p><b>Prenoms</b>: {{ app.user.prenoms }}</p>
+            <p><b>Date de naissance</b>: {{ app.user.dateNaissance | date('d/m/Y') }}</p>
             <p>
-              Sexe:
+              <b>Sexe</b>:
               {% if app.user.sexe=='m' %}
                 Masculin
               {% else %}
                 Féminin
               {% endif %}
             </p>
-            <p>Telephone: {{ app.user.telephone }}</p>
-            <p>Pays: {{ app.user.pays }}</p>
+            <p><b>Telephone</b>: {{ app.user.telephone }}</p>
+            <p><b>Pays</b>: {{ app.user.pays }}</p>
 
             {#Si profil prof#}
             {% if is_granted('ROLE_PROF') %}
-            <p>Ville: {{ app.user.ville }}</p>
-            <p>boite Postale: {{ app.user.boitePostale }}</p>
-            <p>Situation matrimoniale: {{ app.user.situationMatrimoniale }}</p>
-            <p>Niveau scolaire: {{ app.user.niveauScolaire }}</p>
-            <p>Nombre d'enfants: {{ app.user.nombreEnfants }}</p>
-            <p>Presentation: {{ app.user.presentation }}</p>
-            <p>Profession: {{ app.user.profession }}</p>
+            <p><b>Ville</b>: {{ app.user.ville }}</p>
+            <p><b>boite Postale</b>: {{ app.user.boitePostale }}</p>
+            <p><b>Situation matrimoniale</b>: {{ app.user.situationMatrimoniale }}</p>
+            <p><b>Niveau scolaire</b>: {{ app.user.niveauScolaire }}</p>
+            <p><b>Nombre d'enfants</b>: {{ app.user.nombreEnfants }}</p>
+            <p><b>Presentation</b>: {{ app.user.presentation }}</p>
+            <p><b>Profession</b>: {{ app.user.profession }}</p>
           </div>
         </div>
         <div class="notifications-block">
@@ -106,20 +105,28 @@
         <div class="notifications-block">
           <div class="notifications-header">Expérience professionnelle</div>
           <div class="notifications-content">
-            <ul>
+            <table class="table table-stiped table-hover">
+              <thead>
+              <tr>
+                <th>Poste occupé</th>
+                <th>Etablissement</th>
+                <th>Du</th>
+                <th>Au</th>
+                {#<th>Description</th>#}
+              </tr>
+              </thead>
+              <tbody>
               {% for experience in app.user.experiencePros %}
-                <li>
-                  {{ experience.poste }}
-                  à
-                  {{ experience.etablissement }}
-                  de
-                  {{ experience.dateDebut | date('d/m/y') }}
-                  à
-                  {{ experience.dateFin | date('d/m/y') }}
-                  {{ experience.description }}
-                </li>
+                <tr>
+                  <td>{{ experience.poste }}</td>
+                  <td>{{ experience.etablissement }}</td>
+                  <td>{{ experience.dateDebut | date('d/m/Y') }}</td>
+                  <td>{{ experience.dateFin | date('d/m/Y') }}</td>
+                  {#<td>{{ experience.description }}</td>#}
+                </tr>
               {% endfor %}
-            </ul>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="notifications-block">
@@ -148,17 +155,12 @@
             <br/>
           </div>
         </div>
-        <div class="notifications-block">
-          <div class="notifications-header">Rémunérations LeGrandProf <span
-                class="badge">{{ app.user.remunerations|length }}</span></div>
-          <div class="notifications-content">
-          </div>
-        </div>
+
         <div class="notifications-block">
           <div class="notifications-header">
             Emploi de temps de disponibilité
             {#<button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#disponibilite">#}
-              {#Editer#}
+            {#Editer#}
             {#</button>#}
           </div>
           <div class="notifications-content">

@@ -41,6 +41,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        ga_remplissage_profil: "%message_remplissage_profil%"
     form_themes:
 #        - 'bootstrap_3_layout.html.twig'
 #         - 'VichUploaderBundle:Form:fields.html.twig'
@@ -153,12 +155,12 @@ sonata_admin:
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.reservation, lgp_admin.group.cours]
+                    groups: [lgp_admin.group.user]
             -
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [lgp_admin.group.user]
+                    groups: [lgp_admin.group.reservation, lgp_admin.group.cours]
 
         groups:
             lgp_admin.group.user:

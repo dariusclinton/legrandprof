@@ -1,71 +1,108 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    Mon Tableau de bord - {{ parent() }}
+  Mon Tableau de bord - {{ parent() }}
 {% endblock %}
 
 {% block header_submenu %}
-    {{ include('LGPCoreBundle::header-submenu.html.twig') }}
+  {{ include('LGPCoreBundle::header-submenu.html.twig') }}
 {% endblock %}
 
 {% block body %}
 
-    <div class="bg-grey dashboard">
-        <div class="content-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="profile-block">
-                            {% if app.user.image is not null %}
-                                <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
-                            {% else %}
-                                <img src="{{ asset('uploads/profils/default.png') }}" alt="image utilisateur"
-                                     class="img-responsive"/>
-                            {% endif %}
-                        </div>
-                        <div class="infos-block">
-                            <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
-                            <p>
-                                <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
-                                <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
-                            </p>
-                            <center><a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter
-                                    profil</a><br><br>
-                                <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
-                                    de passe</a>
-                                </center>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-9">
-                        <div class="alert alert-warning">
-                            <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
-                            <p>Veuillez compléter votre profil pour être le plus sollicité par les apprenants/parents</p>
-                        </div>
-                        <div class="notifications-block">
-                            <div class="notifications-header">
-                                Hello Prof !
-                            </div>
-                        </div>
-                        <div class="notifications-block">
-                            <div class="notifications-header">Recommandation</div>
-                            <div class="notifications-content">Vous n'avez pas encore obtenu de recommandations.
-                                Sollicitez vos amis
-                                pour en obtenir dès à présent.
-                            </div>
-                        </div>
-                        <div class="notifications-block">
-                            <div class="notifications-header">Votre profil</div>
-                            <div class="notifications-content">Votre profil est incomplet, veuillez <a
-                                        href="{{ path('fos_user_profile_edit') }}">Compléter votre profil</a></div>
-                        </div>
-
-
-                    </div>
-                </div>
+  <div class="bg-grey dashboard">
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-block">
+              {% if app.user.image is not null %}
+                <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
+              {% else %}
+                <img src="{{ asset('uploads/profils/default.png') }}" alt="image utilisateur"
+                     class="img-responsive"/>
+              {% endif %}
             </div>
+            <div class="infos-block">
+              <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
+              <p>
+                <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
+                <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
+              </p>
+              <center><a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter
+                  profil</a><br><br>
+                <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
+                  de passe</a>
+              </center>
+
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="alert alert-info">
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
+              <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
+              <p>{{ ga_remplissage_profil }} <a href="{{ path('fos_user_profile_edit') }}">Complétez votre profil</a></p>
+            </div>
+            <div class="notifications-block">
+              <div class="notifications-header">
+                Hello Prof !
+              </div>
+              <div class="notifications-content">
+                <h1>
+                  Hello
+                  {% if app.user.prenoms is not null %}
+                    {{ app.user.prenoms }}
+                  {% else %}
+                    {{ app.user.nom }}
+                  {% endif %} !
+                </h1>
+              </div>
+            </div>
+            <div class="notifications-block">
+              <div class="notifications-header">Recommandations</div>
+              <div class="notifications-content">Vous n'avez pas encore obtenu de recommandations.
+                Sollicitez vos amis
+                pour en obtenir dès à présent.
+              </div>
+            </div>
+            <div class="notifications-block">
+              <div class="notifications-header">Rémunérations LeGrandProf <span
+                    class="badge">{{ app.user.remunerations|length }}</span></div>
+              <div class="notifications-content">
+                <table class="table table-striped table-hover">
+                  <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Montant (FCFA)</th>
+                    <th>Mode de paiement</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for remuneration in app.user.remunerations %}
+                    <tr>
+                      <td>{{ remuneration.dateRemuneration|date('d/m/Y') }}</td>
+                      <td>{{ remuneration.montant }}</td>
+                      <td>{{ remuneration.modePaiement }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="notifications-block">
+              <div class="notifications-header">Votre profil</div>
+              <div class="notifications-content">Votre profil est incomplet, veuillez
+
+            </div>
+
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
 {% endblock %}
