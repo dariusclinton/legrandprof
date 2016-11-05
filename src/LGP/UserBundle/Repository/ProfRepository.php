@@ -11,5 +11,5 @@ namespace LGP\UserBundle\Repository;
 
 class ProfRepository extends \Doctrine\ORM\EntityRepository
 {
-
+   
 }

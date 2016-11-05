@@ -8451,29 +8451,28 @@ $(function () {
     "use strict";
 
 
-
     /**
      * introLoader - Preloader
      */
-    $("#introLoader").introLoader({
-        animation: {
-            name: 'gifLoader',
-            options: {
-                ease: "easeInOutCirc",
-                style: 'dark bubble',
-                delayBefore: 500,
-                delayAfter: 0,
-                exitTime: 300
-            }
-        }
-    });
-
+    /*$("#introLoader").introLoader({
+     animation: {
+     name: 'gifLoader',
+     options: {
+     ease: "easeInOutCirc",
+     style: 'dark bubble',
+     delayBefore: 500,
+     delayAfter: 0,
+     exitTime: 300
+     }
+     }
+     });
+     */
 
 
     /**
      * Sticky Header
-     */
-    $(".container-wrapper").waypoint(function () {
+
+     $(".container-wrapper").waypoint(function () {
         $(".navbar").toggleClass("navbar-sticky-function");
         $(".navbar").toggleClass("navbar-sticky");
         return false;
@@ -8481,7 +8480,7 @@ $(function () {
 
 
 
-    /**
+     /**
      * Main Menu Slide Down Effect
      */
 
@@ -8496,18 +8495,18 @@ $(function () {
     });
 
     /**
-    * Header Dashboard slide Down
-    */
+     * Header Dashboard slide Down
+     */
 
-        // Mouse-enter dropdown
-       $('#dash li').on("mouseenter", function() {
-            $(this).find('ul').first().stop(true, true).delay(150).slideDown(300, 'easeInOutQuad');
-       });
+    // Mouse-enter dropdown
+    $('#dash li').on("mouseenter", function () {
+        $(this).find('ul').first().stop(true, true).delay(150).slideDown(300, 'easeInOutQuad');
+    });
 
-       // Mouse-leave dropdown
-       $('#dash li').on("mouseleave", function() {
-            $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
-       });
+    // Mouse-leave dropdown
+    $('#dash li').on("mouseleave", function () {
+        $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
+    });
 
 
     /**
@@ -8521,7 +8520,6 @@ $(function () {
     });
 
 
-
     /**
      * Icon Change on Collapse
      */
@@ -8529,10 +8527,9 @@ $(function () {
     $('.bootstarp-accordion, .bootstarp-toggle').on('show.bs.collapse', function (a) {
         $(a.target).prev('.panel-heading').addClass('active');
     })
-            .on('hide.bs.collapse', function (a) {
-                $(a.target).prev('.panel-heading').removeClass('active');
-            });
-
+        .on('hide.bs.collapse', function (a) {
+            $(a.target).prev('.panel-heading').removeClass('active');
+        });
 
 
     /**
@@ -8550,7 +8547,6 @@ $(function () {
     });
 
 
-
     /**
      * Smooth scroll to anchor
      */
@@ -8566,7 +8562,6 @@ $(function () {
             }
         }
     });
-
 
 
     /**
@@ -8606,17 +8601,16 @@ $(function () {
     }
 
 
-
     /**
      * select2 - custom select
-     */
-    $(".select2-single").select2({allowClear: true});
-    $(".select2-no-search").select2({dropdownCssClass: 'select2-no-search', allowClear: true});
-    $(".select2-multi").select2({});
+
+     $(".select2-single").select2({allowClear: true});
+     $(".select2-no-search").select2({dropdownCssClass: 'select2-no-search', allowClear: true});
+     $(".select2-multi").select2({});
 
 
 
-    /**
+     /**
      * Show more-less button
      */
     $('.btn-more-less').on("click", function () {
@@ -8626,13 +8620,11 @@ $(function () {
     });
 
 
-
     /**
      *  Arrow for Menu has sub-menu
      */
     $(".navbar-arrow > ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-down'></i>");
     $(".navbar-arrow ul ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-right'></i>");
-
 
 
     /**
@@ -8641,12 +8633,10 @@ $(function () {
     $("input, textarea").placeholder();
 
 
-
     /**
      * Bootstrap tooltips
      */
     $('[data-toggle="tooltip"]').tooltip();
-
 
 
     /**
@@ -8690,7 +8680,6 @@ $(function () {
     });
 
 
-
     /**
      * Payment Option
      */
@@ -8700,7 +8689,6 @@ $(function () {
         $("div.payment-option-form").hide();
         $("#" + test).show();
     });
-
 
 
     /**
@@ -8760,11 +8748,10 @@ $(function () {
     });
 
 
-
     /**
      * readmore - read more/less
-     */
-    $('.read-more-div').readmore({
+
+     $('.read-more-div').readmore({
         speed: 220,
         moreLink: '<a href="#" class="read-more-div-open">Read More</a>',
         lessLink: '<a href="#" class="read-more-div-close">Read less</a>',
@@ -8774,7 +8761,7 @@ $(function () {
 
 
 
-    /**
+     /**
      * ionRangeSlider - range slider
      */
 
@@ -8803,7 +8790,6 @@ $(function () {
             "<i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i>"
         ]
     });
-
 
 
     /**
@@ -8855,7 +8841,6 @@ $(function () {
     });
 
 
-
     /**
      * Back To Top
      */
@@ -8872,24 +8857,23 @@ $(function () {
     });
 
 
-
     /**
      * Instagram
      */
     function createPhotoElement(photo) {
         var innerHtml = $('<img>')
-                .addClass('instagram-image')
-                .attr('src', photo.images.thumbnail.url);
+            .addClass('instagram-image')
+            .attr('src', photo.images.thumbnail.url);
 
         innerHtml = $('<a>')
-                .attr('target', '_blank')
-                .attr('href', photo.link)
-                .append(innerHtml);
+            .attr('target', '_blank')
+            .attr('href', photo.link)
+            .append(innerHtml);
 
         return $('<div>')
-                .addClass('instagram-placeholder')
-                .attr('id', photo.id)
-                .append(innerHtml);
+            .addClass('instagram-placeholder')
+            .attr('id', photo.id)
+            .append(innerHtml);
     }
 
 //    function didLoadInstagram(event, response) {
@@ -8935,6 +8919,25 @@ $(function () {
     //     $("#paiementForm").submit();
     // });
 
+    $("#lieuDeCours").on('change', function (event) {
+        event.preventDefault();
+        var lieu = $("#lieuDeCours option:selected").val();
+
+        if (lieu == "Chez le prof") {
+            var prof_ville = $("#prof_ville").val();
+
+            $("#ville_detail").attr("disabled", "disabled");
+            $("#ville_detail").removeAttr("required");
+            $("#quartier_detail").attr("disabled", "disabled");
+            $("#quartier_detail").removeAttr("required");
+
+            $('#ville_detail').append('<option value="' + prof_ville + '" selected>' + prof_ville + '</option>');
+        }
+        else {
+            $("#ville_detail").removeAttr("disabled");
+            $("#quartier_detail").removeAttr("disabled");
+        }
+    });
 });
 
 $(function () {
@@ -9405,8 +9408,8 @@ $(function () {
         var dateDebut = $("#reservation-startdate").val();
         var nbApprenants = $("#nbApprenants option:selected").val();
         var lieuDeCours = $("#lieuDeCours option:selected").val();
-        var ville = $("#ville").val();
-        var quartier = $("#quartier").val();
+        var ville = $("#ville_detail option:selected").val();
+        var quartier = $("#quartier_detail option:selected").val();
         var prixTotal = $("#prixTotal").text();
 //        var joursDeCoursSelectionnes = {};
 //        nbJours = 0;
@@ -9464,12 +9467,14 @@ $(function () {
 
     $("#paiementForm").submit(function (event) {
         event.preventDefault();
-        var paiement = $("#paiement-frequence option:selected").val();
+        var paiementFrequence = $("#paiement-frequence option:selected").val();
+        var paiementMode = $("#paiement-mode option:selected").val();
+        var paiementPeriod = $("#paiement-period option:selected").val();
 
         $.ajax({
             method: "GET",
             url: Routing.generate('lgp_reservation_cart_update_paiement'),
-            data: "frequence_paiement=" + paiement,
+            data: "frequence_paiement=" + paiementFrequence +"&mode_paiement="+paiementMode+"&period_paiement="+ paiementPeriod,
             success: function (answer) {
                 console.log(answer);
                 if (answer == "success") {
@@ -9516,97 +9521,171 @@ $(function () {
 });
 $(function () {
 
-        window.learn = [];
-        window.profsName = [];
-        window.catNames = [];
+    window.learn = [];
+    window.profsName = [];
+    window.catNames = [];
 
-        $('[data-onload]').each(function () {
-            eval($(this).data('onload'));
-        });
+    $('[data-onload]').each(function () {
+        eval($(this).data('onload'));
+    });
 
-        function loadCourses() {
-            learn.splice(0, learn.length);
-            $.ajax({
-                method: "GET",
-                url: Routing.generate('lgp_course_all_intitule'),
-                data: {},
-                success: function (answer, status) {
-                    for (i = 0; i < answer.length; i++) {
-                        learn.push(answer[i].intitule);
-                    }
-                },
-                error: function (answer, status) {
-                    alert('error');
-                    console.log(answer + "   " + status);
+    function loadCourses() {
+        learn.splice(0, learn.length);
+        $.ajax({
+            method: "GET",
+            url: Routing.generate('lgp_course_all_intitule'),
+            data: {},
+            success: function (answer, status) {
+                for (i = 0; i < answer.length; i++) {
+                    learn.push(answer[i].intitule);
                 }
-            });
-        }
-
-        function loadCategoriesNames() {
-            catNames.splice(0, catNames.length);
-            $.ajax({
-                method: "GET",
-                url: Routing.generate('lgp_course_all_categories'),
-                data: {},
-                success: function (answer, status) {
-                    for (i = 0; i < answer.length; i++) {
-                        catNames.push(answer[i].intitule);
-                    }
-                },
-                error: function (answer, status) {
-                    alert('error');
-                    console.log(answer + "   " + status);
-                }
-            });
-        }
-
-        function loadProfsName() {
-            profsName.splice(0, profsName.length);
-            $.ajax({
-                method: "GET",
-                url: Routing.generate('lgp_prof_all_names'),
-                data: {},
-                success: function (answer, status) {
-                    for (i = 0; i < answer.length; i++) {
-                        profsName.push(answer[i].prenoms + " " + answer[i].nom);
-                    }
-                },
-                error: function (answer, status) {
-                    alert('error');
-                    console.log(answer + "   " + status);
-                }
-            });
-        }
-
-        $("#cours_search_course_intitule").autocomplete({
-            autoFocus: true,
-            maxResults: 10,
-            source: learn
+            },
+            error: function (answer, status) {
+                alert('error');
+                console.log(answer + "   " + status);
+            }
         });
-
-        $("#cours_search_course_city_intitule").autocomplete({
-            autoFocus: false,
-            maxResults: 10,
-            source: learn
-        });
-        $("#cours_search_course_quarter_intitule").autocomplete({
-            autoFocus: true,
-            maxResults: 10,
-            source: learn
-        });
-        $("#prof_name").autocomplete({
-            autoFocus: true,
-            maxResults: 10,
-            source: profsName
-        });
-
-        $("#cours_search_categorie_category_name").autocomplete({
-            autoFocus: true,
-            maxResults: 10,
-            source: catNames
-        })
     }
-)
+
+    function loadCategoriesNames() {
+        catNames.splice(0, catNames.length);
+        $.ajax({
+            method: "GET",
+            url: Routing.generate('lgp_course_all_categories'),
+            data: {},
+            success: function (answer, status) {
+                for (i = 0; i < answer.length; i++) {
+                    catNames.push(answer[i].intitule);
+                }
+            },
+            error: function (answer, status) {
+                alert('error');
+                console.log(answer + "   " + status);
+            }
+        });
+    }
+
+    function loadProfsName() {
+        profsName.splice(0, profsName.length);
+        $.ajax({
+            method: "GET",
+            url: Routing.generate('lgp_prof_all_names'),
+            data: {},
+            success: function (answer, status) {
+                for (i = 0; i < answer.length; i++) {
+                    profsName.push(answer[i].prenoms + " " + answer[i].nom);
+                }
+            },
+            error: function (answer, status) {
+                alert('error');
+                console.log(answer + "   " + status);
+            }
+        });
+    }
+
+    $("#cours_search_course_intitule").autocomplete({
+        autoFocus: true,
+        maxResults: 10,
+        source: learn
+    });
+
+    $("#cours_search_course_city_intitule").autocomplete({
+        autoFocus: false,
+        maxResults: 10,
+        source: learn
+    });
+    $("#cours_search_course_quarter_intitule").autocomplete({
+        autoFocus: true,
+        maxResults: 10,
+        source: learn
+    });
+    $("#prof_name").autocomplete({
+        autoFocus: true,
+        maxResults: 10,
+        source: profsName
+    });
+
+    $("#cours_search_categorie_category_name").autocomplete({
+        autoFocus: true,
+        maxResults: 10,
+        source: catNames
+    });
+
+    function updateCity() {
+        var prof_id = $("#prof_id").val();
+        $.ajax({
+            method: "POST",
+            url: Routing.generate('lgp_prof_update_city', {'prof_id': prof_id}),
+            data: {},
+            success: function (answer, status) {
+                window.cities = [];
+                for (i = 0; i < answer.length; i++) {
+                    cities.push(answer[i].ville);
+                }
+                $('#ville_detail option').each(function () {
+                    if ($(this).val() != '' && !$(this).attr('disabled')) {
+                        $(this).remove();
+                    }
+                });
+                for (i = 0; i < cities.length; i++) {
+                    $('#ville_detail').append('<option value="' + cities[i] + '">' + cities[i] + '</option>');
+                }
+
+                $("#loading-classe").css({'display': 'none'});
+            },
+            error: function (answer, status) {
+                console.log(answer + "   " + status);
+            }
+        });
+    };
+
+    function updateQuarter() {
+        var ville = $("#ville_detail option:selected").val();
+        $("#loading-quarter").css({'display': 'block'});
+
+        $.ajax({
+            method: "POST",
+            url: Routing.generate('lgp_prof_update_quarter', {'ville': ville}),
+            data: {},
+            success: function (answer, status) {
+                window.quarters = [];
+                for (i = 0; i < answer.length; i++) {
+                    quarters.push(answer[i].intitule);
+                }
+                $('#quartier_detail option').each(function () {
+                    if ($(this).val() != '' && !$(this).attr('disabled')) {
+                        $(this).remove();
+                    }
+                });
+                for (i = 0; i < quarters.length; i++) {
+                    $('#quartier_detail').append('<option value="' + quarters[i] + '">' + quarters[i] + '</option>');
+                }
+
+                $("#loading-classe").css({'display': 'none'});
+            },
+            error: function (answer, status) {
+                console.log(answer + "   " + status);
+            }
+        });
+    };
+
+    $("#ville_detail").on('change', function(event){
+       event.preventDefault();
+        updateQuarter();
+    });
+
+    $("#lieuDeCours").on('change', function(event){
+       event.preventDefault();
+        updateCity();
+        var city = $("#ville_detail option:selected").val();
+        if (city != ""){
+            updateQuarter();
+        }
+    });
+    
+    
+
+})
 ;
 /**
  * Portions of this code are from the Google Closure Library,

@@ -22,10 +22,9 @@ class CoursSearchCourseQuarterType extends AbstractType
                 'attr' => array('placeholder' => 'Cours')))
             ->add('quartier', EntityType::class, array(
                     'class' => 'LGPUserBundle:Quartier',
-                    'choice_label' => function ($quartier) {
-                        return $quartier->getIntitule() . "-" . $quartier->getVille();
-                    },
+                    'choice_label' => 'intitule',
                     'choice_value' => 'id',
+                    'group_by' => 'ville',
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
                 )

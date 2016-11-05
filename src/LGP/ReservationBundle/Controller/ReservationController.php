@@ -46,6 +46,8 @@ class ReservationController extends Controller
                 $reservation = new Reservation();
                 $reservation->setIsValidee(false);
                 $reservation->setFrequencePaiement($panier->getPaiementFrequence());
+                $reservation->setModePaiement($panier->getPaiementMode());
+                $reservation->setPeriodePaiement($panier->getPaiementPeriod());
                 $reservation->setUser($user);
 
                 foreach ($bookers as $booker) {
@@ -80,7 +82,7 @@ class ReservationController extends Controller
 //                $facture = new Facture();
 //                $facture->setMontant($prixReservation);
 //                $facture->setReservation($reservation);
-//                $reservation->addFacture($facture);
+                $reservation->setMontant($prixReservation);
                 $em->persist($reservation);
 //                $em->persist($facture);
                 $em->flush();

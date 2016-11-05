@@ -48,3 +48,15 @@ lgp_reservation_cart_add:
 lgp_reservation_cart_remove:
     path:    /cart/remove/{key}
     defaults: { _controller: LGPReservationBundle:Cart:removeCart }
+
+lgp_prof_update_quarter:
+    path:     /ville/{ville}
+    defaults: { _controller: LGPReservationBundle:UpdateDataAjax:updateQuarter}
+    options:
+        expose: true
+
+lgp_prof_update_city:
+    path:     /cities/{prof_id}
+    defaults: { _controller: LGPReservationBundle:UpdateDataAjax:updateCity}
+    options:
+        expose: true

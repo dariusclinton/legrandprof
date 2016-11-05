@@ -9,29 +9,28 @@ $(function () {
     "use strict";
 
 
-
     /**
      * introLoader - Preloader
      */
-    $("#introLoader").introLoader({
-        animation: {
-            name: 'gifLoader',
-            options: {
-                ease: "easeInOutCirc",
-                style: 'dark bubble',
-                delayBefore: 500,
-                delayAfter: 0,
-                exitTime: 300
-            }
-        }
-    });
-
+    /*$("#introLoader").introLoader({
+     animation: {
+     name: 'gifLoader',
+     options: {
+     ease: "easeInOutCirc",
+     style: 'dark bubble',
+     delayBefore: 500,
+     delayAfter: 0,
+     exitTime: 300
+     }
+     }
+     });
+     */
 
 
     /**
      * Sticky Header
-     */
-    $(".container-wrapper").waypoint(function () {
+
+     $(".container-wrapper").waypoint(function () {
         $(".navbar").toggleClass("navbar-sticky-function");
         $(".navbar").toggleClass("navbar-sticky");
         return false;
@@ -39,7 +38,7 @@ $(function () {
 
 
 
-    /**
+     /**
      * Main Menu Slide Down Effect
      */
 
@@ -54,18 +53,18 @@ $(function () {
     });
 
     /**
-    * Header Dashboard slide Down
-    */
+     * Header Dashboard slide Down
+     */
 
-        // Mouse-enter dropdown
-       $('#dash li').on("mouseenter", function() {
-            $(this).find('ul').first().stop(true, true).delay(150).slideDown(300, 'easeInOutQuad');
-       });
+    // Mouse-enter dropdown
+    $('#dash li').on("mouseenter", function () {
+        $(this).find('ul').first().stop(true, true).delay(150).slideDown(300, 'easeInOutQuad');
+    });
 
-       // Mouse-leave dropdown
-       $('#dash li').on("mouseleave", function() {
-            $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
-       });
+    // Mouse-leave dropdown
+    $('#dash li').on("mouseleave", function () {
+        $(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
+    });
 
 
     /**
@@ -79,7 +78,6 @@ $(function () {
     });
 
 
-
     /**
      * Icon Change on Collapse
      */
@@ -87,10 +85,9 @@ $(function () {
     $('.bootstarp-accordion, .bootstarp-toggle').on('show.bs.collapse', function (a) {
         $(a.target).prev('.panel-heading').addClass('active');
     })
-            .on('hide.bs.collapse', function (a) {
-                $(a.target).prev('.panel-heading').removeClass('active');
-            });
-
+        .on('hide.bs.collapse', function (a) {
+            $(a.target).prev('.panel-heading').removeClass('active');
+        });
 
 
     /**
@@ -108,7 +105,6 @@ $(function () {
     });
 
 
-
     /**
      * Smooth scroll to anchor
      */
@@ -124,7 +120,6 @@ $(function () {
             }
         }
     });
-
 
 
     /**
@@ -164,17 +159,16 @@ $(function () {
     }
 
 
-
     /**
      * select2 - custom select
-     */
-    $(".select2-single").select2({allowClear: true});
-    $(".select2-no-search").select2({dropdownCssClass: 'select2-no-search', allowClear: true});
-    $(".select2-multi").select2({});
+
+     $(".select2-single").select2({allowClear: true});
+     $(".select2-no-search").select2({dropdownCssClass: 'select2-no-search', allowClear: true});
+     $(".select2-multi").select2({});
 
 
 
-    /**
+     /**
      * Show more-less button
      */
     $('.btn-more-less').on("click", function () {
@@ -184,13 +178,11 @@ $(function () {
     });
 
 
-
     /**
      *  Arrow for Menu has sub-menu
      */
     $(".navbar-arrow > ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-down'></i>");
     $(".navbar-arrow ul ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-right'></i>");
-
 
 
     /**
@@ -199,12 +191,10 @@ $(function () {
     $("input, textarea").placeholder();
 
 
-
     /**
      * Bootstrap tooltips
      */
     $('[data-toggle="tooltip"]').tooltip();
-
 
 
     /**
@@ -248,7 +238,6 @@ $(function () {
     });
 
 
-
     /**
      * Payment Option
      */
@@ -258,7 +247,6 @@ $(function () {
         $("div.payment-option-form").hide();
         $("#" + test).show();
     });
-
 
 
     /**
@@ -318,11 +306,10 @@ $(function () {
     });
 
 
-
     /**
      * readmore - read more/less
-     */
-    $('.read-more-div').readmore({
+
+     $('.read-more-div').readmore({
         speed: 220,
         moreLink: '<a href="#" class="read-more-div-open">Read More</a>',
         lessLink: '<a href="#" class="read-more-div-close">Read less</a>',
@@ -332,7 +319,7 @@ $(function () {
 
 
 
-    /**
+     /**
      * ionRangeSlider - range slider
      */
 
@@ -361,7 +348,6 @@ $(function () {
             "<i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i>"
         ]
     });
-
 
 
     /**
@@ -413,7 +399,6 @@ $(function () {
     });
 
 
-
     /**
      * Back To Top
      */
@@ -430,24 +415,23 @@ $(function () {
     });
 
 
-
     /**
      * Instagram
      */
     function createPhotoElement(photo) {
         var innerHtml = $('<img>')
-                .addClass('instagram-image')
-                .attr('src', photo.images.thumbnail.url);
+            .addClass('instagram-image')
+            .attr('src', photo.images.thumbnail.url);
 
         innerHtml = $('<a>')
-                .attr('target', '_blank')
-                .attr('href', photo.link)
-                .append(innerHtml);
+            .attr('target', '_blank')
+            .attr('href', photo.link)
+            .append(innerHtml);
 
         return $('<div>')
-                .addClass('instagram-placeholder')
-                .attr('id', photo.id)
-                .append(innerHtml);
+            .addClass('instagram-placeholder')
+            .attr('id', photo.id)
+            .append(innerHtml);
     }
 
 //    function didLoadInstagram(event, response) {
@@ -493,4 +477,23 @@ $(function () {
     //     $("#paiementForm").submit();
     // });
 
+    $("#lieuDeCours").on('change', function (event) {
+        event.preventDefault();
+        var lieu = $("#lieuDeCours option:selected").val();
+
+        if (lieu == "Chez le prof") {
+            var prof_ville = $("#prof_ville").val();
+
+            $("#ville_detail").attr("disabled", "disabled");
+            $("#ville_detail").removeAttr("required");
+            $("#quartier_detail").attr("disabled", "disabled");
+            $("#quartier_detail").removeAttr("required");
+
+            $('#ville_detail').append('<option value="' + prof_ville + '" selected>' + prof_ville + '</option>');
+        }
+        else {
+            $("#ville_detail").removeAttr("disabled");
+            $("#quartier_detail").removeAttr("disabled");
+        }
+    });
 });

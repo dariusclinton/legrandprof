@@ -19782,12 +19782,18 @@ a.top-destination-image-bg {
 .package-grid-item-wrapper .image {
     position: relative;
 }
+
+.package-grid-item-wrapper .image img{
+    height: 180px;
+
+}
 .package-grid-item-wrapper .image.similar img{
     height: 155px;
 }
 
 .package-grid-item-wrapper .image img {
     border-radius: 3px 3px 0 0;
+    height: 200px;
 }
 
 .package-grid-item .absolute-in-image .duration {
@@ -20826,6 +20832,9 @@ ul.price-summary-list li p {
     margin-top: 5px;
 }
 
+ul.price-summary-list li img{
+    height: 180px;
+}
 ul.price-summary-list li.divider {
     border-top: 1px solid #EEE;
 }
@@ -22043,6 +22052,7 @@ li.cart-li:hover{
 }
 .cart img{
     width: 30%;
+    height: 50px;
     float: left;
     margin-right: 5%;
 }
@@ -22240,6 +22250,10 @@ li.cart-li:hover{
     height: 270px;
     color:rgb(140,140,140);
     font-size: 13px;
+}
+
+.modal-body #success .thumbnail img{
+    height: 150px;
 }
 /*! jQuery UI - v1.12.0 - 2016-08-07
 * http://jqueryui.com

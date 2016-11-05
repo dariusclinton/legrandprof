@@ -86,6 +86,7 @@ lgp_prof_all_names:
     defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateProfsNamesData}
     options:
         expose: true
+
 lgp_course_all_categories:
     path:     all/categories
     defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateCategoriesNames, page: 1 }

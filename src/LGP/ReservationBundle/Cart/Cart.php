@@ -20,19 +20,71 @@ class Cart {
     private $paiementFrequence;
 
     /**
+     * pour le mode de paiement pour la reservation
+     * @var string
+     */
+    private $paiementMode;
+
+    /**
+     * pour la periode de paiement pour la reservation (au debut ou a la fin de la reservation)
+     * @var string
+     */
+    private $paiementPeriod;
+
+    /**
      * initialisation du panier lors de la construction
      */
     function __construct() {
         $this->items = array();
     }
-    
+
+    /**
+     * @return string
+     */
     function getPaiementFrequence() {
         return $this->paiementFrequence;
     }
 
+    /**
+     * @param $paiementFrequence
+     */
     function setPaiementFrequence($paiementFrequence) {
         $this->paiementFrequence = $paiementFrequence;
     }
+
+    /**
+     * @return string
+     */
+    public function getPaiementMode()
+    {
+        return $this->paiementMode;
+    }
+
+    /**
+     * @param string $paiementMode
+     */
+    public function setPaiementMode($paiementMode)
+    {
+        $this->paiementMode = $paiementMode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaiementPeriod()
+    {
+        return $this->paiementPeriod;
+    }
+
+    /**
+     * @param string $paiementPeriod
+     */
+    public function setPaiementPeriod($paiementPeriod)
+    {
+        $this->paiementPeriod = $paiementPeriod;
+    }
+
+
 
     
     /**
