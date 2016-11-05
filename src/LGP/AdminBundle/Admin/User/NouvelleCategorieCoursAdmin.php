@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class NouvelleCategorieCoursAdmin extends Admin
@@ -40,8 +41,13 @@ class NouvelleCategorieCoursAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('intitule')
-      ->addIdentifier('dateProposition')
+      ->addIdentifier('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
+      ->addIdentifier('dateProposition', 'datetime', array(
+        'label' => 'Date de proposition',
+        'format' => 'd/m/Y'
+      ))
       ->add('user', null, array(
         'label' => 'Utilisateur',
         'associated_property' => 'affichage'
@@ -50,6 +56,23 @@ class NouvelleCategorieCoursAdmin extends Admin
     ;
   }
 
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
+      ->add('dateProposition', 'datetime', array(
+        'label' => 'Date de proposition',
+        'format' => 'd/m/Y'
+      ))
+      ->add('user', null, array(
+        'label' => 'Utilisateur',
+        'associated_property' => 'affichage'
+      ))
+      ->add('description')
+      ;
+  }
 
   public function toString($object)
   {

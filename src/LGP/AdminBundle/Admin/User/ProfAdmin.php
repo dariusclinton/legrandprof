@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class ProfAdmin extends Admin
@@ -118,26 +119,84 @@ class ProfAdmin extends Admin
         'label' => 'Image',
         'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
       ))
-      ->add('enabled', null, array(
-        'label' => 'Activé'
+      ->add('enabled', 'boolean', array(
+        'label' => 'Activé ?',
+        'editable' => true
       ))
-      ->add('isRecommande', null, array(
-        'label' => 'Recommandé'
+      ->add('isRecommande', 'boolean', array(
+        'label' => 'Recommandé ?',
+        'editable' => true
       ))
       ->addIdentifier('nom')
       ->addIdentifier('prenoms', null, array(
         'label' => 'Prénoms'
       ))
-      ->add('dateNaissance', null, array(
-        'label' => 'Date de naissance'
+      ->add('dateNaissance', 'datetime', array(
+        'label' => 'Date de naissance',
+        'format' => 'd/m/Y'
       ))
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
       ))
       ->add('pays')
-      ->add('dateInscription', null, array(
-        'label' => 'Date d\'inscription'
+      ->add('dateInscription', 'datetime', array(
+        'label' => 'Date d\'inscription',
+        'format' => 'd/m/Y'
+      ))
+      ->add('ville')
+      ->add('boitePostale')
+      ->add('situationMatrimoniale')
+      ->add('niveauScolaire')
+      ->add('nombreEnfants', null, array(
+        'label' => 'Nombre d\'enfants'
+      ))
+      ->add('profession')
+//      ->add('CVFile', null, array(
+//        'label' => 'CV',
+//        'template' => 'LGPAdminBundle:ProfAdmin:list_cv.html.twig'
+//      ))
+//      ->add('quartierCibles', null, array(
+//        'associated_property' => 'affichage'
+//      ))
+//      ->add('enseignements', null, array(
+//        'associated_property' => 'affichage'
+//      ))
+//      ->add('diplomes', null, array(
+//        'template' => 'LGPAdminBundle:ProfAdmin:list_diplomes.html.twig'
+//      ))
+    ;
+  }
+
+
+  protected function configureShowFields(ShowMapper $showMapper) {
+    $showMapper
+      ->add('image', null, array(
+        'label' => 'Image',
+        'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
+      ))
+      ->add('enabled', null, array(
+        'label' => 'Activé ?',
+      ))
+      ->add('isRecommande', null, array(
+        'label' => 'Recommandé ?',
+      ))
+      ->add('nom')
+      ->add('prenoms', null, array(
+        'label' => 'Prénoms'
+      ))
+      ->add('dateNaissance', 'datetime', array(
+        'label' => 'Date de naissance',
+        'format' => 'd/m/Y'
+      ))
+      ->add('sexe')
+      ->add('telephone', null, array(
+        'label' => 'Téléphone'
+      ))
+      ->add('pays')
+      ->add('dateInscription', 'datetime', array(
+        'label' => 'Date d\'inscription',
+        'format' => 'd/m/Y'
       ))
       ->add('ville')
       ->add('boitePostale')
@@ -159,7 +218,9 @@ class ProfAdmin extends Admin
       ))
       ->add('diplomes', null, array(
         'template' => 'LGPAdminBundle:ProfAdmin:list_diplomes.html.twig'
-      ));
+      ))
+      ->add('presentation')
+    ;
   }
 
   public function toString($object)

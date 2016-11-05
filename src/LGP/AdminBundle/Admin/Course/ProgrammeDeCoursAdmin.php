@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class ProgrammeDeCoursAdmin extends Admin
 {
@@ -44,14 +45,29 @@ class ProgrammeDeCoursAdmin extends Admin
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->addIdentifier('reservationEnseignement', null, array(
+      ->addIdentifier('id')
+      ->add('reservationEnseignement', null, array(
         'associated_property' => 'id',
         'label' => 'Réservation Enseignement'
       ))
-      ->addIdentifier('entreesProgramme', null, array(
+      ->add('entreesProgrammes', null, array(
         'associated_property' => 'intitule',
-        'label' => 'Entrée programme'
+        'label' => 'Entrées du programme'
       ));
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('reservationEnseignement', null, array(
+        'associated_property' => 'id',
+        'label' => 'Réservation Enseignement'
+      ))
+      ->add('entreesProgrammes', null, array(
+        'associated_property' => 'intitule',
+        'label' => 'Entrées du programme'
+      ))
+      ;
   }
 
 

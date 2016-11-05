@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class ReservationAdmin extends Admin
 {
@@ -56,12 +57,53 @@ class ReservationAdmin extends Admin
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->add('isValidee', null, array('label' => 'Validée'))
-      ->addIdentifier('dateReservation', null, array('label' => 'Date de réservation'))
-      ->addIdentifier('frequencePaiement', null, array('label' => 'Fréquence de  paiement'))
+      ->add('isValidee', 'boolean', array(
+        'label' => 'Validée ?',
+        'editable' => true
+      ))
+      ->addIdentifier('dateReservation', 'datetime', array(
+        'label' => 'Date de réservation',
+        'format' => 'd/m/Y'
+      ))
+      ->addIdentifier('frequencePaiement', null, array(
+        'label' => 'Fréquence de  paiement'
+      ))
+      ->add('user', null, array(
+        'label' => 'Utilisateur',
+        'associated_property' => 'affichage'
+      ))
       ->add('factures', null, array(
         'associated_property' => 'montant',
-      ));
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('isValidee', 'boolean', array(
+        'editable' => true,
+        'label'    => 'Validée ?'
+      ))
+      ->add('frequencePaiement', null, array(
+        'label' => 'Fréquene de paiement'
+      ))
+      ->add('dateReservation', 'datetime', array(
+        'format' => 'd/m/Y',
+        'label' => 'Date de résservation'
+      ))
+      ->add('user', null, array(
+        'label' => 'Utilisateur',
+        'associated_property' => 'affichage'
+      ))
+      ->add('factures', null, array(
+        'associated_property' => 'montant'
+      ))
+      ->add('reservationEnseignements', null, array(
+        'associated_property' => 'id'
+      ))
+
+    ;
   }
 
 

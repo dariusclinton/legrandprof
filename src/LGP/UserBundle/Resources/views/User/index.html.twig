@@ -1,5 +1,17 @@
 <ul class="nav nav-pills">
-  <li><a href="{{ path('admin_lgp_user_prof_list') }}"><span class="badge">{{ profs|length }}</span>Profs</a> </li>
-  <li><a href="{{ path('admin_lgp_user_parents_list') }}"><span class="badge">{{ parents|length }}</span>Parents</a> </li>
-  <li><a href="{{ path('admin_lgp_course_cours_list') }}"><span class="badge">{{ cours|length }}</span>Cours</a> </li>
+  <li>
+    <a href="{{ path('admin_lgp_user_prof_list') }}">
+      <span class="badge" style="background-color: #e58664">{{ profs|length }}</span> <i class="fa fa-user-secret fa-lg"></i>
+    </a>
+  </li>
+  <li>
+    <a href="{{ path('admin_lgp_user_parents_list') }}">
+      <span class="badge" style="background-color: #e58664">{{ parents|length }}</span> <i class="fa fa-user fa-lg"></i>
+    </a>
+  </li>
+  <li>
+    <a href="{{ path('admin_lgp_course_cours_list') }}">
+      <span class="badge" style="background-color: #e58664">{{ cours|length }}</span> <i class="fa fa-file-text-o fa-lg"></i>
+    </a>
+  </li>
 </ul>

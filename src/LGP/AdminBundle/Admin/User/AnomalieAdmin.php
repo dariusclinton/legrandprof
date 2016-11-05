@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class AnomalieAdmin extends Admin
@@ -39,7 +40,9 @@ class AnomalieAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('datePublication')
+      ->addIdentifier('datePublication', 'datetime', array(
+        'format' => 'd/m/Y'
+      ))
       ->addIdentifier('objet')
       ->add('user', null, array(
         'label' => 'Utilisateur',
@@ -49,6 +52,18 @@ class AnomalieAdmin extends Admin
     ;
   }
 
+  protected function configureShowFields(ShowMapper $showMapper) {
+    $showMapper
+      ->add('objet', 'text')
+      ->add('contenu', 'textarea')
+      ->add('datePublication', 'datetime', array(
+        'format' => 'd/m/Y'
+      ))
+      ->add('user', null, array(
+        'associated_property' => 'affichage'
+      ))
+      ;
+  }
 
   public function toString($object)
   {

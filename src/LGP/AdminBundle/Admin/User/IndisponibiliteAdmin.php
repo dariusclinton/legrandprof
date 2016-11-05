@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class IndisponibiliteAdmin extends Admin
@@ -40,13 +41,37 @@ class IndisponibiliteAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('dateDebut')
-      ->addIdentifier('dateFin')
+      ->addIdentifier('dateDebut', 'datetime', array(
+        'label' => 'Date de début',
+        'format' => 'd/m/Y'
+      ))
+      ->addIdentifier('dateFin', 'datetime', array(
+        'label' => 'Date de fin',
+        'format' => 'd/m/Y'
+      ))
       ->add('prof', null, array(
         'label' => 'Prof',
         'associated_property' => 'affichage'
       ))
       ->add('motif')
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('dateDebut', 'datetime', array(
+        'label' => 'Date de début',
+        'format' => 'd/m/Y'
+      ))
+      ->add('dateFin', 'datetime', array(
+        'label' => 'Date de fin',
+        'format' => 'd/m/Y'
+      ))
+      ->add('motif')
+      ->add('prof', null, array(
+        'associated_property' => 'affichage'
+      ))
     ;
   }
 

@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class ExperienceProAdmin extends Admin
@@ -29,7 +30,6 @@ class ExperienceProAdmin extends Admin
       ->add('dateDebut', 'date')
       ->add('dateFin', 'date')
       ->add('description', 'textarea')
-
     ;
   }
 
@@ -51,12 +51,37 @@ class ExperienceProAdmin extends Admin
         'label' => 'Prof',
         'associated_property' => 'affichage'
       ))
-      ->add('dateDebut')
-      ->add('dateFin')
+      ->add('dateDebut', 'datetime', array(
+        'label' => 'Date de début',
+        'format' => 'd/m/Y'
+      ))
+      ->add('dateFin', 'datetime', array(
+        'label' => 'Date de fin',
+        'format' => 'd/m/Y'
+      ))
       ->add('description')
     ;
   }
 
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('prof', null, array(
+        'associated_property' => 'affichage'
+      ))
+      ->add('etablissement')
+      ->add('poste')
+      ->add('dateDebut', 'datetime', array(
+        'label' => 'Date de début',
+        'format' => 'd/m/Y'
+      ))
+      ->add('dateFin', 'datetime', array(
+        'label' => 'Date de fin',
+        'format' => 'd/m/Y'
+      ))
+      ->add('description')
+      ;
+  }
 
   public function toString($object)
   {

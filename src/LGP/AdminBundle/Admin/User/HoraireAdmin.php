@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class HoraireAdmin extends Admin
@@ -36,6 +37,14 @@ class HoraireAdmin extends Admin
     $listMapper
       ->addIdentifier('debut')
       ->addIdentifier('fin')
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('debut', 'time')
+      ->add('fin', 'time')
     ;
   }
 

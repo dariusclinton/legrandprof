@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class AvisAdmin extends Admin
@@ -33,7 +34,7 @@ class AvisAdmin extends Admin
         'label' => 'Note /5'
       ))
       ->add('dateAvis', 'date', array(
-        'label' => "Date de publication de l'avis"
+        'label' => "Date de l'avis"
       ))
     ;
   }
@@ -52,7 +53,10 @@ class AvisAdmin extends Admin
       ->addIdentifier('note', null, array(
         'label' => 'Note /5'
       ))
-      ->addIdentifier('dateAvis')
+      ->addIdentifier('dateAvis', 'datetime', array(
+        'label' => "Date de l'avis",
+        'format' => 'd/m/Y'
+      ))
       ->add('user', null, array(
         'label' => 'Utilisateur',
         'associated_property' => 'affichage'
@@ -62,6 +66,26 @@ class AvisAdmin extends Admin
         'associated_property' => 'affichage'
       ))
     ;
+  }
+
+  protected function configureShowFields(ShowMapper $showMapper) {
+    $showMapper
+      ->add('user', null, array(
+        'label' => 'Utilisateur',
+        'associated_property' => 'affichage',
+      ))
+      ->add('prof', null, array(
+        'associated_property' => 'affichage',
+      ))
+      ->add('note', 'text', array(
+        'label' => 'Note /5'
+      ))
+      ->add('dateAvis', 'datetime', array(
+        'label' => "Date de l'avis",
+        'format' => 'd/m/Y'
+      ))
+    ;
+
   }
 
 

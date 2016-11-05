@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class EnseignementAdmin extends Admin
 {
@@ -47,7 +48,7 @@ class EnseignementAdmin extends Admin
   {
     $listMapper
       ->addIdentifier('classe')
-      ->add('prix')
+      ->addIdentifier('prix')
       ->add('cours', null, array(
         'associated_property' => 'intitule',
         'label' => 'Intitulé'
@@ -58,6 +59,24 @@ class EnseignementAdmin extends Admin
       ));
   }
 
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('classe')
+      ->add('prix')
+      ->add('cours', null, array(
+        'associated_property' => 'intitule',
+        'label' => 'Intitulé'
+      ))
+      ->add('prof', null, array(
+        'associated_property' => 'affichage',
+        'label' => 'Prof'
+      ))
+      ->add('reservationEnseignements', null, array(
+        'associated_property' => 'id'
+      ))
+    ;
+  }
 
   public function toString($object)
   {

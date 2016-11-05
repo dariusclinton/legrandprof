@@ -64,7 +64,7 @@ services:
             tags:
                 - name: sonata.admin
                   manager_type: orm
-                  label: Horaires
+                  label: Horaires de disponibilité des profs
 
     lgp.admin.indisponibilite:
             class: LGP\AdminBundle\Admin\User\IndisponibiliteAdmin
@@ -154,7 +154,7 @@ services:
         tags:
             - name: sonata.admin
               manager_type: orm
-              label: Réservation enseignement
+              label: Réservations enseignements
 
     lgp.admin.paiement:
         class: LGP\AdminBundle\Admin\Reservation\PaiementAdmin
@@ -196,7 +196,7 @@ services:
         tags:
             - name: sonata.admin
               manager_type: orm
-              label: Enseignement
+              label: Enseignements
 
     lgp.admin.programmedecours:
         class: LGP\AdminBundle\Admin\Course\ProgrammeDeCoursAdmin
@@ -220,7 +220,7 @@ services:
         tags:
             - name: sonata.admin
               manager_type: orm
-              label: Evaluation
+              label: Evaluations
 
     lgp.admin.seancedecours:
         class: LGP\AdminBundle\Admin\Course\SeanceDeCoursAdmin
@@ -228,4 +228,4 @@ services:
         tags:
             - name: sonata.admin
               manager_type: orm
-              label: Séance de cours
+              label: Séances de cours

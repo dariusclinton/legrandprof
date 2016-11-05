@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class ReservationEnseignementAdmin extends Admin
 {
@@ -52,7 +53,7 @@ class ReservationEnseignementAdmin extends Admin
         'expanded' => true,
         'required' => false
       ))
-      ->add('programmeDecours', 'sonata_type_model', array(
+      ->add('programmeDeCours', 'sonata_type_model', array(
         'class'   => 'LGPCourseBundle:ProgrammeDeCours',
         'property' => 'id'
       ))
@@ -81,10 +82,18 @@ class ReservationEnseignementAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->add('isFinish')
+      ->add('isFinish', 'boolean', array(
+        'editable' => true,
+        'label'    => 'Achevé ?'
+      ))
       ->addIdentifier('lieuDeCours')
-      ->addIdentifier('dateDebut')
-      ->add('nbApprenants')
+      ->addIdentifier('dateDebut', 'datetime', array(
+        'format' => 'd/m/Y',
+        'label' => 'Début des cours'
+      ))
+      ->add('nbApprenants', null, array(
+        'label' => 'Nombre d\'apprenants'
+      ))
       ->add('ville')
       ->add('quartier')
       ->add('joursDeCours', null, array(
@@ -106,6 +115,50 @@ class ReservationEnseignementAdmin extends Admin
       ->add('enseignement.prof', null, array(
         'label'                => 'Prof',
         'associated_property' => 'affichage'
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('isFinish', 'boolean', array(
+        'editable' => true,
+        'label'    => 'Achevé ?'
+      ))
+      ->add('lieuDeCours')
+      ->add('dateDebut', 'datetime', array(
+        'format' => 'd/m/Y',
+        'label' => 'Début des cours'
+      ))
+      ->add('nbApprenants', null, array(
+        'label' => 'Nombre d\'apprenants'
+      ))
+      ->add('ville')
+      ->add('quartier')
+      ->add('joursDeCours', null, array(
+        'associated_property' => 'intitule'
+      ))
+      ->add('programmeDeCours', null, array(
+        'associated_property' => 'id'
+      ))
+      ->add('reservation', null, array(
+        'associated_property' => 'id',
+        'label' => 'Réservation'
+      ))
+      ->add('enseignement', null, array(
+        'associated_property' => 'affichage'
+      ))
+      ->add('enseignement.prof', null, array(
+        'associated_property' => 'affichage',
+        'label' => 'Prof'
+      ))
+      ->add('evaluations', null, array(
+        'associated_property' => 'id'
+      ))
+      ->add('seancesDeCours', null, array(
+        'associated_property' => 'id',
+        'label' => 'Séances de cours'
       ))
     ;
   }

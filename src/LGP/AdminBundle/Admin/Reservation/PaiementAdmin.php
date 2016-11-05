@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class PaiementAdmin extends Admin
 {
@@ -56,7 +57,10 @@ class PaiementAdmin extends Admin
   {
     $listMapper
       ->addIdentifier('mode', null, array('label' => 'Mode de paiement'))
-      ->addIdentifier('date', null, array('label' => 'Date de Paiement'))
+      ->addIdentifier('date', 'date', array(
+        'label' => 'Date de Paiement',
+        'format' => 'd/m/Y'
+      ))
       ->add('facture', null, array(
         'associated_property' => 'montant',
       ))
@@ -64,6 +68,22 @@ class PaiementAdmin extends Admin
         'associated_property' => 'affichage',
       ))
     ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('mode')
+      ->add('date', 'datetime', array(
+        'format' => 'd/m/Y',
+        'label' => 'Date de paiement'
+      ))
+      ->add('facture', null, array(
+        'associated_property' => 'montant',
+      ))
+      ->add('user', null, array(
+        'associated_property' => 'affichage',
+      ));
   }
 
 

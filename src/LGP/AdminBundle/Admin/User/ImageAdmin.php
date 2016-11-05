@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class ImageAdmin extends Admin
@@ -35,12 +36,33 @@ class ImageAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('imageName')
-      ->addIdentifier('updatedAt')
+      ->addIdentifier('imageName', null, array(
+        'label' => 'Nom de l\image'
+      ))
+      ->addIdentifier('updatedAt', 'datetime', array(
+        'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
       ->add('Fichier', null, array(
         'template' => 'LGPAdminBundle:ImageAdmin:list_image.html.twig'
       ))
     ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('Fichier', null, array(
+        'template' => 'LGPAdminBundle:ImageAdmin:list_image.html.twig'
+      ))
+      ->add('imageName', null, array(
+        'label' => 'Nom de l\image'
+      ))
+      ->add('updatedAt', 'datetime', array(
+        'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
+      ;
   }
 
 

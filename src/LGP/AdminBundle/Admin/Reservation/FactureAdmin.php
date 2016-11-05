@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class FactureAdmin extends Admin
 {
@@ -46,6 +47,20 @@ class FactureAdmin extends Admin
     $listMapper
       ->addIdentifier('montant')
       ->addIdentifier('fileName', null, array('label' => 'Nom du fichier'))
+      ->add('reservation', null, array(
+        'associated_property' => 'id',
+      ))
+      ->add('paiement', null, array(
+        'associated_property' => 'id',
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('montant', 'text')
+      ->add('fileName', null, array('label' => 'Nom du fichier'))
       ->add('reservation', null, array(
         'associated_property' => 'id',
       ))

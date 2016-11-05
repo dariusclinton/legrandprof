@@ -12,14 +12,16 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class UserAdmin extends Admin
 {
   protected $baseRoutePattern = 'utilisateur';
 
   protected function configureFormFields(FormMapper $formMapper) {
-//    $formMapper
-//      ->add()
+    $formMapper
+      ->add('nom', 'text')
+      ->add('prenoms', 'text')
     ;
   }
 
@@ -40,6 +42,13 @@ class UserAdmin extends Admin
         'label' => 'Activé ?'
       ))
     ;
+  }
+
+  protected function configureShowFields(ShowMapper $showMapper) {
+    $showMapper
+      ->add('nom')
+      ->add('prenoms')
+      ;
   }
 
 

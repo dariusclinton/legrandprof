@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class DiplomeAdmin extends Admin
@@ -36,15 +37,40 @@ class DiplomeAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('intitule')
-      ->addIdentifier('fileName')
-      ->add('updatedAt')
+      ->addIdentifier('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
+      ->addIdentifier('fileName', null, array(
+        'label' => 'Nom du fichier'
+      ))
+      ->add('updatedAt', 'datetime', array(
+        'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
       ->add('Fichier', null, array(
         'template' => 'LGPAdminBundle:DiplomeAdmin:list_diplomes.html.twig'
       ))
     ;
   }
 
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
+      ->add('fileName', null, array(
+        'label' => 'Nom du fichier'
+      ))
+      ->add('updatedAt', 'datetime', array(
+        'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
+      ->add('Fichier', null, array(
+        'template' => 'LGPAdminBundle:DiplomeAdmin:list_diplomes.html.twig'
+      ))
+    ;
+  }
 
   public function toString($object)
   {

@@ -12,11 +12,12 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class CVFileAdmin extends Admin
 {
-  protected $baseRoutePattern = 'CV';
+  protected $baseRoutePattern = 'cv';
 
   protected function configureFormFields(FormMapper $formMapper) {
     $formMapper
@@ -35,8 +36,26 @@ class CVFileAdmin extends Admin
 
   protected function configureListFields(ListMapper $listMapper) {
     $listMapper
-      ->addIdentifier('fileName')
-      ->addIdentifier('updatedAt')
+      ->addIdentifier('fileName', null, array(
+        'label' => 'Nom du fichier'
+      ))
+      ->addIdentifier('updatedAt', 'datetime', array(
+        'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
+      ->add('Fichier', null, array(
+        'template' => 'LGPAdminBundle:CVFileAdmin:list_cv.html.twig'
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $showMapper) {
+    $showMapper
+      ->add('fileName')
+      ->add('updatedAt', 'datetime', array(
+         'label' => 'Dernière mise à jour',
+        'format' => 'd/m/Y'
+      ))
       ->add('Fichier', null, array(
         'template' => 'LGPAdminBundle:CVFileAdmin:list_cv.html.twig'
       ))

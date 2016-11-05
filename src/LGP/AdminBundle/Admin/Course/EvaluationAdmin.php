@@ -13,6 +13,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class EvaluationAdmin extends Admin
 {
@@ -45,7 +46,9 @@ class EvaluationAdmin extends Admin
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->addIdentifier('date')
+      ->addIdentifier('date', 'datetime', array(
+        'format' => 'd/m/Y'
+      ))
       ->addIdentifier('duree', null, array('label' => 'Durée (heures)'))
       ->add('reservationEnseignement', null, array(
         'associated_property' => 'id'
@@ -54,6 +57,22 @@ class EvaluationAdmin extends Admin
         'associated_property' => 'affichage'
       ))
     ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('date', 'datetime', array(
+        'format' => 'd/m/Y'
+      ))
+      ->add('duree', 'text', array('label' => 'Durée (heures)'))
+      ->add('reservationEnseignement', null, array(
+        'associated_property' => 'id'
+      ))
+      ->add('prof', null, array(
+        'associated_property' => 'affichage'
+      ))
+      ;
   }
 
 

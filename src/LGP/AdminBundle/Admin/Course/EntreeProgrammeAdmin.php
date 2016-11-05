@@ -13,10 +13,11 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 class EntreeProgrammeAdmin extends Admin
 {
-  protected $baseRoutePattern = 'Entree-programme';
+  protected $baseRoutePattern = 'entree-programme';
 
   protected function configureFormFields(FormMapper $formMapper)
   {
@@ -44,10 +45,34 @@ class EntreeProgrammeAdmin extends Admin
   protected function configureListFields(ListMapper $listMapper)
   {
     $listMapper
-      ->addIdentifier('intitule')
+      ->addIdentifier('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
       ->addIdentifier('partie')
       ->addIdentifier('type')
-      ->add('isComplete')
+      ->add('isComplete', 'boolean', array(
+        'editable' => true,
+        'label' => 'Complete ?'
+      ))
+      ->add('programmeDeCours', null, array(
+        'label' => 'Programme du cours',
+        'associated_property' => 'id'
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('intitule', null, array(
+        'label' => 'Intitulé'
+      ))
+      ->add('partie')
+      ->add('type')
+      ->add('isComplete', 'boolean', array(
+        'label' => 'Complete ?',
+        'editable' => true
+      ))
       ->add('programmeDeCours', null, array(
         'label' => 'Programme du cours',
         'associated_property' => 'id'
@@ -58,6 +83,6 @@ class EntreeProgrammeAdmin extends Admin
 
   public function toString($object)
   {
-    return 'Entrée du programme'; // shown in the breadcrumb on the create view
+    return 'Entrée de programme'; // shown in the breadcrumb on the create view
   }
 }

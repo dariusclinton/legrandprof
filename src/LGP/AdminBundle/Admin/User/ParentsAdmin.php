@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 
 class ParentsAdmin extends Admin
@@ -66,24 +67,59 @@ class ParentsAdmin extends Admin
         'label' => 'Image',
         'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
       ))
-      ->add('enabled', null, array(
-        'label' => 'Activé'
+      ->add('enabled', 'boolean', array(
+        'label' => 'Activé ?',
+        'editable' => true
       ))
       ->addIdentifier('nom')
       ->addIdentifier('prenoms', null, array(
         'label' => 'Prénoms'
       ))
-      ->add('dateNaissance', null, array(
-        'label' => 'Date de naissance'
+      ->add('dateNaissance', 'datetime', array(
+        'label' => 'Date de naissance',
+        'format' => 'd/m/Y'
       ))
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
       ))
       ->add('pays')
-      ->add('dateInscription', null, array(
-        'label' => 'Date d\'inscription'
-      ));
+      ->add('dateInscription', 'datetime', array(
+        'label' => 'Date d\'inscription',
+        'format' => 'd/m/Y'
+      ))
+    ;
+  }
+
+  protected function configureShowFields(ShowMapper $show)
+  {
+    $show
+      ->add('image', null, array(
+        'label' => 'Image',
+        'template' => 'LGPAdminBundle:ProfAdmin:list_image.html.twig'
+      ))
+      ->add('enabled', 'boolean', array(
+        'label' => 'Activé ?',
+        'editable' => true
+      ))
+      ->add('nom')
+      ->add('prenoms', null, array(
+        'label' => 'Prénoms'
+      ))
+      ->add('dateNaissance', 'datetime', array(
+        'label' => 'Date de naissance',
+        'format' => 'd/m/Y'
+      ))
+      ->add('sexe')
+      ->add('telephone', null, array(
+        'label' => 'Téléphone'
+      ))
+      ->add('pays')
+      ->add('dateInscription', 'datetime', array(
+        'label' => 'Date d\'inscription',
+        'format' => 'd/m/Y'
+      ))
+    ;
   }
 
   public function toString($object)
