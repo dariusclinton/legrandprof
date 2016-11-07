@@ -35,7 +35,10 @@
               <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
             </button>
             <b>{{ app.user.avanceeProfil }}% de remplissage du profil</b><br>
-            <p>{{ ga_remplissage_profil }}  <a href="{{ path('fos_user_profile_edit') }}">Complétez votre profil</a></p>
+            <p>
+              Veuillez compléter votre profil pour augmenter vos chances d'être sollicité par des parents/apprenants.
+              <a href="{{ path('fos_user_profile_edit') }}"> Complétez votre profil</a>
+            </p>
           </div>
         {% endif %}
         {#<div class="notifications-block">#}

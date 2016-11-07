@@ -41,8 +41,6 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    globals:
-        ga_remplissage_profil: "%message_remplissage_profil%"
     form_themes:
 #        - 'bootstrap_3_layout.html.twig'
 #         - 'VichUploaderBundle:Form:fields.html.twig'
