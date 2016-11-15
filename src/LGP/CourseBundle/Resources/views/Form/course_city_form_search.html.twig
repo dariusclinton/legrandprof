@@ -1,7 +1,7 @@
 {{ form_start(form_course_city) }}
 
 <div class="column-item-medium">
-    <div class="form-group">
+    <div class="form-group" data-onload="loadCourses()">
         {{ form_widget(form_course_city.intitule, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
     </div>
 </div>
