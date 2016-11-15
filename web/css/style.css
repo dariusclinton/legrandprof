@@ -1852,6 +1852,7 @@ a.top-destination-image-bg {
 }
 
 .package-grid-item-wrapper .image img {
+    width: 100%;
     border-radius: 3px 3px 0 0;
     height: 200px;
 }
@@ -4315,3 +4316,4 @@ li.cart-li:hover{
 .modal-body #success .thumbnail img{
     height: 150px;
 }
+
