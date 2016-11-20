@@ -48,7 +48,7 @@
                         {% for anomalie in anomalies %}
                           <tr>
                             <td>{{anomalie.objet}}</td>
-                            <td>{{anomalie.contenu}}</td>
+                            <td>{{anomalie.contenu|truncate(255, true, '...')}}</td>
                             <td>{{anomalie.datePublication | date('d/m/Y')}}</td>
                             <td>
                                 <a href="{{ path('lgp_user_anomalie_update', {'id': anomalie.id}) }}" class=""><i class='fa fa-edit'></i></a> 

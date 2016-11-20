@@ -8,18 +8,20 @@
           {% if app.user.image is not null %}
             <img src="{{ asset(app.user.image.webPath) }}" class="img-responsive">
           {% else %}
-            <img src="{{ asset('uploads/profils/default.png') }}"
-                 alt="Tour Package"/>
+            <img src="{{ asset('uploads/profils/default.png') }}" alt="Photo de profil"/>
           {% endif %}
         </div>
         <div class="infos-block">
           <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
-          <p>
-            <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
-            <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
-          </p>
+          {% if is_granted('ROLE_PROF') %}
+            <p>
+              <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
+              <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
+            </p>
+          {% endif %}
           <center>
-            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Compléter profil</a>
+            <br>
+            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary btn-sm">Compléter le profil</a>
             <br><br>
             <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
               de passe</a>
@@ -42,24 +44,24 @@
           </div>
         {% endif %}
         {#<div class="notifications-block">#}
-          {#<div class="notifications-header">#}
-            {#Hello#}
-            {#{% if app.user.prenoms is not null %}#}
-              {#{{ app.user.prenoms }}#}
-            {#{% else %}#}
-              {#{{ app.user.nom }}#}
-            {#{% endif %} !#}
-          {#</div>#}
-          {#<div class="notifications-content">#}
-            {#<h1>#}
-              {#Hello#}
-              {#{% if app.user.prenoms is not null %}#}
-                {#{{ app.user.prenoms }}#}
-              {#{% else %}#}
-                {#{{ app.user.nom }}#}
-              {#{% endif %}#}
-            {#</h1>#}
-          {#</div>#}
+        {#<div class="notifications-header">#}
+        {#Hello#}
+        {#{% if app.user.prenoms is not null %}#}
+        {#{{ app.user.prenoms }}#}
+        {#{% else %}#}
+        {#{{ app.user.nom }}#}
+        {#{% endif %} !#}
+        {#</div>#}
+        {#<div class="notifications-content">#}
+        {#<h1>#}
+        {#Hello#}
+        {#{% if app.user.prenoms is not null %}#}
+        {#{{ app.user.prenoms }}#}
+        {#{% else %}#}
+        {#{{ app.user.nom }}#}
+        {#{% endif %}#}
+        {#</h1>#}
+        {#</div>#}
         {#</div>#}
         <div class="notifications-block">
 
@@ -84,104 +86,97 @@
 
             {#Si profil prof#}
             {% if is_granted('ROLE_PROF') %}
-            <p><b>Ville</b>: {{ app.user.ville }}</p>
-            <p><b>boite Postale</b>: {{ app.user.boitePostale }}</p>
-            <p><b>Situation matrimoniale</b>: {{ app.user.situationMatrimoniale }}</p>
-            <p><b>Niveau scolaire</b>: {{ app.user.niveauScolaire }}</p>
-            <p><b>Nombre d'enfants</b>: {{ app.user.nombreEnfants }}</p>
-            <p><b>Presentation</b>: {{ app.user.presentation }}</p>
-            <p><b>Profession</b>: {{ app.user.profession }}</p>
+              <p><b>Ville</b>: {{ app.user.ville }}</p>
+              <p><b>boite Postale</b>: {{ app.user.boitePostale }}</p>
+              <p><b>Situation matrimoniale</b>: {{ app.user.situationMatrimoniale }}</p>
+              <p><b>Niveau scolaire</b>: {{ app.user.niveauScolaire }}</p>
+              <p><b>Nombre d'enfants</b>: {{ app.user.nombreEnfants }}</p>
+              <p><b>Presentation</b>: {{ app.user.presentation|truncate(255, true, '...') }}</p>
+              <p><b>Profession</b>: {{ app.user.profession }}</p>
+            {% endif %}
           </div>
         </div>
-        <div class="notifications-block">
-          <div class="notifications-header">Quartiers dans lesquels je suis disposé à donner cours</div>
-          <div class="notifications-content">
-            <ul>
-              {% for quartier in app.user.quartierCibles %}
-                <li>
-                  {{ quartier.affichage }}
-                </li>
-              {% endfor %}
-            </ul>
+
+        {% if is_granted('ROLE_PROF') %}
+          <div class="notifications-block">
+            <div class="notifications-header">Quartiers dans lesquels je suis disposé à donner cours</div>
+            <div class="notifications-content">
+              <ul>
+                {% for quartier in app.user.quartierCibles %}
+                  <li>
+                    {{ quartier.affichage }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="notifications-block">
-          <div class="notifications-header">Expérience professionnelle</div>
-          <div class="notifications-content">
-            <table class="table table-stiped table-hover">
-              <thead>
-              <tr>
-                <th>Poste occupé</th>
-                <th>Etablissement</th>
-                <th>Du</th>
-                <th>Au</th>
-                {#<th>Description</th>#}
-              </tr>
-              </thead>
-              <tbody>
-              {% for experience in app.user.experiencePros %}
+          <div class="notifications-block">
+            <div class="notifications-header">Expérience professionnelle</div>
+            <div class="notifications-content">
+              <table class="table table-stiped table-hover">
+                <thead>
                 <tr>
-                  <td>{{ experience.poste }}</td>
-                  <td>{{ experience.etablissement }}</td>
-                  <td>{{ experience.dateDebut | date('d/m/Y') }}</td>
-                  <td>{{ experience.dateFin | date('d/m/Y') }}</td>
-                  {#<td>{{ experience.description }}</td>#}
+                  <th>Poste occupé</th>
+                  <th>Etablissement</th>
+                  <th>Du</th>
+                  <th>Au</th>
+                  {#<th>Description</th>#}
                 </tr>
-              {% endfor %}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                {% for experience in app.user.experiencePros %}
+                  <tr>
+                    <td>{{ experience.poste }}</td>
+                    <td>{{ experience.etablissement }}</td>
+                    <td>{{ experience.dateDebut | date('d/m/Y') }}</td>
+                    <td>{{ experience.dateFin | date('d/m/Y') }}</td>
+                    {#<td>{{ experience.description }}</td>#}
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div class="notifications-block">
-          <div class="notifications-header">Diplômes</div>
-          <div class="notifications-content">
-            <ul>
-              {% for diplome in app.user.diplomes %}
-                <li>
-                  {{ diplome.intitule }}
-                  {% if diplome.fileName is not null %}
-                    (<a href="{{ asset(diplome.webPath) }}" target="_blank">voir</a>)
-                  {% endif %}
-                </li>
-              {% endfor %}
-            </ul>
+          <div class="notifications-block">
+            <div class="notifications-header">Diplômes</div>
+            <div class="notifications-content">
+              <ul>
+                {% for diplome in app.user.diplomes %}
+                  <li>
+                    {{ diplome.intitule }}
+                    {% if diplome.fileName is not null %}
+                      (<a href="{{ asset(diplome.webPath) }}" target="_blank">voir</a>)
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="notifications-block">
-          <div class="notifications-header">CV</div>
-          <div class="notifications-content">
-            {% if app.user.CVFile is not null %}
-              {% if app.user.CVFile.fileName is not null %}
-                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
+          <div class="notifications-block">
+            <div class="notifications-header">CV</div>
+            <div class="notifications-content">
+              {% if app.user.CVFile is not null %}
+                {% if app.user.CVFile.fileName is not null %}
+                  (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
+                {% endif %}
               {% endif %}
-            {% endif %}
-            <br/>
+              <br/>
+            </div>
           </div>
-        </div>
 
-        <div class="notifications-block">
-          <div class="notifications-header">
-            Emploi de temps de disponibilité
-            {#<button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#disponibilite">#}
-            {#Editer#}
-            {#</button>#}
-          </div>
-          <div class="notifications-content">
-            {% if app.user.programmeDeDispo is not null %}
-              {% for jour in app.user.programmeDeDispo %}
-                <p>{{ jour }}</p>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-        <div>
-          {% endif %}
+          {#<div class="notifications-block">#}
+          {#<div class="notifications-header">#}
+          {#Emploi de temps de disponibilité#}
+          {#</div>#}
+          {#<div class="notifications-content">#}
 
-          {#          {{ dump(app.user)}}#}
-        </div>
+          {#</div>#}
+          {#</div>#}
+        {% endif %}
 
-
+        {#{{ dump(app.user) }}#}
       </div>
     </div>
   </div>
+</div>
 </div>

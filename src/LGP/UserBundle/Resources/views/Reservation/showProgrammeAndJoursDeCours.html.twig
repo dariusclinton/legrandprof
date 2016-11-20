@@ -96,7 +96,7 @@
               <tr>
                 <td>{{ seance.date|date('d/m/Y') }}</td>
                 <td>{{ seance.duree }}</td>
-                <td>{{ seance.resume }}</td>
+                <td>{{ seance.resume|truncate(255, true, '...') }}</td>
               </tr>
             {% endfor %}
             </tbody>

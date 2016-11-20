@@ -55,7 +55,7 @@ class ProfileController extends BaseController
 
         $form = $formFactory->createForm();
         $form->setData($user);
-        
+
         /**
          * Custom code
          */
@@ -63,12 +63,12 @@ class ProfileController extends BaseController
       if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
           $originalExperiencePros = new ArrayCollection();
           $originalDiplomes       = new ArrayCollection();
-          
+
           // Creation d'un ArrayCollection des experiencePro contenus dans la bdd
           foreach ($user->getExperiencePros() as $experience) {
             $originalExperiencePros->add($experience);
           }
-          
+
           // Creation d'un ArrayCollection des diplomes contenus dans la bdd
           foreach ($user->getDiplomes() as $diplome) {
             $originalDiplomes->add($diplome);
@@ -79,13 +79,13 @@ class ProfileController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-          
+
           /**
            * Custom code
            */
           // S'il s'agit d'un Prof
           if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
-            
+
             $em = $this->getDoctrine()->getManager();
 
             // Remove relationship between prof en experiencePro
@@ -93,7 +93,7 @@ class ProfileController extends BaseController
               if (false === $user->getExperiencePros()->contains($experience))
                 $em->remove($experience);
             }
-            
+
             // Remove relationship between prof en Diplome
             foreach ($originalDiplomes as $diplome) {
               if (false === $user->getDiplomes()->contains($diplome))
@@ -103,7 +103,7 @@ class ProfileController extends BaseController
             $em->flush();
           }
           //// end custom code
-          
+
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
 
