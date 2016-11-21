@@ -48,7 +48,7 @@
                         {% for categorie in nouvellesCategoriesCours %}
                           <tr>
                             <td>{{categorie.intitule }}</td>
-                            <td>{{categorie.description}}</td>
+                            <td>{{categorie.description|truncate(255, true, '...')}}</td>
                             <td>{{categorie.dateProposition|date('d/m/Y')}}</td>
                             <td>
                                 <a href="{{ path('lgp_user_nouvelle_categorie_cours_delete', {'id': categorie.id}) }}" class="delete_confirm"><i class='fa fa-remove'></i></a>

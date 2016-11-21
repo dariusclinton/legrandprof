@@ -49,7 +49,7 @@
                           <tr>
                             <td>{{ indispo.dateDebut|date('d/m/Y') }}</td>
                             <td>{{ indispo.dateFin|date('d/m/Y') }}</td>
-                            <td>{{ indispo.motif }}</td>
+                            <td>{{ indispo.motif|truncate(255, true, '...') }}</td>
                             <td>
                               <a href='{{ path('lgp_user_prof_indisponibilite_update',  {'id': indispo.id }) }}' class="">
                                   <i class='fa fa-edit'></i>

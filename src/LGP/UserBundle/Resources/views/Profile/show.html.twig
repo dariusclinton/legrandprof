@@ -1,18 +1,16 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block title %}
-  {{ app.user.prenoms }} {{ app.user.nom }} - {{ parent() }} 
+  {{ app.user.prenoms }} {{ app.user.nom }} - {{ parent() }}
 {% endblock %}
 
-{% block header_submenu %} 
+{% block header_submenu %}
   {{ include('LGPCoreBundle::header-submenu.html.twig') }}
 {% endblock %}
 
-{% block fos_user_content %}    
+{% block fos_user_content %}
   <div class="bg-grey dashboard">
     {% include "FOSUserBundle:Profile:show_content.html.twig" %}
   </div>
 
-  {# Include modal disponibilite #}
-  {% include 'LGPUserBundle:Disponibilite:modal_disponibilite_edit.html.twig' %}
 {% endblock fos_user_content %}

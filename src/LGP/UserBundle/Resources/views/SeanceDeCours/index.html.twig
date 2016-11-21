@@ -52,7 +52,7 @@
                           (<a href="{{ path('lgp_user_prof_demande_de_cours_edit', {'id': seance.reservationEnseignement.id}) }}">éditer</a>)
                         </td>
                         <td>{{ seance.duree }}</td>
-                        <td>{{ seance.resume }}</td>
+                        <td>{{ seance.resume|truncate(255, true, '...') }}</td>
                         <td>
                           <a href="{{ path('lgp_user_prof_seance_de_cours_delete', { 'id': seance.id }) }}"
                              class="btn btn-danger btn-sm delete_confirm">

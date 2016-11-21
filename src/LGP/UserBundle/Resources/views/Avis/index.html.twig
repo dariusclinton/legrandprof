@@ -66,7 +66,7 @@
                             </td>
                             <td>
                               <a href="{{ path('lgp_user_avis_voir', {'id': avs.id}) }}"
-                                 class="show-avis-link">{{ avs.commentaire }}</a>
+                                 class="show-avis-link">{{ avs.commentaire|truncate(255, true, '...') }}</a>
                             </td>
                             <td> {{ avs.dateAvis|date('d/m/Y') }}</td>
                             <td>
