@@ -45,10 +45,10 @@
 
                             <div class="GridLex-col-3_sm-6_xs-12 mb-30">
                                 <div class="package-grid-item"> 
-                                    <a href="{{ path('lgp_course_find_category', {'category': category.intitule}) }}">
+                                    <a href="{{ path('lgp_course_find_category', {'slug': category.slug}) }}">
                                         <div class="image">
                                             {% if category.image is not null %}
-                                                <img src="{{ vich_uploader_asset(category.image, 'imageFile') }}" alt=" image categorie " />
+                                                <img src="{{ asset(category.image.webPath) }}" alt=" image categorie " />
                                             {% endif %}
                                             <div class="absolute-in-image">
                                                 <div class="duration"><span>{{params.categoryRep.getcountProfsByCategory(category.intitule)}} Grands profs</span></div>

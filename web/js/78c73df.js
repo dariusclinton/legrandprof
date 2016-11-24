@@ -9530,14 +9530,18 @@ $(function () {
     });
 
     function loadCourses() {
-        learn.splice(0, learn.length);
+        // window.learn.splice(0, window.learn.length);
+        while(window.learn.length){
+            alert('test');
+            window.learn.pop();
+        }
         $.ajax({
             method: "GET",
             url: Routing.generate('lgp_course_all_intitule'),
             data: {},
             success: function (answer, status) {
                 for (i = 0; i < answer.length; i++) {
-                    learn.push(answer[i].intitule);
+                    window.learn.push(answer[i].intitule);
                 }
             },
             error: function (answer, status) {
@@ -9586,18 +9590,18 @@ $(function () {
     $("#cours_search_course_intitule").autocomplete({
         autoFocus: true,
         maxResults: 10,
-        source: learn
+        source: window.learn
     });
 
     $("#cours_search_course_city_intitule").autocomplete({
         autoFocus: false,
         maxResults: 10,
-        source: learn
+        source: window.learn
     });
     $("#cours_search_course_quarter_intitule").autocomplete({
         autoFocus: true,
         maxResults: 10,
-        source: learn
+        source: window.learn
     });
     $("#prof_name").autocomplete({
         autoFocus: true,
