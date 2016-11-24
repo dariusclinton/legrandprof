@@ -5,8 +5,9 @@ parameters:
     database_name: legrandprof
     database_user: root
     database_password: null
-    mailer_transport: smtp
-    mailer_host: glo.globexcamhost.com
-    mailer_user: info@legrandprof.com
-    mailer_password: SystInfo
+    mailer_transport: gmail
+#    mailer_host: glo.globexcamhost.com
+#    mailer_user: info@legrandprof.com
+    mailer_user: legrandprofteam@gmail.com
+    mailer_password: Legrandprof@T4A
     secret: bbb4d84eca91276135d1441544d61d7c58a37f6c
