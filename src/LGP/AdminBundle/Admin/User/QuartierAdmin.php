@@ -30,17 +30,8 @@ class QuartierAdmin extends Admin
         ),
         'placeholder' => '--'
       ))
-      ->add('intitule', 'choice', array(
-        'choices' => array(
-          'Bonabéri' => 'Bonabéri',
-          'Bonass' => 'Bonass',
-          'Bépanda' => 'Bépanda',
-          'Foto' => 'Foto',
-          'Famlah' => 'Famlah',
-          'Foréké' => 'Foréké',
-        ),
-        'placeholder' => '--'
-      ));
+      ->add('intitule', 'text')
+    ;
   }
 
   protected function configureDatagridFilters(DatagridMapper $datagridMapper)
