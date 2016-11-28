@@ -229,3 +229,42 @@ lpg_user_prof_disponibilite_edit:
 lpg_user_prof_disponibilite_add:
     path: /disponibilites/add
     defaults: { _controller: LGPUserBundle:Disponibilite:add }
+
+#    Quartier dans lesquels les profs peuvent donner cours
+lgp_user_prof_quartier_add:
+    path: /quartier/add
+    defaults: { _controller: LGPUserBundle:Quartier:add }
+    options:
+        expose: true
+
+lgp_user_prof_quartier_delete:
+    path: /quartier/delete/{id}
+    defaults: { _controller: LGPUserBundle:Quartier:delete }
+    requirements:
+        id: \d+
+    options:
+        expose: true
+
+lgp_user_prof_quartier_intitule:
+    path: /quartiers/intitules/{ville}
+    defaults: { _controller: LGPUserBundle:Quartier:intitule }
+    requirements:
+        ville: \w+
+    options:
+        expose: true
+
+
+# Experience professionnelle
+lgp_user_prof_experience_pro_add:
+    path: /experience-pro/add
+    defaults: { _controller: LGPUserBundle:ExperiencePro:add }
+    options:
+        expose: true
+
+lgp_user_prof_experience_pro_delete:
+    path: /experience-pro/delete/{id}
+    defaults: { _controller: LGPUserBundle:ExperiencePro:delete }
+    requirements:
+        id: \d+
+    options:
+        expose: true

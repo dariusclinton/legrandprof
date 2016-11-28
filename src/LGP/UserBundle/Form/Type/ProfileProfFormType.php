@@ -7,11 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use LGP\UserBundle\Form\ExperienceProType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use LGP\UserBundle\Form\DiplomeType;
-use LGP\UserBundle\Form\QuartierType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use LGP\UserBundle\Form\CVFileType;
 
 
@@ -57,12 +54,6 @@ class ProfileProfFormType extends AbstractType {
         ->add('presentation', TextareaType::class, array(
           'required' => false
         ))
-        ->add('quartierCibles', EntityType::class, array(
-          'class'        => 'LGPUserBundle:Quartier',
-          'choice_label' => 'affichage',
-          'expanded'     => true,
-          'multiple'     => true
-        ))
         ->add('profession', ChoiceType::class, array(
           'choices'     => array(
             'Etudiant'  => 'Etudiant',
@@ -75,12 +66,6 @@ class ProfileProfFormType extends AbstractType {
           'entry_type'   => DiplomeType::class,
           'allow_add'    => true,
           'allow_delete' => true,
-        ))
-        ->add('experiencePros', CollectionType::class, array(
-          'entry_type'   => ExperienceProType::class,
-          'allow_add'    => true,
-          'allow_delete' => true,
-          'by_reference' => false
         ))
         ->add('CVFile', CVFileType::class)
        ;

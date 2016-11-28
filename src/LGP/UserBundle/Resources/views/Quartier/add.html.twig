@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>Ajout des quartiers dans lesquels je peux donner cours</title>
+  <link rel="stylesheet" href="{{ asset('icons/font-awesome-4.6.3/css/font-awesome.min.css') }}">
+</head>
+<body>
+{{ form_start(form, {'attr': {'class': 'form_quartier'}}) }}
+{{ form_errors(form) }}
+
+<div>
+  {{ form_label(form.ville, "Ville") }}
+  {{ form_widget(form.ville) }}
+  {{ form_errors(form.ville) }}
+</div>
+
+<div>
+  {{ form_label(form, "Quartier") }}
+  {{ form_widget(form.intitule) }}
+  {{ form_errors(form.intitule) }}
+  <span class="ajax_loader"></span>
+</div>
+
+{{ form_rest(form) }}
+{{ form_end(form) }}
+
+<div><button class="btn btn-primary btn-sm" id="submitButton">Enregistrer</button></div>
+
+
+
+<script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
+<script>
+  $(function () {
+    $('#submitButton').click(function() {
+      $('#error_form').hide();
+
+      var quartierVille = $('#quartier_ville').val();
+      var quartierIntitule = $('#quartier_intitule').val();
+
+      if (quartierVille == "" || quartierIntitule == "") {
+        $(this).after('<div class="error" style="color: red" id="error_form">Merci de bien remplir le formulaire</div>');
+        return;
+      }
+
+      //POST ajax
+      var DATA = 'quartier_ville=' + quartierVille + "&quartier_intitule=" + quartierIntitule;
+
+      $.ajax({
+        type: "POST",
+        url: Routing.generate('lgp_user_pof_quartier_add'),
+        data: DATA,
+        cache: false,
+        success: function(data){
+          $(".ajax_loader").html(data);
+        },
+        error: function(error) {
+          console.log("Une erreur est survenue !");
+          $(".ajax_loader").html(error);
+        }
+      });
+    });
+
+// chargement des quartiers en fonction de la ville
+    $('#quartier_ville').change(function () {
+      var quartierVille = $('#quartier_ville').val();
+
+      if (quartierVille == "") {
+        return;
+      }
+
+      $('.ajax_loader').html('<i class="fa fa-spinner fa-pulse"></i>');
+      var ville = ($(this).val());
+      var url = Routing.generate('lgp_user_pof_quartier_intitule') +'/'+ ville;
+
+      $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+          $('.ajax_loader').html('');
+
+          for (i = 0; i < data.length; i++) {
+            $('#quartier_intitule').append('<option value="' + data[i].intitule + '">' + data[i].intitule + '</option>')
+            console.log(data[i].intitule);
+          }
+        },
+        error: function () {
+          console.log("La requête n'a pas abouti !");
+          $('.ajax_loader').html('');
+        }
+      });
+    });
+
+  });
+</script>
+</body>
+</html>

@@ -14,3 +14,277 @@
   </div>
 
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script>
+    $(function () {
+
+      /**
+       * Chargement des quartiers en fonction de la ville
+       */
+      $('#quartier_ville').change(function () {
+        var quartierVille = $('#quartier_ville').val();
+
+        if (quartierVille == "") {
+          return;
+        }
+
+        $('.ajax_loader').html('<i class="fa fa-spinner fa-pulse"></i>');
+        var ville = ($(this).val());
+        var url = Routing.generate('lgp_user_prof_quartier_intitule') + '/' + ville;
+
+        $.ajax({
+          type: 'GET',
+          url: url,
+          success: function (data) {
+            $('.ajax_loader').html('');
+            $('#quartier_intitule').html('');
+
+            for (i = 0; i < data.length; i++) {
+              $('#quartier_intitule').append('<option value="' + data[i].intitule + '">' + data[i].intitule + '</option>')
+//              console.log(data[i].intitule);
+            }
+          },
+          error: function () {
+            console.log("La requête n'a pas abouti !");
+            $('.ajax_loader').html('');
+          }
+        });
+      });
+
+      /**
+       * GESTION DE L'AJOUT ET SUPPRESSION DE QUARTIER
+       */
+
+//     clique sur le bouton d'ajout de quartier
+      $('#add_quartier').click(function (e) {
+
+        if ($('#form_quartier').hasClass('hidden')) {
+          $('#form_quartier').removeClass('hidden');
+          $('#form_quartier').addClass('show');
+        } else {
+          $('#form_quartier').removeClass('show');
+          $('#form_quartier').addClass('hidden');
+        }
+
+        e.preventDefault();
+      });
+
+      // Enregistrement de quartier
+      $('#submitQuartierButton').click(function () {
+        var quartierVille = $('#quartier_ville').val();
+        var quartierIntitule = $('#quartier_intitule').val();
+        var $currentElt = $(this);
+
+        var texteBtn = $(this).html();
+
+        $('#error_form').remove();
+
+        if (quartierVille == "" || quartierIntitule == "") {
+          $(this).after('<div class="error" style="color: red" id="error_form">Merci de bien remplir le formulaire</div>');
+          return;
+        }
+
+        $('#error_form').remove();
+        $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+        //POST ajax
+        var DATA = 'quartier_ville=' + quartierVille + "&quartier_intitule=" + quartierIntitule;
+
+        $.ajax({
+          type: "POST",
+          url: Routing.generate('lgp_user_prof_quartier_add'),
+          data: DATA,
+          cache: false,
+          success: function (data) {
+            showQuartiers(data);
+//            console.log(data);
+            $currentElt.html(texteBtn);
+            $('#form_quartier').removeClass('show');
+            $('#form_quartier').addClass('hidden');
+          },
+          error: function (error) {
+            console.log("Une erreur est survenue !");
+            $currentElt.html(texteBtn);
+          }
+        });
+      });
+
+      // Suppression de quartier
+      deleteQuartier();
+
+
+      /**
+       * GESTION DE L'AJOUT ET SUPPRESSION D'EXPERIENCE
+       */
+      $('#add_experience').click(function(e) {
+        if ($('#form_experience').hasClass('hidden')) {
+          $('#form_experience').removeClass('hidden');
+          $('#form_experience').addClass('show');
+        } else {
+          $('#form_experience').removeClass('show');
+          $('#form_experience').addClass('hidden');
+        }
+
+        e.preventDefault();
+      });
+
+
+      // Enregistrement d'une experience professionnelle
+
+      $('#submitExperienceButton').click(function () {
+        var etablissement = $('#etablissement').val();
+        var poste = $('#poste').val();
+        var dateDebut = $('.datepicker#dateDebut').datepicker('getDate');
+        var dateFin = $('.datepicker#dateFin').datepicker('getDate');
+        var $currentElt = $(this);
+
+        var texteBtn = $(this).html();
+
+        console.log(dateDebut);
+
+        $('#error_form').remove();
+
+        if (etablissement == "" || poste == "" || dateDebut == null || dateFin == null) {
+          $('#error_experience').html('Merci de remplir tous les champs');
+          return;
+        }
+
+        if ((dateFin - dateDebut) <= 0) {
+          $('#error_experience').html('La date fin doit être supérieure à la date de début');
+          return;
+        }
+
+        $('#error_experience').html('');
+
+        $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+        //POST ajax
+        var DATA = 'etablissement=' + etablissement + "&poste=" + poste + "&dateDebut=" + dateDebut + "&dateFin=" + dateFin;
+
+        $.ajax({
+          type: "POST",
+          url: Routing.generate('lgp_user_prof_experience_pro_add'),
+          data: DATA,
+          cache: false,
+          success: function (data) {
+            showExperience(data);
+            console.log(data);
+            $currentElt.html(texteBtn);
+            initFormExperience();
+            $('#form_experience').removeClass('show');
+            $('#form_experience').addClass('hidden');
+          },
+          error: function (error) {
+            console.log("Une erreur est survenue !");
+            $currentElt.html(texteBtn);
+          }
+        });
+      });
+
+      // Suppression d'experience
+      deleteExperience();
+
+
+      /**
+       * UTILITIES
+       */
+
+      // Fonction permettant de supprimer un quartier
+      function deleteQuartier() {
+        $('.delete_quartier').click(function (e) {
+          var id = $(this).attr('id');
+          var url = Routing.generate('lgp_user_prof_quartier_delete', {'id': id});
+
+          $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+//          console.log(url);
+
+          $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+              showQuartiers(data);
+            },
+            error: function () {
+              console.log("Une erreur est survenue !");
+            }
+          });
+
+          e.preventDefault();
+        });
+      }
+
+      // Fonction permettant de supprimer une experience professionnelle
+      function deleteExperience() {
+        $('.delete_experience').click(function (e) {
+          var id = $(this).attr('id');
+          var url = Routing.generate('lgp_user_prof_experience_pro_delete', {'id': id});
+
+          $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+
+          $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+              showExperience(data);
+              console.log(data);
+            },
+            error: function () {
+              console.log("Une erreur est survenue !");
+            }
+          });
+
+          e.preventDefault();
+        });
+      }
+
+      // Fonction permettant d'afficher les quartiers recus
+      function showQuartiers(data) {
+        $('#quartiers').html('');
+
+        for (i = 0; i < data.length; i++) {
+          $('#quartiers').append(
+              '<tr>' +
+              '<td> ' + data[i].intitule + ' </td>' +
+              '<td> ' + data[i].ville + ' </td>' +
+              '<td><a href="#" id="'+ data[i].id +'" class="delete_quartier"><i class="fa fa-remove fa-lg"></i></a></td>' +
+              '</tr>'
+          );
+        }
+
+        // Suppression de quartier
+        deleteQuartier();
+      }
+
+      // Fonction permettant d'afficher les experiences professionnelle recus
+      function showExperience(data) {
+        $('#experiences').html('');
+
+        for (i = 0; i < data.length; i++) {
+          $('#experiences').append(
+              '<tr>' +
+              '<td>'+ data[i].poste +'</td>' +
+              '<td>'+ data[i].etablissement +'</td>' +
+              '<td>'+ (new Date(data[i].dateDebut.date)).toLocaleDateString('fr-FR') +'</td>' +
+              '<td>'+ (new Date(data[i].dateFin.date)).toLocaleDateString('fr-FR') +'</td>' +
+              '<td><a href="#" id="'+ data[i].id +'" class="delete_experience"><i class="fa fa-remove fa-lg"></i></td>' +
+              '</tr>'
+          );
+        }
+
+        // Suppression d'experience
+        // pourque la suppression soit prise en compte sur les nouveaux elements
+        deleteExperience();
+      }
+
+      // Fonction permettant de reinitialiser les champs du formulaire experiencepro
+      function initFormExperience() {
+        $('#etablissement').val('');
+        $('#poste').val('');
+        $('.datepicker#dateDebut').val('');
+        $('.datepicker#dateFin').val('');
+      }
+
+    });
+  </script>
+{% endblock javascripts %}

@@ -94,25 +94,11 @@
                 <div class="col-md-4">{{ form_widget(form.presentation, {'attr': {'class':'form-control'}}) }}</div>
                 {{ form_errors(form.presentation) }}
               </div><br>
-              
-              <div class="row">
-                <div class="col-md-2">{{ form_label(form.quartierCibles, "Quartiers dans lesquels je suis disposé à donner cours", {'label_attr': {}}) }}</div>
-                <div class="col-md-4">{{ form_widget(form.quartierCibles) }}</div>
-                {{ form_errors(form.quartierCibles) }}
-{#                <a href="#" class="btn btn-primary btn-sm" id="add_quartier">Ajouter un quartier</a>#}
-              </div><br>
               <div class="row">
                 <div class="col-md-2">{{ form_label(form.profession, "Profession", {'label_attr': {}}) }}</div>
                 <div class="col-md-4">{{ form_widget(form.profession, {'attr': {'class':'form-control'}}) }}</div>
                 {{ form_errors(form.profession) }}
               </div><br>
-            </div>
-          </div>
-          <div class="notifications-block">
-            <div class="notifications-header">Experiences professionnelles</div>
-            <div class="notifications-content">
-              {{ form_row(form.experiencePros) }}
-              <a href="#" class="btn btn-primary btn-sm" id="add_experience">Ajouter une expérience</a>
             </div>
           </div>
           <div class="notifications-block">

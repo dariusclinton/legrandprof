@@ -14,7 +14,17 @@ class QuartierRepository extends \Doctrine\ORM\EntityRepository
     $qb = $this->_em->createQuery('SELECT q.intitule FROM LGPUserBundle:Quartier q WHERE q.ville = :ville')
         ->setParameter('ville', $ville);
     
-    return $qb;
+    return $qb->getResult();
+  }
+  
+  public function getByProf($id) {
+    $qb = $this->_em->createQuery(
+      'SELECT q.id, q.intitule, q.ville FROM LGPUserBundle:Quartier q INNER JOIN q.profs p WHERE p.id = :id'
+    );
+    
+    $qb->setParameter('id', $id);
+    
+    return $qb->getResult();
   }
 
   public function getQuarterIntitulesByCity($ville){

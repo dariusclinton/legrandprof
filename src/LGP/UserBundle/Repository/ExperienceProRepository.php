@@ -10,7 +10,14 @@ namespace LGP\UserBundle\Repository;
  */
 class ExperienceProRepository extends \Doctrine\ORM\EntityRepository
 {
-  public function getExperienceProf($id)
+  public function getByProf($id)
   {
+    $qb = $this->_em->createQuery(
+      'SELECT e.id, e.etablissement, e.poste, e.dateDebut, e.dateFin FROM LGPUserBundle:ExperiencePro e JOIN e.prof p WHERE p.id = :id'
+    );
+    
+    $qb->setParameter('id', $id);
+    
+    return $qb->getResult();
   }
 }

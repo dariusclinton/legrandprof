@@ -60,20 +60,20 @@ class ProfileController extends BaseController
          * Custom code
          */
         // S'il s'agit d'un Prof
-      if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
-          $originalExperiencePros = new ArrayCollection();
-          $originalDiplomes       = new ArrayCollection();
-
-          // Creation d'un ArrayCollection des experiencePro contenus dans la bdd
-          foreach ($user->getExperiencePros() as $experience) {
-            $originalExperiencePros->add($experience);
-          }
-
-          // Creation d'un ArrayCollection des diplomes contenus dans la bdd
-          foreach ($user->getDiplomes() as $diplome) {
-            $originalDiplomes->add($diplome);
-          }
-        }
+//      if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
+//          $originalExperiencePros = new ArrayCollection();
+//          $originalDiplomes       = new ArrayCollection();
+//
+//          // Creation d'un ArrayCollection des experiencePro contenus dans la bdd
+//          foreach ($user->getExperiencePros() as $experience) {
+//            $originalExperiencePros->add($experience);
+//          }
+//
+//          // Creation d'un ArrayCollection des diplomes contenus dans la bdd
+//          foreach ($user->getDiplomes() as $diplome) {
+//            $originalDiplomes->add($diplome);
+//          }
+//        }
         ///
 
         $form->handleRequest($request);
@@ -84,24 +84,24 @@ class ProfileController extends BaseController
            * Custom code
            */
           // S'il s'agit d'un Prof
-          if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
-
-            $em = $this->getDoctrine()->getManager();
-
-            // Remove relationship between prof en experiencePro
-            foreach ($originalExperiencePros as $experience) {
-              if (false === $user->getExperiencePros()->contains($experience))
-                $em->remove($experience);
-            }
-
-            // Remove relationship between prof en Diplome
-            foreach ($originalDiplomes as $diplome) {
-              if (false === $user->getDiplomes()->contains($diplome))
-                $em->remove($diplome);
-            }
-
-            $em->flush();
-          }
+//          if ($this->get('security.authorization_checker')->isGranted('ROLE_PROF')) {
+//
+//            $em = $this->getDoctrine()->getManager();
+//
+//            // Remove relationship between prof en experiencePro
+//            foreach ($originalExperiencePros as $experience) {
+//              if (false === $user->getExperiencePros()->contains($experience))
+//                $em->remove($experience);
+//            }
+//
+//            // Remove relationship between prof en Diplome
+//            foreach ($originalDiplomes as $diplome) {
+//              if (false === $user->getDiplomes()->contains($diplome))
+//                $em->remove($diplome);
+//            }
+//
+//            $em->flush();
+//          }
           //// end custom code
 
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

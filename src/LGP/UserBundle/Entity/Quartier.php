@@ -27,7 +27,7 @@ class Quartier
   /**
    * @var string
    *
-   * @ORM\Column(name="intitule", type="string", length=255)
+   * @ORM\Column(name="intitule", type="string", length=255, unique=true)
    * @Assert\NotBlank(message="Cette valeur ne doit pas être vide.")
    */
   private $intitule;
