@@ -496,4 +496,20 @@ $(function () {
             $("#quartier_detail").removeAttr("disabled");
         }
     });
+
+    $("#form-search-course-city-submit").click(function (event) {
+        event.preventDefault();
+        var intitule = $("#cours_search_course_city_intitule").val();
+        var city = $("#cours_search_course_city_quartier option:selected").val();
+
+        if (intitule == null || intitule == "" || city == null || city == "") {
+            $("#form-search-course-city-error").attr("display:none");
+            $("#form-search-course-city-error").fadeIn(3000);
+        }
+        else {
+            $("#form-search-course-city").submit();
+        }
+    });
+
+
 });
