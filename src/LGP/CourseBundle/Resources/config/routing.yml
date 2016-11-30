@@ -13,6 +13,13 @@ lgp_course_find_category:
         page:   \d+
 
 # course search
+lgp_course_search:
+    path:     /profs/{slug_ville}/{slug_course}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:search, page: 1, slug_ville: "" }
+    requirements:
+        page:   \d+
+        slug_ville: .*
+
 lgp_course_find:
     path:     /search/profs/{page}
     defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
