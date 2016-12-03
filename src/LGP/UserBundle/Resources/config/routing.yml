@@ -268,3 +268,23 @@ lgp_user_prof_experience_pro_delete:
         id: \d+
     options:
         expose: true
+
+# Diplome
+lgp_user_prof_diplome_add:
+    path: /diplome/add
+    defaults: { _controller: LGPUserBundle:Diplome:add }
+
+lgp_user_prof_diplome_delete:
+    path: /diplome/delete/{id}
+    defaults: { _controller: LGPUserBundle:Diplome:add }
+    requirements:
+        id: \d+
+
+# Telephone
+lgp_user_telephone_add:
+    path: /telephone/add
+    defaults: { _controller: LGPUserBundle:Telephone:add }
+
+lgp_user_telephone_edit:
+    path: /telephone/edit
+    defaults: { _controller: LGPUserBundle:Telephone:edit }

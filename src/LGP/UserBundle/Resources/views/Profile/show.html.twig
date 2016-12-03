@@ -31,7 +31,7 @@
           return;
         }
 
-        $('.ajax_loader').html('<i class="fa fa-spinner fa-pulse"></i>');
+        $('.ajax_loader').html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
         var ville = ($(this).val());
         var url = Routing.generate('lgp_user_prof_quartier_intitule') + '/' + ville;
 
@@ -54,59 +54,63 @@
         });
       });
 
+
+
       /**
-       * GESTION DE L'AJOUT ET SUPPRESSION DE QUARTIER
+       * AJOUT ET SUPPRESSION DE QUARTIER
        */
+
 
 //     clique sur le bouton d'ajout de quartier
       $('#add_quartier').click(function (e) {
 
-        if ($('#form_quartier').hasClass('hidden')) {
-          $('#form_quartier').removeClass('hidden');
-          $('#form_quartier').addClass('show');
-        } else {
-          $('#form_quartier').removeClass('show');
-          $('#form_quartier').addClass('hidden');
-        }
+        $elt = $('#block_form_quartier')
+
+        showBlockForm($elt);
 
         e.preventDefault();
       });
 
-      // Enregistrement de quartier
-      $('#submitQuartierButton').click(function () {
+      // Soumission du formualire quartier
+      $('#form_quartier').submit(function (e) {
+
+        e.preventDefault();
+
         var quartierVille = $('#quartier_ville').val();
         var quartierIntitule = $('#quartier_intitule').val();
-        var $currentElt = $(this);
 
-        var texteBtn = $(this).html();
+        var $form = $(this);
+        var $error = $('#error_quartier');
+        var $loader = $('#save_quartier_loader');
+        var $block_form = $('#block_form_quartier');
 
-        $('#error_form').remove();
+        $error.html('');
 
         if (quartierVille == "" || quartierIntitule == "") {
-          $(this).after('<div class="error" style="color: red" id="error_form">Merci de bien remplir le formulaire</div>');
+          $error.html('Merci de bien remplir le formulaire');
           return;
         }
 
-        $('#error_form').remove();
-        $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+        $error.html('');
+        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
+
         //POST ajax
         var DATA = 'quartier_ville=' + quartierVille + "&quartier_intitule=" + quartierIntitule;
 
         $.ajax({
-          type: "POST",
-          url: Routing.generate('lgp_user_prof_quartier_add'),
+          type: $form.attr('method'),
+          url: $form.attr('action'),
           data: DATA,
           cache: false,
           success: function (data) {
             showQuartiers(data);
 //            console.log(data);
-            $currentElt.html(texteBtn);
-            $('#form_quartier').removeClass('show');
-            $('#form_quartier').addClass('hidden');
+            showBlockForm($block_form);
+            $loader.html('');
           },
           error: function (error) {
             console.log("Une erreur est survenue !");
-            $currentElt.html(texteBtn);
+            $loader.html('Une erreur est servenue, merci de reessayer !');
           }
         });
       });
@@ -115,69 +119,74 @@
       deleteQuartier();
 
 
+
+
       /**
-       * GESTION DE L'AJOUT ET SUPPRESSION D'EXPERIENCE
+       * AJOUT ET SUPPRESSION D'EXPERIENCE
        */
-      $('#add_experience').click(function(e) {
-        if ($('#form_experience').hasClass('hidden')) {
-          $('#form_experience').removeClass('hidden');
-          $('#form_experience').addClass('show');
-        } else {
-          $('#form_experience').removeClass('show');
-          $('#form_experience').addClass('hidden');
-        }
+
+
+      $('#add_experience').click(function (e) {
 
         e.preventDefault();
+
+        var $elt = $('#block_form_experience');
+
+        showBlockForm($elt);
       });
 
 
-      // Enregistrement d'une experience professionnelle
+      // Soumission du formuoaire experience professionnelle
 
-      $('#submitExperienceButton').click(function () {
+      $('#form_experience').submit(function (e) {
+
+        e.preventDefault();
+
         var etablissement = $('#etablissement').val();
         var poste = $('#poste').val();
-        var dateDebut = $('.datepicker#dateDebut').datepicker('getDate');
-        var dateFin = $('.datepicker#dateFin').datepicker('getDate');
-        var $currentElt = $(this);
+        var dateDebut = $('#dateDebut').val();
+        var dateFin = $('#dateFin').val();
 
-        var texteBtn = $(this).html();
+        var tmpDateDebut = $('#dateDebut').datepicker('getDate');
+        var tmpDateFin = $('#dateFin').datepicker('getDate');
 
-        console.log(dateDebut);
+        var $form = $(this);
+        var $error = $('#error_experience');
+        var $loader = $('#save_experience_loader');
+        var $block_form = $('#block_form_experience');
 
-        $('#error_form').remove();
+        $error.html('');
 
         if (etablissement == "" || poste == "" || dateDebut == null || dateFin == null) {
-          $('#error_experience').html('Merci de remplir tous les champs');
+          $error.html('Merci de remplir tous les champs');
           return;
         }
 
-        if ((dateFin - dateDebut) <= 0) {
-          $('#error_experience').html('La date fin doit être supérieure à la date de début');
+        if ((tmpDateFin - tmpDateDebut) <= 0) {
+          $error.html('La date fin doit être supérieure à la date de début');
           return;
         }
 
-        $('#error_experience').html('');
+        $error.html('');
+        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
 
-        $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
         //POST ajax
         var DATA = 'etablissement=' + etablissement + "&poste=" + poste + "&dateDebut=" + dateDebut + "&dateFin=" + dateFin;
 
         $.ajax({
-          type: "POST",
-          url: Routing.generate('lgp_user_prof_experience_pro_add'),
+          type: $form.attr('method'),
+          url: $form.attr('action'),
           data: DATA,
           cache: false,
           success: function (data) {
             showExperience(data);
-            console.log(data);
-            $currentElt.html(texteBtn);
             initFormExperience();
-            $('#form_experience').removeClass('show');
-            $('#form_experience').addClass('hidden');
+            showBlockForm($block_form);
+            $loader.html('');
           },
           error: function (error) {
             console.log("Une erreur est survenue !");
-            $currentElt.html(texteBtn);
+            $loader.html('Une erreur est survenue, merci de reessayer !');
           }
         });
       });
@@ -186,9 +195,66 @@
       deleteExperience();
 
 
+
+      /**
+       * AJOUT ET SUPPRESSION DE DIPLOME
+       */
+
+      // Affichage du formulaire
+      $('#add_diplome').click(function(e) {
+        e.preventDefault();
+
+        $elt = $('#block_form_diplome');
+
+        showBlockForm($elt);
+      });
+
+
+      // Soumission du formulaire diplome
+      $('#form_diplome').submit(function(e) {
+
+        e.preventDefault();
+
+        var intitule = $('#intituleDiplome').val();
+        var fichier = $('#fichierDiplome').val();
+
+        $form = $(this);
+        $loader = $('#save_diplome_loader');
+        $error = $('#error_diplome');
+
+        console.log(fichier);
+
+        $error.html('');
+
+        if (intitule == "" || fichier == "") {
+          $error.html('Merci de bien remplir le formulaire');
+        }
+
+        $error.html('');
+        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>')
+
+        var DATA = "intitule=" + intitule + "&fichier=" + fichier;
+
+        $.ajax({
+          type: $form.attr('method'),
+          url: $form.attr('action'),
+          data: DATA,
+          cache: false,
+          success: function(data) {
+            console.log(data);
+            $loader.html('');
+          },
+          error: function() {
+            console.log('Une erreur est survenue !')
+            $loader.html('Une erreur est survenue, merci de reessayer !');
+          }
+        });
+      });
+
       /**
        * UTILITIES
        */
+
 
       // Fonction permettant de supprimer un quartier
       function deleteQuartier() {
@@ -196,13 +262,13 @@
           var id = $(this).attr('id');
           var url = Routing.generate('lgp_user_prof_quartier_delete', {'id': id});
 
-          $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+          $(this).html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
 //          console.log(url);
 
           $.ajax({
             type: "GET",
             url: url,
-            success: function(data) {
+            success: function (data) {
               showQuartiers(data);
             },
             error: function () {
@@ -220,14 +286,13 @@
           var id = $(this).attr('id');
           var url = Routing.generate('lgp_user_prof_experience_pro_delete', {'id': id});
 
-          $(this).html('<i class="fa fa-spinner fa-pulse"></i>');
+          $(this).html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
 
           $.ajax({
             type: "GET",
             url: url,
-            success: function(data) {
+            success: function (data) {
               showExperience(data);
-              console.log(data);
             },
             error: function () {
               console.log("Une erreur est survenue !");
@@ -247,7 +312,7 @@
               '<tr>' +
               '<td> ' + data[i].intitule + ' </td>' +
               '<td> ' + data[i].ville + ' </td>' +
-              '<td><a href="#" id="'+ data[i].id +'" class="delete_quartier"><i class="fa fa-remove fa-lg"></i></a></td>' +
+              '<td><a href="#" id="' + data[i].id + '" class="delete_quartier"><i class="fa fa-remove fa-lg"></i></a></td>' +
               '</tr>'
           );
         }
@@ -263,11 +328,11 @@
         for (i = 0; i < data.length; i++) {
           $('#experiences').append(
               '<tr>' +
-              '<td>'+ data[i].poste +'</td>' +
-              '<td>'+ data[i].etablissement +'</td>' +
-              '<td>'+ (new Date(data[i].dateDebut.date)).toLocaleDateString('fr-FR') +'</td>' +
-              '<td>'+ (new Date(data[i].dateFin.date)).toLocaleDateString('fr-FR') +'</td>' +
-              '<td><a href="#" id="'+ data[i].id +'" class="delete_experience"><i class="fa fa-remove fa-lg"></i></td>' +
+              '<td>' + data[i].poste + '</td>' +
+              '<td>' + data[i].etablissement + '</td>' +
+              '<td>' + (new Date(data[i].dateDebut.date)).toLocaleDateString('fr-FR') + '</td>' +
+              '<td>' + (new Date(data[i].dateFin.date)).toLocaleDateString('fr-FR') + '</td>' +
+              '<td><a href="#" id="' + data[i].id + '" class="delete_experience"><i class="fa fa-remove fa-lg"></i></td>' +
               '</tr>'
           );
         }
@@ -285,6 +350,16 @@
         $('.datepicker#dateFin').val('');
       }
 
+      // Fonction permettant d'afficher et de cacher le formulaire
+      function showBlockForm($elt) {
+        if ($elt.hasClass('hidden')) {
+          $elt.removeClass('hidden');
+          $elt.addClass('show');
+        } else {
+          $elt.removeClass('show');
+          $elt.addClass('hidden');
+        }
+      }
     });
   </script>
 {% endblock javascripts %}

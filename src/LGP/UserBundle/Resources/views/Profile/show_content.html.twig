@@ -81,7 +81,6 @@
                 Féminin
               {% endif %}
             </p>
-            <p><b>Telephone</b>: {{ app.user.telephone }}</p>
             <p><b>Pays</b>: {{ app.user.pays }}</p>
 
             {#Si profil prof#}
@@ -96,6 +95,33 @@
             {% endif %}
           </div>
         </div>
+
+        <div class="notifications-block">
+          <div class="notifications-header">Téléphone</div>
+          <div class="notifications-content">
+            <p>
+              {% if app.user.telephone is not null %}
+              <b>Téléphone</b>: {{ app.user.telephone }}
+              {% else %}
+            <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
+              <div class="row">
+                <div class="col-md-2">
+                  <label id="control-label">Téléphone (+237)</label>
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
+                         minlength="9" required/>
+                </div>
+                <div class="col-md-4">
+                  <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                </div>
+              </div>
+            </form>
+            {% endif %}
+            </p>
+          </div>
+        </div>
+
 
         {% if is_granted('ROLE_PROF') %}
           <div class="notifications-block">
@@ -129,11 +155,11 @@
                 </tbody>
               </table>
 
-              <div id="form_quartier" class="hidden">
+              <div id="block_form_quartier" class="hidden">
                 <div class="row">
-                  <div class="col-md-8">
-                    <form>
-                      <div class="col-md-6">
+                  <div class="col-md-12">
+                    <form action="{{ path('lgp_user_prof_quartier_add') }}" method="post" id="form_quartier">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label for="quartier_ville">Ville</label>
                           <select name="quartier_ville" id="quartier_ville" class="form-control input-sm">
@@ -144,7 +170,7 @@
                           </select>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                         <div class="form-group">
                           <label for="quartier_intitule">Quartier</label>
                           <select name="quartier_intitule" id="quartier_intitule" class="form-control input-sm">
@@ -153,16 +179,19 @@
                           <span class="ajax_loader"></span>
                         </div>
                       </div>
+                      <div class="col-md-4">
+                        <br>
+                        <input type="submit" class="btn btn-primary btn-sm" value="Enregistrer">
+                        <span id="save_quartier_loader"></span>
+                        <div id="error_quartier" class="text-danger"></div>
+                      </div>
                     </form>
-                  </div>
-                  <div class="col-md-4">
-                    <br>
-                    <button href="#" id="submitQuartierButton" class="btn btn-primary btn-sm">Enregistrer</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="notifications-block">
             <div class="notifications-header">
               Expérience professionnelle
@@ -193,10 +222,11 @@
                 {% endfor %}
                 </tbody>
               </table>
-              <div class="hidden" id="form_experience">
+              <div class="hidden" id="block_form_experience">
                 <div class="row">
                   <div class="col-md-8">
-                    <form class="form-horizontal">
+                    <form id="form_experience" class="form-horizontal"
+                          action="{{ path('lgp_user_prof_experience_pro_add') }}" method="post">
                       <div class="form-group">
                         <label for="etablisement" class="col-md-3">Etablissement</label>
                         <div class="col-md-8">
@@ -221,29 +251,60 @@
                           <input type="text" name="dateFin" id="dateFin" class="form-control input-sm datepicker"/>
                         </div>
                       </div>
+                      <div class="col-md-8 col-md-offset-3">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Enregistrer">
+                        <span id="save_experience_loader"></span>
+                        <div id="error_experience" class="text-danger"></div>
+                      </div>
                     </form>
-                    <div class="col-md-8 col-md-offset-3">
-                      <button href="#" class="btn btn-primary btn-sm" id="submitExperienceButton">Enregistrer</button>
-                      <div id="error_experience" class="text-danger"></div>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="notifications-block">
-            <div class="notifications-header">Diplômes</div>
+            <div class="notifications-header">Diplômes <a href="#" class="btn btn-primary btn-sm" id="add_diplome">Ajouter</a>
+            </div>
             <div class="notifications-content">
-              <ul>
-                {% for diplome in app.user.diplomes %}
-                  <li>
-                    {{ diplome.intitule }}
-                    {% if diplome.fileName is not null %}
-                      (<a href="{{ asset(diplome.webPath) }}" target="_blank">voir</a>)
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
+              <div>
+                <ul>
+                  {% for diplome in app.user.diplomes %}
+                    <li>
+                      {{ diplome.intitule }}
+                      {% if diplome.fileName is not null %}
+                        (<a href="{{ asset(diplome.webPath) }}" target="_blank">voir</a>)
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div id="block_form_diplome" class="row hidden">
+                <div class="col-md-12">
+                  <form action="{{ path('lgp_user_prof_diplome_add') }}" method="post" id="form_diplome"
+                        enctype="multipart/form-data">
+                    <div class="col-md-4">
+                      <label class="control-label">Intitulé</label>
+                      <select name="intituleDiplome" id="intituleDiplome" class="form-control input-sm">
+                        <option value="Bacc">Bacc</option>
+                        <option value="DUT">DUT</option>
+                        <option value="BTS">BTS</option>
+                        <option value="Licence">Licence</option>
+                        <option value="Master">Master</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="control-lable">Fichier</label>
+                      <input type="file" id="fichierDiplome" placeholder="Uploader votre diplome"
+                             accept="application/pdf" required>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                      <span id="save_diplome_loader"></span>
+                      <div id="error_diplome" class="text-danger"></div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
           <div class="notifications-block">
