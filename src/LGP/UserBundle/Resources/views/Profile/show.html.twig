@@ -179,7 +179,7 @@
           data: DATA,
           cache: false,
           success: function (data) {
-            showExperience(data);
+            showExperiences(data);
             initFormExperience();
             showBlockForm($block_form);
             $loader.html('');
@@ -221,8 +221,7 @@
         $form = $(this);
         $loader = $('#save_diplome_loader');
         $error = $('#error_diplome');
-
-        console.log(fichier);
+        $block_form = $('#block_form_diplome');
 
         $error.html('');
 
@@ -231,18 +230,21 @@
         }
 
         $error.html('');
-        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>')
+        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
 
-        var DATA = "intitule=" + intitule + "&fichier=" + fichier;
+        var data = new FormData($(this)[0]);
+//        console.log(data);
 
         $.ajax({
           type: $form.attr('method'),
           url: $form.attr('action'),
-          data: DATA,
+          data: data,
+          processData: false,
+          contentType: false,
           cache: false,
-          success: function(data) {
-            console.log(data);
-            $loader.html('');
+          success: function(rep) {
+            showDiplomes(rep);
+            showBlockForm($block_form);
           },
           error: function() {
             console.log('Une erreur est survenue !')
@@ -250,6 +252,11 @@
           }
         });
       });
+
+      // Suppresion de diplome
+      deleteDiplome();
+
+
 
       /**
        * UTILITIES
@@ -292,7 +299,32 @@
             type: "GET",
             url: url,
             success: function (data) {
-              showExperience(data);
+              showExperiences(data);
+            },
+            error: function () {
+              console.log("Une erreur est survenue !");
+            }
+          });
+
+          e.preventDefault();
+        });
+      }
+
+      // Fonction permettant de supprimer un diplome
+      function deleteDiplome() {
+        $('.delete_diplome').click(function (e) {
+          $elt = $(this);
+
+          var id = $elt.attr('id');
+          var url = Routing.generate('lgp_user_prof_diplome_delete', {'id': id});
+
+          $elt.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
+
+          $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+              showDiplomes(data);
             },
             error: function () {
               console.log("Une erreur est survenue !");
@@ -312,7 +344,7 @@
               '<tr>' +
               '<td> ' + data[i].intitule + ' </td>' +
               '<td> ' + data[i].ville + ' </td>' +
-              '<td><a href="#" id="' + data[i].id + '" class="delete_quartier"><i class="fa fa-remove fa-lg"></i></a></td>' +
+              '<td><a href="#" id="' + data[i].id + '" class="delete_quartier delete_confirm"><i class="fa fa-remove fa-lg"></i></a></td>' +
               '</tr>'
           );
         }
@@ -322,7 +354,7 @@
       }
 
       // Fonction permettant d'afficher les experiences professionnelle recus
-      function showExperience(data) {
+      function showExperiences(data) {
         $('#experiences').html('');
 
         for (i = 0; i < data.length; i++) {
@@ -332,7 +364,7 @@
               '<td>' + data[i].etablissement + '</td>' +
               '<td>' + (new Date(data[i].dateDebut.date)).toLocaleDateString('fr-FR') + '</td>' +
               '<td>' + (new Date(data[i].dateFin.date)).toLocaleDateString('fr-FR') + '</td>' +
-              '<td><a href="#" id="' + data[i].id + '" class="delete_experience"><i class="fa fa-remove fa-lg"></i></td>' +
+              '<td><a href="#" id="' + data[i].id + '" class="text-danger delete_experience delete_confirm"><i class="fa fa-remove fa-lg"></i></td>' +
               '</tr>'
           );
         }
@@ -340,6 +372,25 @@
         // Suppression d'experience
         // pourque la suppression soit prise en compte sur les nouveaux elements
         deleteExperience();
+      }
+
+      // Fonction permettant d'afficher les quartiers recus
+      function showDiplomes(data) {
+        $elt = $('#diplomes');
+        $elt.html('');
+
+        for (i = 0; i < data.length; i++) {
+          $elt.append(
+              '<tr>' +
+              '<td> ' + data[i].intitule + ' </td>' +
+              '<td> (<a href="../../../web/'+ data[i].webPath +'" target="_blank">Voir</a>)</td>' +
+              '<td><a href="#" id="' + data[i].id + '" class="text-danger delete_diplome delete_confirm"><i class="fa fa-remove fa-lg"></i></a></td>' +
+              '</tr>'
+          );
+        }
+
+        // Suppression de diplome
+        deleteDiplome();
       }
 
       // Fonction permettant de reinitialiser les champs du formulaire experiencepro

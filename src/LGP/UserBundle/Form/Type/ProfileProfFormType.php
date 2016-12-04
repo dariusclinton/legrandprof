@@ -19,7 +19,7 @@ class ProfileProfFormType extends AbstractType {
         ->add('ville', ChoiceType::class, array(
           'choices' => array(
             'Douala' => 'Douala',
-            'Yaoundé' => 'Yaoundé',
+            'Yaounde' => 'Yaounde',
             'Bafoussam' => 'Bafoussam',
             'Dschang' => 'Dschang',
           ),
@@ -61,11 +61,6 @@ class ProfileProfFormType extends AbstractType {
           ),
           'placeholder' => '--',
           'required'    => false
-        ))
-        ->add('diplomes', CollectionType::class, array(
-          'entry_type'   => DiplomeType::class,
-          'allow_add'    => true,
-          'allow_delete' => true,
         ))
         ->add('CVFile', CVFileType::class)
        ;

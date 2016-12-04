@@ -276,15 +276,18 @@ lgp_user_prof_diplome_add:
 
 lgp_user_prof_diplome_delete:
     path: /diplome/delete/{id}
-    defaults: { _controller: LGPUserBundle:Diplome:add }
+    defaults: { _controller: LGPUserBundle:Diplome:delete }
     requirements:
         id: \d+
+    options:
+        expose: true
 
 # Telephone
 lgp_user_telephone_add:
     path: /telephone/add
     defaults: { _controller: LGPUserBundle:Telephone:add }
 
-lgp_user_telephone_edit:
-    path: /telephone/edit
-    defaults: { _controller: LGPUserBundle:Telephone:edit }
+# CV
+lgp_user_prof_cv_add:
+    path: /cv/add
+    defaults: { _controller: LGPUserBundle:CV:add }
