@@ -42,11 +42,6 @@
               {{ form_errors(form.sexe) }}
             </div><br>
             <div class="row">
-              <div class="col-md-2">{{ form_label(form.telephone, "Numéro de téléphone (+237)", {'label_attr': {}}) }}</div>
-              <div class="col-md-4">{{ form_widget(form.telephone, {'attr': {'class':'form-control'}}) }}</div>
-              {{ form_errors(form.telephone) }}
-            </div><br>
-            <div class="row">
               <div class="col-md-2">{{ form_label(form.pays, "Pays de résidence", {'label_attr': {}}) }}</div>
               <div class="col-md-4">{{ form_widget(form.pays, {'attr': {'class':'form-control'}}) }}</div>
               {{ form_errors(form.pays) }}
@@ -98,17 +93,6 @@
                 <div class="col-md-2">{{ form_label(form.profession, "Profession", {'label_attr': {}}) }}</div>
                 <div class="col-md-4">{{ form_widget(form.profession, {'attr': {'class':'form-control'}}) }}</div>
                 {{ form_errors(form.profession) }}
-              </div><br>
-            </div>
-          </div>
-          <div class="notifications-block">
-            <div class="notifications-header">Diplome</div>
-            <div class="notifications-content">
-              <div class="row">
-                <div class="col-md-2">{{ form_label(form.diplomes, "Diplômes", {'label_attr': {'class': ''}}) }}</div>
-                <div class="col-md-4">{{ form_widget(form.diplomes) }}</div>
-                {{ form_errors(form.diplomes) }}
-                <a href="#" class="btn btn-primary btn-sm" id="add_diplome">Ajouter un diplome</a>
               </div><br>
             </div>
           </div>

@@ -121,8 +121,7 @@ class Prof extends User
   private $evaluations;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"})
-   * @ORM\JoinTable(name="lgp_prof_diplome")
+   * @ORM\OneToMany(targetEntity="LGP\UserBundle\Entity\Diplome", mappedBy="prof")
    * @Assert\Valid()
    */
   private $diplomes;

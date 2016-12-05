@@ -10,4 +10,13 @@ namespace LGP\UserBundle\Repository;
  */
 class DiplomeRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function getByProf($id) {
+    $qb = $this->_em->createQuery(
+      'SELECT d.id, d.intitule, d.fileName FROM LGPUserBundle:Diplome d JOIN d.prof p WHERE p.id = :id'
+    );
+    
+    $qb->setParameter('id', $id);
+    
+    return $qb->getResult();
+  }
 }

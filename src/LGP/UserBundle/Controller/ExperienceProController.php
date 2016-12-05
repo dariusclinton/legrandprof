@@ -34,8 +34,8 @@ class ExperienceProController extends Controller
       $dateFin = $request->request->get('dateFin');
 
       // Conversion des dates en DateTime
-      $dateDebutConvert = new \DateTime($dateDebut);
-      $dateFinConvert = new \DateTime($dateFin);
+      $dateDebutConvert = \DateTime::createFromFormat('d/m/Y', $dateDebut);
+      $dateFinConvert = \DateTime::createFromFormat('d/m/Y', $dateFin);
 
       $experience = new ExperiencePro($etablissement, $poste, $dateDebutConvert, $dateFinConvert, $prof);
       

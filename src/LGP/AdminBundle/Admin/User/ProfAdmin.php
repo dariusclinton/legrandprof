@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
 class ProfAdmin extends Admin
@@ -26,33 +27,36 @@ class ProfAdmin extends Admin
         'required' => false
       ))
       ->add('image', \LGP\UserBundle\Form\ImageType::class, array(
+        'label' => 'Photo de profil',
         'required' => false
       ))
       ->add('nom', 'text')
       ->add('prenoms', 'text', array(
+        'label' => 'Prénoms',
         'required' => false
       ))
+      ->add('email', 'email')
       ->add('dateNaissance', 'birthday', array(
         'years'       => range(1950, 2010),
         'placeholder' => '--',
-        'required'    => false
+        'required'    => false,
+        'label' => 'Date de naissance'
       ))
       ->add('sexe', 'choice', array(
         'choices' => array(
           'Masculin' => 'Masculin',
-          'Féminin' => 'Féminin'
+          'Féminin' => 'Feminin'
         ),
         'placeholder' => '--',
-        'required' => false
       ))
       ->add('pays', 'country', array(
-        'required' => false
       ))
       ->add('ville', 'choice', array(
         'choices' => array(
           'Douala' => 'Douala',
-          'Yaoundé' => 'Yaoundé',
+          'Yaoundé' => 'Yaounde',
           'Bamenda' => 'Bamenda',
+          'Buéa' => 'Buea',
           'Dschang' => 'Dschang',
         ),
         'placeholder' => '--',
@@ -63,40 +67,51 @@ class ProfAdmin extends Admin
       ))
       ->add('situationMatrimoniale', 'choice', array(
         'choices' => array(
-          'Célibataire' => 'Célibataire',
-          'Marié(e)' => 'Marié(e)',
-          'Divorcé(e)' => 'Divorcé(e)'
+          'Célibataire' => 'Celibataire',
+          'Marié(e)' => 'Marie(e)',
+          'Divorcé(e)' => 'Divorce(e)'
         ),
         'placeholder' => '--',
         'required' => false
       ))
       ->add('nombreEnfants', 'text', array(
-        'required' => false
+        'required' => false,
+        'label' => 'Nombre d\'enfants'
       ))
       ->add('niveauScolaire', 'choice', array(
         'choices' => array(
           'Bacc' => 'Bacc',
-          'Bacc + 1' => 'Bacc_1',
-          'Bacc + 2' => 'Bacc_2',
-          'Licence' => 'Licence'
+          'Bacc + 1' => 'Bacc+1',
+          'Bacc + 2' => 'Bacc+2',
+          'Licence' => 'Licence',
+          'Master I' => 'Master I',
+          'Master II' => 'Master II',
         ),
         'placeholder' => '--',
-        'required' => false
+        'required' => false,
+        'label' => 'Niveau scolaire'
       ))
       ->add('profession', 'choice', array(
         'choices' => array(
           'Etudiant' => 'Etudiant',
-          'PLEG' => 'PLEG'
+          'Professeur de Lycée' => 'Professeur de Lycée',
+          'Instituteur' => 'Instituteur',
         ),
         'placeholder' => '--',
         'required' => false
       ))
       ->add('presentation', 'textarea', array(
-        'required' => false
+        'required' => false,
+        'label' => 'Présentation'
       ))
-      ->add('CVFile', \LGP\UserBundle\Form\CVFileType::class, array(
-        'required' => false
-      ));
+      ->add('plainPassword', 'repeated', array(
+        'type' => 'password',
+        'options' => array('translation_domain' => 'FOSUserBundle'),
+        'first_options' => array('label' => 'form.password'),
+        'second_options' => array('label' => 'form.password_confirmation'),
+        'invalid_message' => 'fos_user.password.mismatch',
+      ))
+    ;
   }
 
   protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -135,6 +150,7 @@ class ProfAdmin extends Admin
         'label' => 'Date de naissance',
         'format' => 'd/m/Y'
       ))
+      ->add('email')
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
