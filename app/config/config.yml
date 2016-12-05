@@ -146,6 +146,8 @@ sonata_admin:
     title_logo: images/Logo.png
     templates:
         layout: LGPAdminBundle::standard_layout.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
     dashboard:
         blocks:
             # display two dashboard blocks

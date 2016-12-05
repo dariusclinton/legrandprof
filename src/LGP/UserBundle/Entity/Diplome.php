@@ -42,7 +42,12 @@ class Diplome
 
   /**
    * @Vich\UploadableField(mapping="diplome_file", fileNameProperty="fileName")
-   * @Assert\File(mimeTypes={"application/pdf"}, mimeTypesMessage="Uniquement les pdf sont valides")
+   * @Assert\File(
+   *   mimeTypes={"application/pdf"},
+   *   mimeTypesMessage="Uniquement les {{ types }} sont valides",
+   *   maxSize="10M",
+   *   maxSizeMessage= "La taille maximum du fichier est {{ limit }} {{ suffix }}"
+   * )
    * @var File
    */
   private $file;

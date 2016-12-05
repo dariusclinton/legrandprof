@@ -326,22 +326,26 @@
             <div class="notifications-content">
               {% if app.user.CVFile is not null %}
                 {#{% if app.user.CVFile.fileName is not null %}#}
-                  (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
+                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
                 {#{% endif %}#}
 
               {% else %}
-                <div id="block_cv_form">
-                  <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post" class="form-horizontal">
-                    <div class="form-group">
-                      <label class="control-label col-md-2">Fichier</label>
-                      <div class="col-md-8 col-md-offset-2">
-                        <input type="file" accept="application/pdf" name="fichierCV">
+                <div class="row">
+                  <div class="col-md-12">
+                    <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <label class="control-label col-md-2">Fichier</label>
+                          <div class="col-md-8 col-md-offset-2">
+                            <input type="file" accept="application/pdf" name="fichierCV">
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-md-8 col-md-offset-2">
-                      <input type="submit" value="Enregistrer" class="btn btn-primary btn-danger">
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               {% endif %}
             </div>
