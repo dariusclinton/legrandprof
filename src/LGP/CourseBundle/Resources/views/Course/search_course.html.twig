@@ -1,7 +1,11 @@
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
-    {{ params.intitule }} - {{ parent() }}
+    {% if params.intitule is not null %}
+        {{ params.intitule }} - {{ parent() }}
+    {% elseif params.city is not null %}
+        {{ params.city }} - {{ parent() }} F
+    {% endif %}
 {% endblock %}
 
 {% block body %}
@@ -28,18 +32,18 @@
 
                 </div>
             </div>
-           {# <div class="row">
-                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
-                    #}{#<h1 class="hero-title">Grands Profs en {{ params.intitule }}</h1>#}{#
-                   #}{# <ol class="breadcrumb-list">
-                        <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
-                        <li><a href="{{ path('lgp_course_find') }}">Profs</a></li>
-                        <li><span> {{ params.intitule }}</span>
-                        </li>
-                    </ol>#}{#
-                </div>
+            {# <div class="row">
+                 <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                     #}{#<h1 class="hero-title">Grands Profs en {{ params.intitule }}</h1>#}{#
+                    #}{# <ol class="breadcrumb-list">
+                         <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
+                         <li><a href="{{ path('lgp_course_find') }}">Profs</a></li>
+                         <li><span> {{ params.intitule }}</span>
+                         </li>
+                     </ol>#}{#
+                 </div>
 
-            </div>#}
+             </div>#}
 
         </div>
 
@@ -59,7 +63,7 @@
                         <div class="sidebar-search-wrapper bg-light-2">
 
                             <div class="">
-                                <h4>Affinez votre recherche </h4>
+                                <h4>Affinez votre recherche</h4>
                             </div>
 
                             <div class="sidebar-search-content">
@@ -188,9 +192,15 @@
 
                         <div class="sorting-header">
                             <h3 class="sorting-title uppercase text-center">
-                                Grands profs en <span style="color:orangered;">{{ params.intitule }}</span>
+                                Grands profs
+                                {% if params.intitule is not null %}
+                                    en <span style="color:orangered;"> {{ params.intitule }}</span>
+                                {% elseif params.city is not null %}
+                                    à <span style="color:orangered;"> {{ params.city }}</span>
+                                {% endif %}
                             </h3>
-                            <p class="sorting-lead text-center"><strong>{{ params.matieres_profs | length }}</strong> Grand (s)
+                            <p class="sorting-lead text-center"><span
+                                        class="fa-2x">{{ params.matieres_profs | length }}</span> Grand (s)
                                 profs trouvés</p>
                         </div>
 

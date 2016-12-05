@@ -19,7 +19,7 @@ class CoursSearchCourseCityType extends AbstractType
     {
         $builder
             ->add('intitule', TextType::class, array('required' => false,
-                'attr' => array('placeholder' => 'Cours')))
+                'attr' => array('placeholder' => 'Que voulez-vous apprendre ?')))
             ->add('quartier', EntityType::class, array(
                     'class' => 'LGPUserBundle:Quartier',
                     'query_builder' => function (QuartierRepository $repository) {

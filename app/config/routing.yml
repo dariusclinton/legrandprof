@@ -12,7 +12,7 @@ lgp_reservation:
 
 lgp_course:
     resource: "@LGPCourseBundle/Resources/config/routing.yml"
-    prefix:   /course
+    prefix:   /
 
 # FOSUserBundle
 fos_user_security:

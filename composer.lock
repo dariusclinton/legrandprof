@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a8d889aa7fcbdc834e9eeb82afd7774e",
-    "content-hash": "e642c70a1ad048a9225d7c5405a8dd67",
+    "hash": "6ecbfee307e3cdb503befe29634c9f4d",
+    "content-hash": "a86dd65dbede028004e510c5e7d098a5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1068,7 +1068,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-10-22 19:08:31"
+            "time": "2016-10-17 15:07:10"
         },
         {
             "name": "gedmo/doctrine-extensions",

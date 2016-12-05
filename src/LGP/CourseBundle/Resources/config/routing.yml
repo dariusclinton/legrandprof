@@ -14,11 +14,22 @@ lgp_course_find_category:
 
 # course search
 lgp_course_search:
-    path:     /profs/{slug_ville}/{slug_course}/{page}
-    defaults: { _controller: LGPCourseBundle:Course:search, page: 1, slug_ville: "" }
+    path:     /profs/city/{slug_ville}/course/{slug_course}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:search, page: 1 }
     requirements:
         page:   \d+
-        slug_ville: .*
+
+lgp_course_search_intitule:
+    path:     /profs/course/{slug_course}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCourse, page: 1 }
+    requirements:
+        page:   \d+
+
+lgp_course_search_city:
+    path:     /profs/city/{slug_city}/{page}
+    defaults: { _controller: LGPCourseBundle:Course:searchCity, page: 1 }
+    requirements:
+        page:   \d+
 
 lgp_course_find:
     path:     /search/profs/{page}
