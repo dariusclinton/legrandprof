@@ -62,6 +62,10 @@ class ProfAdmin extends Admin
         'placeholder' => '--',
         'required' => false
       ))
+      ->add('telephone', 'text', array(
+        'required' => false,
+        'label' => 'Téléphone'
+      ))
       ->add('boitePostale', 'text', array(
         'required' => false
       ))
