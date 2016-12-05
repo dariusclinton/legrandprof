@@ -45,7 +45,8 @@ class ParentsAdmin extends Admin
         'required'    => false
       ))
       ->add('telephone', 'text', array(
-        'required' => false
+        'required' => false,
+        'label' => 'Téléphone'
       ))
       ->add('pays', 'country', array(
         'placeholder' => '--',

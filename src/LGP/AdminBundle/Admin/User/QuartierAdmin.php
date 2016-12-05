@@ -24,9 +24,10 @@ class QuartierAdmin extends Admin
       ->add('ville', 'choice', array(
         'choices' => array(
           'Douala' => 'Douala',
-          'Yaoundé' => 'Yaoundé',
-          'Bafoussam' => 'Bafoussam',
-          'Dschang' => 'Dschang'
+          'Yaoundé' => 'Yaounde',
+          'Bamenda' => 'Bamenda',
+          'Buéa' => 'Buea',
+          'Dschang' => 'Dschang',
         ),
         'placeholder' => '--'
       ))

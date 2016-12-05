@@ -16,6 +16,7 @@ security:
             - ROLE_LGP_ADMIN_PROF_CREATE
             - ROLE_LGP_ADMIN_PROF_EDIT
         ROLE_STAFF: [ROLE_USER, ROLE_LGP_ADMIN_PROF_EDITOR, ROLE_LGP_ADMIN_PROF_READER, ROLE_ADMIN]
+        ROLE_GUEST: [ROLE_USER, ROLE_LGP_ADMIN_PROF_READER, ROLE_ADMIN]
     access_decision_manager:
             strategy: unanimous
 
