@@ -326,30 +326,38 @@
           <div class="notifications-block">
             <div class="notifications-header">CV</div>
             <div class="notifications-content">
-              {% if app.user.CVFile is not null %}
-                {#{% if app.user.CVFile.fileName is not null %}#}
-                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
-                {#{% endif %}#}
+              <div id="cv">
+                {% if app.user.CVFile is not null %}
+                  {#{% if app.user.CVFile.fileName is not null %}#}
 
-              {% else %}
-                <div class="row">
-                  <div class="col-md-12">
-                    <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post">
-                      <div class="row">
-                        <div class="col-md-8">
-                          <label class="control-label col-md-2">Fichier</label>
-                          <div class="col-md-8 col-md-offset-2">
-                            <input type="file" accept="application/pdf" name="fichierCV">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                  (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Afficher</a>)
+                  <a href="#" id="update_cv" class="btn btn-primary btn-sm">Mettre à jour</a>
+
+                  {#{% endif %}#}
+
+                {% else %}
+                  <p><a href="#" id="add_cv" class="btn btn-primary btn-sm">Ajouter un CV</a></p>
+                {% endif %}
+              </div>
+              <div id="block_form_cv" class="row hidden">
+                <div class="col-md-12">
+                  <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <label class="control-label col-md-2">Fichier</label>
+                        <div class="col-md-8 col-md-offset-2">
+                          <input type="file" accept="application/pdf" name="fichierCV" required>
                         </div>
                       </div>
-                    </form>
-                  </div>
+                      <div class="col-md-4">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                        <span id="save_cv_loader"></span>
+                        <div id="error_cv" class="text-danger"></div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              {% endif %}
+              </div>
             </div>
           </div>
 

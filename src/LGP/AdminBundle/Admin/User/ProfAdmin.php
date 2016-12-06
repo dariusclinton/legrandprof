@@ -98,7 +98,7 @@ class ProfAdmin extends Admin
       ->add('profession', 'choice', array(
         'choices' => array(
           'Etudiant' => 'Etudiant',
-          'Professeur de Lycée' => 'Professeur de Lycée',
+          'Professeur de Lycée' => 'Professeur de Lycee',
           'Instituteur' => 'Instituteur',
         ),
         'placeholder' => '--',
