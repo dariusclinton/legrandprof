@@ -32,12 +32,7 @@ class CourseController extends Controller
         $max_per_page = 1;
         $profs = array();
         $intitule = $slug_course;
-        $quarter = null;
         $city = $slug_ville;
-
-        $refine_form = $this->createForm(RefineFormType::class);
-        $refine_form->handleRequest($request);
-
 
         if ($request->getMethod() != "POST") {
             if ($course != null) {
@@ -46,12 +41,13 @@ class CourseController extends Controller
                     $intitule = $course->getIntitule();
                     $city = $quartier->getVille();
                 } else {
-                    $profs = $enseignementRep->getProfsByCours($course, $page, $max_per_page);
-                    $intitule = $course->getIntitule();
+                    return $this->redirectToRoute('lgp_course_search_intitule', array('slug_course'=> $course->getSlug()));
                 }
             }
         }
 
+        $refine_form = $this->createForm(RefineFormType::class);
+        $refine_form->handleRequest($request);
         // to set $profs value for refine filters
         if ($refine_form->isSubmitted() && $refine_form->isValid()) {
             $data = $refine_form->getData();
@@ -60,10 +56,11 @@ class CourseController extends Controller
                     if ($quartier != null) {
                         $page = 1;
                         $profs = $enseignementRep->getProfsByCoursAndCityAndQuarter($course, $quartier->getVille(), $data['quartier']->getIntitule(), $page, $max_per_page);
-                        $quarter = $data['quartier']->getIntitule();
+                        $intitule = $course->getIntitule();
+                        $city = $quartier->getVille();
                     } else {
                         $profs = $enseignementRep->getProfsByCoursAndQuarter($course, $page, $max_per_page);
-                        $quarter = $data['quartier']->getIntitule();
+                        $intitule = $course->getIntitule();
                     }
                 }
             }
@@ -79,7 +76,6 @@ class CourseController extends Controller
         $params = array(
             'intitule' => $intitule,
             'city' => $city,
-            'quarter' => $quarter,
             'courses' => $courses,
             'courseFound' => $course,
             'matieres_profs' => $profs,
@@ -97,6 +93,7 @@ class CourseController extends Controller
         );
 
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_city_form->handleRequest($request);
         if ($course_city_form->isSubmitted() && $course_city_form->isValid()) {
             $data = $course_city_form->getData();
 
@@ -126,15 +123,13 @@ class CourseController extends Controller
         $profs = array();
         $intitule = $slug_course;
 
-        $refine_form = $this->createForm(RefineFormType::class);
-        $refine_form->handleRequest($request);
-
-
         if ($course != null) {
             $profs = $enseignementRep->getProfsByCours($course, $page, $max_per_page);
             $intitule = $course->getIntitule();
         }
 
+        $refine_form = $this->createForm(RefineFormType::class);
+        $refine_form->handleRequest($request);
         // to set $profs value for refine filters
         if ($refine_form->isSubmitted() && $refine_form->isValid()) {
             $data = $refine_form->getData();
@@ -167,6 +162,90 @@ class CourseController extends Controller
                 'max_per_page' => $max_per_page,
                 'page' => $page,
                 'route_params' => array('slug_course' => $slug_course)
+            ),
+        );
+
+
+        $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
+        $course_city_form->handleRequest($request);
+        if ($course_city_form->isSubmitted() && $course_city_form->isValid()) {
+            $data = $course_city_form->getData();
+
+            if (isset($data['intitule']) && isset($data['quartier'])) {
+                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
+                if ($courseFound != null)
+                    return $this->redirectToRoute('lgp_course_search', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_course' => $courseFound->getSlug()));
+                else
+                    return $this->redirectToRoute('lgp_course_search', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_course' => $data['intitule']));
+            } else {
+                return $this->redirectToRoute($request->attributes->get("_route"), $request->attributes->get("_route_params"));
+            }
+        }
+
+        return $this->render('LGPCourseBundle:Course:search_course.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView()));
+    }
+
+    public function searchCityAction($slug_city, $page, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
+        $coursRep = $em->getRepository("LGPCourseBundle:Cours");
+        $quarterRep = $em->getRepository("LGPUserBundle:Quartier");
+        /*$course = $coursRep->findOneBy(array('slug' => $slug_course));*/
+        $course = null;
+        $quarter = $quarterRep->findOneBy(array('slugVille' => $slug_city));
+        $avisRep = $em->getRepository("LGPUserBundle:Avis");
+        $courses = $coursRep->findAll();
+        $max_per_page = 1;
+        $profs = array();
+        $intitule = null;
+        $city = $slug_city;
+
+        $refine_form = $this->createForm(RefineFormType::class);
+        $refine_form->handleRequest($request);
+
+
+        if ($request->getMethod() != "POST") {
+            if ($quarter != null) {
+                $profs = $enseignementRep->getProfsByCity($quarter->getVille(), $page, $max_per_page);
+                $city = $quarter->getVille();
+            } else {
+                $profs = $enseignementRep->getProfsByCity($city, $page, $max_per_page);
+            }
+        }
+
+        // to set $profs value for refine filters
+        if ($refine_form->isSubmitted() && $refine_form->isValid()) {
+            $data = $refine_form->getData();
+            if (isset($data['quartier'])) {
+                var_dump($data['quartier']);
+                die();
+            }
+        }
+
+        $profsCount = count($profs);
+        $pageCount = ceil($profsCount / $max_per_page);
+
+        if ($pageCount < $page && $pageCount != 0 || $page < 0) {
+            throw new NotFoundHttpException('La page demandée n\'existe pas.');// page 404
+        }
+
+        $params = array(
+            'intitule' => $intitule,
+            'courses' => $courses,
+            'city' => null,
+            'courseFound' => $course,
+            'matieres_profs' => $profs,
+            'enseignementRep' => $enseignementRep,
+            'avisRep' => $avisRep,
+            'refine_form' => $refine_form->createView(),
+            'pagination' => array(
+                'route' => 'lgp_course_search_city',
+                'pages_count' => $pageCount,
+                'profs_count' => $profsCount,
+                'max_per_page' => $max_per_page,
+                'page' => $page,
+                'route_params' => array('slug_city' => $slug_city)
             ),
         );
 

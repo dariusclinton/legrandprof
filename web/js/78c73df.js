@@ -8949,7 +8949,7 @@ $(function () {
             $("#form-search-course-city-error").fadeIn(3000);
         }
         else {
-            $("#form-search-course-city").submit();
+            $("#cours_search_course_city").submit();
         }
     });
 
