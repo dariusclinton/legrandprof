@@ -507,9 +507,17 @@ $(function () {
             $("#form-search-course-city-error").fadeIn(3000);
         }
         else {
-            $("#form-search-course-city").submit();
+            $("#cours_search_course_city").submit();
         }
     });
 
-
+    // definir les valeurs par défaut pour la recherche
+    // pour selectionner par defaut l'option dont la ville est définie
+    $("#cours_search_course_city_quartier option").each(function () {
+        if ($(this).val() != "" && $(this).val() == $("#search_city_name").val()) {
+            $(this).attr("selected", "selected");
+        }
+    });
+    $("#cours_search_course_city_intitule").val($("#search_course_intitule").val());
+    // alert($("#search_city_name").val());
 });

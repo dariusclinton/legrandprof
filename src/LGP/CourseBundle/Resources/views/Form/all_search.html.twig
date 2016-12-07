@@ -1,17 +1,87 @@
-<div id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                   href="#collapse1">Par cours et quartier</a>
-            </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse">
-            <div class="panel-body">
-                {% include 'LGPCourseBundle:Form:course_quarter_form_search.html.twig' %}
+{{ form_start(params.refine_form, {'attr': {'id':'form-search-refine'}}) }}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="background-color: #f2f2f2">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+               href="#collapse1" aria-expanded="false" aria-controls="collapseExample">
+                Par Quartier
+            </a>
+        </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body" style="background-color: #f2f2f2">
+            <div class="column-item-medium">
+                <div class="form-group">
+                    {{ form_widget(params.refine_form.quartier, {'attr': {'class': 'form-control', 'autocomplete':'off', 'spellcheck':'off'}}) }}
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+{#<div class="panel panel-default">
+    <div class="panel-heading" style="background-color: #f2f2f2">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+               href="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+                Par ville
+            </a>
+        </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body" style="background-color: #f2f2f2">
+            <div class="column-item-medium">
+                <div class="form-group">
+                    je suis la
+                </div>
+            </div>
+        </div>
+    </div>
+</div>#}
+
+{{ form_rest(params.refine_form) }}
+
+<div class="column-item for-btn">
+    <div class="form-group">
+        <input type="submit" name="" value="Affiner" class="btn btn-primary btn-block">
+    </div>
+</div>
+
+{{ form_end(params.refine_form) }}
+
+{#
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+               href="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+                Par cours et quartier
+            </a>
+        </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+            {% include 'LGPCourseBundle:Form:course_quarter_form_search.html.twig' %}
+        </div>
+    </div>
+</div>#}
+
+<div id="accordion">
+    {# <div class="panel panel-default">
+         <div class="panel-heading">
+             <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                    href="#collapse1">Par cours et quartier</a>
+             </h4>
+         </div>
+         <div id="collapse1" class="panel-collapse collapse">
+             <div class="panel-body">
+                 {% include 'LGPCourseBundle:Form:course_quarter_form_search.html.twig' %}
+             </div>
+         </div>
+     </div>#}
     {#<div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">

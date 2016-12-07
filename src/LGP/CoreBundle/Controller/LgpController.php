@@ -34,11 +34,11 @@ class LgpController extends Controller
             if (isset($data['intitule']) && isset($data['quartier'])) {
                 $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
                 if ($courseFound != null)
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $courseFound->getSlug()));
+                    return $this->redirectToRoute('lgp_course_search', array('slug_ville'=>$data['quartier']->getSlugVille(),  'slug_course' => $courseFound->getSlug()));
                 else
-                    return $this->redirectToRoute('lgp_course_find_prof_course_city', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_cours' => $data['intitule']));
+                    return $this->redirectToRoute('lgp_course_search', array('slug_ville'=>$data['quartier']->getSlugVille(),'slug_course' => $data['intitule']));
             } else {
-                return $this->redirectToRoute($request->getPathInfo());
+                return $this->redirectToRoute($request->attributes->get("_route"), $request->attributes->get("_route_params"));
             }
         }
 

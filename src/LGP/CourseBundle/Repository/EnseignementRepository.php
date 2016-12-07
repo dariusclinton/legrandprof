@@ -70,7 +70,7 @@ class EnseignementRepository extends EntityRepository
      * @param int $max
      * @return Paginator
      */
-    public function getProfsByCoursAndCity($cours, $quartier, $page = 1, $max = 10)
+    public function getProfsByCoursAndCity($cours, $city, $page = 1, $max = 10)
     {
         if (!is_numeric($max)) {
             throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
@@ -78,23 +78,53 @@ class EnseignementRepository extends EntityRepository
 
         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :cours AND p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :ville) GROUP BY p.id");
         $query->setParameter('cours', $cours)
-            ->setParameter('ville', $quartier->getVille())
+            ->setParameter('ville', $city)
             ->setFirstResult(($page - 1) * $max)
             ->setMaxResults($max);
         $paginator = new Paginator($query);
         return $paginator;
     }
 
-    public function getProfsByCoursAndCityAndQuarter($cours, $quartier, $quartier1, $page = 1, $max = 10)
+    public function getProfsByCoursAndQuarter($course, $quarter, $page = 1, $max = 10)
     {
         if (!is_numeric($max)) {
             throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
         }
 
-        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :cours AND p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :ville AND q.intitule = :quartier) GROUP BY p.id");
-        $query->setParameter('cours', $cours)
-            ->setParameter('ville', $quartier->getVille())
-            ->setParameter('quartier', $quartier1->getIntitule())
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :course AND p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.intitule = :intitule) GROUP BY p.id");
+        $query->setParameter('course', $course)
+            ->setParameter('intitule', $quarter)
+            ->setFirstResult(($page - 1) * $max)
+            ->setMaxResults($max);
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
+
+    public function getProfsByCityAndQuarter($city, $intitule, $page = 1, $max = 10)
+    {
+        if (!is_numeric($max)) {
+            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
+        }
+
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :city AND q.intitule = :intitule) GROUP BY p.id")
+            ->setParameter('city', $city)
+            ->setParameter('intitule', $intitule)
+            ->setFirstResult(($page - 1) * $max)
+            ->setMaxResults($max);
+        $paginator = new Paginator($query);
+        return $paginator;
+    }
+
+    public function getProfsByCoursAndCityAndQuarter($course, $city, $quarter, $page = 1, $max = 10)
+    {
+        if (!is_numeric($max)) {
+            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
+        }
+
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :course AND p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :city AND q.intitule = :intitule) GROUP BY p.id");
+        $query->setParameter('course', $course)
+            ->setParameter('city', $city)
+            ->setParameter('intitule', $quarter)
             ->setFirstResult(($page - 1) * $max)
             ->setMaxResults($max);
         $paginator = new Paginator($query);
@@ -121,22 +151,7 @@ class EnseignementRepository extends EntityRepository
         $paginator = new Paginator($query);
         return $paginator;
     }
-
-    public function getProfsByCityAndQuarter($ville, $quartier, $page = 1, $max = 10)
-    {
-        if (!is_numeric($max)) {
-            throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
-        }
-
-        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.id IN (SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :ville AND q.intitule = :quartier) GROUP BY p.id");
-        $query->setParameter('ville', $ville)
-            ->setParameter('quartier', $quartier)
-            ->setFirstResult(($page - 1) * $max)
-            ->setMaxResults($max);
-        $paginator = new Paginator($query);
-        return $paginator;
-    }
-
+    
     public function getCountProfsByCity($ville)
     {
         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.id IN(SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :ville) GROUP BY p.id");
