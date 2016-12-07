@@ -23,7 +23,8 @@ class CategorieRepository extends EntityRepository
 
     public function getcountProfsByCategory($intitule)
     {
-        $query = $this->_em->createQuery("SELECT p.id FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE c.id IN (SELECT c1.id FROM LGPCourseBundle:Cours c1 JOIN c1.categorie cat WHERE cat.intitule LIKE :intitule ) GROUP BY p.id");
+        $query = $this->_em->createQuery("SELECT p.id FROM LGPCourseBundle:Enseignement e JOIN e.cours c JOIN e.prof p WHERE
+        (c.id IN (SELECT c1.id FROM LGPCourseBundle:Cours c1 JOIN c1.categorie cat WHERE cat.intitule LIKE :intitule ) AND p.id IN(SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1)) GROUP BY p.id");
 //        $query = $this->_em->createQuery("SELECT c FROM LGPCourseBundle:Cours c WHERE c.intitule LIKE :intitule");
         $query->setParameter("intitule", $intitule . "%");
         $result = $query->getResult();
