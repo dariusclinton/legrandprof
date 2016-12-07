@@ -41,7 +41,7 @@ class CourseController extends Controller
                     $intitule = $course->getIntitule();
                     $city = $quartier->getVille();
                 } else {
-                    return $this->redirectToRoute('lgp_course_search_intitule', array('slug_course'=> $course->getSlug()));
+                    return $this->redirectToRoute('lgp_course_search_intitule', array('slug_course' => $course->getSlug()));
                 }
             }
         }
@@ -134,8 +134,10 @@ class CourseController extends Controller
         if ($refine_form->isSubmitted() && $refine_form->isValid()) {
             $data = $refine_form->getData();
             if (isset($data['quartier'])) {
-                var_dump($data['quartier']);
-                die();
+                if ($course != null) {
+                    $profs = $enseignementRep->getProfsByCoursAndQuarter($course,$data['quartier']->getIntitule(), $page, $max_per_page);
+                    $intitule = $course->getIntitule();
+                }
             }
         }
 
@@ -201,25 +203,23 @@ class CourseController extends Controller
         $intitule = null;
         $city = $slug_city;
 
-        $refine_form = $this->createForm(RefineFormType::class);
-        $refine_form->handleRequest($request);
-
-
         if ($request->getMethod() != "POST") {
             if ($quarter != null) {
                 $profs = $enseignementRep->getProfsByCity($quarter->getVille(), $page, $max_per_page);
                 $city = $quarter->getVille();
-            } else {
-                $profs = $enseignementRep->getProfsByCity($city, $page, $max_per_page);
             }
         }
 
+        $refine_form = $this->createForm(RefineFormType::class);
+        $refine_form->handleRequest($request);
         // to set $profs value for refine filters
         if ($refine_form->isSubmitted() && $refine_form->isValid()) {
             $data = $refine_form->getData();
             if (isset($data['quartier'])) {
-                var_dump($data['quartier']);
-                die();
+                if ($quarter != null) {
+                    $profs = $enseignementRep->getProfsByCityAndQuarter($quarter->getVille(), $data['quartier']->getIntitule(), $page, $max_per_page);
+                    $city = $quarter->getVille();
+                }
             }
         }
 
@@ -233,7 +233,7 @@ class CourseController extends Controller
         $params = array(
             'intitule' => $intitule,
             'courses' => $courses,
-            'city' => null,
+            'city' => $city,
             'courseFound' => $course,
             'matieres_profs' => $profs,
             'enseignementRep' => $enseignementRep,
