@@ -29,7 +29,7 @@ class CourseController extends Controller
         $quartier = $quartierRep->findOneBy(array('slugVille' => $slug_ville));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = $slug_course;
         $city = $slug_ville;
@@ -37,6 +37,7 @@ class CourseController extends Controller
         if ($request->getMethod() != "POST") {
             if ($course != null) {
                 if ($quartier != null) {
+                    var_dump($enseignementRep->getMustTeachingCourse());
                     $profs = $enseignementRep->getProfsByCoursAndCity($course, $quartier->getVille(), $page, $max_per_page);
                     $intitule = $course->getIntitule();
                     $city = $quartier->getVille();
@@ -119,7 +120,7 @@ class CourseController extends Controller
         $course = $coursRep->findOneBy(array('slug' => $slug_course));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = $slug_course;
 
@@ -198,7 +199,7 @@ class CourseController extends Controller
         $quarter = $quarterRep->findOneBy(array('slugVille' => $slug_city));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = null;
         $city = $slug_city;

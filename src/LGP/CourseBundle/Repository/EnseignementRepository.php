@@ -151,7 +151,7 @@ class EnseignementRepository extends EntityRepository
         $paginator = new Paginator($query);
         return $paginator;
     }
-    
+
     public function getCountProfsByCity($ville)
     {
         $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE p.id IN(SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1 WHERE q.ville = :ville) GROUP BY p.id");
@@ -187,9 +187,13 @@ class EnseignementRepository extends EntityRepository
         return $paginator;
     }
 
-    public function getMustTeachingCourse(){
-        $query = $this->_em->createQuery("SELECT c.slug FROM LGPCourseBundle:Enseignement e JOIN e.cours c ");
-        return $query->getFirstResult();
+    public function getMustTeachingCourse()
+    {
+        $query = $this->_em->createQuery("SELECT c.slug, count(c.slug) AS HIDDEN nbr FROM LGPCourseBundle:Enseignement e JOIN e.cours c GROUP BY c.slug ORDER BY nbr DESC")
+            ->setMaxResults(1);
+        return $query->getResult();
+
+
     }
 
     public function getClasseByCoursAndProf($profId, $coursId)

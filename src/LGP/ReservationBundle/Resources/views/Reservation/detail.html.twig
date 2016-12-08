@@ -299,7 +299,7 @@
             </div>
             <div class="modal-footer animated fadeIn" id="modal-footer" style="display:none">
                 <a href=" {{path('lgp_reservation_cart')}} " class="btn btn-primary" title="">Reserver maintenant</a>
-                <a href=" {{path('lgp_course_find')}} " class="btn btn-default" title="">Trouver d'autres profs</a>
+                <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.enseignementRep.getMustTeachingCourse()[0].slug}) }} " class="btn btn-default" title="">Trouver d'autres profs</a>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

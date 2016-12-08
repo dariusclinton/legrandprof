@@ -21,7 +21,7 @@ class ReservationController extends Controller
         $ensRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $cours = $ensRep->getCoursByProf($prof);
 
-        $params = array('prof' => $prof, 'cours' => $cours);
+        $params = array('prof' => $prof, 'cours' => $cours, 'enseignementRep' => $ensRep);
 
         return $this->render('LGPReservationBundle:Reservation:detail.html.twig', array('params' => $params));
     }

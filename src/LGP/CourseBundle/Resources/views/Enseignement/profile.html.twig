@@ -460,7 +460,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <a href=" {{ path('lgp_course_find') }} " class="btn btn-primary">
+                        <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.enseignementRep.getMustTeachingCourse()[0].slug}) }} " class="btn btn-primary">
                             Faire une autre recherche
                         </a>
                     </div>
