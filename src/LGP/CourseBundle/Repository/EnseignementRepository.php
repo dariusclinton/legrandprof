@@ -27,7 +27,7 @@ class EnseignementRepository extends EntityRepository
             throw new InvalidArgumentException('Le nombre max par page est incorrect (valeur : ' . $max . ').');
         }
 
-        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE e.cours = :cours GROUP BY p.id");
+        $query = $this->_em->createQuery("SELECT DISTINCT e, p FROM LGPCourseBundle:Enseignement e JOIN e.prof p WHERE (e.cours = :cours AND p.id IN(SELECT p1.id FROM LGPUserBundle:Quartier q JOIN q.profs p1)) GROUP BY p.id");
         $query->setParameter('cours', $cours)
             ->setFirstResult(($page - 1) * $max)
             ->setMaxResults($max);
@@ -185,6 +185,11 @@ class EnseignementRepository extends EntityRepository
             ->setMaxResults($max);
         $paginator = new Paginator($query);
         return $paginator;
+    }
+
+    public function getMustTeachingCourse(){
+        $query = $this->_em->createQuery("SELECT c.slug FROM LGPCourseBundle:Enseignement e JOIN e.cours c ");
+        return $query->getFirstResult();
     }
 
     public function getClasseByCoursAndProf($profId, $coursId)
