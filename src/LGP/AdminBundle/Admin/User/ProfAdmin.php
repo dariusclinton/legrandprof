@@ -109,7 +109,7 @@ class ProfAdmin extends Admin
         'label' => 'Présentation'
       ))
       ->add('quartierCibles', 'sonata_type_model', array(
-        'label' => 'Quartiers dans lesquels le prof peut donner cours',
+        'label' => 'Quartiers dans lesquels vous pouvez donner cours',
         'required' => false,
         'class' => 'LGPUserBundle:Quartier',
         'property' => 'affichage',
