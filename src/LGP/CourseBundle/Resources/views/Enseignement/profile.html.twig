@@ -92,18 +92,17 @@
     </div>
     <!-- end Page title -->
 
-    <div class="breadcrumb-wrapper bg-light-2">
+   {# <div class="breadcrumb-wrapper bg-light-2">
         <div class="container">
             <ol class="breadcrumb-list">
                 <li><a href=" {{ path('lgp_core_homepage') }} ">Accueil</a></li>
                 <li><a href=" {{ path('lgp_course_find') }} ">Profs</a></li>
-                {#  <li><a href="#">Douala</a></li>
-                 <li><a href="#">Informatique</a></li> #}
+                #}{#  <li><a href="#">Douala</a></li>
+                 <li><a href="#">Informatique</a></li> #}{#
                 <li><span> {{ prof.prenoms ~" "~ prof.nom | upper }} </span></li>
             </ol>
         </div>
-    </div>
-
+    </div>#}
     <div class="content-wrapper">
 
         <div class="container">
@@ -174,7 +173,7 @@
                                             <dd>
                                                 de la ville de &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <b>
-                                                    <a href=" {{ path('lgp_course_find_prof_city', {'slugVille':quartiersProf.slugVille}) }} "
+                                                    <a href=" {{ path('lgp_course_search_city', {'slug_city':quartiersProf.slugVille}) }} "
                                                        title="Profs de {{ quartiersProf.ville }}">
                                                         {{ quartiersProf.ville }}
                                                     </a>

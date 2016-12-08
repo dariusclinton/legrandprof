@@ -39,7 +39,7 @@
         "stof/doctrine-extensions-bundle": "^1.2",
         "sonata-project/admin-bundle": "3.1.*",
         "sonata-project/doctrine-orm-admin-bundle": "3.1.*",
-        "fillup/nexmo": "^1.0"
+        "twig/extensions": "^1.4"
 
     },
     "require-dev": {

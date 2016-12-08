@@ -1,4 +1,4 @@
-{{ form_start(form_course_city) }}
+{{ form_start(form_course_city, {'attr': {'id':'cours_search_course_city'}}) }}
 
 <div class="column-item-medium">
     <div class="form-group" data-onload="loadCourses()">
@@ -13,7 +13,12 @@
 {{ form_rest(form_course_city) }}
 <div class="column-item for-btn">
     <div class="form-group">
-        <input type="submit" name="" value="Rechercher" class="btn btn-primary btn-block">
+        <input type="submit" name="" id="form-search-course-city-submit" value="Rechercher" class="btn btn-primary btn-block">
+    </div>
+</div>
+<div class="row" id="form-search-course-city-error" style="display: none">
+    <div class="col-md-12 col-sm-12">
+        Veillez entrer le cours et la ville.
     </div>
 </div>
 {{ form_end(form_course_city) }}
