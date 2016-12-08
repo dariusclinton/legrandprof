@@ -27,7 +27,7 @@ class ProfileType extends AbstractType {
         ->add('sexe', ChoiceType::class, array(
           'choices'     => array(
             'Masculin' => 'Masculin',
-            'Féminin' => 'Féminin'
+            'Féminin' => 'Feminin'
           ),
           'placeholder' => '--',
         ))
@@ -35,7 +35,8 @@ class ProfileType extends AbstractType {
           'placeholder' => '--',
         ))
         ->add('image', ImageType::class, array(
-          'required' => false
+          'required' => false,
+          'label' => 'Photo de profil'
         ))
     ;
   }

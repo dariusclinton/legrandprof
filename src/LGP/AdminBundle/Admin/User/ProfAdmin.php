@@ -98,7 +98,7 @@ class ProfAdmin extends Admin
       ->add('profession', 'choice', array(
         'choices' => array(
           'Etudiant' => 'Etudiant',
-          'Professeur de Lycée' => 'Professeur de Lycée',
+          'Professeur de Lycée' => 'Professeur de Lycee',
           'Instituteur' => 'Instituteur',
         ),
         'placeholder' => '--',
@@ -107,6 +107,13 @@ class ProfAdmin extends Admin
       ->add('presentation', 'textarea', array(
         'required' => false,
         'label' => 'Présentation'
+      ))
+      ->add('quartierCibles', 'sonata_type_model', array(
+        'label' => 'Quartiers dans lesquels vous pouvez donner cours',
+        'required' => false,
+        'class' => 'LGPUserBundle:Quartier',
+        'property' => 'affichage',
+        'multiple' => true,
       ))
       ->add('plainPassword', 'repeated', array(
         'type' => 'password',

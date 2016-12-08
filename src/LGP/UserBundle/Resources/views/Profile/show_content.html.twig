@@ -99,26 +99,28 @@
         <div class="notifications-block">
           <div class="notifications-header">Téléphone</div>
           <div class="notifications-content">
-            <p>
+            <div>
               {% if app.user.telephone is not null %}
-              <b>Téléphone</b>: {{ app.user.telephone }}
-              {% else %}
-            <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
-              <div class="row">
-                <div class="col-md-2">
-                  <label id="control-label">Téléphone (+237)</label>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
-                         minlength="9" required/>
-                </div>
-                <div class="col-md-4">
-                  <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
-                </div>
+                <b>Téléphone</b>: {{ app.user.telephone }}
+                <a href="#" class="btn btn-primary btn-sm" id="update_telephone">Modifier</a>
+              {% endif %}
+              <div class="{% if app.user.telephone is not null %} hidden {% endif %}" id="block_form_telephone">
+                <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label id="control-label">Téléphone (+237)</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
+                             minlength="9" required/>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
-            {% endif %}
-            </p>
+            </div>
           </div>
         </div>
 
@@ -326,30 +328,38 @@
           <div class="notifications-block">
             <div class="notifications-header">CV</div>
             <div class="notifications-content">
-              {% if app.user.CVFile is not null %}
-                {#{% if app.user.CVFile.fileName is not null %}#}
-                (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Voir le CV</a>)
-                {#{% endif %}#}
+              <div id="cv">
+                {% if app.user.CVFile is not null %}
+                  {#{% if app.user.CVFile.fileName is not null %}#}
 
-              {% else %}
-                <div class="row">
-                  <div class="col-md-12">
-                    <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post">
-                      <div class="row">
-                        <div class="col-md-8">
-                          <label class="control-label col-md-2">Fichier</label>
-                          <div class="col-md-8 col-md-offset-2">
-                            <input type="file" accept="application/pdf" name="fichierCV">
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                  (<a href="{{ asset(app.user.CVFile.webPath) }}" target="_blank">Afficher</a>)
+                  <a href="#" id="update_cv" class="btn btn-primary btn-sm">Mettre à jour</a>
+
+                  {#{% endif %}#}
+
+                {% else %}
+                  <p><a href="#" id="add_cv" class="btn btn-primary btn-sm">Ajouter un CV</a></p>
+                {% endif %}
+              </div>
+              <div id="block_form_cv" class="row hidden">
+                <div class="col-md-12">
+                  <form action="{{ path('lgp_user_prof_cv_add') }}" id="form_cv" method="post">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <label class="control-label col-md-2">Fichier</label>
+                        <div class="col-md-8 col-md-offset-2">
+                          <input type="file" accept="application/pdf" name="fichierCV" required>
                         </div>
                       </div>
-                    </form>
-                  </div>
+                      <div class="col-md-4">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                        <span id="save_cv_loader"></span>
+                        <div id="error_cv" class="text-danger"></div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-              {% endif %}
+              </div>
             </div>
           </div>
 

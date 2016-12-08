@@ -245,6 +245,7 @@
           success: function(rep) {
             showDiplomes(rep);
             showBlockForm($block_form);
+            $loader.html('');
           },
           error: function() {
             console.log('Une erreur est survenue !')
@@ -257,6 +258,64 @@
       deleteDiplome();
 
 
+
+      /**
+       *
+       * ENREGISTREMENT DE CV
+       * ======================
+       */
+
+      // Mise a jour d'un CV
+      updateCV();
+
+      $('#add_cv').click(function (e) {
+        e.preventDefault();
+        showBlockForm($('#block_form_cv'));
+      });
+
+      $('#form_cv').submit(function(e) {
+        e.preventDefault();
+
+        $form = $(this);
+        $loader = $('#save_cv_loader');
+        $error = $('#error_cv');
+        $block_form = $('#block_form_cv');
+
+        $error.html('');
+        $loader.html('<i class="fa fa-spinner fa-pulse fa-lg"></i>');
+
+        var data = new FormData($(this)[0]);
+//        console.log(data);
+
+        $.ajax({
+          type: $form.attr('method'),
+          url: $form.attr('action'),
+          data: data,
+          processData: false,
+          contentType: false,
+          cache: false,
+          success: function(rep) {
+            showBlockForm($block_form);
+            showCV(rep);
+            $loader.html('');
+          },
+          error: function() {
+            console.log('Une erreur est survenue !')
+            $loader.html('Une erreur est survenue, merci de reessayer !');
+          }
+        });
+      });
+
+
+
+
+      /**
+       * AFFICHAGE DU BLOCK DE MODIFICATION DU TELEPHONE
+       */
+      $('#update_telephone').click(function(e) {
+        e.preventDefault();
+        showBlockForm($('#block_form_telephone'));
+      });
 
       /**
        * UTILITIES
@@ -393,6 +452,28 @@
         deleteDiplome();
       }
 
+      // Fonction permettant d'afficher le cv
+      function showCV(data) {
+        $elt = $('#cv');
+
+        $elt.html('');
+        $elt.append(
+            '(<a href="../../../web/'+ data.webPath +'" target="_blank">Afficher</a>) ' +
+            '<a href="#" id="update_cv" class="btn btn-primary btn-sm">Mettre à jour</a>'
+        );
+
+        // mise a jour de cv
+        updateCV();
+      }
+
+      // Fonction permettant la mise a jour d'un CV
+      function updateCV() {
+        $('#update_cv').click(function (e) {
+          e.preventDefault();
+          showBlockForm($('#block_form_cv'));
+        });
+      }
+
       // Fonction permettant de reinitialiser les champs du formulaire experiencepro
       function initFormExperience() {
         $('#etablissement').val('');
@@ -411,6 +492,9 @@
           $elt.addClass('hidden');
         }
       }
+
+
+
     });
   </script>
 {% endblock javascripts %}

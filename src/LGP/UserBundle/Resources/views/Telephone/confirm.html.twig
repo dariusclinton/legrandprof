@@ -5,8 +5,20 @@
 {% endblock title %}
 
 {% block body %}
-  <h1>Veuillez entrer le code que vous avez reçu !</h1>
-  <p class="text-muted">
-    Cette fonctionnalité est actuellement indisponible!
-  </p>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+      <h3>Veuillez entrer le code que vous avez reçu afin de valider votre numéro de téléphone</h3>
+      <form action="{{ path('lgp_user_telephone_confirm') }}" method="post" class="form-horizontal">
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="code_confirmation" minlength="4" maxlength="5" required/>
+          </div>
+          <div class="col-md-4">
+            <input type="submit" value="Enregistrer" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
 {% endblock body %}

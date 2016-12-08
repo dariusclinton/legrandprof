@@ -19,8 +19,9 @@ class ProfileProfFormType extends AbstractType {
         ->add('ville', ChoiceType::class, array(
           'choices' => array(
             'Douala' => 'Douala',
-            'Yaounde' => 'Yaounde',
-            'Bafoussam' => 'Bafoussam',
+            'Yaoundé' => 'Yaounde',
+            'Bamenda' => 'Bamenda',
+            'Buéa' => 'Buea',
             'Dschang' => 'Dschang',
           ),
           'required' => false,
@@ -32,8 +33,8 @@ class ProfileProfFormType extends AbstractType {
         ->add('situationMatrimoniale', ChoiceType::class, array(
           'choices'     => array(
             'Célibataire' => 'Célibataire',
-            'Marié(e)'    => 'Marié(e)',
-            'Divorcé(e)'  => 'Divorcé(e)'
+            'Marié(e)'    => 'Marie(e)',
+            'Divorcé(e)'  => 'Divorce(e)'
           ),
           'placeholder' => '--',
           'required' => false
@@ -41,8 +42,8 @@ class ProfileProfFormType extends AbstractType {
         ->add('niveauScolaire', ChoiceType::class, array(
           'choices'     => array(
             'Bacc'     => 'Bacc',
-            'Bacc + 1' => 'Bacc_1',
-            'Bacc + 2' => 'Bacc_2',
+            'Bacc + 1' => 'Bacc+1',
+            'Bacc + 2' => 'Bacc+2',
             'Licence'  => 'Licence'
           ),
           'placeholder' => '--',
@@ -56,13 +57,13 @@ class ProfileProfFormType extends AbstractType {
         ))
         ->add('profession', ChoiceType::class, array(
           'choices'     => array(
-            'Etudiant'  => 'Etudiant',
-            'PLEG'      => 'PLEG'
+            'Etudiant' => 'Etudiant',
+            'Professeur de Lycée' => 'Professeur de Lycee',
+            'Instituteur' => 'Instituteur',
           ),
           'placeholder' => '--',
           'required'    => false
         ))
-        ->add('CVFile', CVFileType::class)
        ;
   }
   

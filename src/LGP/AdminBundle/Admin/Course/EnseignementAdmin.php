@@ -25,7 +25,8 @@ class EnseignementAdmin extends Admin
         'required' => false
       ))
       ->add('prix', 'text', array(
-        'required' => false
+        'required' => false,
+        'label' => 'Prix (FCFA)'
       ))
       ->add('cours', 'sonata_type_model', array(
         'class' => 'LGPCourseBundle:Cours',
@@ -48,7 +49,9 @@ class EnseignementAdmin extends Admin
   {
     $listMapper
       ->addIdentifier('classe')
-      ->addIdentifier('prix')
+      ->addIdentifier('prix', null, array(
+        'label' => 'Prix (FCFA)'
+      ))
       ->add('cours', null, array(
         'associated_property' => 'intitule',
         'label' => 'Intitulé'
