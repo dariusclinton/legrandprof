@@ -307,6 +307,16 @@
       });
 
 
+
+
+      /**
+       * AFFICHAGE DU BLOCK DE MODIFICATION DU TELEPHONE
+       */
+      $('#update_telephone').click(function(e) {
+        e.preventDefault();
+        showBlockForm($('#block_form_telephone'));
+      });
+
       /**
        * UTILITIES
        */
@@ -482,6 +492,7 @@
           $elt.addClass('hidden');
         }
       }
+
 
 
     });

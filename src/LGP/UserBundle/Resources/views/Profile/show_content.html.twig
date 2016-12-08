@@ -99,26 +99,28 @@
         <div class="notifications-block">
           <div class="notifications-header">Téléphone</div>
           <div class="notifications-content">
-            <p>
+            <div>
               {% if app.user.telephone is not null %}
-              <b>Téléphone</b>: {{ app.user.telephone }}
-              {% else %}
-            <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
-              <div class="row">
-                <div class="col-md-2">
-                  <label id="control-label">Téléphone (+237)</label>
-                </div>
-                <div class="col-md-4">
-                  <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
-                         minlength="9" required/>
-                </div>
-                <div class="col-md-4">
-                  <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
-                </div>
+                <b>Téléphone</b>: {{ app.user.telephone }}
+                <a href="#" class="btn btn-primary btn-sm" id="update_telephone">Modifier</a>
+              {% endif %}
+              <div class="{% if app.user.telephone is not null %} hidden {% endif %}" id="block_form_telephone">
+                <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label id="control-label">Téléphone (+237)</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
+                             minlength="9" required/>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
-            {% endif %}
-            </p>
+            </div>
           </div>
         </div>
 
