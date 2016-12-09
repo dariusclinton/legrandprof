@@ -13,7 +13,7 @@
         </div>
         <div class="infos-block">
           <h2>{{ app.user.prenoms }} {{ app.user.nom }}</h2>
-          {% if is_granted('ROLE_PROF') %}
+          {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN') %}
             <p>
               <span class="on"><i class="fa fa-check"></i></span>&nbsp;&nbsp;Profil complet<br>
               <span class="off"><i class="fa fa-remove"></i></span> &nbsp;&nbsp;Profil recommandé
@@ -21,8 +21,6 @@
           {% endif %}
           <center>
             <br>
-            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary btn-sm">Compléter le profil</a>
-            <br><br>
             <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary btn-sm">Modifier le mot
               de passe</a>
           </center>
@@ -31,7 +29,7 @@
       </div>
 
       <div class="col-md-9">
-        {% if is_granted('ROLE_PROF') and app.user.avanceeProfil < 100 %}
+        {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN') and app.user.avanceeProfil < 100 %}
           <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert">
               <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -67,6 +65,7 @@
 
           <div class="notifications-header">
             Qui suis je ?
+            <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary btn-sm">Editer le profil</a>
           </div>
           <div class="notifications-content">
             <p><b>Email</b>: {{ app.user.email }}</p>
@@ -84,7 +83,7 @@
             <p><b>Pays</b>: {{ app.user.pays }}</p>
 
             {#Si profil prof#}
-            {% if is_granted('ROLE_PROF') %}
+            {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN') %}
               <p><b>Ville</b>: {{ app.user.ville }}</p>
               <p><b>boite Postale</b>: {{ app.user.boitePostale }}</p>
               <p><b>Situation matrimoniale</b>: {{ app.user.situationMatrimoniale }}</p>
@@ -125,7 +124,7 @@
         </div>
 
 
-        {% if is_granted('ROLE_PROF') %}
+        {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN')%}
           <div class="notifications-block">
             <div class="notifications-header">
               Quartiers dans lesquels je suis disposé à donner cours

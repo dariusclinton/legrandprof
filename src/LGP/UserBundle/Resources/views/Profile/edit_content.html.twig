@@ -54,7 +54,7 @@
           </div>
         </div>
 
-        {% if is_granted('ROLE_PROF') %}
+        {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN') %}
 
           <div class="notifications-block">
             <div class="notifications-header">Informations de présentation</div>
