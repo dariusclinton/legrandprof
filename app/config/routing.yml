@@ -13,7 +13,7 @@ lgp_reservation:
 lgp_course:
     resource: "@LGPCourseBundle/Resources/config/routing.yml"
     prefix:   /c
-
+    
 # FOSUserBundle
 fos_user_security:
     resource: "@LGPUserBundle/Resources/routing/all.xml"

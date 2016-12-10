@@ -12,9 +12,6 @@ fos_user:
     profile:
         form:
             type: LGP\UserBundle\Form\ProfileType
-    resetting:
-            email:
-                template: email/password_resetting.email.twig
     from_email:
             address:     info@legrandprof.com
             sender_name: LeGrandProf
