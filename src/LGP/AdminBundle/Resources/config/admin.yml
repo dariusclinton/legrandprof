@@ -50,14 +50,6 @@ services:
                   manager_type: orm
                   label: Messages
 
-    lgp.admin.jour_dispo:
-            class: LGP\AdminBundle\Admin\User\JourDispoAdmin
-            arguments: [~, LGP\UserBundle\Entity\JourDispo, ~]
-            tags:
-                - name: sonata.admin
-                  manager_type: orm
-                  label: Jours de disponibilité
-
     lgp.admin.horaire:
             class: LGP\AdminBundle\Admin\User\HoraireAdmin
             arguments: [~, LGP\UserBundle\Entity\Horaire, ~]

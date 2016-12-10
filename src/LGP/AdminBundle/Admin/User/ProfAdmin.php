@@ -84,12 +84,13 @@ class ProfAdmin extends Admin
       ))
       ->add('niveauScolaire', 'choice', array(
         'choices' => array(
-          'Bacc' => 'Bacc',
+          'Bacc'     => 'Bacc',
           'Bacc + 1' => 'Bacc+1',
           'Bacc + 2' => 'Bacc+2',
-          'Licence' => 'Licence',
+          'Licence'  => 'Licence',
           'Master I' => 'Master I',
           'Master II' => 'Master II',
+          'Doctorant' => 'Doctorant'
         ),
         'placeholder' => '--',
         'required' => false,

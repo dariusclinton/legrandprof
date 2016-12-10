@@ -2,6 +2,7 @@
 
 namespace LGP\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,10 +23,10 @@ class ProgrammeDeDispo
   private $id;
 
   /**
-   * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\JourDispo", inversedBy="programmesDeDispos")
-   * @ORM\JoinTable(name="lgp_programme_de_dispo_jour_dispo")
+   * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\Horaire", inversedBy="programmesDeDispos")
+   * @ORM\JoinTable(name="lgp_programme_de_dispo_horaire")
    */
-  private $joursDispos;
+  private $horaires;
 
   /**
    * @ORM\OneToOne(targetEntity="LGP\UserBundle\Entity\Prof", mappedBy="programmeDeDispo")
@@ -46,41 +47,7 @@ class ProgrammeDeDispo
      */
     public function __construct()
     {
-        $this->joursDispos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add joursDispo
-     *
-     * @param \LGP\UserBundle\Entity\JourDispo $joursDispo
-     *
-     * @return ProgrammeDeDispo
-     */
-    public function addJoursDispo(\LGP\UserBundle\Entity\JourDispo $joursDispo)
-    {
-        $this->joursDispos[] = $joursDispo;
-
-        return $this;
-    }
-
-    /**
-     * Remove joursDispo
-     *
-     * @param \LGP\UserBundle\Entity\JourDispo $joursDispo
-     */
-    public function removeJoursDispo(\LGP\UserBundle\Entity\JourDispo $joursDispo)
-    {
-        $this->joursDispos->removeElement($joursDispo);
-    }
-
-    /**
-     * Get joursDispos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getJoursDispos()
-    {
-        return $this->joursDispos;
+      $this->horaires = new ArrayCollection();
     }
 
     /**
@@ -105,5 +72,39 @@ class ProgrammeDeDispo
     public function getProf()
     {
         return $this->prof;
+    }
+
+    /**
+     * Add horaire
+     *
+     * @param \LGP\UserBundle\Entity\Horaire $horaire
+     *
+     * @return ProgrammeDeDispo
+     */
+    public function addHoraire(\LGP\UserBundle\Entity\Horaire $horaire)
+    {
+        $this->horaires[] = $horaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove horaire
+     *
+     * @param \LGP\UserBundle\Entity\Horaire $horaire
+     */
+    public function removeHoraire(\LGP\UserBundle\Entity\Horaire $horaire)
+    {
+        $this->horaires->removeElement($horaire);
+    }
+
+    /**
+     * Get horaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHoraires()
+    {
+        return $this->horaires;
     }
 }
