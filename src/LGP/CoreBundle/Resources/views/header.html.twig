@@ -94,7 +94,7 @@
                   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                       <a href="{{ path('fos_user_profile_show') }}" style="margin-top: 0px; font-weight: bold">{{ app.user.prenoms | split(' ')[0] | capitalize }} {{ app.user.nom | split(' ')[0] | capitalize }}</a>
                     <ul>
-                      {% if is_granted('ROLE_PROF') %}
+                      {% if is_granted('ROLE_PROF') and not is_granted('ROLE_ADMIN')%}
                         <li><a href="{{ path('lgp_user_prof_dashboard') }}">Tableau de bord</a></li>
 
                         {% else %}
