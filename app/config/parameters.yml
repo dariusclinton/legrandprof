@@ -10,3 +10,7 @@ parameters:
     mailer_password: Legrandprof@T4A
     secret: bbb4d84eca91276135d1441544d61d7c58a37f6c
     mailer_host: 127.0.0.1
+
+#    Nexmo params
+    nexmo_api_key: ef2cbb9e
+    nexmo_api_secret: 32d637ba9e317ea1

@@ -46,6 +46,10 @@ class ParentsAdmin extends Admin
         'required' => false,
         'label' => 'Téléphone'
       ))
+      ->add('telephone2', 'text', array(
+        'required' => false,
+        'label' => 'Téléphone 2'
+      ))
       ->add('pays', 'country', array(
         'placeholder' => '--'
       ))
@@ -89,6 +93,9 @@ class ParentsAdmin extends Admin
       ->add('telephone', null, array(
         'label' => 'Téléphone'
       ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
+      ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(
         'label' => 'Date d\'inscription',
@@ -119,6 +126,9 @@ class ParentsAdmin extends Admin
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
+      ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
       ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(
