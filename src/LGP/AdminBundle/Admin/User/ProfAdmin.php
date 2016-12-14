@@ -126,6 +126,7 @@ class ProfAdmin extends Admin
         'first_options' => array('label' => 'form.password'),
         'second_options' => array('label' => 'form.password_confirmation'),
         'invalid_message' => 'fos_user.password.mismatch',
+        'required' => false
       ))
     ;
   }
