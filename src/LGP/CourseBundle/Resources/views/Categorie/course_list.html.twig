@@ -75,9 +75,9 @@
                     <div class="sorting-wrappper">
 
                         <div class="sorting-header">
-                            <h3 class="sorting-title uppercase">Cours dans la catégorie {{ params.category.intitule }}</h3>
-                            <p class="sorting-lead">
-                                {{params.courses | length}} Cours
+                            <h3 class="sorting-title uppercase text-center">Cours dans la catégorie <span style="color:orangered">{{ params.category.intitule }}</span></h3>
+                            <p class="sorting-lead text-center">
+                                <span class="fa-2x">{{params.courses | length}}</span> Cours
                             </p>
                         </div>
                     </div>

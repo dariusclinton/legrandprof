@@ -47,7 +47,7 @@ class CategorieController extends Controller
         $categoryRepository = $em->getRepository('LGPCourseBundle:Categorie');
         $coursRep = $em->getRepository('LGPCourseBundle:Cours');
         $categories = $categoryRepository->findAll();
-        $max_per_page = 10;
+        $max_per_page = 9;
         $courses = $coursRep->getAllCoursesByCategory($category, $page, $max_per_page);
         $coursesCount = count($courses);
         $pageCount = ceil($coursesCount / $max_per_page);

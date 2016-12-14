@@ -29,7 +29,7 @@ class CourseController extends Controller
         $quartier = $quartierRep->findOneBy(array('slugVille' => $slug_ville));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 10;
+        $max_per_page = 1;
         $profs = array();
         $intitule = $slug_course;
         $city = $slug_ville;
@@ -37,7 +37,6 @@ class CourseController extends Controller
         if ($request->getMethod() != "POST") {
             if ($course != null) {
                 if ($quartier != null) {
-                    var_dump($enseignementRep->getMustTeachingCourse());
                     $profs = $enseignementRep->getProfsByCoursAndCity($course, $quartier->getVille(), $page, $max_per_page);
                     $intitule = $course->getIntitule();
                     $city = $quartier->getVille();
@@ -136,7 +135,7 @@ class CourseController extends Controller
             $data = $refine_form->getData();
             if (isset($data['quartier'])) {
                 if ($course != null) {
-                    $profs = $enseignementRep->getProfsByCoursAndQuarter($course,$data['quartier']->getIntitule(), $page, $max_per_page);
+                    $profs = $enseignementRep->getProfsByCoursAndQuarter($course, $data['quartier']->getIntitule(), $page, $max_per_page);
                     $intitule = $course->getIntitule();
                 }
             }
@@ -190,6 +189,10 @@ class CourseController extends Controller
 
     public function searchCityAction($slug_city, $page, Request $request)
     {
+        /* For filters and pagination */
+        $session = $request->getSession();
+        var_dump($session->get("lgp_refine_form_data"));
+
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
         $coursRep = $em->getRepository("LGPCourseBundle:Cours");
@@ -199,15 +202,21 @@ class CourseController extends Controller
         $quarter = $quarterRep->findOneBy(array('slugVille' => $slug_city));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 10;
+        $max_per_page = 1;
         $profs = array();
         $intitule = null;
         $city = $slug_city;
 
+
         if ($request->getMethod() != "POST") {
             if ($quarter != null) {
-                $profs = $enseignementRep->getProfsByCity($quarter->getVille(), $page, $max_per_page);
-                $city = $quarter->getVille();
+                if ($session->has("lgp_refine_form_data") && $session->get("lgp_refine_form_data") != null) {
+                    $profs = $enseignementRep->getProfsByCityAndQuarter($quarter->getVille(), $session->get("lgp_refine_form_data"), $page, $max_per_page);
+                    $city = $quarter->getVille();
+                } else {
+                    $profs = $enseignementRep->getProfsByCity($quarter->getVille(), $page, $max_per_page);
+                    $city = $quarter->getVille();
+                }
             }
         }
 
@@ -218,6 +227,7 @@ class CourseController extends Controller
             $data = $refine_form->getData();
             if (isset($data['quartier'])) {
                 if ($quarter != null) {
+                    $session->set("lgp_refine_form_data", $data['quartier']->getIntitule());
                     $profs = $enseignementRep->getProfsByCityAndQuarter($quarter->getVille(), $data['quartier']->getIntitule(), $page, $max_per_page);
                     $city = $quarter->getVille();
                 }
