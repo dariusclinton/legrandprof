@@ -25,12 +25,11 @@ class ParentsAdmin extends Admin
         'required' => false,
         'required' => false
       ))
-      ->add('nom', 'text', array(
-        'required' => false
-      ))
+      ->add('nom', 'text')
       ->add('prenoms', 'text', array(
         'required' => false
       ))
+      ->add('email', 'email')
       ->add('dateNaissance', 'birthday', array(
         'years'       => range(1950, 2010),
         'placeholder' => '--',
@@ -41,17 +40,28 @@ class ParentsAdmin extends Admin
           'Masculin' => 'Masculin',
           'Féminin'  => 'Féminin'
         ),
-        'placeholder' => '--',
-        'required'    => false
+        'placeholder' => '--'
       ))
       ->add('telephone', 'text', array(
         'required' => false,
         'label' => 'Téléphone'
       ))
+      ->add('telephone2', 'text', array(
+        'required' => false,
+        'label' => 'Téléphone 2'
+      ))
       ->add('pays', 'country', array(
-        'placeholder' => '--',
-        'required'    => false
-      ));
+        'placeholder' => '--'
+      ))
+      ->add('plainPassword', 'repeated', array(
+        'type' => 'password',
+        'options' => array('translation_domain' => 'FOSUserBundle'),
+        'first_options' => array('label' => 'form.password'),
+        'second_options' => array('label' => 'form.password_confirmation'),
+        'invalid_message' => 'fos_user.password.mismatch',
+        'required' => false
+      ))
+    ;
   }
 
   protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -84,6 +94,9 @@ class ParentsAdmin extends Admin
       ->add('telephone', null, array(
         'label' => 'Téléphone'
       ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
+      ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(
         'label' => 'Date d\'inscription',
@@ -114,6 +127,9 @@ class ParentsAdmin extends Admin
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
+      ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
       ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(

@@ -172,7 +172,6 @@ sonata_admin:
                     - lgp.admin.remuneration
                     - lgp.admin.quartier_cible
                     - lgp.admin.message
-                    - lgp.admin.jour_dispo
                     - lgp.admin.horaire
                     - lgp.admin.indisponibilite
                     - lgp.admin.anomalie

@@ -23,6 +23,18 @@ class HoraireAdmin extends Admin
     $formMapper
       ->add('debut', 'time')
       ->add('fin', 'time')
+      ->add('jour', 'choice', array(
+        'choices'     => array(
+          'Lundi'    => 'Lundi',
+          'Mardi'    => 'Mardi',
+          'Mercredi' => 'Mercredi',
+          'Jeudi'    => 'Jeudi',
+          'Vendredi' => 'Vendredi',
+          'Samedi'   => 'Samedi',
+          'Dimanche' => 'Dimanche',
+        ),
+        'placeholder' => '--'
+      ))
     ;
   }
 
@@ -30,6 +42,7 @@ class HoraireAdmin extends Admin
     $datagridMapper
       ->add('debut')
       ->add('fin')
+      ->add('jour')
     ;
   }
 
@@ -37,6 +50,7 @@ class HoraireAdmin extends Admin
     $listMapper
       ->addIdentifier('debut')
       ->addIdentifier('fin')
+      ->addIdentifier('jour')
     ;
   }
 

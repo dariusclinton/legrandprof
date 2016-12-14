@@ -100,17 +100,40 @@
           <div class="notifications-content">
             <div>
               {% if app.user.telephone is not null %}
-                <b>Téléphone</b>: {{ app.user.telephone }}
+                <b>Téléphone 1</b>: {{ app.user.telephone }}
                 <a href="#" class="btn btn-primary btn-sm" id="update_telephone">Modifier</a>
               {% endif %}
               <div class="{% if app.user.telephone is not null %} hidden {% endif %}" id="block_form_telephone">
                 <form action="{{ path('lgp_user_telephone_add') }}" method="post" id="form_telephone">
                   <div class="row">
-                    <div class="col-md-2">
-                      <label id="control-label">Téléphone (+237)</label>
+                    <div class="col-md-3">
+                      <label id="control-label">Téléphone 1 (+237)</label>
                     </div>
                     <div class="col-md-4">
                       <input type="text" class="form-control input-sm" id="telephone" name="telephone" maxlength="9"
+                             minlength="9" required/>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="submit" value="Enregistrer" class="btn btn-primary btn-sm">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+            <div>
+              {% if app.user.telephone2 is not null %}
+                <b>Téléphone 2</b>: {{ app.user.telephone2 }}
+                <a href="#" class="btn btn-primary btn-sm" id="update_telephone2">Modifier</a>
+              {% endif %}
+              <div class="{% if app.user.telephone2 is not null %} hidden {% endif %}" id="block_form_telephone2">
+                <form action="{{ path('lgp_user_telephone2_add') }}" method="post" id="form_telephone2">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label id="control-label">Téléphone 2 (+237)</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control input-sm" id="telephone2" name="telephone2" maxlength="9"
                              minlength="9" required/>
                     </div>
                     <div class="col-md-4">

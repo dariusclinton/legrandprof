@@ -287,6 +287,10 @@ lgp_user_telephone_add:
     path: /telephone/add
     defaults: { _controller: LGPUserBundle:Telephone:add }
 
+lgp_user_telephone2_add:
+    path: /telephone2/add
+    defaults: { _controller: LGPUserBundle:Telephone:add2 }
+
 lgp_user_telephone_confirm:
     path: /telephone/confirm
     defaults: { _controller: LGPUserBundle:Telephone:confirm }

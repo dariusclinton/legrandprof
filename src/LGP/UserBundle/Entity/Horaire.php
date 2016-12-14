@@ -36,9 +36,17 @@ class Horaire
   private $fin;
 
   /**
-   * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\JourDispo", mappedBy="horaires")
+   * @var \String
+   *
+   * @ORM\Column(name="jour", type="string", length=50)
    */
-  private $joursDispos;
+  private $jour;
+
+
+  /**
+   * @ORM\ManyToMany(targetEntity="LGP\UserBundle\Entity\ProgrammeDeDispo", mappedBy="horaires")
+   */
+  private $programmesDeDispos;
 
 
   /**
@@ -104,47 +112,72 @@ class Horaire
    */
   public function __construct()
   {
-    $this->joursDispos = new \Doctrine\Common\Collections\ArrayCollection();
-  }
-
-  /**
-   * Add joursDispo
-   *
-   * @param \LGP\UserBundle\Entity\JourDispo $joursDispo
-   *
-   * @return Horaire
-   */
-  public function addJoursDispo(\LGP\UserBundle\Entity\JourDispo $joursDispo)
-  {
-    $this->joursDispos[] = $joursDispo;
-
-    return $this;
-  }
-
-  /**
-   * Remove joursDispo
-   *
-   * @param \LGP\UserBundle\Entity\JourDispo $joursDispo
-   */
-  public function removeJoursDispo(\LGP\UserBundle\Entity\JourDispo $joursDispo)
-  {
-    $this->joursDispos->removeElement($joursDispo);
-  }
-
-  /**
-   * Get joursDispos
-   *
-   * @return \Doctrine\Common\Collections\Collection
-   */
-  public function getJoursDispos()
-  {
-    return $this->joursDispos;
+    $this->programmesDeDispos = new \Doctrine\Common\Collections\ArrayCollection();
   }
 
   /**
    * @return string
    */
-  public function getAffichage() {
+  public function getAffichage()
+  {
     return $this->debut . ' - ' . $this->fin;
   }
+
+  /**
+   * Add programmesDeDispo
+   *
+   * @param \LGP\UserBundle\Entity\ProgrammeDeDispo $programmesDeDispo
+   *
+   * @return Horaire
+   */
+  public function addProgrammesDeDispo(\LGP\UserBundle\Entity\ProgrammeDeDispo $programmesDeDispo)
+  {
+    $this->programmesDeDispos[] = $programmesDeDispo;
+
+    return $this;
+  }
+
+  /**
+   * Remove programmesDeDispo
+   *
+   * @param \LGP\UserBundle\Entity\ProgrammeDeDispo $programmesDeDispo
+   */
+  public function removeProgrammesDeDispo(\LGP\UserBundle\Entity\ProgrammeDeDispo $programmesDeDispo)
+  {
+    $this->programmesDeDispos->removeElement($programmesDeDispo);
+  }
+
+  /**
+   * Get programmesDeDispos
+   *
+   * @return \Doctrine\Common\Collections\Collection
+   */
+  public function getProgrammesDeDispos()
+  {
+    return $this->programmesDeDispos;
+  }
+
+    /**
+     * Set jour
+     *
+     * @param string $jour
+     *
+     * @return Horaire
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return string
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
 }

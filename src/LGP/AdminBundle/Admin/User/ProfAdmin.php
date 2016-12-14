@@ -66,6 +66,10 @@ class ProfAdmin extends Admin
         'required' => false,
         'label' => 'Téléphone'
       ))
+      ->add('telephone2', 'text', array(
+        'required' => false,
+        'label' => 'Téléphone 2'
+      ))
       ->add('boitePostale', 'text', array(
         'required' => false
       ))
@@ -84,12 +88,13 @@ class ProfAdmin extends Admin
       ))
       ->add('niveauScolaire', 'choice', array(
         'choices' => array(
-          'Bacc' => 'Bacc',
+          'Bacc'     => 'Bacc',
           'Bacc + 1' => 'Bacc+1',
           'Bacc + 2' => 'Bacc+2',
-          'Licence' => 'Licence',
+          'Licence'  => 'Licence',
           'Master I' => 'Master I',
           'Master II' => 'Master II',
+          'Doctorant' => 'Doctorant'
         ),
         'placeholder' => '--',
         'required' => false,
@@ -121,6 +126,7 @@ class ProfAdmin extends Admin
         'first_options' => array('label' => 'form.password'),
         'second_options' => array('label' => 'form.password_confirmation'),
         'invalid_message' => 'fos_user.password.mismatch',
+        'required' => false
       ))
     ;
   }
@@ -165,6 +171,9 @@ class ProfAdmin extends Admin
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
+      ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
       ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(
@@ -219,6 +228,9 @@ class ProfAdmin extends Admin
       ->add('sexe')
       ->add('telephone', null, array(
         'label' => 'Téléphone'
+      ))
+      ->add('telephone2', null, array(
+        'label' => 'Téléphone 2'
       ))
       ->add('pays')
       ->add('dateInscription', 'datetime', array(

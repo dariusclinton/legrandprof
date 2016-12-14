@@ -44,7 +44,10 @@ class ProfileProfFormType extends AbstractType {
             'Bacc'     => 'Bacc',
             'Bacc + 1' => 'Bacc+1',
             'Bacc + 2' => 'Bacc+2',
-            'Licence'  => 'Licence'
+            'Licence'  => 'Licence',
+            'Master I' => 'Master I',
+            'Master II' => 'Master II',
+            'Doctorant' => 'Doctorant'
           ),
           'placeholder' => '--',
           'required'    => false

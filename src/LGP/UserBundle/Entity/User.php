@@ -15,6 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\DiscriminatorMap({"user_one" = "Parents", "user_two" = "Prof"})
  *
  * @UniqueEntity(fields="telephone", message="Ce numéro de téléphone est déjà utilisé.")
+ * @UniqueEntity(fields="telephone2", message="Ce numéro de téléphone est déjà utilisé.")
  */
 abstract class User extends BaseUser
 {
@@ -87,6 +88,18 @@ abstract class User extends BaseUser
    * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
    */
   protected $telephone;
+  
+  /**
+   * @var string
+   *
+   * @ORM\Column(name="telephone2", type="string", length=255, unique=true, nullable=true)
+   * @Assert\Length(
+   *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+   *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+   * )
+   * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
+   */
+  protected $telephone2;
 
   /**
    * @var string
@@ -258,6 +271,31 @@ abstract class User extends BaseUser
     return $this->telephone;
   }
 
+
+  /**
+   * Set telephone2
+   *
+   * @param string $telephone2
+   *
+   * @return User
+   */
+  public function setTelephone2($telephone2)
+  {
+    $this->telephone2 = $telephone2;
+
+    return $this;
+  }
+
+  /**
+   * Get telephone2
+   *
+   * @return string
+   */
+  public function getTelephone2()
+  {
+    return $this->telephone2;
+  }
+
   /**
    * Set pays
    *
@@ -406,4 +444,5 @@ abstract class User extends BaseUser
   {
     return $this->paiements;
   }
+
 }
