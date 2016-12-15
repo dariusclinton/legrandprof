@@ -326,76 +326,10 @@ class CourseController extends Controller
             ),
         );
 
-        $course_quarter_form = $this->createForm(CoursSearchCourseQuarterType::class);
-        $city_form = $this->createForm(CoursSearchCityType::class);
-        $prof_name_form = $this->createForm(CoursSearchProfsNameType::class);
-        $category_form = $this->createForm(CoursSearchCategorieType::class);
-        $quarter_form = $this->createForm(CoursSearchQuarterType::class);
         $course_city_form = $this->createForm(CoursSearchCourseCityType::class);
-        $course_form = $this->createForm(CoursSearchCourseType::class);
 
-        $course_quarter_form->handleRequest($request);
-        $city_form->handleRequest($request);
-        $prof_name_form->handleRequest($request);
-        $category_form->handleRequest($request);
-        $quarter_form->handleRequest($request);
         $course_city_form->handleRequest($request);
-        $course_form->handleRequest($request);
 
-        if ($city_form->isSubmitted() && $city_form->isValid()) {
-            $data = $city_form->getData();
-            if (isset($data['ville'])) {
-                return $this->redirectToRoute('lgp_course_find_prof_city', array('slugVille' => $data['ville']->getSlugVille()));
-            }
-        }
-
-        if ($prof_name_form->isSubmitted() && $prof_name_form->isValid()) {
-            $data = $prof_name_form->getData();
-            if (isset($data['prof_name'])) {
-                return $this->redirectToRoute('lgp_course_find_prof_name', array('prof_name' => $data['prof_name']));
-            }
-        }
-
-        if ($course_form->isSubmitted() && $course_form->isValid()) {
-            $data = $course_form->getData();
-            if (isset($data['intitule'])) {
-                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if ($courseFound != null) {
-                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $courseFound->getSlug()));
-                } else {
-
-                    return $this->redirectToRoute('lgp_course_find_prof_course', array('slug_course' => $data['intitule']));
-                }
-            }
-        }
-
-        if ($category_form->isSubmitted() && $category_form->isValid()) {
-            $data = $category_form->getData();
-            if (isset($data['category_name'])) {
-                return $this->redirectToRoute('lgp_course_find_prof_category', array('category_name' => $data['category_name']));
-            }
-        }
-
-        if ($quarter_form->isSubmitted() && $quarter_form->isValid()) {
-            $data = $quarter_form->getData();
-            if (isset($data['quartier'])) {
-                return $this->redirectToRoute('lgp_course_find_prof_city_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier()));
-            }
-        }
-
-        if ($course_quarter_form->isSubmitted() && $course_quarter_form->isValid()) {
-            $data = $course_quarter_form->getData();
-
-            if (isset($data['intitule']) && isset($data['quartier'])) {
-                $courseFound = $coursRep->getCoursByIntitule($data['intitule']);
-                if ($courseFound != null) {
-                    return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $courseFound->getSlug()));
-                } else {
-
-                    return $this->redirectToRoute('lgp_course_find_prof_course_quarter', array('slug_ville' => $data['quartier']->getSlugVille(), 'slug_quartier' => $data['quartier']->getSlugQuartier(), 'slug_cours' => $data['intitule']));
-                }
-            }
-        }
 
         if ($course_city_form->isSubmitted() && $course_city_form->isValid()) {
             $data = $course_city_form->getData();
@@ -411,7 +345,7 @@ class CourseController extends Controller
             }
         }
 
-        return $this->render('LGPCourseBundle:Course:search_course_city.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
+        return $this->render('LGPCourseBundle:Course:search_course_city.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView()));
     }
 
     public function searchCourseQuarterAction($slug_ville, $slug_quartier, $slug_cours, $page, Request $request)
