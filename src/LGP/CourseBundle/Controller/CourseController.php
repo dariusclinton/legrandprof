@@ -201,7 +201,7 @@ class CourseController extends Controller
         $quarter = $quarterRep->findOneBy(array('slugVille' => $slug_city));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = null;
         $city = $slug_city;
