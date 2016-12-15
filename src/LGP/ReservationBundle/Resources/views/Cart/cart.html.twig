@@ -1,4 +1,3 @@
-
 {% extends "LGPCoreBundle::layout.html.twig" %}
 
 {% block title %}
@@ -6,6 +5,22 @@
 {% endblock %}
 
 {% block body %}
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <h1 class="hero-title">COMMANDE</h1>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+
     {% set panier = params.panier %}
     {% set prixReservation = 0 %}
     <div class="bg-grey">
@@ -15,22 +30,26 @@
             <div class="container">
                 <br><br>
                 <h1 class="panier-title">
-                    VOTRE PANIER 
-                    
+                    VOTRE PANIER
+
                 </h1>
-                <h3 class="panier-subtitle">Recapitulatif de la commande - <i>Votre panier contient {% if panier is not null and not panier.items is empty %}
-                        : {{panier.items | length}} Profs 
-                    {% endif %} </i></h3>
+                <h3 class="panier-subtitle">Recapitulatif de la commande
+                    <i>
+                        {% if panier is not null and not panier.items is empty %}
+                            - Votre panier contient: {{ panier.items | length }} Profs
+                        {% endif %}
+                    </i>
+                </h3>
                 <div class="row">
                     <div class="col-md-12">
                         {% for message in app.session.flashBag.get('warning') %}
                             <div class="alert alert-danger">
-                                {{message}} 
+                                {{ message }}
                             </div>
                         {% endfor %}
                         {% for message in app.session.flashBag.get('info') %}
                             <div class="alert alert-success">
-                                {{message}} 
+                                {{ message }}
                             </div>
                         {% endfor %}
                     </div>
@@ -44,69 +63,87 @@
                                 <th style="width:5%"></th>
                                 </thead>
                                 <tbody>
-                                    {% if panier is defined and panier.items | length != 0 %}
-                                        {% for key, booker in panier.items %}
-                                            {% set cours = params.coursRep.find(booker.coursId) %}
-                                            {% set prof = params.profRep.find(booker.profId) %}
-                                            <tr>
-                                                <td> 
-                                                    {% if prof.image is not null %}
-                                                        <img src="{{ asset(prof.image.webPath) }}" width="50px">
-                                                    {% else %}
-                                                        <img src="{{ asset('uploads/profils/default.png') }}">
-                                                    {% endif %}
-                                                </td>
-                                                <td>
-                                                    <p><b class="font800">Cours de <i style="color:#d84315">{{cours.intitule}}</i> en classe de <i style="color:#d84315">{{booker.classe}}</i> </b></p>
-                                                    <ul class="list-info">
-                                                        <li>
-                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
-                                                            <span class="font800">Lieu du cours: </span>{{booker.lieu}}
-                                                            <span class="font800">Ville et quartier:</span>
-                                                            {{booker.ville}} - {{booker.quartier}}
-                                                        </li>
+                                {% if panier is defined and panier.items | length != 0 %}
+                                    {% for key, booker in panier.items %}
+                                        {% set cours = params.coursRep.find(booker.coursId) %}
+                                        {% set prof = params.profRep.find(booker.profId) %}
+                                        <tr>
+                                            <td>
+                                                {% if prof.image is not null %}
+                                                    <img src="{{ asset(prof.image.webPath) }}" width="50px">
+                                                {% else %}
+                                                    <img src="{{ asset('uploads/profils/default.png') }}">
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {#<p>
+                                                    <b class="font800">
+                                                        Cours :
+                                                        <i style="color:#d84315">{{ cours.intitule }}</i> en classe
+                                                        de <i style="color:#d84315">{{ booker.classe }}</i>
+                                                    </b>
+                                                </p>#}
+                                                <ul class="list-info">
+                                                    <li>
+                                                        <span class="icon"><i class="fa fa-book"></i></span>
+                                                        <span class="font800">Cours : </span>
+                                                        <i style="color:#d84315;" class="font800">{{ cours.intitule }}</i>
+                                                        <span class="font800">Classe : </span>
+                                                        <i style="color:#d84315">{{ booker.classe }}</i>
+                                                    </li>
+                                                    <li>
+                                                        <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                                        <span class="font800">Lieu du cours : </span>{{ booker.lieu }}
+                                                        <span class="font800">Ville et quartier : </span>
+                                                        {{ booker.ville }} - {{ booker.quartier }}
+                                                    </li>
 
-                                                        <li>
-                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                            <span class="font800">Date de début : </span>
-                                                            {{booker.dateDebut}} 
-                                                            <span class="font800">nombre d'apprenants :</span>
-                                                            {{booker.nombreApprenants}}
-                                                        </li>
-                                                        {#   <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li> #}
-                                                    </ul><br>
-                                                    <p><b>Prof : </b> {{prof.prenoms ~" "~prof.nom | upper}} </p>
-                                                </td>
-                                                <td>
-                                                    {% set prixReservation = prixReservation + booker.prixTotal %}
-                                                    <h2 class="price">{{booker.prixTotal}} FCFA </h2>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <a title="supprimer du panier"  onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'" class="btn-cancel"><i class="fa fa-remove"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    {% endif %}
+                                                    <li>
+                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                        <span class="font800">Date de début : </span>
+                                                        {{ booker.dateDebut }}
+                                                        <span class="font800">nombre d'apprenants : </span>
+                                                        {{ booker.nombreApprenants }}
+                                                    </li>
+                                                    {#   <li><span class="icon"><i class="fa fa-book"></i></span> <span class="font600">Compétences :</span> Mathématiques, Physiques,...</li> #}
+                                                </ul>
+                                                <br>
+                                                <p><b>Prof : </b> {{ prof.prenoms ~" "~prof.nom | upper }} </p>
+                                            </td>
+                                            <td>
+                                                {% set prixReservation = prixReservation + booker.prixTotal %}
+                                                <h2 class="price">{{ booker.prixTotal }} FCFA </h2>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <a title="supprimer du panier"
+                                                   onclick="location.href = '{{ path('lgp_reservation_cart_remove',{'key': key}) }}'"
+                                                   class="btn-cancel"><i class="fa fa-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
                                 </tbody>
                             </table>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                                <h1><b>Total : <span class="total">{{prixReservation}} FCFA / Mois</span></b></h1>
+                                <h1><b>Total : <span class="total">{{ prixReservation }} FCFA / Mois</span></b></h1>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-                                <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.ensRep.getMustTeachingCourse()[0].slug}) }} " class="btn btn-primary" title="">
+                                <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.ensRep.getMustTeachingCourse()[0].slug}) }} "
+                                   class="btn btn-primary" title="">
                                     Faire une recherche
                                 </a>
                                 <a class="btn btn-primary"
-                                       href=" {{path('lgp_reservation_paiement')}}">
-                                   Passer a l'etape suivante
+                                   href=" {{ path('lgp_reservation_paiement') }}">
+                                    Passer a l'étape suivante
                                 </a>
                             </div>
                         {% else %}
                             <h1>Votre panier est vide !!!</h1>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
-                                    <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.ensRep.getMustTeachingCourse()[0].slug}) }} " class="btn btn-primary" title="Rechercher d'autres profs">
+                                    <a href=" {{ path('lgp_course_search_intitule', {'slug_course':params.ensRep.getMustTeachingCourse()[0].slug}) }} "
+                                       class="btn btn-primary" title="Rechercher d'autres profs">
                                         Faire une recherche
                                     </a>
                                 </div>

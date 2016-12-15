@@ -20,7 +20,7 @@
 
                     <ol class="breadcrumb-list">
                         <li><a href=" {{path('lgp_core_homepage')}} ">Accueil</a></li>
-                        <li><a href="{{path('lgp_course_categories')}}">Categories</a></li>
+                        <li><a href="{{path('lgp_course_categories')}}">Catégories</a></li>
                         <li><span>{{ params.category.intitule | lower }}</span></li>
                     </ol>
 
@@ -55,10 +55,16 @@
                                                     {{cat.intitule}}
                                                 </a>
                                             </li>
+                                            {% else %}
+                                                <li>
+                                                    <a href=" {{path('lgp_course_find_category' , {'slug':cat.slug}) }} " style="color:#000;">
+                                                        {{cat.intitule}}
+                                                    </a>
+                                                </li>
                                         {% endif %}
                                     {% endfor %}
-                                    <li></li>
-                                    <li><a href=" {{path('lgp_course_categories')}} " title="">voir toutes les categories</a></li>
+                                    <br>
+                                    <li><a href=" {{path('lgp_course_categories')}} " title="">Voir toutes les catégories</a></li>
                                 </ul>
                             </div>
 
@@ -89,7 +95,7 @@
 
                             {% for course in params.courses %}
                                 <div class="GridLex-col-4_sm-6_xs-12 mb-20">
-                                    <div class="package-grid-item"> 
+                                    <div class="package-grid-item">
                                         <a href=" {{path('lgp_course_search_intitule',{'slug_course' : course.slug})}} ">
                                             <div class="image">
                                                 {% if course.image is not null %}

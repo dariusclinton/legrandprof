@@ -29,7 +29,7 @@ class CourseController extends Controller
         $quartier = $quartierRep->findOneBy(array('slugVille' => $slug_ville));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = $slug_course;
         $city = $slug_ville;
@@ -191,7 +191,6 @@ class CourseController extends Controller
     {
         /* For filters and pagination */
         $session = $request->getSession();
-        var_dump($session->get("lgp_refine_form_data"));
 
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
