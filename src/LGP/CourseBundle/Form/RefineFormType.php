@@ -3,6 +3,7 @@
 namespace LGP\CourseBundle\Form;
 
 use LGP\UserBundle\Repository\QuartierRepository;
+use Sonata\AdminBundle\Form\Type\Filter\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,7 +34,11 @@ class RefineFormType extends AbstractType
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
                 )
-            );
+            )
+            ->add('min_price', TextType::class, array('required' => false,
+                'attr' => array('placeholder' => 'Min', 'class' => 'form-control')))
+            ->add('max_price', TextType::class, array('required' => false,
+                'attr' => array('placeholder' => 'Max', 'class' => 'form-control')));
     }
 
     public function getName()

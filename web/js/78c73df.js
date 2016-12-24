@@ -8962,6 +8962,23 @@ $(function () {
     });
     $("#cours_search_course_city_intitule").val($("#search_course_intitule").val());
     // alert($("#search_city_name").val());
+
+    // refine search default value
+    var r_quarter = $("#refine_search_default_quarter").val();
+    if(r_quarter != ""){
+        $("#refine_form_quartier option").each(function () {
+            if ($(this).val() != "" && $(this).text() == r_quarter) {
+                $(this).attr("selected", "selected");
+            }
+        });
+    }
+
+    var r_minPrice = $("#refine_search_default_min_price").val();
+    var r_maxPrice = $("#refine_search_default_max_price").val();
+    if (r_minPrice != "" && r_maxPrice != ""){
+        $("#refine_form_min_price").val(r_minPrice);
+        $("#refine_form_max_price").val(r_maxPrice);
+    }
 });
 
 $(function () {
@@ -9079,52 +9096,52 @@ $(function () {
   }
 
 
-  /**
-   *  Gestion de l'ajout des Diplomes
-   *  
-   * @type $
-   */
-
-  // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
-  var $container2 = $('div#fos_user_profile_form_diplomes');
-
-  // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
-  var index2 = $container2.find(':input').length;
-
-  // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
-  $('#add_diplome').click(function (e) {
-    addDiplome($container2);
-    e.preventDefault();
-    return false;
-  });
- 
-  // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
-  $container2.children('div').each(function () {
-    addDeleteLink($(this));
-  });
- 
-
-  // Fonction qui ajoute un formulaire de ExperienceProType
-  function addDiplome($container) {
-    // Dans le contenu de l'attribut « data-prototype », on remplace :
-    // - le texte "__name__label__" qu'il contient par le label du champ
-    // - le texte "__name__" qu'il contient par le numéro du champ
-    var template = $container.attr('data-prototype')
-            .replace(/__name__label__/g, 'Diplome ' + (index2 + 1))
-            .replace(/__name__/g, index2);
-
-    // On cree un objet jquery qui contient ce template
-    var $prototype = $(template);
-
-    // On ajoute au prototype un lien pour pourvoir supprimer l'experience
-    addDeleteLink($prototype);
-
-    // On ajoute le prototype a la fin de la balise <div>
-    $container.append($prototype);
-
-    // On incremente le compteur
-    index2++;
-  }
+  // /**
+  //  *  Gestion de l'ajout des Diplomes
+  //  *
+  //  * @type $
+  //  */
+  //
+  // // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
+  // var $container2 = $('div#fos_user_profile_form_diplomes');
+  //
+  // // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
+  // var index2 = $container2.find(':input').length;
+  //
+  // // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
+  // $('#add_diplome').click(function (e) {
+  //   addDiplome($container2);
+  //   e.preventDefault();
+  //   return false;
+  // });
+  //
+  // // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
+  // $container2.children('div').each(function () {
+  //   addDeleteLink($(this));
+  // });
+  //
+  //
+  // // Fonction qui ajoute un formulaire de ExperienceProType
+  // function addDiplome($container) {
+  //   // Dans le contenu de l'attribut « data-prototype », on remplace :
+  //   // - le texte "__name__label__" qu'il contient par le label du champ
+  //   // - le texte "__name__" qu'il contient par le numéro du champ
+  //   var template = $container.attr('data-prototype')
+  //           .replace(/__name__label__/g, 'Diplome ' + (index2 + 1))
+  //           .replace(/__name__/g, index2);
+  //
+  //   // On cree un objet jquery qui contient ce template
+  //   var $prototype = $(template);
+  //
+  //   // On ajoute au prototype un lien pour pourvoir supprimer l'experience
+  //   addDeleteLink($prototype);
+  //
+  //   // On ajoute le prototype a la fin de la balise <div>
+  //   $container.append($prototype);
+  //
+  //   // On incremente le compteur
+  //   index2++;
+  // }
 
 
   /**

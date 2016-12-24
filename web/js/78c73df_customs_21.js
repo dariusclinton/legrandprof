@@ -520,4 +520,21 @@ $(function () {
     });
     $("#cours_search_course_city_intitule").val($("#search_course_intitule").val());
     // alert($("#search_city_name").val());
+
+    // refine search default value
+    var r_quarter = $("#refine_search_default_quarter").val();
+    if(r_quarter != ""){
+        $("#refine_form_quartier option").each(function () {
+            if ($(this).val() != "" && $(this).text() == r_quarter) {
+                $(this).attr("selected", "selected");
+            }
+        });
+    }
+
+    var r_minPrice = $("#refine_search_default_min_price").val();
+    var r_maxPrice = $("#refine_search_default_max_price").val();
+    if (r_minPrice != "" && r_maxPrice != ""){
+        $("#refine_form_min_price").val(r_minPrice);
+        $("#refine_form_max_price").val(r_maxPrice);
+    }
 });

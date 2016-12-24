@@ -32,13 +32,13 @@
                 <div class="row gap-10">
                     <div class="col-sm-12 col-md-9">
 
-{#
-                        <p class="line18"> {{ enseigne.prof.presentation | truncate(150) }} </p>
-#}
+                        {#
+                                                <p class="line18"> {{ enseigne.prof.presentation | truncate(150) }} </p>
+                        #}
                         <br>
                         <ul class="list-info">
                             <li><span class="icon"><i class="fa fa-map-marker"></i></span> <span
-                                        class="font600">Position: </span>
+                                        class="font600">Position : </span>
                                 {% if enseigne.prof.ville is not null %}
                                     {{ enseigne.prof.ville | upper }}
                                 {% else %}
@@ -58,13 +58,23 @@
                                     {% endif %}
                                 {% endfor %}
                             </li>
-                            <li><span class="icon"><i class="fa fa-money"></i></span> <span
-                                        class="font600">Prix minimal :</span>
-                                {% set minPrice %}
-                                    {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
-                                {% endset %}
-                                <span class="price">{{ minPrice }} Fcfa / Mois</span>
-                            </li>
+                            {% if params.courseFound %}
+                                <li><span class="icon"><i class="fa fa-money"></i></span> <span
+                                            class="font600">Prix du cours :</span>
+                                    {% set price %}
+                                        {{ params.enseignementRep.getPrixProfByCourse(enseigne.prof, params.courseFound) }}
+                                    {% endset %}
+                                    <span class="price">{{ price }} Fcfa / Mois</span>
+                                </li>
+                                {% else %}
+                                    <li><span class="icon"><i class="fa fa-money"></i></span> <span
+                                                class="font600">Prix minimal :</span>
+                                        {% set minPrice %}
+                                            {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
+                                        {% endset %}
+                                        <span class="price">{{ minPrice }} Fcfa / Mois</span>
+                                    </li>
+                            {% endif %}
                         </ul>
 
                     </div>

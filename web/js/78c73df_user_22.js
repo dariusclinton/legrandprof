@@ -113,52 +113,52 @@ $(function () {
   }
 
 
-  /**
-   *  Gestion de l'ajout des Diplomes
-   *  
-   * @type $
-   */
-
-  // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
-  var $container2 = $('div#fos_user_profile_form_diplomes');
-
-  // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
-  var index2 = $container2.find(':input').length;
-
-  // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
-  $('#add_diplome').click(function (e) {
-    addDiplome($container2);
-    e.preventDefault();
-    return false;
-  });
- 
-  // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
-  $container2.children('div').each(function () {
-    addDeleteLink($(this));
-  });
- 
-
-  // Fonction qui ajoute un formulaire de ExperienceProType
-  function addDiplome($container) {
-    // Dans le contenu de l'attribut « data-prototype », on remplace :
-    // - le texte "__name__label__" qu'il contient par le label du champ
-    // - le texte "__name__" qu'il contient par le numéro du champ
-    var template = $container.attr('data-prototype')
-            .replace(/__name__label__/g, 'Diplome ' + (index2 + 1))
-            .replace(/__name__/g, index2);
-
-    // On cree un objet jquery qui contient ce template
-    var $prototype = $(template);
-
-    // On ajoute au prototype un lien pour pourvoir supprimer l'experience
-    addDeleteLink($prototype);
-
-    // On ajoute le prototype a la fin de la balise <div>
-    $container.append($prototype);
-
-    // On incremente le compteur
-    index2++;
-  }
+  // /**
+  //  *  Gestion de l'ajout des Diplomes
+  //  *
+  //  * @type $
+  //  */
+  //
+  // // On recupere la balise <div> qui contient l'attribut <<data-prototype>> qui nous interesse
+  // var $container2 = $('div#fos_user_profile_form_diplomes');
+  //
+  // // ON definit un compteur unique pour nommer les champs qon va ajouter dynamiquement
+  // var index2 = $container2.find(':input').length;
+  //
+  // // On ajoute un nouveau champ a chaque clic sur le lien d'ajout
+  // $('#add_diplome').click(function (e) {
+  //   addDiplome($container2);
+  //   e.preventDefault();
+  //   return false;
+  // });
+  //
+  // // S'il existe deja des categories, on ajoute un lien de suppression pour chacune d'entre elles
+  // $container2.children('div').each(function () {
+  //   addDeleteLink($(this));
+  // });
+  //
+  //
+  // // Fonction qui ajoute un formulaire de ExperienceProType
+  // function addDiplome($container) {
+  //   // Dans le contenu de l'attribut « data-prototype », on remplace :
+  //   // - le texte "__name__label__" qu'il contient par le label du champ
+  //   // - le texte "__name__" qu'il contient par le numéro du champ
+  //   var template = $container.attr('data-prototype')
+  //           .replace(/__name__label__/g, 'Diplome ' + (index2 + 1))
+  //           .replace(/__name__/g, index2);
+  //
+  //   // On cree un objet jquery qui contient ce template
+  //   var $prototype = $(template);
+  //
+  //   // On ajoute au prototype un lien pour pourvoir supprimer l'experience
+  //   addDeleteLink($prototype);
+  //
+  //   // On ajoute le prototype a la fin de la balise <div>
+  //   $container.append($prototype);
+  //
+  //   // On incremente le compteur
+  //   index2++;
+  // }
 
 
   /**
