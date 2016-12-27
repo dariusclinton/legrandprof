@@ -29,7 +29,7 @@ class CourseController extends Controller
         $quartier = $quartierRep->findOneBy(array('slugVille' => $slug_ville));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = $slug_course;
         $city = $slug_ville;
@@ -52,11 +52,13 @@ class CourseController extends Controller
 
         $refine_form = $this->createForm(RefineFormType::class);
         $refine_form->handleRequest($request);
-// to set $profs value for refine filters
+        // to set $profs value for refine filters
         if ($refine_form->isSubmitted() && $refine_form->isValid()) {
             $data = $refine_form->getData();
             if (isset($data['quartier']) && $course != null && $quartier != null) {
                 return $this->redirectToRoute('lgp_course_search', array('slug_course' => $course->getSlug(),'slug_ville' => $quartier->getSlugVille(), 'quarter' => $data['quartier']->getIntitule()));
+            }else{
+                return $this->redirectToRoute('lgp_course_search', array('slug_course' => $course->getSlug(),'slug_ville' => $quartier->getSlugVille()));
             }
         }
 
@@ -114,7 +116,7 @@ class CourseController extends Controller
         $course = $coursRep->findOneBy(array('slug' => $slug_course));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = $slug_course;
 
@@ -144,6 +146,9 @@ class CourseController extends Controller
             $data = $refine_form->getData();
             if (isset($data['quartier']) && $course != null) {
                 return $this->redirectToRoute('lgp_course_search_intitule', array('slug_course' => $course->getSlug(), 'quarter' => $data['quartier']->getIntitule()));
+            }
+            else{
+                return $this->redirectToRoute('lgp_course_search_intitule', array('slug_course' => $course->getSlug()));
             }
         }
 
@@ -205,7 +210,7 @@ class CourseController extends Controller
         $quarter = $quarterRep->findOneBy(array('slugVille' => $slug_city));
         $avisRep = $em->getRepository("LGPUserBundle:Avis");
         $courses = $coursRep->findAll();
-        $max_per_page = 1;
+        $max_per_page = 10;
         $profs = array();
         $intitule = null;
         $city = $slug_city;
@@ -230,6 +235,8 @@ class CourseController extends Controller
             $data = $refine_form->getData();
             if (isset($data['quartier']) && $quarter != null) {
                 return $this->redirectToRoute('lgp_course_search_city', array('slug_city' => $quarter->getSlugVille(), 'quarter' => $data['quartier']->getIntitule()));
+            }else{
+                return $this->redirectToRoute('lgp_course_search_city', array('slug_city' => $quarter->getSlugVille()));
             }
         }
 
@@ -281,8 +288,7 @@ class CourseController extends Controller
         return $this->render('LGPCourseBundle:Course:search_course.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView()));
     }
 
-    public
-    function searchCourseCityAction($slug_ville, $slug_cours, $page, Request $request)
+    public function searchCourseCityAction($slug_ville, $slug_cours, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -350,8 +356,7 @@ class CourseController extends Controller
         return $this->render('LGPCourseBundle:Course:search_course_city.html.twig', array('params' => $params, 'form_course_city' => $course_city_form->createView()));
     }
 
-    public
-    function searchCourseQuarterAction($slug_ville, $slug_quartier, $slug_cours, $page, Request $request)
+    public function searchCourseQuarterAction($slug_ville, $slug_quartier, $slug_cours, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -488,8 +493,7 @@ class CourseController extends Controller
     }
 
 
-    public
-    function searchQuarterAction($slug_ville, $slug_quartier, $page, Request $request)
+    public function searchQuarterAction($slug_ville, $slug_quartier, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -619,8 +623,7 @@ class CourseController extends Controller
         return $this->render('LGPCourseBundle:Course:search_quarter.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
-    public
-    function searchProfNameAction($prof_name, $page, Request $request)
+    public function searchProfNameAction($prof_name, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");
@@ -740,8 +743,7 @@ class CourseController extends Controller
         return $this->render('LGPCourseBundle:Course:search_prof_name.html.twig', array('params' => $params, 'form_course' => $course_form->createView(), 'form_course_city' => $course_city_form->createView(), 'form_course_quarter' => $course_quarter_form->createView(), 'form_city' => $city_form->createView(), 'form_prof_name' => $prof_name_form->createView(), 'form_category' => $category_form->createView(), 'form_quarter' => $quarter_form->createView()));
     }
 
-    public
-    function searchCategorieNameAction($category_name, $page, Request $request)
+    public function searchCategorieNameAction($category_name, $page, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $enseignementRep = $em->getRepository("LGPCourseBundle:Enseignement");

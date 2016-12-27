@@ -1,6 +1,6 @@
 /nbproject/private/
-/.idea
-/.idea/*
+/nbproject/*
+/nbproject
 
 /.idea
 /.idea/*
@@ -15,6 +15,7 @@
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
+/var/
 /var/cache/*
 /var/logs/*
 /var/sessions/*
@@ -29,6 +30,7 @@
 # Managed by Composer
 !/app/bootstrap.php.cache
 !/var/bootstrap.php.cache
+!/var/SymfonyRequirements.php
 /bin/*
 !bin/console
 !bin/symfony_requirements
@@ -52,6 +54,3 @@
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
-
-/var/
-.idea/*

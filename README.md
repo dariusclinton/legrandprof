@@ -1,4 +1,2 @@
-prof
-====
-
-A Symfony project created on August 4, 2016, 9:32 am.
+Legrandprof est une plateforme de mise à disposition des apprenants,
+de profs particuliers, professionnels et compétents!!!

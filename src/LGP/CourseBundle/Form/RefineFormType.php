@@ -34,11 +34,11 @@ class RefineFormType extends AbstractType
                     'required' => false,
                     'placeholder' => 'Sélectionnez un quartier'
                 )
-            )
+            )/*
             ->add('min_price', TextType::class, array('required' => false,
                 'attr' => array('placeholder' => 'Min', 'class' => 'form-control')))
             ->add('max_price', TextType::class, array('required' => false,
-                'attr' => array('placeholder' => 'Max', 'class' => 'form-control')));
+                'attr' => array('placeholder' => 'Max', 'class' => 'form-control')))*/;
     }
 
     public function getName()
