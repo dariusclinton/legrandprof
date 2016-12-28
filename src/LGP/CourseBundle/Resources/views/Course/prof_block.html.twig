@@ -62,7 +62,7 @@
                                 <li><span class="icon"><i class="fa fa-money"></i></span> <span
                                             class="font600">Prix du cours :</span>
                                     {% set price %}
-                                        {{ params.enseignementRep.getPrixProfByCourse(enseigne.prof, params.courseFound) }}
+                                        {{ params.enseignementRep.getPrixProfByCourse(enseigne.prof, params.courseFound, enseigne.id) }}
                                     {% endset %}
                                     <span class="price">{{ price }} Fcfa / Mois</span>
                                 </li>

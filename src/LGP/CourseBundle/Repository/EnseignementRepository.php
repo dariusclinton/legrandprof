@@ -211,10 +211,11 @@ class EnseignementRepository extends EntityRepository
         return $query->getSingleScalarResult();
     }
 
-    public function getPrixProfByCourse($prof, $course){
-        $query = $this->_em->createQuery("SELECT e.prix FROM LGPCourseBundle:Enseignement e WHERE e.prof = :prof AND e.cours = :course");
+    public function getPrixProfByCourse($prof, $course, $id){
+        $query = $this->_em->createQuery("SELECT DISTINCT e.prix FROM LGPCourseBundle:Enseignement e WHERE e.prof = :prof AND e.cours = :course AND e.id = :id");
         $query->setParameter('prof', $prof);
         $query->setParameter('course', $course);
+        $query->setParameter('id', $id);
         return $query->getSingleScalarResult();
     }
 
