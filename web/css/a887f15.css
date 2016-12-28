@@ -22262,6 +22262,15 @@ li.cart-li:hover{
 .modal-body #success .thumbnail img{
     height: 150px;
 }
+
+.btn.dropdown-toggle.bs-placeholder {
+    padding-left: 0 !important;
+    text-transform: lowercase;
+    text-decoration: none !important;
+    font-family: Arial, Verdana, sans-serif;
+    font-size:14px;
+   /* background: #FFFAFA;*/
+}
 /*! jQuery UI - v1.12.0 - 2016-08-07
 * http://jqueryui.com
 * Includes: draggable.css, core.css, resizable.css, selectable.css, sortable.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, progressbar.css, selectmenu.css, slider.css, spinner.css, tabs.css, tooltip.css, theme.css

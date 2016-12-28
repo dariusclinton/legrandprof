@@ -8988,6 +8988,12 @@ $(function () {
         $("#refine_form_min_price").val(r_minPrice);
         $("#refine_form_max_price").val(r_maxPrice);
     }
+
+    // for custom select box
+    $('.selectpicker').selectpicker({
+        style: 'btn-default',
+        size: 7
+    });
 });
 
 $(function () {
