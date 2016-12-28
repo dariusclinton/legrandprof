@@ -82,7 +82,7 @@ lgp_course_find_prof_city_quarter:
     requirements:
         page:   \d+
 
-# update data for jquery autocompletion
+# routing for ajax access
 lgp_course_update_classe:
     path:     update/{profId}/{coursId}
     defaults: { _controller: LGPCourseBundle:UpdateDataAjax:updateClasse }
@@ -113,7 +113,7 @@ lgp_course_all_categories:
     options:
         expose: true
 
-# enseignement
+# show prof profile
 lgp_course_profile_prof:
     path:     /profile/{slug}
     defaults: { _controller: LGPCourseBundle:Enseignement:profile}

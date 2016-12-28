@@ -66,14 +66,14 @@
                                     {% endset %}
                                     <span class="price">{{ price }} Fcfa / Mois</span>
                                 </li>
-                                {% else %}
-                                    <li><span class="icon"><i class="fa fa-money"></i></span> <span
-                                                class="font600">Prix minimal :</span>
-                                        {% set minPrice %}
-                                            {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
-                                        {% endset %}
-                                        <span class="price">{{ minPrice }} Fcfa / Mois</span>
-                                    </li>
+                            {% else %}
+                                <li><span class="icon"><i class="fa fa-money"></i></span> <span
+                                            class="font600">Prix minimal :</span>
+                                    {% set minPrice %}
+                                        {{ params.enseignementRep.getPrixProf(enseigne.prof) }}
+                                    {% endset %}
+                                    <span class="price">{{ minPrice }} Fcfa / Mois</span>
+                                </li>
                             {% endif %}
                         </ul>
 
