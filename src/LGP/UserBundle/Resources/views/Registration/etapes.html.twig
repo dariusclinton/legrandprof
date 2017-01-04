@@ -1,0 +1,13 @@
+<div class="notifications-block">
+    
+    <div class="notifications-sub-header  {% if app.request.attributes.get('_route') == 'lgp_prof_registration_step1' %}active{% endif %}">
+      1 - Qui êtes vous ?
+    </div>
+    <div class="notifications-sub-header  {% if app.request.attributes.get('_route') == 'lgp_prof_registration_step2' %}active{% endif %}">
+      2 - Quels cours donnez-vous ?
+    </div>
+    <div class="notifications-sub-header  {% if app.request.attributes.get('_route') == 'lgp_prof_registration_step3' %}active{% endif %}">
+      2 - Ou donnez vous cours ?
+    </div>
+</div>
+

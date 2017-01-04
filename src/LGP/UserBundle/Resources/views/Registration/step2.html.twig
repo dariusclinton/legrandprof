@@ -1,0 +1,83 @@
+{% extends "LGPCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Inscription Prof, étape 2 - {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+
+    <!-- start end Page title -->
+    <div class="page-title" style="background-image:url('{{ asset('images/hero-header/breadcrumb.jpg') }}');">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+                    <h1 class="hero-title">Quels cours donnez-vous ?</h1>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end Page title -->
+  <div class="bg-grey">
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+            
+        {% include 'LGPUserBundle:Registration:etapes.html.twig' %}
+            
+        </div>
+
+        <div class="col-md-9">
+            
+        <div class="notifications-block">
+          <div class="notifications-content">
+            <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Cours</th>
+                        <th>Classe</th>
+                        <th>Prix / Mois</th>
+                        <th><button class='btn btn-primary btn-sm'>Ajouter</button></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+            </table><br>
+            <div class="row">
+              <div class="col-md-2">Niveau</div>
+              <div class="col-md-4">
+                  <select class='form-control'>
+                      <option>Tle</option>
+                  </select>
+              </div>
+            </div><br>
+            
+            <div class="row">
+              <div class="col-md-2">Prix / mois</div>
+              <div class="col-md-4"><input type='text' class='form-control'></div>
+            </div><br>  
+            <div class="row">
+              <div class="col-md-2">Intitulé</div>
+              <div class="col-md-4">
+                  <select class='form-control'>
+                      <option>Maths</option>
+                  </select>
+              </div>
+            </div><br>
+          </div>
+        </div>
+            
+            <br><button class=' btn btn-primary pull-right'>Suivant</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+{% endblock %}
