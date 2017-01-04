@@ -24,5 +24,18 @@ class RegistrationProfController extends Controller
                     ->get('pugx_multi_user.registration_manager')
                     ->register('LGP\UserBundle\Entity\Prof');
     }
-
+    
+    public function step1Action(Request $request){
+        return $this->render('LGPUserBundle:Registration:step1.html.twig');
+    }
+    
+    public function step2Action(Request $request){
+        return $this->render('LGPUserBundle:Registration:step2.html.twig');
+        
+    }
+    
+    public function step3Action(Request $request){
+        return $this->render('LGPUserBundle:Registration:step3.html.twig');
+        
+    }
 }
