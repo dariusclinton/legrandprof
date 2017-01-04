@@ -8,11 +8,23 @@ lgp_user_homepage:
 lgp_parent_registration:
     path:  /register/parent
     defaults: { _controller: LGPUserBundle:RegistrationParent:register }
-
+    
 lgp_prof_registration:
     path:  /register/prof
     defaults: { _controller: LGPUserBundle:RegistrationProf:register }
+    
+lgp_prof_registration_step1:
+    path:  /register/prof/step1
+    defaults: { _controller: LGPUserBundle:RegistrationProf:step1 }
 
+lgp_prof_registration_step2:
+    path:  /register/prof/step2
+    defaults: { _controller: LGPUserBundle:RegistrationProf:step2 }
+    
+lgp_prof_registration_step3:
+    path:  /register/prof/step3
+    defaults: { _controller: LGPUserBundle:RegistrationProf:step3 }
+    
 # Dashboard
 lgp_user_prof_dashboard:
     path: /prof/dashboard
