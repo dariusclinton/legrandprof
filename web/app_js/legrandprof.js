@@ -8777,12 +8777,14 @@ $(function () {
     // Price Range Slider
     $("#price_range").ionRangeSlider({
         type: "double",
-        grid: true,
+        grid: false,
         min: 0,
-        max: 1000,
-        from: 200,
-        to: 800,
-        prefix: "$"
+        max: 100000,
+        from: 0,
+        to: 100000,
+        postfix: 'Fcfa',
+        interval: 100,
+
     });
 
     // Star Range Slider
