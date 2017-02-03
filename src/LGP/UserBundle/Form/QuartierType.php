@@ -14,24 +14,30 @@ use LGP\UserBundle\Repository\QuartierRepository;
 
 class QuartierType extends AbstractType
 {
-  /**
-   * @param FormBuilderInterface $builder
-   * @param array $options
-   */
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-    $builder
-      ->add('ville', ChoiceType::class, array(
-        'choices' => array(
-          'Douala' => 'Douala',
-          'Yaounde' => 'Yaounde',
-          'Dschang' => 'Dschang'
-        ),
-        'placeholder' => '--'
-      ))
-      ->add('intitule', ChoiceType::class, array(
-        'placeholder' => '--'
-      ));
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('ville', ChoiceType::class, array(
+                'choices' => array(
+                    'Douala' => 'Douala',
+                    'Yaoundé' => 'Yaoundé',
+                    'Dschang' => 'Dschang',
+                    'Bafoussam' => 'Bafoussam'
+                ),
+                'placeholder' => 'Ville'
+            ))
+            ->add('intitule', ChoiceType::class, array(
+                'choices' => array(
+                  'Bepanda' => 'Bepanda',
+                  'Makepe' => 'Makepe',
+                  'Cite cicam' => 'Cite cicam',
+                ),
+                'placeholder' => 'Quartier'
+            ));
 
 //        $builder->addEventListener(
 //            FormEvents::PRE_SET_DATA,
@@ -51,15 +57,15 @@ class QuartierType extends AbstractType
 //                ));
 //              }
 //            });
-  }
+    }
 
-  /**
-   * @param OptionsResolver $resolver
-   */
-  public function configureOptions(OptionsResolver $resolver)
-  {
-    $resolver->setDefaults(array(
-      'data_class' => 'LGP\UserBundle\Entity\Quartier'
-    ));
-  }
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'LGP\UserBundle\Entity\Quartier'
+        ));
+    }
 }

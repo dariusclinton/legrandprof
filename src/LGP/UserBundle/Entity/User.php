@@ -19,430 +19,463 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 abstract class User extends BaseUser
 {
-  /**
-   * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
-   * @ORM\JoinColumn(nullable=true)
-   * @Assert\Valid()
-   */
-  protected $image;
+    /**
+     * @ORM\OneToOne(targetEntity="Image", cascade={ "persist", "remove" })
+     * @ORM\JoinColumn(nullable=true)
+     * @Assert\Valid()
+     */
+    protected $image;
 
-  /**
-   * @var \LGP\ReservationBundle\Entity\Reservation
-   *
-   * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
-   */
-  private $reservations;
+    /**
+     * @var \LGP\ReservationBundle\Entity\Reservation
+     *
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Reservation", mappedBy="user", cascade={"persist","remove"})
+     */
+    private $reservations;
 
-  /**
-   * @var \LGP\ReservationBundle\Entity\Paiement
-   *
-   * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="user")
-   */
-  private $paiements;
+    /**
+     * @var \LGP\ReservationBundle\Entity\Paiement
+     *
+     * @ORM\OneToMany(targetEntity="LGP\ReservationBundle\Entity\Paiement", mappedBy="user")
+     */
+    private $paiements;
 
-  /**
-   * @var int
-   *
-   * @ORM\Column(name="id", type="integer")
-   * @ORM\Id
-   * @ORM\GeneratedValue(strategy="AUTO")
-   */
-  protected $id;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="nom", type="string", length=255)
-   */
-  protected $nom;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    protected $nom;
 
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="prenoms", type="string", length=255, nullable=true)
-   */
-  protected $prenoms;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenoms", type="string", length=255, nullable=true)
+     */
+    protected $prenoms;
 
-  /**
-   * @var \DateTime
-   *
-   * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
-   */
-  protected $dateNaissance;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
+     */
+    protected $dateNaissance;
 
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="sexe", type="string", length=255)
-   */
-  protected $sexe;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=255)
+     */
+    protected $sexe;
 
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="telephone", type="string", length=255, unique=true, nullable=true)
-   * @Assert\Length(
-   *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
-   *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
-   * )
-   * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
-   */
-  protected $telephone;
-  
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="telephone2", type="string", length=255, unique=true, nullable=true)
-   * @Assert\Length(
-   *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
-   *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
-   * )
-   * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
-   */
-  protected $telephone2;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255, unique=true, nullable=true)
+     * @Assert\Length(
+     *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+     *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+     * )
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
+     */
+    protected $telephone;
 
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="pays", type="string", length=255)
-   */
-  protected $pays;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone2", type="string", length=255, unique=true, nullable=true)
+     * @Assert\Length(
+     *  min=9, minMessage="Le numéro de téléphone doit avoir 9 chiffres.",
+     *  max=9, maxMessage="Le numéro de téléphone doit avoir 9 chiffres."
+     * )
+     * @Assert\Range(min=0, invalidMessage="Veuillez entrer un nombre.")
+     */
+    protected $telephone2;
 
-  /**
-   * @var \DateTime
-   *
-   * @ORM\Column(name="date_inscription", type="datetime")
-   */
-  protected $dateInscription;
-
-  /**
-   * Constructeur
-   */
-  public function __construct()
-  {
-    parent::__construct();
-
-    $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
-    $this->paiements = new \Doctrine\Common\Collections\ArrayCollection();
-    $this->dateInscription = new \DateTime();
-    $this->pays = 'CM';
-  }
-
-  /**
-   * Surcharge de la methode afin de remplir manuellement
-   * l'attribut $username
-   * @param type $email
-   *
-   * @return string
-   */
-  public function setEmail($email)
-  {
-    parent::setEmail($email);
-    $this->setUsername(uniqid());
-  }
-
-  /**
-   * Get id
-   *
-   * @return int
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  /**
-   * Set nom
-   *
-   * @param string $nom
-   *
-   * @return User
-   */
-  public function setNom($nom)
-  {
-    $this->nom = $nom;
-
-    return $this;
-  }
-
-  /**
-   * Get nom
-   *
-   * @return string
-   */
-  public function getNom()
-  {
-    return $this->nom;
-  }
-
-  /**
-   * Set prenoms
-   *
-   * @param string $prenoms
-   *
-   * @return User
-   */
-  public function setPrenoms($prenoms)
-  {
-    $this->prenoms = $prenoms;
-
-    return $this;
-  }
-
-  /**
-   * Get prenoms
-   *
-   * @return string
-   */
-  public function getPrenoms()
-  {
-    return $this->prenoms;
-  }
-
-  /**
-   * Set dateNaissance
-   *
-   * @param \DateTime $dateNaissance
-   *
-   * @return User
-   */
-  public function setDateNaissance($dateNaissance)
-  {
-    $this->dateNaissance = $dateNaissance;
-
-    return $this;
-  }
-
-  /**
-   * Get dateNaissance
-   *
-   * @return \DateTime
-   */
-  public function getDateNaissance()
-  {
-    return $this->dateNaissance;
-  }
-
-  /**
-   * Set sexe
-   *
-   * @param string $sexe
-   *
-   * @return User
-   */
-  public function setSexe($sexe)
-  {
-    $this->sexe = $sexe;
-
-    return $this;
-  }
-
-  /**
-   * Get sexe
-   *
-   * @return string
-   */
-  public function getSexe()
-  {
-    return $this->sexe;
-  }
-
-  /**
-   * Set numTelephone
-   *
-   * @param string $telephone
-   *
-   * @return User
-   */
-  public function setTelephone($telephone)
-  {
-    $this->telephone = $telephone;
-
-    return $this;
-  }
-
-  /**
-   * Get numTelephone
-   *
-   * @return string
-   */
-  public function getTelephone()
-  {
-    return $this->telephone;
-  }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=255)
+     */
+    protected $pays;
 
 
-  /**
-   * Set telephone2
-   *
-   * @param string $telephone2
-   *
-   * @return User
-   */
-  public function setTelephone2($telephone2)
-  {
-    $this->telephone2 = $telephone2;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
+     */
+    protected $ville;
 
-    return $this;
-  }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_inscription", type="datetime")
+     */
+    protected $dateInscription;
 
-  /**
-   * Get telephone2
-   *
-   * @return string
-   */
-  public function getTelephone2()
-  {
-    return $this->telephone2;
-  }
+    /**
+     * Constructeur
+     */
+    public function __construct()
+    {
+        parent::__construct();
 
-  /**
-   * Set pays
-   *
-   * @param string $pays
-   *
-   * @return User
-   */
-  public function setPays($pays)
-  {
-    $this->pays = $pays;
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->paiements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateInscription = new \DateTime();
+        $this->pays = 'Cameroun';
+    }
 
-    return $this;
-  }
+    /**
+     * Surcharge de la methode afin de remplir manuellement
+     * l'attribut $username
+     * @param type $email
+     *
+     * @return string
+     */
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        $this->setUsername(uniqid());
+    }
 
-  /**
-   * Get pays
-   *
-   * @return string
-   */
-  public function getPays()
-  {
-    return $this->pays;
-  }
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  /**
-   * Set dateInscription
-   *
-   * @param \DateTime $dateInscription
-   *
-   * @return User
-   */
-  public function setDateInscription($dateInscription)
-  {
-    $this->dateInscription = $dateInscription;
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * Get dateInscription
-   *
-   * @return \DateTime
-   */
-  public function getDateInscription()
-  {
-    return $this->dateInscription;
-  }
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 
-  /**
-   * Set image
-   *
-   * @param \LGP\UserBundle\Entity\Image $image
-   *
-   * @return User
-   */
-  public function setImage(\LGP\UserBundle\Entity\Image $image = null)
-  {
-    $this->image = $image;
+    /**
+     * Set prenoms
+     *
+     * @param string $prenoms
+     *
+     * @return User
+     */
+    public function setPrenoms($prenoms)
+    {
+        $this->prenoms = $prenoms;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * Get image
-   *
-   * @return \LGP\UserBundle\Entity\Image
-   */
-  public function getImage()
-  {
-    return $this->image;
-  }
+    /**
+     * Get prenoms
+     *
+     * @return string
+     */
+    public function getPrenoms()
+    {
+        return $this->prenoms;
+    }
 
-  /**
-   * Cette fonction retourne quelques infos decrivant l'utilisateur
-   * @return type
-   */
-  public function getAffichage()
-  {
-    return $this->nom . ' ' . $this->prenoms;
-  }
+    /**
+     * Set dateNaissance
+     *
+     * @param \DateTime $dateNaissance
+     *
+     * @return User
+     */
+    public function setDateNaissance($dateNaissance)
+    {
+        $this->dateNaissance = $dateNaissance;
 
-  /**
-   * Add reservation
-   *
-   * @param \LGP\ReservationBundle\Entity\Reservation $reservation
-   *
-   * @return User
-   */
-  public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
-  {
-    $this->reservations[] = $reservation;
+        return $this;
+    }
 
-    return $this;
-  }
+    /**
+     * Get dateNaissance
+     *
+     * @return \DateTime
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
 
-  /**
-   * Remove reservation
-   *
-   * @param \LGP\ReservationBundle\Entity\Reservation $reservation
-   */
-  public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
-  {
-    $this->reservations->removeElement($reservation);
-  }
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     *
+     * @return User
+     */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
 
-  /**
-   * Get reservations
-   *
-   * @return \Doctrine\Common\Collections\Collection
-   */
-  public function getReservations()
-  {
-    return $this->reservations;
-  }
+        return $this;
+    }
 
-  /**
-   * Add paiement
-   *
-   * @param \LGP\ReservationBundle\Entity\Paiement $paiement
-   *
-   * @return User
-   */
-  public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
-  {
-    $this->paiements[] = $paiement;
+    /**
+     * Get sexe
+     *
+     * @return string
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
 
-    return $this;
-  }
+    /**
+     * Set numTelephone
+     *
+     * @param string $telephone
+     *
+     * @return User
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
 
-  /**
-   * Remove paiement
-   *
-   * @param \LGP\ReservationBundle\Entity\Paiement $paiement
-   */
-  public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
-  {
-    $this->paiements->removeElement($paiement);
-  }
+        return $this;
+    }
 
-  /**
-   * Get paiements
-   *
-   * @return \Doctrine\Common\Collections\Collection
-   */
-  public function getPaiements()
-  {
-    return $this->paiements;
-  }
+    /**
+     * Get numTelephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+
+    /**
+     * Set telephone2
+     *
+     * @param string $telephone2
+     *
+     * @return User
+     */
+    public function setTelephone2($telephone2)
+    {
+        $this->telephone2 = $telephone2;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone2
+     *
+     * @return string
+     */
+    public function getTelephone2()
+    {
+        return $this->telephone2;
+    }
+
+    /**
+     * Set pays
+     *
+     * @param string $pays
+     *
+     * @return User
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return string
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Prof
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set dateInscription
+     *
+     * @param \DateTime $dateInscription
+     *
+     * @return User
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->dateInscription = $dateInscription;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscription
+     *
+     * @return \DateTime
+     */
+    public function getDateInscription()
+    {
+        return $this->dateInscription;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \LGP\UserBundle\Entity\Image $image
+     *
+     * @return User
+     */
+    public function setImage(\LGP\UserBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \LGP\UserBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Cette fonction retourne quelques infos decrivant l'utilisateur
+     * @return type
+     */
+    public function getAffichage()
+    {
+        return $this->nom . ' ' . $this->prenoms;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     *
+     * @return User
+     */
+    public function addReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \LGP\ReservationBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\LGP\ReservationBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     *
+     * @return User
+     */
+    public function addPaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements[] = $paiement;
+
+        return $this;
+    }
+
+    /**
+     * Remove paiement
+     *
+     * @param \LGP\ReservationBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\LGP\ReservationBundle\Entity\Paiement $paiement)
+    {
+        $this->paiements->removeElement($paiement);
+    }
+
+    /**
+     * Get paiements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaiements()
+    {
+        return $this->paiements;
+    }
 
 }

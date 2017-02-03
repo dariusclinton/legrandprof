@@ -18,22 +18,32 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->remove('username')
-            ->add('nom', TextType::class)
-            ->add('prenoms', TextType::class, array(
-              'required' => false
-            ))
-            ->add('sexe', ChoiceType::class, array(
-              'choices' => array(
-                  'Masculin' => 'Masculin',
-                  'Féminin'  => 'Féminin'
-              ),
-              'placeholder' => 'Sexe'
-            ))
-            ->add('pays', CountryType::class, array(
-              'placeholder' => 'Pays',
-            ))
-        ;
+                ->remove('username')
+                ->add('nom', TextType::class)
+                ->add('prenoms', TextType::class, array(
+                    'required' => false
+                ))
+                ->add('sexe', ChoiceType::class, array(
+                    'choices' => array(
+                        'Masculin' => 'Masculin',
+                        'Féminin' => 'Féminin'
+                    ),
+                    'placeholder' => 'Sexe'
+                ))
+                ->add('pays', ChoiceType::class, array(
+                    'choices' => array(
+                        'Cameroun' => 'Cameroun'
+                    )
+                ))
+                ->add('ville', ChoiceType::class, array(
+                    'choices' => array(
+                        'Douala' => 'Douala',
+                        'Yaoundé' => 'Yaoundé',
+                        'Bafoussam' => 'Bafoussam',
+                        'Dschang' => 'Dschang',
+                    ),
+                    'placeholder' => 'Ville'
+                ));
     }
 
     // added for fos
