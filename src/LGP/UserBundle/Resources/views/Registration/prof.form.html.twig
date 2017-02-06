@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_widget(form.enseignements, {'attr': {'class': 'form-control'} }) }}
+                                            {{ form_widget(form.enseignements) }}
                                             {{ form_errors(form.enseignements) }}
                                         </div>
                                     </div>
@@ -128,9 +128,21 @@
                                     </div>
                                     <div class="panel-body  register-panel">
                                         <div class="form-group">
+                                            {{ form_label(form.quartierCibles, "Sélectionnez tous les quartiers dans lequels vous pouvez dispenser des cours (CTRL + clic sur le quartier pour une sélection multiple)") }}
                                             {{ form_widget(form.quartierCibles, {'attr': {'style': 'height: 400px; width: 200px'}}) }}
                                             {{ form_errors(form.quartierCibles) }}
                                         </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.telephone, 'Téléphone', {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+                                            {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+                                            {{ form_errors(form.telephone) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.presentation, "Présentez vous en quelques mots") }}
+                                            {{ form_widget(form.presentation, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.presentation) }}
+                                        </div>
+
                                     </div>
                                     <div class="panel-footer">
                                         <a href="#" class="btn btn-primary" id="last_quartiers_cours">Précédent</a>

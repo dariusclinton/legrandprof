@@ -45,15 +45,25 @@ class EnseignementType extends AbstractType
                         'Bacc + 5' => 'Bacc + 5',
                     )
                 ),
-                'placeholder' => 'Classe'
+                'placeholder' => 'Classe',
+                'attr' => array(
+                    'class' => 'form-control'
+                )
             ))
             ->add('cours', EntityType::class, array(
                 'class' => 'LGPCourseBundle:Cours',
                 'choice_label' => 'intitule',
                 'multiple' => false,
-                'placeholder' => 'Cours'
+                'placeholder' => 'Cours',
+                'attr' => array(
+                    'class' => 'form-control'
+                )
             ))
-            ->add('prix', TextType::class);
+            ->add('prix', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control'
+                )
+            ));
     }
 
     /**
