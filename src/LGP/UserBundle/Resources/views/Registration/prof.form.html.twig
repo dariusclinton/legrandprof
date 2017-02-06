@@ -7,7 +7,7 @@
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
     <!-- start hero-header with windows height -->
-    <div class="hero" style="background-image:url('{{ asset('images/hero-header/01.1.jpg') }}');">
+    <div class="hero" style="background-image:url('{{ asset('images/hero-header/01.1.jpg') }}'); margin-top:-80px;">
 
         <div class="container">
 
@@ -32,12 +32,12 @@
                             <form action="{{ path('lgp_prof_registration') }}" method="POST" class="form-horizontal">
                                 {{ form_errors(form) }}
 
-                                <div class="panel panel-default">
+                                <div class="panel panel-default register-panel" id="info_perso">
                                     <div class="panel-heading">Informations personnelles</div>
-                                    <div class="panel-body">
+                                    <div class="panel-body  register-panel">
                                         <div class="form-group">
                                             {{ form_label(form.nom, "Nom", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.nom, {'attr': {'placeholder':'Nom','class':'form-control'}}) }}
                                                 {{ form_errors(form.nom) }}
                                             </div>
@@ -45,7 +45,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.prenoms, "Prénoms", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms','class':'form-control'}}) }}
                                                 {{ form_errors(form.prenoms) }}
                                             </div>
@@ -53,7 +53,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.sexe, "Sexe", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.sexe, {'attr': {'class':'form-control'}}) }}
                                                 {{ form_errors(form.sexe) }}
                                             </div>
@@ -61,7 +61,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.pays, "Pays", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.pays, {'attr': {'class':'form-control'}}) }}
                                                 {{ form_errors(form.pays) }}
                                             </div>
@@ -69,7 +69,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.ville, "Ville", {'attr': {'class': 'col-md-3'}}) }}
-                                           <div class="col-md-9 col-md-offset-3">
+                                           <div class="col-md-6 col-md-offset-3">
                                                {{ form_widget(form.ville, {'attr': {'placeholder': 'Ville de résidence', 'class':'form-control'}}) }}
                                                {{ form_errors(form.ville) }}
                                            </div>
@@ -77,7 +77,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.email, "Email", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email','class':'form-control'}}) }}
                                                 {{ form_errors(form.email) }}
                                             </div>
@@ -85,7 +85,7 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.plainPassword.children['first'], "Mot de passe", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.plainPassword.children['first'], {'attr': {'placeholder':'Mot de passe','class':'form-control'}}) }}
                                                 {{ form_errors(form.plainPassword.first) }}
                                             </div>
@@ -93,42 +93,53 @@
 
                                         <div class="form-group">
                                             {{ form_label(form.plainPassword.children['second'], "Confirmez le mot de passe", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-9 col-md-offset-3">
+                                            <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.plainPassword.children['second'], {'attr': {'placeholder':'Confirmation Mot de passe','class':'form-control'}}) }}
                                                 {{ form_errors(form.plainPassword.second) }}
                                             </div>
                                         </div>
 
                                     </div>
+                                    
+                                    <div class="panel-footer">
+                                        <a href="#" class="btn btn-primary" id="next_info_perso">Suivant</a>
+                                    </div>      
                                 </div>
-                                <div class="panel panel-default">
+                                <div class="panel panel-default register-panel" id="cours_dispenser">
                                     <div class="panel-heading">
                                         Quels cours pouvez-vous dispenser ?
                                         <button class="btn btn-primary btn-sm" id="add_cours"><i class="fa fa-plus"></i>
-                                        </button>
+                                        Ajouter</button>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_widget(form.enseignements) }}
+                                            {{ form_widget(form.enseignements, {'attr': {'class': 'form-control'} }) }}
                                             {{ form_errors(form.enseignements) }}
                                         </div>
                                     </div>
+                                    <div class="panel-footer">
+                                        <a href="#" class="btn btn-primary" id="last_cours_dispenser">Précédent</a>
+                                        <a href="#" class="btn btn-primary" id="next_cours_dispenser">Suivant</a>
+                                    </div>  
                                 </div>
-                                <div class="panel panel-default">
+                                <div class="panel panel-default" id="quartiers_cours">
                                     <div class="panel-heading">
                                         Dans quels quartiers pouvez-vous dispenser ces cours ?
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_widget(form.quartierCibles, {'attr': {'style': 'height: 500px; width: 200px'}}) }}
+                                            {{ form_widget(form.quartierCibles, {'attr': {'style': 'height: 400px; width: 200px'}}) }}
                                             {{ form_errors(form.quartierCibles) }}
                                         </div>
                                     </div>
+                                    <div class="panel-footer">
+                                        <a href="#" class="btn btn-primary" id="last_quartiers_cours">Précédent</a>
+                                    </div>  
                                 </div>
 
                                 {{ form_rest(form) }}
                                 <div>
-                                    <input type="submit" value="{{ 'Enregistrez'|trans }}" class="btn btn-primary"/>
+                                    <input id="button_save" type="submit" value="{{ 'Enregistrez'|trans }}" class="btn btn-primary save"/>
                                 </div>
                             </form>
                         </div>
@@ -185,8 +196,30 @@
 
     <script>
         $(function () {
+            $(".register-panel").css("height","480px");
+            $("#cours_dispenser").hide();
+            $("#quartiers_cours").hide();
+            $(".save").hide();
 
-
+            $("#next_info_perso").click(function(){
+               $("#info_perso").hide();
+               $("#cours_dispenser").show();
+            });
+            $("#last_cours_dispenser").click(function(){
+               $("#cours_dispenser").hide();
+               $("#info_perso").show();
+            });
+            $("#next_cours_dispenser").click(function(){
+               $("#cours_dispenser").hide();
+               $("#quartiers_cours").show();
+               $(".save").show();
+            });
+            $("#last_quartiers_cours").click(function(){
+               $("#quartiers_cours").hide();
+               $(".save").hide();
+               $("#cours_dispenser").show();
+               
+            });
             /**
              *  Gestion de l'ajout des ExperiencePro
              *
