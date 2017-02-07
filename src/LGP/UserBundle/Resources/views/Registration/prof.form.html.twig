@@ -36,7 +36,6 @@
                                     <div class="panel-heading">Informations personnelles</div>
                                     <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_label(form.nom, "Nom", {'attr': {'class': 'col-md-3'}}) }}
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.nom, {'attr': {'placeholder':'Nom','class':'form-control'}}) }}
                                                 {{ form_errors(form.nom) }}
@@ -44,7 +43,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.prenoms, "Prénoms", {'attr': {'class': 'col-md-3'}}) }}
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.prenoms, {'attr': {'placeholder':'Prénoms','class':'form-control'}}) }}
                                                 {{ form_errors(form.prenoms) }}
@@ -52,7 +50,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.sexe, "Sexe", {'attr': {'class': 'col-md-3'}}) }}
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.sexe, {'attr': {'class':'form-control'}}) }}
                                                 {{ form_errors(form.sexe) }}
@@ -60,7 +57,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.pays, "Pays", {'attr': {'class': 'col-md-3'}}) }}
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.pays, {'attr': {'class':'form-control'}}) }}
                                                 {{ form_errors(form.pays) }}
@@ -68,7 +64,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.ville, "Ville", {'attr': {'class': 'col-md-3'}}) }}
                                            <div class="col-md-6 col-md-offset-3">
                                                {{ form_widget(form.ville, {'attr': {'placeholder': 'Ville de résidence', 'class':'form-control'}}) }}
                                                {{ form_errors(form.ville) }}
@@ -76,15 +71,18 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.email, "Email", {'attr': {'class': 'col-md-3'}}) }}
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.email, {'attr': {'placeholder':'Adresse email','class':'form-control'}}) }}
                                                 {{ form_errors(form.email) }}
                                             </div>
                                         </div>
-
                                         <div class="form-group">
-                                            {{ form_label(form.plainPassword.children['first'], "Mot de passe", {'attr': {'class': 'col-md-3'}}) }}
+                                            <div class="col-md-6 col-md-offset-3">
+                                                {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+                                                {{ form_errors(form.telephone) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.plainPassword.children['first'], {'attr': {'placeholder':'Mot de passe','class':'form-control'}}) }}
                                                 {{ form_errors(form.plainPassword.first) }}
@@ -92,8 +90,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            {{ form_label(form.plainPassword.children['second'], "Confirmez le mot de passe", {'attr': {'class': 'col-md-3'}}) }}
-                                            <div class="col-md-6 col-md-offset-3">
+                                             <div class="col-md-6 col-md-offset-3">
                                                 {{ form_widget(form.plainPassword.children['second'], {'attr': {'placeholder':'Confirmation Mot de passe','class':'form-control'}}) }}
                                                 {{ form_errors(form.plainPassword.second) }}
                                             </div>
@@ -113,13 +110,35 @@
                                     </div>
                                     <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_widget(form.enseignements) }}
-                                            {{ form_errors(form.enseignements) }}
+                                            <div class="col-md-6 col-md-offset-3">
+                                                {{ form_widget(form.enseignements) }}
+                                                {{ form_errors(form.enseignements) }}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer">
                                         <a href="#" class="btn btn-primary" id="last_cours_dispenser">Précédent</a>
                                         <a href="#" class="btn btn-primary" id="next_cours_dispenser">Suivant</a>
+                                    </div>  
+                                </div>
+                                            
+                                <div class="panel panel-default" id="presentation">
+                                    <div class="panel-heading">
+                                        Qui êtes vous ?
+                                    </div>
+                                    <div class="panel-body  register-panel">
+                                        <div class="form-group">
+                                            <div class="col-md-8 col-md-offset-2">
+                                                {{ form_label(form.presentation, "Présentez vous en quelques mots",{'attr': {'style': 'color:rgb(100,100,100)'}}) }}
+                                                {{ form_widget(form.presentation, {'attr': {'class': 'form-control', 'style':'height:250px','placeholder':'Présentez vous en quelques mots'}}) }}
+                                                {{ form_errors(form.presentation) }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="panel-footer">
+                                        <a href="#" class="btn btn-primary" id="last_presentation">Précédent</a>
+                                        <a href="#" class="btn btn-primary" id="next_presentation">Précédent</a>
                                     </div>  
                                 </div>
                                 <div class="panel panel-default" id="quartiers_cours">
@@ -128,15 +147,11 @@
                                     </div>
                                     <div class="panel-body  register-panel">
                                         <div class="form-group">
-                                            {{ form_label(form.quartierCibles, "Sélectionnez tous les quartiers dans lequels vous pouvez dispenser des cours (CTRL + clic sur le quartier pour une sélection multiple)") }}
+                                            {{ form_label(form.quartierCibles, "Sélectionnez tous les quartiers dans lequels vous pouvez dispenser des cours (CTRL + clic sur le quartier pour une sélection multiple)",{'attr': {'class': 'quartiers'}}) }}
                                             {{ form_widget(form.quartierCibles, {'attr': {'style': 'height: 400px; width: 200px'}}) }}
                                             {{ form_errors(form.quartierCibles) }}
                                         </div>
-                                        <div class="form-group">
-                                            {{ form_label(form.telephone, 'Téléphone', {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
-                                            {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
-                                            {{ form_errors(form.telephone) }}
-                                        </div>
+                                        
                                         <div class="form-group">
                                             {{ form_label(form.presentation, "Présentez vous en quelques mots") }}
                                             {{ form_widget(form.presentation, {'attr': {'class': 'form-control'}}) }}
@@ -208,9 +223,11 @@
 
     <script>
         $(function () {
+            $(".quartiers").css("color","black");
             $(".register-panel").css("height","480px");
             $("#cours_dispenser").hide();
             $("#quartiers_cours").hide();
+            $("#presentation").hide();
             $(".save").hide();
 
             $("#next_info_perso").click(function(){
@@ -223,6 +240,14 @@
             });
             $("#next_cours_dispenser").click(function(){
                $("#cours_dispenser").hide();
+               $("#presentation").show();
+            });
+            $("#last_presentation").click(function(){
+               $("#presentation").hide();
+               $("#cours_dispenser").show();
+            });
+            $("#next_presentation").click(function(){
+               $("#presentation").hide();
                $("#quartiers_cours").show();
                $(".save").show();
             });
