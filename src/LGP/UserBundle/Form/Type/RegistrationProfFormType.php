@@ -58,6 +58,6 @@ class RegistrationProfFormType extends \Symfony\Component\Form\AbstractType
 
     public function getName()
     {
-        return $this->getBlockPrefix();
+        return $this->getBlockPrefix(); 
     }
 }
