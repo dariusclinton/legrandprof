@@ -61,6 +61,7 @@ class EnseignementType extends AbstractType
             ))
             ->add('prix', TextType::class, array(
                 'attr' => array(
+                    'placeholder' => 'Prix / Mois',
                     'class' => 'form-control'
                 )
             ));
